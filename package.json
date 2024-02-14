@@ -1,24 +1,53 @@
 {
-  "name": "umami-zen",
+  "name": "@umami/zen",
   "version": "0.1.0",
-  "private": true,
+  "description": "Umami React components.",
+  "author": "Umami <hello@umami.is>",
+  "license": "MIT",
+  "homepage": "https://umami.is/zen",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/umami-software/zen.git"
+  },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 9000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.0.0",
+    "@mdx-js/react": "^3.0.0",
+    "@next/mdx": "^14.1.0",
+    "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/react-accessible-icon": "^1.0.3",
+    "@radix-ui/react-direction": "^1.0.1",
+    "@radix-ui/react-portal": "^1.0.4",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-visually-hidden": "^1.0.3",
+    "@stylexjs/open-props": "^0.5.1",
+    "@stylexjs/stylex": "^0.5.1",
+    "@types/mdx": "^2.0.11",
+    "clsx": "^2.1.0",
+    "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.1.0"
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@stylexjs/babel-plugin": "^0.5.1",
+    "@stylexjs/eslint-plugin": "^0.5.1",
+    "@stylexjs/nextjs-plugin": "^0.5.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0"
+    "eslint-config-next": "14.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2",
+    "typescript": "^5"
   }
 }
