@@ -1,16 +1,29 @@
-import { ReactNode, useContext } from 'react';
-import { props } from '@stylexjs/stylex';
-import { ThemeContext } from '@/components/ThemeProvider';
-import { styles } from './Page.stylex';
+import { ReactNode, HTMLAttributes } from 'react';
+import { create, props } from '@stylexjs/stylex';
+import useTheme from '@/components/hooks/useTheme';
+import { theme } from '@/styles/vars.stylex';
 
-export function Page({ children, ...domProps }: { children: ReactNode }) {
-  const theme = useContext(ThemeContext);
+export function Page({
+  style,
+  children,
+  ...attributes
+}: { style?: any; children: ReactNode } & HTMLAttributes<HTMLDivElement>) {
+  const { theme } = useTheme();
 
   return (
-    <div {...domProps} {...props(styles.page, theme)}>
+    <div {...props(styles.page, theme.style, style)} {...attributes}>
       {children}
     </div>
   );
 }
+
+export const styles = create({
+  page: {
+    display: 'grid',
+    color: theme.textColor1,
+    backgroundColor: theme.backgroundColor,
+    minHeight: '100vh',
+  },
+});
 
 export default Page;

@@ -1,0 +1,31 @@
+html {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+input, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a, a:active, a:visited {
+  color: #646464;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}

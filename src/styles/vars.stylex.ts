@@ -11,18 +11,30 @@ export const screens = stylex.defineVars({
 });
 
 export const spacing = stylex.defineVars({
-  spacing1: '.25rem',
-  spacing2: '.5rem',
-  spacing3: '1rem',
-  spacing4: '1.25rem',
-  spacing5: '1.5rem',
-  spacing6: '1.75rem',
-  spacing7: '2rem',
-  spacing8: '3rem',
-  spacing9: '4rem',
-  spacing10: '5rem',
-  spacing11: '7.5rem',
-  spacing12: '10rem',
+  spacing1: '.25rem', // 4px
+  spacing2: '.5rem', // 8px
+  spacing3: '1rem', // 16px
+  spacing4: '1.25rem', // 20px
+  spacing5: '1.5rem', // 24px
+  spacing6: '1.75rem', // 28px
+  spacing7: '2rem', // 32px
+  spacing8: '3rem', // 48px
+  spacing9: '4rem', // 64px
+  spacing10: '5rem', // 80px
+  spacing11: '7.5rem', // 120px
+  spacing12: '10rem', // 160px
+});
+
+export const fontSizes = stylex.defineVars({
+  fontSize1: '12px',
+  fontSize2: '14px',
+  fontSize3: '16px',
+  fontSize4: '18px',
+  fontSize5: '20px',
+  fontSize6: '24px',
+  fontSize7: '28px',
+  fontSize8: '36px',
+  fontSize9: '60px',
 });
 
 export const zIndex = stylex.defineVars({
@@ -88,4 +100,17 @@ export const theme = stylex.defineVars({
   primary1: { default: lightColors.gray12, [DARK]: darkColors.gray12 },
   primary2: { default: lightColors.gray11, [DARK]: darkColors.gray11 },
   primary3: { default: lightColors.gray10, [DARK]: darkColors.gray10 },
+
+  spacing1: spacing.spacing1,
+  spacing2: spacing.spacing2,
+  spacing3: spacing.spacing3,
+  spacing4: spacing.spacing4,
+  spacing5: spacing.spacing5,
+  spacing6: spacing.spacing6,
+  spacing7: spacing.spacing7,
+  spacing8: spacing.spacing8,
+  spacing9: spacing.spacing9,
+  spacing10: spacing.spacing10,
+  spacing11: spacing.spacing11,
+  spacing12: spacing.spacing12,
 });

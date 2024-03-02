@@ -1,20 +1,23 @@
 'use client';
-import { ReactNode, useState } from 'react';
-import { ThemeProvider, Page } from '@/components';
+import { ReactNode } from 'react';
+import { Page } from '@/components';
+import Header from '@/app/Header';
+import useTheme from '@/components/hooks/useTheme';
+import styles from './App.module.css';
 
 export default function App({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState('zen');
-
-  const handleClick = () => setTheme(theme === 'light' ? 'dark' : 'light');
-
-  console.log('App', theme);
+  const { setTheme } = useTheme();
 
   return (
-    <ThemeProvider theme={theme}>
-      <Page>
-        <button onClick={handleClick}>{theme}</button>
-        {children}
-      </Page>
-    </ThemeProvider>
+    <Page>
+      <div className={styles.page}>
+        <Header>
+          <button onClick={() => setTheme('zen')}>zen</button>
+          <button onClick={() => setTheme('light')}>light</button>
+          <button onClick={() => setTheme('dark')}>dark</button>
+        </Header>
+        <main>{children}</main>
+      </div>
+    </Page>
   );
 }

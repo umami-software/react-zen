@@ -1,0 +1,4 @@
+.page {
+  display: grid;
+  grid-auto-rows: max-content 1fr;
+}
