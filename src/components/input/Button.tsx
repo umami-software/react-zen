@@ -1,5 +1,6 @@
-import { HTMLAttributes, ReactNode } from 'react';
-import * as stylex from '@stylexjs/stylex';
+import { HTMLAttributes } from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { create, props } from '@stylexjs/stylex';
 import { theme } from '@/styles/vars.stylex';
 import useTheme from '@/components/hooks/useTheme';
 
@@ -7,19 +8,20 @@ export function Button({
   variant,
   size,
   style,
-  children,
+  asChild,
   ...attributes
 }: {
   variant?: 'primary' | 'secondary' | 'quiet' | 'danger';
   size?: 1 | 2 | 3 | 4;
   style?: any;
-  children: ReactNode;
+  asChild?: boolean;
 } & HTMLAttributes<HTMLButtonElement>) {
   const { theme } = useTheme();
+  const Component = asChild ? Slot : 'button';
 
   return (
-    <button
-      {...stylex.props(
+    <Component
+      {...props(
         styles.button,
         variant && styles[variant],
         size && styles[`size${size}`],
@@ -27,13 +29,11 @@ export function Button({
         style,
       )}
       {...attributes}
-    >
-      {children}
-    </button>
+    />
   );
 }
 
-export const styles = stylex.create({
+export const styles = create({
   button: {
     display: 'flex',
     alignItems: 'center',

@@ -1,5 +1,7 @@
 .container {
   display: grid;
+  max-width: 960px;
+  margin: 0 auto;
   grid-template-columns: minmax(max-content, 200px) 1fr;
 }
 

@@ -8,3 +8,8 @@
 .title {
   font-weight: 700;
 }
+
+.buttons {
+  display: flex;
+  gap: 2px;
+}

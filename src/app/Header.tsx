@@ -1,7 +1,7 @@
 'use client';
 import { ReactNode } from 'react';
-import styles from './Header.module.css';
 import clsx from 'clsx';
+import styles from './Header.module.css';
 
 export default function Header({
   className,
@@ -13,9 +13,9 @@ export default function Header({
 }) {
   return (
     <div {...domProps} className={clsx(styles.header, className)}>
-      <div>zen</div>
+      <a href={'/'}>zen</a>
       <a href={'/docs'}>docs</a>
-      <div>{children}</div>
+      <div className={styles.buttons}>{children}</div>
     </div>
   );
 }

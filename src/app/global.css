@@ -5,6 +5,7 @@ html {
 html, body {
   font-family: Inter, sans-serif;
   font-size: 14px;
+  line-height: 22px;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -27,5 +28,33 @@ a, a:active, a:visited {
 }
 
 a:hover {
-  color: red;
+  color: #202020;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+pre {
+  color: #111;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5rem;
+  padding: 20px;
+  background-color: #eee;
+  border-radius: 4px;
 }

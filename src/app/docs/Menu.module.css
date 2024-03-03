@@ -1,10 +1,16 @@
 .menu {
+  font-size: 14px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
   padding: 20px;
+  min-width: 300px;
 }
 
 .item {
   display: flex;
+}
+
+.menu .selected a {
+  color: #000;
 }
