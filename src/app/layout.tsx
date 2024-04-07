@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import App from './App';
+import '../styles/zen.css';
 import './global.css';
 
 export default function RootLayout({

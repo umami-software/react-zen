@@ -12,6 +12,8 @@ export const useStore = store;
 
 function setTheme(name: string) {
   store.setState({ name, style: themes[name] });
+
+  document.body.setAttribute('data-theme', name);
 }
 
 export default function useTheme() {

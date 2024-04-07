@@ -1,0 +1,19 @@
+.demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid var(--zen-base7);
+  border-radius: 5px;
+  min-height: 300px;
+  margin-bottom: 60px;
+  padding: 30px 10px;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}

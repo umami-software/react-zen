@@ -23,12 +23,12 @@ input, textarea, button {
 }
 
 a, a:active, a:visited {
-  color: #646464;
+  color: var(--zen-text-color1);
   text-decoration: none;
 }
 
 a:hover {
-  color: #202020;
+  color: var(--zen-text-color2);
 }
 
 img,
@@ -50,11 +50,11 @@ video {
 }
 
 pre {
-  color: #111;
+  color: var(--zen-text-color1);
   font-family: monospace;
   font-size: 14px;
   line-height: 1.5rem;
   padding: 20px;
-  background-color: #eee;
+  background-color: var(--zen-base3);
   border-radius: 4px;
 }

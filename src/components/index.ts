@@ -7,5 +7,7 @@ export { Page } from './layout/Page';
 export { Flexbox } from './layout/Flexbox';
 export { ThemeProvider } from './ThemeProvider';
 
+export { Demo } from '../app/docs/Demo';
+
 import Logo from '../assets/logo.svg';
 export { Logo };

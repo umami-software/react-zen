@@ -1,4 +1,5 @@
 import { create, props } from '@stylexjs/stylex';
+import { Slot } from '@radix-ui/react-slot';
 import useTheme from '@/components/hooks/useTheme';
 import { ReactNode, cloneElement } from 'react';
 
@@ -14,13 +15,13 @@ export function Icon({ size = 3, variant, rotate, style, children, ...attributes
   const { theme } = useTheme();
 
   return (
-    <div
+    <Slot
       {...attributes}
       {...props(styles.icon, size && styles[`size${size}`], theme.style, style)}
       style={{ ...style, transform: rotate ? `rotate(${rotate}deg)` : undefined }}
     >
-      {cloneElement(children, props(size && styles[`size${size}`]))}
-    </div>
+      {children}
+    </Slot>
   );
 }
 

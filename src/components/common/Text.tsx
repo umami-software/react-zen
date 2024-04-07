@@ -14,7 +14,7 @@ export function Text({
   size?: 1 | 2 | 3 | 4 | 5;
   weight?: 1 | 2 | 3 | 4 | 5;
   style?: any;
-} & HTMLAttributes<HTMLSpanElement>) {
+} & Omit<HTMLAttributes<HTMLSpanElement>, 'color'>) {
   const { theme } = useTheme();
 
   return (
@@ -68,7 +68,7 @@ export const styles = create({
     fontWeight: 300,
   },
   weight2: {
-    fontWeight: 500,
+    fontWeight: 400,
   },
   weight3: {
     fontWeight: 600,

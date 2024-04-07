@@ -1,0 +1,64 @@
+
+:root {
+  --zen-light1: #fcfcfc;
+  --zen-light2: #f9f9f9;
+  --zen-light3: #f0f0f0;
+  --zen-light4: #e8e8e8;
+  --zen-light5: #e0e0e0;
+  --zen-light6: #d9d9d9;
+  --zen-light7: #cecece;
+  --zen-light8: #bbbbbb;
+  --zen-light9: #8d8d8d;
+  --zen-light10: #838383;
+  --zen-light11: #646464;
+  --zen-light12: #202020;
+
+  --zen-dark1: #111111;
+  --zen-dark2: #191919;
+  --zen-dark3: #222222;
+  --zen-dark4: #2a2a2a;
+  --zen-dark5: #313131;
+  --zen-dark6: #3a3a3a;
+  --zen-dark7: #484848;
+  --zen-dark8: #606060;
+  --zen-dark9: #6e6e6e;
+  --zen-dark10: #7b7b7b;
+  --zen-dark11: #b4b4b4;
+  --zen-dark12: #eeeeee;
+
+  --zen-base1: var(--zen-light1);
+  --zen-base2: var(--zen-light2);
+  --zen-base3: var(--zen-light3);
+  --zen-base4: var(--zen-light4);
+  --zen-base5: var(--zen-light5);
+  --zen-base6: var(--zen-light6);
+  --zen-base7: var(--zen-light7);
+  --zen-base8: var(--zen-light8);
+  --zen-base9: var(--zen-light9);
+  --zen-base10: var(--zen-light10);
+  --zen-base11: var(--zen-light11);
+  --zen-base12: var(--zen-light12);
+
+  --zen-text-color1: var(--zen-light12);
+  --zen-text-color2: var(--zen-light10);
+  --zen-text-color3: var(--zen-light9);
+
+  [data-theme=dark] {
+    --zen-base1: var(--zen-dark1);
+    --zen-base2: var(--zen-dark2);
+    --zen-base3: var(--zen-dark3);
+    --zen-base4: var(--zen-dark4);
+    --zen-base5: var(--zen-dark5);
+    --zen-base6: var(--zen-dark6);
+    --zen-base7: var(--zen-dark7);
+    --zen-base8: var(--zen-dark8);
+    --zen-base9: var(--zen-dark9);
+    --zen-base10: var(--zen-dark10);
+    --zen-base11: var(--zen-dark11);
+    --zen-base12: var(--zen-dark12);
+
+    --zen-text-color1: var(--zen-dark12);
+    --zen-text-color2: var(--zen-dark10);
+    --zen-text-color3: var(--zen-dark9);
+  }
+}

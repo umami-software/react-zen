@@ -1,6 +1,6 @@
 'use client';
 import { Fragment } from 'react';
-import clsx from 'clsx';
+import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Heading, Text } from '@/components';
@@ -43,7 +43,7 @@ export default function Menu() {
               return (
                 <div
                   key={url}
-                  className={clsx(styles.item, pathname.endsWith(url) && styles.selected)}
+                  className={classNames(styles.item, pathname.endsWith(url) && styles.selected)}
                 >
                   <Text color={2}>
                     <Link href={url}>{title}</Link>

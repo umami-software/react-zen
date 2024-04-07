@@ -21,6 +21,7 @@ export function Button({
 
   return (
     <Component
+      {...attributes}
       {...props(
         styles.button,
         variant && styles[variant],
@@ -28,7 +29,6 @@ export function Button({
         theme.style,
         style,
       )}
-      {...attributes}
     />
   );
 }
@@ -38,7 +38,10 @@ export const styles = create({
     display: 'flex',
     alignItems: 'center',
     gap: '10px',
-    color: theme.textColor1,
+    color: {
+      default: theme.textColor1,
+      ':disabled': theme.textColor3,
+    },
     fontSize: theme.textSize,
     fontWeight: 600,
     padding: '0.75rem 1rem',
@@ -46,19 +49,30 @@ export const styles = create({
     borderColor: 'transparent',
     borderStyle: 'solid',
     borderWidth: theme.borderWidth,
-    cursor: 'pointer',
+    cursor: {
+      default: 'pointer',
+      ':disabled': 'default',
+    },
     backgroundColor: {
       default: theme.base4,
       ':hover': theme.base5,
       ':active': theme.base6,
+      ':hover:disabled': theme.base4,
+      ':active:disabled': theme.base4,
     },
   },
   primary: {
-    color: theme.textPrimary1,
+    color: {
+      default: theme.textColorInverse1,
+      ':disabled': theme.textColorInverse2,
+    },
     backgroundColor: {
       default: theme.primary1,
       ':hover': theme.primary2,
       ':active': theme.primary3,
+      ':disabled': theme.base11,
+      ':hover:disabled': theme.base11,
+      ':active:disabled': theme.base11,
     },
   },
   secondary: {
@@ -66,23 +80,33 @@ export const styles = create({
       default: theme.base1,
       ':hover': theme.base2,
       ':active': theme.base3,
+      ':disabled': theme.base3,
+      ':hover:disabled': theme.base3,
+      ':active:disabled': theme.base3,
     },
     borderColor: theme.borderColor,
   },
   quiet: {
-    color: theme.textColor1,
     backgroundColor: {
       default: 'transparent',
       ':hover': theme.base3,
       ':active': theme.base4,
+      ':hover:disabled': 'transparent',
+      ':active:disabled': 'transparent',
     },
   },
   danger: {
-    color: theme.textPrimary1,
+    color: {
+      default: theme.textColorInverse1,
+      ':disabled': theme.textColorInverse2,
+    },
     backgroundColor: {
       default: theme.dangerColor1,
       ':hover': theme.dangerColor2,
       ':active': theme.dangerColor3,
+      ':disabled': theme.base10,
+      ':hover:disabled': theme.base10,
+      ':active:disabled': theme.base10,
     },
   },
   size1: {

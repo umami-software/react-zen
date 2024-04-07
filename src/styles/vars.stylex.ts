@@ -59,8 +59,9 @@ export const theme = stylex.defineVars({
   textColor1: { default: lightColors.gray12, [DARK]: darkColors.gray12 },
   textColor2: { default: lightColors.gray10, [DARK]: darkColors.gray10 },
   textColor3: { default: lightColors.gray9, [DARK]: darkColors.gray9 },
-  textPrimary1: { default: lightColors.gray1, [DARK]: darkColors.gray1 },
-  textPrimary2: { default: lightColors.gray3, [DARK]: darkColors.gray3 },
+
+  textColorInverse1: { default: lightColors.gray1, [DARK]: darkColors.gray1 },
+  textColorInverse2: { default: lightColors.gray3, [DARK]: darkColors.gray3 },
 
   padding: '0.75rem 1rem',
   borderRadius: '4px',
