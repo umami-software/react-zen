@@ -5,8 +5,8 @@ import styles from './layout.module.css';
 export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
     <main className={styles.container}>
-      <Menu className={styles.menu} />
-      <div className={styles.content}>{children}</div>
+      <Menu />
+      <div>{children}</div>
     </main>
   );
 }

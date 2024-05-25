@@ -1,13 +1,10 @@
 'use client';
-export { Heading } from '@/components/common/Heading';
-export { Text } from '@/components/common/Text';
-export { Icon } from '@/components/common/Icon';
-export { Button } from '@/components/input/Button';
-export { Page } from './layout/Page';
+export { Heading } from './common/Heading';
+export { Text } from './common/Text';
+export { Icon } from './common/Icon';
+export { Button } from './input/Button';
 export { Flexbox } from './layout/Flexbox';
+export { Layout } from './layout/Layout';
+export { Page } from './layout/Page';
+export { Panel } from './layout/Panel';
 export { ThemeProvider } from './ThemeProvider';
-
-export { Demo } from '../app/docs/Demo';
-
-import Logo from '../assets/logo.svg';
-export { Logo };

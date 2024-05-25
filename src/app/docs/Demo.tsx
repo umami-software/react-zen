@@ -11,3 +11,5 @@ export function Demo({
 }) {
   return <div className={classNames(styles.demo, styles[direction])}>{children}</div>;
 }
+
+export default Demo;

@@ -3,7 +3,7 @@ import { create, props } from '@stylexjs/stylex';
 import useTheme from '@/components/hooks/useTheme';
 import { theme } from '@/styles/vars.stylex';
 
-export function Page({
+export function Layout({
   style,
   children,
   ...attributes
@@ -11,19 +11,19 @@ export function Page({
   const { theme } = useTheme();
 
   return (
-    <div {...props(styles.page, theme.style, style)} {...attributes}>
+    <div {...props(styles.layout, theme.style, style)} {...attributes}>
       {children}
     </div>
   );
 }
 
 export const styles = create({
-  page: {
+  layout: {
     display: 'grid',
-    //color: theme.textColor1,
-    //backgroundColor: theme.backgroundColor,
+    color: theme.textColor1,
+    backgroundColor: theme.backgroundColor,
     minHeight: '100vh',
   },
 });
 
-export default Page;
+export default Layout;

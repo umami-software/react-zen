@@ -4,7 +4,7 @@ import { create, props } from '@stylexjs/stylex';
 import { theme } from '@/styles/vars.stylex';
 import useTheme from '@/components/hooks/useTheme';
 
-export function Button({
+export function Checkbox({
   variant,
   size,
   style,
@@ -18,6 +18,8 @@ export function Button({
 } & HTMLAttributes<HTMLButtonElement>) {
   const { theme } = useTheme();
   const Component = asChild ? Slot : 'button';
+
+  console.log({ theme });
 
   return (
     <Component
@@ -127,4 +129,4 @@ export const styles = create({
   },
 });
 
-export default Button;
+export default Checkbox;
