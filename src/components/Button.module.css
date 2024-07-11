@@ -1,7 +1,6 @@
 .button {
   display: flex;
   align-items: center;
-  align-self: flex-start;
   white-space: nowrap;
   gap: var(--spacing4);
   font-size: var(--text-size);

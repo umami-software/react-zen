@@ -120,11 +120,15 @@
   --text-color-inverse2: var(--gray2);
   --text-color-inverse3: var(--gray3);
 
+  --border: 1px solid var(--base-color6);
+
   --border-radius: var(--border-radius2);
 
   --background-color: var(--base-color1);
 
   --border-color: var(--base-color6);
+
+  --gap: var(--spacing5);
 
   [data-theme=light] {
     --accent-color1: var(--blue1);
@@ -245,5 +249,6 @@
     --background-color: var(--base-color1);
 
     --border-color: var(--base-color6);
+    --border: 1px solid var(--border-color);
   }
 }

@@ -10,22 +10,22 @@ const items = [
   {
     name: 'Getting Started',
     children: [
-      { title: 'Introduction', url: '/docs' },
-      { title: 'Installation', url: '/docs/install' },
+      { title: 'Introduction', path: '/docs' },
+      { title: 'Installation', path: '/docs/install' },
     ],
   },
   {
     name: 'Components',
     children: [
-      { title: 'Button', url: '/docs/components/button' },
-      { title: 'Icon', url: '/docs/components/icon' },
-      { title: 'Text', url: '/docs/components/text' },
-      { title: 'Heading', url: '/docs/components/heading' },
-      { title: 'Button group', url: '/docs/components/button-group' },
-      { title: 'Checkbox', url: '/docs/components/checkbox' },
-      { title: 'Dropdown', url: '/docs/components/dropdown' },
-      { title: 'Text field', url: '/docs/components/text-field' },
-      { title: 'Text area', url: '/docs/components/text-area' },
+      { title: 'Button', path: '/docs/components/button' },
+      { title: 'Button group', path: '/docs/components/button-group' },
+      { title: 'Checkbox', path: '/docs/components/checkbox' },
+      { title: 'Dropdown', path: '/docs/components/dropdown' },
+      { title: 'Heading', path: '/docs/components/heading' },
+      { title: 'Icon', path: '/docs/components/icon' },
+      { title: 'Text', path: '/docs/components/text' },
+      { title: 'Text field', path: '/docs/components/text-field' },
+      { title: 'Text area', path: '/docs/components/text-area' },
     ],
   },
 ];
@@ -39,14 +39,14 @@ export default function Menu() {
         return (
           <Fragment key={name}>
             <Heading size={2}>{name}</Heading>
-            {children.map(({ title, url }) => {
+            {children.map(({ title, path }) => {
               return (
                 <div
-                  key={url}
-                  className={classNames(styles.item, pathname.endsWith(url) && styles.selected)}
+                  key={path}
+                  className={classNames(styles.item, pathname.endsWith(path) && styles.selected)}
                 >
                   <Text color={2}>
-                    <Link href={url}>{title}</Link>
+                    <Link href={path}>{title}</Link>
                   </Text>
                 </div>
               );

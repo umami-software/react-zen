@@ -1,5 +1,3 @@
-import { create, props } from '@stylexjs/stylex';
-import { theme } from '@/styles/vars.stylex';
 import { ReactNode } from 'react';
 
 export interface FlexboxProps {
@@ -67,29 +65,7 @@ export function Flexbox({
   children,
   ...attributes
 }: FlexboxProps) {
-  return (
-    <div {...attributes} {...props(styles.box, styles[direction], style)}>
-      {children}
-    </div>
-  );
+  return <div {...attributes}>{children}</div>;
 }
-
-export const styles = create({
-  box: {
-    display: 'flex',
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  'row-reverse': {
-    flexDirection: 'row-reverse',
-  },
-  column: {
-    flexDirection: 'column',
-  },
-  'column-reverse': {
-    flexDirection: 'column-reverse',
-  },
-});
 
 export default Flexbox;
