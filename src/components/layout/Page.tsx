@@ -1,29 +1,17 @@
+import classNames from 'classnames';
 import { ReactNode, HTMLAttributes } from 'react';
-import { create, props } from '@stylexjs/stylex';
-import useTheme from '@/components/hooks/useTheme';
-import { theme } from '@/styles/vars.stylex';
+import styles from './Page.module.css';
 
 export function Page({
   style,
   children,
   ...attributes
 }: { style?: any; children: ReactNode } & HTMLAttributes<HTMLDivElement>) {
-  const { theme } = useTheme();
-
   return (
-    <div {...props(styles.page, theme.style, style)} {...attributes}>
+    <div {...attributes} className={classNames(styles.page)}>
       {children}
     </div>
   );
 }
-
-export const styles = create({
-  page: {
-    display: 'grid',
-    //color: theme.textColor1,
-    //backgroundColor: theme.backgroundColor,
-    minHeight: '100vh',
-  },
-});
 
 export default Page;

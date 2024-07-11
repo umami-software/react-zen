@@ -32,8 +32,6 @@ const getDocs = cache(async () => {
 async function getDoc(id: string) {
   const docs = await getDocs();
 
-  console.log({ docs });
-
   return docs.find(doc => doc?.id === id);
 }
 

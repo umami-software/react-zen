@@ -1,0 +1,41 @@
+.heading {
+  font-weight: 700;
+  line-height: 200%;
+  margin: 0;
+}
+
+.size1 {
+  font-size: var(--text-size1);
+}
+
+.size2 {
+  font-size: var(--text-size2);
+}
+
+.size3 {
+  font-size: var(--text-size3);
+}
+
+.size4 {
+  font-size: var(--text-size4);
+}
+
+.size5 {
+  font-size: var(--text-size5);
+}
+
+.size6 {
+  font-size: var(--text-size6);
+}
+
+.size7 {
+  font-size: var(--text-size7);
+}
+
+.size8 {
+  font-size: var(--text-size8);
+}
+
+.size9 {
+  font-size: var(--text-size9);
+}
