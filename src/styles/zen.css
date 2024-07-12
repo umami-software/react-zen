@@ -115,8 +115,8 @@
 
     --text-color1: hsl(var(--base-color1));
     --text-color2: hsl(var(--base-color4));
-    --text-color3: hsl(var(--base-color8));
-    --text-color4: hsl(var(--base-color9));
+    --text-color3: hsl(var(--base-color7));
+    --text-color4: hsl(var(--base-color8));
 
     --border-color: hsl(var(--base-color8));
     --border: 1px solid var(--border-color);

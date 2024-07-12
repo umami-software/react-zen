@@ -24,6 +24,7 @@ const items = [
       { title: 'Menu', path: '/docs/components/menu' },
       { title: 'Menu Button', path: '/docs/components/menu-button' },
       { title: 'Select', path: '/docs/components/select' },
+      { title: 'Switch', path: '/docs/components/switch' },
       { title: 'Text', path: '/docs/components/text' },
       { title: 'Text Field', path: '/docs/components/text-field' },
       { title: 'Text Area', path: '/docs/components/text-area' },

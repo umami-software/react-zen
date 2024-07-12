@@ -4,13 +4,16 @@
   border: var(--border);
   border-radius: var(--border-radius);
   padding: var(--input-padding);
+  background: var(--background);
 }
 
+.field[data-readonly],
 .field[data-disabled] {
   background: hsl(var(--accent-background));
 }
 
 .input {
+  color: var(--text-color1);
   border: 0;
   background: transparent;
 }
@@ -19,7 +22,6 @@
   color: var(--text-color4);
 }
 
-.input:disabled,
-.input:read-only {
+.input:disabled {
   color: var(--text-color3);
 }
