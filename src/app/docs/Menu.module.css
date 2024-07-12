@@ -2,15 +2,20 @@
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 20px;
+  gap: 30px;
   min-width: 300px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .item {
   display: flex;
 }
 
-.menu .selected a {
-  color: var(--text-color2);
+.item.selected a {
+  font-weight: bold;
 }

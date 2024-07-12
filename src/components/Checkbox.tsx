@@ -1,28 +1,26 @@
 import { ReactNode } from 'react';
-import * as RadixCheckbox from '@radix-ui/react-checkbox';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { Checkbox } from 'react-aria-components';
+import classNames from 'classnames';
+import { HiCheck } from 'react-icons/hi';
+import Icon from './Icon';
 import styles from './Checkbox.module.css';
 
 export interface CheckboxProps {
-  id?: string;
+  className?: string;
   children: ReactNode;
 }
 
-export function Checkbox({ id, children, ...props }: CheckboxProps) {
+export function ZenCheckbox({ className, children, ...props }: CheckboxProps) {
   return (
-    <div className={styles.checkbox}>
-      <RadixCheckbox.Root {...props} className={styles.root}>
-        <RadixCheckbox.Indicator className={styles.indicator}>
-          <CheckIcon />
-        </RadixCheckbox.Indicator>
-      </RadixCheckbox.Root>
-      {children && (
-        <label className={styles.label} htmlFor="checkbox">
-          {children}
-        </label>
-      )}
-    </div>
+    <Checkbox {...props} className={classNames(styles.checkbox, className)}>
+      <div className={styles.box}>
+        <Icon className={styles.icon} size={1}>
+          <HiCheck />
+        </Icon>
+      </div>
+      {children}
+    </Checkbox>
   );
 }
 
-export default Checkbox;
+export default ZenCheckbox;

@@ -1,63 +1,8 @@
 :root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 3.9%;
-  --card-background: 0 0% 100%;
-  --card-foreground: 0 0% 3.9%;
-  --popover-background: 0 0% 100%;
-  --popover-foreground: 0 0% 3.9%;
-  --primary-background: 0 0% 9%;
-  --primary-foreground: 0 0% 98%;
-  --secondary-background: 0 0% 96.1%;
-  --secondary-foreground: 0 0% 9%;
-  --muted-background: 0 0% 96.1%;
-  --muted-foreground: 0 0% 45.1%;
-  --accent-background: 0 0% 96.1%;
-  --accent-foreground: 0 0% 9%;
-  --danger-background: 0 84.2% 60.2%;
-  --danger-foreground: 0 0% 98%;
-  --border-color: 0 0% 89.8%;
-  --input-background: 0 0% 89.8%;
-  --ring-background: 0 0% 3.9%;
-  --radius: 0.3rem;
+  /* Base values */
 
-  --text-color1: hsl(var(--foreground));
-  --text-color2: hsl(var(--foreground) / calc(1 - 0.2));
-  --text-color3: hsl(var(--foreground) / calc(1 - 0.4));
-
-  --border: 1px solid hsl(var(--border-color));
-
-  [data-theme=dark] {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card-background: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover-background: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary-background: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary-background: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted-background: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent-background: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --danger-background: 0 62.8% 30.6%;
-    --danger-foreground: 0 0% 98%;
-    --border-color: 0 0% 14.9%;
-    --input-background: 0 0% 14.9%;
-    --ring-background: 0 0% 83.1%;
-
-    --text-color1: hsl(var(--foreground));
-    --text-color2: hsl(var(--foreground) / calc(1 - 0.2));
-    --text-color3: hsl(var(--foreground) / calc(1 - 0.4));
-
-    --border: 1px solid hsl(var(--border-color));
-  }
-
-  /* Core settings */
-
-  --spacing1: .25rem;
-  --spacing2: .5rem;
+  --spacing1: 0.25rem;
+  --spacing2: 0.5rem;
   --spacing3: 1rem;
   --spacing4: 1.25rem;
   --spacing5: 1.5rem;
@@ -85,12 +30,24 @@
   --text-weight4: 600;
   --text-weight5: 700;
 
-  --border-radius1: .125rem;
-  --border-radius2: .25rem;
-  --border-radius3: .5rem;
+  --border-radius1: 0.125rem;
+  --border-radius2: 0.25rem;
+  --border-radius3: 0.5rem;
   --border-radius4: 100%;
 
-  /* Theme settings */
+  --base-color1: 0 0% 98%; /* #fafafa */
+  --base-color2: 0 0% 96.1%; /* #f5f5f5 */
+  --base-color3: 0 0% 89.8%; /* #e5e5e5 */
+  --base-color4: 0 0% 83.1%; /* #d4d4d4 */
+  --base-color5: 0 0% 63.9%; /* #a3a3a3 */
+  --base-color6: 0 0% 45.1%; /* #737373 */
+  --base-color7: 0 0% 32.2%; /* #525252 */
+  --base-color8: 0 0% 25.1%; /* #262626 */
+  --base-color9: 0 0% 14.9%; /* #262626; */
+  --base-color10: 0 0% 9%; /* #171717; */
+  --base-color11: 0 0% 3.9%; /* #0a0a0a; */
+
+  /* Global settings */
 
   --text-size: var(--text-size2);
 
@@ -99,4 +56,61 @@
   --gap: var(--spacing5);
 
   --padding: var(--spacing2) var(--spacing3);
+
+  /* Theme settings */
+
+  --background: 0 0% 100%;
+  --foreground: var(--base-color11);
+  --card-background: 0 0% 100%;
+  --card-foreground: var(--base-color11);
+  --popover-background: 0 0% 100%;
+  --popover-foreground: var(--base-color11);
+  --primary-background: var(--base-color10);
+  --primary-foreground: var(--base-color1);
+  --secondary-background: 0 0% 100%;
+  --secondary-foreground: var(--base-color10);
+  --muted-background: var(--base-color2);
+  --muted-foreground: var(--base-color6);
+  --accent-background: var(--base-color2);
+  --accent-foreground: var(--base-color10);
+  --danger-background: 0 84.2% 60.2%;
+  --danger-foreground: var(--base-color1);
+  --input-background: var(--base-color3);
+  --ring-background: var(--base-color11);
+
+  --text-color1: hsl(var(--base-color11));
+  --text-color2: hsl(var(--base-color6));
+  --text-color3: hsl(var(--base-color5));
+
+  --border-color: hsl(var(--base-color4));
+  --border: 1px solid var(--border-color);
+
+  .dark,
+  [data-theme='dark'] {
+    --background: var(--base-color11);
+    --foreground: var(--base-color1);
+    --card-background: var(--base-color11);
+    --card-foreground: var(--base-color1);
+    --popover-background: var(--base-color11);
+    --popover-foreground: var(--base-color1);
+    --primary-background: var(--base-color1);
+    --primary-foreground: var(--base-color10);
+    --secondary-background: var(--base-color11);
+    --secondary-foreground: var(--base-color1);
+    --muted-background: var(--base-color9);
+    --muted-foreground: var(--base-color5);
+    --accent-background: var(--base-color9);
+    --accent-foreground: var(--base-color1);
+    --danger-background: 0 72.2% 50.6%;
+    --danger-foreground: var(--base-color1);
+    --input-background: var(--base-color9);
+    --ring-background: var(--base-color4);
+
+    --text-color1: hsl(var(--base-color1));
+    --text-color2: hsl(var(--base-color4));
+    --text-color3: hsl(var(--base-color8));
+
+    --border-color: hsl(var(--base-color8));
+    --border: 1px solid var(--border-color);
+  }
 }

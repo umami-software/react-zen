@@ -1,6 +1,4 @@
-import classnames from 'classnames';
-import * as RadixSelect from '@radix-ui/react-select';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
+import classNames from 'classnames';
 import {
   Button,
   Label,
@@ -10,23 +8,24 @@ import {
   Select,
   SelectValue,
 } from 'react-aria-components';
+import { HiChevronDown } from 'react-icons/hi2';
 import styles from './Select.module.css';
 
 export interface SelectProps {
   label: string;
   items: any[];
   value: string;
-  placeholder?: string;
+  className?: string;
 }
 
-export function ZenSelect({ label, items = [], value, placeholder }: SelectProps) {
+export function ZenSelect({ label, items = [], value, className, ...props }: SelectProps) {
   return (
-    <Select placeholder={placeholder}>
+    <Select {...props} className={classNames(styles.select, className)}>
       {label && <Label>{label}</Label>}
       <Button className={styles.button}>
         <SelectValue />
         <span aria-hidden="true">
-          <ChevronDownIcon />
+          <HiChevronDown />
         </span>
       </Button>
       <Popover>

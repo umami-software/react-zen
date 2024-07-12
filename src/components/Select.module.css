@@ -1,13 +1,14 @@
 .select {
   display: flex;
   align-items: center;
-  color: hsl(var(--foreground));
+  color: var(--text-color1);
+  background: var(--background);
 }
 
 .button {
   display: flex;
   align-items: center;
-  color: hsl(var(--foreground));
+  color: var(--text-color1);
   font-size: var(--text-size);
   gap: var(--gap);
   border: var(--border);
@@ -18,14 +19,23 @@
 }
 
 .list {
+  overflow: hidden;
+  min-width: 100px;
   border: var(--border);
   border-radius: var(--border-radius);
 }
 
 .item {
-  color: hsl(var(--foreground));
+  display: flex;
+  align-items: center;
+  color: var(--text-color1);
+  background: hsl(var(--background));
   padding: var(--padding);
   cursor: pointer;
+}
+
+.item[data-selected="true"] {
+  font-weight: bold;
 }
 
 .item:hover {

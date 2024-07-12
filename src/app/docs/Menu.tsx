@@ -38,7 +38,7 @@ export default function Menu() {
     <div className={styles.menu}>
       {items.map(({ name, children }) => {
         return (
-          <Fragment key={name}>
+          <div key={name} className={styles.group}>
             <Heading size={2}>{name}</Heading>
             {children.map(({ title, path }) => {
               return (
@@ -52,7 +52,7 @@ export default function Menu() {
                 </div>
               );
             })}
-          </Fragment>
+          </div>
         );
       })}
     </div>

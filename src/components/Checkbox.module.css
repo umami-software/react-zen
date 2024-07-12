@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--gap);
+  gap: var(--spacing3);
+  color: var(--text-color1);
 }
 
-.root {
+.box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,21 +19,24 @@
   cursor: pointer;
 }
 
-.root[data-state="checked"] {
-  color: hsl(var(--background));
-  background: hsl(var(--foreground));
+.icon {
+  display: none;
 }
 
-.root:disabled {
-  background: hsl(var(--foreground) / calc(1 - 0.95));
-  pointer-events: none;
+.checkbox[data-selected="true"] .box {
+  color: hsl(var(--primary-foreground));
+  background: hsl(var(--primary-background));
 }
 
-.indicator {
-  color: hsl(var(--background));
-  background: hsl(var(--foreground));
+.checkbox[data-selected="true"] .icon {
+  display: block;
 }
 
-.label {
-  color: var(--text-color1);
+.checkbox[data-disabled="true"] {
+  color: var(--text-color3);
+}
+
+.checkbox[data-disabled="true"] .box {
+  background: hsl(var(--accent-background));
+  cursor: not-allowed;
 }

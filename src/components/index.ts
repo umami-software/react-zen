@@ -1,11 +1,11 @@
 'use client';
-export { Button } from './Button';
-export { Checkbox } from './Checkbox';
-export { Flexbox } from './Flexbox';
-export { Heading } from './Heading';
-export { Icon } from './Icon';
-export { Page } from './Page';
+import Button from './Button';
+import Checkbox from './Checkbox';
+import Flexbox from './Flexbox';
+import Heading from './Heading';
+import Icon from './Icon';
+import Page from './Page';
 import Select from './Select';
-export { Text } from './Text';
+import Text from './Text';
 
-export { Select };
+export { Button, Checkbox, Flexbox, Heading, Icon, Page, Select, Text };
