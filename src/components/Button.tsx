@@ -1,22 +1,17 @@
+import { Button, ButtonProps } from 'react-aria-components';
 import classNames from 'classnames';
-import { HTMLAttributes } from 'react';
-import { Slot } from '@radix-ui/react-slot';
 import styles from './Button.module.css';
 
-export function Button({
+function _Button({
   variant,
   size = 3,
-  asChild,
   ...props
 }: {
   variant?: 'primary' | 'secondary' | 'quiet' | 'danger';
   size?: 1 | 2 | 3 | 4;
-  asChild?: boolean;
-} & HTMLAttributes<HTMLButtonElement>) {
-  const Component = asChild ? Slot : 'button';
-
+} & ButtonProps) {
   return (
-    <Component
+    <Button
       {...props}
       className={classNames(
         styles.button,
@@ -27,4 +22,6 @@ export function Button({
   );
 }
 
-export default Button;
+export { _Button as Button };
+
+export default _Button;

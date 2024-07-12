@@ -1,0 +1,30 @@
+---
+id: components/menu-button
+title: Components - Menu Button
+---
+
+# Menu Button
+
+A button that displays a dropdown menu.
+
+<Example>
+  <MenuButton items={['One', 'Two', 'Three', 'Four', 'Five']} />
+</Example>
+
+## Custom button
+
+<Example>
+  <MenuButton
+    items={['One', 'Two', 'Three', 'Four', 'Five']}
+    button={<Button variant="primary">Button</Button>}
+  />
+</Example>
+
+## Menu props
+
+<Example>
+  <MenuButton
+    items={['One', 'Two', 'Three', 'Four', 'Five']}
+    menuProps={{ selectionMode: 'multiple' }}
+  />
+</Example>

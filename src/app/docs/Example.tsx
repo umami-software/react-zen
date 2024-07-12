@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
-import styles from './Demo.module.css';
+import styles from './Example.module.css';
 
-export function Demo({
+export function Example({
   direction = 'column',
   children,
 }: {
@@ -12,4 +12,4 @@ export function Demo({
   return <div className={classNames(styles.demo, styles[direction])}>{children}</div>;
 }
 
-export default Demo;
+export default Example;

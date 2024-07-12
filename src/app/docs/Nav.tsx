@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Heading, Text } from '@/components';
-import styles from './Menu.module.css';
+import styles from './Nav.module.css';
 
 const items = [
   {
@@ -18,20 +18,20 @@ const items = [
     name: 'Components',
     children: [
       { title: 'Button', path: '/docs/components/button' },
-      { title: 'Button group', path: '/docs/components/button-group' },
       { title: 'Checkbox', path: '/docs/components/checkbox' },
-      { title: 'Dropdown', path: '/docs/components/dropdown' },
       { title: 'Heading', path: '/docs/components/heading' },
       { title: 'Icon', path: '/docs/components/icon' },
+      { title: 'Menu', path: '/docs/components/menu' },
+      { title: 'Menu Button', path: '/docs/components/menu-button' },
       { title: 'Select', path: '/docs/components/select' },
       { title: 'Text', path: '/docs/components/text' },
-      { title: 'Text field', path: '/docs/components/text-field' },
-      { title: 'Text area', path: '/docs/components/text-area' },
+      { title: 'Text Field', path: '/docs/components/text-field' },
+      { title: 'Text Area', path: '/docs/components/text-area' },
     ],
   },
 ];
 
-export default function Menu() {
+export default function Nav() {
   const pathname = usePathname();
 
   return (

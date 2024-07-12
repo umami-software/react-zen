@@ -10,7 +10,7 @@ export interface CheckboxProps {
   children: ReactNode;
 }
 
-export function ZenCheckbox({ className, children, ...props }: CheckboxProps) {
+function _Checkbox({ className, children, ...props }: CheckboxProps) {
   return (
     <Checkbox {...props} className={classNames(styles.checkbox, className)}>
       <div className={styles.box}>
@@ -23,4 +23,6 @@ export function ZenCheckbox({ className, children, ...props }: CheckboxProps) {
   );
 }
 
-export default ZenCheckbox;
+export { _Checkbox as Checkbox };
+
+export default _Checkbox;

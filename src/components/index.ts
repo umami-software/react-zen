@@ -4,8 +4,10 @@ import Checkbox from './Checkbox';
 import Flexbox from './Flexbox';
 import Heading from './Heading';
 import Icon from './Icon';
+import Menu from './Menu';
+import MenuButton from './MenuButton';
 import Page from './Page';
 import Select from './Select';
 import Text from './Text';
 
-export { Button, Checkbox, Flexbox, Heading, Icon, Page, Select, Text };
+export { Button, Checkbox, Flexbox, Heading, Icon, Menu, MenuButton, Page, Select, Text };

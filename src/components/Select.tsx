@@ -8,7 +8,7 @@ import {
   Select,
   SelectValue,
 } from 'react-aria-components';
-import { HiChevronDown } from 'react-icons/hi2';
+import { HiChevronDown, HiCheck } from 'react-icons/hi2';
 import styles from './Select.module.css';
 
 export interface SelectProps {
@@ -18,7 +18,7 @@ export interface SelectProps {
   className?: string;
 }
 
-export function ZenSelect({ label, items = [], value, className, ...props }: SelectProps) {
+export function _Select({ label, items = [], value, className, ...props }: SelectProps) {
   return (
     <Select {...props} className={classNames(styles.select, className)}>
       {label && <Label>{label}</Label>}
@@ -33,6 +33,9 @@ export function ZenSelect({ label, items = [], value, className, ...props }: Sel
           {items.map(item => (
             <ListBoxItem key={item} id={item} className={styles.item}>
               {item}
+              <span className={styles.check} aria-hidden="true">
+                <HiCheck />
+              </span>
             </ListBoxItem>
           ))}
         </ListBox>
@@ -41,4 +44,6 @@ export function ZenSelect({ label, items = [], value, className, ...props }: Sel
   );
 }
 
-export default ZenSelect;
+export { _Select as Select };
+
+export default _Select;

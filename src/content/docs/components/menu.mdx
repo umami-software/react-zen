@@ -1,0 +1,40 @@
+---
+id: components/menu
+title: Components - Menu
+---
+
+# Menu
+
+A menu component.
+
+<Example>
+  <Menu items={['One', 'Two', 'Three', 'Four', 'Five']} />
+</Example>
+
+## Separators
+
+<Example>
+  <Menu items={['One', null, 'Two', 'Three', null, 'Four', 'Five']} />
+</Example>
+
+## Single select
+
+<Example>
+  <Menu selectionMode="single" items={['One', 'Two', 'Three', 'Four', 'Five']} />
+</Example>
+
+## Multiple select
+
+<Example>
+  <Menu selectionMode="multiple" items={['One', 'Two', 'Three', 'Four', 'Five']} />
+</Example>
+
+## Preselected
+
+<Example>
+  <Menu
+    selectionMode="multiple"
+    selectedKeys={['Three', 'Five']}
+    items={['One', 'Two', 'Three', 'Four', 'Five']}
+  />
+</Example>

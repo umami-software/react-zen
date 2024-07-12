@@ -1,3 +1,7 @@
+*:focus {
+  outline: none;
+}
+
 :root {
   /* Base values */
 

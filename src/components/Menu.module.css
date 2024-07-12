@@ -1,0 +1,29 @@
+.menu {
+  overflow: hidden;
+  min-width: 100px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-color1);
+  background: hsl(var(--background));
+  padding: var(--padding);
+  gap: var(--gap);
+  cursor: pointer;
+}
+
+.item:hover {
+  background: hsl(var(--accent-background));
+}
+
+.item[data-selected="true"] {
+  font-weight: bold;
+}
+
+.separator {
+  border-bottom: var(--border);
+}

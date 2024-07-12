@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
-import Menu from './Menu';
+import Nav from './Nav';
 import styles from './layout.module.css';
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
     <main className={styles.container}>
-      <Menu />
+      <Nav />
       <div>{children}</div>
     </main>
   );

@@ -1,12 +1,14 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import * as Zen from '@/components';
-import { Demo } from './docs/Demo';
+import { Example } from './docs/Example';
 import Logo from '../assets/logo.svg';
 import { ReactNode } from 'react';
 
+console.log({ Zen });
+
 const components = {
   ...Zen,
-  Demo,
+  Example,
   Logo,
   h1: ({ children }: { children: ReactNode }) => <Zen.Heading size={6}>{children}</Zen.Heading>,
   h2: ({ children }: { children: ReactNode }) => <Zen.Heading size={5}>{children}</Zen.Heading>,
