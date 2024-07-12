@@ -20,7 +20,7 @@
   background: hsl(var(--accent-background));
 }
 
-.item[data-selected="true"] {
+.item[data-selected] {
   font-weight: bold;
 }
 

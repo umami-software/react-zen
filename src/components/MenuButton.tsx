@@ -3,7 +3,6 @@ import { MenuTrigger, MenuProps, Popover } from 'react-aria-components';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import Button from './Button';
 import Menu from './Menu';
-import styles from './MenuButton.module.css';
 
 function _MenuButton({
   items,

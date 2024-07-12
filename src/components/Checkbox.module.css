@@ -23,20 +23,20 @@
   display: none;
 }
 
-.checkbox[data-selected="true"] .box {
+.checkbox[data-selected] .box {
   color: hsl(var(--primary-foreground));
   background: hsl(var(--primary-background));
 }
 
-.checkbox[data-selected="true"] .icon {
+.checkbox[data-selected] .icon {
   display: block;
 }
 
-.checkbox[data-disabled="true"] {
+.checkbox[data-disabled] {
   color: var(--text-color3);
 }
 
-.checkbox[data-disabled="true"] .box {
+.checkbox[data-disabled] .box {
   background: hsl(var(--accent-background));
   cursor: not-allowed;
 }

@@ -9,5 +9,18 @@ import MenuButton from './MenuButton';
 import Page from './Page';
 import Select from './Select';
 import Text from './Text';
+import TextField from './TextField';
 
-export { Button, Checkbox, Flexbox, Heading, Icon, Menu, MenuButton, Page, Select, Text };
+export {
+  Button,
+  Checkbox,
+  Flexbox,
+  Heading,
+  Icon,
+  Menu,
+  MenuButton,
+  Page,
+  Select,
+  Text,
+  TextField,
+};

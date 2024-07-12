@@ -61,6 +61,8 @@
 
   --padding: var(--spacing2) var(--spacing3);
 
+  --input-padding: var(--spacing3) var(--spacing4);
+
   /* Theme settings */
 
   --background: 0 0% 100%;
@@ -85,6 +87,7 @@
   --text-color1: hsl(var(--base-color11));
   --text-color2: hsl(var(--base-color6));
   --text-color3: hsl(var(--base-color5));
+  --text-color4: hsl(var(--base-color4));
 
   --border-color: hsl(var(--base-color4));
   --border: 1px solid var(--border-color);
@@ -113,6 +116,7 @@
     --text-color1: hsl(var(--base-color1));
     --text-color2: hsl(var(--base-color4));
     --text-color3: hsl(var(--base-color8));
+    --text-color4: hsl(var(--base-color9));
 
     --border-color: hsl(var(--base-color8));
     --border: 1px solid var(--border-color);

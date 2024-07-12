@@ -1,0 +1,25 @@
+.field {
+  display: flex;
+  align-items: center;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: var(--input-padding);
+}
+
+.field[data-disabled] {
+  background: hsl(var(--accent-background));
+}
+
+.input {
+  border: 0;
+  background: transparent;
+}
+
+.input::placeholder {
+  color: var(--text-color4);
+}
+
+.input:disabled,
+.input:read-only {
+  color: var(--text-color3);
+}
