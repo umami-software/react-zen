@@ -1,5 +1,6 @@
 .switch {
   position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--gap);
@@ -10,6 +11,7 @@
   width: 38px;
   height: 22px;
   border-radius: 22px;
+  border: var(--border);
   background: hsl(var(--input-background));
   transition: background-color 0.2s;
   cursor: pointer;
@@ -19,30 +21,35 @@
   position: absolute;
   content: '';
   top: 50%;
-  left: 3px;
+  left: 1px;
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
+  border: var(--border);
   border-radius: 18px;
   background: hsl(var(--background));
   transition: left 0.2s;
 }
 
 .switch[data-selected] .toggle {
+  border-color: hsl(var(--primary-background));
   background: hsl(var(--primary-background));
 }
 
 .switch[data-selected] .toggle:before {
   left: 17px;
+  border-color: hsl(var(--primary-background));
 }
 
 .switch[data-selected] .toggle {
+  border: 1px solid hsl(var(--primary-background));
   background: hsl(var(--primary-background));
 }
 
 .switch[data-disabled] .toggle,
 .switch[data-disabled] .toggle:before {
-  background: hsl(var(--foreground) / calc(1 - 0.8));
+  border-color: hsl(var(--foreground) / calc(1 - 0.8));
+  background: hsl(var(--background));
 }
 
 .switch[data-disabled] .label {
