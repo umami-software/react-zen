@@ -12,9 +12,6 @@ export default function Header({ className, ...domProps }: { className?: string 
       <a href={'/'}>zen</a>
       <a href={'/docs'}>docs</a>
       <div className={styles.buttons}>
-        <Button size={1} onClick={() => setTheme('zen')}>
-          zen
-        </Button>
         <Button size={1} onClick={() => setTheme('light')}>
           light
         </Button>

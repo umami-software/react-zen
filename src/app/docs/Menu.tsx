@@ -23,6 +23,7 @@ const items = [
       { title: 'Dropdown', path: '/docs/components/dropdown' },
       { title: 'Heading', path: '/docs/components/heading' },
       { title: 'Icon', path: '/docs/components/icon' },
+      { title: 'Select', path: '/docs/components/select' },
       { title: 'Text', path: '/docs/components/text' },
       { title: 'Text field', path: '/docs/components/text-field' },
       { title: 'Text area', path: '/docs/components/text-area' },

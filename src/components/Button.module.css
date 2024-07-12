@@ -2,24 +2,25 @@
   display: flex;
   align-items: center;
   white-space: nowrap;
-  gap: var(--spacing4);
+  gap: var(--gap);
   font-size: var(--text-size);
   font-family: inherit;
-  color: var(--text-color1);
-  background: var(--base-color3);
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  background: hsl(var(--foreground) / calc(1 - 0.96));
   border: 1px solid transparent;
   border-radius: var(--border-radius);
-  padding: var(--spacing4) var(--spacing8);
+  padding: var(--padding);
   position: relative;
   cursor: pointer;
 }
 
 .button:hover {
-  background: var(--base-color4);
+  background: hsl(var(--foreground) / calc(1 - 0.94));
 }
 
 .button:active {
-  background: var(--base-color5);
+  background: hsl(var(--foreground) / calc(1 - 0.92));
 }
 
 .button:disabled {
@@ -28,36 +29,34 @@
 }
 
 .button.primary {
-  color: var(--text-color-inverse1);
-  background: var(--primary-color1);
+  color: hsl(var(--primary-foreground));
+  background: hsl(var(--primary-background));
 }
 
 .button.primary:hover {
-  color: var(--text-color-inverse1);
-  background: var(--primary-color2);
+  background: hsl(var(--primary-background) / calc(1 - 0.1));
 }
 
 .button.primary:active {
-  color: var(--text-color-inverse1);
-  background: var(--primary-color3);
+  background: hsl(var(--primary-background) / calc(1 - 0.2));
 }
 
 .button.primary:disabled {
-  color: var(--text-color3);
-  background: var(--base-color6);
+  background: hsl(var(--primary-background) / calc(1 - 0.3));
 }
 
 .button.secondary {
-  border: 1px solid var(--border-color);
-  background: var(--base-color1);
+  color: hsl(var(--secondary-foreground));
+  border: var(--border);
+  background: hsl(var(--secondary-background));
 }
 
 .button.secondary:hover {
-  background: var(--base-color2);
+  background: hsl(var(--secondary-background) / calc(1 - 0.1));
 }
 
 .button.secondary:active {
-  background: var(--base-color3);
+  background: hsl(var(--secondary-background) / calc(1 - 0.2));
 }
 
 .button.secondary:disabled {
@@ -69,35 +68,28 @@
 }
 
 .button.quiet:hover {
-  background: var(--base-color3);
+  background: hsl(var(--foreground) / calc(1 - 0.96));
 }
 
 .button.quiet:active {
-  background: var(--base-color4);
-}
-
-.button.quiet:disabled {
-  color: var(--text-color3);
+  background: hsl(var(--foreground) / calc(1 - 0.92));
 }
 
 .button.danger {
-  color: var(--text-color-inverse1);
-  background: var(--danger-color1);
+  color: hsl(var(--danger-foreground));
+  background: hsl(var(--danger-background));
 }
 
 .button.danger:hover {
-  color: var(--text-color-inverse1);
-  background: var(--danger-color2);
+  background: hsl(var(--danger-background) / calc(1 - 0.1));
 }
 
 .button.danger:active {
-  color: var(--text-color-inverse1);
-  background: var(--danger-color3);
+  background: hsl(var(--danger-background) / calc(1 - 0.15));
 }
 
 .button.danger:disabled {
-  color: var(--text-color3);
-  background: var(--base-color6);
+  background: hsl(var(--primary-background) / calc(1 - 0.3));
 }
 
 .button.size1 {

@@ -4,7 +4,7 @@
   align-items: center;
   gap: 20px;
   border: var(--border);
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   min-height: 300px;
   margin-bottom: 60px;
   padding: 30px 10px;

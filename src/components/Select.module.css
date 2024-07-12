@@ -1,0 +1,33 @@
+.select {
+  display: flex;
+  align-items: center;
+  color: hsl(var(--foreground));
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  color: hsl(var(--foreground));
+  font-size: var(--text-size);
+  gap: var(--gap);
+  border: var(--border);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  background: hsl(var(--background));
+  cursor: pointer;
+}
+
+.list {
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+.item {
+  color: hsl(var(--foreground));
+  padding: var(--padding);
+  cursor: pointer;
+}
+
+.item:hover {
+  background: hsl(var(--accent-background));
+}

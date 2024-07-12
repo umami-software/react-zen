@@ -12,5 +12,5 @@
 }
 
 .menu .selected a {
-  color: var(--zen-text-color2);
+  color: var(--text-color2);
 }
