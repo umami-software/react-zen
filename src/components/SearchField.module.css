@@ -28,6 +28,28 @@
   color: var(--text-color3);
 }
 
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
 .icon {
   color: var(--text-color3);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color3);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--border-radius4);
+  padding: 0;
+  margin: 0;
+}
+
+.button:hover {
+  color: var(--text-color1);
 }

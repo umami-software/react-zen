@@ -39,6 +39,11 @@
   --border-radius3: 0.5rem;
   --border-radius4: 100%;
 
+  --shadow1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow4: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
   --base-color1: 0 0% 98%; /* #fafafa */
   --base-color2: 0 0% 96.1%; /* #f5f5f5 */
   --base-color3: 0 0% 89.8%; /* #e5e5e5 */
@@ -62,6 +67,8 @@
   --padding: var(--spacing2) var(--spacing3);
 
   --input-padding: var(--spacing3) var(--spacing4);
+
+  --shadow: var(--shadow1);
 
   /* Theme settings */
 
@@ -113,8 +120,8 @@
     --input-background: var(--base-color9);
     --ring-background: var(--base-color4);
 
-    --text-color1: hsl(var(--base-color1));
-    --text-color2: hsl(var(--base-color4));
+    --text-color1: hsl(var(--base-color2));
+    --text-color2: hsl(var(--base-color5));
     --text-color3: hsl(var(--base-color7));
     --text-color4: hsl(var(--base-color8));
 

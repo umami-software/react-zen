@@ -1,9 +1,8 @@
-.menu {
+.list {
   overflow: hidden;
-  min-width: 200px;
+  min-width: 100px;
   border: var(--border);
   border-radius: var(--border-radius);
-  padding: var(--spacing2);
   box-shadow: var(--shadow);
 }
 

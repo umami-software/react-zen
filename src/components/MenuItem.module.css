@@ -1,0 +1,27 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-color1);
+  background: hsl(var(--background));
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  gap: var(--gap);
+  cursor: pointer;
+}
+
+.item:hover {
+  background: hsl(var(--accent-background));
+}
+
+.item[data-selected] {
+  font-weight: bold;
+}
+
+.item[data-selected] .check {
+  display: block;
+}
+
+.check {
+  display: none;
+}

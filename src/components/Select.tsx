@@ -8,7 +8,9 @@ import {
   Select,
   SelectValue,
 } from 'react-aria-components';
-import { HiChevronDown, HiCheck } from 'react-icons/hi2';
+import { HiChevronDown } from 'react-icons/hi2';
+import List from './List';
+import ListItem from './ListItem';
 import styles from './Select.module.css';
 
 export interface SelectProps {
@@ -29,16 +31,13 @@ export function _Select({ label, items = [], value, className, ...props }: Selec
         </span>
       </Button>
       <Popover>
-        <ListBox items={items} className={styles.list}>
+        <List items={items} className={styles.list}>
           {items.map(item => (
-            <ListBoxItem key={item} id={item} className={styles.item}>
+            <ListItem key={item} id={item} className={styles.item}>
               {item}
-              <span className={styles.check} aria-hidden="true">
-                <HiCheck />
-              </span>
-            </ListBoxItem>
+            </ListItem>
           ))}
-        </ListBox>
+        </List>
       </Popover>
     </Select>
   );

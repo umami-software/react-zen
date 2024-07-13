@@ -4,18 +4,16 @@ import { Example } from './docs/Example';
 import Logo from '../assets/logo.svg';
 import { ReactNode } from 'react';
 
-console.log({ Zen });
-
 const components = {
   ...Zen,
   Example,
   Logo,
-  h1: ({ children }: { children: ReactNode }) => <Zen.Heading size={6}>{children}</Zen.Heading>,
-  h2: ({ children }: { children: ReactNode }) => <Zen.Heading size={5}>{children}</Zen.Heading>,
-  h3: ({ children }: { children: ReactNode }) => <Zen.Heading size={4}>{children}</Zen.Heading>,
-  h4: ({ children }: { children: ReactNode }) => <Zen.Heading size={3}>{children}</Zen.Heading>,
-  h5: ({ children }: { children: ReactNode }) => <Zen.Heading size={2}>{children}</Zen.Heading>,
-  h6: ({ children }: { children: ReactNode }) => <Zen.Heading size={1}>{children}</Zen.Heading>,
+  h1: ({ children }: { children: ReactNode }) => <Zen.Heading size={7}>{children}</Zen.Heading>,
+  h2: ({ children }: { children: ReactNode }) => <Zen.Heading size={6}>{children}</Zen.Heading>,
+  h3: ({ children }: { children: ReactNode }) => <Zen.Heading size={5}>{children}</Zen.Heading>,
+  h4: ({ children }: { children: ReactNode }) => <Zen.Heading size={4}>{children}</Zen.Heading>,
+  h5: ({ children }: { children: ReactNode }) => <Zen.Heading size={3}>{children}</Zen.Heading>,
+  h6: ({ children }: { children: ReactNode }) => <Zen.Heading size={2}>{children}</Zen.Heading>,
 };
 
 export default function Markdown({ children }: { children: any }) {

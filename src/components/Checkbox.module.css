@@ -38,5 +38,5 @@
 
 .checkbox[data-disabled] .box {
   background: hsl(var(--accent-background));
-  cursor: not-allowed;
+  pointer-events: none;
 }

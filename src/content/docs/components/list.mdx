@@ -1,0 +1,40 @@
+---
+id: components/list
+title: Components - List
+---
+
+# List
+
+A list component.
+
+<Example>
+  <List items={['One', 'Two', 'Three', 'Four', 'Five']} />
+</Example>
+
+## Separators
+
+<Example>
+  <List items={['One', null, 'Two', 'Three', null, 'Four', 'Five']} />
+</Example>
+
+## Single select
+
+<Example>
+  <List selectionMode="single" items={['One', 'Two', 'Three', 'Four', 'Five']} />
+</Example>
+
+## Multiple select
+
+<Example>
+  <List selectionMode="multiple" items={['One', 'Two', 'Three', 'Four', 'Five']} />
+</Example>
+
+## Preselected
+
+<Example>
+  <List
+    selectionMode="multiple"
+    selectedKeys={['Three', 'Five']}
+    items={['One', 'Two', 'Three', 'Four', 'Five']}
+  />
+</Example>

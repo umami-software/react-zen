@@ -1,0 +1,26 @@
+.combobox {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  border: var(--border);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+}
+
+.input {
+  border: none;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+}

@@ -3,6 +3,7 @@
   align-items: center;
   color: var(--text-color1);
   background: var(--background);
+  box-shadow: var(--shadow);
 }
 
 .button {
@@ -19,35 +20,5 @@
 }
 
 .list {
-  overflow: hidden;
-  min-width: 100px;
-  border: var(--border);
-  border-radius: var(--border-radius);
-}
-
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--text-color1);
-  background: hsl(var(--background));
-  padding: var(--padding);
-  gap: var(--gap);
-  cursor: pointer;
-}
-
-.item[data-selected] {
-  font-weight: bold;
-}
-
-.item[data-selected] .check {
-  display: block;
-}
-
-.item:hover {
-  background: hsl(var(--accent-background));
-}
-
-.check {
-  display: none;
+  min-width: 200px;
 }
