@@ -19,10 +19,42 @@ export interface FlexboxProps {
     | 'stretch'
     | 'safe center'
     | 'unsafe center';
-  alignContent?:
+  justifyItems?:
+    | 'stretch'
+    | 'center'
     | 'start'
     | 'end'
+    | 'flex-start'
+    | 'flex-end'
+    | 'self-start'
+    | 'self-end'
+    | 'left'
+    | 'right'
+    | 'baseline'
+    | 'first baseline'
+    | 'last baseline'
+    | 'safe center'
+    | 'unsafe center';
+  justifySelf?:
+    | 'stretch'
     | 'center'
+    | 'start'
+    | 'end'
+    | 'flex-start'
+    | 'flex-end'
+    | 'self-start'
+    | 'self-end'
+    | 'left'
+    | 'right'
+    | 'baseline'
+    | 'first baseline'
+    | 'last baseline'
+    | 'safe center'
+    | 'unsafe center';
+  alignContent?:
+    | 'center'
+    | 'start'
+    | 'end'
     | 'flex-start'
     | 'flex-end'
     | 'baseline'
@@ -52,7 +84,6 @@ export interface FlexboxProps {
     | 'center'
     | 'start'
     | 'end'
-    | 'stretch'
     | 'self-start'
     | 'self-end'
     | 'flex-start'
@@ -60,6 +91,7 @@ export interface FlexboxProps {
     | 'baseline'
     | 'first baseline'
     | 'last baseline'
+    | 'stretch'
     | 'safe center'
     | 'unsafe center';
   inline?: boolean;
@@ -79,6 +111,8 @@ export function Flexbox({
   direction,
   wrap,
   justifyContent,
+  justifyItems,
+  justifySelf,
   alignContent,
   alignItems,
   alignSelf,
@@ -102,6 +136,8 @@ export function Flexbox({
         direction && styles[direction],
         wrap && styles[wrap],
         justifyContent && styles[`justify-content-${replace(justifyContent)}`],
+        justifyItems && styles[`justify-items-${replace(justifyItems)}`],
+        justifySelf && styles[`justify-self-${replace(justifySelf)}`],
         alignContent && styles[`align-content-${replace(alignContent)}`],
         alignItems && styles[`align-items-${replace(alignItems)}`],
         alignSelf && styles[`align-self-${replace(alignSelf)}`],
