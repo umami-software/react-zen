@@ -1,0 +1,42 @@
+.tabs {
+  position: relative;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid hsl(var(--base-color3));
+  gap: var(--gap);
+  margin-bottom: var(--spacing6);
+}
+
+.list.quiet {
+  border: 0;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color2);
+  min-height: 3rem;
+  border-bottom: 2px solid transparent;
+  user-select: none;
+  margin: 0 0 -2px 0;
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: var(--text-color2);
+}
+
+.tab[data-selected] {
+  color: var(--text-color1);
+  border-bottom: 2px solid hsl(var(--primary-background));
+}
+
+.tab.disabled {
+  color: var(--text-color3);
+  cursor: default;
+}

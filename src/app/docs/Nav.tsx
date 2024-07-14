@@ -28,6 +28,7 @@ const items = [
       { title: 'Search Field', path: '/docs/components/search-field' },
       { title: 'Select', path: '/docs/components/select' },
       { title: 'Switch', path: '/docs/components/switch' },
+      { title: 'Tabs', path: '/docs/components/tabs' },
       { title: 'Text', path: '/docs/components/text' },
       { title: 'Text Field', path: '/docs/components/text-field' },
     ],

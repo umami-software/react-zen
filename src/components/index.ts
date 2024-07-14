@@ -19,6 +19,7 @@ import Row from './Row';
 import SearchField from './SearchField';
 import Select from './Select';
 import Switch from './Switch';
+import { Tabs, TabList, Tab, TabPanel } from './Tabs';
 import Text from './Text';
 import TextField from './TextField';
 import TextArea from './TextArea';
@@ -46,6 +47,10 @@ export {
   SearchField,
   Select,
   Switch,
+  Tab,
+  Tabs,
+  TabList,
+  TabPanel,
   Text,
   TextField,
   TextArea,
