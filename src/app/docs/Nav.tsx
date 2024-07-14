@@ -1,5 +1,4 @@
 'use client';
-import { Fragment } from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -31,7 +30,6 @@ const items = [
       { title: 'Switch', path: '/docs/components/switch' },
       { title: 'Text', path: '/docs/components/text' },
       { title: 'Text Field', path: '/docs/components/text-field' },
-      { title: 'Text Area', path: '/docs/components/text-area' },
     ],
   },
 ];

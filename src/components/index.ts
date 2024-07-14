@@ -21,6 +21,7 @@ import Select from './Select';
 import Switch from './Switch';
 import Text from './Text';
 import TextField from './TextField';
+import TextArea from './TextArea';
 
 export {
   Button,
@@ -47,5 +48,6 @@ export {
   Switch,
   Text,
   TextField,
+  TextArea,
   TooltipTrigger,
 };

@@ -1,29 +1,34 @@
-import type { HTMLAttributes } from 'react';
+import { ReactNode } from 'react';
 import classNames from 'classnames';
+import { Slot } from '@radix-ui/react-slot';
 import styles from './Text.module.css';
 
-export function Text({
-  color,
-  size,
-  weight,
-  style,
-  ...attributes
-}: {
+interface TextProps {
   color?: 1 | 2 | 3;
   size?: 1 | 2 | 3 | 4 | 5;
   weight?: 1 | 2 | 3 | 4 | 5;
-  style?: any;
-} & Omit<HTMLAttributes<HTMLSpanElement>, 'color'>) {
+  asChild?: boolean;
+  children?: ReactNode;
+}
+
+function Text({ children, color, size, weight, asChild, ...props }: TextProps) {
+  const Component = asChild ? Slot : 'span';
+
   return (
-    <span
-      {...attributes}
+    <Component
+      {...props}
       className={classNames(styles.text, {
         [styles[`size${size}`]]: size,
         [styles[`color${color}`]]: color,
         [styles[`weight${weight}`]]: weight,
       })}
-    />
+    >
+      {children}
+    </Component>
   );
 }
+
+export { Text };
+export type { TextProps };
 
 export default Text;

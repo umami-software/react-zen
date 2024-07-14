@@ -43,6 +43,8 @@
   --shadow2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow4: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow5: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow6: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
   --base-color1: 0 0% 98%; /* #fafafa */
   --base-color2: 0 0% 96.1%; /* #f5f5f5 */

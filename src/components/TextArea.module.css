@@ -1,0 +1,11 @@
+.none {
+  resize: none;
+}
+
+.horizontal {
+  resize: horizontal;
+}
+
+.vertical {
+  resize: vertical;
+}

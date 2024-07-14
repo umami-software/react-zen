@@ -1,22 +1,24 @@
-import { ReactNode } from 'react';
-import { TextField, TextFieldProps, Label, Input } from 'react-aria-components';
+import { TextField, TextFieldProps, Input, TextArea } from 'react-aria-components';
 import classNames from 'classnames';
+import { GrBottomCorner } from 'react-icons/gr';
 import Icon from './Icon';
 import styles from './TextField.module.css';
 
 interface _TextFieldProps extends TextFieldProps {
-  icon?: ReactNode;
+  asTextArea?: boolean;
 }
 
-function _TextField({ icon, className, ...props }: _TextFieldProps) {
+function _TextField({ asTextArea, className, ...props }: _TextFieldProps) {
+  const Component = asTextArea ? TextArea : Input;
+
   return (
     <TextField {...props} className={classNames(styles.field, className)}>
-      {icon && (
-        <Icon size={1} className={styles.icon}>
-          {icon}
+      <Component className={classNames(styles.input, asTextArea && styles.textarea)} />
+      {asTextArea && (
+        <Icon className={styles.handle} size={1}>
+          <GrBottomCorner />
         </Icon>
       )}
-      <Input className={styles.input} />
     </TextField>
   );
 }
