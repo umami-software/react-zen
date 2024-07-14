@@ -142,66 +142,6 @@
   justify-items: unsafe center;
 }
 
-.justify-self-stretch {
-  justify-self: stretch;
-}
-
-.justify-self-center {
-  justify-self: center;
-}
-
-.justify-self-start {
-  justify-self: start;
-}
-
-.justify-self-end {
-  justify-self: end;
-}
-
-.justify-self-flex-start {
-  justify-self: flex-start;
-}
-
-.justify-self-flex-end {
-  justify-self: flex-end;
-}
-
-.justify-self-self-start {
-  justify-self: self-start;
-}
-
-.justify-self-self-end {
-  justify-self: self-end;
-}
-
-.justify-self-left {
-  justify-self: left;
-}
-
-.justify-self-right {
-  justify-self: right;
-}
-
-.justify-self-baseline {
-  justify-self: baseline;
-}
-
-.justify-self-first-baseline {
-  justify-self: first baseline;
-}
-
-.justify-self-last-baseline {
-  justify-self: last baseline;
-}
-
-.justify-self-safe-center {
-  justify-self: safe center;
-}
-
-.justify-self-unsafe-center {
-  justify-self: unsafe center;
-}
-
 .align-content-center {
   align-content: center;
 }
