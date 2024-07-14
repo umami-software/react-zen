@@ -1,0 +1,296 @@
+.flexbox {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.column-reverse {
+  flex-direction: column-reverse;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+.wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.justify-content-flex-start {
+  justify-content: flex-start;
+}
+
+.justify-content-flex-end {
+  justify-content: flex-end;
+}
+
+.justify-content-start {
+  justify-content: start;
+}
+
+.justify-content-end {
+  justify-content: end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-left {
+  justify-content: left;
+}
+
+.justify-content-right {
+  justify-content: right;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+
+.justify-content-space-around {
+  justify-content: space-around;
+}
+
+.justify-content-space-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-content-safe-center {
+  justify-content: safe center;
+}
+
+.justify-content-unsafe-center {
+  justify-content: unsafe center;
+}
+
+.justify-content-stretch {
+  justify-content: stretch;
+}
+
+.align-content-flex-start {
+  align-content: flex-start;
+}
+
+.align-content-flex-end {
+  align-content: flex-end;
+}
+
+.align-content-start {
+  align-content: start;
+}
+
+.align-content-end {
+  align-content: end;
+}
+
+.align-content-center {
+  align-content: center;
+}
+
+.align-content-space-between {
+  align-content: space-between;
+}
+
+.align-content-space-around {
+  align-content: space-around;
+}
+
+.align-content-space-evenly {
+  align-content: space-evenly;
+}
+
+.align-content-stretch {
+  align-content: stretch;
+}
+
+.align-content-baseline {
+  align-content: baseline;
+}
+
+.align-content-first-baseline {
+  align-content: first baseline;
+}
+
+.align-content-last-baseline {
+  align-content: last baseline;
+}
+
+.align-content-safe-center {
+  align-content: safe center;
+}
+
+.align-content-unsafe-center {
+  align-content: unsafe center;
+}
+
+.align-items-flex-start {
+  align-items: flex-start;
+}
+
+.align-items-flex-end {
+  align-items: flex-end;
+}
+
+.align-items-start {
+  align-items: start;
+}
+
+.align-items-end {
+  align-items: end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-stretch {
+  align-items: stretch;
+}
+
+.align-items-self-start {
+  align-items: self-start;
+}
+
+.align-items-self-end {
+  align-items: self-end;
+}
+
+.align-items-baseline {
+  align-items: baseline;
+}
+
+.align-items-first-baseline {
+  align-items: first baseline;
+}
+
+.align-items-last-baseline {
+  align-items: last baseline;
+}
+
+.align-items-safe-center {
+  align-items: safe center;
+}
+
+.align-items-unsafe-center {
+  align-items: unsafe center;
+}
+
+
+.inline {
+  display: inline-flex;
+}
+
+.spacing1 {
+  gap: var(--spacing1);
+}
+
+.spacing2 {
+  gap: var(--spacing2);
+}
+
+.spacing3 {
+  gap: var(--spacing3);
+}
+
+.spacing4 {
+  gap: var(--spacing4);
+}
+
+.spacing5 {
+  gap: var(--spacing5);
+}
+
+.spacing6 {
+  gap: var(--spacing6);
+}
+
+.spacing7 {
+  gap: var(--spacing7);
+}
+
+.spacing8 {
+  gap: var(--spacing8);
+}
+
+.spacing9 {
+  gap: var(--spacing9);
+}
+
+.spacing10 {
+  gap: var(--spacing10);
+}
+
+.spacing11 {
+  gap: var(--spacing11);
+}
+
+.spacing12 {
+  gap: var(--spacing12);
+}
+
+.align-self-flex-start {
+  align-self: flex-start;
+}
+
+.align-self-flex-end {
+  align-self: flex-end;
+}
+
+.align-self-start {
+  align-self: start;
+}
+
+.align-self-end {
+  align-self: end;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.align-self-stretch {
+  align-self: stretch;
+}
+
+.align-self-self-start {
+  align-self: self-start;
+}
+
+.align-self-self-end {
+  align-self: self-end;
+}
+
+.align-self-baseline {
+  align-self: baseline;
+}
+
+.align-self-first-baseline {
+  align-self: first baseline;
+}
+
+.align-self-last-baseline {
+  align-self: last baseline;
+}
+
+.align-self-safe-center {
+  align-self: safe center;
+}
+
+.align-self-unsafe-center {
+  align-self: unsafe center;
+}

@@ -20,6 +20,7 @@ const items = [
       { title: 'Button', path: '/docs/components/button' },
       { title: 'Checkbox', path: '/docs/components/checkbox' },
       { title: 'Combobox', path: '/docs/components/combobox' },
+      { title: 'Dialog', path: '/docs/components/dialog' },
       { title: 'Heading', path: '/docs/components/heading' },
       { title: 'Icon', path: '/docs/components/icon' },
       { title: 'List', path: '/docs/components/list' },

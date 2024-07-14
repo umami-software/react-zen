@@ -21,4 +21,5 @@
 
 .list {
   min-width: 200px;
+  box-shadow: var(--shadow3);
 }

@@ -4,11 +4,12 @@ html {
 
 html, body {
   font-family: Inter, sans-serif;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: var(--text-size);
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  color: var(--text-color1);
+  background: hsl(var(--background));
 }
 
 input, textarea, button {
@@ -23,12 +24,12 @@ input, textarea, button {
 }
 
 a, a:active, a:visited {
-  color: var(--zen-text-color1);
+  color: var(--text-color2);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--zen-text-color2);
+  color: var(--text-color1);
 }
 
 img,
@@ -50,11 +51,10 @@ video {
 }
 
 pre {
-  color: var(--zen-text-color1);
+  color: var(--text-color1);
   font-family: monospace;
   font-size: 14px;
   line-height: 1.5rem;
   padding: 20px;
-  background-color: var(--zen-base3);
   border-radius: 4px;
 }

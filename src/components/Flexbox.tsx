@@ -1,71 +1,122 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
+import styles from './Flexbox.module.css';
+import classNames from 'classnames';
 
 export interface FlexboxProps {
-  display?: 'flex' | 'inline-flex';
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
   justifyContent?:
+    | 'center'
     | 'start'
     | 'end'
-    | 'center'
+    | 'flex-start'
+    | 'flex-end'
     | 'left'
     | 'right'
     | 'space-between'
     | 'space-around'
     | 'space-evenly'
     | 'stretch'
-    | 'baseline'
-    | 'first baseline'
-    | 'last baseline'
     | 'safe center'
     | 'unsafe center';
   alignContent?:
     | 'start'
     | 'end'
     | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'baseline'
+    | 'first baseline'
+    | 'last baseline'
     | 'space-between'
     | 'space-around'
     | 'space-evenly'
     | 'stretch'
-    | 'baseline'
-    | 'first baseline'
-    | 'last baseline'
     | 'safe center'
     | 'unsafe center';
   alignItems?:
+    | 'center'
     | 'start'
     | 'end'
-    | 'center'
-    | 'stretch'
+    | 'flex-start'
+    | 'flex-end'
     | 'self-start'
     | 'self-end'
+    | 'stretch'
     | 'baseline'
     | 'first baseline'
     | 'last baseline'
     | 'safe center'
     | 'unsafe center';
-  gap?: number;
+  alignSelf?:
+    | 'center'
+    | 'start'
+    | 'end'
+    | 'stretch'
+    | 'self-start'
+    | 'self-end'
+    | 'flex-start'
+    | 'flex-end'
+    | 'baseline'
+    | 'first baseline'
+    | 'last baseline'
+    | 'safe center'
+    | 'unsafe center';
+  inline?: boolean;
+  gap?: string | number;
   order?: number;
-  flex?: number;
-  style?: any;
+  grow?: number;
+  shrink?: number;
+  basis?: string | number;
+  spacing?: number;
+  style?: CSSProperties;
+  className?: string;
   children?: ReactNode;
 }
 
 export function Flexbox({
-  display = 'flex',
-  direction = 'row',
+  inline,
+  direction,
   wrap,
   justifyContent,
   alignContent,
   alignItems,
+  alignSelf,
   gap,
   order,
-  flex,
+  grow,
+  shrink,
+  basis,
+  spacing,
   style,
+  className,
   children,
   ...attributes
 }: FlexboxProps) {
-  return <div {...attributes}>{children}</div>;
+  return (
+    <div
+      {...attributes}
+      className={classNames(
+        styles.flexbox,
+        className,
+        direction && styles[direction],
+        wrap && styles[wrap],
+        justifyContent && styles[`justify-content-${replace(justifyContent)}`],
+        alignContent && styles[`align-content-${replace(alignContent)}`],
+        alignItems && styles[`align-items-${replace(alignItems)}`],
+        alignSelf && styles[`align-self-${replace(alignSelf)}`],
+        inline && styles.inline,
+        spacing && styles[`spacing${spacing}`],
+      )}
+      style={{ order, gap, flexBasis: basis, flexGrow: grow, flexShrink: shrink, ...style }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function replace(s: string) {
+  return s.replace(' ', '-');
 }
 
 export default Flexbox;

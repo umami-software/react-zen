@@ -3,10 +3,8 @@
   align-items: center;
   border: var(--border);
   border-radius: var(--border-radius);
-  padding: var(--padding);
   background: var(--background);
   box-shadow: var(--shadow);
-  gap: var(--spacing2);
 }
 
 .field[data-readonly],
@@ -18,6 +16,8 @@
   color: var(--text-color1);
   border: 0;
   background: transparent;
+  padding: var(--padding);
+  padding-left: 0;
 }
 
 .input::placeholder {
@@ -35,6 +35,7 @@
 
 .icon {
   color: var(--text-color3);
+  margin: 0 var(--spacing2);
 }
 
 .button {
@@ -47,7 +48,7 @@
   cursor: pointer;
   border-radius: var(--border-radius4);
   padding: 0;
-  margin: 0;
+  margin: 0 var(--spacing2);
 }
 
 .button:hover {

@@ -1,19 +1,23 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import * as Zen from '@/components';
+import * as Components from '@/components';
+import * as Examples from './examples';
 import { Example } from './docs/Example';
 import Logo from '../assets/logo.svg';
 import { ReactNode } from 'react';
 
+const { Heading } = Components;
+
 const components = {
-  ...Zen,
+  ...Components,
+  ...Examples,
   Example,
   Logo,
-  h1: ({ children }: { children: ReactNode }) => <Zen.Heading size={7}>{children}</Zen.Heading>,
-  h2: ({ children }: { children: ReactNode }) => <Zen.Heading size={6}>{children}</Zen.Heading>,
-  h3: ({ children }: { children: ReactNode }) => <Zen.Heading size={5}>{children}</Zen.Heading>,
-  h4: ({ children }: { children: ReactNode }) => <Zen.Heading size={4}>{children}</Zen.Heading>,
-  h5: ({ children }: { children: ReactNode }) => <Zen.Heading size={3}>{children}</Zen.Heading>,
-  h6: ({ children }: { children: ReactNode }) => <Zen.Heading size={2}>{children}</Zen.Heading>,
+  h1: ({ children }: { children: ReactNode }) => <Heading size={7}>{children}</Heading>,
+  h2: ({ children }: { children: ReactNode }) => <Heading size={5}>{children}</Heading>,
+  h3: ({ children }: { children: ReactNode }) => <Heading size={4}>{children}</Heading>,
+  h4: ({ children }: { children: ReactNode }) => <Heading size={3}>{children}</Heading>,
+  h5: ({ children }: { children: ReactNode }) => <Heading size={2}>{children}</Heading>,
+  h6: ({ children }: { children: ReactNode }) => <Heading size={1}>{children}</Heading>,
 };
 
 export default function Markdown({ children }: { children: any }) {
