@@ -1,7 +1,3 @@
-.popover {
-  background: hsl(var(--background));
-}
-
 .popover[data-placement=top] {
   --origin: translateY(8px);
   }

@@ -1,25 +1,28 @@
+import { ProgressBar, ProgressBarProps } from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './ProgressBar.module.css';
 
-export interface ProgressBarProps {
-  value: number;
-  minValue?: number;
-  maxValue?: number;
-  className?: string;
+interface _ProgressBarProps extends ProgressBarProps {
+  showValue?: boolean;
 }
 
-export function ProgressBar(props: ProgressBarProps) {
-  const { value = 0, minValue = 0, maxValue = 100, className, ...domProps } = props;
-
-  const percentValue = Math.round(((value - minValue) / (maxValue - minValue)) * 100);
-
+function _ProgressBar({ className, showValue, ...props }: _ProgressBarProps) {
   return (
-    <div {...domProps} className={classNames(styles.progressbar, className)}>
-      <div className={styles.track}>
-        <div className={styles.fill} style={{ width: `${percentValue}%` }} />
-      </div>
-    </div>
+    <ProgressBar {...props} className={classNames(styles.progressbar, className)}>
+      {({ percentage = 0, valueText }) => {
+        return (
+          <>
+            <div className={styles.track}>
+              <div className={styles.fill} style={{ width: `${percentage}%` }} />
+            </div>
+            {showValue && <div className={styles.value}>{valueText}</div>}
+          </>
+        );
+      }}
+    </ProgressBar>
   );
 }
 
-export default ProgressBar;
+export { _ProgressBar as ProgressBar };
+
+export default _ProgressBar;

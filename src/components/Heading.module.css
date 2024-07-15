@@ -1,8 +1,7 @@
 .heading {
   color: var(--text-color1);
-  font-weight: 700;
-  line-height: 200%;
-  margin: 0;
+  font-weight: var(--text-weight5);
+  margin: 0 0 1.5em 0;
 }
 
 .size1 {

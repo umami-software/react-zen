@@ -1,6 +1,6 @@
 .progresscircle {
   position: relative;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -23,9 +23,9 @@
 }
 
 .value {
+  font-weight: var(--text-weight5);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-weight: bold;
 }

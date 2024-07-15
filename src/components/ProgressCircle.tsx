@@ -1,47 +1,40 @@
-import { ReactNode } from 'react';
+import { ProgressBar, ProgressBarProps } from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './ProgressCircle.module.css';
 
-export interface ProgressCircleProps {
-  label?: ReactNode;
-  value?: number;
-  valueLabel?: ReactNode;
-  showValueLabel?: boolean;
-  minValue?: number;
-  maxValue?: number;
-  className?: string;
+interface ProgressCircleProps extends ProgressBarProps {
+  showValue?: boolean;
 }
 
-export function ProgressCircle({
-  value = 0,
-  minValue = 0,
-  maxValue = 100,
-  valueLabel,
-  showValueLabel = false,
-  className,
-  ...props
-}: ProgressCircleProps) {
-  const percentValue = Math.round(((value - minValue) / (maxValue - minValue)) * 100);
-  const radius = 45;
-  const circumference = radius * 2 * Math.PI;
-  const offset = circumference - (percentValue / 100) * circumference;
-
+function ProgressCircle({ className, showValue, ...props }: ProgressCircleProps) {
   return (
-    <div {...props} className={classNames(styles.progresscircle, className)}>
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle className={styles.track} cx="50" cy="50" r="45" />
-        <circle
-          className={styles.fill}
-          cx="50"
-          cy="50"
-          r="45"
-          strokeDasharray={`${circumference} ${circumference}`}
-          strokeDashoffset={offset}
-        />
-      </svg>
-      {showValueLabel && <div className={styles.value}>{valueLabel ?? `${value}%`}</div>}
-    </div>
+    <ProgressBar {...props} className={classNames(styles.progresscircle, className)}>
+      {({ percentage = 0, valueText }) => {
+        const radius = 45;
+        const circumference = radius * 2 * Math.PI;
+        const offset = circumference - (percentage / 100) * circumference;
+
+        return (
+          <>
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle className={styles.track} cx="50" cy="50" r="45" />
+              <circle
+                className={styles.fill}
+                cx="50"
+                cy="50"
+                r="45"
+                strokeDasharray={`${circumference} ${circumference}`}
+                strokeDashoffset={offset}
+              />
+            </svg>
+            {showValue && <label className={styles.value}>{valueText}</label>}
+          </>
+        );
+      }}
+    </ProgressBar>
   );
 }
+
+export { ProgressCircle };
 
 export default ProgressCircle;
