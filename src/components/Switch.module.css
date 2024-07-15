@@ -1,57 +1,53 @@
 .switch {
   position: relative;
-  position: relative;
   display: flex;
   align-items: center;
   gap: var(--gap);
+  color: var(--text-color1);
+  --knob-size: 20px;
+  --knob-border-size: 2px;
 }
 
-.toggle {
+.track {
   position: relative;
-  width: 38px;
-  height: 22px;
-  border-radius: 22px;
-  border: var(--border);
+  display: flex;
+  align-items: center;
+  width: calc(var(--knob-size) * 2);
+  height: var(--knob-size);
+  border-radius: calc(var(--knob-size) + var(--knob-border-size) * 2);
   background: hsl(var(--input-background));
   transition: background-color 0.2s;
   cursor: pointer;
 }
 
-.toggle:before {
-  position: absolute;
-  content: '';
-  top: 50%;
-  left: 1px;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  border: var(--border);
-  border-radius: 18px;
+.knob {
+  border: 2px solid var(--border-color);
+  width: var(--knob-size);
+  height: var(--knob-size);
+  border-radius: 100%;
   background: hsl(var(--background));
-  transition: left 0.2s;
+  transition: all 0.2s;
 }
 
-.switch[data-selected] .toggle {
+.switch[data-selected] .track {
   border-color: hsl(var(--primary-background));
   background: hsl(var(--primary-background));
 }
 
-.switch[data-selected] .toggle:before {
-  left: 17px;
+.switch[data-selected] .knob {
+  margin-left: var(--knob-size);
   border-color: hsl(var(--primary-background));
 }
 
-.switch[data-selected] .toggle {
-  border: 1px solid hsl(var(--primary-background));
-  background: hsl(var(--primary-background));
-}
-
-.switch[data-disabled] .toggle,
-.switch[data-disabled] .toggle:before {
-  border-color: hsl(var(--foreground) / calc(1 - 0.8));
-  background: hsl(var(--background));
-}
-
-.switch[data-disabled] .label {
+.switch[data-disabled] {
   color: var(--text-color3);
+  pointer-events: none;
+}
+
+.switch[data-disabled] .track {
+  background: hsl(var(--input-background) / calc(1 - 0.75));
+}
+
+.switch[data-disabled] .knob {
+  border-color: hsl(var(--input-background));
 }

@@ -1,13 +1,14 @@
-import { ReactNode } from 'react';
-import { Switch, SwitchProps, Label } from 'react-aria-components';
+import { Switch, SwitchProps } from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './Switch.module.css';
 
-function _Switch({ label, className, ...props }: { label: ReactNode } & SwitchProps) {
+function _Switch({ children, className, ...props }: SwitchProps) {
   return (
     <Switch {...props} className={classNames(styles.switch, className)}>
-      <div className={styles.toggle} />
-      {label && <Label className={styles.label}>{label}</Label>}
+      <div className={styles.track}>
+        <div className={styles.knob} />
+      </div>
+      {children as any}
     </Switch>
   );
 }
