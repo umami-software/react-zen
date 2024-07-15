@@ -1,0 +1,22 @@
+.progressbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  min-width: 100px;
+}
+
+.track {
+  height: 10px;
+  background: hsl(var(--input-background));
+  flex-basis: 100%;
+  overflow: hidden;
+}
+
+.fill {
+  background: hsl(var(--primary-background));
+  height: 10px;
+}

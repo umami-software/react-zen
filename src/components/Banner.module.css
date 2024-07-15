@@ -1,0 +1,46 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  color: hsl(var(--primary-foreground));
+  background: hsl(var(--primary-background));
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  gap: 20px;
+}
+
+.success {
+  background: hsl(var(--status-success-color));
+}
+
+.error {
+  background: hsl(var(--status-error-color));
+}
+
+.warning {
+  background: hsl(var(--status-warning-color));
+}
+
+.outline {
+  color: hsl(var(--primary-background));
+  border: 1px solid hsl(var(--primary-background));
+  background: transparent;
+}
+
+.success.outline {
+  color: hsl(var(--status-success-color));
+  border: 1px solid hsl(var(--status-success-color));
+}
+
+.error.outline {
+  color: hsl(var(--status-error-color));
+  border: 1px solid hsl(var(--status-error-color));
+}
+
+.warning.outline {
+  color: hsl(var(--status-warning-color));
+  border: 1px solid hsl(var(--status-warning-color));
+}

@@ -1,0 +1,74 @@
+.spinner {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner svg {
+  fill: none;
+  font-size: 16px;
+  stroke-width: 0.15em;
+  transform-origin: center center;
+  animation: spinner-rotate 1.6s linear infinite;
+}
+
+.track {
+  stroke: hsl(var(--input-background));
+}
+
+.fill {
+  stroke: hsl(var(--primary-background));
+  stroke-linecap: square;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: spinner-dash 1.2s ease-in-out infinite;
+}
+
+.size-sm svg {
+  width: 16px;
+  height: 16px;
+}
+
+.size-md svg {
+  width: 24px;
+  height: 24px;
+}
+
+.size-lg svg {
+  width: 32px;
+  height: 32px;
+}
+
+.size-xl svg {
+  width: 64px;
+  height: 64px;
+}
+
+.quiet .track {
+  display: none;
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}

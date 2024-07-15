@@ -1,0 +1,34 @@
+.statuslight {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status,
+.bg {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: #fff;
+  position: relative;
+}
+
+.status.success {
+  background: hsl(var(--status-success-color));
+}
+
+.status.warning {
+  background: hsl(var(--status-warning-color));
+}
+
+.status.error {
+  background: hsl(var(--status-error-color));
+}
+
+.status.active {
+  background: hsl(var(--status-active-color));
+}
+
+.status.inactive {
+  background: hsl(var(--status-inactive-color));
+}

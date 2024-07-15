@@ -58,6 +58,12 @@
   --base-color10: 0 0% 9%; /* #171717; */
   --base-color11: 0 0% 3.9%; /* #0a0a0a; */
 
+  --status-success-color: 142.1 70.6% 45.3%;
+  --status-error-color: 0 84.2% 60.2%;
+  --status-warning-color: 24.6 95% 53.1%;
+  --status-active-color: 217.2 91.2% 59.8%;
+  --status-inactive-color: 0 0% 63.9%;
+
   /* Global settings */
 
   --text-size: var(--text-size2);

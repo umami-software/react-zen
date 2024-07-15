@@ -1,0 +1,25 @@
+.loading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  pointer-events: none;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.center {
+  margin: auto;
+}
+
+.inline {
+  display: inline-flex;
+}

@@ -1,0 +1,31 @@
+.progresscircle {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progresscircle svg {
+  fill: none;
+  stroke-width: 8px;
+  transform: rotate(-90deg);
+  font-size: var(--text-size3);
+  width: 96px;
+  height: 96px;
+}
+
+.track {
+  stroke: hsl(var(--input-background));
+}
+
+.fill {
+  stroke: hsl(var(--primary-background));
+}
+
+.value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
