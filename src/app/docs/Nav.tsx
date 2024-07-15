@@ -18,6 +18,7 @@ const items = [
     children: [
       { title: 'Banner', path: '/docs/components/banner' },
       { title: 'Button', path: '/docs/components/button' },
+      { title: 'Calendar', path: '/docs/components/calendar' },
       { title: 'Checkbox', path: '/docs/components/checkbox' },
       { title: 'Combobox', path: '/docs/components/combobox' },
       { title: 'Dialog', path: '/docs/components/dialog' },

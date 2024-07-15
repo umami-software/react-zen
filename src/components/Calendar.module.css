@@ -1,0 +1,64 @@
+.calendar {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.heading {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+  font-size: var(--text-size);
+  font-weight: var(--text-weight5);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+}
+
+.headerCell {
+  font-size: var(--text-size);
+  font-weight: var(--text-weight5);
+}
+
+.cell {
+  width: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  outline: none;
+  margin: 1px;
+  forced-color-adjust: none;
+}
+
+.cell:hover {
+  color: var(--text-color1);
+  border-color: var(--border-color);
+  background: hsl(var(--accent-background));
+}
+
+.cell[data-outside-month] {
+  display: none;
+}
+
+.cell[data-focus-visible] {
+  outline: 2px solid hsl(var(--ring-background));
+  outline-offset: 2px;
+}
+
+.cell[data-selected] {
+  font-weight: var(--text-weight5);
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary-background));
+  background: hsl(var(--primary-background));
+}

@@ -2,6 +2,7 @@
 import { DialogTrigger, FileTrigger, MenuTrigger, TooltipTrigger } from 'react-aria-components';
 import Banner from './Banner';
 import Button from './Button';
+import Calendar from './Calendar';
 import Checkbox from './Checkbox';
 import Column from './Column';
 import Combobox from './Combobox';
@@ -36,6 +37,7 @@ import Tooltip from './Tooltip';
 export {
   Banner,
   Button,
+  Calendar,
   Checkbox,
   Column,
   Combobox,
