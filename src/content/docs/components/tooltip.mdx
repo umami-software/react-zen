@@ -1,0 +1,36 @@
+---
+id: components/tooltip
+title: Components - Tooltip
+---
+
+# Tooltip
+
+A tooltip displays a description of an element on hover or focus.
+
+<Example>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Hover me</Button>
+    <Tooltip>Hello</Tooltip>
+  </TooltipTrigger>
+</Example>
+
+## Placement
+
+<Example>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Top</Button>
+    <Tooltip placement="top">Hello</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Left</Button>
+    <Tooltip placement="left">Hello</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Right</Button>
+    <Tooltip placement="right">Hello</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Bottom</Button>
+    <Tooltip placement="bottom">Hello</Tooltip>
+  </TooltipTrigger>
+</Example>

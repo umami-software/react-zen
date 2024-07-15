@@ -1,0 +1,69 @@
+.tooltip {
+  font-size: var(--text-size1);
+  background: rgba(0, 0, 0, 0.8);
+  color: hsl(var(--base-color1));
+  forced-color-adjust: none;
+  outline: none;
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  max-width: 150px;
+  /* fixes FF gap */
+  transform: translate3d(0, 0, 0);
+}
+
+.tooltip[data-placement='top'] {
+  margin-bottom: 8px;
+  --origin: translateY(4px);
+}
+
+.tooltip[data-placement='bottom'] {
+  margin-top: 8px;
+  --origin: translateY(-4px);
+}
+
+.tooltip[data-placement='bottom'] .arrow svg {
+  transform: rotate(180deg);
+}
+
+.tooltip[data-placement='right'] {
+  margin-left: 8px;
+  --origin: translateX(-4px);
+}
+
+.tooltip[data-placement='right'] .arrow svg {
+  transform: rotate(90deg);
+}
+
+.tooltip[data-placement='left'] {
+  margin-right: 8px;
+  --origin: translateX(4px);
+}
+
+.tooltip[data-placement='left'] .arrow svg {
+  transform: rotate(-90deg);
+}
+
+.tooltip .arrow svg {
+  display: block;
+  fill: rgba(0, 0, 0, 0.8);
+}
+
+.tooltip[data-entering] {
+  animation: slide 200ms;
+}
+
+.tooltip[data-exiting] {
+  animation: slide 200ms reverse ease-in;
+}
+
+@keyframes slide {
+  from {
+    transform: var(--origin);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -5,6 +5,7 @@ html {
 html, body {
   font-family: Inter, sans-serif;
   font-size: var(--text-size);
+  line-height: 1.75rem;
   min-height: 100vh;
   margin: 0;
   padding: 0;

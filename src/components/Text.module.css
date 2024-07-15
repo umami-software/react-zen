@@ -1,5 +1,5 @@
 .text {
-  color: var(--text-color1);
+  color: currentColor;
 }
 
 .size1 {

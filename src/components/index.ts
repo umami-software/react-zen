@@ -30,6 +30,8 @@ import { Tabs, TabList, Tab, TabPanel } from './Tabs';
 import Text from './Text';
 import TextField from './TextField';
 import TextArea from './TextArea';
+import Toggle from './Toggle';
+import Tooltip from './Tooltip';
 
 export {
   Banner,
@@ -68,5 +70,7 @@ export {
   Text,
   TextField,
   TextArea,
+  Toggle,
+  Tooltip,
   TooltipTrigger,
 };
