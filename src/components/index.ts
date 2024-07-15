@@ -20,6 +20,7 @@ import { MenuItem } from './MenuItem';
 import { MenuButton } from './MenuButton';
 import { Modal } from './Modal';
 import { Page } from './Page';
+import { Popover } from './Popover';
 import { ProgressBar } from './ProgressBar';
 import { ProgressCircle } from './ProgressCircle';
 import { Row } from './Row';
@@ -60,6 +61,7 @@ export {
   MenuTrigger,
   Modal,
   Page,
+  Popover,
   ProgressBar,
   ProgressCircle,
   Row,

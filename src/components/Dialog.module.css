@@ -3,6 +3,7 @@
   padding: var(--spacing6);
   box-shadow: var(--shadow3);
   background: hsl(var(--background));
+  border: var(--border);
   border-radius: var(--border-radius);
 }
 

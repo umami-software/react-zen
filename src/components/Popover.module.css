@@ -1,0 +1,39 @@
+.popover {
+  background: hsl(var(--background));
+}
+
+.popover[data-placement=top] {
+  --origin: translateY(8px);
+  }
+
+.popover[data-placement=bottom] {
+  --origin: translateY(-8px);
+}
+
+.popover[data-placement=right] {
+  --origin: translateX(-8px);
+}
+
+.popover[data-placement=left] {
+  --origin: translateX(8px);
+}
+
+.popover[data-entering] {
+  animation: popover-slide 200ms;
+}
+
+.popover[data-exiting] {
+  animation: popover-slide 200ms reverse ease-in;
+}
+
+@keyframes popover-slide {
+  from {
+    transform: var(--origin);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

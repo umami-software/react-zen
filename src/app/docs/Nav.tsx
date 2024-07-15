@@ -30,6 +30,7 @@ const items = [
       { title: 'Loading', path: '/docs/components/loading' },
       { title: 'Menu', path: '/docs/components/menu' },
       { title: 'Menu Button', path: '/docs/components/menu-button' },
+      { title: 'Popover', path: '/docs/components/popover' },
       { title: 'Progress Bar', path: '/docs/components/progress-bar' },
       { title: 'Progress Circle', path: '/docs/components/progress-circle' },
       { title: 'Search Field', path: '/docs/components/search-field' },

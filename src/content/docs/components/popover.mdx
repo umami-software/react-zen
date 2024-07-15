@@ -1,0 +1,23 @@
+---
+id: components/popover
+title: Components - Popover
+---
+
+# Popover
+
+A popover is an overlay element positioned relative to a trigger.
+
+<Example>
+  <DialogTrigger>
+    <Button variant="secondary">Settings</Button>
+    <Popover>
+      <Dialog>
+        <Column gap={20}>
+          <Switch defaultSelected>Wi-Fi</Switch>
+          <Switch defaultSelected>Bluetooth</Switch>
+          <Switch>Mute</Switch>
+        </Column>
+      </Dialog>
+    </Popover>
+  </DialogTrigger>
+</Example>
