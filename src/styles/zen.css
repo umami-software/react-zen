@@ -92,7 +92,7 @@
   --secondary-foreground: var(--base-color10);
   --muted-background: var(--base-color2);
   --muted-foreground: var(--base-color6);
-  --accent-background: var(--base-color2);
+  --accent-background: var(--base-color1);
   --accent-foreground: var(--base-color10);
   --danger-background: 0 84.2% 60.2%;
   --danger-foreground: var(--base-color1);

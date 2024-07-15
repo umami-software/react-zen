@@ -42,4 +42,7 @@ function _Calendar({ className, ...props }: CalendarProps<any>) {
   );
 }
 
+export { _Calendar as Calendar };
+export type { CalendarProps };
+
 export default _Calendar;

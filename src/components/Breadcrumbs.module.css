@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-size2);
+  gap: var(--gap);
+  list-style: none;
+}
+
+.breadcrumb a {
+  color: var(--text-color2);
+}
+
+.breadcrumb a:hover {
+  color: var(--text-color1);
+}
+
+.icon {
+  color: var(--text-color2);
+}
+
+.breadcrumb:last-child {
+  font-weight: var(--text-weight4);
+}
+
+.breadcrumb:last-child .icon {
+  display: none;
+}
