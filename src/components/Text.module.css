@@ -38,34 +38,22 @@
   font-size: var(--text-size9);
 }
 
-.color1 {
-  color: var(--text-color);
-}
-
-.color2 {
+.muted {
   color: var(--text-muted-color);
 }
 
-.color3 {
+.faded {
   color: var(--text-faded-color);
 }
 
-.weight1 {
-  font-weight: var(--text-weight1);
+.light {
+  font-weight: 300;
 }
 
-.weight2 {
-  font-weight: var(--text-weight2);
+.bold {
+  font-weight: 700;
 }
 
-.weight3 {
-  font-weight: var(--text-weight3);
-}
-
-.weight4 {
-  font-weight: var(--text-weight4);
-}
-
-.weight5 {
-  font-weight: var(--text-weight5);
+.bolder {
+  font-weight: 900;
 }

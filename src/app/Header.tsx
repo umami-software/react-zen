@@ -9,13 +9,17 @@ export default function Header({ className, ...domProps }: { className?: string 
 
   return (
     <div {...domProps} className={classNames(styles.header, className)}>
-      <a href={'/'}>zen</a>
-      <a href={'/docs'}>docs</a>
+      <div>
+        <a href={'/'}>
+          <b>zen</b>
+        </a>{' '}
+        - <a href={'/docs'}>docs</a>
+      </div>
       <div className={styles.buttons}>
-        <Button size={1} onClick={() => setTheme('light')}>
+        <Button size={1} onPress={() => setTheme('light')}>
           light
         </Button>
-        <Button size={1} onClick={() => setTheme('dark')}>
+        <Button size={1} onPress={() => setTheme('dark')}>
           dark
         </Button>
       </div>

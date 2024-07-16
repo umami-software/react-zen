@@ -1,6 +1,6 @@
 .heading {
   color: var(--text-color);
-  font-weight: var(--text-weight5);
+  font-weight: 700;
   margin-top: 0;
 }
 

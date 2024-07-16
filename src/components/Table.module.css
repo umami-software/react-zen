@@ -21,7 +21,7 @@
 
 .row {
   display: flex;
-  border-bottom: 1px solid var(--base-color3);
+  border-bottom: 1px solid color-mix(in srgb, var(--border-color), 50% transparent);
 }
 
 .header .column:first-child,

@@ -23,7 +23,7 @@
 }
 
 .value {
-  font-weight: var(--text-weight5);
+  font-weight: 700;
   position: absolute;
   top: 50%;
   left: 50%;

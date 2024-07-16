@@ -14,7 +14,7 @@
   margin: 0;
   text-align: center;
   font-size: var(--text-size);
-  font-weight: var(--text-weight5);
+  font-weight: 700;
 }
 
 .button {
@@ -27,7 +27,7 @@
 
 .headerCell {
   font-size: var(--text-size);
-  font-weight: var(--text-weight5);
+  font-weight: 700;
 }
 
 .cell {
@@ -57,7 +57,7 @@
 }
 
 .cell[data-selected] {
-  font-weight: var(--text-weight5);
+  font-weight: 700;
   color: var(--primary-text-color);
   border-color: var(--primary-color);
   background: var(--primary-color);
