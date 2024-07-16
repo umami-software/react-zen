@@ -83,10 +83,6 @@
 
   --background: 0 0% 100%;
   --foreground: var(--base-color11);
-  --card-background: 0 0% 100%;
-  --card-foreground: var(--base-color11);
-  --popover-background: 0 0% 100%;
-  --popover-foreground: var(--base-color11);
   --primary-background: var(--base-color10);
   --primary-foreground: var(--base-color1);
   --secondary-background: 0 0% 100%;
@@ -112,10 +108,6 @@
   [data-theme='dark'] {
     --background: var(--base-color11);
     --foreground: var(--base-color1);
-    --card-background: var(--base-color11);
-    --card-foreground: var(--base-color1);
-    --popover-background: var(--base-color11);
-    --popover-foreground: var(--base-color1);
     --primary-background: var(--base-color1);
     --primary-foreground: var(--base-color10);
     --secondary-background: var(--base-color11);

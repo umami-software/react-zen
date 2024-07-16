@@ -38,6 +38,7 @@ const items = [
       { title: 'Spinner', path: '/docs/components/spinner' },
       { title: 'Status Light', path: '/docs/components/status-light' },
       { title: 'Switch', path: '/docs/components/switch' },
+      { title: 'Table', path: '/docs/components/table' },
       { title: 'Tabs', path: '/docs/components/tabs' },
       { title: 'Text', path: '/docs/components/text' },
       { title: 'Text Field', path: '/docs/components/text-field' },

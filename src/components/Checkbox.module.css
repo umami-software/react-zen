@@ -32,6 +32,11 @@
   display: block;
 }
 
+.checkbox[data-indeterminate] .icon {
+  display: block;
+  background: hsl(var(--background));
+}
+
 .checkbox[data-disabled] {
   color: var(--text-color3);
 }

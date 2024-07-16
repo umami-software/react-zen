@@ -29,6 +29,7 @@ import { Select } from './Select';
 import { Spinner } from './Spinner';
 import { StatusLight } from './StatusLight';
 import { Switch } from './Switch';
+import { Table, TableHeader, TableBody, TableRow, TableColumn, TableCell } from './Table';
 import { Tabs, TabList, Tab, TabPanel } from './Tabs';
 import { Text } from './Text';
 import { TextField } from './TextField';
@@ -70,6 +71,12 @@ export {
   Spinner,
   StatusLight,
   Switch,
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableColumn,
+  TableCell,
   Tab,
   Tabs,
   TabList,

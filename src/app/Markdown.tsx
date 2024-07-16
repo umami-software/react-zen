@@ -12,7 +12,7 @@ const components = {
   ...Examples,
   Example,
   Logo,
-  h1: ({ children }: { children: ReactNode }) => <Heading size={7}>{children}</Heading>,
+  h1: ({ children }: { children: ReactNode }) => <Heading size={8}>{children}</Heading>,
   h2: ({ children }: { children: ReactNode }) => <Heading size={5}>{children}</Heading>,
   h3: ({ children }: { children: ReactNode }) => <Heading size={4}>{children}</Heading>,
   h4: ({ children }: { children: ReactNode }) => <Heading size={3}>{children}</Heading>,

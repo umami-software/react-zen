@@ -1,0 +1,117 @@
+---
+id: components/table
+title: Components - Table
+---
+
+# Table
+
+A table displays data in rows and columns and enables a user to navigate its contents via
+directional navigation keys, and optionally supports row selection and sorting.
+
+<Example>
+  <Table>
+    <TableHeader>
+      <TableColumn>Name</TableColumn>
+      <TableColumn>Email</TableColumn>
+      <TableColumn>Date created</TableColumn>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Bob</TableCell>
+        <TableCell>bob@aol.com</TableCell>
+        <TableCell>5/5/2020</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Fred</TableCell>
+        <TableCell>fred@yahoo.com</TableCell>
+        <TableCell>4/7/2021</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Ted</TableCell>
+        <TableCell>ted@gmail.com</TableCell>
+        <TableCell>11/20/2010</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Joe</TableCell>
+        <TableCell>joe@outlook.com</TableCell>
+        <TableCell>1/18/2016</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Example>
+
+## Selection
+
+<Example>
+  <Table selectionMode="multiple">
+    <TableHeader>
+      <TableColumn style={{ maxWidth: 50 }}>
+        <Checkbox slot="selection" />
+      </TableColumn>
+      <TableColumn>Name</TableColumn>
+      <TableColumn>Email</TableColumn>
+      <TableColumn>Date created</TableColumn>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell style={{ maxWidth: 50 }}>
+          <Checkbox slot="selection" />
+        </TableCell>
+        <TableCell>Bob</TableCell>
+        <TableCell>bob@aol.com</TableCell>
+        <TableCell>5/5/2020</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ maxWidth: 50 }}>
+          <Checkbox slot="selection" />
+        </TableCell>
+        <TableCell>Fred</TableCell>
+        <TableCell>fred@yahoo.com</TableCell>
+        <TableCell>4/7/2021</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ maxWidth: 50 }}>
+          <Checkbox slot="selection" />
+        </TableCell>
+        <TableCell>Ted</TableCell>
+        <TableCell>ted@gmail.com</TableCell>
+        <TableCell>11/20/2010</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ maxWidth: 50 }}>
+          <Checkbox slot="selection" />
+        </TableCell>
+        <TableCell>Joe</TableCell>
+        <TableCell>joe@outlook.com</TableCell>
+        <TableCell>1/18/2016</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Example>
+
+## Alignment
+
+{
+
+<Example>
+  <Table>
+    <TableHeader>
+      <TableColumn alignment="start">Name</TableColumn>
+      <TableColumn alignment="center">Type</TableColumn>
+      <TableColumn alignment="end">Date modified</TableColumn>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell alignment="start">Games</TableCell>
+        <TableCell alignment="center">File folder</TableCell>
+        <TableCell alignment="end">6/7/2020</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell alignment="start">Program Files</TableCell>
+        <TableCell alignment="center">File folder</TableCell>
+        <TableCell alignment="end">4/7/2021</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Example>
+}
