@@ -1,6 +1,6 @@
 .page {
   display: grid;
   min-height: 100vh;
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
+  color: var(--text-color);
+  background: var(--background-color);
 }

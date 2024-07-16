@@ -7,8 +7,8 @@
   font-size: var(--text-size);
   font-family: inherit;
   font-weight: 500;
-  color: hsl(var(--foreground));
-  background: hsl(var(--foreground) / calc(1 - 0.96));
+  color: var(--text-color);
+  background: var(--input-background-color);
   border: 1px solid transparent;
   border-radius: var(--border-radius);
   padding: var(--padding);
@@ -17,52 +17,52 @@
 }
 
 .button:hover {
-  background: hsl(var(--foreground) / calc(1 - 0.94));
+  background: color-mix(in srgb, var(--input-background-color), 5% black);
 }
 
 .button:active {
-  background: hsl(var(--foreground) / calc(1 - 0.92));
+  background: color-mix(in srgb, var(--input-background-color), 10% black);
 }
 
 .button:disabled {
-  color: var(--text-color3);
+  color: var(--text-muted-color);
   pointer-events: none;
 }
 
 .button.primary {
-  color: hsl(var(--primary-foreground));
-  background: hsl(var(--primary-background));
+  color: var(--primary-text-color);
+  background: var(--primary-color);
 }
 
 .button.primary:hover {
-  background: hsl(var(--primary-background) / calc(1 - 0.1));
+  background: color-mix(in srgb, var(--primary-color), 10% white);
 }
 
 .button.primary:active {
-  background: hsl(var(--primary-background) / calc(1 - 0.2));
+  background: color-mix(in srgb, var(--primary-color), 20% white);
 }
 
 .button.primary:disabled {
-  color: hsl(var(--primary-foreground) / calc(1 - 0.2));
-  background: hsl(var(--base-color6));
+  color: var(--primary-text-color);
+  background: var(--base-color6);
 }
 
 .button.secondary {
-  color: hsl(var(--secondary-foreground));
-  background: hsl(var(--secondary-background));
+  color: var(--secondary-text-color);
+  background: var(--secondary-color);
   border: var(--border);
 }
 
 .button.secondary:hover {
-  background: hsl(var(--accent-background));
+  background: var(--hover-color);
 }
 
 .button.secondary:active {
-  background: hsl(var(--accent-background) / calc(1 - 0.5));
+  background: color-mix(in srgb, var(--hover-color), 5% black);
 }
 
 .button.secondary:disabled {
-  color: var(--text-color3);
+  color: var(--text-faded-color);
 }
 
 .button.quiet {
@@ -70,29 +70,29 @@
 }
 
 .button.quiet:hover {
-  background: hsl(var(--foreground) / calc(1 - 0.96));
+  background: var(--hover-color);
 }
 
 .button.quiet:active {
-  background: hsl(var(--foreground) / calc(1 - 0.92));
+  background: color-mix(in srgb, var(--hover-color), 5% black);
 }
 
 .button.danger {
-  color: hsl(var(--danger-foreground));
-  background: hsl(var(--danger-background));
+  color: var(--base-color1);
+  background: var(--danger-color);
 }
 
 .button.danger:hover {
-  background: hsl(var(--danger-background) / calc(1 - 0.1));
+  background: color-mix(in srgb, var(--danger-color), 5% black);
 }
 
 .button.danger:active {
-  background: hsl(var(--danger-background) / calc(1 - 0.2));
+  background: color-mix(in srgb, var(--danger-color), 10% black);
 }
 
 .button.danger:disabled {
-  color: hsl(var(--primary-foreground) / calc(1 - 0.2));
-  background: hsl(var(--base-color6));
+  color: var(--primary-text-color);
+  background: var(--base-color6);
 }
 
 .button.size1 {

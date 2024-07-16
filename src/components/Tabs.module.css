@@ -6,7 +6,7 @@
 .list {
   display: flex;
   align-items: center;
-  border-bottom: 2px solid hsl(var(--base-color3));
+  border-bottom: 2px solid var(--border-color);
   gap: var(--gap);
   margin-bottom: var(--spacing6);
 }
@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-color2);
+  color: var(--text-muted-color);
   min-height: 3rem;
   border-bottom: 2px solid transparent;
   user-select: none;
@@ -28,15 +28,15 @@
 }
 
 .tab:hover {
-  color: var(--text-color2);
+  color: var(--text-color);
 }
 
 .tab[data-selected] {
-  color: var(--text-color1);
-  border-bottom: 2px solid hsl(var(--primary-background));
+  color: var(--text-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
-.tab.disabled {
-  color: var(--text-color3);
+.tab[data-disabled] {
+  color: var(--text-faded-color);
   cursor: default;
 }

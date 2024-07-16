@@ -21,7 +21,7 @@
 
 .row {
   display: flex;
-  border-bottom: 1px solid hsl(var(--base-color3));
+  border-bottom: 1px solid var(--base-color3);
 }
 
 .header .column:first-child,

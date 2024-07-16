@@ -2,7 +2,7 @@
   position: relative;
   padding: var(--spacing6);
   box-shadow: var(--shadow3);
-  background: hsl(var(--background));
+  background: var(--background-color);
   border: var(--border);
   border-radius: var(--border-radius);
 }

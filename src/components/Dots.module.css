@@ -9,7 +9,7 @@
 
 .dots div {
   border-radius: 100%;
-  background: hsl(var(--input-background));
+  background: var(--input-background-color);
   animation: dots-blink 1.2s infinite;
   animation-fill-mode: both;
 }

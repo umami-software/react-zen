@@ -7,7 +7,7 @@
 
 .track {
   height: 10px;
-  background: hsl(var(--input-background));
+  background: var(--input-background-color);
   flex-basis: 100%;
   width: fit-content;
   border-radius: var(--border-radius);
@@ -16,7 +16,7 @@
 }
 
 .fill {
-  background: hsl(var(--primary-background));
+  background: var(--primary-color);
   height: 10px;
 }
 

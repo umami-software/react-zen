@@ -14,21 +14,21 @@
 }
 
 .status.success {
-  background: hsl(var(--status-success-color));
+  background: var(--success-color);
 }
 
 .status.warning {
-  background: hsl(var(--status-warning-color));
+  background: var(--warning-color);
 }
 
 .status.error {
-  background: hsl(var(--status-error-color));
+  background: var(--danger-color);
 }
 
 .status.active {
-  background: hsl(var(--status-active-color));
+  background: var(--active-color);
 }
 
 .status.inactive {
-  background: hsl(var(--status-inactive-color));
+  background: var(--inactive-color);
 }

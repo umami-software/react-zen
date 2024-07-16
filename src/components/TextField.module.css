@@ -3,7 +3,7 @@
   align-items: center;
   border: var(--border);
   border-radius: var(--border-radius);
-  background: var(--background);
+  background: var(--background-color);
   box-shadow: var(--shadow);
   gap: var(--spacing2);
   position: relative;
@@ -11,11 +11,11 @@
 
 .field[data-readonly],
 .field[data-disabled] {
-  background: hsl(var(--accent-background));
+  background: var(--hover-color);
 }
 
 .input {
-  color: var(--text-color1);
+  color: var(--text-color);
   border: 0;
   background: transparent;
   padding: var(--padding);
@@ -27,11 +27,11 @@
 }
 
 .input:disabled {
-  color: var(--text-color3);
+  color: var(--text-faded-color);
 }
 
 .icon {
-  color: var(--text-color3);
+  color: var(--text-faded-color);
 }
 
 .textarea {

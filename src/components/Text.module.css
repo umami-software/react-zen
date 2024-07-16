@@ -39,15 +39,15 @@
 }
 
 .color1 {
-  color: var(--text-color1);
+  color: var(--text-color);
 }
 
 .color2 {
-  color: var(--text-color2);
+  color: var(--text-muted-color);
 }
 
 .color3 {
-  color: var(--text-color3);
+  color: var(--text-faded-color);
 }
 
 .weight1 {

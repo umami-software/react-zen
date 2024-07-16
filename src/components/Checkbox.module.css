@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   gap: var(--spacing3);
-  color: var(--text-color1);
+  color: var(--text-color);
 }
 
 .box {
@@ -24,8 +24,8 @@
 }
 
 .checkbox[data-selected] .box {
-  color: hsl(var(--primary-foreground));
-  background: hsl(var(--primary-background));
+  color: var(--primary-text-color);
+  background: var(--primary-color);
 }
 
 .checkbox[data-selected] .icon {
@@ -34,14 +34,14 @@
 
 .checkbox[data-indeterminate] .icon {
   display: block;
-  background: hsl(var(--background));
+  background: var(--background-color);
 }
 
 .checkbox[data-disabled] {
-  color: var(--text-color3);
+  color: var(--text-faded-color);
 }
 
 .checkbox[data-disabled] .box {
-  background: hsl(var(--accent-background));
+  background: var(--hover-color);
   pointer-events: none;
 }

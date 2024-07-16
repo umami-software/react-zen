@@ -7,8 +7,8 @@
   font-size: var(--text-size);
   font-family: inherit;
   font-weight: 500;
-  color: hsl(var(--foreground));
-  background: hsl(var(--foreground) / calc(1 - 0.96));
+  color: var(--text-color);
+  background: transparent;
   border: 1px solid transparent;
   border-radius: var(--border-radius);
   padding: var(--padding);
@@ -16,7 +16,11 @@
   cursor: pointer;
 }
 
+.toggle:hover {
+  background: var(--hover-color);
+}
+
 .toggle[data-selected] {
-  color: hsl(var(--primary-foreground)) !important;
-  background: hsl(var(--primary-background));
+  color: var(--primary-text-color);
+  background: var(--primary-color);
 }

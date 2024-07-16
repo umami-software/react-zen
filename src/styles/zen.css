@@ -47,23 +47,23 @@
   --shadow5: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --shadow6: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
-  --base-color1: 0 0% 98%; /* #fafafa */
-  --base-color2: 0 0% 96.1%; /* #f5f5f5 */
-  --base-color3: 0 0% 89.8%; /* #e5e5e5 */
-  --base-color4: 0 0% 83.1%; /* #d4d4d4 */
-  --base-color5: 0 0% 63.9%; /* #a3a3a3 */
-  --base-color6: 0 0% 45.1%; /* #737373 */
-  --base-color7: 0 0% 32.2%; /* #525252 */
-  --base-color8: 0 0% 25.1%; /* #262626 */
-  --base-color9: 0 0% 14.9%; /* #262626; */
-  --base-color10: 0 0% 9%; /* #171717; */
-  --base-color11: 0 0% 3.9%; /* #0a0a0a; */
+  --base-color1: #fafafa; /* 0 0% 98% */
+  --base-color2: #f5f5f5; /* 0 0% 96.1% */
+  --base-color3: #e5e5e5; /*  0 0% 89.8% */
+  --base-color4: #d4d4d4; /* 0 0% 83.1% */
+  --base-color5: #a3a3a3; /* 0 0% 63.9% */
+  --base-color6: #737373; /* 0 0% 45.1% */
+  --base-color7: #525252; /* 0 0% 32.2% */
+  --base-color8: #404040; /*  0 0% 25.1% */
+  --base-color9: #262626; /* 0 0% 14.9% */
+  --base-color10: #171717; /* 0 0% 9% */
+  --base-color11: #0a0a0a; /* 0 0% 3.9% */
 
-  --status-success-color: 142.1 70.6% 45.3%;
-  --status-error-color: 0 84.2% 60.2%;
-  --status-warning-color: 24.6 95% 53.1%;
-  --status-active-color: 217.2 91.2% 59.8%;
-  --status-inactive-color: 0 0% 63.9%;
+  --success-color: #22c55e; /* 142.1 70.6% 45.3% */
+  --danger-color: #ef4444; /* 0 84.2% 60.2% */
+  --warning-color: #f97316; /* 24.6 95% 53.1% */
+  --active-color: #3b82f6; /* 217.2 91.2% 59.8% */
+  --inactive-color: #a3a3a3; /* 0 0% 63.9% */
 
   /* Global settings */
 
@@ -81,52 +81,41 @@
 
   /* Theme settings */
 
-  --background: 0 0% 100%;
-  --foreground: var(--base-color11);
-  --primary-background: var(--base-color10);
-  --primary-foreground: var(--base-color1);
-  --secondary-background: 0 0% 100%;
-  --secondary-foreground: var(--base-color10);
-  --muted-background: var(--base-color2);
-  --muted-foreground: var(--base-color6);
-  --accent-background: var(--base-color1);
-  --accent-foreground: var(--base-color10);
-  --danger-background: 0 84.2% 60.2%;
-  --danger-foreground: var(--base-color1);
-  --input-background: var(--base-color3);
-  --ring-background: var(--base-color11);
+  --text-color: var(--base-color11);
+  --text-muted-color: var(--base-color6);
+  --text-faded-color: var(--base-color4);
 
-  --text-color1: hsl(var(--base-color11));
-  --text-color2: hsl(var(--base-color6));
-  --text-color3: hsl(var(--base-color5));
-  --text-color4: hsl(var(--base-color4));
+  --background-color: #fff;
 
-  --border-color: hsl(var(--base-color4));
+  --border-color: var(--base-color4);
   --border: 1px solid var(--border-color);
 
-  .dark,
+  --primary-color: var(--base-color10);
+  --primary-text-color: var(--base-color1);
+  --secondary-color: transparent;
+  --secondary-text-color: var(--text-color);
+  --hover-color: var(--base-color2);
+  --hover-text-color: var(--text-color);
+
+  --input-background-color: var(--base-color2);
+
   [data-theme='dark'] {
-    --background: var(--base-color11);
-    --foreground: var(--base-color1);
-    --primary-background: var(--base-color1);
-    --primary-foreground: var(--base-color10);
-    --secondary-background: var(--base-color11);
-    --secondary-foreground: var(--base-color1);
-    --muted-background: var(--base-color9);
-    --muted-foreground: var(--base-color5);
-    --accent-background: var(--base-color9);
-    --accent-foreground: var(--base-color1);
-    --danger-background: 0 72.2% 50.6%;
-    --danger-foreground: var(--base-color1);
-    --input-background: var(--base-color9);
-    --ring-background: var(--base-color4);
+    --text-color: var(--base-color1);
+    --text-muted-color: var(--base-color6);
+    --text-faded-color: var(--base-color8);
 
-    --text-color1: hsl(var(--base-color2));
-    --text-color2: hsl(var(--base-color5));
-    --text-color3: hsl(var(--base-color7));
-    --text-color4: hsl(var(--base-color8));
+    --background-color: var(--base-color11);
 
-    --border-color: hsl(var(--base-color8));
+    --border-color: var(--base-color8);
     --border: 1px solid var(--border-color);
+
+    --primary-color: var(--base-color1);
+    --primary-text-color: var(--base-color10);
+    --secondary-color: transparent;
+    --secondary-text-color: var(--text-color);
+    --hover-color: var(--base-color9);
+    --hover-text-color: var(--text-color);
+
+    --input-background-color: var(--base-color8);
   }
 }

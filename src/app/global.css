@@ -9,8 +9,8 @@ html, body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  color: var(--text-color1);
-  background: hsl(var(--background));
+  color: var(--text-color);
+  background: var(--background-color);
 }
 
 input, textarea, button {
@@ -25,12 +25,12 @@ input, textarea, button {
 }
 
 a, a:active, a:visited {
-  color: var(--text-color2);
+  color: var(--text-muted-color);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--text-color1);
+  color: var(--text-color);
 }
 
 img,
@@ -52,7 +52,7 @@ video {
 }
 
 pre {
-  color: var(--text-color1);
+  color: var(--text-color);
   font-family: monospace;
   font-size: 14px;
   line-height: 1.5rem;

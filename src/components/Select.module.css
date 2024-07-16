@@ -1,21 +1,21 @@
 .select {
   display: flex;
   align-items: center;
-  color: var(--text-color1);
-  background: var(--background);
+  color: var(--text-color);
+  background: var(--background-color);
   box-shadow: var(--shadow);
 }
 
 .button {
   display: flex;
   align-items: center;
-  color: var(--text-color1);
+  color: var(--text-color);
   font-size: var(--text-size);
   gap: var(--gap);
   border: var(--border);
   padding: var(--padding);
   border-radius: var(--border-radius);
-  background: hsl(var(--background));
+  background: var(--background-color);
   cursor: pointer;
 }
 

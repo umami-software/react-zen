@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  color: var(--text-color1);
+  color: var(--text-color);
   border: var(--border);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
@@ -17,7 +17,7 @@
 .input {
   background: none;
   border: none;
-  color: var(--text-color1);
+  color: var(--text-color);
   padding: var(--padding);
 }
 
@@ -27,7 +27,7 @@
   justify-content: center;
   border: 0;
   background: transparent;
-  color: var(--text-color3);
+  color: var(--text-faded-color);
 }
 
 .list {

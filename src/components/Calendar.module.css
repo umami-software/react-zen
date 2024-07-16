@@ -42,9 +42,9 @@
 }
 
 .cell:hover {
-  color: var(--text-color1);
+  color: var(--text-color);
   border-color: var(--border-color);
-  background: hsl(var(--accent-background));
+  background: var(--hover-color);
 }
 
 .cell[data-outside-month] {
@@ -52,13 +52,13 @@
 }
 
 .cell[data-focus-visible] {
-  outline: 2px solid hsl(var(--ring-background));
+  outline: 2px solid var(--ring-background);
   outline-offset: 2px;
 }
 
 .cell[data-selected] {
   font-weight: var(--text-weight5);
-  color: hsl(var(--primary-foreground));
-  border-color: hsl(var(--primary-background));
-  background: hsl(var(--primary-background));
+  color: var(--primary-text-color);
+  border-color: var(--primary-color);
+  background: var(--primary-color);
 }

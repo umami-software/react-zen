@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   gap: var(--gap);
-  color: var(--text-color1);
+  color: var(--text-color);
   --knob-size: 20px;
   --knob-border-size: 2px;
 }
@@ -15,7 +15,7 @@
   width: calc(var(--knob-size) * 2);
   height: var(--knob-size);
   border-radius: calc(var(--knob-size) + var(--knob-border-size) * 2);
-  background: hsl(var(--input-background));
+  background: var(--input-background-color);
   transition: background-color 0.2s;
   cursor: pointer;
 }
@@ -25,29 +25,29 @@
   width: var(--knob-size);
   height: var(--knob-size);
   border-radius: 100%;
-  background: hsl(var(--background));
+  background: var(--background-color);
   transition: all 0.2s;
 }
 
 .switch[data-selected] .track {
-  border-color: hsl(var(--primary-background));
-  background: hsl(var(--primary-background));
+  border-color: var(--primary-color);
+  background: var(--primary-color);
 }
 
 .switch[data-selected] .knob {
   margin-left: var(--knob-size);
-  border-color: hsl(var(--primary-background));
+  border-color: var(--primary-color);
 }
 
 .switch[data-disabled] {
-  color: var(--text-color3);
+  color: var(--text-faded-color);
   pointer-events: none;
 }
 
 .switch[data-disabled] .track {
-  background: hsl(var(--input-background) / calc(1 - 0.75));
+  background: var(--input-background-color);
 }
 
 .switch[data-disabled] .knob {
-  border-color: hsl(var(--input-background));
+  border-color: var(--input-background-color);
 }

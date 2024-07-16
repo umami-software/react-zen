@@ -13,15 +13,15 @@
 }
 
 .breadcrumb a {
-  color: var(--text-color2);
+  color: var(--text-muted-color);
 }
 
 .breadcrumb a:hover {
-  color: var(--text-color1);
+  color: var(--text-color);
 }
 
 .icon {
-  color: var(--text-color2);
+  color: var(--text-muted-color);
 }
 
 .breadcrumb:last-child {

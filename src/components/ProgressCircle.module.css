@@ -15,11 +15,11 @@
 }
 
 .track {
-  stroke: hsl(var(--input-background));
+  stroke: var(--input-background-color);
 }
 
 .fill {
-  stroke: hsl(var(--primary-background));
+  stroke: var(--primary-color);
 }
 
 .value {

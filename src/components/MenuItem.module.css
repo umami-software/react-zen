@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--text-color1);
-  background: hsl(var(--background));
+  color: var(--text-color);
+  background: var(--background-color);
   padding: var(--padding);
   border-radius: var(--border-radius);
   gap: var(--gap);
@@ -11,7 +11,7 @@
 }
 
 .item:hover {
-  background: hsl(var(--accent-background));
+  background: var(--hover-color);
 }
 
 .item[data-selected] {
