@@ -1,24 +1,19 @@
 import { ReactNode } from 'react';
-import { MenuTrigger } from 'react-aria-components';
-import { HiOutlineDotsHorizontal } from 'react-icons/hi';
-import Button from './Button';
+import { MenuTrigger, PopoverProps } from 'react-aria-components';
 import Popover from './Popover';
 
-interface MenuButtonProps {
+interface MenuButtonProps extends PopoverProps {
   placement?: 'top' | 'bottom' | 'left' | 'right';
-  button?: ReactNode;
-  children?: ReactNode;
+  children?: ReactNode[];
 }
 
-function _MenuButton({ placement, button, children, ...props }: MenuButtonProps) {
+function _MenuButton({ placement, children, ...props }: MenuButtonProps) {
+  const [button, menu] = children || [];
+
   return (
-    <MenuTrigger {...props}>
-      {button || (
-        <Button variant="outline">
-          <HiOutlineDotsHorizontal />
-        </Button>
-      )}
-      <Popover placement={placement}>{children}</Popover>
+    <MenuTrigger>
+      {button}
+      <Popover {...props}>{menu}</Popover>
     </MenuTrigger>
   );
 }

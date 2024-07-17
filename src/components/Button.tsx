@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './Button.module.css';
 
 interface _ButtonProps extends ButtonProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'quiet' | 'danger';
+  variant?: 'primary' | 'secondary' | 'outline' | 'quiet' | 'danger' | 'zero';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   className?: string;
 }

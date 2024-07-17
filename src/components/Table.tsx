@@ -25,7 +25,7 @@ interface TableCellProps extends CellProps {
 
 function _Table({ children, className, ...props }: TableProps) {
   return (
-    <Table {...props} className={classNames(styles.table, className)}>
+    <Table {...props} className={classNames(styles.table, className)} aria-label="Table">
       {children}
     </Table>
   );
