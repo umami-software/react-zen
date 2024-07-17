@@ -32,6 +32,10 @@
   color: var(--text-faded-color);
 }
 
+.lighter {
+  font-weight: 200;
+}
+
 .light {
   font-weight: 300;
 }
@@ -42,4 +46,20 @@
 
 .bolder {
   font-weight: 900;
+}
+
+.tighter {
+  letter-spacing: -0.05em;
+}
+
+.tight {
+  letter-spacing: -0.025em;
+}
+
+.wide {
+  letter-spacing: 0.025em;
+}
+
+.wider {
+  letter-spacing: 0.05em;
 }

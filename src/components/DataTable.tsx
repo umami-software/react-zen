@@ -32,9 +32,9 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
         {row => {
           return (
             <TableRow>
-              {columns.map(({ id, value, ...cellProps }) => {
+              {columns.map(({ id, value, className, ...cellProps }) => {
                 return (
-                  <TableCell {...cellProps} key={id}>
+                  <TableCell {...cellProps} key={id} className={classNames(styles.cell, className)}>
                     {!value && row[id]}
                     {typeof value === 'function' ? value(row, id) : value}
                   </TableCell>

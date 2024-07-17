@@ -4,15 +4,16 @@ import { Slot } from '@radix-ui/react-slot';
 import styles from './Text.module.css';
 
 interface TextProps {
-  type?: 'muted' | 'faded';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  weight?: 'light' | 'bold' | 'bolder';
+  spacing?: 'tighter' | 'tight' | 'wide' | 'wider';
+  type?: 'muted' | 'faded';
+  weight?: 'lighter' | 'light' | 'bold' | 'bolder';
   asChild?: boolean;
   className?: string;
   children?: ReactNode;
 }
 
-function Text({ children, type, size, weight, asChild, className, ...props }: TextProps) {
+function Text({ children, type, size, spacing, weight, asChild, className, ...props }: TextProps) {
   const Component = asChild ? Slot : 'span';
 
   return (
@@ -22,6 +23,7 @@ function Text({ children, type, size, weight, asChild, className, ...props }: Te
         styles.text,
         className,
         size && styles[size],
+        spacing && styles[spacing],
         type && styles[type],
         weight && styles[weight],
       )}
