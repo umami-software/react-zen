@@ -8,6 +8,7 @@ import { Checkbox } from './Checkbox';
 import { Column } from './Column';
 import { Combobox } from './Combobox';
 import { Dialog } from './Dialog';
+import { DataTable, DataColumn } from './DataTable';
 import { Dots } from './Dots';
 import { Flexbox } from './Flexbox';
 import { Heading } from './Heading';
@@ -46,6 +47,8 @@ export {
   Checkbox,
   Column,
   Combobox,
+  DataTable,
+  DataColumn,
   Dialog,
   DialogTrigger,
   Dots,

@@ -1,21 +1,16 @@
 import { ReactNode } from 'react';
-import { MenuTrigger, MenuProps, Popover } from 'react-aria-components';
+import { MenuTrigger } from 'react-aria-components';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import Button from './Button';
-import Menu from './Menu';
+import Popover from './Popover';
 
-function _MenuButton({
-  items,
-  children,
-  button,
-  menuProps,
-  ...props
-}: {
-  items: any[];
+interface MenuButtonProps {
+  placement?: 'top' | 'bottom' | 'left' | 'right';
   button?: ReactNode;
-  menuProps?: MenuProps<any> & Omit<MenuProps<any>, 'children'>;
   children?: ReactNode;
-}) {
+}
+
+function _MenuButton({ placement, button, children, ...props }: MenuButtonProps) {
   return (
     <MenuTrigger {...props}>
       {button || (
@@ -23,15 +18,12 @@ function _MenuButton({
           <HiOutlineDotsHorizontal />
         </Button>
       )}
-      <Popover>
-        <Menu {...menuProps} items={items}>
-          {children}
-        </Menu>
-      </Popover>
+      <Popover placement={placement}>{children}</Popover>
     </MenuTrigger>
   );
 }
 
 export { _MenuButton as MenuButton };
+export type { MenuButtonProps };
 
 export default _MenuButton;

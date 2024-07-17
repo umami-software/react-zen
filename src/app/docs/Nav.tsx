@@ -22,6 +22,7 @@ const items = [
       { title: 'Calendar', path: '/docs/components/calendar' },
       { title: 'Checkbox', path: '/docs/components/checkbox' },
       { title: 'Combobox', path: '/docs/components/combobox' },
+      { title: 'Data Table', path: '/docs/components/data-table' },
       { title: 'Dialog', path: '/docs/components/dialog' },
       { title: 'Dots', path: '/docs/components/dots' },
       { title: 'Heading', path: '/docs/components/heading' },
@@ -63,7 +64,7 @@ export default function Nav() {
                   key={path}
                   className={classNames(styles.item, pathname.endsWith(path) && styles.selected)}
                 >
-                  <Text color={2}>
+                  <Text color="faded">
                     <Link href={path}>{title}</Link>
                   </Text>
                 </div>

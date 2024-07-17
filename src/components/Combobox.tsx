@@ -1,9 +1,10 @@
-import { ComboBox, ComboBoxProps, Input, Popover, Button } from 'react-aria-components';
+import { ComboBox, ComboBoxProps, Input, Button } from 'react-aria-components';
 import { HiChevronDown } from 'react-icons/hi2';
 import classNames from 'classnames';
 import List from './List';
 import ListItem from './ListItem';
 import Icon from './Icon';
+import Popover from './Popover';
 import styles from './Combobox.module.css';
 
 export interface ComboboxProps extends ComboBoxProps<any> {

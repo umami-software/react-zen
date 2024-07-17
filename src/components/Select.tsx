@@ -1,10 +1,11 @@
+import { ReactNode } from 'react';
 import classNames from 'classnames';
-import { Button, Popover, Select, SelectValue } from 'react-aria-components';
+import { Button, Select, SelectValue } from 'react-aria-components';
 import { HiChevronDown } from 'react-icons/hi2';
 import List from './List';
 import ListItem from './ListItem';
+import Popover from './Popover';
 import styles from './Select.module.css';
-import { ReactNode } from 'react';
 
 export interface SelectProps {
   items: any[];
