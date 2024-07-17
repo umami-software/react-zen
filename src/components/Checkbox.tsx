@@ -7,12 +7,12 @@ import styles from './Checkbox.module.css';
 function _Checkbox({ className, children, ...props }: CheckboxProps) {
   return (
     <Checkbox {...props} className={classNames(styles.checkbox, className)}>
-      {({ isIndeterminate }) => {
+      {({ isIndeterminate, isSelected }) => {
         return (
           <>
             <div className={styles.box}>
               <Icon className={styles.icon} size="xs">
-                {isIndeterminate ? <HiMinus /> : <HiCheck />}
+                {isIndeterminate ? <HiMinus /> : isSelected ? <HiCheck /> : null}
               </Icon>
             </div>
             {children as any}
