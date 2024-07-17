@@ -64,7 +64,7 @@ export default function Nav() {
                   key={path}
                   className={classNames(styles.item, pathname.endsWith(path) && styles.selected)}
                 >
-                  <Text color="faded">
+                  <Text type="faded">
                     <Link href={path}>{title}</Link>
                   </Text>
                 </div>

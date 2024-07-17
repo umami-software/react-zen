@@ -1,41 +1,27 @@
 .text {
   color: currentColor;
+  line-height: 1.2em;
 }
 
-.size1 {
-  font-size: var(--text-size1);
+.xs {
+  font-size: var(--text-size-xs);
 }
 
-.size2 {
-  font-size: var(--text-size2);
+.sm {
+  font-size: var(--text-size-sm);
 }
 
-.size3 {
-  font-size: var(--text-size3);
+.md {
+  font-size: var(--text-size-md);
 }
 
-.size4 {
-  font-size: var(--text-size4);
+.lg {
+  font-size: var(--text-size-lg);
 }
 
-.size5 {
-  font-size: var(--text-size5);
-}
+.xl {
+  font-size: var(--text-size-xl);
 
-.size6 {
-  font-size: var(--text-size6);
-}
-
-.size7 {
-  font-size: var(--text-size7);
-}
-
-.size8 {
-  font-size: var(--text-size8);
-}
-
-.size9 {
-  font-size: var(--text-size9);
 }
 
 .muted {
