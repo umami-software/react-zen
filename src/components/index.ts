@@ -18,7 +18,6 @@ import { ListItem } from './ListItem';
 import { Loading } from './Loading';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
-import { MenuButton } from './MenuButton';
 import { Modal } from './Modal';
 import { Page } from './Page';
 import { Popover } from './Popover';
@@ -61,7 +60,6 @@ export {
   Loading,
   Menu,
   MenuItem,
-  MenuButton,
   MenuTrigger,
   Modal,
   Page,

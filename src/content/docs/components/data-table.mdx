@@ -19,13 +19,15 @@ A data table.
     <DataColumn id="name" label="Name" />
     <DataColumn id="title" label="Title" />
     <DataColumn id="actions" label="" alignment="end">
-      <MenuButton items={['email','phone']} placement="end">
+      <MenuTrigger>
         <Button variant="quiet" size="xs">...</Button>
-        <Menu>
-          <MenuItem id="email">Send email</MenuItem>
-          <MenuItem id="phone">Call phone</MenuItem>
-        </Menu>
-      </MenuButton>
+        <Popover>
+          <Menu>
+            <MenuItem id="email">Send email</MenuItem>
+            <MenuItem id="phone">Call phone</MenuItem>
+          </Menu>
+        </Popover>
+      </MenuTrigger>
     </DataColumn>
 
   </DataTable>
