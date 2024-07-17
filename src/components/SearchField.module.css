@@ -9,7 +9,7 @@
 
 .field[data-readonly],
 .field[data-disabled] {
-  background: var(--hover-color);
+  background: var(--text-muted-color);
 }
 
 .input {
@@ -21,11 +21,11 @@
 }
 
 .input::placeholder {
-  color: var(--text-color4);
+  color: var(--text-muted-color);
 }
 
 .input:disabled {
-  color: var(--text-faded-color);
+  color: var(--text-muted-color);
 }
 
 .input::-webkit-search-cancel-button,
@@ -34,7 +34,7 @@
 }
 
 .icon {
-  color: var(--text-faded-color);
+  color: var(--text-muted-color);
   margin: 0 var(--spacing2);
 }
 
@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-faded-color);
+  color: var(--text-muted-color);
   border: none;
   background: none;
   cursor: pointer;

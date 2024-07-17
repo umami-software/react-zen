@@ -1,11 +1,10 @@
 import classNames from 'classnames';
-import { CommonProps } from 'components/types';
-// eslint-disable-next-line css-modules/no-unused-class
 import styles from './Spinner.module.css';
 
-export interface SpinnerProps extends CommonProps {
+export interface SpinnerProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   quiet?: boolean;
+  className?: string;
 }
 
 export function Spinner(props: SpinnerProps) {

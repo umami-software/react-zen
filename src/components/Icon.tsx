@@ -4,7 +4,7 @@ import { Slot } from '@radix-ui/react-slot';
 import styles from './Icon.module.css';
 
 export interface IconProps {
-  size?: 1 | 2 | 3 | 4 | 5 | 6;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'input';
   rotate?: number;
   style?: CSSProperties;
@@ -13,7 +13,7 @@ export interface IconProps {
 }
 
 export function Icon({
-  size = 3,
+  size = 'sm',
   variant,
   rotate,
   style,
@@ -24,7 +24,7 @@ export function Icon({
   return (
     <Slot
       {...props}
-      className={classNames(styles.icon, className, { [styles[`size${size}`]]: size })}
+      className={classNames(styles.icon, className, size && styles[size])}
       style={{ ...style, transform: rotate ? `rotate(${rotate}deg)` : undefined }}
     >
       {children}

@@ -8,43 +8,45 @@ title: Components - Button
 A button element.
 
 <Example>
-  <Button>Button</Button>
+  <Button variant="primary">Button</Button>
 </Example>
 
 ## Variants
 
 <Example direction="row">
-  <Button>default</Button>
-  <Button variant="primary">primary</Button>
-  <Button variant="secondary">secondary</Button>
-  <Button variant="quiet">quiet</Button>
-  <Button variant="danger">danger</Button>
+  <Button variant="primary">Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="quiet">Quiet</Button>
+  <Button variant="danger">Danger</Button>
 </Example>
 
 ## Sizes
 
 <Example direction="row">
-  <Button size={1}>Size 1</Button>
-  <Button size={2}>Size 2</Button>
-  <Button size={3}>Size 3</Button>
-  <Button size={4}>Size 4</Button>
+  <Button size="xs">Extra small</Button>
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
 </Example>
 
 ## Disabled
 
 <Example direction="row">
-  <Button isDisabled>{'default'}</Button>
   <Button isDisabled variant="primary">
-    {'primary'}
+    {'Primary'}
   </Button>
   <Button isDisabled variant="secondary">
-    {'secondary'}
+    {'Secondary'}
+  </Button>
+  <Button isDisabled variant="outline">
+    {'Outline'}
   </Button>
   <Button isDisabled variant="quiet">
-    {'quiet'}
+    {'Quiet'}
   </Button>
   <Button isDisabled variant="danger">
-    {'danger'}
+    {'Danger'}
   </Button>
 </Example>
 

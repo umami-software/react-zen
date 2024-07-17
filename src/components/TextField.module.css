@@ -23,15 +23,15 @@
 }
 
 .input::placeholder {
-  color: var(--text-color4);
+  color: var(--text-muted-color);
 }
 
 .input:disabled {
-  color: var(--text-faded-color);
+  color: var(--text-muted-color);
 }
 
 .icon {
-  color: var(--text-faded-color);
+  color: var(--text-muted-color);
 }
 
 .textarea {

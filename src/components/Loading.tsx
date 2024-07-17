@@ -14,7 +14,7 @@ export function Loading(props: LoadingProps) {
   const { size, position = 'inline', icon = 'spinner', className, ...domProps } = props;
   return (
     <div {...domProps} className={classNames(styles.loading, className, styles[position])}>
-      {icon === 'dots' && <Dots size={size} />}
+      {icon === 'dots' && <Dots />}
       {icon === 'spinner' && <Spinner size={size} />}
     </div>
   );

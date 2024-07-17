@@ -1,20 +1,21 @@
 import classNames from 'classnames';
 import styles from './Dots.module.css';
 
-export interface DotsProps {
-  size?: 'sm' | 'md' | 'lg';
+interface DotsProps {
   className?: string;
 }
 
-export function Dots(props: DotsProps) {
-  const { size = 'md', className, ...domProps } = props;
+function Dots({ className, ...props }: DotsProps) {
   return (
-    <div {...domProps} className={classNames(styles.dots, styles[`size-${size}`], className)}>
-      <div />
-      <div />
-      <div />
+    <div {...props} className={classNames(styles.dots, className)}>
+      <div className={styles.dot} />
+      <div className={styles.dot} />
+      <div className={styles.dot} />
     </div>
   );
 }
+
+export { Dots };
+export type { DotsProps };
 
 export default Dots;

@@ -1,14 +1,13 @@
 'use client';
-import classNames from 'classnames';
 import { Button } from '@/components';
 import useTheme from '@/components/hooks/useTheme';
 import styles from './Header.module.css';
 
-export default function Header({ className, ...domProps }: { className?: string }) {
+export default function Header() {
   const { setTheme } = useTheme();
 
   return (
-    <div {...domProps} className={classNames(styles.header, className)}>
+    <div className={styles.header}>
       <div>
         <a href={'/'}>
           <b>zen</b>
@@ -16,10 +15,10 @@ export default function Header({ className, ...domProps }: { className?: string 
         - <a href={'/docs'}>docs</a>
       </div>
       <div className={styles.buttons}>
-        <Button size={1} onPress={() => setTheme('light')}>
+        <Button size="xs" onPress={() => setTheme('light')}>
           light
         </Button>
-        <Button size={1} onPress={() => setTheme('dark')}>
+        <Button size="xs" onPress={() => setTheme('dark')}>
           dark
         </Button>
       </div>

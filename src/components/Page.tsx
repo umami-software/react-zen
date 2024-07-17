@@ -1,17 +1,21 @@
 import classNames from 'classnames';
-import { ReactNode, HTMLAttributes } from 'react';
+import { ReactNode } from 'react';
 import styles from './Page.module.css';
 
-export function Page({
-  style,
-  children,
-  ...attributes
-}: { style?: any; children: ReactNode } & HTMLAttributes<HTMLDivElement>) {
+interface PageProps {
+  className?: string;
+  children?: ReactNode;
+}
+
+function Page({ className, children, ...props }: PageProps) {
   return (
-    <div {...attributes} className={classNames(styles.page)}>
+    <div {...props} className={classNames(styles.page, className)}>
       {children}
     </div>
   );
 }
+
+export { Page };
+export type { PageProps };
 
 export default Page;

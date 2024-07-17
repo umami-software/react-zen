@@ -18,7 +18,7 @@ export function Combobox({ items, className, ...props }: ComboboxProps) {
       <div className={styles.field}>
         <Input className={styles.input} />
         <Button className={styles.button}>
-          <Icon size={1}>
+          <Icon>
             <HiChevronDown />
           </Icon>
         </Button>

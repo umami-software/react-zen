@@ -75,7 +75,7 @@
   /* Theme settings */
 
   --text-color: var(--base-color11);
-  --text-muted-color: var(--base-color6);
+  --text-muted-color: var(--base-color5);
   --text-faded-color: var(--base-color4);
 
   --background-color: #fff;
@@ -85,7 +85,7 @@
 
   --primary-color: var(--base-color10);
   --primary-text-color: var(--base-color1);
-  --secondary-color: transparent;
+  --secondary-color: var(--base-color2);
   --secondary-text-color: var(--text-color);
   --hover-color: var(--base-color2);
   --hover-text-color: var(--text-color);
@@ -104,7 +104,7 @@
 
     --primary-color: var(--base-color1);
     --primary-text-color: var(--base-color10);
-    --secondary-color: transparent;
+    --secondary-color: var(--base-color10);
     --secondary-text-color: var(--text-color);
     --hover-color: var(--base-color9);
     --hover-text-color: var(--text-color);

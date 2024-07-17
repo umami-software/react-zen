@@ -1,11 +1,12 @@
+import { ReactNode } from 'react';
 import classNames from 'classnames';
-import { CommonProps } from 'components/types';
-// eslint-disable-next-line css-modules/no-unused-class
 import styles from './StatusLight.module.css';
 
-export interface StatusLightProps extends CommonProps {
+export interface StatusLightProps {
   color?: string;
   variant?: 'success' | 'warning' | 'error' | 'active' | 'inactive' | 'none';
+  className?: string;
+  children?: ReactNode;
 }
 
 export function StatusLight(props: StatusLightProps) {

@@ -3,32 +3,27 @@
   fill: currentColor;
 }
 
-.size1 {
+.xs {
+  width: 12px;
+  height: 12px;
+}
+
+.sm {
   width: 16px;
   height: 16px;
 }
 
-.size2 {
-  width: 20px;
-  height: 20px;
-}
-
-.size3 {
+.md {
   width: 24px;
   height: 24px;
 }
 
-.size4 {
+.lg {
   width: 32px;
   height: 32px;
 }
 
-.size5 {
+.xl {
   width: 48px;
   height: 48px;
-}
-
-.size6 {
-  width: 60px;
-  height: 60px;
 }

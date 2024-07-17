@@ -14,7 +14,7 @@ function _MenuButton({ placement, button, children, ...props }: MenuButtonProps)
   return (
     <MenuTrigger {...props}>
       {button || (
-        <Button variant="secondary">
+        <Button variant="outline">
           <HiOutlineDotsHorizontal />
         </Button>
       )}

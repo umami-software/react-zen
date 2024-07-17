@@ -15,7 +15,7 @@ function _TextField({ asTextArea, className, ...props }: _TextFieldProps) {
     <TextField {...props} className={classNames(styles.field, className)}>
       <Component className={classNames(styles.input, asTextArea && styles.textarea)} />
       {asTextArea && (
-        <Icon className={styles.handle} size={1}>
+        <Icon className={styles.handle}>
           <GrBottomCorner />
         </Icon>
       )}

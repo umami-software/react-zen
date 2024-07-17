@@ -18,14 +18,14 @@ function _Calendar({ className, ...props }: CalendarProps<any>) {
   return (
     <Calendar {...props} className={classNames(styles.calendar, className)}>
       <header className={styles.header}>
-        <Button slot="previous" className={styles.button}>
-          <Icon rotate={90} size={1}>
+        <Button slot="previous" className={styles.button} variant="quiet">
+          <Icon rotate={90}>
             <HiChevronDown />
           </Icon>
         </Button>
         <Heading className={styles.heading} />
-        <Button slot="next" className={styles.button}>
-          <Icon rotate={-90} size={1}>
+        <Button slot="next" className={styles.button} variant="quiet">
+          <Icon rotate={-90}>
             <HiChevronDown />
           </Icon>
         </Button>

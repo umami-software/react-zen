@@ -11,7 +11,7 @@ function _Checkbox({ className, children, ...props }: CheckboxProps) {
         return (
           <>
             <div className={styles.box}>
-              <Icon className={styles.icon} size={1}>
+              <Icon className={styles.icon} size="xs">
                 {isIndeterminate ? <HiMinus /> : <HiCheck />}
               </Icon>
             </div>

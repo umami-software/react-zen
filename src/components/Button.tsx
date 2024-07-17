@@ -3,12 +3,12 @@ import classNames from 'classnames';
 import styles from './Button.module.css';
 
 interface _ButtonProps extends ButtonProps {
-  variant?: 'primary' | 'secondary' | 'quiet' | 'danger';
-  size?: 1 | 2 | 3 | 4;
+  variant?: 'primary' | 'secondary' | 'outline' | 'quiet' | 'danger';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   className?: string;
 }
 
-function _Button({ variant, size = 3, className, ...props }: _ButtonProps) {
+function _Button({ variant = 'secondary', size = 'md', className, ...props }: _ButtonProps) {
   return (
     <Button
       {...props}
@@ -16,7 +16,7 @@ function _Button({ variant, size = 3, className, ...props }: _ButtonProps) {
         styles.button,
         className,
         variant && styles[variant],
-        size && styles[`size${size}`],
+        size && styles[size],
       )}
     />
   );
