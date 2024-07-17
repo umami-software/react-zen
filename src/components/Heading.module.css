@@ -5,37 +5,37 @@
 }
 
 .size1 {
-  font-size: var(--text-size1);
+  font-size: 0.75rem;
 }
 
 .size2 {
-  font-size: var(--text-size2);
+  font-size: 1rem;
 }
 
 .size3 {
-  font-size: var(--text-size3);
+  font-size: 1.25rem;
 }
 
 .size4 {
-  font-size: var(--text-size4);
+  font-size: 1.5rem;
 }
 
 .size5 {
-  font-size: var(--text-size5);
+  font-size: 1.75rem;
 }
 
 .size6 {
-  font-size: var(--text-size6);
+  font-size: 2rem;
 }
 
 .size7 {
-  font-size: var(--text-size7);
+  font-size: 2.5rem;
 }
 
 .size8 {
-  font-size: var(--text-size8);
+  font-size: 3.5rem;
 }
 
 .size9 {
-  font-size: var(--text-size9);
+  font-size: 5rem;
 }

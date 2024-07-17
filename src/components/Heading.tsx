@@ -9,11 +9,14 @@ interface HeadingProps extends HTMLAttributes<any> {
   children: ReactNode;
 }
 
-function Heading({ size = 5, children, asChild, ...props }: HeadingProps) {
+function Heading({ size = 5, className, children, asChild, ...props }: HeadingProps) {
   const Component = asChild ? Slot : 'h1';
 
   return (
-    <Component {...props} className={classNames(styles.heading, size && [styles[`size${size}`]])}>
+    <Component
+      {...props}
+      className={classNames(styles.heading, className, size && styles[`size${size}`])}
+    >
       {children}
     </Component>
   );
