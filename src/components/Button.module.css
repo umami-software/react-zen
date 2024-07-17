@@ -59,6 +59,7 @@
 .button.outline {
   background: transparent;
   border: var(--border);
+  box-shadow: var(--shadow1);
 }
 
 .button.outline:hover {
@@ -87,11 +88,11 @@
 }
 
 .button.danger:hover {
-  background: color-mix(in srgb, var(--danger-color), 5% black);
+  background: color-mix(in srgb, var(--danger-color), 6% black);
 }
 
 .button.danger:active {
-  background: color-mix(in srgb, var(--danger-color), 10% black);
+  background: color-mix(in srgb, var(--danger-color), 12% black);
 }
 
 .button.danger:disabled {

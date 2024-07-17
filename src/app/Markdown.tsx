@@ -1,9 +1,9 @@
+import { ReactNode } from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import * as Components from '@/components';
 import * as Examples from './examples';
 import { Example } from './docs/Example';
-import Logo from '../assets/logo.svg';
-import { ReactNode } from 'react';
+import { HiMiniWifi } from 'react-icons/hi2';
 
 const { Heading } = Components;
 
@@ -11,7 +11,7 @@ const components = {
   ...Components,
   ...Examples,
   Example,
-  Logo,
+  ExampleIcon: HiMiniWifi,
   h1: ({ children }: { children: ReactNode }) => <Heading size={8}>{children}</Heading>,
   h2: ({ children }: { children: ReactNode }) => <Heading size={5}>{children}</Heading>,
   h3: ({ children }: { children: ReactNode }) => <Heading size={4}>{children}</Heading>,

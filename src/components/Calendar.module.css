@@ -52,7 +52,7 @@
 }
 
 .cell[data-focus-visible] {
-  outline: 2px solid var(--ring-background);
+  outline: 2px solid var(--text-color);
   outline-offset: 2px;
 }
 
