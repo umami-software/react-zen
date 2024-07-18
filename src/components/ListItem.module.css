@@ -6,6 +6,7 @@
   background: var(--background-color);
   padding: var(--padding);
   gap: var(--gap);
+  min-width: 120px;
   cursor: pointer;
 }
 

@@ -28,20 +28,21 @@
   background: var(--primary-color);
 }
 
-.checkbox[data-selected] .icon {
+.checkbox[data-selected] .icon,
+.checkbox[data-indeterminate] .icon{
   display: block;
 }
 
-.checkbox[data-indeterminate] .icon {
-  display: block;
+.checkbox[data-indeterminate] .box {
+  color: var(--text-color);
   background: var(--background-color);
 }
 
 .checkbox[data-disabled] {
-  color: var(--text-faded-color);
+  color: var(--text-muted-color);
 }
 
 .checkbox[data-disabled] .box {
-  background: var(--highlight-color);
+  background: var(--input-disabled-color);
   pointer-events: none;
 }

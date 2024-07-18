@@ -13,6 +13,7 @@ import { Dots } from './Dots';
 import { Flexbox } from './Flexbox';
 import { Heading } from './Heading';
 import { Icon } from './Icon';
+import { Icons } from './Icons';
 import { List } from './List';
 import { ListItem } from './ListItem';
 import { Loading } from './Loading';
@@ -56,6 +57,7 @@ export {
   Flexbox,
   Heading,
   Icon,
+  Icons,
   List,
   ListItem,
   Loading,

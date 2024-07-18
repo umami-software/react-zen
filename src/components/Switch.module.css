@@ -4,29 +4,30 @@
   align-items: center;
   gap: var(--gap);
   color: var(--text-color);
-  --knob-size: 20px;
-  --knob-border-size: 2px;
+  --knob-size: 16px;
+  --knob-border-size: 3px;
 }
 
 .track {
   position: relative;
   display: flex;
   align-items: center;
-  width: calc(var(--knob-size) * 2);
-  height: var(--knob-size);
+  width: calc((var(--knob-size) + var(--knob-border-size)) * 2);
+  height: calc(var(--knob-size) + var(--knob-border-size) * 2);
+  border: var(--knob-border-size) solid var(--border-color);
   border-radius: calc(var(--knob-size) + var(--knob-border-size) * 2);
-  background: var(--input-background-color);
+  background: var(--border-color);
   transition: background-color 0.2s;
   cursor: pointer;
 }
 
 .knob {
-  border: 2px solid var(--border-color);
   width: var(--knob-size);
   height: var(--knob-size);
   border-radius: 100%;
   background: var(--background-color);
   transition: all 0.2s;
+  box-shadow: var(--shadow2);
 }
 
 .switch[data-selected] .track {
@@ -45,9 +46,10 @@
 }
 
 .switch[data-disabled] .track {
-  background: var(--input-background-color);
+  border-color: var(--input-disabled-color);
+  background: var(--input-disabled-color);
 }
 
 .switch[data-disabled] .knob {
-  border-color: var(--input-background-color);
+  border-color: var(--input-disabled-color);
 }

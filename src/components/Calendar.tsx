@@ -8,10 +8,10 @@ import {
   CalendarGridBody,
   Heading,
 } from 'react-aria-components';
-import { HiChevronDown } from 'react-icons/hi2';
 import classNames from 'classnames';
 import Button from './Button';
 import Icon from './Icon';
+import Icons from './Icons';
 import styles from './Calendar.module.css';
 
 function _Calendar({ className, ...props }: CalendarProps<any>) {
@@ -20,13 +20,13 @@ function _Calendar({ className, ...props }: CalendarProps<any>) {
       <header className={styles.header}>
         <Button slot="previous" className={styles.button} variant="quiet">
           <Icon rotate={90}>
-            <HiChevronDown />
+            <Icons.ChevronDown />
           </Icon>
         </Button>
         <Heading className={styles.heading} />
         <Button slot="next" className={styles.button} variant="quiet">
           <Icon rotate={-90}>
-            <HiChevronDown />
+            <Icons.ChevronDown />
           </Icon>
         </Button>
       </header>

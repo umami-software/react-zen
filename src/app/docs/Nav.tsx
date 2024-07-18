@@ -27,6 +27,7 @@ const items = [
       { title: 'Dots', path: '/docs/components/dots' },
       { title: 'Heading', path: '/docs/components/heading' },
       { title: 'Icon', path: '/docs/components/icon' },
+      { title: 'Icons', path: '/docs/components/icons' },
       { title: 'List', path: '/docs/components/list' },
       { title: 'Loading', path: '/docs/components/loading' },
       { title: 'Menu', path: '/docs/components/menu' },

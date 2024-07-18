@@ -51,7 +51,6 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
 interface DataColumnProps extends ColumnProps {
   id: string;
   label?: ReactNode;
-  row?: object;
 }
 
 function DataColumn(props: DataColumnProps) {

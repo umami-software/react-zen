@@ -7,6 +7,8 @@ import { HiMiniWifi } from 'react-icons/hi2';
 
 const { Heading } = Components;
 
+console.log({ Examples });
+
 const components = {
   ...Components,
   ...Examples,

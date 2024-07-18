@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Input, TextField, TextFieldProps } from 'react-aria-components';
-import { PiEyeLight, PiEyeSlashLight } from 'react-icons/pi';
 import Icon from './Icon';
+import Icons from './Icons';
 import styles from './PasswordField.module.css';
 
 function PasswordField({ ...props }: TextFieldProps) {
@@ -14,7 +14,7 @@ function PasswordField({ ...props }: TextFieldProps) {
     <TextField {...props} className={styles.field}>
       <Input type={type} className={styles.input} />
       <Icon onClick={handleShowPassword} className={styles.icon}>
-        {show ? <PiEyeSlashLight /> : <PiEyeLight />}
+        {show ? <Icons.EyeSlash /> : <Icons.Eye />}
       </Icon>
     </TextField>
   );

@@ -1,14 +1,17 @@
 import { MenuItem, MenuItemProps } from 'react-aria-components';
 import classNames from 'classnames';
-import { HiCheck } from 'react-icons/hi2';
+import Icon from './Icon';
+import Icons from './Icons';
 import styles from './MenuItem.module.css';
 
 function _MenuItem({ children, className, ...props }: MenuItemProps<any>) {
   return (
     <MenuItem {...props} className={classNames(styles.item, className)}>
       {children as any}
-      <span className={styles.check} aria-hidden="true">
-        <HiCheck />
+      <span aria-hidden="true">
+        <Icon className={styles.check}>
+          <Icons.Check />
+        </Icon>
       </span>
     </MenuItem>
   );

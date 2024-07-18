@@ -89,7 +89,7 @@
   --input-disabled-color: var(--base-color2);
 
   [data-theme='dark'] {
-    --text-color: var(--base-color1);
+    --text-color: var(--base-color2);
     --text-muted-color: var(--base-color6);
     --text-faded-color: var(--base-color8);
 

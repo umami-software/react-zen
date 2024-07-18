@@ -1,14 +1,17 @@
 import { ListBoxItem, ListBoxItemProps } from 'react-aria-components';
 import classNames from 'classnames';
-import { HiCheck } from 'react-icons/hi2';
+import Icons from './Icons';
 import styles from './ListItem.module.css';
+import Icon from '@/components/Icon';
 
 function ListItem({ children, className, ...props }: ListBoxItemProps<any>) {
   return (
     <ListBoxItem {...props} className={classNames(styles.item, className)}>
       {children as any}
-      <span className={styles.check} aria-hidden="true">
-        <HiCheck />
+      <span aria-hidden="true">
+        <Icon size="sm" className={styles.check}>
+          <Icons.Check />
+        </Icon>
       </span>
     </ListBoxItem>
   );

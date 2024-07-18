@@ -1,7 +1,7 @@
 import { TextField, TextFieldProps, Input, TextArea } from 'react-aria-components';
 import classNames from 'classnames';
-import { GrBottomCorner } from 'react-icons/gr';
 import Icon from './Icon';
+import Icons from './Icons';
 import fieldStyles from './Field.module.css';
 import styles from './TextField.module.css';
 
@@ -17,7 +17,7 @@ function _TextField({ asTextArea, className, ...props }: _TextFieldProps) {
       <Component className={classNames(fieldStyles.input, asTextArea && styles.textarea)} />
       {asTextArea && (
         <Icon className={styles.handle}>
-          <GrBottomCorner />
+          <Icons.Corner />
         </Icon>
       )}
     </TextField>

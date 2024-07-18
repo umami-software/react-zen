@@ -1,6 +1,6 @@
 import { Checkbox, CheckboxProps } from 'react-aria-components';
 import classNames from 'classnames';
-import { HiCheck, HiMinus } from 'react-icons/hi';
+import Icons from './Icons';
 import Icon from './Icon';
 import styles from './Checkbox.module.css';
 
@@ -12,7 +12,7 @@ function _Checkbox({ className, children, ...props }: CheckboxProps) {
           <>
             <div className={styles.box}>
               <Icon className={styles.icon} size="xs">
-                {isIndeterminate ? <HiMinus /> : isSelected ? <HiCheck /> : null}
+                {isIndeterminate ? <Icons.Minus /> : isSelected ? <Icons.Check /> : null}
               </Icon>
             </div>
             {children as any}
