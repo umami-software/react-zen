@@ -6,7 +6,7 @@ import { Flexbox, Column, Tooltip, TooltipTrigger, Button, Text } from '@/compon
 
 export function IconLibrary() {
   return (
-    <Flexbox justifyContent="space-around" spacing={6}>
+    <Flexbox justifyContent="space-evenly" spacing={9} wrap="wrap">
       {Object.keys(Icons).map((name: string) => {
         return (
           <Column key={name} alignItems="center" spacing={3}>

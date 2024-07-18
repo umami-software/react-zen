@@ -53,7 +53,7 @@
   --active-color: #3b82f6; /* 217.2 91.2% 59.8% */
   --inactive-color: #a3a3a3; /* 0 0% 63.9% */
 
-  /* Global settings */
+  /* Default settings */
 
   --text-size: 14px;
 
@@ -62,8 +62,6 @@
   --gap: var(--spacing5);
 
   --padding: var(--spacing2) var(--spacing3);
-
-  --input-padding: var(--spacing3) var(--spacing4);
 
   --shadow: var(--shadow1);
 

@@ -17,6 +17,12 @@ A text input field.
   <TextField placeholder="Enter some text" />
 </Example>
 
+## As textarea
+
+<Example>
+  <TextArea placeholder="Enter some text" />
+</Example>
+
 ## Disabled
 
 <Example>
@@ -29,8 +35,9 @@ A text input field.
   <TextField defaultValue="Read only" isReadOnly />
 </Example>
 
-## As textarea
+## Copy button
 
 <Example>
-  <TextArea placeholder="Enter some text" />
+  <TextField value="Here is some text." allowCopy={true} />
+  <TextField value="Here is some text." allowCopy={true} asTextArea={true} />
 </Example>

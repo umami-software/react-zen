@@ -1,0 +1,15 @@
+.icon {
+  animation: copy-button 200ms;
+}
+
+@keyframes copy-button {
+  from {
+    scale: 0.5;
+    opacity: 0;
+  }
+
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}

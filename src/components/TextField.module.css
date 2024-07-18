@@ -6,10 +6,23 @@
   display: none;
 }
 
-.handle {
+.resize {
   color: var(--border-color);
   position: absolute;
   right: 2px;
   bottom: 2px;
   pointer-events: none;
+}
+
+.copy {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  color: var(--text-muted-color);
+  background: var(--background-color);
+}
+
+.copy:hover {
+  color: var(--text-color);
+  cursor: pointer;
 }
