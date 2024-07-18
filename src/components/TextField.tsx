@@ -33,6 +33,7 @@ function _TextField({
   return (
     <TextField {...props} className={classNames(fieldStyles.field, className)}>
       <Component
+        value={inputValue}
         className={classNames(fieldStyles.input, asTextArea && styles.textarea)}
         onChange={handleChange}
       />

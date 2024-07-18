@@ -14,6 +14,7 @@ import { Flexbox } from './Flexbox';
 import { Heading } from './Heading';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
+import InlineEditField from './InlineEditField';
 import { List } from './List';
 import { ListItem } from './ListItem';
 import { Loading } from './Loading';
@@ -58,6 +59,7 @@ export {
   Heading,
   Icon,
   Icons,
+  InlineEditField,
   List,
   ListItem,
   Loading,

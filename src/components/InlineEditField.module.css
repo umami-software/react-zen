@@ -1,0 +1,15 @@
+.edit {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.edit:hover .icon {
+  display: block;
+}
+
+.icon {
+  display: none;
+  right: calc(-1 * var(--spacing5));
+  position: absolute;
+}
