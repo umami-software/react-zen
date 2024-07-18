@@ -16,8 +16,8 @@ function _Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
   return (
     <Breadcrumb {...props} className={classNames(styles.breadcrumb, className)}>
       {children}
-      <Icon className={styles.icon} rotate={-90} size="xs">
-        <Icons.ChevronDown />
+      <Icon className={styles.icon} size="xs">
+        <Icons.Chevron />
       </Icon>
     </Breadcrumb>
   );

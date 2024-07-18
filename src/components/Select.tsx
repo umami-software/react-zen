@@ -4,6 +4,7 @@ import { Button, Select, SelectValue } from 'react-aria-components';
 import List from './List';
 import ListItem from './ListItem';
 import Popover from './Popover';
+import Icon from './Icon';
 import Icons from './Icons';
 import styles from './Select.module.css';
 
@@ -20,7 +21,9 @@ export function _Select({ children, items = [], value, className, ...props }: Se
       <Button className={styles.button}>
         <SelectValue />
         <span aria-hidden="true">
-          <Icons.ChevronDown />
+          <Icon rotate={90} size="xs" className={styles.icon}>
+            <Icons.Chevron />
+          </Icon>
         </span>
       </Button>
       <Popover>

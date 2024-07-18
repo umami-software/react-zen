@@ -18,8 +18,8 @@ export function Combobox({ items, className, ...props }: ComboboxProps) {
       <div className={styles.field}>
         <Input className={styles.input} />
         <Button className={styles.button}>
-          <Icon>
-            <Icons.ChevronDown />
+          <Icon rotate={90} size="xs" className={styles.icon}>
+            <Icons.Chevron />
           </Icon>
         </Button>
       </div>

@@ -23,3 +23,12 @@
   min-width: 200px;
   box-shadow: var(--shadow3);
 }
+
+.icon {
+  color: var(--text-faded-color);
+}
+
+.icon:hover {
+  color: var(--text-color);
+  cursor: pointer;
+}

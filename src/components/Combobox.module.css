@@ -33,3 +33,13 @@
 .list {
   box-shadow: var(--shadow3);
 }
+
+.icon {
+  color: var(--text-muted-color);
+  margin-right: var(--spacing2);
+}
+
+.icon:hover {
+  color: var(--text-color);
+  cursor: pointer;
+}
