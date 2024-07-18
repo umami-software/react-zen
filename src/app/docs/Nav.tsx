@@ -44,6 +44,7 @@ const items = [
       { title: 'Table', path: '/docs/components/table' },
       { title: 'Tabs', path: '/docs/components/tabs' },
       { title: 'Text', path: '/docs/components/text' },
+      { title: 'Text Overflow', path: '/docs/components/text-overflow' },
       { title: 'Text Field', path: '/docs/components/text-field' },
       { title: 'Toggle', path: '/docs/components/toggle' },
       { title: 'Tooltip', path: '/docs/components/tooltip' },
