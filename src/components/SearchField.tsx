@@ -16,7 +16,7 @@ function _SearchField({ className, ...props }: SearchFieldProps) {
             {state.value && (
               <Button className={styles.button}>
                 <Icon>
-                  <Icons.XMark />
+                  <Icons.Close />
                 </Icon>
               </Button>
             )}

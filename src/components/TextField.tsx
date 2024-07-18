@@ -37,8 +37,8 @@ function _TextField({
         onChange={handleChange}
       />
       {asTextArea && (
-        <Icon className={styles.resize}>
-          <Icons.Corner />
+        <Icon className={styles.resize} rotate={45}>
+          <Icons.Chevron />
         </Icon>
       )}
       {allowCopy && <CopyButton className={styles.copy} value={inputValue} />}
