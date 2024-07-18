@@ -4,7 +4,7 @@ import { Slot } from '@radix-ui/react-slot';
 import styles from './Text.module.css';
 
 interface TextProps {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   spacing?: 'tighter' | 'tight' | 'wide' | 'wider';
   type?: 'muted' | 'faded';
   weight?: 'lighter' | 'light' | 'bold' | 'bolder';

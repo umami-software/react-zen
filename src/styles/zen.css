@@ -21,13 +21,12 @@
   --text-size-xs: 0.75rem;
   --text-size-sm: 0.875rem;
   --text-size-md: 1rem;
-  --text-size-lg: 2rem;
-  --text-size-xl: 4rem;
+  --text-size-lg: 1.5rem;
 
-  --border-radius1: 0.125rem;
-  --border-radius2: 0.25rem;
-  --border-radius3: 0.5rem;
-  --border-radius4: 100%;
+  --border-radius-sm: 0.125rem;
+  --border-radius-md: 0.25rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-full: 100%;
 
   --shadow1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -58,7 +57,7 @@
 
   --text-size: 14px;
 
-  --border-radius: var(--border-radius2);
+  --border-radius: var(--border-radius-md);
 
   --gap: var(--spacing5);
 
@@ -83,28 +82,30 @@
   --primary-text-color: var(--base-color1);
   --secondary-color: var(--base-color2);
   --secondary-text-color: var(--text-color);
-  --hover-color: var(--base-color2);
-  --hover-text-color: var(--text-color);
+  --highlight-color: var(--base-color2);
+  --highlight-text-color: var(--text-color);
 
   --input-background-color: var(--base-color2);
+  --input-disabled-color: var(--base-color2);
 
   [data-theme='dark'] {
     --text-color: var(--base-color1);
     --text-muted-color: var(--base-color6);
     --text-faded-color: var(--base-color8);
 
-    --background-color: var(--base-color11);
+    --background-color: var(--base-color10);
 
     --border-color: var(--base-color8);
     --border: 1px solid var(--border-color);
 
     --primary-color: var(--base-color1);
     --primary-text-color: var(--base-color10);
-    --secondary-color: var(--base-color10);
+    --secondary-color: var(--base-color9);
     --secondary-text-color: var(--text-color);
-    --hover-color: var(--base-color9);
-    --hover-text-color: var(--text-color);
+    --highlight-color: var(--base-color9);
+    --highlight-text-color: var(--text-color);
 
-    --input-background-color: var(--base-color8);
+    --input-background-color: var(--base-color11);
+    --input-disabled-color: var(--base-color9);
   }
 }

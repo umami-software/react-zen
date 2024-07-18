@@ -1,39 +1,3 @@
-.field {
-  display: flex;
-  align-items: center;
-  border: var(--border);
-  border-radius: var(--border-radius);
-  background: var(--background-color);
-  box-shadow: var(--shadow);
-  gap: var(--spacing2);
-  position: relative;
-}
-
-.field[data-readonly],
-.field[data-disabled] {
-  background: var(--hover-color);
-}
-
-.input {
-  color: var(--text-color);
-  border: 0;
-  background: transparent;
-  padding: var(--padding);
-  line-height: 1.5rem;
-}
-
-.input::placeholder {
-  color: var(--text-muted-color);
-}
-
-.input:disabled {
-  color: var(--text-muted-color);
-}
-
-.icon {
-  color: var(--text-muted-color);
-}
-
 .textarea {
   position: relative;
 }

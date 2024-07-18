@@ -1,0 +1,39 @@
+.field {
+  display: flex;
+  align-items: center;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background: var(--background-color);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.field[data-readonly],
+.field[data-disabled] {
+  background: var(--input-disabled-color);
+}
+
+.input {
+  color: var(--text-color);
+  border: 0;
+  background: transparent;
+  padding: var(--padding);
+  line-height: 1.5rem;
+}
+
+.input::placeholder {
+  color: var(--text-muted-color);
+}
+
+.input:disabled {
+  color: var(--text-muted-color);
+}
+
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.icon {
+  color: var(--text-muted-color);
+}

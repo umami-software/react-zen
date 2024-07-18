@@ -42,6 +42,6 @@
 }
 
 .checkbox[data-disabled] .box {
-  background: var(--hover-color);
+  background: var(--highlight-color);
   pointer-events: none;
 }

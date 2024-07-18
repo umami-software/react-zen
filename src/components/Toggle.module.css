@@ -17,7 +17,7 @@
 }
 
 .toggle:hover {
-  background: var(--hover-color);
+  background: var(--highlight-color);
 }
 
 .toggle[data-selected] {

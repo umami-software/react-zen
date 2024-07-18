@@ -30,6 +30,7 @@ const items = [
       { title: 'List', path: '/docs/components/list' },
       { title: 'Loading', path: '/docs/components/loading' },
       { title: 'Menu', path: '/docs/components/menu' },
+      { title: 'Password Field', path: '/docs/components/password-field' },
       { title: 'Popover', path: '/docs/components/popover' },
       { title: 'Progress Bar', path: '/docs/components/progress-bar' },
       { title: 'Progress Circle', path: '/docs/components/progress-circle' },

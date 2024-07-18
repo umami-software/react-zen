@@ -44,7 +44,7 @@
 .cell:hover {
   color: var(--text-color);
   border-color: var(--border-color);
-  background: var(--hover-color);
+  background: var(--highlight-color);
 }
 
 .cell[data-outside-month] {

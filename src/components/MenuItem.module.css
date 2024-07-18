@@ -11,7 +11,7 @@
 }
 
 .item:hover {
-  background: var(--hover-color);
+  background: var(--highlight-color);
 }
 
 .item[data-selected] {

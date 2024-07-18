@@ -9,7 +9,7 @@
   fill: none;
   stroke-width: 8px;
   transform: rotate(-90deg);
-  font-size: var(--text-size3);
+  font-size: var(--text-size-md);
   width: 96px;
   height: 96px;
 }

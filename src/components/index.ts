@@ -19,6 +19,7 @@ import { Loading } from './Loading';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
 import { Modal } from './Modal';
+import { PasswordField } from './PasswordField';
 import { Page } from './Page';
 import { Popover } from './Popover';
 import { ProgressBar } from './ProgressBar';
@@ -62,6 +63,7 @@ export {
   MenuItem,
   MenuTrigger,
   Modal,
+  PasswordField,
   Page,
   Popover,
   ProgressBar,
