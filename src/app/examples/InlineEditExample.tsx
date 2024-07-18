@@ -6,7 +6,7 @@ export function InlineEditExample() {
 
   return (
     <InlineEditField value={value} onCommit={value => setValue(value)}>
-      <Text size="lg">{value}</Text>
+      <Text>{value}</Text>
     </InlineEditField>
   );
 }

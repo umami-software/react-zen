@@ -72,7 +72,7 @@ function InlineEditField({
         <TextField
           value={value}
           onKeyDown={handleKeyDown}
-          onBlur={handleCancel}
+          onBlur={handleCommit}
           onChange={handleChange}
           autoFocus={true}
         />
