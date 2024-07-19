@@ -14,7 +14,7 @@ import { Flexbox } from './Flexbox';
 import { Heading } from './Heading';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
-import InlineEditField from './InlineEditField';
+import { InlineEditField } from './InlineEditField';
 import { List } from './List';
 import { ListItem } from './ListItem';
 import { Loading } from './Loading';
@@ -26,6 +26,7 @@ import { Page } from './Page';
 import { Popover } from './Popover';
 import { ProgressBar } from './ProgressBar';
 import { ProgressCircle } from './ProgressCircle';
+import { Radio, RadioGroup } from './RadioGroup';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Select } from './Select';
@@ -73,6 +74,8 @@ export {
   Popover,
   ProgressBar,
   ProgressCircle,
+  Radio,
+  RadioGroup,
   Row,
   SearchField,
   Select,

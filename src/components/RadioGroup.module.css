@@ -1,0 +1,52 @@
+.radiogroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-color);
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 0.571rem;
+  font-size: 1.143rem;
+  color: var(--text-color);
+  forced-color-adjust: none;
+}
+
+.radio:before {
+  content: '';
+  display: block;
+  width: 1.286rem;
+  height: 1.286rem;
+  box-sizing: border-box;
+  border: 0.143rem solid var(--border-color);
+  background: var(--input-background-color);
+  border-radius: 1.286rem;
+  transition: all 200ms;
+}
+
+.radio[data-pressed]:before {
+  border-color: var(--border-color);
+}
+
+.radio[data-selected]:before {
+  border-color: var(--highlight-color);
+  border-width: 0.429rem;
+}
+
+.radio[data-selected][data-pressed]:before {
+  border-color: var(--highlight-color);
+}
+
+.radiogroup[data-orientation='vertical'] {
+  flex-direction: column;
+}
+
+.radiogroup[data-orientation='horizontal'] {
+  flex-direction: row;
+}
+
+.radio[data-disabled] {
+  background-color: var(--input-disabled-color);
+}

@@ -36,6 +36,7 @@ const items = [
       { title: 'Popover', path: '/docs/components/popover' },
       { title: 'Progress Bar', path: '/docs/components/progress-bar' },
       { title: 'Progress Circle', path: '/docs/components/progress-circle' },
+      { title: 'Radio Group', path: '/docs/components/radio-group' },
       { title: 'Search Field', path: '/docs/components/search-field' },
       { title: 'Select', path: '/docs/components/select' },
       { title: 'Spinner', path: '/docs/components/spinner' },
