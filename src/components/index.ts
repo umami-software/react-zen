@@ -30,6 +30,7 @@ import { Radio, RadioGroup } from './RadioGroup';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Select } from './Select';
+import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { StatusLight } from './StatusLight';
 import { Switch } from './Switch';
@@ -79,6 +80,7 @@ export {
   Row,
   SearchField,
   Select,
+  Slider,
   Spinner,
   StatusLight,
   Switch,

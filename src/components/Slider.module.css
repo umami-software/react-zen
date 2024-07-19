@@ -1,0 +1,115 @@
+.slider {
+  display: grid;
+  grid-template-areas:
+    'label output'
+    'track track';
+  grid-template-columns: 1fr auto;
+  color: var(--text-color);
+}
+
+.label {
+  grid-area: label;
+}
+
+.output {
+  grid-area: output;
+}
+
+.track {
+  grid-area: track;
+  position: relative;
+}
+
+.track:before {
+  content: '';
+  display: block;
+  position: absolute;
+  background: var(--border-color);
+}
+
+.fill {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 3px;
+  background-color: var(--primary-color);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: var(--background-color);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  forced-color-adjust: none;
+}
+
+.thumb[data-dragging] {
+  background: var(--highlight-color);
+}
+
+.thumb[data-focus-visible] {
+  outline: 2px solid var(--text-color);
+}
+
+.slider[data-orientation='horizontal'] {
+  flex-direction: column;
+  width: 100%;
+}
+
+.slider[data-orientation='horizontal'] .track {
+  height: 30px;
+  width: 100%;
+}
+
+.slider[data-orientation='horizontal'] .track:before {
+  height: 3px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slider[data-orientation='horizontal'] .thumb {
+  top: 50%;
+}
+
+.slider[data-orientation='vertical'] {
+  height: 150px;
+  display: block;
+}
+
+.slider[data-orientation='vertical'] .fill {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 3px;
+  background-color: var(--border-color);
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+.slider[data-orientation='vertical'] .label,
+.slider[data-orientation='vertical'] .output {
+  display: none;
+}
+
+.slider[data-orientation='vertical'] .track {
+  width: 30px;
+  height: 100%;
+}
+
+.slider[data-orientation='vertical'] .track:before {
+  width: 3px;
+  height: 100%;
+  background-color: var(--primary-color);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.slider[data-orientation='vertical'] .thumb {
+  left: 50%;
+}

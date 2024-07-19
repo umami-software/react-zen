@@ -39,6 +39,7 @@ const items = [
       { title: 'Radio Group', path: '/docs/components/radio-group' },
       { title: 'Search Field', path: '/docs/components/search-field' },
       { title: 'Select', path: '/docs/components/select' },
+      { title: 'Slider', path: '/docs/components/slider' },
       { title: 'Spinner', path: '/docs/components/spinner' },
       { title: 'Status Light', path: '/docs/components/status-light' },
       { title: 'Switch', path: '/docs/components/switch' },
