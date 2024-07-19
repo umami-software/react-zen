@@ -42,8 +42,7 @@
   height: 20px;
   border-radius: 100%;
   background: var(--background-color);
-  border: var(--border);
-  box-shadow: var(--shadow);
+  border: 2px solid var(--primary-color);
   forced-color-adjust: none;
 }
 
