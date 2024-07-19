@@ -45,7 +45,7 @@ function InlineEditField({
     setEdit(false);
     setValue(defaultValue);
     onCancel?.();
-  }, [defaultValue]);
+  }, [defaultValue, onCancel]);
 
   const handleKeyDown = ({ key }: { key: string }) => {
     if (key === 'Enter') {

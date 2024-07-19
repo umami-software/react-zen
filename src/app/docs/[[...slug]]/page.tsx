@@ -14,6 +14,14 @@ export interface Doc {
   path: string;
 }
 
+export async function generateStaticParams() {
+  const docs = await getDocs();
+
+  return docs.map(doc => {
+    return { slug: [doc.id] };
+  });
+}
+
 const getDocs = cache(async () => {
   const files = await walk.async(SRC_PATH);
 
