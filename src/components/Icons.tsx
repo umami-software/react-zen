@@ -6,7 +6,7 @@ import { IoCopyOutline } from 'react-icons/io5';
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai';
 import { BiEditAlt } from 'react-icons/bi';
 import { PiTrash, PiArrowRight } from 'react-icons/pi';
-import { GoAlert } from 'react-icons/go';
+import { GoAlert, GoInfo } from 'react-icons/go';
 import { RxExternalLink } from 'react-icons/rx';
 
 export const Icons = {
@@ -20,6 +20,7 @@ export const Icons = {
   ExternalLink: RxExternalLink,
   Eye: PiEyeLight,
   EyeSlash: PiEyeSlashLight,
+  Info: GoInfo,
   Logout: MdLogout,
   MagnifyingGlass: HiMagnifyingGlass,
   Menu: HiOutlineMenu,

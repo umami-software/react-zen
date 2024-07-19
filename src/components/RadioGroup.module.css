@@ -1,42 +1,8 @@
 .radiogroup {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing4);
   color: var(--text-color);
-}
-
-.radio {
-  display: flex;
-  align-items: center;
-  gap: 0.571rem;
-  font-size: 1.143rem;
-  color: var(--text-color);
-  forced-color-adjust: none;
-}
-
-.radio:before {
-  content: '';
-  display: block;
-  width: 1.286rem;
-  height: 1.286rem;
-  box-sizing: border-box;
-  border: 0.143rem solid var(--border-color);
-  background: var(--input-background-color);
-  border-radius: 1.286rem;
-  transition: all 200ms;
-}
-
-.radio[data-pressed]:before {
-  border-color: var(--border-color);
-}
-
-.radio[data-selected]:before {
-  border-color: var(--highlight-color);
-  border-width: 0.429rem;
-}
-
-.radio[data-selected][data-pressed]:before {
-  border-color: var(--highlight-color);
 }
 
 .radiogroup[data-orientation='vertical'] {
@@ -47,6 +13,45 @@
   flex-direction: row;
 }
 
+.radio {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing3);
+  font-size: var(--text-size);
+  color: var(--text-color);
+  forced-color-adjust: none;
+}
+
+.radio:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  border: var(--border);
+  background: var(--background-color);
+  border-radius: 20px;
+  transition: all 200ms;
+  box-shadow: var(--shadow);
+}
+
+.radio[data-pressed]:before {
+  border-color: var(--border-color);
+}
+
+.radio[data-selected]:before {
+  border-color: var(--primary-color);
+  border-width: 7px;
+}
+
+.radio[data-selected][data-pressed]:before {
+  border-color: var(--primary-color);
+}
+
 .radio[data-disabled] {
+  color: var(--text-muted-color);
+}
+
+.radio[data-disabled]:before {
   background-color: var(--input-disabled-color);
 }
