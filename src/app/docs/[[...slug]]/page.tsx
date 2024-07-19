@@ -5,8 +5,6 @@ import walk from 'walkdir';
 import fs from 'fs/promises';
 import Markdown from '@/app/Markdown';
 
-const SRC_PATH = `./src/content/docs`;
-
 export interface Doc {
   id: string;
   title: string;
@@ -15,7 +13,9 @@ export interface Doc {
 }
 
 const getDocs = cache(async () => {
-  const files = await walk.async(SRC_PATH);
+  const dir = path.resolve(`./src/content/docs`);
+
+  const files = await walk.async(dir);
 
   return Promise.all(
     files
