@@ -3,7 +3,7 @@
   align-items: center;
   color: var(--text-color);
   background: var(--background-color);
-  box-shadow: var(--shadow);
+  box-shadow: var(--box-shadow);
 }
 
 .button {
@@ -21,7 +21,7 @@
 
 .list {
   min-width: 200px;
-  box-shadow: var(--shadow3);
+  box-shadow: var(--box-shadow3);
 }
 
 .icon {

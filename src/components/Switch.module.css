@@ -27,7 +27,7 @@
   border-radius: 100%;
   background: var(--background-color);
   transition: all 0.2s;
-  box-shadow: var(--shadow2);
+  box-shadow: var(--box-shadow2);
 }
 
 .switch[data-selected] .track {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ReactNode } from 'react';
 import { TextField, TextFieldProps, Input, TextArea } from 'react-aria-components';
 import classNames from 'classnames';
 import Icon from './Icon';

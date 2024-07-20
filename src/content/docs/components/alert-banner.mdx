@@ -1,0 +1,37 @@
+---
+id: components/alert-banner
+title: Components - Alert Banner
+---
+
+# Alert Banner
+
+Alert banners show pressing and high-signal messages, such as system alerts.
+They're meant to be noticed and prompt users to take action.
+
+<Example>
+  <AlertBanner
+    title="New update available!"
+    description="Version 2.0 has been released."
+    icon={<RocketIcon />}
+  >
+    <Button>Dismiss</Button>
+    <Button variant="primary">Download</Button>
+  </AlertBanner>
+</Example>
+
+## Variants
+
+<Example direction="column">
+  <AlertBanner
+    variant="error"
+    title="Error"
+    description="The application encountered an error."
+    allowClose={true}
+  />
+  <AlertBanner
+    variant="info"
+    title="Info"
+    description="Your free trial will expire in 3 days."
+    allowClose={true}
+  />
+</Example>

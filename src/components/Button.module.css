@@ -59,7 +59,7 @@
 .button.outline {
   background: transparent;
   border: var(--border);
-  box-shadow: var(--shadow1);
+  box-shadow: var(--box-shadow1);
 }
 
 .button.outline:hover {
@@ -83,7 +83,7 @@
 }
 
 .button.danger {
-  color: var(--base-color1);
+  color: var(--light-color);
   background: var(--danger-color);
 }
 

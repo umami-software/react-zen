@@ -4,7 +4,7 @@
   border: var(--border);
   border-radius: var(--border-radius);
   padding: var(--spacing2);
-  box-shadow: var(--shadow);
+  box-shadow: var(--box-shadow);
   background: var(--background-color);
 }
 

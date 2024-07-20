@@ -4,6 +4,7 @@ import * as Components from '@/components';
 import * as Examples from './examples';
 import { Example } from './docs/Example';
 import { HiMiniWifi } from 'react-icons/hi2';
+import { IoRocketSharp } from 'react-icons/io5';
 
 const { Heading } = Components;
 
@@ -11,7 +12,8 @@ const components = {
   ...Components,
   ...Examples,
   Example,
-  ExampleIcon: HiMiniWifi,
+  WifiIcon: HiMiniWifi,
+  RocketIcon: IoRocketSharp,
   h1: ({ children }: { children: ReactNode }) => <Heading size={6}>{children}</Heading>,
   h2: ({ children }: { children: ReactNode }) => <Heading size={5}>{children}</Heading>,
   h3: ({ children }: { children: ReactNode }) => <Heading size={4}>{children}</Heading>,

@@ -1,6 +1,7 @@
 'use client';
 import { DialogTrigger, FileTrigger, MenuTrigger, TooltipTrigger } from 'react-aria-components';
-import { Banner } from './Banner';
+import { AlertBanner } from './AlertBanner';
+import { AlertDialog } from './AlertDialog';
 import { Breadcrumbs, Breadcrumb } from './Breadcrumbs';
 import { Button } from './Button';
 import { Calendar } from './Calendar';
@@ -15,6 +16,7 @@ import { Heading } from './Heading';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { InlineEditField } from './InlineEditField';
+import { Label } from './Label';
 import { List } from './List';
 import { ListItem } from './ListItem';
 import { Loading } from './Loading';
@@ -44,7 +46,8 @@ import { Toggle } from './Toggle';
 import { Tooltip } from './Tooltip';
 
 export {
-  Banner,
+  AlertBanner,
+  AlertDialog,
   Breadcrumb,
   Breadcrumbs,
   Button,
@@ -63,6 +66,7 @@ export {
   Icon,
   Icons,
   InlineEditField,
+  Label,
   List,
   ListItem,
   Loading,

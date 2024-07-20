@@ -11,7 +11,7 @@
   color: var(--text-color);
   border: var(--border);
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
+  box-shadow: var(--box-shadow);
 }
 
 .input {
@@ -31,7 +31,7 @@
 }
 
 .list {
-  box-shadow: var(--shadow3);
+  box-shadow: var(--box-shadow3);
 }
 
 .icon {

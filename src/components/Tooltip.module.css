@@ -1,7 +1,7 @@
 .tooltip {
-  font-size: var(--text-size1);
+  font-size: var(--text-size-sm);
   background: rgba(0, 0, 0, 0.8);
-  color: var(--base-color1);
+  color: var(--light-color);
   forced-color-adjust: none;
   outline: none;
   padding: var(--padding);

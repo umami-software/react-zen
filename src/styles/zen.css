@@ -21,19 +21,19 @@
   --text-size-xs: 0.75rem;
   --text-size-sm: 0.875rem;
   --text-size-md: 1rem;
-  --text-size-lg: 1.5rem;
+  --text-size-lg: 1.125rem;
 
   --border-radius-sm: 0.125rem;
   --border-radius-md: 0.25rem;
   --border-radius-lg: 0.5rem;
   --border-radius-full: 100%;
 
-  --shadow1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow4: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow5: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow6: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --box-shadow1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --box-shadow2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --box-shadow3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --box-shadow4: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --box-shadow5: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --box-shadow6: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
   --base-color1: #fafafa; /* 0 0% 98% */
   --base-color2: #f5f5f5; /* 0 0% 96.1% */
@@ -63,9 +63,12 @@
 
   --padding: var(--spacing2) var(--spacing3);
 
-  --shadow: var(--shadow1);
+  --box-shadow: var(--box-shadow1);
 
   /* Theme settings */
+
+  --light-color: var(--base-color2);
+  --dark-color: var(--base-color11);
 
   --text-color: var(--base-color11);
   --text-muted-color: var(--base-color6);
@@ -78,12 +81,14 @@
 
   --primary-color: var(--base-color10);
   --primary-text-color: var(--base-color1);
+
   --secondary-color: var(--base-color2);
   --secondary-text-color: var(--text-color);
+
   --highlight-color: var(--base-color2);
   --highlight-text-color: var(--text-color);
 
-  --input-background-color: var(--base-color2);
+  --input-background-color: var(--base-color3);
   --input-disabled-color: var(--base-color2);
 
   [data-theme='dark'] {
@@ -98,8 +103,10 @@
 
     --primary-color: var(--base-color1);
     --primary-text-color: var(--base-color10);
+
     --secondary-color: var(--base-color9);
     --secondary-text-color: var(--text-color);
+
     --highlight-color: var(--base-color9);
     --highlight-text-color: var(--text-color);
 

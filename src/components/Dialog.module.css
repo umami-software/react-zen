@@ -1,12 +1,14 @@
 .dialog {
   position: relative;
   padding: var(--spacing6);
-  box-shadow: var(--shadow3);
+  box-shadow: var(--box-shadow4);
   background: var(--background-color);
   border: var(--border);
   border-radius: var(--border-radius);
 }
 
 .title {
-  font-size: var(--text-size4);
+  font-size: var(--text-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--spacing3);
 }
