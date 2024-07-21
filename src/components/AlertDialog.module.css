@@ -1,6 +1,5 @@
 .dialog {
   display: grid;
-  gap: var(--spacing6);
 }
 
 .title {

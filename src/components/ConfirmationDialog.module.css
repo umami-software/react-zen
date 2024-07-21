@@ -1,0 +1,8 @@
+.dialog {
+  position: relative;
+}
+
+.value {
+  font-size: var(--text-size-lg);
+  font-weight: 700;
+}

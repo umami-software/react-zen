@@ -19,6 +19,10 @@
   font-size: var(--text-size-lg);
 }
 
+.xl {
+  font-size: var(--text-size-xl);
+}
+
 .muted {
   color: var(--text-muted-color);
 }

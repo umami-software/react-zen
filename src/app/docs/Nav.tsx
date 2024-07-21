@@ -23,6 +23,7 @@ const items = [
       { title: 'Calendar', path: '/docs/components/calendar' },
       { title: 'Checkbox', path: '/docs/components/checkbox' },
       { title: 'Combobox', path: '/docs/components/combobox' },
+      { title: 'Confirmation Dialog', path: '/docs/components/confirmation-dialog' },
       { title: 'Data Table', path: '/docs/components/data-table' },
       { title: 'Dialog', path: '/docs/components/dialog' },
       { title: 'Dots', path: '/docs/components/dots' },

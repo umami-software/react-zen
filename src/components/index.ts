@@ -8,6 +8,7 @@ import { Calendar } from './Calendar';
 import { Checkbox } from './Checkbox';
 import { Column } from './Column';
 import { Combobox } from './Combobox';
+import { ConfirmationDialog } from './ConfirmationDialog';
 import { Dialog } from './Dialog';
 import { DataTable, DataColumn } from './DataTable';
 import { Dots } from './Dots';
@@ -55,6 +56,7 @@ export {
   Checkbox,
   Column,
   Combobox,
+  ConfirmationDialog,
   DataTable,
   DataColumn,
   Dialog,

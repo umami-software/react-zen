@@ -1,3 +1,14 @@
+import { Text, Column, Button } from '@/components';
+
 export default function RootPage() {
-  return <h1 style={{ margin: '0 auto', textAlign: 'center', flex: 1 }}>zen.</h1>;
+  return (
+    <Column justifyContent="center" alignItems="center" spacing={6}>
+      <Text size="xl" weight="bold">
+        zen.
+      </Text>
+      <Button asChild>
+        <a href="/docs">Read docs</a>
+      </Button>
+    </Column>
+  );
 }

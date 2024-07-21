@@ -42,11 +42,11 @@
 }
 
 .info {
-  color: var(--light-color);
-  background-color: var(--active-color);
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
   border: 0;
 }
 
 .info .close {
-  color: var(--light-color);
+  color: var(--primary-text-color);
 }

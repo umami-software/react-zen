@@ -9,7 +9,7 @@ export default function App({ children }: { children: ReactNode }) {
   return (
     <Page className={styles.page}>
       <Header />
-      <main>{children}</main>
+      <main className={styles.body}>{children}</main>
       <Footer />
     </Page>
   );
