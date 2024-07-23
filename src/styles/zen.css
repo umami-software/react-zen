@@ -46,7 +46,7 @@
   --base-color8: #404040; /*  0 0% 25.1% */
   --base-color9: #262626; /* 0 0% 14.9% */
   --base-color10: #171717; /* 0 0% 9% */
-  --base-color11: #0a0a0a; /* 0 0% 3.9% */
+  --base-color11: #111111; /* #0a0a0a; /* 0 0% 3.9% */
 
   --success-color: #22c55e; /* 142.1 70.6% 45.3% */
   --danger-color: #ef4444; /* 0 84.2% 60.2% */
@@ -97,7 +97,7 @@
     --text-muted-color: var(--base-color6);
     --text-faded-color: var(--base-color8);
 
-    --background-color: var(--base-color10);
+    --background-color: var(--base-color11);
 
     --border-color: var(--base-color8);
     --border: 1px solid var(--border-color);

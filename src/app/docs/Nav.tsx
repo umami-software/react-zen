@@ -50,6 +50,7 @@ const items = [
       { title: 'Text', path: '/docs/components/text' },
       { title: 'Text Overflow', path: '/docs/components/text-overflow' },
       { title: 'Text Field', path: '/docs/components/text-field' },
+      { title: 'Toast', path: '/docs/components/toast' },
       { title: 'Toggle', path: '/docs/components/toggle' },
       { title: 'Tooltip', path: '/docs/components/tooltip' },
     ],

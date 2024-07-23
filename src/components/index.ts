@@ -43,6 +43,7 @@ import { Text } from './Text';
 import { TextOverflow } from './TextOverflow';
 import { TextField } from './TextField';
 import { TextArea } from './TextArea';
+import { Toast, ToastProvider, ToastViewport } from './Toast';
 import { Toggle } from './Toggle';
 import { Tooltip } from './Tooltip';
 
@@ -104,6 +105,9 @@ export {
   TextOverflow,
   TextField,
   TextArea,
+  Toast,
+  ToastProvider,
+  ToastViewport,
   Toggle,
   Tooltip,
   TooltipTrigger,
