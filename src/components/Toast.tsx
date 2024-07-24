@@ -39,7 +39,7 @@ function Toast({
         <ToastDescription className={styles.description}>{description}</ToastDescription>
       )}
       {children && (
-        <ToastAction className={styles.action} altText={actionText || 'Action'}>
+        <ToastAction className={styles.action} altText={actionText || 'Action'} asChild>
           {children}
         </ToastAction>
       )}
@@ -68,4 +68,4 @@ function Toaster(props: ToastViewportProps) {
 }
 
 export { Toast, ToastProvider, Toaster };
-export type { _ToastProps as ToastProps, ToastProviderProps, ToastViewportProps };
+export type { _ToastProps as ToastProps, ToastProviderProps, ToastViewportProps as ToasterProps };

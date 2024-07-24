@@ -34,11 +34,11 @@
 }
 
 .toast[data-state='closed'] {
-  animation: hide 1000ms ease-in;
+  animation: hide 100ms ease-in;
 }
 
 .toast[data-swipe='move'] {
-  transform: translateX(var(100px));
+  transform: translateX(0);
 }
 
 .toast[data-swipe='cancel'] {
@@ -101,7 +101,7 @@
 
 @keyframes swipe-out {
   from {
-    transform: translateX(100px);
+    transform: translateX(0);
   }
   to {
     transform: translateX(calc(100% + var(--viewport-padding)));

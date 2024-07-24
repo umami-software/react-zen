@@ -19,6 +19,7 @@
   background: transparent;
   padding: var(--padding);
   line-height: 1.5rem;
+  flex: 1;
 }
 
 .input::placeholder {

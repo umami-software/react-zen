@@ -16,9 +16,12 @@ const initialState: { toasts: ToastState[] } = {
 const store = create(() => ({ ...initialState }));
 
 function removeToast(id: number) {
-  store.setState(({ toasts }) => {
-    return { toasts: toasts.filter(toast => toast.id !== id) };
-  });
+  // Have to let closing animations play out
+  setTimeout(() => {
+    store.setState(({ toasts }) => {
+      return { toasts: toasts.filter(toast => toast.id !== id) };
+    });
+  }, 1000);
 }
 
 function toast(message: string, props: ToastProps = {}) {
