@@ -1,19 +1,38 @@
-import { useState, useEffect } from 'react';
-import { ToastProvider, Toast, Button, ToastViewport } from '@/components';
+import { Button, useToast } from '@/components';
 
 export function ToastExample() {
-  const [open, setOpen] = useState(false);
+  const { toast } = useToast();
+
+  return <Button onPress={() => toast('Your message has been sent.')}>Show toast</Button>;
+}
+
+export function ToastTitleExample() {
+  const { toast } = useToast();
 
   return (
-    <ToastProvider swipeDirection="right">
-      <Button onPress={() => setOpen(true)}>Open</Button>
-      <Toast
-        title="Hello!"
-        description="How are you my friend?"
-        open={open}
-        onOpenChange={setOpen}
-      />
-      <ToastViewport />
-    </ToastProvider>
+    <Button
+      onPress={() =>
+        toast('The application encountered an error.', { title: 'Oops! Something went wrong.' })
+      }
+    >
+      Show toast
+    </Button>
+  );
+}
+
+export function ToastActionExample() {
+  const { toast } = useToast();
+
+  return (
+    <Button
+      onPress={() =>
+        toast('Please check your internet connection.', {
+          title: 'Network error',
+          children: <Button>Connect</Button>,
+        })
+      }
+    >
+      Show toast
+    </Button>
   );
 }

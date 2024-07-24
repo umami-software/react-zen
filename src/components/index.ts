@@ -1,5 +1,8 @@
 'use client';
 import { DialogTrigger, FileTrigger, MenuTrigger, TooltipTrigger } from 'react-aria-components';
+import { useDebounce } from './hooks/useDebounce';
+import { useTheme } from './hooks/useTheme';
+import { useToast } from './hooks/useToast';
 import { AlertBanner } from './AlertBanner';
 import { AlertDialog } from './AlertDialog';
 import { Breadcrumbs, Breadcrumb } from './Breadcrumbs';
@@ -43,11 +46,15 @@ import { Text } from './Text';
 import { TextOverflow } from './TextOverflow';
 import { TextField } from './TextField';
 import { TextArea } from './TextArea';
-import { Toast, ToastProvider, ToastViewport } from './Toast';
+import { Toast, ToastProvider, Toaster } from './Toast';
 import { Toggle } from './Toggle';
 import { Tooltip } from './Tooltip';
+import { ZenProvider } from './ZenProvider';
 
 export {
+  useDebounce,
+  useTheme,
+  useToast,
   AlertBanner,
   AlertDialog,
   Breadcrumb,
@@ -107,8 +114,9 @@ export {
   TextArea,
   Toast,
   ToastProvider,
-  ToastViewport,
+  Toaster,
   Toggle,
   Tooltip,
   TooltipTrigger,
+  ZenProvider,
 };

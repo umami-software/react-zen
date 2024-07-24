@@ -1,12 +1,10 @@
 import { create } from 'zustand';
 
 const initialState = {
-  name: 'zen',
+  name: 'light',
 };
 
 const store = create(() => ({ ...initialState }));
-
-export const useStore = store;
 
 function setTheme(name: string) {
   store.setState({ name });
@@ -14,8 +12,8 @@ function setTheme(name: string) {
   document.body.setAttribute('data-theme', name);
 }
 
-export default function useTheme() {
-  const theme = useStore();
+export function useTheme() {
+  const theme = store.getState();
 
   return { theme, setTheme };
 }
