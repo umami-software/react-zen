@@ -83,5 +83,3 @@ export {
   TableColumn,
   TableCell,
 };
-
-export default _Table;

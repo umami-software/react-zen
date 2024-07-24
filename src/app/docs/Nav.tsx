@@ -57,7 +57,7 @@ const items = [
   },
 ];
 
-export default function Nav() {
+export function Nav() {
   const pathname = usePathname();
 
   return (

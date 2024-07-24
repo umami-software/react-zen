@@ -1,7 +1,7 @@
 'use client';
-import { createElement, ReactElement } from 'react';
-import Icon from '@/components/Icon';
-import Icons from '@/components/Icons';
+import { createElement } from 'react';
+import { Icon } from '@/components/Icon';
+import { Icons } from '@/components/Icons';
 import { Heading, Column, Row, Text } from '@/components';
 
 export function IconLibrary() {

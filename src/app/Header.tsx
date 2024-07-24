@@ -4,7 +4,7 @@ import { Button } from '@/components';
 import { useTheme } from '@/components/hooks/useTheme';
 import styles from './Header.module.css';
 
-export default function Header() {
+export function Header() {
   const { setTheme } = useTheme();
 
   return (

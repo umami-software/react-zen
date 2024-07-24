@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import Dots from './Dots';
-import Spinner from './Spinner';
+import { Dots } from './Dots';
+import { Spinner } from './Spinner';
 import styles from './Loading.module.css';
 
 export interface LoadingProps {
@@ -19,5 +19,3 @@ export function Loading(props: LoadingProps) {
     </div>
   );
 }
-
-export default Loading;

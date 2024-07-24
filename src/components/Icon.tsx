@@ -31,5 +31,3 @@ export function Icon({
     </Slot>
   );
 }
-
-export default Icon;

@@ -136,5 +136,3 @@ export function Flexbox({
 function replace(s: string) {
   return s.replace(' ', '-');
 }
-
-export default Flexbox;

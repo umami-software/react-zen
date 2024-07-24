@@ -14,5 +14,3 @@ function Column({ reverse, children, ...props }: ColumnProps) {
 
 export { Column };
 export type { ColumnProps };
-
-export default Column;

@@ -24,5 +24,3 @@ function _ProgressBar({ className, showValue, ...props }: _ProgressBarProps) {
 }
 
 export { _ProgressBar as ProgressBar };
-
-export default _ProgressBar;

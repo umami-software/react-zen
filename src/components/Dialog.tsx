@@ -24,5 +24,3 @@ function _Dialog({ title, children, className, ...props }: _DialogProps) {
 
 export { _Dialog as Dialog };
 export type { _DialogProps as DialogProps };
-
-export default _Dialog;

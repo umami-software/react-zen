@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 import { Button, Select, SelectValue } from 'react-aria-components';
-import List from './List';
+import { List } from './List';
 import ListItem from './ListItem';
-import Popover from './Popover';
-import Icon from './Icon';
-import Icons from './Icons';
+import { Popover } from './Popover';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
 import styles from './Select.module.css';
 
 export interface SelectProps {
@@ -41,5 +41,3 @@ export function _Select({ children, items = [], value, className, ...props }: Se
 }
 
 export { _Select as Select };
-
-export default _Select;

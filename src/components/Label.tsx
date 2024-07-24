@@ -12,5 +12,3 @@ function _Label({ asChild, className, ...props }: _LabelProps) {
 
 export { _Label as Label };
 export type { _LabelProps as LabelProps };
-
-export default _Label;

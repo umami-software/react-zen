@@ -36,5 +36,3 @@ function ProgressCircle({ className, showValue, ...props }: ProgressCircleProps)
 }
 
 export { ProgressCircle };
-
-export default ProgressCircle;

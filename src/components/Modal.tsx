@@ -23,5 +23,3 @@ function _Modal({ children, className, ...props }: ModalProps) {
 
 export { _Modal as Modal };
 export type { ModalProps };
-
-export default _Modal;

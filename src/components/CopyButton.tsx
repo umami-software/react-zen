@@ -1,6 +1,6 @@
 import { useState, ReactNode, HTMLAttributes, useRef } from 'react';
-import Icon from './Icon';
-import Icons from './Icons';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
 import styles from './CopyButton.module.css';
 import classNames from 'classnames';
 
@@ -37,5 +37,3 @@ function CopyButton({ value, className, children, ...props }: CopyButtonProps) {
 
 export { CopyButton };
 export type { CopyButtonProps };
-
-export default CopyButton;

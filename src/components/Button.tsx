@@ -38,5 +38,3 @@ function _Button({
 
 export { _Button as Button };
 export type { _ButtonProps as ButtonProps };
-
-export default _Button;

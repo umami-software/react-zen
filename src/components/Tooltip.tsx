@@ -17,5 +17,3 @@ function _Tooltip({ children, className, ...props }: TooltipProps) {
 
 export { _Tooltip as Tooltip };
 export type { TooltipProps };
-
-export default _Tooltip;

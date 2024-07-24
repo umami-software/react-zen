@@ -35,5 +35,3 @@ function Text({ children, type, size, spacing, weight, asChild, className, ...pr
 
 export { Text };
 export type { TextProps };
-
-export default Text;

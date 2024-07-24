@@ -30,5 +30,3 @@ export const Icons = {
   Refresh: MdRefresh,
   Trash: PiTrash,
 };
-
-export default Icons;

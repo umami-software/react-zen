@@ -12,5 +12,3 @@ function Toggle({ children, className, ...props }: ToggleButtonProps) {
 
 export { Toggle };
 export type { ToggleButtonProps as ToggleProps };
-
-export default Toggle;

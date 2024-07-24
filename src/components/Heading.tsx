@@ -24,5 +24,3 @@ function Heading({ size = 5, className, children, asChild, ...props }: HeadingPr
 
 export { Heading };
 export type { HeadingProps };
-
-export default Heading;

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Menu, MenuProps, Separator } from 'react-aria-components';
 import classNames from 'classnames';
-import MenuItem from './MenuItem';
+import { MenuItem } from './MenuItem';
 import styles from './Menu.module.css';
 
 interface _MenuProps extends MenuProps<any> {
@@ -31,5 +31,3 @@ function _Menu({ items, className, children, ...props }: _MenuProps) {
 
 export { _Menu as Menu };
 export type { _MenuProps as MenuProps };
-
-export default _Menu;

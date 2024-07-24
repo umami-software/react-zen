@@ -1,9 +1,9 @@
-import { useState, ReactNode } from 'react';
+import { useState } from 'react';
 import { TextField, TextFieldProps, Input, TextArea } from 'react-aria-components';
 import classNames from 'classnames';
-import Icon from './Icon';
-import Icons from './Icons';
-import CopyButton from './CopyButton';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
+import { CopyButton } from './CopyButton';
 import fieldStyles from './Field.module.css';
 import styles from './TextField.module.css';
 
@@ -49,5 +49,3 @@ function _TextField({
 
 export { _TextField as TextField };
 export type { _TextFieldProps as TextFieldProps };
-
-export default _TextField;

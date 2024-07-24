@@ -17,5 +17,3 @@ function Page({ className, children, ...props }: PageProps) {
 
 export { Page };
 export type { PageProps };
-
-export default Page;

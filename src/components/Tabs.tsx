@@ -44,5 +44,3 @@ function _TabPanel({ children, ...props }: TabPanelProps) {
 
 export { _Tabs as Tabs, _TabList as TabList, _Tab as Tab, _TabPanel as TabPanel };
 export type { TabsProps, TabListProps, TabProps, TabPanelProps };
-
-export default _Tabs;

@@ -1,6 +1,6 @@
 import { ListBoxItem, ListBoxItemProps } from 'react-aria-components';
 import classNames from 'classnames';
-import Icons from './Icons';
+import { Icons } from './Icons';
 import styles from './ListItem.module.css';
 import Icon from '@/components/Icon';
 

@@ -1,7 +1,7 @@
 import { MenuItem, MenuItemProps } from 'react-aria-components';
 import classNames from 'classnames';
-import Icon from './Icon';
-import Icons from './Icons';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
 import styles from './MenuItem.module.css';
 
 function _MenuItem({ children, className, ...props }: MenuItemProps<any>) {
@@ -19,5 +19,3 @@ function _MenuItem({ children, className, ...props }: MenuItemProps<any>) {
 
 export { _MenuItem as MenuItem };
 export type { MenuItemProps };
-
-export default _MenuItem;

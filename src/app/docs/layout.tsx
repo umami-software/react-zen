@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Nav from './Nav';
+import { Nav } from './Nav';
 import styles from './layout.module.css';
 
 export default function DocsLayout({ children }: { children: ReactNode }) {

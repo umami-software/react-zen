@@ -26,9 +26,9 @@ export function ToastActionExample() {
   return (
     <Button
       onPress={() =>
-        toast('Please check your internet connection.', {
-          title: 'Network error',
-          children: <Button>Connect</Button>,
+        toast('The task was deleted successfully.', {
+          title: 'Task deleted',
+          children: <Button>Undo</Button>,
         })
       }
     >

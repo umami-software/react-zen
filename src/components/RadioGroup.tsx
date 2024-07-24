@@ -20,5 +20,3 @@ function _Radio({ children, className, ...props }: RadioProps) {
 
 export { _RadioGroup as RadioGroup, _Radio as Radio };
 export type { RadioProps, RadioGroupProps };
-
-export default _RadioGroup;

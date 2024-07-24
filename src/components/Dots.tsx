@@ -17,5 +17,3 @@ function Dots({ className, ...props }: DotsProps) {
 
 export { Dots };
 export type { DotsProps };
-
-export default Dots;

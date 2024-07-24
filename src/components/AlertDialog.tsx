@@ -66,5 +66,3 @@ function AlertDialog({
 
 export { AlertDialog };
 export type { AlertDialogProps };
-
-export default AlertDialog;

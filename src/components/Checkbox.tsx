@@ -1,7 +1,7 @@
 import { Checkbox, CheckboxProps } from 'react-aria-components';
 import classNames from 'classnames';
-import Icons from './Icons';
-import Icon from './Icon';
+import { Icons } from './Icons';
+import { Icon } from './Icon';
 import styles from './Checkbox.module.css';
 
 function _Checkbox({ className, children, ...props }: CheckboxProps) {
@@ -25,5 +25,3 @@ function _Checkbox({ className, children, ...props }: CheckboxProps) {
 
 export { _Checkbox as Checkbox };
 export type { CheckboxProps };
-
-export default _Checkbox;

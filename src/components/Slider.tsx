@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Slider, SliderProps, SliderOutput, SliderThumb, SliderTrack } from 'react-aria-components';
 import classNames from 'classnames';
-import Label from './Label';
+import { Label } from './Label';
 import styles from './Slider.module.css';
 
 interface _SliderProps extends SliderProps {
@@ -38,5 +38,3 @@ function _Slider({ className, showValue = true, label, ...props }: _SliderProps)
 
 export { _Slider as Slider };
 export type { _SliderProps as SliderProps };
-
-export default _Slider;

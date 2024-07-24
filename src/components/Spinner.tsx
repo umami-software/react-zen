@@ -23,5 +23,3 @@ export function Spinner(props: SpinnerProps) {
     </div>
   );
 }
-
-export default Spinner;

@@ -19,5 +19,3 @@ function TextOverflow({ asChild, children, className, ...props }: TextOverflowPr
 
 export { TextOverflow };
 export type { TextOverflowProps };
-
-export default TextOverflow;

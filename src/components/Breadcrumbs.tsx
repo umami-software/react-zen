@@ -1,7 +1,7 @@
 import { Breadcrumbs, BreadcrumbsProps, Breadcrumb, BreadcrumbProps } from 'react-aria-components';
 import classNames from 'classnames';
-import Icon from './Icon';
-import Icons from './Icons';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
 import styles from './Breadcrumbs.module.css';
 
 function _Breadcrumbs({ children, className, ...props }: BreadcrumbsProps<any>) {
@@ -25,5 +25,3 @@ function _Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
 
 export { _Breadcrumb as Breadcrumb, _Breadcrumbs as Breadcrumbs };
 export type { BreadcrumbProps, BreadcrumbsProps };
-
-export default _Breadcrumbs;

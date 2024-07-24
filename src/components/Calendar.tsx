@@ -9,9 +9,9 @@ import {
   Heading,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import Button from './Button';
-import Icon from './Icon';
-import Icons from './Icons';
+import { Button } from './Button';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
 import styles from './Calendar.module.css';
 
 function _Calendar({ className, ...props }: CalendarProps<any>) {
@@ -44,5 +44,3 @@ function _Calendar({ className, ...props }: CalendarProps<any>) {
 
 export { _Calendar as Calendar };
 export type { CalendarProps };
-
-export default _Calendar;

@@ -2,14 +2,14 @@ import { ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './StatusLight.module.css';
 
-export interface StatusLightProps {
+interface StatusLightProps {
   color?: string;
   variant?: 'success' | 'warning' | 'error' | 'active' | 'inactive' | 'none';
   className?: string;
   children?: ReactNode;
 }
 
-export function StatusLight(props: StatusLightProps) {
+function StatusLight(props: StatusLightProps) {
   const { color, variant = 'inactive', children, className, ...domProps } = props;
 
   return (
@@ -24,3 +24,6 @@ export function StatusLight(props: StatusLightProps) {
     </div>
   );
 }
+
+export { StatusLight };
+export type { StatusLightProps };

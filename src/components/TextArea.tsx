@@ -14,5 +14,3 @@ function TextArea({ resize, className, ...props }: TextAreaProps) {
 
 export { TextArea };
 export type { TextAreaProps };
-
-export default TextArea;

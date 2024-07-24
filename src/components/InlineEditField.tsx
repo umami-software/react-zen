@@ -1,8 +1,8 @@
-import { ReactNode, useState, useCallback, HTMLAttributes } from 'react';
+import { ReactNode, useState, useCallback } from 'react';
 import classNames from 'classnames';
-import TextField, { TextFieldProps } from './TextField';
-import Icon from './Icon';
-import Icons from './Icons';
+import { TextField } from './TextField';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
 import styles from './InlineEditField.module.css';
 
 interface InlineEditFieldProps {
@@ -82,5 +82,4 @@ function InlineEditField({
 }
 
 export { InlineEditField };
-
-export default InlineEditField;
+export type { InlineEditFieldProps };

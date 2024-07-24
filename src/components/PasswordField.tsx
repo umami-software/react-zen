@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Input, TextField, TextFieldProps } from 'react-aria-components';
-import Icon from './Icon';
-import Icons from './Icons';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
 import styles from './PasswordField.module.css';
 
 function PasswordField({ ...props }: TextFieldProps) {
@@ -21,5 +21,3 @@ function PasswordField({ ...props }: TextFieldProps) {
 }
 
 export { PasswordField };
-
-export default PasswordField;

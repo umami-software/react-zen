@@ -14,5 +14,4 @@ function _Switch({ children, className, ...props }: SwitchProps) {
 }
 
 export { _Switch as Switch };
-
-export default _Switch;
+export type { SwitchProps };

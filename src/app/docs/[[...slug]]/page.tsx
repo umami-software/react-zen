@@ -3,7 +3,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import walk from 'walkdir';
 import fs from 'fs/promises';
-import Markdown from '@/app/Markdown';
+import { Markdown } from '@/app/Markdown';
 
 export interface Doc {
   id: string;

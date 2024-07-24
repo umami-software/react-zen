@@ -31,5 +31,3 @@ function List({ items, className, children, ...props }: ListProps) {
 
 export { List };
 export type { ListProps };
-
-export default List;

@@ -58,5 +58,3 @@ function DataColumn(props: DataColumnProps) {
 }
 
 export { DataTable, DataColumn };
-
-export default DataTable;

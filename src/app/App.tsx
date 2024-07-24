@@ -1,12 +1,12 @@
 'use client';
 import { ReactNode } from 'react';
 import { Page } from '@/components';
-import Header from '@/app/Header';
-import Footer from '@/app/Footer';
+import { Header } from '@/app/Header';
+import { Footer } from '@/app/Footer';
 import { ZenProvider } from '@/components';
 import styles from './App.module.css';
 
-export default function App({ children }: { children: ReactNode }) {
+export function App({ children }: { children: ReactNode }) {
   return (
     <ZenProvider config={{ toast: { duration: 3000 } }}>
       <Page className={styles.page}>

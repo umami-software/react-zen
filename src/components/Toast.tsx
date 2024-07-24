@@ -43,7 +43,7 @@ function Toast({
           {children}
         </ToastAction>
       )}
-      {allowClose && (
+      {!children && allowClose && (
         <ToastClose className={styles.close} aria-label="Close">
           <Icon size="sm" aria-hidden>
             <Icons.Close />

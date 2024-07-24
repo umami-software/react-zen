@@ -14,5 +14,3 @@ function Row({ reverse, children, ...props }: RowProps) {
 
 export { Row };
 export type { RowProps };
-
-export default Row;

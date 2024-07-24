@@ -3,7 +3,7 @@ import { ToastProps } from '@/components/Toast';
 
 let toastId = 1;
 
-export interface ToastState {
+interface ToastState {
   id: number;
   message: string;
   props: ToastProps;
@@ -40,8 +40,10 @@ function toast(message: string, props: ToastProps = {}) {
 
 const useStore = store;
 
-export function useToast() {
+function useToast() {
   const { toasts } = useStore();
 
   return { toast, toasts };
 }
+
+export { useToast, toast };

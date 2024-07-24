@@ -1,14 +1,13 @@
 import { ReactNode } from 'react';
 import { ToastProvider, ToastProviderProps, Toaster } from '@/components/Toast';
 
-export interface ZenProviderProps {
+interface ZenProviderProps {
   config?: {
     toast?: ToastProviderProps;
   };
   children: ReactNode;
 }
-
-export function ZenProvider({ config = {}, children }: ZenProviderProps) {
+function ZenProvider({ config = {}, children }: ZenProviderProps) {
   const { toast } = config;
 
   return (
@@ -18,3 +17,6 @@ export function ZenProvider({ config = {}, children }: ZenProviderProps) {
     </ToastProvider>
   );
 }
+
+export { ZenProvider };
+export type { ZenProviderProps };

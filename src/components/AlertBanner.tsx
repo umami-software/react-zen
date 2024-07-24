@@ -1,7 +1,7 @@
 import React, { createElement, ReactNode } from 'react';
 import classNames from 'classnames';
-import Icon from './Icon';
-import Icons from './Icons';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
 import styles from './AlertBanner.module.css';
 
 interface AlertBannerProps {
@@ -52,5 +52,3 @@ const AlertIcons = {
 
 export { AlertBanner };
 export type { AlertIcons };
-
-export default AlertBanner;

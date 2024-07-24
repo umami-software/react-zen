@@ -12,8 +12,10 @@ function setTheme(name: string) {
   document.body.setAttribute('data-theme', name);
 }
 
-export function useTheme() {
+function useTheme() {
   const theme = store.getState();
 
   return { theme, setTheme };
 }
+
+export { useTheme, setTheme };

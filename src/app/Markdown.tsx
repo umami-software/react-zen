@@ -22,6 +22,6 @@ const components = {
   h6: ({ children }: { children: ReactNode }) => <Heading size={1}>{children}</Heading>,
 };
 
-export default function Markdown({ children }: { children: any }) {
+export function Markdown({ children }: { children: any }) {
   return <MDXRemote source={children} components={components as any} />;
 }

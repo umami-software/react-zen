@@ -12,5 +12,3 @@ function _Popover({ children, className, ...props }: PopoverProps) {
 
 export { _Popover as Popover };
 export type { PopoverProps };
-
-export default _Popover;
