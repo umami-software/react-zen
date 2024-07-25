@@ -17,14 +17,14 @@
 
 .toast {
   display: grid;
-  grid-template-areas: 'title action' 'description action';
-  grid-template-columns: auto max-content;
+  grid-template-areas: 'icon title action' 'icon description action';
+  grid-template-columns: auto 1fr auto;
+  grid-auto-columns: auto;
   align-items: center;
   background-color: var(--background-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow3);
-  padding: var(--padding);
-  column-gap: var(--gap);
+  padding: 1.25rem 1.5rem;
   border: var(--border);
   position: relative;
 }
@@ -50,6 +50,19 @@
   animation: swipe-out 100ms ease-out;
 }
 
+.toast:has(.icon) {
+  grid-template-columns: auto 1fr auto;
+  column-gap: var(--gap);
+}
+
+.icon {
+  grid-area: icon;
+}
+
+.icon:empty {
+  display: none;
+}
+
 .title {
   grid-area: title;
   color: var(--text-color);
@@ -59,7 +72,6 @@
 
 .description {
   grid-area: description;
-  color: var(--text-muted-color);
 }
 
 .action {
@@ -81,12 +93,26 @@
   display: block;
 }
 
+.toast.info {
+  color: var(--primary-text-color);
+  background: var(--primary-color);
+  border: 0;
+}
+
+.toast.error {
+  color: var(--background-color);
+  background: var(--danger-color);
+  border: 0;
+}
+
 @keyframes hide {
   from {
     opacity: 1;
+    transform: translateY(0);
   }
   to {
     opacity: 0;
+    transform: translateY(50px);
   }
 }
 

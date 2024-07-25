@@ -36,3 +36,18 @@ export function ToastActionExample() {
     </Button>
   );
 }
+
+export function ToastVariantsExample() {
+  const { toast } = useToast();
+
+  return (
+    <>
+      <Button onPress={() => toast('Something went wrong.', { variant: 'error' })}>
+        Error toast
+      </Button>
+      <Button onPress={() => toast('Your message was sent.', { variant: 'info' })}>
+        Info toast
+      </Button>
+    </>
+  );
+}

@@ -15,12 +15,19 @@ import { Icons } from './Icons';
 import { useToast } from './hooks/useToast';
 import styles from './Toast.module.css';
 import classNames from 'classnames';
+import { createElement } from 'react';
+
+const icons = {
+  info: Icons.Info,
+  error: Icons.Alert,
+};
 
 interface _ToastProps extends ToastProps {
   title?: string;
   description?: string;
   actionText?: string;
   allowClose?: boolean;
+  variant?: 'info' | 'error';
 }
 
 function Toast({
@@ -28,12 +35,16 @@ function Toast({
   description,
   actionText,
   allowClose = true,
+  variant,
   className,
   children,
   ...props
 }: _ToastProps) {
   return (
-    <Root {...props} className={classNames(styles.toast, className)}>
+    <Root {...props} className={classNames(styles.toast, className, variant && styles[variant])}>
+      <Icon className={styles.icon} size="md">
+        {variant && createElement(icons[variant])}
+      </Icon>
       {title && <ToastTitle className={styles.title}>{title}</ToastTitle>}
       {description && (
         <ToastDescription className={styles.description}>{description}</ToastDescription>
