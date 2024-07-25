@@ -33,6 +33,7 @@ const items = [
       { title: 'Inline Edit Field', path: '/docs/components/inline-edit-field' },
       { title: 'List', path: '/docs/components/list' },
       { title: 'Loading', path: '/docs/components/loading' },
+      { title: 'Loading Button', path: '/docs/components/loading-button' },
       { title: 'Menu', path: '/docs/components/menu' },
       { title: 'Password Field', path: '/docs/components/password-field' },
       { title: 'Popover', path: '/docs/components/popover' },

@@ -24,6 +24,7 @@ import { Label } from './Label';
 import { List } from './List';
 import { ListItem } from './ListItem';
 import { Loading } from './Loading';
+import { LoadingButton } from './LoadingButton';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
 import { Modal } from './Modal';
@@ -80,6 +81,7 @@ export {
   List,
   ListItem,
   Loading,
+  LoadingButton,
   Menu,
   MenuItem,
   MenuTrigger,
