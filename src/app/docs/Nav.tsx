@@ -53,6 +53,7 @@ const items = [
       { title: 'Text Field', path: '/docs/components/text-field' },
       { title: 'Toast', path: '/docs/components/toast' },
       { title: 'Toggle', path: '/docs/components/toggle' },
+      { title: 'Toggle Group', path: '/docs/components/toggle-group' },
       { title: 'Tooltip', path: '/docs/components/tooltip' },
     ],
   },

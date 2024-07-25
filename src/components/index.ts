@@ -49,6 +49,7 @@ import { TextField } from './TextField';
 import { TextArea } from './TextArea';
 import { Toast, ToastProvider, Toaster } from './Toast';
 import { Toggle } from './Toggle';
+import { ToggleGroup, ToggleGroupItem } from './ToggleGroup';
 import { Tooltip } from './Tooltip';
 import { ZenProvider } from './ZenProvider';
 
@@ -118,6 +119,8 @@ export {
   ToastProvider,
   Toaster,
   Toggle,
+  ToggleGroup,
+  ToggleGroupItem,
   Tooltip,
   TooltipTrigger,
   ZenProvider,
