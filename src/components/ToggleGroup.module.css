@@ -8,8 +8,8 @@
 }
 
 .item {
-  background-color: white;
-  color: var(--mauve-11);
+  color: var(--text-color);
+  background-color: var(--background-color);
   display: flex;
   align-items: center;
   justify-content: center;
