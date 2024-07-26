@@ -16,6 +16,7 @@ const items = [
   {
     name: 'Components',
     children: [
+      { title: 'Accordion', path: '/docs/components/accordion' },
       { title: 'Alert Banner', path: '/docs/components/alert-banner' },
       { title: 'Alert Dialog', path: '/docs/components/alert-dialog' },
       { title: 'Button', path: '/docs/components/button' },
