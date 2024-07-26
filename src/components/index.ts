@@ -3,7 +3,7 @@ import { DialogTrigger, FileTrigger, MenuTrigger, TooltipTrigger } from 'react-a
 import { useDebounce } from './hooks/useDebounce';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './Accordion';
+import { Accordion, AccordionItem, AccordionHeader, AccordionContent } from './Accordion';
 import { AlertBanner } from './AlertBanner';
 import { AlertDialog } from './AlertDialog';
 import { Breadcrumbs, Breadcrumb } from './Breadcrumbs';
@@ -61,7 +61,7 @@ export {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionHeader,
   AlertBanner,
   AlertDialog,
   Breadcrumb,

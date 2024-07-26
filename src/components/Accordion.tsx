@@ -6,7 +6,6 @@ import {
   Trigger,
   Content,
   AccordionItemProps,
-  AccordionTriggerProps,
   AccordionContentProps,
   AccordionHeaderProps,
 } from '@radix-ui/react-accordion';
@@ -17,20 +16,14 @@ import styles from './Accordion.module.css';
 
 interface AccordionProps {
   type: 'single' | 'multiple';
-  items: any[];
   className?: string;
   children?: ReactNode;
 }
 
-function Accordion({ items, className, children, ...props }: AccordionProps) {
+function Accordion({ className, children, ...props }: AccordionProps) {
   return (
     <Root {...props} className={classNames(styles.accordion, className)}>
-      {!children &&
-        items.length > 0 &&
-        items.map((item, index) => {
-          return <AccordionItem value={item.value}></AccordionItem>;
-        })}
-      {!items && children}
+      {children}
     </Root>
   );
 }
@@ -43,10 +36,10 @@ function AccordionItem({ className, children, ...props }: AccordionItemProps) {
   );
 }
 
-function AccordionTrigger({ children, className, ...props }: AccordionTriggerProps) {
+function AccordionHeader({ children, className, ...props }: AccordionHeaderProps) {
   return (
-    <Header className={classNames(styles.header, className)}>
-      <Trigger {...props} className={styles.trigger}>
+    <Header {...props} className={classNames(styles.header, className)}>
+      <Trigger className={styles.trigger}>
         {children}
         <Icon className={styles.icon} size="sm">
           <Icons.Chevron />
@@ -64,4 +57,4 @@ function AccordionContent({ children, className, ...props }: AccordionContentPro
   );
 }
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+export { Accordion, AccordionItem, AccordionHeader, AccordionContent };
