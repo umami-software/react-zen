@@ -1,19 +1,3 @@
-.textarea {
-  position: relative;
-}
-
-.textarea::-webkit-resizer {
-  display: none;
-}
-
-.resize {
-  color: var(--border-color);
-  position: absolute;
-  right: 2px;
-  bottom: 2px;
-  pointer-events: none;
-}
-
 .copy {
   position: absolute;
   top: 9px;
@@ -25,4 +9,9 @@
 .copy:hover {
   color: var(--text-color);
   cursor: pointer;
+}
+
+.textarea {
+  min-height: 60px;
+  min-width: 140px;
 }

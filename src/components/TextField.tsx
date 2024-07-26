@@ -37,11 +37,6 @@ function _TextField({
         className={classNames(fieldStyles.input, asTextArea && styles.textarea)}
         onChange={handleChange}
       />
-      {asTextArea && (
-        <Icon className={styles.resize} rotate={45}>
-          <Icons.Chevron />
-        </Icon>
-      )}
       {allowCopy && <CopyButton className={styles.copy} value={inputValue} />}
     </TextField>
   );
