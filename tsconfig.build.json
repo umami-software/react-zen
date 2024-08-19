@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "outFile": "dist/index.d.ts",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "include": ["src/components"],
+  "exclude": ["node_modules"]
+}

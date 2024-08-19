@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ToastProps } from '@/components/Toast';
+import { ToastProps } from '../Toast';
 
 let toastId = 1;
 

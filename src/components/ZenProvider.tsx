@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ToastProvider, ToastProviderProps, Toaster } from '@/components/Toast';
+import { ToastProvider, ToastProviderProps, Toaster } from './Toast';
 
 interface ZenProviderProps {
   config?: {
