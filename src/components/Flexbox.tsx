@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
-import styles from './Flexbox.module.css';
 import classNames from 'classnames';
+import styles from './Flexbox.module.css';
 
 export interface FlexboxProps {
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';

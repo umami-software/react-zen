@@ -1,5 +1,5 @@
-import { SearchField, Column, Text, Row } from '@/components';
 import { useState } from 'react';
+import { SearchField, Column, Text, Row } from '@/components';
 
 export function SearchDelayExample() {
   const [value, setValue] = useState('');

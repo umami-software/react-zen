@@ -1,6 +1,6 @@
 import { RadioGroup, RadioGroupProps, Radio, RadioProps } from 'react-aria-components';
-import styles from './RadioGroup.module.css';
 import classNames from 'classnames';
+import styles from './RadioGroup.module.css';
 
 function _RadioGroup({ children, className, ...props }: RadioGroupProps) {
   return (

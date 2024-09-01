@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+import { createElement } from 'react';
 import {
   ToastProvider,
   ToastProviderProps,
@@ -14,8 +16,6 @@ import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { useToast } from './hooks/useToast';
 import styles from './Toast.module.css';
-import classNames from 'classnames';
-import { createElement } from 'react';
 
 const icons = {
   info: Icons.Info,

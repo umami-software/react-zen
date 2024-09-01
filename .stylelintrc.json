@@ -6,5 +6,5 @@
   "rules": {
     "no-descending-specificity": null
   },
-  "ignoreFiles": ["**/*.js", "**/*.ts", "**/*.tsx", "**/*.md"]
+  "ignoreFiles": ["**/*.js", "**/*.ts", "**/*.tsx", "**/*.md", "**/*.mdx"]
 }

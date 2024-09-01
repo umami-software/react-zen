@@ -1,7 +1,7 @@
+import classNames from 'classnames';
 import { ToggleGroup, ToggleGroupItem, ToggleGroupItemProps } from '@radix-ui/react-toggle-group';
 import { ToggleGroupProps } from '@radix-ui/react-toolbar';
 import styles from './ToggleGroup.module.css';
-import classNames from 'classnames';
 
 function _ToggleGroup({ className, children, ...props }: ToggleGroupProps) {
   return (

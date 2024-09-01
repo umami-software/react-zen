@@ -1,9 +1,11 @@
 {
   "extends": "next/core-web-vitals",
-  "plugins": ["@stylexjs"],
   "rules": {
-    "@stylexjs/valid-styles": "error",
     "import/no-anonymous-default-export": "off",
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "import/order": [
+      1,
+      { "groups": ["external", "builtin", "internal", "sibling", "parent", "index"] }
+    ]
   }
 }

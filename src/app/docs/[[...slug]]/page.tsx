@@ -1,8 +1,8 @@
 import { cache } from 'react';
 import matter from 'gray-matter';
-import path from 'path';
 import walk from 'walkdir';
-import fs from 'fs/promises';
+import path from 'node:path';
+import fs from 'node:fs/promises';
 import { Markdown } from '@/app/Markdown';
 
 export interface Doc {

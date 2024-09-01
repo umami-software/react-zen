@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import * as Components from '@/components';
-import * as Examples from './examples';
-import { Example } from './docs/Example';
 import { HiMiniWifi } from 'react-icons/hi2';
 import { IoRocketSharp } from 'react-icons/io5';
 import { MdFormatAlignCenter, MdFormatAlignLeft, MdFormatAlignRight } from 'react-icons/md';
+import * as Components from '@/components';
+import * as Examples from './examples';
+import { Example } from './docs/Example';
 
 const { Heading } = Components;
 
