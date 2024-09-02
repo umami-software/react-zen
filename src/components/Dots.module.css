@@ -11,7 +11,7 @@
   width: 10px;
   height: 10px;
   border-radius: 100%;
-  background: color-mix(in srgb, var(--text-color), 50% transparent);
+  background: color-mix(in srgb, var(--font-color), 50% transparent);
   animation: dots-blink 1.2s infinite;
   animation-fill-mode: both;
 }

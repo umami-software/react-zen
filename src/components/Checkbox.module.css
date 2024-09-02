@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   gap: var(--spacing3);
-  color: var(--text-color);
+  color: var(--font-color);
 }
 
 .box {
@@ -24,7 +24,7 @@
 }
 
 .checkbox[data-selected] .box {
-  color: var(--primary-text-color);
+  color: var(--primary-font-color);
   background: var(--primary-color);
 }
 
@@ -34,12 +34,12 @@
 }
 
 .checkbox[data-indeterminate] .box {
-  color: var(--text-color);
+  color: var(--font-color);
   background: var(--background-color);
 }
 
 .checkbox[data-disabled] {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
 }
 
 .checkbox[data-disabled] .box {

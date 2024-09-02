@@ -2,12 +2,12 @@
   position: absolute;
   top: 9px;
   right: 9px;
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
   background: var(--background-color);
 }
 
 .copy:hover {
-  color: var(--text-color);
+  color: var(--font-color);
   cursor: pointer;
 }
 

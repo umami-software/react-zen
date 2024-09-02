@@ -1,7 +1,7 @@
 .select {
   display: flex;
   align-items: center;
-  color: var(--text-color);
+  color: var(--font-color);
   background: var(--background-color);
   box-shadow: var(--box-shadow);
 }
@@ -9,8 +9,8 @@
 .button {
   display: flex;
   align-items: center;
-  color: var(--text-color);
-  font-size: var(--text-size);
+  color: var(--font-color);
+  font-size: var(--font-size);
   gap: var(--gap);
   border: var(--border);
   padding: var(--padding);
@@ -25,10 +25,10 @@
 }
 
 .icon {
-  color: var(--text-faded-color);
+  color: var(--font-faded-color);
 }
 
 .icon:hover {
-  color: var(--text-color);
+  color: var(--font-color);
   cursor: pointer;
 }

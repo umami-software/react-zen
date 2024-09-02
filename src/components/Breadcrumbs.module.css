@@ -7,25 +7,25 @@
 .breadcrumb {
   display: flex;
   align-items: center;
-  font-size: var(--text-size2);
+  font-size: var(--font-size2);
   gap: var(--gap);
   list-style: none;
 }
 
 .breadcrumb a {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
 }
 
 .breadcrumb a:hover {
-  color: var(--text-color);
+  color: var(--font-color);
 }
 
 .icon {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
 }
 
 .breadcrumb:last-child {
-  font-weight: var(--text-weight4);
+  font-weight: var(--font-weight4);
 }
 
 .breadcrumb:last-child .icon {

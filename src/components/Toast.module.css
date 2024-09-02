@@ -65,7 +65,7 @@
 
 .title {
   grid-area: title;
-  color: var(--text-color);
+  color: var(--font-color);
   font-weight: 700;
 
 }
@@ -94,7 +94,7 @@
 }
 
 .toast.info {
-  color: var(--primary-text-color);
+  color: var(--primary-font-color);
   background: var(--primary-color);
   border: 0;
 }

@@ -13,7 +13,7 @@
   flex: 1;
   margin: 0;
   text-align: center;
-  font-size: var(--text-size);
+  font-size: var(--font-size);
   font-weight: 700;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .headerCell {
-  font-size: var(--text-size);
+  font-size: var(--font-size);
   font-weight: 700;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .cell:hover {
-  color: var(--text-color);
+  color: var(--font-color);
   border-color: var(--border-color);
   background: var(--highlight-color);
 }
@@ -52,13 +52,13 @@
 }
 
 .cell[data-focus-visible] {
-  outline: 2px solid var(--text-color);
+  outline: 2px solid var(--font-color);
   outline-offset: 2px;
 }
 
 .cell[data-selected] {
   font-weight: 700;
-  color: var(--primary-text-color);
+  color: var(--primary-font-color);
   border-color: var(--primary-color);
   background: var(--primary-color);
 }

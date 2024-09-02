@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing4);
-  color: var(--text-color);
+  color: var(--font-color);
 }
 
 .radiogroup[data-orientation='vertical'] {
@@ -17,8 +17,8 @@
   display: flex;
   align-items: center;
   gap: var(--spacing3);
-  font-size: var(--text-size);
-  color: var(--text-color);
+  font-size: var(--font-size);
+  color: var(--font-color);
   forced-color-adjust: none;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .radio[data-disabled] {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
 }
 
 .radio[data-disabled]:before {

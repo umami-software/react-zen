@@ -4,10 +4,10 @@
   justify-content: center;
   white-space: nowrap;
   gap: var(--gap);
-  font-size: var(--text-size);
+  font-size: var(--font-size);
   font-family: inherit;
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--font-color);
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--border-radius);
@@ -17,12 +17,12 @@
 }
 
 .button:disabled {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
   pointer-events: none;
 }
 
 .button.primary {
-  color: var(--primary-text-color);
+  color: var(--primary-font-color);
   background: var(--primary-color);
 }
 
@@ -35,25 +35,25 @@
 }
 
 .button.primary:disabled {
-  color: var(--primary-text-color);
+  color: var(--primary-font-color);
   background: var(--base-color6);
 }
 
 .button.secondary {
-  color: var(--secondary-text-color);
+  color: var(--secondary-font-color);
   background: var(--secondary-color);
 }
 
 .button.secondary:hover {
-  background: color-mix(in srgb, var(--secondary-color), 5% var(--text-color));
+  background: color-mix(in srgb, var(--secondary-color), 5% var(--font-color));
 }
 
 .button.secondary:active {
-  background: color-mix(in srgb, var(--secondary-color), 10% var(--text-color));
+  background: color-mix(in srgb, var(--secondary-color), 10% var(--font-color));
 }
 
 .button.secondary:disabled {
-  color: var(--text-faded-color);
+  color: var(--font-faded-color);
 }
 
 .button.outline {
@@ -67,7 +67,7 @@
 }
 
 .button.outline:active {
-  background: color-mix(in srgb, var(--secondary-color), 5% var(--text-color));
+  background: color-mix(in srgb, var(--secondary-color), 5% var(--font-color));
 }
 
 .button.quiet {
@@ -79,7 +79,7 @@
 }
 
 .button.quiet:active {
-  background: color-mix(in srgb, var(--secondary-color), 5% var(--text-color));
+  background: color-mix(in srgb, var(--secondary-color), 5% var(--font-color));
 }
 
 .button.danger {
@@ -96,7 +96,7 @@
 }
 
 .button.danger:disabled {
-  color: var(--primary-text-color);
+  color: var(--primary-font-color);
   background: var(--base-color6);
 }
 

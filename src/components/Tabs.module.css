@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
   min-height: 3rem;
   border-bottom: 2px solid transparent;
   user-select: none;
@@ -28,15 +28,15 @@
 }
 
 .tab:hover {
-  color: var(--text-color);
+  color: var(--font-color);
 }
 
 .tab[data-selected] {
-  color: var(--text-color);
+  color: var(--font-color);
   border-bottom: 2px solid var(--primary-color);
 }
 
 .tab[data-disabled] {
-  color: var(--text-faded-color);
+  color: var(--font-faded-color);
   cursor: default;
 }

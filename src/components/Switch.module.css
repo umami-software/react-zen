@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   gap: var(--gap);
-  color: var(--text-color);
+  color: var(--font-color);
   --knob-size: 16px;
   --knob-border-size: 3px;
 }
@@ -41,7 +41,7 @@
 }
 
 .switch[data-disabled] {
-  color: var(--text-faded-color);
+  color: var(--font-faded-color);
   pointer-events: none;
 }
 

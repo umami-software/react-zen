@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  color: var(--text-color);
+  color: var(--font-color);
   border: var(--border);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -17,7 +17,7 @@
 .input {
   background: none;
   border: none;
-  color: var(--text-color);
+  color: var(--font-color);
   padding: var(--padding);
 }
 
@@ -27,7 +27,7 @@
   justify-content: center;
   border: 0;
   background: transparent;
-  color: var(--text-faded-color);
+  color: var(--font-faded-color);
 }
 
 .list {
@@ -35,11 +35,11 @@
 }
 
 .icon {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
   margin-right: var(--spacing2);
 }
 
 .icon:hover {
-  color: var(--text-color);
+  color: var(--font-color);
   cursor: pointer;
 }

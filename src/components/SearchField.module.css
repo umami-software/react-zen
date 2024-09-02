@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
   border: none;
   background: none;
   cursor: pointer;
@@ -16,5 +16,5 @@
 }
 
 .button:hover {
-  color: var(--text-color);
+  color: var(--font-color);
 }

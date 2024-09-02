@@ -14,7 +14,7 @@
 }
 
 .input {
-  color: var(--text-color);
+  color: var(--font-color);
   border: 0;
   background: transparent;
   padding: var(--padding);
@@ -23,11 +23,11 @@
 }
 
 .input::placeholder {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
 }
 
 .input:disabled {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
 }
 
 .input::-webkit-search-cancel-button,
@@ -36,5 +36,5 @@
 }
 
 .icon {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
 }

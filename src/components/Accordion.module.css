@@ -16,7 +16,7 @@
 .header {
   display: flex;
   align-items: center;
-  font-size: var(--text-size-lg);
+  font-size: var(--font-size-lg);
 }
 
 .trigger {
@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--text-color);
+  color: var(--font-color);
   flex: 1;
   border: 0;
   background: transparent;

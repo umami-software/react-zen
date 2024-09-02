@@ -4,7 +4,7 @@
     'label output'
     'track track';
   grid-template-columns: 1fr auto;
-  color: var(--text-color);
+  color: var(--font-color);
 }
 
 .label {
@@ -51,7 +51,7 @@
 }
 
 .thumb[data-focus-visible] {
-  outline: 2px solid var(--text-color);
+  outline: 2px solid var(--font-color);
 }
 
 .slider[data-orientation='horizontal'] {

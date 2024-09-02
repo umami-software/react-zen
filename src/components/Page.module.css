@@ -1,6 +1,6 @@
 .page {
   display: grid;
   min-height: 100vh;
-  color: var(--text-color);
+  color: var(--font-color);
   background: var(--background-color);
 }

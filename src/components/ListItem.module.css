@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--text-color);
+  color: var(--font-color);
   background: var(--background-color);
   padding: var(--padding);
   gap: var(--gap);

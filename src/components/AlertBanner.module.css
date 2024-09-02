@@ -1,11 +1,11 @@
 .banner {
   display: flex;
   align-items: center;
-  font-size: var(--text-size);
+  font-size: var(--font-size);
   padding: var(--padding);
   border: var(--border);
   border-radius: var(--border-radius);
-  color: var(--text-color);
+  color: var(--font-color);
   background: var(--background-color);
   width: 100%;
   overflow: hidden;
@@ -23,11 +23,11 @@
 }
 
 .close {
-  color: var(--text-muted-color);
+  color: var(--font-muted-color);
 }
 
 .close:hover {
-  color: var(--text-color);
+  color: var(--font-color);
   cursor: pointer;
 }
 
@@ -42,11 +42,11 @@
 }
 
 .info {
-  color: var(--primary-text-color);
+  color: var(--primary-font-color);
   background-color: var(--primary-color);
   border: 0;
 }
 
 .info .close {
-  color: var(--primary-text-color);
+  color: var(--primary-font-color);
 }

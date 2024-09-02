@@ -1,7 +1,3 @@
-*:focus {
-  outline: none;
-}
-
 :root {
   /* Base values */
 
@@ -18,11 +14,11 @@
   --spacing11: 7.5rem;
   --spacing12: 10rem;
 
-  --text-size-xs: 0.75rem;
-  --text-size-sm: 0.875rem;
-  --text-size-md: 1rem;
-  --text-size-lg: 1.125rem;
-  --text-size-xl: 1.250rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.250rem;
 
   --border-radius-sm: 0.125rem;
   --border-radius-md: 0.25rem;
@@ -56,7 +52,7 @@
 
   /* Default settings */
 
-  --text-size: 14px;
+  --font-size: 14px;
 
   --border-radius: var(--border-radius-md);
 
@@ -71,9 +67,9 @@
   --light-color: var(--base-color2);
   --dark-color: var(--base-color11);
 
-  --text-color: var(--base-color11);
-  --text-muted-color: var(--base-color6);
-  --text-faded-color: var(--base-color5);
+  --font-color: var(--base-color11);
+  --font-muted-color: var(--base-color6);
+  --font-faded-color: var(--base-color5);
 
   --background-color: #fff;
 
@@ -81,21 +77,21 @@
   --border: 1px solid var(--border-color);
 
   --primary-color: var(--base-color10);
-  --primary-text-color: var(--base-color1);
+  --primary-font-color: var(--base-color1);
 
   --secondary-color: var(--base-color2);
-  --secondary-text-color: var(--text-color);
+  --secondary-font-color: var(--font-color);
 
   --highlight-color: var(--base-color2);
-  --highlight-text-color: var(--text-color);
+  --highlight-font-color: var(--font-color);
 
   --input-background-color: var(--base-color3);
   --input-disabled-color: var(--base-color2);
 
   [data-theme='dark'] {
-    --text-color: var(--base-color2);
-    --text-muted-color: var(--base-color6);
-    --text-faded-color: var(--base-color8);
+    --font-color: var(--base-color2);
+    --font-muted-color: var(--base-color6);
+    --font-faded-color: var(--base-color8);
 
     --background-color: var(--base-color11);
 
@@ -103,13 +99,13 @@
     --border: 1px solid var(--border-color);
 
     --primary-color: var(--base-color1);
-    --primary-text-color: var(--base-color10);
+    --primary-font-color: var(--base-color10);
 
     --secondary-color: var(--base-color9);
-    --secondary-text-color: var(--text-color);
+    --secondary-font-color: var(--font-color);
 
     --highlight-color: var(--base-color9);
-    --highlight-text-color: var(--text-color);
+    --highlight-font-color: var(--font-color);
 
     --input-background-color: var(--base-color11);
     --input-disabled-color: var(--base-color9);
