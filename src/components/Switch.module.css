@@ -14,9 +14,9 @@
   align-items: center;
   width: calc((var(--knob-size) + var(--knob-border-size)) * 2);
   height: calc(var(--knob-size) + var(--knob-border-size) * 2);
-  border: var(--knob-border-size) solid var(--border-color);
+  border: var(--knob-border-size) solid transparent;
   border-radius: calc(var(--knob-size) + var(--knob-border-size) * 2);
-  background: var(--border-color);
+  background: var(--input-bg-color);
   transition: background-color 0.2s;
   cursor: pointer;
 }
