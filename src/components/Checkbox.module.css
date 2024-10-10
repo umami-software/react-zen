@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--spacing3);
+  gap: var(--spacing-3);
   color: var(--font-color);
 }
 
@@ -24,8 +24,8 @@
 }
 
 .checkbox[data-selected] .box {
-  color: var(--primary-font-color);
-  background: var(--primary-color);
+  color: var(--primary-fg-color);
+  background: var(--primary-bg-color);
 }
 
 .checkbox[data-selected] .icon,

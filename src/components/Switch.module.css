@@ -27,17 +27,17 @@
   border-radius: 100%;
   background: var(--background-color);
   transition: all 0.2s;
-  box-shadow: var(--box-shadow2);
+  box-shadow: var(--box-shadow-2);
 }
 
 .switch[data-selected] .track {
-  border-color: var(--primary-color);
-  background: var(--primary-color);
+  border-color: var(--primary-bg-color);
+  background: var(--primary-bg-color);
 }
 
 .switch[data-selected] .knob {
   margin-left: var(--knob-size);
-  border-color: var(--primary-color);
+  border-color: var(--primary-bg-color);
 }
 
 .switch[data-disabled] {

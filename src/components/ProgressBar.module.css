@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--spacing3);
+  gap: var(--spacing-3);
 }
 
 .track {
   height: 10px;
-  background: var(--input-background-color);
+  background: var(--input-bg-color);
   flex-basis: 100%;
   width: fit-content;
   border-radius: var(--border-radius);
@@ -16,7 +16,7 @@
 }
 
 .fill {
-  background: var(--primary-color);
+  background: var(--primary-bg-color);
   height: 10px;
 }
 

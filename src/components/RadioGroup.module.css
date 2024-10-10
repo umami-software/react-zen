@@ -1,7 +1,7 @@
 .radiogroup {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing4);
+  gap: var(--spacing-4);
   color: var(--font-color);
 }
 
@@ -16,7 +16,7 @@
 .radio {
   display: flex;
   align-items: center;
-  gap: var(--spacing3);
+  gap: var(--spacing-3);
   font-size: var(--font-size);
   color: var(--font-color);
   forced-color-adjust: none;
@@ -32,7 +32,7 @@
   background: var(--background-color);
   border-radius: 20px;
   transition: all 200ms;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-);
 }
 
 .radio[data-pressed]:before {
@@ -40,12 +40,12 @@
 }
 
 .radio[data-selected]:before {
-  border-color: var(--primary-color);
+  border-color: var(--primary-bg-color);
   border-width: 7px;
 }
 
 .radio[data-selected][data-pressed]:before {
-  border-color: var(--primary-color);
+  border-color: var(--primary-bg-color);
 }
 
 .radio[data-disabled] {

@@ -6,7 +6,7 @@
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: var(--spacing4);
+  margin-bottom: var(--spacing-4);
 }
 
 .heading {
@@ -42,9 +42,8 @@
 }
 
 .cell:hover {
-  color: var(--font-color);
-  border-color: var(--border-color);
-  background: var(--highlight-color);
+  color: var(--highlight-fg-color);
+  background: var(--highlight-bg-color);
 }
 
 .cell[data-outside-month] {
@@ -57,8 +56,7 @@
 }
 
 .cell[data-selected] {
-  font-weight: 700;
-  color: var(--primary-font-color);
-  border-color: var(--primary-color);
-  background: var(--primary-color);
+  color: var(--primary-fg-color);
+  border-color: var(--primary-bg-color);
+  background: var(--primary-bg-color);
 }

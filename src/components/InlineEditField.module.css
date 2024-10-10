@@ -11,6 +11,6 @@
 
 .icon {
   display: none;
-  right: calc(-1 * var(--spacing5));
+  right: calc(-1 * var(--spacing-5));
   position: absolute;
 }

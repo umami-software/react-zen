@@ -23,7 +23,7 @@
   align-items: center;
   background-color: var(--background-color);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow3);
+  box-shadow: var(--box-shadow-3);
   padding: 1.25rem 1.5rem;
   border: var(--border);
   position: relative;
@@ -81,6 +81,7 @@
 }
 
 .close {
+  color: currentColor;
   position: absolute;
   right: 10px;
   top: 10px;
@@ -91,17 +92,18 @@
 
 .toast:hover .close {
   display: block;
+  cursor: pointer;
 }
 
 .toast.info {
-  color: var(--primary-font-color);
-  background: var(--primary-color);
+  color: var(--primary-fg-color);
+  background: var(--primary-bg-color);
   border: 0;
 }
 
 .toast.error {
-  color: var(--background-color);
-  background: var(--danger-color);
+  color: var(--danger-fg-color);
+  background: var(--danger-bg-color);
   border: 0;
 }
 

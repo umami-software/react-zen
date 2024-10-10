@@ -8,7 +8,7 @@
   align-items: center;
   border-bottom: 2px solid var(--border-color);
   gap: var(--gap);
-  margin-bottom: var(--spacing6);
+  margin-bottom: var(--spacing-6);
 }
 
 .list.quiet {
@@ -33,7 +33,7 @@
 
 .tab[data-selected] {
   color: var(--font-color);
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-bg-color);
 }
 
 .tab[data-disabled] {

@@ -6,7 +6,7 @@
 .item {
   overflow: hidden;
   border-bottom: var(--border);
-  padding-bottom: var(--spacing5)
+  padding-bottom: var(--spacing-5)
 }
 
 .item[data-state="closed"] {

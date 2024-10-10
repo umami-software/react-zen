@@ -9,7 +9,7 @@
   background: var(--background-color);
   width: 100%;
   overflow: hidden;
-  gap: var(--spacing3);
+  gap: var(--spacing-3);
 }
 
 .message {
@@ -33,7 +33,7 @@
 
 .error {
   color: var(--light-color);
-  background-color: var(--danger-color);
+  background-color: var(--danger-bg-color);
   border: 0;
 }
 
@@ -42,11 +42,11 @@
 }
 
 .info {
-  color: var(--primary-font-color);
-  background-color: var(--primary-color);
+  color: var(--primary-fg-color);
+  background-color: var(--primary-bg-color);
   border: 0;
 }
 
 .info .close {
-  color: var(--primary-font-color);
+  color: var(--primary-fg-color);
 }

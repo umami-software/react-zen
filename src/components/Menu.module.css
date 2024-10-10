@@ -3,8 +3,8 @@
   min-width: 200px;
   border: var(--border);
   border-radius: var(--border-radius);
-  padding: var(--spacing2);
-  box-shadow: var(--box-shadow);
+  padding: var(--spacing-2);
+  box-shadow: var(--box-shadow-);
   background: var(--background-color);
 }
 

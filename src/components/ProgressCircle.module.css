@@ -15,11 +15,11 @@
 }
 
 .track {
-  stroke: var(--input-background-color);
+  stroke: var(--input-bg-color);
 }
 
 .fill {
-  stroke: var(--primary-color);
+  stroke: var(--primary-bg-color);
 }
 
 .value {
