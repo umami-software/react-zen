@@ -61,5 +61,5 @@ pre {
 }
 
 *:focus {
-  outline: none;
+  /*outline: none;*/
 }

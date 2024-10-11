@@ -4,9 +4,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import alias from '@rollup/plugin-alias';
 import postcss from 'rollup-plugin-postcss';
+import copy from 'rollup-plugin-copy';
 import del from 'rollup-plugin-delete';
 import esbuild from 'rollup-plugin-esbuild';
-import dts from 'rollup-plugin-dts';
 import svgr from '@svgr/rollup';
 
 const md5 = str => crypto.createHash('md5').update(str).digest('hex');
@@ -17,22 +17,28 @@ const customResolver = resolve({
   extensions: ['.js', '.jsx', '.ts', '.tsx'],
 });
 
-const jsBundle = {
+const convertCase = str => {
+  return str
+    .split(/(?=[A-Z])/)
+    .join('_')
+    .toLowerCase();
+};
+
+export default {
   input: 'src/components/index.ts',
   output: [
     {
       file: 'dist/index.js',
       format: 'cjs',
-      sourcemap: true,
     },
     {
       file: 'dist/index.mjs',
       format: 'es',
-      sourcemap: true,
     },
   ],
   plugins: [
     del({ targets: 'dist/*', runOnce: true }),
+    copy({ targets: [{ src: 'src/styles/zen.css', dest: 'dist' }] }),
     postcss({
       extract: 'styles.css',
       sourceMap: true,
@@ -44,15 +50,13 @@ const jsBundle = {
             .toString('base64')
             .substring(0, 5);
 
-          return `${file}-${name}--${hash}`;
+          return `zen-${convertCase(file)}-${name}--${hash}`;
         },
       },
     }),
     svgr({ icon: true }),
     alias({
-      entries: [
-        { find: /^@/, replacement: path.resolve('./src') },
-      ],
+      entries: [{ find: /^@/, replacement: path.resolve('./src') }],
       customResolver,
     }),
     resolve(),
@@ -60,26 +64,8 @@ const jsBundle = {
     esbuild(),
   ],
   external,
-};
-
-const dtsBundle = {
-  input: 'src/components/index.ts',
-  output: {
-    file: 'dist/index.d.ts',
-    format: 'es',
+  onwarn(warning, warn) {
+    // Ignore all warnings
+    return;
   },
-  plugins: [
-    alias({
-      entries: [
-        { find: /^@/, replacement: path.resolve('./src') },
-      ],
-      customResolver,
-    }),
-    resolve(),
-    commonjs(),
-    dts(),
-  ],
-  external: [/\.css/, ...external],
 };
-
-export default [jsBundle, dtsBundle];

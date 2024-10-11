@@ -24,8 +24,9 @@
     "start": "next start",
     "lint": "next lint",
     "dts": "tsc -p tsconfig.build.json",
-    "build-components": "node build.mjs",
-    "bundle": "npm-run-all dts build-components"
+    "esbuild": "node esbuild.mjs",
+    "rollup": "rollup -c",
+    "bundle": "npm-run-all dts esbuild"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -102,7 +103,9 @@
     "@types/react-dom": "^18",
     "babel-plugin-inline-react-svg": "^2.0.2",
     "babel-plugin-syntax-hermes-parser": "^0.21.1",
-    "esbuild": "^0.21.3",
+    "esbuild": "^0.24.0",
+    "esbuild-css-modules-plugin": "^3.1.2",
+    "esbuild-plugin-replace": "^1.4.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "^9.1.0",
@@ -112,8 +115,12 @@
     "husky": "^9.1.1",
     "lint-staged": "^15.2.7",
     "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.47",
+    "postcss-modules": "^6.0.0",
+    "postcss-selector-parser": "^6.1.2",
     "prettier": "^3.2.5",
     "rollup": "^4.17.2",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-esbuild": "^6.1.1",
