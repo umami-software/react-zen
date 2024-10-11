@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Button, ButtonProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
@@ -14,6 +14,7 @@ interface _ButtonProps extends ButtonProps {
 function _Button({
   variant = 'secondary',
   size = 'md',
+  preventFocusOnPress = true,
   asChild,
   className,
   children,
@@ -24,6 +25,7 @@ function _Button({
   return (
     <Component
       {...props}
+      preventFocusOnPress={preventFocusOnPress}
       className={classNames(
         styles.button,
         className,
