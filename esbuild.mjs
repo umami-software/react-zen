@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import esbuild from 'esbuild';
+import { commonjs } from '@hyrious/esbuild-plugin-commonjs';
 
 const config = {
   entryPoints: ['src/components/index.ts'],
@@ -12,6 +13,9 @@ esbuild
     ...config,
     outfile: 'dist/index.js',
     format: 'cjs',
+    loader: {
+      '.css': 'empty'
+    },
   })
   .catch(e => {
     console.error(e);
@@ -23,19 +27,9 @@ esbuild
     ...config,
     outfile: 'dist/index.mjs',
     format: 'esm',
+    plugins: [commonjs()],
   })
   .then(() => {
-    // Some modules use require so we need to polyfill for it
-    const output = fs.readFileSync('dist/index.mjs', 'utf-8');
-
-    fs.writeFileSync(
-      'dist/index.mjs',
-      [
-        'import __React from "react";const require = () => __React;',
-        output.replaceAll('"use client";', ''),
-      ].join('\n'),
-    );
-
     fs.renameSync('dist/index.css', 'dist/styles.css');
 
     // Include styles

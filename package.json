@@ -94,6 +94,7 @@
   },
   "devDependencies": {
     "@deanc/esbuild-plugin-postcss": "^1.0.2",
+    "@hyrious/esbuild-plugin-commonjs": "^0.2.4",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -106,7 +107,6 @@
     "babel-plugin-syntax-hermes-parser": "^0.21.1",
     "esbuild": "^0.24.0",
     "esbuild-css-modules-plugin": "^3.1.2",
-    "esbuild-plugin-replace": "^1.4.0",
     "esbuild-postcss": "^0.0.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
