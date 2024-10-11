@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { Breadcrumbs, BreadcrumbsProps, Breadcrumb, BreadcrumbProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Icon } from './Icon';
@@ -15,7 +16,7 @@ function _Breadcrumbs({ children, className, ...props }: BreadcrumbsProps<any>) 
 function _Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
   return (
     <Breadcrumb {...props} className={classNames(styles.breadcrumb, className)}>
-      {children}
+      {children as ReactNode}
       <Icon className={styles.icon} size="xs">
         <Icons.Chevron />
       </Icon>
