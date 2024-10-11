@@ -30,10 +30,12 @@ export default {
     {
       file: 'dist/index.js',
       format: 'cjs',
+      sourceMap: true,
     },
     {
       file: 'dist/index.mjs',
       format: 'es',
+      sourceMap: true,
     },
   ],
   plugins: [
@@ -50,7 +52,7 @@ export default {
             .toString('base64')
             .substring(0, 5);
 
-          return `zen-${convertCase(file)}-${name}--${hash}`;
+          return `zen-${convertCase(file)}-${name}-${hash}`;
         },
       },
     }),
@@ -66,6 +68,5 @@ export default {
   external,
   onwarn(warning, warn) {
     // Ignore all warnings
-    return;
   },
 };

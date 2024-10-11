@@ -1,5 +1,5 @@
-import esbuild from 'esbuild';
 import fs from 'node:fs';
+import esbuild from 'esbuild';
 
 const config = {
   entryPoints: ['src/components/index.ts'],
