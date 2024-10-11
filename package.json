@@ -26,7 +26,7 @@
     "dts": "tsc -p tsconfig.build.json",
     "esbuild": "node esbuild.mjs",
     "rollup": "rollup -c",
-    "bundle": "npm-run-all dts rollup"
+    "bundle": "npm-run-all dts esbuild"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
