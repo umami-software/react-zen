@@ -1,5 +1,11 @@
 'use client';
-import { DialogTrigger, FileTrigger, MenuTrigger, TooltipTrigger } from 'react-aria-components';
+import {
+  DialogTrigger,
+  FileTrigger,
+  MenuTrigger,
+  SubmenuTrigger,
+  TooltipTrigger,
+} from 'react-aria-components';
 import { useDebounce } from './hooks/useDebounce';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
@@ -105,6 +111,7 @@ export {
   Slider,
   Spinner,
   StatusLight,
+  SubmenuTrigger,
   Switch,
   Table,
   TableHeader,

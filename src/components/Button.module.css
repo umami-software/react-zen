@@ -120,6 +120,11 @@
   padding: 1rem 1.25rem;
 }
 
+.button.xl {
+  font-size: 1.3rem;
+  padding: 1.25rem 1.5rem;
+}
+
 .button a {
   color: inherit;
 }

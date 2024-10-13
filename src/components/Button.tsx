@@ -6,7 +6,7 @@ import styles from './Button.module.css';
 
 interface ButtonProps extends _ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'quiet' | 'danger' | 'zero';
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   asChild?: boolean;
   slot?: string;
 }
