@@ -1,17 +1,17 @@
-import React, { ReactNode } from 'react';
-import { Button, ButtonProps } from 'react-aria-components';
+import { ReactNode } from 'react';
+import { Button as _Button, ButtonProps as _ButtonProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import styles from './Button.module.css';
 
-interface _ButtonProps extends ButtonProps {
+interface ButtonProps extends _ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'quiet' | 'danger' | 'zero';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   asChild?: boolean;
   slot?: string;
 }
 
-function _Button({
+function Button({
   variant = 'secondary',
   size = 'md',
   preventFocusOnPress = true,
@@ -19,13 +19,13 @@ function _Button({
   className,
   children,
   ...props
-}: _ButtonProps) {
-  const Component = asChild ? Slot : Button;
+}: ButtonProps) {
+  const Component = asChild ? Slot : _Button;
 
   return (
     <Component
       {...props}
-      preventFocusOnPress={preventFocusOnPress}
+      preventFocusOnPress={Component === _Button ? preventFocusOnPress : undefined}
       className={classNames(
         styles.button,
         className,
@@ -38,5 +38,5 @@ function _Button({
   );
 }
 
-export { _Button as Button };
-export type { _ButtonProps as ButtonProps };
+export { Button };
+export type { ButtonProps };

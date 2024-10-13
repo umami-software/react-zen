@@ -1,4 +1,4 @@
-import { Modal, ModalOverlay } from 'react-aria-components';
+import { Modal as AriaModal, ModalOverlay as AriaModalOverlay } from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './Modal.module.css';
 
@@ -7,19 +7,19 @@ interface ModalProps {
   children?: React.ReactNode;
 }
 
-function _Modal({ children, className, ...props }: ModalProps) {
+function Modal({ children, className, ...props }: ModalProps) {
   return (
-    <ModalOverlay {...props} className={styles.overlay}>
-      <Modal
+    <AriaModalOverlay {...props} className={styles.overlay}>
+      <AriaModal
         className={classNames(styles.modal, className)}
         isDismissable={true}
         isKeyboardDismissDisabled={true}
       >
         {children}
-      </Modal>
-    </ModalOverlay>
+      </AriaModal>
+    </AriaModalOverlay>
   );
 }
 
-export { _Modal as Modal };
+export { Modal };
 export type { ModalProps };

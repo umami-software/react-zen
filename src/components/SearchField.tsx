@@ -1,5 +1,10 @@
 import { useState, useEffect, ChangeEvent } from 'react';
-import { SearchField, SearchFieldProps, Input, Button } from 'react-aria-components';
+import {
+  SearchField as AriaSearchField,
+  SearchFieldProps as AriaSearchFieldProps,
+  Input,
+  Button,
+} from 'react-aria-components';
 import classNames from 'classnames';
 import { useDebounce } from './hooks/useDebounce';
 import { Icon } from './Icon';
@@ -7,13 +12,13 @@ import { Icons } from './Icons';
 import fieldStyles from './Field.module.css';
 import styles from './SearchField.module.css';
 
-interface _SearchFieldProps extends SearchFieldProps {
+interface SearchFieldProps extends AriaSearchFieldProps {
   value?: string;
   delay?: number;
   onSearch?: (value: string) => void;
 }
 
-function _SearchField({ value, delay = 0, onSearch, className, ...props }: _SearchFieldProps) {
+function SearchField({ value, delay = 0, onSearch, className, ...props }: SearchFieldProps) {
   const [search, setSearch] = useState(value ?? '');
   const searchValue = useDebounce(search, delay);
 
@@ -39,7 +44,7 @@ function _SearchField({ value, delay = 0, onSearch, className, ...props }: _Sear
   }, [searchValue, delay, onSearch]);
 
   return (
-    <SearchField {...props} className={classNames(fieldStyles.field, className)}>
+    <AriaSearchField {...props} className={classNames(fieldStyles.field, className)}>
       {({ state }) => {
         return (
           <>
@@ -55,9 +60,9 @@ function _SearchField({ value, delay = 0, onSearch, className, ...props }: _Sear
           </>
         );
       }}
-    </SearchField>
+    </AriaSearchField>
   );
 }
 
-export { _SearchField as SearchField };
+export { SearchField };
 export type { SearchFieldProps };

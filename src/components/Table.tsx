@@ -5,11 +5,11 @@ import {
   ColumnProps,
   Row,
   RowProps,
-  Table,
+  Table as AriaTable,
   TableProps,
-  TableBody,
+  TableBody as AriaTableBody,
   TableBodyProps,
-  TableHeader,
+  TableHeader as AriaTableHeader,
   TableHeaderProps,
 } from 'react-aria-components';
 import classNames from 'classnames';
@@ -23,27 +23,27 @@ interface TableCellProps extends CellProps {
   alignment?: 'start' | 'center' | 'end';
 }
 
-function _Table({ children, className, ...props }: TableProps) {
+function Table({ children, className, ...props }: TableProps) {
   return (
-    <Table {...props} className={classNames(styles.table, className)} aria-label="Table">
+    <AriaTable {...props} className={classNames(styles.table, className)} aria-label="Table">
       {children}
-    </Table>
+    </AriaTable>
   );
 }
 
-function _TableHeader({ children, className, ...props }: TableHeaderProps<any>) {
+function TableHeader({ children, className, ...props }: TableHeaderProps<any>) {
   return (
-    <TableHeader {...props} className={classNames(styles.header, className)}>
+    <AriaTableHeader {...props} className={classNames(styles.header, className)}>
       {children}
-    </TableHeader>
+    </AriaTableHeader>
   );
 }
 
-function _TableBody({ children, className, ...props }: TableBodyProps<any>) {
+function TableBody({ children, className, ...props }: TableBodyProps<any>) {
   return (
-    <TableBody {...props} className={classNames(styles.body, className)}>
+    <AriaTableBody {...props} className={classNames(styles.body, className)}>
       {children}
-    </TableBody>
+    </AriaTableBody>
   );
 }
 
@@ -75,11 +75,4 @@ function TableCell({ children, className, alignment, ...props }: TableCellProps)
   );
 }
 
-export {
-  _Table as Table,
-  _TableHeader as TableHeader,
-  _TableBody as TableBody,
-  TableRow,
-  TableColumn,
-  TableCell,
-};
+export { Table, TableHeader, TableBody, TableRow, TableColumn, TableCell };

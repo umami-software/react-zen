@@ -1,22 +1,27 @@
-import { RadioGroup, RadioGroupProps, Radio, RadioProps } from 'react-aria-components';
+import {
+  RadioGroup as AriaRadioGroup,
+  RadioGroupProps,
+  Radio as AriaRadio,
+  RadioProps,
+} from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './RadioGroup.module.css';
 
-function _RadioGroup({ children, className, ...props }: RadioGroupProps) {
+function RadioGroup({ children, className, ...props }: RadioGroupProps) {
   return (
-    <RadioGroup {...props} className={classNames(styles.radiogroup, className)}>
+    <AriaRadioGroup {...props} className={classNames(styles.radiogroup, className)}>
       {children}
-    </RadioGroup>
+    </AriaRadioGroup>
   );
 }
 
-function _Radio({ children, className, ...props }: RadioProps) {
+function Radio({ children, className, ...props }: RadioProps) {
   return (
-    <Radio {...props} className={classNames(styles.radio, className)}>
+    <AriaRadio {...props} className={classNames(styles.radio, className)}>
       {children}
-    </Radio>
+    </AriaRadio>
   );
 }
 
-export { _RadioGroup as RadioGroup, _Radio as Radio };
+export { RadioGroup, Radio };
 export type { RadioProps, RadioGroupProps };

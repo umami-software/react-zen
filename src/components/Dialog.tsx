@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
-import { Dialog, DialogProps } from 'react-aria-components';
+import { Dialog as AriaDialog, DialogProps as AriaDialogProps } from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './Dialog.module.css';
 
-interface _DialogProps extends DialogProps {
+interface DialogProps extends AriaDialogProps {
   title?: ReactNode;
 }
 
-function _Dialog({ title, children, className, ...props }: _DialogProps) {
+function Dialog({ title, children, className, ...props }: DialogProps) {
   return (
-    <Dialog {...props} className={classNames(styles.dialog, className)}>
+    <AriaDialog {...props} className={classNames(styles.dialog, className)}>
       {({ close }) => {
         return (
           <>
@@ -18,9 +18,9 @@ function _Dialog({ title, children, className, ...props }: _DialogProps) {
           </>
         );
       }}
-    </Dialog>
+    </AriaDialog>
   );
 }
 
-export { _Dialog as Dialog };
-export type { _DialogProps as DialogProps };
+export { Dialog };
+export type { DialogProps };

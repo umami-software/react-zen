@@ -1,22 +1,26 @@
 import classNames from 'classnames';
-import { ToggleGroup, ToggleGroupItem, ToggleGroupItemProps } from '@radix-ui/react-toggle-group';
+import {
+  ToggleGroup as RadixToggleGroup,
+  ToggleGroupItem as RadixToggleGroupItem,
+  ToggleGroupItemProps,
+} from '@radix-ui/react-toggle-group';
 import { ToggleGroupProps } from '@radix-ui/react-toolbar';
 import styles from './ToggleGroup.module.css';
 
-function _ToggleGroup({ className, children, ...props }: ToggleGroupProps) {
+function ToggleGroup({ className, children, ...props }: ToggleGroupProps) {
   return (
-    <ToggleGroup {...props} className={classNames(styles.group, className)}>
+    <RadixToggleGroup {...props} className={classNames(styles.group, className)}>
       {children}
-    </ToggleGroup>
+    </RadixToggleGroup>
   );
 }
 
-function _ToggleGroupItem({ className, children, ...props }: ToggleGroupItemProps) {
+function ToggleGroupItem({ className, children, ...props }: ToggleGroupItemProps) {
   return (
-    <ToggleGroupItem {...props} className={classNames(styles.item, className)}>
+    <RadixToggleGroupItem {...props} className={classNames(styles.item, className)}>
       {children}
-    </ToggleGroupItem>
+    </RadixToggleGroupItem>
   );
 }
 
-export { _ToggleGroup as ToggleGroup, _ToggleGroupItem as ToggleGroupItem };
+export { ToggleGroup, ToggleGroupItem };

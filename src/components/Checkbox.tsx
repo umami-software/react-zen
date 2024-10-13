@@ -1,12 +1,12 @@
-import { Checkbox, CheckboxProps } from 'react-aria-components';
+import { Checkbox as AriaCheckbox, CheckboxProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Icons } from './Icons';
 import { Icon } from './Icon';
 import styles from './Checkbox.module.css';
 
-function _Checkbox({ className, children, ...props }: CheckboxProps) {
+function Checkbox({ className, children, ...props }: CheckboxProps) {
   return (
-    <Checkbox {...props} className={classNames(styles.checkbox, className)}>
+    <AriaCheckbox {...props} className={classNames(styles.checkbox, className)}>
       {({ isIndeterminate, isSelected }) => {
         return (
           <>
@@ -19,9 +19,9 @@ function _Checkbox({ className, children, ...props }: CheckboxProps) {
           </>
         );
       }}
-    </Checkbox>
+    </AriaCheckbox>
   );
 }
 
-export { _Checkbox as Checkbox };
+export { Checkbox };
 export type { CheckboxProps };

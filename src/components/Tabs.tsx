@@ -1,46 +1,46 @@
 import {
-  Tabs,
-  Tab,
+  Tabs as AriaTabs,
+  Tab as AriaTab,
   TabProps,
   TabsProps,
-  TabPanel,
+  TabPanel as AriaTabPanel,
   TabPanelProps,
-  TabList,
+  TabList as AriaTabList,
   TabListProps,
 } from 'react-aria-components';
 import styles from './Tabs.module.css';
 
-function _Tabs({ children, ...props }: TabsProps) {
+function Tabs({ children, ...props }: TabsProps) {
   return (
-    <Tabs {...props} className={styles.tabs}>
+    <AriaTabs {...props} className={styles.tabs}>
       {children}
-    </Tabs>
+    </AriaTabs>
   );
 }
 
-function _TabList({ children, ...props }: TabListProps<any>) {
+function TabList({ children, ...props }: TabListProps<any>) {
   return (
-    <TabList {...props} className={styles.list}>
+    <AriaTabList {...props} className={styles.list}>
       {children}
-    </TabList>
+    </AriaTabList>
   );
 }
 
-function _Tab({ children, ...props }: TabProps) {
+function Tab({ children, ...props }: TabProps) {
   return (
-    <Tab {...props} className={styles.tab}>
+    <AriaTab {...props} className={styles.tab}>
       {children}
-    </Tab>
+    </AriaTab>
   );
 }
 
-function _TabPanel({ children, ...props }: TabPanelProps) {
+function TabPanel({ children, ...props }: TabPanelProps) {
   return (
-    <TabPanel {...props} className={styles.panel}>
+    <AriaTabPanel {...props} className={styles.panel}>
       {children}
-    </TabPanel>
+    </AriaTabPanel>
   );
 }
 
-export { _Tabs as Tabs, _TabList as TabList, _Tab as Tab, _TabPanel as TabPanel };
+export { Tabs, TabList, Tab, TabPanel };
 export type { TabsProps, TabListProps, TabProps, TabPanelProps };

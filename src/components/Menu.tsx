@@ -1,18 +1,18 @@
 import { ReactNode } from 'react';
-import { Menu, MenuProps, Separator } from 'react-aria-components';
+import { Menu as AriaMenu, MenuProps as AriaMenuProps, Separator } from 'react-aria-components';
 import classNames from 'classnames';
 import { MenuItem } from './MenuItem';
 import styles from './Menu.module.css';
 
-interface _MenuProps extends MenuProps<any> {
+interface MenuProps extends AriaMenuProps<any> {
   items?: any[];
   className?: string;
   children?: ReactNode;
 }
 
-function _Menu({ items, className, children, ...props }: _MenuProps) {
+function Menu({ items, className, children, ...props }: MenuProps) {
   return (
-    <Menu {...props} className={classNames(styles.menu, className)}>
+    <AriaMenu {...props} className={classNames(styles.menu, className)}>
       {children ||
         items?.map((item, index) => {
           if (item === null) {
@@ -25,9 +25,9 @@ function _Menu({ items, className, children, ...props }: _MenuProps) {
             </MenuItem>
           );
         })}
-    </Menu>
+    </AriaMenu>
   );
 }
 
-export { _Menu as Menu };
-export type { _MenuProps as MenuProps };
+export { Menu };
+export type { MenuProps };

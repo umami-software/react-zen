@@ -1,5 +1,5 @@
 import {
-  Calendar,
+  Calendar as AriaCalendar,
   CalendarProps,
   CalendarCell,
   CalendarGrid,
@@ -14,9 +14,9 @@ import { Icon } from './Icon';
 import { Icons } from './Icons';
 import styles from './Calendar.module.css';
 
-function _Calendar({ className, ...props }: CalendarProps<any>) {
+function Calendar({ className, ...props }: CalendarProps<any>) {
   return (
-    <Calendar {...props} className={classNames(styles.calendar, className)}>
+    <AriaCalendar {...props} className={classNames(styles.calendar, className)}>
       <header className={styles.header}>
         <Button slot="previous" className={styles.button} variant="quiet">
           <Icon rotate={180}>
@@ -38,9 +38,9 @@ function _Calendar({ className, ...props }: CalendarProps<any>) {
           {date => <CalendarCell className={styles.cell} date={date} />}
         </CalendarGridBody>
       </CalendarGrid>
-    </Calendar>
+    </AriaCalendar>
   );
 }
 
-export { _Calendar as Calendar };
+export { Calendar };
 export type { CalendarProps };

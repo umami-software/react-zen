@@ -1,17 +1,17 @@
-import { Switch, SwitchProps } from 'react-aria-components';
+import { Switch as AriaSwitch, SwitchProps } from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './Switch.module.css';
 
-function _Switch({ children, className, ...props }: SwitchProps) {
+function Switch({ children, className, ...props }: SwitchProps) {
   return (
-    <Switch {...props} className={classNames(styles.switch, className)}>
+    <AriaSwitch {...props} className={classNames(styles.switch, className)}>
       <div className={styles.track}>
         <div className={styles.knob} />
       </div>
       {children as any}
-    </Switch>
+    </AriaSwitch>
   );
 }
 
-export { _Switch as Switch };
+export { Switch };
 export type { SwitchProps };

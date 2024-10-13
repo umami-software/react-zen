@@ -1,14 +1,14 @@
-import { Label, LabelProps } from 'react-aria-components';
+import { Label as AriaLabel, LabelProps as AriaLabelProps } from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './Label.module.css';
 
-interface _LabelProps extends LabelProps {
+interface LabelProps extends AriaLabelProps {
   asChild?: boolean;
 }
 
-function _Label({ asChild, className, ...props }: _LabelProps) {
-  return <Label {...props} className={classNames(styles.label, className)} />;
+function Label({ asChild, className, ...props }: LabelProps) {
+  return <AriaLabel {...props} className={classNames(styles.label, className)} />;
 }
 
-export { _Label as Label };
-export type { _LabelProps as LabelProps };
+export { Label };
+export type { LabelProps };

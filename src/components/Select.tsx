@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
-import { Button, Select, SelectValue } from 'react-aria-components';
+import { Button, Select as AriaSelect, SelectValue } from 'react-aria-components';
 import { List } from './List';
 import ListItem from './ListItem';
 import { Popover } from './Popover';
@@ -15,9 +15,9 @@ export interface SelectProps {
   children?: ReactNode;
 }
 
-export function _Select({ children, items = [], value, className, ...props }: SelectProps) {
+function Select({ children, items = [], value, className, ...props }: SelectProps) {
   return (
-    <Select {...props} className={classNames(styles.select, className)}>
+    <AriaSelect {...props} className={classNames(styles.select, className)}>
       <Button className={styles.button}>
         <SelectValue />
         <span aria-hidden="true">
@@ -36,8 +36,8 @@ export function _Select({ children, items = [], value, className, ...props }: Se
             ))}
         </List>
       </Popover>
-    </Select>
+    </AriaSelect>
   );
 }
 
-export { _Select as Select };
+export { Select };

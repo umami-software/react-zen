@@ -1,17 +1,23 @@
 import { ReactNode } from 'react';
-import { Slider, SliderProps, SliderOutput, SliderThumb, SliderTrack } from 'react-aria-components';
+import {
+  Slider as AriaSlider,
+  SliderProps as AriaSliderProps,
+  SliderOutput,
+  SliderThumb,
+  SliderTrack,
+} from 'react-aria-components';
 import classNames from 'classnames';
 import { Label } from './Label';
 import styles from './Slider.module.css';
 
-interface _SliderProps extends SliderProps {
+interface SliderProps extends AriaSliderProps {
   label?: ReactNode;
   showValue?: boolean;
 }
 
-function _Slider({ className, showValue = true, label, ...props }: _SliderProps) {
+function Slider({ className, showValue = true, label, ...props }: SliderProps) {
   return (
-    <Slider {...props} className={classNames(styles.slider, className)}>
+    <AriaSlider {...props} className={classNames(styles.slider, className)}>
       {label && <Label className={styles.label}>{label}</Label>}
       {showValue && <SliderOutput className={styles.output} />}
       <SliderTrack className={styles.track}>
@@ -32,9 +38,9 @@ function _Slider({ className, showValue = true, label, ...props }: _SliderProps)
           );
         }}
       </SliderTrack>
-    </Slider>
+    </AriaSlider>
   );
 }
 
-export { _Slider as Slider };
-export type { _SliderProps as SliderProps };
+export { Slider };
+export type { SliderProps };
