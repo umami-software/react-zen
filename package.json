@@ -19,14 +19,15 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "next dev -p 9000",
+    "dev": "next dev -p 9000 --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dts": "tsc -p tsconfig.build.json",
+    "types": "tsc -p tsconfig.build.json",
     "esbuild": "node esbuild.mjs",
     "rollup": "rollup -c",
-    "bundle": "npm-run-all dts esbuild"
+    "dts": "node ./dts.js",
+    "bundle": "npm-run-all types dts esbuild"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -80,6 +81,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@radix-ui/react-visually-hidden": "^1.0.3",
     "classnames": "^2.5.1",
+    "dts-bundle": "^0.7.3",
     "glob": "^10.3.10",
     "gray-matter": "^4.0.3",
     "next": "14.2.5",
@@ -129,6 +131,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "stylelint": "^16.7.0",
     "stylelint-config-prettier": "^9.0.5",
+    "tsup": "^8.3.0",
     "typescript": "^5"
   }
 }
