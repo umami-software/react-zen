@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { ListBox, ListBoxProps, Separator } from 'react-aria-components';
 import classNames from 'classnames';
-import ListItem from './ListItem';
+import { ListItem } from './ListItem';
 import styles from './List.module.css';
 
 interface ListProps extends ListBoxProps<any> {

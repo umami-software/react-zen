@@ -1,8 +1,9 @@
 import { CSSProperties, ReactNode } from 'react';
 import classNames from 'classnames';
+import { Box, BoxProps } from './Box';
 import styles from './Flexbox.module.css';
 
-export interface FlexboxProps {
+export interface FlexboxProps extends BoxProps {
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
   justifyContent?:
@@ -79,12 +80,9 @@ export interface FlexboxProps {
     | 'safe center'
     | 'unsafe center';
   inline?: boolean;
-  gap?: string | number;
-  order?: number;
   grow?: number;
   shrink?: number;
   basis?: string | number;
-  spacing?: number;
   style?: CSSProperties;
   className?: string;
   children?: ReactNode;
@@ -99,8 +97,6 @@ export function Flexbox({
   alignContent,
   alignItems,
   alignSelf,
-  gap,
-  order,
   grow,
   shrink,
   basis,
@@ -108,11 +104,11 @@ export function Flexbox({
   style,
   className,
   children,
-  ...attributes
+  ...props
 }: FlexboxProps) {
   return (
-    <div
-      {...attributes}
+    <Box
+      {...props}
       className={classNames(
         styles.flexbox,
         className,
@@ -124,12 +120,11 @@ export function Flexbox({
         alignItems && styles[`align-items-${replace(alignItems)}`],
         alignSelf && styles[`align-self-${replace(alignSelf)}`],
         inline && styles.inline,
-        spacing && styles[`spacing${spacing}`],
       )}
-      style={{ order, gap, flexBasis: basis, flexGrow: grow, flexShrink: shrink, ...style }}
+      style={{ flexBasis: basis, flexGrow: grow, flexShrink: shrink, ...style }}
     >
       {children}
-    </div>
+    </Box>
   );
 }
 

@@ -19,5 +19,3 @@ function ListItem({ children, className, ...props }: ListBoxItemProps<any>) {
 
 export { ListItem };
 export type { ListBoxItemProps as ListItemProps };
-
-export default ListItem;

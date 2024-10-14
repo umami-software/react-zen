@@ -5,6 +5,7 @@
   background: var(--background-color);
   border: var(--border);
   border-radius: var(--border-radius);
+  outline: none;
 }
 
 .title {

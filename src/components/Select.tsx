@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import classNames from 'classnames';
 import { Button, Select as AriaSelect, SelectValue } from 'react-aria-components';
 import { List } from './List';
-import ListItem from './ListItem';
+import { ListItem } from './ListItem';
 import { Popover } from './Popover';
 import { Icon } from './Icon';
 import { Icons } from './Icons';

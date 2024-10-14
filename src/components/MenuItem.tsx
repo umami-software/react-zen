@@ -19,3 +19,5 @@ function MenuItem({ children, className, ...props }: MenuItemProps<any>) {
 
 export { MenuItem };
 export type { MenuItemProps };
+
+export default MenuItem;

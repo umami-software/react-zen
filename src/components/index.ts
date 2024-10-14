@@ -6,12 +6,16 @@ import {
   SubmenuTrigger,
   TooltipTrigger,
 } from 'react-aria-components';
+
+import { Slot } from '@radix-ui/react-slot';
+
 import { useDebounce } from './hooks/useDebounce';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
 import { Accordion, AccordionItem, AccordionHeader, AccordionContent } from './Accordion';
 import { AlertBanner } from './AlertBanner';
 import { AlertDialog } from './AlertDialog';
+import { Box } from './Box';
 import { Breadcrumbs, Breadcrumb } from './Breadcrumbs';
 import { Button } from './Button';
 import { Calendar } from './Calendar';
@@ -70,6 +74,7 @@ export {
   AccordionHeader,
   AlertBanner,
   AlertDialog,
+  Box,
   Breadcrumb,
   Breadcrumbs,
   Button,
@@ -109,6 +114,7 @@ export {
   SearchField,
   Select,
   Slider,
+  Slot,
   Spinner,
   StatusLight,
   SubmenuTrigger,

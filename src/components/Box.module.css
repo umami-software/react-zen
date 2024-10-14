@@ -1,0 +1,79 @@
+.font-size-xs {
+  font-size: var(--font-size-xs);
+}
+
+.font-size-sm {
+  font-size: var(--font-size-sm);
+}
+
+.font-size-md {
+  font-size: var(--font-size-md);
+}
+
+.font-size-lg {
+  font-size: var(--font-size-lg);
+}
+
+.font-size-xl {
+  font-size: var(--font-size-xl);
+}
+
+.border-radius-sm {
+  border-radius: var(--border-radius-sm);
+}
+
+.border-radius-md {
+  border-radius: var(--border-radius-md);
+}
+
+.border-radius-lg {
+  border-radius: var(--border-radius-lg);
+}
+
+.border-radius-full {
+  border-radius: 100%;
+}
+
+.gap-xs {
+  gap: var(--gap-xs);
+}
+
+.gap-sm {
+  gap: var(--gap-sm);
+}
+
+.gap-md {
+  gap: var(--gap-md);
+}
+
+.gap-lg {
+  gap: var(--gap-lg);
+}
+
+.gap-xl {
+  gap: var(--gap-xl);
+}
+
+.shadow-1 {
+  box-shadow: var(--box-shadow-1);
+}
+
+.shadow-2 {
+  box-shadow: var(--box-shadow-2);
+}
+
+.shadow-3 {
+  box-shadow: var(--box-shadow-3);
+}
+
+.shadow-4 {
+  box-shadow: var(--box-shadow-4);
+}
+
+.shadow-5 {
+  box-shadow: var(--box-shadow-5);
+}
+
+.shadow-6 {
+  box-shadow: var(--box-shadow-6);
+}
