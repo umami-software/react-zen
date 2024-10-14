@@ -18,6 +18,18 @@
   font-size: var(--font-size-xl);
 }
 
+.border-thin {
+  border-radius: var(--border-thin);
+}
+
+.border-medium {
+  border-radius: var(--border-medium);
+}
+
+.border-thick {
+  border-radius: var(--border-thick);
+}
+
 .border-radius-sm {
   border-radius: var(--border-radius-sm);
 }

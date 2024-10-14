@@ -18,7 +18,7 @@ export function DialogExample() {
         <Dialog title="Sign up for newsletter">
           {({ close }) => {
             return (
-              <Column gap={20}>
+              <Column gap="md">
                 <div>
                   <Label htmlFor="name">Name</Label>
                   <TextField id="name" />

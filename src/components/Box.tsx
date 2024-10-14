@@ -7,6 +7,7 @@ interface BoxProps extends HTMLProps<HTMLDivElement> {
   className?: string;
   fontSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  border?: 'thin' | 'medium' | 'thick';
   borderRadius?: 'sm' | 'md' | 'lg' | 'full';
   shadow?: 1 | 2 | 3 | 4 | 5 | 6;
   spacing?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
@@ -18,6 +19,7 @@ function Box({
   className,
   spacing,
   fontSize,
+  border,
   borderRadius,
   shadow,
   gap,
@@ -34,6 +36,8 @@ function Box({
         className,
         fontSize && styles[`font-size-${fontSize}`],
         gap && styles[`gap-${gap}`],
+        border && styles[`border-${border}`],
+        borderRadius && styles[`border-radius-${borderRadius}`],
         shadow && styles[`shadow-${shadow}`],
         spacing && styles[`spacing-${spacing}`],
       )}
