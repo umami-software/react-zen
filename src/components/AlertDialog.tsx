@@ -45,9 +45,9 @@ function AlertDialog({
     <Dialog {...props} title={title} className={classNames(styles.dialog, className)}>
       {({ close }) => {
         return (
-          <Column spacing={6}>
+          <Column gap="lg">
             {typeof children === 'function' ? children({ close }) : children}
-            <Row spacing={3} justifyContent="end">
+            <Row gap="md" justifyContent="end">
               <Button onPress={() => handleClose(close)}>{cancelLabel}</Button>
               <Button
                 variant={isDanger ? 'danger' : 'primary'}

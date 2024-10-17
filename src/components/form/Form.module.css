@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  width: 100%;
+}
+
+.text {
+  text-align: center;
+  margin: auto;
+}
+
+.icon {
+  align-self: flex-start;
+}
+
+.error {
+  margin: 0 auto var(--size-600) auto;
+  overflow: auto;
+}

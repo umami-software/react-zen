@@ -16,8 +16,8 @@
   --gap-xs: 1px;
   --gap-sm: 0.5rem;
   --gap-md: 1rem;
-  --gap-lg: 4rem;
-  --gap-xl: 12rem;
+  --gap-lg: 2rem;
+  --gap-xl: 8rem;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -78,7 +78,7 @@
 
   --padding: var(--spacing-2) var(--spacing-3);
 
-  --box-shadow-: var(--box-shadow-1);
+  --box-shadow: var(--box-shadow-1);
 
   --light-color: var(--base-color-50);
   --dark-color: var(--base-color-950);
@@ -93,6 +93,7 @@
 
   --border-color: var(--base-color-300);
   --border: var(--border-thin) solid var(--border-color);
+  --outline: var(--border-thin) solid var(--base-color-400);
 
   --primary-fg-color: var(--base-color-50);
   --primary-bg-color: var(--base-color-900);

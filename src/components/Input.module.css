@@ -1,0 +1,56 @@
+.field, .row {
+  position: relative;
+}
+
+.field[data-readonly] .input,
+.field[data-disabled] .input {
+  background: var(--input-disabled-color);
+}
+
+.label {
+  color: var(--base-color-800);
+  font-weight: 700;
+  display: block;
+  align-items: center;
+  justify-content: flex-start;
+  line-height: 2rem;
+}
+
+.input {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background: var(--background-color);
+  box-shadow: var(--box-shadow);
+  color: var(--font-color);
+  padding: var(--padding);
+  line-height: 1.5rem;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: transparent;
+  outline: var(--outline);
+}
+
+.input::placeholder {
+  color: var(--font-muted-color);
+}
+
+.input:disabled {
+  color: var(--font-muted-color);
+}
+
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.icon {
+  color: var(--font-muted-color);
+  background: var(--background-color);
+}
+
+.icon:hover {
+  color: var(--font-color);
+  cursor: pointer;
+}

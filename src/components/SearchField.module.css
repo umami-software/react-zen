@@ -1,20 +1,21 @@
-.icon {
-  margin-left: var(--spacing-2);
+.search {
+  position: absolute;
+  top: 12px;
+  left: 9px;
 }
 
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--font-muted-color);
+.input {
+  padding-left: 28px;
+  padding-right: 24px;
+}
+
+.close {
+  position: absolute;
+  top: 9px;
+  right: 0;
   border: none;
   background: none;
-  cursor: pointer;
   border-radius: var(--border-radius-full);
   padding: 0;
   margin: 0 var(--spacing-2);
-}
-
-.button:hover {
-  color: var(--font-color);
 }

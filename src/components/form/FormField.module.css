@@ -1,0 +1,15 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  color: var(--font-muted-color);
+  line-height: 1.8rem;
+}
+
+.error {
+  color: var(--danger-bg-color);
+  line-height: 1.8rem;
+  font-weight: 600;
+}

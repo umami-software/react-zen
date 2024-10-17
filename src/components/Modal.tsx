@@ -1,11 +1,15 @@
 import { ReactNode } from 'react';
-import { Modal as AriaModal, ModalOverlay as AriaModalOverlay } from 'react-aria-components';
+import {
+  Modal as AriaModal,
+  ModalOverlay as AriaModalOverlay,
+  ModalRenderProps,
+} from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './Modal.module.css';
 
 interface ModalProps {
   className?: string;
-  children?: ReactNode;
+  children?: ReactNode | ((values: ModalRenderProps & { defaultChildren: ReactNode }) => ReactNode);
 }
 
 function Modal({ children, className, ...props }: ModalProps) {

@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import { useDebounce } from './hooks/useDebounce';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
-import fieldStyles from './Field.module.css';
+import inputStyles from './Input.module.css';
 import styles from './SearchField.module.css';
 
 interface SearchFieldProps extends AriaSearchFieldProps {
@@ -44,20 +44,23 @@ function SearchField({ value, delay = 0, onSearch, className, ...props }: Search
   }, [searchValue, delay, onSearch]);
 
   return (
-    <AriaSearchField {...props} className={classNames(fieldStyles.field, className)}>
+    <AriaSearchField {...props} className={classNames(inputStyles.field, className)}>
       {({ state }) => {
         return (
-          <>
-            <Icons.MagnifyingGlass className={classNames(fieldStyles.icon, styles.icon)} />
-            <Input className={fieldStyles.input} onChange={handleChange} />
+          <div className={inputStyles.row}>
+            <Icons.MagnifyingGlass className={classNames(styles.search, inputStyles.icon)} />
+            <Input
+              className={classNames(styles.input, inputStyles.input)}
+              onChange={handleChange}
+            />
             {state.value && (
-              <Button className={styles.button} onPress={resetSearch}>
+              <Button className={classNames(styles.close, inputStyles.icon)} onPress={resetSearch}>
                 <Icon>
                   <Icons.Close />
                 </Icon>
               </Button>
             )}
-          </>
+          </div>
         );
       }}
     </AriaSearchField>

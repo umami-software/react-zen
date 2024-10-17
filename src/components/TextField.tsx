@@ -1,24 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   TextField as AriaTextField,
   TextFieldProps as AriaTextFieldProps,
+  Label,
   Input,
   TextArea,
 } from 'react-aria-components';
 import classNames from 'classnames';
 import { CopyButton } from './CopyButton';
-import fieldStyles from './Field.module.css';
+import inputStyles from './Input.module.css';
 import styles from './TextField.module.css';
 
 interface TextFieldProps extends AriaTextFieldProps {
+  label?: string;
   asTextArea?: boolean;
   allowCopy?: boolean;
   onChange?: (e: any) => void;
 }
 
 function TextField({
+  name,
   value,
   defaultValue,
+  label,
   asTextArea,
   allowCopy,
   className,
@@ -33,14 +37,28 @@ function TextField({
     return onChange?.(e);
   };
 
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
   return (
-    <AriaTextField {...props} className={classNames(fieldStyles.field, className)}>
-      <Component
-        value={inputValue}
-        className={classNames(fieldStyles.input, asTextArea && styles.textarea)}
-        onChange={handleChange}
-      />
-      {allowCopy && <CopyButton className={styles.copy} value={inputValue} />}
+    <AriaTextField {...props} className={classNames(inputStyles.field, className)}>
+      {label && <Label className={inputStyles.label}>{label}</Label>}
+      <div className={inputStyles.row}>
+        <Component
+          value={inputValue}
+          className={classNames(
+            styles.input,
+            inputStyles.input,
+            asTextArea && styles.textarea,
+            allowCopy && styles.allowCopy,
+          )}
+          onChange={handleChange}
+        />
+        {allowCopy && (
+          <CopyButton className={classNames(styles.icon, inputStyles.icon)} value={inputValue} />
+        )}
+      </div>
     </AriaTextField>
   );
 }

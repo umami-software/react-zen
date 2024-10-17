@@ -1,17 +1,14 @@
-.copy {
-  position: absolute;
-  top: 9px;
-  right: 9px;
-  color: var(--font-muted-color);
-  background: var(--background-color);
-}
-
-.copy:hover {
-  color: var(--font-color);
-  cursor: pointer;
-}
-
 .textarea {
   min-height: 60px;
   min-width: 140px;
+}
+
+.allowCopy {
+  padding-right: 32px;
+}
+
+.icon {
+  position: absolute;
+  top: 9px;
+  right: 9px;
 }

@@ -3,11 +3,11 @@ import {
   ToggleGroup as RadixToggleGroup,
   ToggleGroupItem as RadixToggleGroupItem,
   ToggleGroupItemProps,
+  ToggleGroupMultipleProps,
 } from '@radix-ui/react-toggle-group';
-import { ToggleGroupProps } from '@radix-ui/react-toolbar';
 import styles from './ToggleGroup.module.css';
 
-function ToggleGroup({ className, children, ...props }: ToggleGroupProps) {
+function ToggleGroup({ className, children, ...props }: ToggleGroupMultipleProps) {
   return (
     <RadixToggleGroup {...props} className={classNames(styles.group, className)}>
       {children}

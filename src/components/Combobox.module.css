@@ -11,7 +11,7 @@
   color: var(--font-color);
   border: var(--border);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-);
+  box-shadow: var(--box-shadow);
 }
 
 .input {

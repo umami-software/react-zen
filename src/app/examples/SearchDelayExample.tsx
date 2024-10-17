@@ -1,16 +1,19 @@
 import { useState } from 'react';
-import { SearchField, Column, Text, Row } from '@/components';
+import { SearchField, Column, TextField } from '@/components';
 
 export function SearchDelayExample() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('abc');
 
   return (
-    <Column spacing={3}>
-      <Row spacing={3}>
-        <Text weight="bold">Search value:</Text>
-        <Text>{value}</Text>
-      </Row>
+    <Column gap="lg">
       <SearchField delay={1000} onSearch={setValue} />
+      <TextField
+        name="search"
+        label="Search value"
+        value={value}
+        defaultValue={value}
+        isReadOnly={true}
+      />
     </Column>
   );
 }

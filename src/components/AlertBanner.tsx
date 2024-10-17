@@ -5,7 +5,7 @@ import { Icons } from './Icons';
 import styles from './AlertBanner.module.css';
 
 interface AlertBannerProps {
-  title: string;
+  title?: string;
   description?: string;
   icon?: ReactNode;
   variant?: 'error' | 'info';
@@ -32,7 +32,7 @@ function AlertBanner({
         <Icon size="md">{variant ? createElement(AlertIcons[variant]) : icon}</Icon>
       )}
       <div className={styles.message}>
-        <div className={styles.title}>{title}</div>
+        {title && <div className={styles.title}>{title}</div>}
         {description && <div className={styles.description}>{description}</div>}
       </div>
       {children}
@@ -50,5 +50,5 @@ const AlertIcons = {
   info: Icons.Info,
 };
 
-export { AlertBanner };
-export type { AlertIcons };
+export { AlertBanner, AlertIcons };
+export type { AlertBannerProps };

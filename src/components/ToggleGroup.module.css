@@ -1,7 +1,7 @@
 .group {
   display: inline-flex;
   background-color: var(--background-color);
-  box-shadow: var(--box-shadow-);
+  box-shadow: var(--box-shadow);
   border: var(--border);
   border-radius: var(--border-radius);
   overflow: hidden;
