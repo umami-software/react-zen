@@ -8,6 +8,7 @@
   gap: var(--gap);
   min-width: 120px;
   cursor: pointer;
+  outline: none;
 }
 
 .item:hover {
