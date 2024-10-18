@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames';
 import {
   Button,
@@ -8,7 +7,6 @@ import {
   Label,
 } from 'react-aria-components';
 import { List } from './List';
-import { ListItem } from './ListItem';
 import { Popover } from './Popover';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
@@ -18,13 +16,32 @@ import styles from './Select.module.css';
 
 interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items: any[];
-  value: string;
+  value?: string;
   label?: string;
+  onChange?: (e: any) => void;
 }
 
-function Select({ children, items = [], value, label, className, ...props }: SelectProps) {
+function Select({
+  children,
+  items = [],
+  value,
+  label,
+  className,
+  onSelectionChange,
+  onChange,
+  ...props
+}: SelectProps) {
+  const handleChange = (e: any) => {
+    onSelectionChange?.(e);
+    onChange?.(e);
+  };
+
   return (
-    <AriaSelect {...props} className={classNames(inputStyles.field, className)}>
+    <AriaSelect
+      {...props}
+      className={classNames(inputStyles.field, className)}
+      onSelectionChange={handleChange}
+    >
       {label && <Label className={inputStyles.label}>{label}</Label>}
       <Button className={classNames(inputStyles.input, className)}>
         <Row justifyContent="space-between" gap="md">

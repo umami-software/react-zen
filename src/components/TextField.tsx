@@ -15,6 +15,7 @@ interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
   asTextArea?: boolean;
   allowCopy?: boolean;
+  placeholder?: string;
   onChange?: (e: any) => void;
 }
 
@@ -42,10 +43,11 @@ function TextField({
   }, [value]);
 
   return (
-    <AriaTextField {...props} className={classNames(inputStyles.field, className)}>
+    <AriaTextField className={classNames(inputStyles.field, className)}>
       {label && <Label className={inputStyles.label}>{label}</Label>}
       <div className={inputStyles.row}>
         <Component
+          {...(props as any)}
           value={inputValue}
           className={classNames(
             styles.input,
