@@ -23,12 +23,12 @@
 }
 
 .item:hover {
-  background-color: var(--highlight-bg-color);
+  background-color: var(--highlight-color);
 }
 
 .item[data-state='on'] {
   font-weight: 700;
-  background-color: var(--highlight-bg-color);
+  background-color: var(--highlight-color);
   font-size-adjust: 0.5;
 }
 

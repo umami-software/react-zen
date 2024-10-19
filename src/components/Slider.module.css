@@ -24,7 +24,7 @@
   display: block;
   position: absolute;
   height: 3px;
-  background-color: var(--primary-bg-color);
+  background-color: var(--primary-color);
   top: 50%;
   transform: translateY(-50%);
 }
@@ -34,12 +34,12 @@
   height: 20px;
   border-radius: 100%;
   background: var(--background-color);
-  border: 2px solid var(--primary-bg-color);
+  border: 2px solid var(--primary-color);
   forced-color-adjust: none;
 }
 
 .thumb[data-dragging] {
-  background: var(--highlight-bg-color);
+  background: var(--highlight-color);
 }
 
 .thumb[data-focus-visible] {
@@ -95,7 +95,7 @@
 .slider[data-orientation='vertical'] .track:before {
   width: 3px;
   height: 100%;
-  background-color: var(--primary-bg-color);
+  background-color: var(--primary-color);
   left: 50%;
   transform: translateX(-50%);
 }

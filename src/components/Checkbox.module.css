@@ -26,9 +26,9 @@
 }
 
 .checkbox[data-selected] .box {
-  color: var(--primary-fg-color);
-  background: var(--primary-bg-color);
-  border-color: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  background: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .checkbox[data-selected] .icon,

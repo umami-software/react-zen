@@ -33,7 +33,7 @@
 
 .error {
   color: var(--light-color);
-  background-color: var(--danger-bg-color);
+  background-color: var(--danger-color);
   border: 0;
 }
 
@@ -42,11 +42,11 @@
 }
 
 .info {
-  color: var(--primary-fg-color);
-  background-color: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  background-color: var(--primary-color);
   border: 0;
 }
 
 .info .close {
-  color: var(--primary-fg-color);
+  color: var(--primary-font-color);
 }

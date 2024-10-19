@@ -16,7 +16,7 @@
   height: calc(var(--knob-size) + var(--knob-border-size) * 2);
   border: var(--knob-border-size) solid transparent;
   border-radius: calc(var(--knob-size) + var(--knob-border-size) * 2);
-  background: var(--input-bg-color);
+  background: var(--input-background-color);
   transition: background-color 0.2s;
   cursor: pointer;
 }
@@ -31,13 +31,13 @@
 }
 
 .switch[data-selected] .track {
-  border-color: var(--primary-bg-color);
-  background: var(--primary-bg-color);
+  border-color: var(--primary-color);
+  background: var(--primary-color);
 }
 
 .switch[data-selected] .knob {
   margin-left: var(--knob-size);
-  border-color: var(--primary-bg-color);
+  border-color: var(--primary-color);
 }
 
 .switch[data-disabled] {

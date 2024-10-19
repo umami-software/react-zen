@@ -9,7 +9,7 @@
 }
 
 .error {
-  color: var(--danger-bg-color);
+  color: var(--danger-color);
   line-height: 1.8rem;
   font-weight: 600;
 }

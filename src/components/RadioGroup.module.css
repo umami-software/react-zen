@@ -40,12 +40,12 @@
 }
 
 .radio[data-selected]:before {
-  border-color: var(--primary-bg-color);
+  border-color: var(--primary-color);
   border-width: 7px;
 }
 
 .radio[data-selected][data-pressed]:before {
-  border-color: var(--primary-bg-color);
+  border-color: var(--primary-color);
 }
 
 .radio[data-disabled] {

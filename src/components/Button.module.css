@@ -23,34 +23,34 @@
 }
 
 .button.primary {
-  color: var(--primary-fg-color);
-  background: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  background: var(--primary-color);
 }
 
 .button.primary:hover {
-  background: color-mix(in srgb, var(--primary-bg-color), 10% var(--background-color));
+  background: color-mix(in srgb, var(--primary-color), 10% var(--background-color));
 }
 
 .button.primary:active {
-  background: color-mix(in srgb, var(--primary-bg-color), 20% var(--background-color));
+  background: color-mix(in srgb, var(--primary-color), 20% var(--background-color));
 }
 
 .button.primary:disabled {
-  color: var(--primary-fg-color);
+  color: var(--primary-font-color);
   background: var(--base-color-500);
 }
 
 .button.secondary {
-  color: var(--secondary-fg-color);
-  background: var(--secondary-bg-color);
+  color: var(--secondary-font-color);
+  background: var(--secondary-color);
 }
 
 .button.secondary:hover {
-  background: color-mix(in srgb, var(--secondary-bg-color), 5% var(--font-color));
+  background: color-mix(in srgb, var(--secondary-color), 5% var(--font-color));
 }
 
 .button.secondary:active {
-  background: color-mix(in srgb, var(--secondary-bg-color), 10% var(--font-color));
+  background: color-mix(in srgb, var(--secondary-color), 10% var(--font-color));
 }
 
 .button.secondary:disabled {
@@ -64,11 +64,11 @@
 }
 
 .button.outline:hover {
-  background: var(--secondary-bg-color);
+  background: var(--secondary-color);
 }
 
 .button.outline:active {
-  background: color-mix(in srgb, var(--secondary-bg-color), 5% var(--font-color));
+  background: color-mix(in srgb, var(--secondary-color), 5% var(--font-color));
 }
 
 .button.quiet {
@@ -76,28 +76,28 @@
 }
 
 .button.quiet:hover {
-  background: var(--secondary-bg-color);
+  background: var(--secondary-color);
 }
 
 .button.quiet:active {
-  background: color-mix(in srgb, var(--secondary-bg-color), 5% var(--font-color));
+  background: color-mix(in srgb, var(--secondary-color), 5% var(--font-color));
 }
 
 .button.danger {
   color: var(--light-color);
-  background: var(--danger-bg-color);
+  background: var(--danger-color);
 }
 
 .button.danger:hover {
-  background: color-mix(in srgb, var(--danger-bg-color), 6% black);
+  background: color-mix(in srgb, var(--danger-color), 6% black);
 }
 
 .button.danger:active {
-  background: color-mix(in srgb, var(--danger-bg-color), 12% black);
+  background: color-mix(in srgb, var(--danger-color), 12% black);
 }
 
 .button.danger:disabled {
-  color: var(--primary-fg-color);
+  color: var(--primary-font-color);
   background: var(--base-color-500);
 }
 

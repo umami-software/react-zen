@@ -33,7 +33,7 @@
 
 .tab[data-selected] {
   color: var(--font-color);
-  border-bottom: 2px solid var(--primary-bg-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .tab[data-disabled] {

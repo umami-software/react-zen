@@ -96,14 +96,14 @@
 }
 
 .toast.info {
-  color: var(--primary-fg-color);
-  background: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  background: var(--primary-color);
   border: 0;
 }
 
 .toast.error {
-  color: var(--danger-fg-color);
-  background: var(--danger-bg-color);
+  color: var(--danger-font-color);
+  background: var(--danger-color);
   border: 0;
 }
 

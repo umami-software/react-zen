@@ -17,12 +17,12 @@
 }
 
 .toggle:hover {
-  background: var(--highlight-bg-color);
+  background: var(--highlight-color);
 }
 
 .toggle[data-selected] {
-  color: var(--primary-fg-color);
-  background: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  background: var(--primary-color);
 }
 
 .toggle:focus {
