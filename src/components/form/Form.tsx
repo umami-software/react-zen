@@ -1,5 +1,5 @@
 import { useEffect, HTMLAttributes, ReactNode } from 'react';
-import { useForm, UseFormProps, SubmitHandler, FormProvider } from 'react-hook-form';
+import { useForm, UseFormProps, SubmitHandler, FormProvider, UseFormReturn } from 'react-hook-form';
 import classNames from 'classnames';
 import styles from './Form.module.css';
 import { Column } from '../Column';
@@ -8,28 +8,57 @@ import { Text } from '../Text';
 import { Icon } from '../Icon';
 import { Icons } from '../Icons';
 
-interface FormProps extends UseFormProps, HTMLAttributes<HTMLFormElement> {
-  values?: object;
+interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 'children'> {
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   autoComplete?: string;
   onSubmit?: SubmitHandler<any>;
   error?: ReactNode;
   preventSubmit?: boolean;
+  children?: ReactNode | ((e: UseFormReturn) => ReactNode);
 }
 
 function Form({
-  values,
   gap = 'md',
   autoComplete,
   onSubmit,
   error,
-  className,
-  style,
-  children,
   preventSubmit = false,
+  mode,
+  disabled,
+  reValidateMode,
+  defaultValues,
+  values,
+  errors,
+  resetOptions,
+  resolver,
+  context,
+  shouldFocusError,
+  shouldUnregister,
+  shouldUseNativeValidation,
+  progressive,
+  criteriaMode,
+  delayError,
+  className,
+  children,
   ...props
 }: FormProps) {
-  const formValues = useForm({ defaultValues: values });
+  const formValues = useForm({
+    mode,
+    disabled,
+    reValidateMode,
+    defaultValues,
+    values,
+    errors,
+    resetOptions,
+    resolver,
+    context,
+    shouldFocusError,
+    shouldUnregister,
+    shouldUseNativeValidation,
+    progressive,
+    criteriaMode,
+    delayError,
+  });
   const { handleSubmit } = formValues;
   const onKeyDown =
     !onSubmit || preventSubmit
@@ -60,12 +89,11 @@ function Form({
         {...props}
         autoComplete={autoComplete}
         className={classNames(styles.form, className)}
-        style={style}
         onSubmit={onSubmit ? handleSubmit(onSubmit) : undefined}
         onKeyDown={onKeyDown}
       >
         <Column gap={gap}>
-          {typeof children === 'function' ? (children as any)(formValues) : children}
+          {typeof children === 'function' ? children(formValues) : children}
         </Column>
       </form>
     </FormProvider>
