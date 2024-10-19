@@ -93,7 +93,9 @@
 
   --border-color: var(--base-color-300);
   --border: var(--border-thin) solid var(--border-color);
-  --outline: var(--border-thin) solid var(--base-color-400);
+
+  --outline-color: var(--base-color-400);
+  --outline: var(--border-thin) solid var(--outline-color);
 
   --primary-fg-color: var(--base-color-50);
   --primary-bg-color: var(--base-color-900);
@@ -116,6 +118,9 @@
 
     --border-color: var(--base-color-700);
     --border: 1px solid var(--border-color);
+
+    --outline-color: var(--base-color-800);
+    --outline: var(--border-thin) solid var(--outline-color);
 
     --primary-bg-color: var(--base-color-50);
     --primary-fg-color: var(--base-color-900);

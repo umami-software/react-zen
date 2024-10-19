@@ -3,6 +3,7 @@ import {
   Checkbox as AriaCheckbox,
   CheckboxProps as AriaCheckboxProps,
 } from 'react-aria-components';
+import { ImCheckmark } from 'react-icons/im';
 import classNames from 'classnames';
 import { Icons } from './Icons';
 import { Icon } from './Icon';
@@ -21,7 +22,7 @@ const Checkbox = forwardRef(
             <>
               <div className={styles.box}>
                 <Icon className={styles.icon} size="xs">
-                  {isIndeterminate ? <Icons.Minus /> : isSelected ? <Icons.Check /> : null}
+                  {isIndeterminate ? <Icons.Minus /> : isSelected ? <ImCheckmark /> : null}
                 </Icon>
               </div>
               {children as any}

@@ -4,6 +4,7 @@
   align-items: center;
   gap: var(--gap-md);
   color: var(--font-color);
+  outline: none;
 }
 
 .box {
@@ -17,6 +18,7 @@
   width: 23px;
   transition: all 0.2s;
   cursor: pointer;
+  box-shadow: var(--box-shadow);
 }
 
 .icon {
@@ -26,6 +28,7 @@
 .checkbox[data-selected] .box {
   color: var(--primary-fg-color);
   background: var(--primary-bg-color);
+  border-color: var(--primary-bg-color);
 }
 
 .checkbox[data-selected] .icon,
@@ -47,7 +50,8 @@
   pointer-events: none;
 }
 
-.checkbox[data-focused] .box {
+.checkbox[data-focused] .box,
+.checkbox[data-focused-visible] .box {
   border-color: transparent;
   outline: var(--outline);
 }
