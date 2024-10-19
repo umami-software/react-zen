@@ -50,5 +50,5 @@ const AlertIcons = {
   info: Icons.Info,
 };
 
-export { AlertBanner, AlertIcons };
+export { AlertBanner };
 export type { AlertBannerProps };

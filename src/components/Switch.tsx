@@ -13,7 +13,12 @@ const Switch = forwardRef(
     return (
       <>
         {label && <Label>{label}</Label>}
-        <AriaSwitch {...props} ref={ref} className={classNames(styles.switch, className)}>
+        <AriaSwitch
+          {...props}
+          isSelected={!!props.value}
+          ref={ref}
+          className={classNames(styles.switch, className)}
+        >
           <div className={styles.track}>
             <div className={styles.knob} />
           </div>

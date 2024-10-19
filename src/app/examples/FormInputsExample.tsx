@@ -19,6 +19,18 @@ import {
   Slider,
 } from '@/components';
 
+const defaultValues = {
+  name: '',
+  bio: '',
+  password: '',
+  search: '',
+  select: '',
+  radio: '',
+  toggle: '',
+  switch: '',
+  slider: 0,
+};
+
 export function FormInputsExample() {
   const handleSubmit = (values: any) => {
     console.log({ values });
@@ -26,7 +38,12 @@ export function FormInputsExample() {
 
   return (
     <Row gap="lg">
-      <Form gap="lg" onSubmit={handleSubmit} style={{ width: '300px', margin: '0 auto' }}>
+      <Form
+        defaultValues={defaultValues}
+        gap="lg"
+        onSubmit={handleSubmit}
+        style={{ width: '300px', margin: '0 auto' }}
+      >
         <FormField name="name" label="Name">
           <TextField autoComplete="off" />
         </FormField>
@@ -62,7 +79,7 @@ export function FormInputsExample() {
           <Slider />
         </FormField>
         <Row gap="md" alignItems="center" justifyContent="flex-end">
-          <FormResetButton>Reset</FormResetButton>
+          <FormResetButton values={defaultValues}>Reset</FormResetButton>
           <FormSubmitButton variant="primary">Submit</FormSubmitButton>
         </Row>
       </Form>

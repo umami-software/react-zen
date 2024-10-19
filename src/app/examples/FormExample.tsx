@@ -10,13 +10,19 @@ import {
   Checkbox,
 } from '@/components';
 
+const defaultValues = { username: '', password: '', remember_password: false };
+
 export function FormExample() {
   const handleSubmit = (values: any) => {
     console.log({ values });
   };
 
   return (
-    <Form onSubmit={handleSubmit} style={{ width: '300px', margin: '0 auto' }}>
+    <Form
+      defaultValues={defaultValues}
+      onSubmit={handleSubmit}
+      style={{ width: '300px', margin: '0 auto' }}
+    >
       <FormField name="username" rules={{ required: 'Username is required' }}>
         <TextField label="Username" autoComplete="off" />
       </FormField>
@@ -27,7 +33,7 @@ export function FormExample() {
         <Checkbox>Remember me</Checkbox>
       </FormField>
       <Row gap="md" alignItems="center" justifyContent="flex-end">
-        <FormResetButton>Reset</FormResetButton>
+        <FormResetButton values={defaultValues}>Reset</FormResetButton>
         <FormSubmitButton variant="primary">Submit</FormSubmitButton>
       </Row>
     </Form>
