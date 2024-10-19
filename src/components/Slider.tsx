@@ -19,8 +19,10 @@ const Slider = forwardRef(
   ({ className, showValue = true, label, ...props }: SliderProps, ref: Ref<any>) => {
     return (
       <AriaSlider {...props} ref={ref} className={classNames(styles.slider, className)}>
-        {label && <Label className={styles.label}>{label}</Label>}
-        {showValue && <SliderOutput className={styles.output} />}
+        <div className={styles.header}>
+          {label && <Label className={styles.label}>{label}</Label>}
+          {showValue && <SliderOutput className={styles.output} />}
+        </div>
         <SliderTrack className={styles.track}>
           {({ state }) => {
             const isHorizontal = state.orientation === 'horizontal';

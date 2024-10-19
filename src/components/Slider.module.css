@@ -1,22 +1,14 @@
 .slider {
-  display: grid;
-  grid-template-areas:
-    'label output'
-    'track track';
-  grid-template-columns: 1fr auto;
   color: var(--font-color);
 }
 
-.label {
-  grid-area: label;
-}
-
-.output {
-  grid-area: output;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .track {
-  grid-area: track;
   position: relative;
 }
 
@@ -61,7 +53,7 @@
 
 .slider[data-orientation='horizontal'] .track {
   height: 30px;
-  width: 100%;
+  margin: 0 10px;
 }
 
 .slider[data-orientation='horizontal'] .track:before {
@@ -91,8 +83,7 @@
   top: 0;
 }
 
-.slider[data-orientation='vertical'] .label,
-.slider[data-orientation='vertical'] .output {
+.slider[data-orientation='vertical'] .header{
   display: none;
 }
 
