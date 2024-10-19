@@ -45,7 +45,6 @@
 .cell {
   display: flex;
   padding: var(--padding);
-  overflow: hidden;
   flex: 1;
 }
 
