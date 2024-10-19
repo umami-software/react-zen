@@ -33,7 +33,7 @@ export function FormExample() {
         <Checkbox>Remember me</Checkbox>
       </FormField>
       <Row gap="md" alignItems="center" justifyContent="flex-end">
-        <FormResetButton values={defaultValues}>Reset</FormResetButton>
+        <FormResetButton>Reset</FormResetButton>
         <FormSubmitButton variant="primary">Submit</FormSubmitButton>
       </Row>
     </Form>

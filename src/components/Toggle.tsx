@@ -6,14 +6,20 @@ import styles from './Toggle.module.css';
 
 interface ToggleProps extends ToggleButtonProps {
   label?: string;
+  value?: string;
 }
 
 const Toggle = forwardRef(
-  ({ label, children, className, ...props }: ToggleProps, ref: Ref<any>) => {
+  ({ label, value, children, className, ...props }: ToggleProps, ref: Ref<any>) => {
     return (
       <>
         {label && <Label>{label}</Label>}
-        <ToggleButton {...props} ref={ref} className={classNames(styles.toggle, className)}>
+        <ToggleButton
+          {...props}
+          ref={ref}
+          isSelected={!!value}
+          className={classNames(styles.toggle, className)}
+        >
           {children as ReactNode}
         </ToggleButton>
       </>
