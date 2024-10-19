@@ -24,3 +24,8 @@
   color: var(--primary-fg-color);
   background: var(--primary-bg-color);
 }
+
+.toggle:focus {
+  border-color: transparent;
+  outline: var(--outline);
+}

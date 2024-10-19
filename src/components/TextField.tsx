@@ -2,11 +2,11 @@ import { useEffect, useState, forwardRef, Ref } from 'react';
 import {
   TextField as AriaTextField,
   TextFieldProps as AriaTextFieldProps,
-  Label,
   Input,
   TextArea,
 } from 'react-aria-components';
 import classNames from 'classnames';
+import { Label } from './Label';
 import { CopyButton } from './CopyButton';
 import inputStyles from './Input.module.css';
 import styles from './TextField.module.css';
@@ -53,7 +53,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         value={inputValue}
         className={classNames(inputStyles.field, className)}
       >
-        {label && <Label className={inputStyles.label}>{label}</Label>}
+        {label && <Label>{label}</Label>}
         <div className={inputStyles.row}>
           <Component
             className={classNames(

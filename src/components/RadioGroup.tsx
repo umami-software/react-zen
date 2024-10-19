@@ -4,10 +4,9 @@ import {
   RadioGroupProps as AriaRadioGroupProps,
   Radio as AriaRadio,
   RadioProps,
-  Label,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import inputStyles from './Input.module.css';
+import { Label } from './Label';
 import styles from './RadioGroup.module.css';
 
 interface RadioGroupProps extends AriaRadioGroupProps {
@@ -17,7 +16,7 @@ interface RadioGroupProps extends AriaRadioGroupProps {
 function RadioGroup({ label, children, className, ...props }: RadioGroupProps) {
   return (
     <AriaRadioGroup {...props} className={classNames(styles.radiogroup, className)}>
-      {label && <Label className={inputStyles.label}>{label}</Label>}
+      {label && <Label>{label}</Label>}
       {children as ReactNode}
     </AriaRadioGroup>
   );

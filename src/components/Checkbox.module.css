@@ -29,7 +29,7 @@
 }
 
 .checkbox[data-selected] .icon,
-.checkbox[data-indeterminate] .icon{
+.checkbox[data-indeterminate] .icon {
   display: block;
 }
 
@@ -45,4 +45,9 @@
 .checkbox[data-disabled] .box {
   background: var(--input-disabled-color);
   pointer-events: none;
+}
+
+.checkbox[data-focused] .box {
+  border-color: transparent;
+  outline: var(--outline);
 }

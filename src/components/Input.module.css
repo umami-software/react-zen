@@ -7,15 +7,6 @@
   background: var(--input-disabled-color);
 }
 
-.label {
-  color: var(--font-color);
-  font-weight: 700;
-  display: block;
-  align-items: center;
-  justify-content: flex-start;
-  line-height: 2rem;
-}
-
 .input {
   border: var(--border);
   border-radius: var(--border-radius);

@@ -4,8 +4,8 @@ import {
   Select as AriaSelect,
   SelectProps as AriaSelectProps,
   SelectValue,
-  Label,
 } from 'react-aria-components';
+import { Label } from './Label';
 import { List } from './List';
 import { Popover } from './Popover';
 import { Icon } from './Icon';
@@ -42,7 +42,7 @@ function Select({
       className={classNames(inputStyles.field, className)}
       onSelectionChange={handleChange}
     >
-      {label && <Label className={inputStyles.label}>{label}</Label>}
+      {label && <Label>{label}</Label>}
       <Button className={classNames(inputStyles.input, className)}>
         <Row justifyContent="space-between" gap="md">
           <SelectValue />

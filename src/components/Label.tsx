@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import styles from './Label.module.css';
 
 interface LabelProps extends AriaLabelProps {
-  asChild?: boolean;
+  className?: string;
 }
 
-function Label({ asChild, className, ...props }: LabelProps) {
+function Label({ className, ...props }: LabelProps) {
   return <AriaLabel {...props} className={classNames(styles.label, className)} />;
 }
 

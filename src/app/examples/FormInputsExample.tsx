@@ -14,6 +14,9 @@ import {
   RadioGroup,
   Radio,
   Select,
+  Switch,
+  Toggle,
+  Slider,
 } from '@/components';
 
 export function FormInputsExample() {
@@ -48,6 +51,15 @@ export function FormInputsExample() {
             <Radio value="two">Option two</Radio>
             <Radio value="three">Option three</Radio>
           </RadioGroup>
+        </FormField>
+        <FormField name="toggle" label="Toggle">
+          <Toggle>B</Toggle>
+        </FormField>
+        <FormField name="switch" label="Switch">
+          <Switch />
+        </FormField>
+        <FormField name="slider" label="Slider">
+          <Slider />
         </FormField>
         <Row gap="md" alignItems="center" justifyContent="flex-end">
           <FormResetButton>Reset</FormResetButton>

@@ -4,10 +4,10 @@ import {
   SearchFieldProps as AriaSearchFieldProps,
   Input,
   Button,
-  Label,
 } from 'react-aria-components';
 import classNames from 'classnames';
 import { useDebounce } from './hooks/useDebounce';
+import { Label } from './Label';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import inputStyles from './Input.module.css';
@@ -50,7 +50,7 @@ function SearchField({ label, value, delay = 0, onSearch, className, ...props }:
       {({ state }) => {
         return (
           <>
-            {label && <Label className={inputStyles.label}>{label}</Label>}
+            {label && <Label>{label}</Label>}
             <div className={inputStyles.row}>
               <Icons.MagnifyingGlass className={classNames(styles.search, inputStyles.icon)} />
               <Input

@@ -1,10 +1,17 @@
-import { Checkbox as AriaCheckbox, CheckboxProps } from 'react-aria-components';
+import {
+  Checkbox as AriaCheckbox,
+  CheckboxProps as AriaCheckboxProps,
+} from 'react-aria-components';
 import classNames from 'classnames';
 import { Icons } from './Icons';
 import { Icon } from './Icon';
 import styles from './Checkbox.module.css';
 
-function Checkbox({ className, children, ...props }: CheckboxProps) {
+interface CheckboxProps extends AriaCheckboxProps {
+  label?: string;
+}
+
+function Checkbox({ label, className, children, ...props }: CheckboxProps) {
   return (
     <AriaCheckbox {...props} className={classNames(styles.checkbox, className)}>
       {({ isIndeterminate, isSelected }) => {

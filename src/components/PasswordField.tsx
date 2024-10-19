@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Input, Label, TextField, TextFieldProps } from 'react-aria-components';
+import { Input, TextField, TextFieldProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
+import { Label } from './Label';
 import inputStyles from './Input.module.css';
 import styles from './PasswordField.module.css';
 
@@ -18,7 +19,7 @@ function PasswordField({ label, className, ...props }: PasswordFieldProps) {
 
   return (
     <TextField {...props} className={classNames(inputStyles.field, className)}>
-      {label && <Label className={inputStyles.label}>{label}</Label>}
+      {label && <Label>{label}</Label>}
       <div className={inputStyles.row}>
         <Input type={type} className={inputStyles.input} />
         <Icon onClick={handleShowPassword} className={classNames(styles.icon, inputStyles.icon)}>
