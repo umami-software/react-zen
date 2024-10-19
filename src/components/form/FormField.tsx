@@ -1,4 +1,4 @@
-import { Children, cloneElement, HTMLAttributes, ReactNode } from 'react';
+import { cloneElement, HTMLAttributes, forwardRef, Ref } from 'react';
 import {
   useController,
   useFormContext,
@@ -18,32 +18,29 @@ interface FormFieldProps extends HTMLAttributes<HTMLDivElement>, Partial<UseForm
   children: any;
 }
 
-function FormField({
-  name,
-  description,
-  label,
-  rules,
-  className,
-  children,
-  ...props
-}: FormFieldProps) {
-  const { formState, control } = useFormContext();
-  const { field } = useController({ name, control, rules });
-  const errors = formState?.errors || {};
-  const errorMessage = errors[name]?.message as string;
+const FormField = forwardRef(
+  (
+    { name, description, label, rules, className, children, ...props }: FormFieldProps,
+    ref: Ref<any>,
+  ) => {
+    const { formState, control } = useFormContext();
+    const { field } = useController({ name, control, rules });
+    const errors = formState?.errors || {};
+    const errorMessage = errors[name]?.message as string;
 
-  return (
-    <div {...props} className={classNames(styles.input, className)}>
-      {typeof children === 'function'
-        ? children(field)
-        : mapChildren(children, child =>
-            child ? cloneElement(child, { ...field, label: child.props.label || label }) : null,
-          )}
-      {description && <div className={styles.description}>{description}</div>}
-      {errorMessage && <div className={styles.error}>{errorMessage}</div>}
-    </div>
-  );
-}
+    return (
+      <div {...props} ref={ref} className={classNames(styles.input, className)}>
+        {typeof children === 'function'
+          ? children(field)
+          : mapChildren(children, child =>
+              child ? cloneElement(child, { ...field, label: child.props.label || label }) : null,
+            )}
+        {description && <div className={styles.description}>{description}</div>}
+        {errorMessage && <div className={styles.error}>{errorMessage}</div>}
+      </div>
+    );
+  },
+);
 
 export { FormField };
 export type { FormFieldProps };

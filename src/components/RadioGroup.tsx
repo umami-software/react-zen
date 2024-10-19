@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { forwardRef, ReactNode, Ref } from 'react';
 import {
   RadioGroup as AriaRadioGroup,
   RadioGroupProps as AriaRadioGroupProps,
@@ -13,14 +13,16 @@ interface RadioGroupProps extends AriaRadioGroupProps {
   label?: string;
 }
 
-function RadioGroup({ label, children, className, ...props }: RadioGroupProps) {
-  return (
-    <AriaRadioGroup {...props} className={classNames(styles.radiogroup, className)}>
-      {label && <Label>{label}</Label>}
-      {children as ReactNode}
-    </AriaRadioGroup>
-  );
-}
+const RadioGroup = forwardRef(
+  ({ label, children, className, ...props }: RadioGroupProps, ref: Ref<any>) => {
+    return (
+      <AriaRadioGroup {...props} ref={ref} className={classNames(styles.radiogroup, className)}>
+        {label && <Label>{label}</Label>}
+        {children as ReactNode}
+      </AriaRadioGroup>
+    );
+  },
+);
 
 function Radio({ children, className, ...props }: RadioProps) {
   return (

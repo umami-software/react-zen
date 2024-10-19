@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { forwardRef, ReactNode, Ref } from 'react';
 import {
   Slider as AriaSlider,
   SliderProps as AriaSliderProps,
@@ -15,32 +15,35 @@ interface SliderProps extends AriaSliderProps {
   showValue?: boolean;
 }
 
-function Slider({ className, showValue = true, label, ...props }: SliderProps) {
-  return (
-    <AriaSlider {...props} className={classNames(styles.slider, className)}>
-      {label && <Label className={styles.label}>{label}</Label>}
-      {showValue && <SliderOutput className={styles.output} />}
-      <SliderTrack className={styles.track}>
-        {({ state }) => {
-          const isHorizontal = state.orientation === 'horizontal';
-          return (
-            <>
-              <div
-                className={styles.fill}
-                style={{
-                  [isHorizontal ? 'width' : 'height']:
-                    (isHorizontal ? state.getThumbPercent(0) : 1 - state.getThumbPercent(0)) * 100 +
-                    '%',
-                }}
-              />
-              <SliderThumb className={styles.thumb} />
-            </>
-          );
-        }}
-      </SliderTrack>
-    </AriaSlider>
-  );
-}
+const Slider = forwardRef(
+  ({ className, showValue = true, label, ...props }: SliderProps, ref: Ref<any>) => {
+    return (
+      <AriaSlider {...props} ref={ref} className={classNames(styles.slider, className)}>
+        {label && <Label className={styles.label}>{label}</Label>}
+        {showValue && <SliderOutput className={styles.output} />}
+        <SliderTrack className={styles.track}>
+          {({ state }) => {
+            const isHorizontal = state.orientation === 'horizontal';
+            return (
+              <>
+                <div
+                  className={styles.fill}
+                  style={{
+                    [isHorizontal ? 'width' : 'height']:
+                      (isHorizontal ? state.getThumbPercent(0) : 1 - state.getThumbPercent(0)) *
+                        100 +
+                      '%',
+                  }}
+                />
+                <SliderThumb className={styles.thumb} />
+              </>
+            );
+          }}
+        </SliderTrack>
+      </AriaSlider>
+    );
+  },
+);
 
 export { Slider };
 export type { SliderProps };

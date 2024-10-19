@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent, forwardRef, Ref } from 'react';
 import {
   SearchField as AriaSearchField,
   SearchFieldProps as AriaSearchFieldProps,
@@ -20,60 +20,62 @@ interface SearchFieldProps extends AriaSearchFieldProps {
   onSearch?: (value: string) => void;
 }
 
-function SearchField({ label, value, delay = 0, onSearch, className, ...props }: SearchFieldProps) {
-  const [search, setSearch] = useState(value ?? '');
-  const searchValue = useDebounce(search, delay);
+const SearchField = forwardRef(
+  ({ label, value, delay = 0, onSearch, className, ...props }: SearchFieldProps, ref: Ref<any>) => {
+    const [search, setSearch] = useState(value ?? '');
+    const searchValue = useDebounce(search, delay);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const { value } = e.target;
 
-    setSearch(value);
+      setSearch(value);
 
-    if (delay === 0 || value === '') {
-      onSearch?.(value);
-    }
-  };
+      if (delay === 0 || value === '') {
+        onSearch?.(value);
+      }
+    };
 
-  const resetSearch = () => {
-    setSearch('');
-    onSearch?.('');
-  };
+    const resetSearch = () => {
+      setSearch('');
+      onSearch?.('');
+    };
 
-  useEffect(() => {
-    if (delay > 0) {
-      onSearch?.(searchValue);
-    }
-  }, [searchValue, delay, onSearch]);
+    useEffect(() => {
+      if (delay > 0) {
+        onSearch?.(searchValue);
+      }
+    }, [searchValue, delay, onSearch]);
 
-  return (
-    <AriaSearchField {...props} className={classNames(inputStyles.field, className)}>
-      {({ state }) => {
-        return (
-          <>
-            {label && <Label>{label}</Label>}
-            <div className={inputStyles.row}>
-              <Icons.MagnifyingGlass className={classNames(styles.search, inputStyles.icon)} />
-              <Input
-                className={classNames(styles.input, inputStyles.input)}
-                onChange={handleChange}
-              />
-              {state.value && (
-                <Button
-                  className={classNames(styles.close, inputStyles.icon)}
-                  onPress={resetSearch}
-                >
-                  <Icon>
-                    <Icons.Close />
-                  </Icon>
-                </Button>
-              )}
-            </div>
-          </>
-        );
-      }}
-    </AriaSearchField>
-  );
-}
+    return (
+      <AriaSearchField {...props} ref={ref} className={classNames(inputStyles.field, className)}>
+        {({ state }) => {
+          return (
+            <>
+              {label && <Label>{label}</Label>}
+              <div className={inputStyles.row}>
+                <Icons.MagnifyingGlass className={classNames(styles.search, inputStyles.icon)} />
+                <Input
+                  className={classNames(styles.input, inputStyles.input)}
+                  onChange={handleChange}
+                />
+                {state.value && (
+                  <Button
+                    className={classNames(styles.close, inputStyles.icon)}
+                    onPress={resetSearch}
+                  >
+                    <Icon>
+                      <Icons.Close />
+                    </Icon>
+                  </Button>
+                )}
+              </div>
+            </>
+          );
+        }}
+      </AriaSearchField>
+    );
+  },
+);
 
 export { SearchField };
 export type { SearchFieldProps };

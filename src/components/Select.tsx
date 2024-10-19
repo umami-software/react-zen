@@ -1,3 +1,4 @@
+import { forwardRef, Ref } from 'react';
 import classNames from 'classnames';
 import {
   Button,
@@ -21,46 +22,52 @@ interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   onChange?: (e: any) => void;
 }
 
-function Select({
-  children,
-  items = [],
-  value,
-  label,
-  className,
-  onSelectionChange,
-  onChange,
-  ...props
-}: SelectProps) {
-  const handleChange = (e: any) => {
-    onSelectionChange?.(e);
-    onChange?.(e);
-  };
+const Select = forwardRef(
+  (
+    {
+      children,
+      items = [],
+      value,
+      label,
+      className,
+      onSelectionChange,
+      onChange,
+      ...props
+    }: SelectProps,
+    ref: Ref<any>,
+  ) => {
+    const handleChange = (e: any) => {
+      onSelectionChange?.(e);
+      onChange?.(e);
+    };
 
-  return (
-    <AriaSelect
-      {...props}
-      className={classNames(inputStyles.field, className)}
-      onSelectionChange={handleChange}
-    >
-      {label && <Label>{label}</Label>}
-      <Button className={classNames(inputStyles.input, className)}>
-        <Row justifyContent="space-between" gap="md">
-          <SelectValue />
-          <span aria-hidden="true">
-            <Icon rotate={90} size="xs" className={inputStyles.icon}>
-              <Icons.Chevron />
-            </Icon>
-          </span>
-        </Row>
-      </Button>
-      <Popover>
-        <List items={items} className={styles.list}>
-          {children as any}
-        </List>
-      </Popover>
-    </AriaSelect>
-  );
-}
+    return (
+      <AriaSelect
+        {...props}
+        ref={ref}
+        className={classNames(inputStyles.field, className)}
+        onSelectionChange={handleChange}
+      >
+        {label && <Label>{label}</Label>}
+        <Button className={classNames(inputStyles.input, className)}>
+          <Row justifyContent="space-between" gap="md">
+            <SelectValue />
+            <span aria-hidden="true">
+              <Icon rotate={90} size="xs" className={inputStyles.icon}>
+                <Icons.Chevron />
+              </Icon>
+            </span>
+          </Row>
+        </Button>
+        <Popover>
+          <List items={items} className={styles.list}>
+            {children as any}
+          </List>
+        </Popover>
+      </AriaSelect>
+    );
+  },
+);
 
 export { Select };
 export type { SelectProps };

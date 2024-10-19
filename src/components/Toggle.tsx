@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Ref, forwardRef } from 'react';
 import { ToggleButton, ToggleButtonProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Label } from './Label';
@@ -8,16 +8,18 @@ interface ToggleProps extends ToggleButtonProps {
   label?: string;
 }
 
-function Toggle({ label, children, className, ...props }: ToggleProps) {
-  return (
-    <>
-      {label && <Label>{label}</Label>}
-      <ToggleButton {...props} className={classNames(styles.toggle, className)}>
-        {children as ReactNode}
-      </ToggleButton>
-    </>
-  );
-}
+const Toggle = forwardRef(
+  ({ label, children, className, ...props }: ToggleProps, ref: Ref<any>) => {
+    return (
+      <>
+        {label && <Label>{label}</Label>}
+        <ToggleButton {...props} ref={ref} className={classNames(styles.toggle, className)}>
+          {children as ReactNode}
+        </ToggleButton>
+      </>
+    );
+  },
+);
 
 export { Toggle };
 export type { ToggleButtonProps as ToggleProps };

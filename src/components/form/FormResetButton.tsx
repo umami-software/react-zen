@@ -3,18 +3,16 @@ import { PressEvent } from 'react-aria-components';
 import { Button, ButtonProps } from '../Button';
 
 function FormResetButton(props: ButtonProps) {
-  const { className, children, onPress, ...buttonProps } = props;
+  const { children, onPress, ...buttonProps } = props;
   const { reset } = useFormContext();
 
   const handleReset = (e: PressEvent) => {
     reset();
-    if (onPress) {
-      onPress(e);
-    }
+    onPress?.(e);
   };
 
   return (
-    <Button {...buttonProps} type="reset" onPress={handleReset} className={className}>
+    <Button {...buttonProps} type="reset" onPress={handleReset}>
       {children}
     </Button>
   );
