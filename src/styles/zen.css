@@ -108,7 +108,7 @@
   --input-disabled-color: var(--base-color-100);
 
   [data-theme='dark'] {
-    --font-color: var(--base-color-100);
+    --font-color: var(--base-color-200);
     --font-muted-color: var(--base-color-400);
     --font-faded-color: var(--base-color-500);
 
@@ -128,5 +128,9 @@
 
     --input-bg-color: var(--base-color-700);
     --input-disabled-color: var(--base-color-800);
+  }
+
+  :where(input, textarea, select) {
+    min-width: 240px;
   }
 }

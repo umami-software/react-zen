@@ -1,5 +1,6 @@
 'use client';
 export { AlertDialogExample } from './AlertDialogExample';
+export { FormInputsExample } from './FormInputsExample';
 export { DialogExample } from './DialogExample';
 export { FormExample } from './FormExample';
 export { IconLibrary } from './IconLibrary';

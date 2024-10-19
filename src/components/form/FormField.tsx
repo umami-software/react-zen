@@ -13,11 +13,20 @@ import styles from './FormField.module.css';
 interface FormFieldProps extends HTMLAttributes<HTMLDivElement>, Partial<UseFormReturn> {
   name: string;
   description?: string;
+  label?: string;
   rules?: RegisterOptions<FieldValues, string>;
   children: any;
 }
 
-function FormField({ name, description, rules, className, children, ...props }: FormFieldProps) {
+function FormField({
+  name,
+  description,
+  label,
+  rules,
+  className,
+  children,
+  ...props
+}: FormFieldProps) {
   const { formState, control } = useFormContext();
   const { field } = useController({ name, control, rules });
   const errors = formState?.errors || {};
@@ -27,7 +36,9 @@ function FormField({ name, description, rules, className, children, ...props }: 
     <div {...props} className={classNames(styles.input, className)}>
       {typeof children === 'function'
         ? children(field)
-        : mapChildren(children, child => (child ? cloneElement(child, field) : null))}
+        : mapChildren(children, child =>
+            child ? cloneElement(child, { ...field, label: child.props.label || label }) : null,
+          )}
       {description && <div className={styles.description}>{description}</div>}
       {errorMessage && <div className={styles.error}>{errorMessage}</div>}
     </div>

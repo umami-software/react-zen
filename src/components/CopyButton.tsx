@@ -1,4 +1,4 @@
-import { useState, ReactNode, HTMLAttributes, useRef } from 'react';
+import { useState, ReactNode, useRef } from 'react';
 import classNames from 'classnames';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
@@ -6,15 +6,16 @@ import styles from './CopyButton.module.css';
 
 const TIMEOUT = 2000;
 
-interface CopyButtonProps extends HTMLAttributes<HTMLDivElement> {
+interface CopyButtonProps {
   value?: string;
+  timeout?: number;
   className?: string;
   children?: ReactNode;
 }
 
-function CopyButton({ value, className, children, ...props }: CopyButtonProps) {
+function CopyButton({ value, timeout = TIMEOUT, className, children, ...props }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
-  const timeout = useRef(0);
+  const ref = useRef(timeout);
 
   const handleCopy = async () => {
     if (value) {
@@ -22,9 +23,9 @@ function CopyButton({ value, className, children, ...props }: CopyButtonProps) {
 
       setCopied(true);
 
-      clearTimeout(timeout.current);
+      clearTimeout(ref.current);
 
-      timeout.current = +setTimeout(() => setCopied(false), TIMEOUT);
+      ref.current = +setTimeout(() => setCopied(false), timeout);
     }
   };
 

@@ -10,24 +10,25 @@ import { Icons } from '../Icons';
 
 interface FormProps extends UseFormProps, HTMLAttributes<HTMLFormElement> {
   values?: object;
+  gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   autoComplete?: string;
   onSubmit?: SubmitHandler<any>;
   error?: ReactNode;
   preventSubmit?: boolean;
 }
 
-function Form(props: FormProps) {
-  const {
-    values,
-    autoComplete,
-    onSubmit,
-    error,
-    className,
-    style,
-    children,
-    preventSubmit = false,
-    ...formProps
-  } = props;
+function Form({
+  values,
+  gap = 'md',
+  autoComplete,
+  onSubmit,
+  error,
+  className,
+  style,
+  children,
+  preventSubmit = false,
+  ...props
+}: FormProps) {
   const formValues = useForm({ defaultValues: values });
   const { handleSubmit } = formValues;
   const onKeyDown =
@@ -56,14 +57,14 @@ function Form(props: FormProps) {
         </AlertBanner>
       )}
       <form
-        {...formProps}
+        {...props}
         autoComplete={autoComplete}
         className={classNames(styles.form, className)}
         style={style}
         onSubmit={onSubmit ? handleSubmit(onSubmit) : undefined}
         onKeyDown={onKeyDown}
       >
-        <Column gap="md">
+        <Column gap={gap}>
           {typeof children === 'function' ? (children as any)(formValues) : children}
         </Column>
       </form>

@@ -8,7 +8,11 @@ interface TextAreaProps extends TextFieldProps {
 
 function TextArea({ resize, className, ...props }: TextAreaProps) {
   return (
-    <TextField {...props} className={classNames(resize && styles[resize])} asTextArea={true} />
+    <TextField
+      {...props}
+      className={classNames(resize && styles[`resize-${resize}`])}
+      asTextArea={true}
+    />
   );
 }
 

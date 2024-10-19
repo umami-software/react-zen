@@ -2,14 +2,14 @@
   font-family: inherit;
 }
 
-.none {
+.resize-none textarea {
   resize: none;
 }
 
-.horizontal {
+.resize-horizontal textarea {
   resize: horizontal;
 }
 
-.vertical {
+.resize-vertical textarea {
   resize: vertical;
 }

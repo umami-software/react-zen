@@ -6,8 +6,6 @@ function FormSubmitButton({ children, disabled, isLoading, ...props }: LoadingBu
     formState: { isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful },
   } = useFormContext();
 
-  console.log({ isLoading, isValid, isSubmitSuccessful, isSubmitting, isSubmitted });
-
   return (
     <LoadingButton
       {...props}
