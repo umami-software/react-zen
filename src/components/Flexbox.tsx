@@ -1,5 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 import classNames from 'classnames';
+import { GapSize } from '@/lib/types';
 import { Box, BoxProps } from './Box';
 import styles from './Flexbox.module.css';
 
@@ -82,6 +83,7 @@ export interface FlexboxProps extends BoxProps {
   inline?: boolean;
   grow?: number;
   shrink?: number;
+  gap?: GapSize;
   basis?: string | number;
   style?: CSSProperties;
   className?: string;
@@ -100,7 +102,7 @@ export function Flexbox({
   grow,
   shrink,
   basis,
-  spacing,
+  gap,
   style,
   className,
   children,
@@ -114,6 +116,7 @@ export function Flexbox({
         className,
         direction && styles[direction],
         wrap && styles[wrap],
+        gap && styles[`gap-${gap}`],
         justifyContent && styles[`justify-content-${replace(justifyContent)}`],
         justifyItems && styles[`justify-items-${replace(justifyItems)}`],
         alignContent && styles[`align-content-${replace(alignContent)}`],

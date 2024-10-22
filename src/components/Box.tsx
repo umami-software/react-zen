@@ -7,7 +7,6 @@ import {
   BorderRadius,
   BoxShadow,
   FontSize,
-  GapSize,
   Spacing,
 } from '@/lib/types';
 import styles from './Box.module.css';
@@ -19,7 +18,6 @@ interface BoxProps extends HTMLProps<HTMLDivElement> {
   border?: BorderSize;
   borderRadius?: BorderRadius;
   shadow?: BoxShadow;
-  gap?: GapSize;
   padding?: Spacing;
   margin?: Spacing;
   paddingX?: Spacing;
@@ -43,7 +41,6 @@ function Box({
   marginX,
   paddingY,
   marginY,
-  gap,
   asChild,
   children,
   ...props
@@ -57,7 +54,6 @@ function Box({
         className,
         fontSize && styles[`font-size-${fontSize}`],
         backgroundColor && styles[`background-color-${backgroundColor}`],
-        gap && styles[`gap-${gap}`],
         border && styles[`border-${border}`],
         borderRadius && styles[`border-radius-${borderRadius}`],
         shadow && styles[`shadow-${shadow}`],

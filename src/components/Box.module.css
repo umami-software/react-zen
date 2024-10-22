@@ -46,26 +46,6 @@
   border-radius: 100%;
 }
 
-.gap-xs {
-  gap: var(--gap-xs);
-}
-
-.gap-sm {
-  gap: var(--gap-sm);
-}
-
-.gap-md {
-  gap: var(--gap-md);
-}
-
-.gap-lg {
-  gap: var(--gap-lg);
-}
-
-.gap-xl {
-  gap: var(--gap-xl);
-}
-
 .shadow-1 {
   box-shadow: var(--box-shadow-1);
 }
