@@ -1,27 +1,48 @@
 import { ReactNode, HTMLProps } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import classNames from 'classnames';
+import {
+  BackgroundColor,
+  BorderSize,
+  BorderRadius,
+  BoxShadow,
+  FontSize,
+  GapSize,
+  Spacing,
+} from '@/lib/types';
 import styles from './Box.module.css';
 
 interface BoxProps extends HTMLProps<HTMLDivElement> {
   className?: string;
-  fontSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  border?: 'thin' | 'medium' | 'thick';
-  borderRadius?: 'sm' | 'md' | 'lg' | 'full';
-  shadow?: 1 | 2 | 3 | 4 | 5 | 6;
-  spacing?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+  fontSize?: FontSize;
+  backgroundColor?: BackgroundColor;
+  border?: BorderSize;
+  borderRadius?: BorderRadius;
+  shadow?: BoxShadow;
+  gap?: GapSize;
+  padding?: Spacing;
+  margin?: Spacing;
+  paddingX?: Spacing;
+  marginX?: Spacing;
+  paddingY?: Spacing;
+  marginY?: Spacing;
   asChild?: boolean;
   children?: ReactNode;
 }
 
 function Box({
   className,
-  spacing,
   fontSize,
+  backgroundColor,
   border,
   borderRadius,
   shadow,
+  padding,
+  margin,
+  paddingX,
+  marginX,
+  paddingY,
+  marginY,
   gap,
   asChild,
   children,
@@ -35,11 +56,17 @@ function Box({
       className={classNames(
         className,
         fontSize && styles[`font-size-${fontSize}`],
+        backgroundColor && styles[`background-color-${backgroundColor}`],
         gap && styles[`gap-${gap}`],
         border && styles[`border-${border}`],
         borderRadius && styles[`border-radius-${borderRadius}`],
         shadow && styles[`shadow-${shadow}`],
-        spacing && styles[`spacing-${spacing}`],
+        padding && styles[`padding-${padding}`],
+        margin && styles[`margin-${margin}`],
+        paddingX && styles[`padding-x-${padding}`],
+        marginX && styles[`margin-x-${margin}`],
+        paddingY && styles[`padding-y-${padding}`],
+        marginY && styles[`margin-y-${margin}`],
       )}
     >
       {children}

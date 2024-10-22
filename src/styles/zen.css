@@ -25,9 +25,9 @@
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.5rem;
 
-  --border-thin: 1px;
-  --border-medium: 2px;
-  --border-thick: 4px;
+  --border-sm: 1px;
+  --border-md: 2px;
+  --border-lg: 4px;
 
   --border-radius-sm: 0.125rem;
   --border-radius-md: 0.25rem;
@@ -93,10 +93,10 @@
   --font-faded-color: var(--base-color-400);
 
   --border-color: var(--base-color-300);
-  --border: var(--border-thin) solid var(--border-color);
+  --border: var(--border-sm) solid var(--border-color);
 
   --outline-color: var(--base-color-400);
-  --outline: var(--border-thin) solid var(--outline-color);
+  --outline: var(--border-sm) solid var(--outline-color);
 
   --primary-color: var(--base-color-900);
   --primary-font-color: var(--base-color-50);
@@ -118,10 +118,10 @@
     --font-faded-color: var(--base-color-500);
 
     --border-color: var(--base-color-700);
-    --border: 1px solid var(--border-color);
+    --border: var(--border-sm) solid var(--border-color);
 
     --outline-color: var(--base-color-600);
-    --outline: var(--border-thin) solid var(--outline-color);
+    --outline: var(--border-sm) solid var(--outline-color);
 
     --primary-color: var(--base-color-50);
     --primary-font-color: var(--base-color-900);

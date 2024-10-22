@@ -19,6 +19,7 @@ const items = [
       { title: 'Accordion', path: '/docs/components/accordion' },
       { title: 'Alert Banner', path: '/docs/components/alert-banner' },
       { title: 'Alert Dialog', path: '/docs/components/alert-dialog' },
+      { title: 'Box', path: '/docs/components/box' },
       { title: 'Button', path: '/docs/components/button' },
       { title: 'Breadcrumbs', path: '/docs/components/breadcrumbs' },
       { title: 'Calendar', path: '/docs/components/calendar' },
@@ -70,7 +71,7 @@ export function Nav() {
       {items.map(({ name, children }) => {
         return (
           <div key={name} className={styles.group}>
-            <Heading size={2}>{name}</Heading>
+            <Text weight="bold">{name}</Text>
             {children.map(({ title, path }) => {
               return (
                 <div

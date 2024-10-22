@@ -18,11 +18,7 @@ export function FormExample() {
   };
 
   return (
-    <Form
-      defaultValues={defaultValues}
-      onSubmit={handleSubmit}
-      style={{ width: '300px', margin: '0 auto' }}
-    >
+    <Form defaultValues={defaultValues} onSubmit={handleSubmit}>
       <FormField label="Username" name="username" rules={{ required: 'Username is required' }}>
         <TextField autoComplete="off" />
       </FormField>
