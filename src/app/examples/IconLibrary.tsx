@@ -2,17 +2,19 @@
 import { createElement } from 'react';
 import { Icon } from '@/components/Icon';
 import { Icons } from '@/components/Icons';
-import { Heading, Column, Row, Text } from '@/components';
+import { Column, Row, Text } from '@/components';
 
 export function IconLibrary() {
   return (
-    <Column justifyContent="space-evenly" spacing={9} wrap="wrap">
+    <Column justifyContent="space-evenly" wrap="wrap" gap="lg">
       {Object.keys(Icons).map((name: string) => {
         const icon = createElement(Icons[name as keyof typeof Icons]);
         return (
           <>
-            <Heading size={2}>{name}</Heading>
-            <Row key={name} alignItems="center" spacing={3}>
+            <Text size="md" weight="bold">
+              {name}
+            </Text>
+            <Row key={name} alignItems="center" gap="lg">
               <Icon size="xl">{icon}</Icon>
               <Icon size="lg">{icon}</Icon>
               <Icon size="md">{icon}</Icon>

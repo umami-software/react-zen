@@ -10,14 +10,16 @@ interface ToggleProps extends ToggleButtonProps {
 }
 
 const Toggle = forwardRef(
-  ({ label, value, children, className, ...props }: ToggleProps, ref: Ref<any>) => {
+  ({ label, children, className, ...props }: ToggleProps, ref: Ref<any>) => {
+    const isSelected = typeof props.value !== 'undefined' ? !!props.value : undefined;
+
     return (
       <>
         {label && <Label>{label}</Label>}
         <ToggleButton
           {...props}
           ref={ref}
-          isSelected={!!value}
+          isSelected={isSelected}
           className={classNames(styles.toggle, className)}
         >
           {children as ReactNode}

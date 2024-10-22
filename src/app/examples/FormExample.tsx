@@ -23,11 +23,11 @@ export function FormExample() {
       onSubmit={handleSubmit}
       style={{ width: '300px', margin: '0 auto' }}
     >
-      <FormField name="username" rules={{ required: 'Username is required' }}>
-        <TextField label="Username" autoComplete="off" />
+      <FormField label="Username" name="username" rules={{ required: 'Username is required' }}>
+        <TextField autoComplete="off" />
       </FormField>
-      <FormField name="password" rules={{ required: 'Password is required' }}>
-        <PasswordField label="Password" autoComplete="off" />
+      <FormField label="Password" name="password" rules={{ required: 'Password is required' }}>
+        <PasswordField autoComplete="off" />
       </FormField>
       <FormField name="remember_password">
         <Checkbox>Remember me</Checkbox>

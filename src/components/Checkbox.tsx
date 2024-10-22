@@ -15,11 +15,13 @@ interface CheckboxProps extends AriaCheckboxProps {
 
 const Checkbox = forwardRef(
   ({ label, className, children, ...props }: CheckboxProps, ref: Ref<any>) => {
+    const isSelected = typeof props.value !== 'undefined' ? !!props.value : undefined;
+
     return (
       <AriaCheckbox
         {...props}
         ref={ref}
-        isSelected={!!props.value}
+        isSelected={isSelected}
         className={classNames(styles.checkbox, className)}
       >
         {({ isIndeterminate, isSelected }) => {

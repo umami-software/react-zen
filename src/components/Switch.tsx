@@ -10,12 +10,14 @@ interface SwitchProps extends AriaSwitchProps {
 
 const Switch = forwardRef(
   ({ label, children, className, ...props }: SwitchProps, ref: Ref<any>) => {
+    const isSelected = typeof props.value !== 'undefined' ? !!props.value : undefined;
+
     return (
       <>
         {label && <Label>{label}</Label>}
         <AriaSwitch
           {...props}
-          isSelected={!!props.value}
+          isSelected={isSelected}
           ref={ref}
           className={classNames(styles.switch, className)}
         >
