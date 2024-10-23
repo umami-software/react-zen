@@ -13,27 +13,39 @@ export function HoverTrigger({ closeDelay = CLOSE_DELAY, children }: HoverButton
   const [triggerElement, popupElement] = children;
 
   const [show, setShow] = useState(false);
-  const overMenu = useRef<boolean>(false);
+  const isOverMenu = useRef<boolean>(false);
+  const isOverButton = useRef<boolean>(false);
+  const timeout = useRef<NodeJS.Timeout>();
 
   const handleHoverStart = () => {
-    overMenu.current = false;
+    isOverMenu.current = false;
+    isOverButton.current = true;
     setShow(true);
   };
+
   const handleHoverEnd = () => {
-    setTimeout(() => {
-      if (!overMenu.current) {
-        setShow(false);
-        overMenu.current = false;
-      }
-    }, closeDelay);
+    isOverButton.current = false;
+    checkHoverState();
   };
 
   const handleMenuEnter = () => {
-    overMenu.current = true;
+    isOverMenu.current = true;
   };
+
   const handleMenuLeave = () => {
-    overMenu.current = false;
-    handleHoverEnd();
+    isOverMenu.current = false;
+    checkHoverState();
+  };
+
+  const checkHoverState = () => {
+    clearTimeout(timeout.current);
+    timeout.current = setTimeout(() => {
+      if (!isOverMenu.current && !isOverButton.current) {
+        setShow(false);
+        isOverMenu.current = false;
+        isOverButton.current = false;
+      }
+    }, closeDelay);
   };
 
   return (
