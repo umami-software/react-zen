@@ -8,5 +8,41 @@ title: Components - Navigation Menu
 A collection of links for navigating websites.
 
 <Example>
-  <NavigationMenu />
+  <NavigationMenu>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>
+        Product
+      </NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <h2>Hello</h2>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>
+        Resources
+      </NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <List>
+          <ListItem>Documentation</ListItem>
+          <ListItem>API Reference</ListItem>
+          <ListItem>Support</ListItem>
+        </List>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>
+        Company
+      </NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <List>
+          <ListItem>About</ListItem>
+          <ListItem>Blog</ListItem>
+          <ListItem>Careers</ListItem>
+        </List>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="https://github.com/umami-software/umami">GitHub</NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenu>
 </Example>

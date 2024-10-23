@@ -31,6 +31,7 @@ const items = [
       { title: 'Dots', path: '/docs/components/dots' },
       { title: 'Form', path: '/docs/components/form' },
       { title: 'Heading', path: '/docs/components/heading' },
+      { title: 'Hover Trigger', path: '/docs/components/hover-trigger' },
       { title: 'Icon', path: '/docs/components/icon' },
       { title: 'Icons', path: '/docs/components/icons' },
       { title: 'Inline Edit Field', path: '/docs/components/inline-edit-field' },

@@ -32,6 +32,7 @@ import { DataTable, DataColumn } from './DataTable';
 import { Dots } from './Dots';
 import { Flexbox } from './Flexbox';
 import { Heading } from './Heading';
+import { HoverTrigger } from './HoverTrigger';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { InlineEditField } from './InlineEditField';
@@ -43,6 +44,13 @@ import { LoadingButton } from './LoadingButton';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
 import { Modal } from './Modal';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from './NavigationMenu';
 import { PasswordField } from './PasswordField';
 import { Page } from './Page';
 import { Popover } from './Popover';
@@ -99,6 +107,7 @@ export {
   FileTrigger,
   Flexbox,
   Heading,
+  HoverTrigger,
   Icon,
   Icons,
   InlineEditField,
@@ -111,6 +120,11 @@ export {
   MenuItem,
   MenuTrigger,
   Modal,
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
   PasswordField,
   Page,
   Popover,
