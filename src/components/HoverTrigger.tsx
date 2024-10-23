@@ -33,7 +33,7 @@ export function HoverTrigger({ closeDelay = CLOSE_DELAY, children }: HoverButton
   };
   const handleMenuLeave = () => {
     overMenu.current = false;
-    setShow(false);
+    handleHoverEnd();
   };
 
   return (
