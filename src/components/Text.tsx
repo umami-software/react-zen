@@ -8,12 +8,23 @@ interface TextProps {
   spacing?: 'tighter' | 'tight' | 'wide' | 'wider';
   type?: 'muted' | 'faded';
   weight?: 'lighter' | 'light' | 'bold' | 'bolder';
+  align?: 'left' | 'center' | 'right';
   asChild?: boolean;
   className?: string;
   children?: ReactNode;
 }
 
-function Text({ children, type, size, spacing, weight, asChild, className, ...props }: TextProps) {
+function Text({
+  children,
+  type,
+  size,
+  spacing,
+  weight,
+  align,
+  asChild,
+  className,
+  ...props
+}: TextProps) {
   const Component = asChild ? Slot : 'span';
 
   return (
@@ -26,6 +37,7 @@ function Text({ children, type, size, spacing, weight, asChild, className, ...pr
         spacing && styles[spacing],
         type && styles[type],
         weight && styles[weight],
+        align && styles[align],
       )}
     >
       {children}

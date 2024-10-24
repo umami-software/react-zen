@@ -10,7 +10,7 @@ interface HeadingProps extends HTMLAttributes<any> {
 }
 
 function Heading({ size = 5, className, children, asChild, ...props }: HeadingProps) {
-  const Component = asChild ? Slot : 'h1';
+  const Component = asChild ? Slot : 'div';
 
   return (
     <Component
