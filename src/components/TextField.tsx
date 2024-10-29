@@ -3,8 +3,8 @@ import {
   TextField as AriaTextField,
   TextFieldProps as AriaTextFieldProps,
   Input,
-  TextArea,
 } from 'react-aria-components';
+import { Slot } from '@radix-ui/react-slot';
 import classNames from 'classnames';
 import { Label } from './Label';
 import { CopyButton } from './CopyButton';
@@ -14,28 +14,29 @@ import styles from './TextField.module.css';
 interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
   placeholder?: string;
-  asTextArea?: boolean;
   allowCopy?: boolean;
+  asChild?: boolean;
   onChange?: (e: any) => void;
 }
 
-const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+const TextField = forwardRef(
   (
     {
       value,
       defaultValue,
       label,
       placeholder,
-      asTextArea,
       allowCopy,
+      asChild,
       className,
       onChange,
+      children,
       ...props
-    },
+    }: TextFieldProps,
     ref: Ref<HTMLInputElement>,
   ) => {
     const [inputValue, setInputValue] = useState(defaultValue || value);
-    const Component = asTextArea ? TextArea : Input;
+    const Component = asChild ? Slot : Input;
 
     const handleChange = (e: any) => {
       setInputValue(e.target.value);
@@ -45,6 +46,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     useEffect(() => {
       setInputValue(value);
     }, [value]);
+
+    console.log(asChild && { Component, asChild });
 
     return (
       <AriaTextField
@@ -56,14 +59,12 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {label && <Label>{label}</Label>}
         <div className={inputStyles.row}>
           <Component
-            className={classNames(
-              styles.input,
-              inputStyles.input,
-              asTextArea && styles.textarea,
-              allowCopy && styles.allowCopy,
-            )}
+            className={classNames(styles.input, inputStyles.input, allowCopy && styles.allowCopy)}
+            placeholder={placeholder}
             onChange={handleChange}
-          />
+          >
+            {children as any}
+          </Component>
           {allowCopy && (
             <CopyButton className={classNames(styles.icon, inputStyles.icon)} value={inputValue} />
           )}
