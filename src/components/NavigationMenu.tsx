@@ -1,9 +1,10 @@
-import React, { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Text } from './Text';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { HoverTrigger } from './HoverTrigger';
+import { useNavigationMenu, setActiveMenu } from './hooks/useNavigationMenu';
 import styles from './NavigationMenu.module.css';
 
 export interface NavigationMenuProps extends HTMLAttributes<HTMLElement> {
@@ -34,9 +35,11 @@ export function NavigationMenuItem({
   className,
   ...props
 }: NavigationMenuItemProps) {
+  const { activeMenu } = useNavigationMenu();
+
   if (label) {
     return (
-      <HoverTrigger>
+      <HoverTrigger isOpen={activeMenu === label} onHoverStart={() => setActiveMenu(label)}>
         <div {...props} className={classNames(styles.item, className)}>
           <Text>{label}</Text>
           <Icon rotate={90} size="xs" className={styles.icon}>

@@ -5,11 +5,23 @@
 }
 
 .item {
+  color: var(--font-color);
   display: flex;
   align-items: center;
   gap: var(--gap-md);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  cursor: default;
+}
+
+.item:hover {
+  background: var(--highlight-color);
+}
+
+.nav .item > a {
+  color: var(--font-color);
 }
 
 .icon {
-  color: var(--base-color-400);
+  color: var(--font-muted-color);
 }
