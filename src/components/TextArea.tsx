@@ -5,12 +5,14 @@ import { TextField, TextFieldProps } from './TextField';
 import styles from './TextArea.module.css';
 
 interface TextAreaProps extends TextFieldProps {
+  rows?: number;
+  cols?: number;
   resize?: 'none' | 'vertical' | 'horizontal';
   children?: React.ReactNode;
 }
 
 const TextArea = forwardRef(
-  ({ resize, className, children, ...props }: TextAreaProps, ref: Ref<any>) => {
+  ({ rows, cols, resize, className, style, children, ...props }: TextAreaProps, ref: Ref<any>) => {
     return (
       <TextField
         {...props}
@@ -18,7 +20,9 @@ const TextArea = forwardRef(
         className={classNames(resize && styles[`resize-${resize}`])}
         asChild
       >
-        <AriaTextArea>{children}</AriaTextArea>
+        <AriaTextArea rows={rows} cols={cols} style={{ ...style }}>
+          {children}
+        </AriaTextArea>
       </TextField>
     );
   },
