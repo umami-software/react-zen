@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { Button as _Button, ButtonProps as _ButtonProps } from 'react-aria-components';
+import { forwardRef, ReactNode, Ref } from 'react';
+import { Button as AriaButton, ButtonProps as _ButtonProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Slot } from '@radix-ui/react-slot';
 import styles from './Button.module.css';
@@ -11,32 +11,38 @@ interface ButtonProps extends _ButtonProps {
   slot?: string;
 }
 
-function Button({
-  variant = 'secondary',
-  size = 'md',
-  preventFocusOnPress = true,
-  asChild,
-  className,
-  children,
-  ...props
-}: ButtonProps) {
-  const Component = asChild ? Slot : _Button;
+const Button = forwardRef(
+  (
+    {
+      variant = 'secondary',
+      size = 'md',
+      preventFocusOnPress = true,
+      asChild,
+      className,
+      children,
+      ...props
+    }: ButtonProps,
+    ref: Ref<any>,
+  ) => {
+    const Component = asChild ? Slot : AriaButton;
 
-  return (
-    <Component
-      {...props}
-      preventFocusOnPress={Component === _Button ? preventFocusOnPress : undefined}
-      className={classNames(
-        styles.button,
-        className,
-        variant && styles[variant],
-        size && styles[size],
-      )}
-    >
-      {children as ReactNode}
-    </Component>
-  );
-}
+    return (
+      <Component
+        {...props}
+        ref={ref}
+        preventFocusOnPress={Component === AriaButton ? preventFocusOnPress : undefined}
+        className={classNames(
+          styles.button,
+          className,
+          variant && styles[variant],
+          size && styles[size],
+        )}
+      >
+        {children as ReactNode}
+      </Component>
+    );
+  },
+);
 
 export { Button };
 export type { ButtonProps };

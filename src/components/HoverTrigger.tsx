@@ -1,5 +1,5 @@
-import { cloneElement, useRef, useState, ReactElement } from 'react';
-import { Dialog, DialogTrigger, Popover } from '@/components/index';
+import { useRef, useState, ReactElement } from 'react';
+import { Popover } from '@/components/index';
 import styles from './HoverTrigger.module.css';
 
 const CLOSE_DELAY = 500;
@@ -11,19 +11,20 @@ export interface HoverButtonProps {
 
 export function HoverTrigger({ closeDelay = CLOSE_DELAY, children }: HoverButtonProps) {
   const [triggerElement, popupElement] = children;
+  const triggerRef = useRef(null);
 
-  const [show, setShow] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const isOverMenu = useRef<boolean>(false);
   const isOverButton = useRef<boolean>(false);
   const timeout = useRef<NodeJS.Timeout>();
 
-  const handleHoverStart = () => {
+  const handleMouseEnter = () => {
     isOverMenu.current = false;
     isOverButton.current = true;
-    setShow(true);
+    setIsOpen(true);
   };
 
-  const handleHoverEnd = () => {
+  const handleMouseLeave = () => {
     isOverButton.current = false;
     checkHoverState();
   };
@@ -41,7 +42,7 @@ export function HoverTrigger({ closeDelay = CLOSE_DELAY, children }: HoverButton
     clearTimeout(timeout.current);
     timeout.current = setTimeout(() => {
       if (!isOverMenu.current && !isOverButton.current) {
-        setShow(false);
+        setIsOpen(false);
         isOverMenu.current = false;
         isOverButton.current = false;
       }
@@ -49,17 +50,19 @@ export function HoverTrigger({ closeDelay = CLOSE_DELAY, children }: HoverButton
   };
 
   return (
-    <DialogTrigger>
-      {cloneElement(triggerElement, { onHoverStart: handleHoverStart, onHoverEnd: handleHoverEnd })}
-      <Popover isOpen={show} isNonModal>
+    <>
+      <div ref={triggerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        {triggerElement}
+      </div>
+      <Popover isOpen={isOpen} isNonModal triggerRef={triggerRef}>
         <div
           className={styles.wrapper}
           onMouseEnter={handleMenuEnter}
           onMouseLeave={handleMenuLeave}
         >
-          <Dialog>{cloneElement(popupElement)}</Dialog>
+          {popupElement}
         </div>
       </Popover>
-    </DialogTrigger>
+    </>
   );
 }

@@ -7,13 +7,15 @@ title: Components - Hover Trigger
 
 Displays a popover element when a user hovers over a trigger element.
 
-<Example>
+<Example direction="row">
   <HoverTrigger>
     <Button variant="primary">Hover Me</Button>
-    <Column gap="md">
-      <Switch defaultSelected>Wi-Fi</Switch>
-      <Switch defaultSelected>Bluetooth</Switch>
-      <Switch>Mute</Switch>
-    </Column>
+    <Dialog>
+      <Column gap="md">
+        <Switch defaultSelected>Wi-Fi</Switch>
+        <Switch defaultSelected>Bluetooth</Switch>
+        <Switch>Mute</Switch>
+      </Column>
+    </Dialog>
   </HoverTrigger>
 </Example>

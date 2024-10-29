@@ -9,40 +9,26 @@ A collection of links for navigating websites.
 
 <Example>
   <NavigationMenu>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>
-        Product
-      </NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <h2>Hello</h2>
-      </NavigationMenuContent>
+    <NavigationMenuItem label="Product">
+      <h2>Hello</h2>
+    </NavigationMenuItem>
+    <NavigationMenuItem label="Resources">
+      <List>
+        <ListItem>Documentation</ListItem>
+        <ListItem>API Reference</ListItem>
+        <ListItem>Support</ListItem>
+      </List>
+    </NavigationMenuItem>
+    <NavigationMenuItem label="Company">
+      <List>
+        <ListItem>About</ListItem>
+        <ListItem>Blog</ListItem>
+        <ListItem>Careers</ListItem>
+      </List>
     </NavigationMenuItem>
     <NavigationMenuItem>
-      <NavigationMenuTrigger>
-        Resources
-      </NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <List>
-          <ListItem>Documentation</ListItem>
-          <ListItem>API Reference</ListItem>
-          <ListItem>Support</ListItem>
-        </List>
-      </NavigationMenuContent>
+      <a href="https://github.com/umami-software/umami">GitHub</a>
     </NavigationMenuItem>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>
-        Company
-      </NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <List>
-          <ListItem>About</ListItem>
-          <ListItem>Blog</ListItem>
-          <ListItem>Careers</ListItem>
-        </List>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-    <NavigationMenuItem>
-      <NavigationMenuLink href="https://github.com/umami-software/umami">GitHub</NavigationMenuLink>
-    </NavigationMenuItem>
+
   </NavigationMenu>
 </Example>
