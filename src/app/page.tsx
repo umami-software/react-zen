@@ -2,7 +2,7 @@ import { Text, Column, Button } from '@/components';
 
 export default function RootPage() {
   return (
-    <Column justifyContent="center" alignItems="center" spacing={6} grow={1}>
+    <Column justifyContent="center" alignItems="center" grow={1}>
       <Text size="xl" weight="bold">
         zen.
       </Text>
