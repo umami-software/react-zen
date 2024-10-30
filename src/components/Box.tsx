@@ -59,10 +59,10 @@ function Box({
         shadow && styles[`shadow-${shadow}`],
         padding && styles[`padding-${padding}`],
         margin && styles[`margin-${margin}`],
-        paddingX && styles[`padding-x-${padding}`],
-        marginX && styles[`margin-x-${margin}`],
-        paddingY && styles[`padding-y-${padding}`],
-        marginY && styles[`margin-y-${margin}`],
+        paddingX && styles[`padding-x-${paddingX}`],
+        marginX && styles[`margin-x-${marginX}`],
+        paddingY && styles[`padding-y-${paddingY}`],
+        marginY && styles[`margin-y-${marginY}`],
       )}
     >
       {children}

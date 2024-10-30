@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { Button } from '@/components';
+import { Button, Row } from '@/components';
 import { useTheme } from '@/components/hooks/useTheme';
 import styles from './Header.module.css';
 
@@ -8,7 +8,7 @@ export function Header() {
   const { setTheme } = useTheme();
 
   return (
-    <div className={styles.header}>
+    <Row alignItems="center" justifyContent="space-between" paddingX={4} paddingY={2}>
       <div>
         <Link href={'/'}>
           <b>zen</b>
@@ -23,6 +23,6 @@ export function Header() {
           dark
         </Button>
       </div>
-    </div>
+    </Row>
   );
 }

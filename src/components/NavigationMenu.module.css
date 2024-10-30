@@ -11,6 +11,7 @@
   gap: var(--gap-md);
   padding: var(--padding);
   border-radius: var(--border-radius);
+  font-weight: 700;
   cursor: default;
 }
 
@@ -18,8 +19,10 @@
   background: var(--highlight-color);
 }
 
-.nav .item > a {
+.nav .item > a,
+.nav .item > a:hover {
   color: var(--font-color);
+  text-decoration: none;
 }
 
 .icon {

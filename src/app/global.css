@@ -2,7 +2,8 @@ html {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   font-family: Inter, sans-serif;
   font-size: var(--font-size);
   line-height: 1.75rem;
@@ -13,7 +14,9 @@ html, body {
   background: var(--background-color);
 }
 
-input, textarea, button {
+input,
+textarea,
+button {
   font-family: inherit;
   font-size: inherit;
 }
@@ -24,13 +27,27 @@ input, textarea, button {
   box-sizing: inherit;
 }
 
-a, a:active, a:visited {
-  color: var(--font-muted-color);
+a,
+a:active,
+a:visited {
+  color: var(--font-color);
   text-decoration: none;
 }
 
-a:hover {
+a:hover,
+.docs a:hover {
+  color: var(--font-muted-color);
+}
+
+.docs p {
+  color: var(--font-muted-color);
+}
+
+.docs a {
   color: var(--font-color);
+  font-weight: 600;
+  text-decoration: underline var(--font-muted-color);
+  text-underline-offset: 4px;
 }
 
 img,

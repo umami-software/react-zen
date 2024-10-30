@@ -6,7 +6,7 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
     <main className={styles.container}>
       <Nav />
-      <div>{children}</div>
+      <div className="docs">{children}</div>
     </main>
   );
 }
