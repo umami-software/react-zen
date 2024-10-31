@@ -21,6 +21,29 @@ button {
   font-size: inherit;
 }
 
+code {
+  color: var(--font-color);
+  font-family: monospace;
+  font-size: 12px;
+  padding: var(--spacing-2);
+  background: var(--highlight-color);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+}
+
+pre {
+  color: var(--font-color);
+  background: var(--base-color-100);
+  border-radius: var(--border-radius);
+}
+
+pre code {
+  color: var(--font-color);
+  font-weight: 400;
+  padding: 0;
+  background: transparent;
+}
+
 *,
 *:before,
 *:after {
@@ -45,7 +68,7 @@ a:hover {
 .docs a {
   color: var(--font-color);
   font-weight: 600;
-  text-decoration: underline var(--font-muted-color);
+  text-decoration: underline var(--font-faded-color);
   text-underline-offset: 4px;
 }
 

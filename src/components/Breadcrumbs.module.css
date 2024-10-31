@@ -21,14 +21,11 @@
 
 .breadcrumbs .breadcrumb a:hover {
   color: var(--font-color);
+  text-decoration: none;
 }
 
 .icon {
   color: var(--font-muted-color);
-}
-
-.breadcrumb:last-child {
-  font-weight: 700;
 }
 
 .breadcrumb:last-child .icon {
