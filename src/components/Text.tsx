@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from './Slot';
 import styles from './Text.module.css';
 
 interface TextProps {

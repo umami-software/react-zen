@@ -139,4 +139,8 @@
   :where(input, textarea, select) {
     min-width: 240px;
   }
+
+  * {
+    outline-color: var(--primary-color);
+  }
 }

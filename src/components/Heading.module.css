@@ -6,36 +6,45 @@
 
 .size1 {
   font-size: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .size2 {
   font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .size3 {
   font-size: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 .size4 {
   font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .size5 {
   font-size: 1.75rem;
+  margin-bottom: 1.75rem;
 }
 
 .size6 {
   font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .size7 {
   font-size: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .size8 {
   font-size: 3.5rem;
+  margin-bottom: 3.5rem;
 }
 
 .size9 {
   font-size: 5rem;
+  margin-bottom: 5rem;
 }

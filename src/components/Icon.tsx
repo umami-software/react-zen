@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { CSSProperties, HTMLAttributes, ReactNode } from 'react';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from './Slot';
 import styles from './Icon.module.css';
 
 export interface IconProps {

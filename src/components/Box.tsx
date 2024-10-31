@@ -1,5 +1,4 @@
 import { ReactNode, HTMLProps } from 'react';
-import { Slot } from '@radix-ui/react-slot';
 import classNames from 'classnames';
 import {
   BackgroundColor,
@@ -9,6 +8,7 @@ import {
   FontSize,
   Spacing,
 } from '@/lib/types';
+import { Slot } from './Slot';
 import styles from './Box.module.css';
 
 interface BoxProps extends HTMLProps<HTMLDivElement> {

@@ -1,7 +1,7 @@
 import { forwardRef, ReactNode, Ref } from 'react';
 import { Button as AriaButton, ButtonProps as _ButtonProps } from 'react-aria-components';
 import classNames from 'classnames';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from './Slot';
 import styles from './Button.module.css';
 
 interface ButtonProps extends _ButtonProps {

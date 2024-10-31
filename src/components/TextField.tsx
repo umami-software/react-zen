@@ -4,8 +4,8 @@ import {
   TextFieldProps as AriaTextFieldProps,
   Input,
 } from 'react-aria-components';
-import { Slot } from '@radix-ui/react-slot';
 import classNames from 'classnames';
+import { Slot } from './Slot';
 import { Label } from './Label';
 import { CopyButton } from './CopyButton';
 import inputStyles from './Input.module.css';

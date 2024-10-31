@@ -4,10 +4,10 @@ import {
   DialogTrigger,
   Button,
   TextField,
-  Column,
   Modal,
-  PasswordField,
-  Label,
+  Row,
+  Form,
+  FormField,
 } from '@/components';
 
 export function DialogExample() {
@@ -18,19 +18,20 @@ export function DialogExample() {
         <Dialog title="Sign up for newsletter">
           {({ close }) => {
             return (
-              <Column gap="md">
-                <div>
-                  <Label htmlFor="name">Name</Label>
-                  <TextField id="name" />
-                </div>
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <TextField id="email" />
-                </div>
-                <Button variant="primary" onPress={close}>
-                  Sign up
-                </Button>
-              </Column>
+              <Form>
+                <FormField name="name" label="Name">
+                  <TextField />
+                </FormField>
+                <FormField name="email" label="Email">
+                  <TextField />
+                </FormField>
+                <Row gap="md" justifyContent="space-between">
+                  <Button onPress={close}>Cancel</Button>
+                  <Button variant="primary" onPress={close}>
+                    Sign up
+                  </Button>
+                </Row>
+              </Form>
             );
           }}
         </Dialog>

@@ -34,13 +34,12 @@ a:visited {
   text-decoration: none;
 }
 
-a:hover,
-.docs a:hover {
+a:hover {
   color: var(--font-muted-color);
 }
 
-.docs p {
-  color: var(--font-muted-color);
+.docs {
+  font-size: 16px;
 }
 
 .docs a {
@@ -48,6 +47,10 @@ a:hover,
   font-weight: 600;
   text-decoration: underline var(--font-muted-color);
   text-underline-offset: 4px;
+}
+
+.docs a:hover {
+  text-decoration: underline var(--font-color);
 }
 
 img,

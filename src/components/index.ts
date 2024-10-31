@@ -7,8 +7,6 @@ import {
   TooltipTrigger,
 } from 'react-aria-components';
 
-import { Slot } from '@radix-ui/react-slot';
-
 import { Form } from '@/components/forms/Form';
 import { FormField } from '@/components/forms/FormField';
 import { FormResetButton } from '@/components/forms/FormResetButton';
@@ -55,6 +53,7 @@ import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Select } from './Select';
 import { Slider } from './Slider';
+import { Slot } from './Slot';
 import { Spinner } from './Spinner';
 import { StatusLight } from './StatusLight';
 import { Switch } from './Switch';

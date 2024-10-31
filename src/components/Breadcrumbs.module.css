@@ -7,16 +7,19 @@
 .breadcrumb {
   display: flex;
   align-items: center;
-  font-size: var(--font-size2);
+  font-size: var(--font-size-md);
   gap: var(--gap);
   list-style: none;
 }
 
-.breadcrumb a {
+.breadcrumbs .breadcrumb a {
   color: var(--font-muted-color);
+  text-decoration: none;
+  font-weight: 400;
+  padding: var(--padding);
 }
 
-.breadcrumb a:hover {
+.breadcrumbs .breadcrumb a:hover {
   color: var(--font-color);
 }
 
@@ -25,7 +28,7 @@
 }
 
 .breadcrumb:last-child {
-  font-weight: var(--font-weight4);
+  font-weight: 700;
 }
 
 .breadcrumb:last-child .icon {

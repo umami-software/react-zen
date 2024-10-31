@@ -16,6 +16,15 @@
   display: flex;
 }
 
+.item a {
+  color: var(--font-muted-color);
+}
+
+.item a:hover {
+  color: var(--font-color);
+}
+
 .item.selected a {
-  font-weight: bold;
+  color: var(--font-color);
+  font-weight: 700;
 }

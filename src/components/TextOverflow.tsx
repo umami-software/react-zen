@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { HTMLAttributes } from 'react';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from './Slot';
 import styles from './TextOverflow.module.css';
 
 interface TextOverflowProps extends HTMLAttributes<HTMLDivElement> {
