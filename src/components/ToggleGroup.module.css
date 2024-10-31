@@ -1,5 +1,4 @@
 .group {
-  display: inline-flex;
   background-color: var(--background-color);
   box-shadow: var(--box-shadow);
   border: var(--border);
@@ -7,15 +6,22 @@
   overflow: hidden;
 }
 
+.list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .item {
+  font-size: var(--font-size-md);
   color: var(--font-color);
   background-color: var(--background-color);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--padding);
-  border: 0;
   cursor: pointer;
+  outline: none;
 }
 
 .item:not(:first-child) {
@@ -26,12 +32,9 @@
   background-color: var(--highlight-color);
 }
 
-.item[data-state='on'] {
+.item[data-selected] {
   font-weight: 700;
   background-color: var(--highlight-color);
   font-size-adjust: 0.5;
 }
 
-.item:focus {
-  position: relative;
-}

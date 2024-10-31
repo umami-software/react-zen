@@ -8,7 +8,7 @@ title: Components - Toggle Group
 A set of two-state buttons that can be toggled on or off.
 
 <Example>
-  <ToggleGroup type="single">
+  <ToggleGroup selectionMode="single">
     <ToggleGroupItem value="one">One</ToggleGroupItem>
     <ToggleGroupItem value="two">Two</ToggleGroupItem>
     <ToggleGroupItem value="three">Three</ToggleGroupItem>
@@ -18,7 +18,7 @@ A set of two-state buttons that can be toggled on or off.
 ## Multiple select
 
 <Example>
-  <ToggleGroup type="multiple">
+  <ToggleGroup selectionMode="multiple">
     <ToggleGroupItem value="one">One</ToggleGroupItem>
     <ToggleGroupItem value="two">Two</ToggleGroupItem>
     <ToggleGroupItem value="three">Three</ToggleGroupItem>
@@ -28,9 +28,15 @@ A set of two-state buttons that can be toggled on or off.
 ## Icons
 
 <Example>
-  <ToggleGroup type="single">
-    <ToggleGroupItem value="one"><AlignLeft /></ToggleGroupItem>
-    <ToggleGroupItem value="two"><AlignCenter /></ToggleGroupItem>
-    <ToggleGroupItem value="three"><AlignRight /></ToggleGroupItem>
+  <ToggleGroup selectionMode="single">
+    <ToggleGroupItem value="one">
+      <AlignLeft />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="two">
+      <AlignCenter />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="three">
+      <AlignRight />
+    </ToggleGroupItem>
   </ToggleGroup>
 </Example>
