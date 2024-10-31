@@ -17,7 +17,7 @@ interface TextProps {
 function Text({
   children,
   type,
-  size,
+  size = 'md',
   spacing,
   weight,
   align,

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { HTMLAttributes } from 'react';
 import { Slot } from './Slot';
+import { Text } from './Text';
 import styles from './TextOverflow.module.css';
 
 interface TextOverflowProps extends HTMLAttributes<HTMLDivElement> {
@@ -8,7 +9,7 @@ interface TextOverflowProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 function TextOverflow({ asChild, children, className, ...props }: TextOverflowProps) {
-  const Component = asChild ? Slot : 'div';
+  const Component = asChild ? Slot : Text;
 
   return (
     <div {...props} className={classNames(styles.wrapper, className)}>

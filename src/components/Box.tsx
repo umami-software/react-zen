@@ -30,7 +30,7 @@ interface BoxProps extends HTMLProps<HTMLDivElement> {
 
 function Box({
   className,
-  fontSize,
+  fontSize = 'md',
   backgroundColor,
   border,
   borderRadius,

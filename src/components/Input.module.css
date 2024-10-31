@@ -8,6 +8,7 @@
 }
 
 .input {
+  font-size: var(--font-size);
   border: var(--border);
   border-radius: var(--border-radius);
   background: var(--background-color);

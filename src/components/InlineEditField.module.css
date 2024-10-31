@@ -1,4 +1,5 @@
 .edit {
+  font-size: var(--font-size);
   display: flex;
   align-items: center;
   position: relative;

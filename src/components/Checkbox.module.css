@@ -1,4 +1,5 @@
 .checkbox {
+  font-size: var(--font-size);
   display: flex;
   flex-direction: row;
   align-items: center;
