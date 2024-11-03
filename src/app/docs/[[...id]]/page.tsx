@@ -25,8 +25,6 @@ export default async function ({ params: { id = [] } }: { params: { id: string[]
   const name = id?.length ? id.join('/') : 'index';
   const doc = await getFile(name, FOLDER);
 
-  console.log({ id, name, doc });
-
   if (!doc) {
     return <h1>Page not found</h1>;
   }
