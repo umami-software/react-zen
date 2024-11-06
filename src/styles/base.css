@@ -1,0 +1,105 @@
+/** Reset styles **/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.5;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-inline-size: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: currentColor;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  line-height: 1.25;
+  text-wrap: balance;
+  letter-spacing: -0.05ch;
+  margin-block-end: 1em;
+}
+
+p {
+  margin-block: 1em;
+}
+
+ol, ul {
+  list-style: none;
+  padding-inline-start: 1.5em;
+}
+
+li {
+  margin-block: 0.5em;
+}
+
+/** Global styles **/
+
+html,
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  color: var(--font-color);
+  background: var(--background-color);
+  min-height: 100vh;
+}
+
+a,
+a:active,
+a:visited {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  color: var(--font-color);
+  font-family: monospace;
+  font-size: 14px;
+  padding: var(--spacing-2);
+  background: var(--highlight-color);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+}
+
+pre {
+  color: var(--font-color);
+  background: var(--base-color-100);
+  border-radius: var(--border-radius);
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5rem;
+  padding: 20px;
+}
+
+pre code {
+  color: var(--font-color);
+  font-weight: 400;
+  padding: 0;
+  background: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}

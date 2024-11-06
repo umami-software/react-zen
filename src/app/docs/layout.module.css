@@ -5,3 +5,18 @@
   grid-template-columns: minmax(max-content, 200px) 1fr;
   width: 100%;
 }
+
+.docs {
+  font-size: 16px;
+}
+
+.docs a {
+  color: var(--font-color);
+  font-weight: 600;
+  text-decoration: underline var(--font-faded-color);
+  text-underline-offset: 4px;
+}
+
+.docs a:hover {
+  text-decoration: underline var(--font-color);
+}
