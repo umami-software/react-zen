@@ -6,10 +6,11 @@ import { getFile } from '@/lib/content';
 const FOLDER = path.resolve(process.cwd(), './src/content/docs');
 
 export async function generateMetadata({
-  params: { id },
+  params,
 }: {
   params: { id: string[] };
 }): Promise<Metadata> {
+  const { id } = await params;
   const name = id?.length ? id.join('/') : 'index';
   const doc = await getFile(name, FOLDER);
 
