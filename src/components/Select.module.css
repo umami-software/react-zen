@@ -1,17 +1,8 @@
-.select {
-  display: flex;
-  align-items: center;
-  color: var(--font-color);
-  background: var(--background-color);
-  box-shadow: var(--box-shadow);
-  min-width: 160px;
-}
-
 .button {
   display: flex;
   align-items: center;
-  color: var(--font-color);
   font-size: var(--font-size);
+  color: var(--font-color);
   gap: var(--gap);
   border: var(--border);
   padding: var(--padding);

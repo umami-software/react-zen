@@ -2,9 +2,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--gap);
   font-size: var(--font-size);
   color: var(--font-color);
+  gap: var(--gap);
   --knob-size: 16px;
   --knob-border-size: 3px;
 }

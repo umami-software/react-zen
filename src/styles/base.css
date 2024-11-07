@@ -50,7 +50,7 @@ li {
 
 html,
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-family), sans-serif;
   font-size: var(--font-size);
   color: var(--font-color);
   background: var(--background-color);
@@ -69,18 +69,19 @@ a:hover {
 }
 
 code {
-  color: var(--font-color);
   font-family: monospace;
-  font-size: 14px;
-  padding: var(--spacing-2);
+  font-size: var(--font-size);
+  color: var(--font-color);
   background: var(--highlight-color);
   border-radius: var(--border-radius);
+  border: var(--border);
+  padding: var(--spacing-1) var(--spacing-2);
   font-weight: 600;
 }
 
 pre {
   color: var(--font-color);
-  background: var(--base-color-100);
+  background: var(--highlight-color);
   border-radius: var(--border-radius);
   font-family: monospace;
   font-size: 14px;
@@ -92,6 +93,7 @@ pre code {
   color: var(--font-color);
   font-weight: 400;
   padding: 0;
+  border: 0;
   background: transparent;
 }
 

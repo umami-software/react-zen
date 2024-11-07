@@ -1,4 +1,6 @@
 .group {
+  font-size: var(--font-size-md);
+  color: var(--font-color);
   background-color: var(--background-color);
   box-shadow: var(--box-shadow);
   border: var(--border);
@@ -13,8 +15,6 @@
 }
 
 .item {
-  font-size: var(--font-size-md);
-  color: var(--font-color);
   background-color: var(--background-color);
   display: flex;
   align-items: center;

@@ -1,3 +1,7 @@
+.field {
+  min-width: 240px;
+}
+
 .field, .row {
   position: relative;
 }
@@ -9,11 +13,11 @@
 
 .input {
   font-size: var(--font-size);
+  color: var(--font-color);
   border: var(--border);
   border-radius: var(--border-radius);
   background: var(--background-color);
   box-shadow: var(--box-shadow);
-  color: var(--font-color);
   padding: var(--padding);
   line-height: 1.5rem;
   width: 100%;

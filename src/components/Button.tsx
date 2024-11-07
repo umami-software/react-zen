@@ -25,12 +25,13 @@ const Button = forwardRef(
     ref: Ref<any>,
   ) => {
     const Component = asChild ? Slot : AriaButton;
+    const buttonProps = Component === AriaButton ? { preventFocusOnPress } : undefined;
 
     return (
       <Component
         {...props}
+        {...buttonProps}
         ref={ref}
-        preventFocusOnPress={Component === AriaButton ? preventFocusOnPress : undefined}
         className={classNames(
           styles.button,
           className,

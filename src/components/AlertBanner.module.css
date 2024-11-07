@@ -1,14 +1,14 @@
 .banner {
   display: flex;
   align-items: center;
-  font-size: var(--font-size);
   padding: var(--padding);
   border: var(--border);
   border-radius: var(--border-radius);
-  color: var(--font-color);
   background: var(--background-color);
   width: 100%;
   overflow: hidden;
+  font-size: var(--font-size);
+  color: var(--font-color);
   gap: var(--spacing-3);
 }
 

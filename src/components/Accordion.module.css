@@ -5,6 +5,7 @@
   width: 100%;
   gap: var(--gap-sm);
   font-size: var(--font-size);
+  color: var(--font-color);
 }
 
 .item {

@@ -1,12 +1,12 @@
 .nav {
   display: flex;
   align-items: center;
+  font-size: var(--font-size);
+  color: var(--font-color);
   gap: var(--gap-lg);
 }
 
 .item {
-  font-size: var(--font-size);
-  color: var(--font-color);
   display: flex;
   align-items: center;
   gap: var(--gap-md);

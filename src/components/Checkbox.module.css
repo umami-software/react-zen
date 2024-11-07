@@ -1,9 +1,9 @@
 .checkbox {
-  font-size: var(--font-size);
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: var(--gap-md);
+  font-size: var(--font-size);
   color: var(--font-color);
 }
 
