@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, useState } from 'react';
 import {
   UNSTABLE_Disclosure as Disclosure,
   UNSTABLE_DisclosurePanel as DisclosurePanel,
@@ -29,18 +29,34 @@ export function Accordion({ className, children, ...props }: AccordionProps) {
   );
 }
 
-export function AccordionItem({ className, children, ...props }: AccordionItemProps) {
+export function AccordionItem({
+  defaultExpanded,
+  className,
+  children,
+  ...props
+}: AccordionItemProps) {
   const [trigger, panel] = children as ReactElement[];
+  const [expanded, setExpanded] = useState(defaultExpanded);
+
+  const handleExpandedChange = (isExpanded: boolean) => {
+    requestAnimationFrame(() => setExpanded(isExpanded));
+  };
 
   return (
-    <Disclosure {...props} className={classNames(styles.item, className)}>
+    <Disclosure
+      {...props}
+      className={classNames(styles.item, className)}
+      onExpandedChange={handleExpandedChange}
+    >
       <Button slot="trigger" className={styles.button}>
         <Text>{trigger}</Text>
         <Icon className={styles.icon} size="xs">
           <Icons.Chevron />
         </Icon>
       </Button>
-      <DisclosurePanel className={styles.panel}>{panel}</DisclosurePanel>
+      <DisclosurePanel className={classNames(styles.panel, expanded && styles.expanded)}>
+        {panel}
+      </DisclosurePanel>
     </Disclosure>
   );
 }

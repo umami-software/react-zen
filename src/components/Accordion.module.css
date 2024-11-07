@@ -35,5 +35,12 @@
 }
 
 .panel {
-  overflow: auto;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+}
+
+.panel.expanded {
+  max-height: 500px;
+  transition: max-height 0.5s ease-out;
 }
