@@ -33,7 +33,7 @@ code {
 
 pre {
   color: var(--font-color);
-  background: var(--base-color-100);
+  background: var(--highlight-color);
   border-radius: var(--border-radius);
 }
 
@@ -92,15 +92,6 @@ img,
 video {
   max-width: 100%;
   height: auto;
-}
-
-pre {
-  color: var(--font-color);
-  font-family: monospace;
-  font-size: 14px;
-  line-height: 1.5rem;
-  padding: 20px;
-  border-radius: 4px;
 }
 
 *:focus {
