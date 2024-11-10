@@ -1,4 +1,6 @@
 .tabs {
+  font-size: var(--font-size);
+  color: var(--font-color);
   position: relative;
   width: 100%;
 }
@@ -19,7 +21,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size);
   color: var(--font-muted-color);
   min-height: 3rem;
   border-bottom: 2px solid transparent;

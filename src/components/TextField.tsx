@@ -47,8 +47,6 @@ const TextField = forwardRef(
       setInputValue(value);
     }, [value]);
 
-    console.log(asChild && { Component, asChild });
-
     return (
       <AriaTextField
         {...props}

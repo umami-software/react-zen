@@ -1,4 +1,6 @@
 .table {
+  font-size: var(--font-size);
+  color: var(--font-color);
   border-collapse: collapse;
   width: 100%;
   position: relative;
@@ -7,7 +9,6 @@
 .table th,
 .table td {
   min-width: 0;
-  font-size: var(--font-size);
 }
 
 .header,

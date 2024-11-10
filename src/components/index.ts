@@ -14,7 +14,7 @@ import { FormSubmitButton } from '@/components/forms/FormSubmitButton';
 import { useDebounce } from './hooks/useDebounce';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
-import { Accordion, AccordionItem, AccordionHeader, AccordionContent } from './Accordion';
+import { Accordion, AccordionItem } from './Accordion';
 import { AlertBanner } from './AlertBanner';
 import { AlertDialog } from './AlertDialog';
 import { Box } from './Box';
@@ -78,9 +78,7 @@ export {
   useTheme,
   useToast,
   Accordion,
-  AccordionContent,
   AccordionItem,
-  AccordionHeader,
   AlertBanner,
   AlertDialog,
   Box,

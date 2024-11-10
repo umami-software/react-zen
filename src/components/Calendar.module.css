@@ -1,6 +1,8 @@
 .calendar {
   width: fit-content;
   max-width: 100%;
+  font-size: var(--font-size);
+  color: var(--font-color);
 }
 
 .header {
@@ -26,19 +28,17 @@
 }
 
 .headerCell {
-  font-size: var(--font-size);
   font-weight: 700;
 }
 
 .cell {
-  font-size: var(--font-size);
   width: 3rem;
   line-height: 3rem;
   text-align: center;
   border-radius: var(--border-radius);
   cursor: pointer;
   outline: none;
-  margin: 1px;
+  margin: var(--gap-xs);
   forced-color-adjust: none;
 }
 

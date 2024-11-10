@@ -1,60 +1,62 @@
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode, useState } from 'react';
 import {
-  Root,
-  Header,
-  Item,
-  Trigger,
-  Content,
-  AccordionItemProps,
-  AccordionContentProps,
-  AccordionHeaderProps,
-} from '@radix-ui/react-accordion';
+  UNSTABLE_Disclosure as Disclosure,
+  UNSTABLE_DisclosurePanel as DisclosurePanel,
+  UNSTABLE_DisclosureGroup as DisclosureGroup,
+  DisclosureProps,
+  DisclosureGroupProps,
+} from 'react-aria-components';
 import classNames from 'classnames';
+import { Button } from './Button';
+import { Text } from './Text';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import styles from './Accordion.module.css';
 
-interface AccordionProps {
+export interface AccordionProps extends DisclosureGroupProps {
   type: 'single' | 'multiple';
   className?: string;
   children?: ReactNode;
 }
 
-function Accordion({ className, children, ...props }: AccordionProps) {
+export interface AccordionItemProps extends DisclosureProps {}
+
+export function Accordion({ className, children, ...props }: AccordionProps) {
   return (
-    <Root {...props} className={classNames(styles.accordion, className)}>
+    <DisclosureGroup {...props} className={classNames(styles.accordion, className)}>
       {children}
-    </Root>
+    </DisclosureGroup>
   );
 }
 
-function AccordionItem({ className, children, ...props }: AccordionItemProps) {
-  return (
-    <Item {...props} className={classNames(styles.item, className)}>
-      {children}
-    </Item>
-  );
-}
+export function AccordionItem({
+  defaultExpanded,
+  className,
+  children,
+  ...props
+}: AccordionItemProps) {
+  const [trigger, panel] = children as ReactElement[];
+  const [expanded, setExpanded] = useState(defaultExpanded);
 
-function AccordionHeader({ children, className, ...props }: AccordionHeaderProps) {
+  const handleExpandedChange = (isExpanded: boolean) => {
+    requestAnimationFrame(() => setExpanded(isExpanded));
+  };
+
   return (
-    <Header {...props} className={classNames(styles.header, className)}>
-      <Trigger className={styles.trigger}>
-        {children}
-        <Icon className={styles.icon} size="sm">
+    <Disclosure
+      {...props}
+      className={classNames(styles.item, className)}
+      onExpandedChange={handleExpandedChange}
+    >
+      <Button slot="trigger" className={styles.button}>
+        <Text>{trigger}</Text>
+        <Icon className={styles.icon} size="xs">
           <Icons.Chevron />
         </Icon>
-      </Trigger>
-    </Header>
+      </Button>
+      <DisclosurePanel className={classNames(styles.panel, expanded && styles.expanded)}>
+        {panel}
+      </DisclosurePanel>
+    </Disclosure>
   );
 }
-
-function AccordionContent({ children, className, ...props }: AccordionContentProps) {
-  return (
-    <Content {...props} className={classNames(styles.content, className)}>
-      {children}
-    </Content>
-  );
-}
-
-export { Accordion, AccordionItem, AccordionHeader, AccordionContent };

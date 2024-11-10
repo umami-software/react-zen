@@ -70,6 +70,8 @@
 
   /* Settings */
 
+  --font-family: Inter;
+
   --font-size: 14px;
 
   --border-radius: var(--border-radius-md);

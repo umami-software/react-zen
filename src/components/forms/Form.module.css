@@ -1,8 +1,5 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-md);
-  width: 100%;
+  position: relative;
 }
 
 .text {
@@ -15,6 +12,6 @@
 }
 
 .error {
-  margin: 0 auto var(--size-600) auto;
+  margin: 0 auto;
   overflow: auto;
 }

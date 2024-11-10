@@ -1,25 +1,33 @@
 ---
-id: components/accordion
-title: Components - Accordion
+title: Accordion
 ---
-
-# Accordion
 
 A vertically stacked set of interactive headings that each reveal an associated section of content.
 
 <Example>
-  <Accordion type="single">
-    <AccordionItem value="one">
-      <AccordionHeader>What is supply and demand?</AccordionHeader>
-      <AccordionContent>Supply and demand is an economic model of price determination in a market. It states that the price of a good or service is determined by the quantity available (supply) and the desire for it (demand).</AccordionContent>
+  <Accordion>
+    <AccordionItem id="one">
+      <div>What is supply and demand?</div>
+      <div>
+        Supply and demand is an economic model of price determination in a market. It states that
+        the price of a good or service is determined by the quantity available (supply) and the
+        desire for it (demand).
+      </div>
     </AccordionItem>
-    <AccordionItem value="two">
-      <AccordionHeader>What is an algorithm?</AccordionHeader>
-      <AccordionContent>An algorithm is a set of well-defined instructions for performing a task or solving a problem.</AccordionContent>
+    <AccordionItem id="two">
+      <div>What is an algorithm?</div>
+      <div>
+        An algorithm is a set of well-defined instructions for performing a task or solving a
+        problem.
+      </div>
     </AccordionItem>
-    <AccordionItem value="three">
-      <AccordionHeader>What is the second law of thermodynamics?</AccordionHeader>
-      <AccordionContent>The second law of thermodynamics states that the total entropy of an isolated system can never decrease over time, and is often associated with the concept that natural processes tend to lead towards a state of greater disorder.</AccordionContent>
+    <AccordionItem id="three">
+      <div>What is the second law of thermodynamics?</div>
+      <div>
+        The second law of thermodynamics states that the total entropy of an isolated system can
+        never decrease over time, and is often associated with the concept that natural processes
+        tend to lead towards a state of greater disorder.
+      </div>
     </AccordionItem>
   </Accordion>
 </Example>
@@ -27,18 +35,29 @@ A vertically stacked set of interactive headings that each reveal an associated 
 ## Multiple expansion
 
 <Example>
-  <Accordion type="multiple">
-    <AccordionItem value="one">
-      <AccordionHeader>What is supply and demand?</AccordionHeader>
-      <AccordionContent>Supply and demand is an economic model of price determination in a market. It states that the price of a good or service is determined by the quantity available (supply) and the desire for it (demand).</AccordionContent>
+  <Accordion allowsMultipleExpanded>
+    <AccordionItem id="one">
+      <div>What is supply and demand?</div>
+      <div>
+        Supply and demand is an economic model of price determination in a market. It states that
+        the price of a good or service is determined by the quantity available (supply) and the
+        desire for it (demand).
+      </div>
     </AccordionItem>
-    <AccordionItem value="two">
-      <AccordionHeader>What is an algorithm?</AccordionHeader>
-      <AccordionContent>An algorithm is a set of well-defined instructions for performing a task or solving a problem.</AccordionContent>
+    <AccordionItem id="two">
+      <div>What is an algorithm?</div>
+      <div>
+        An algorithm is a set of well-defined instructions for performing a task or solving a
+        problem.
+      </div>
     </AccordionItem>
-    <AccordionItem value="three">
-      <AccordionHeader>What is the second law of thermodynamics?</AccordionHeader>
-      <AccordionContent>The second law of thermodynamics states that the total entropy of an isolated system can never decrease over time, and is often associated with the concept that natural processes tend to lead towards a state of greater disorder.</AccordionContent>
+    <AccordionItem id="three">
+      <div>What is the second law of thermodynamics?</div>
+      <div>
+        The second law of thermodynamics states that the total entropy of an isolated system can
+        never decrease over time, and is often associated with the concept that natural processes
+        tend to lead towards a state of greater disorder.
+      </div>
     </AccordionItem>
   </Accordion>
 </Example>
