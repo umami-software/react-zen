@@ -24,6 +24,7 @@ import { Calendar } from './Calendar';
 import { Checkbox } from './Checkbox';
 import { Column } from './Column';
 import { Combobox } from './Combobox';
+import { Container } from './Container';
 import { ConfirmationDialog } from './ConfirmationDialog';
 import { Dialog } from './Dialog';
 import { DataTable, DataColumn } from './DataTable';
@@ -89,6 +90,7 @@ export {
   Checkbox,
   Column,
   Combobox,
+  Container,
   ConfirmationDialog,
   DataTable,
   DataColumn,
