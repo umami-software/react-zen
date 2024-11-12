@@ -1,15 +1,12 @@
+import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
-import { CSSProperties, HTMLAttributes, ReactNode } from 'react';
 import { Slot } from './Slot';
 import styles from './Icon.module.css';
 
-export interface IconProps {
+export interface IconProps extends HTMLAttributes<HTMLElement> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'input';
   rotate?: number;
-  style?: CSSProperties;
-  className?: string;
-  children: ReactNode;
 }
 
 export function Icon({

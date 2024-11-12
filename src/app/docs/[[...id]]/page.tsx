@@ -22,7 +22,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function ({ params: { id = [] } }: { params: { id: string[] } }) {
+export default async function ({ params }: { params: Promise<{ id: string[] }> }) {
+  const { id = [] } = await params;
+
   const name = id?.length ? id.join('/') : 'index';
   const doc = await getFile(name, FOLDER);
 
