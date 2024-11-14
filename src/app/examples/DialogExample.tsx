@@ -25,7 +25,7 @@ export function DialogExample() {
                 <FormField name="email" label="Email">
                   <TextField />
                 </FormField>
-                <Row gap="md" justifyContent="space-between">
+                <Row gap="3" justifyContent="space-between">
                   <Button onPress={close}>Cancel</Button>
                   <Button variant="primary" onPress={close}>
                     Sign up

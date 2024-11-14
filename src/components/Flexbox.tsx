@@ -1,109 +1,95 @@
-import { CSSProperties, ReactNode } from 'react';
 import classNames from 'classnames';
-import { GapSize } from '@/lib/types';
+import { Spacing, Responsive } from '@/lib/types';
 import { Box, BoxProps } from './Box';
+import globalStyles from './global.module.css';
 import styles from './Flexbox.module.css';
 
-export interface FlexboxProps extends BoxProps {
-  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
-  wrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
-  justifyContent?:
-    | 'center'
-    | 'start'
-    | 'end'
-    | 'flex-start'
-    | 'flex-end'
-    | 'left'
-    | 'right'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-    | 'stretch'
-    | 'safe center'
-    | 'unsafe center';
-  justifyItems?:
-    | 'stretch'
-    | 'center'
-    | 'start'
-    | 'end'
-    | 'flex-start'
-    | 'flex-end'
-    | 'self-start'
-    | 'self-end'
-    | 'left'
-    | 'right'
-    | 'baseline'
-    | 'first baseline'
-    | 'last baseline'
-    | 'safe center'
-    | 'unsafe center';
-  alignContent?:
-    | 'center'
-    | 'start'
-    | 'end'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'first baseline'
-    | 'last baseline'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-    | 'stretch'
-    | 'safe center'
-    | 'unsafe center';
-  alignItems?:
-    | 'center'
-    | 'start'
-    | 'end'
-    | 'flex-start'
-    | 'flex-end'
-    | 'self-start'
-    | 'self-end'
-    | 'stretch'
-    | 'baseline'
-    | 'first baseline'
-    | 'last baseline'
-    | 'safe center'
-    | 'unsafe center';
-  alignSelf?:
-    | 'center'
-    | 'start'
-    | 'end'
-    | 'self-start'
-    | 'self-end'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'first baseline'
-    | 'last baseline'
-    | 'stretch'
-    | 'safe center'
-    | 'unsafe center';
-  inline?: boolean;
-  grow?: number;
-  shrink?: number;
-  gap?: GapSize;
-  basis?: string | number;
-  style?: CSSProperties;
-  className?: string;
-  children?: ReactNode;
+export type FlexDisplay = 'none' | 'flex' | 'inline-flex';
+export type FlexDirection = 'column' | 'row' | 'row-reverse' | 'column-reverse';
+export type FlexWrap = 'wrap' | 'nowrap' | 'wrap-reverse';
+export type JustifyContent =
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'flex-start'
+  | 'flex-end'
+  | 'left'
+  | 'right'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'stretch'
+  | 'safe center'
+  | 'unsafe center';
+
+export type JustifyItems =
+  | 'stretch'
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'flex-start'
+  | 'flex-end'
+  | 'self-start'
+  | 'self-end'
+  | 'left'
+  | 'right'
+  | 'baseline'
+  | 'first baseline'
+  | 'last baseline'
+  | 'safe center'
+  | 'unsafe center';
+
+export type AlignContent =
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'flex-start'
+  | 'flex-end'
+  | 'baseline'
+  | 'first baseline'
+  | 'last baseline'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'stretch'
+  | 'safe center'
+  | 'unsafe center';
+
+export type AlignItemns =
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'flex-start'
+  | 'flex-end'
+  | 'self-start'
+  | 'self-end'
+  | 'stretch'
+  | 'baseline'
+  | 'first baseline'
+  | 'last baseline'
+  | 'safe center'
+  | 'unsafe center';
+
+export interface FlexboxProps extends Omit<BoxProps, 'display'> {
+  display?: Responsive<FlexDisplay>;
+  direction?: Responsive<FlexDirection>;
+  wrap?: Responsive<FlexWrap>;
+  justifyContent?: Responsive<JustifyContent>;
+  justifyItems?: Responsive<JustifyItems>;
+  alignContent?: AlignContent;
+  alignItems?: AlignItemns;
+  gap?: Responsive<Spacing>;
 }
 
 export function Flexbox({
-  inline,
+  display = 'flex',
   direction,
   wrap,
   justifyContent,
   justifyItems,
   alignContent,
   alignItems,
-  alignSelf,
-  grow,
-  shrink,
-  basis,
   gap,
-  style,
   className,
   children,
   ...props
@@ -112,19 +98,16 @@ export function Flexbox({
     <Box
       {...props}
       className={classNames(
-        styles.flexbox,
         className,
-        direction && styles[direction],
-        wrap && styles[wrap],
-        gap && styles[`gap-${gap}`],
-        justifyContent && styles[`justify-content-${replace(justifyContent)}`],
-        justifyItems && styles[`justify-items-${replace(justifyItems)}`],
+        typeof display === 'string' && styles[`display-${display}`],
+        typeof direction === 'string' && styles[direction],
+        typeof wrap === 'string' && styles[wrap],
+        typeof justifyContent === 'string' && styles[`justify-content-${replace(justifyContent)}`],
+        typeof justifyItems === 'string' && styles[`justify-items-${replace(justifyItems)}`],
         alignContent && styles[`align-content-${replace(alignContent)}`],
         alignItems && styles[`align-items-${replace(alignItems)}`],
-        alignSelf && styles[`align-self-${replace(alignSelf)}`],
-        inline && styles.inline,
+        typeof gap === 'string' && globalStyles[`gap-${gap}`],
       )}
-      style={{ flexBasis: basis, flexGrow: grow, flexShrink: shrink, ...style }}
     >
       {children}
     </Box>

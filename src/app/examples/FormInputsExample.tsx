@@ -37,10 +37,10 @@ export function FormInputsExample() {
   };
 
   return (
-    <Row gap="lg">
+    <Row gap="4">
       <Form
         defaultValues={defaultValues}
-        gap="lg"
+        gap="4"
         onSubmit={handleSubmit}
         style={{ width: '300px', margin: '0 auto' }}
       >
@@ -78,7 +78,7 @@ export function FormInputsExample() {
         <FormField name="slider" label="Slider">
           <Slider />
         </FormField>
-        <Row gap="md" alignItems="center" justifyContent="flex-end">
+        <Row gap="3" alignItems="center" justifyContent="flex-end">
           <FormResetButton>Reset</FormResetButton>
           <FormSubmitButton variant="primary">Submit</FormSubmitButton>
         </Row>

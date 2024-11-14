@@ -6,13 +6,13 @@ import { Column, Row, Label } from '@/components';
 
 export function IconLibrary() {
   return (
-    <Column justifyContent="space-evenly" wrap="wrap" gap="lg">
+    <Column justifyContent="space-evenly" wrap="wrap" gap="5">
       {Object.keys(Icons).map((name: string) => {
         const icon = createElement(Icons[name as keyof typeof Icons]);
         return (
-          <Column key={name} gap="md">
+          <Column key={name} gap="3">
             <Label>{name}</Label>
-            <Row alignItems="center" gap="lg">
+            <Row alignItems="center" gap="5">
               <Icon size="xl">{icon}</Icon>
               <Icon size="lg">{icon}</Icon>
               <Icon size="md">{icon}</Icon>

@@ -1,5 +1,13 @@
-.flexbox {
+.display-none {
+  display: none;
+}
+
+.display-flex {
   display: flex;
+}
+
+.display-inline-flex {
+  display: inline-flex;
 }
 
 .row {
@@ -302,10 +310,6 @@
   align-self: unsafe center;
 }
 
-.inline {
-  display: inline-flex;
-}
-
 .gap-xs {
   gap: var(--gap-xs);
 }
@@ -315,7 +319,7 @@
 }
 
 .gap-md {
-  gap: var(--gap-md);
+  gap: var(--gap);
 }
 
 .gap-lg {

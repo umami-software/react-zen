@@ -28,7 +28,7 @@ export function FormExample() {
       <FormField name="remember_password">
         <Checkbox>Remember me</Checkbox>
       </FormField>
-      <Row gap="md" alignItems="center" justifyContent="flex-end">
+      <Row gap="3" alignItems="center" justifyContent="flex-end">
         <FormResetButton>Reset</FormResetButton>
         <FormSubmitButton variant="primary">Submit</FormSubmitButton>
       </Row>

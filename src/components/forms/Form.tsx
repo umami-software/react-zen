@@ -1,15 +1,16 @@
 import { useEffect, HTMLAttributes, ReactNode } from 'react';
 import { useForm, UseFormProps, SubmitHandler, FormProvider, UseFormReturn } from 'react-hook-form';
 import classNames from 'classnames';
-import styles from './Form.module.css';
+import { Responsive, Spacing } from '@/lib/types';
 import { Column } from '../Column';
 import { AlertBanner } from '../AlertBanner';
 import { Text } from '../Text';
 import { Icon } from '../Icon';
 import { Icons } from '../Icons';
+import styles from './Form.module.css';
 
 interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 'children'> {
-  gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  gap?: Responsive<Spacing>;
   autoComplete?: string;
   onSubmit?: SubmitHandler<any>;
   error?: ReactNode;
@@ -18,7 +19,7 @@ interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 
 }
 
 function Form({
-  gap = 'md',
+  gap = '3',
   autoComplete,
   onSubmit,
   error,

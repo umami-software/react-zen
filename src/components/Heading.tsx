@@ -1,24 +1,22 @@
-import { HTMLAttributes, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Slot } from './Slot';
+import type { Responsive, FontSize, FontWeight } from '@/lib/types';
+import { Box, BoxProps } from './Box';
+import globalStyles from './global.module.css';
 import styles from './Heading.module.css';
 
-interface HeadingProps extends HTMLAttributes<HTMLElement> {
-  size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-  asChild?: boolean;
-  children: ReactNode;
+interface HeadingProps extends BoxProps {
+  size?: Responsive<FontSize>;
+  weight?: Responsive<FontWeight>;
 }
 
-function Heading({ size = 5, className, children, asChild, ...props }: HeadingProps) {
-  const Component = asChild ? Slot : 'div';
-
+function Heading({ size = '5', className, children, ...props }: HeadingProps) {
   return (
-    <Component
+    <Box
       {...props}
-      className={classNames(styles.heading, className, size && styles[`size${size}`])}
+      className={classNames(styles.heading, className, size && globalStyles[`font-size-${size}`])}
     >
       {children}
-    </Component>
+    </Box>
   );
 }
 

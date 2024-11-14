@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { Label } from './Label';
-import inputStyles from './Input.module.css';
+import inputStyles from './input.module.css';
 import styles from './PasswordField.module.css';
 
 interface PasswordFieldProps extends TextFieldProps {

@@ -12,7 +12,7 @@ import { Popover } from './Popover';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { Row } from './Row';
-import inputStyles from './Input.module.css';
+import inputStyles from './input.module.css';
 import styles from './Select.module.css';
 
 interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
@@ -50,7 +50,7 @@ const Select = forwardRef(
       >
         {label && <Label>{label}</Label>}
         <Button className={classNames(inputStyles.input, className)}>
-          <Row justifyContent="space-between" gap="md">
+          <Row justifyContent="space-between" gap="3">
             <SelectValue />
             <span aria-hidden="true">
               <Icon rotate={90} size="xs" className={inputStyles.icon}>

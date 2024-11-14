@@ -5,7 +5,7 @@ export function SearchDelayExample() {
   const [value, setValue] = useState('abc');
 
   return (
-    <Column gap="lg">
+    <Column gap="4">
       <SearchField delay={1000} onSearch={setValue} />
       <TextField
         name="search"

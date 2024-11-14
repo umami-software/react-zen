@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heading, Text } from '@/components';
+import { Heading, Text, Row, Column } from '@/components';
 import styles from './Nav.module.css';
 
 const items = [
@@ -11,6 +11,31 @@ const items = [
     children: [
       { title: 'Introduction', path: '/docs' },
       { title: 'Installation', path: '/docs/install' },
+    ],
+  },
+  {
+    name: 'Styles',
+    children: [
+      { title: 'Colors', path: '/docs/styles/colors' },
+      { title: 'Spacing', path: '/docs/styles/spacing' },
+      { title: 'Shadows', path: '/docs/styles/shadows' },
+      { title: 'Border Radius', path: '/docs/styles/border-radius' },
+      { title: 'Breakpoints', path: '/docs/styles/breakpoints' },
+    ],
+  },
+  {
+    name: 'Typography',
+    children: [
+      { title: 'Text', path: '/docs/typography/text' },
+      { title: 'Heading', path: '/docs/typography/heading' },
+    ],
+  },
+  {
+    name: 'Layouts',
+    children: [
+      { title: 'Box', path: '/docs/layout/box' },
+      { title: 'Flexbox', path: '/docs/layout/flexbox' },
+      { title: 'Grid', path: '/docs/layout/grid' },
     ],
   },
   {
@@ -30,7 +55,6 @@ const items = [
       { title: 'Dialog', path: '/docs/components/dialog' },
       { title: 'Dots', path: '/docs/components/dots' },
       { title: 'Form', path: '/docs/components/form' },
-      { title: 'Heading', path: '/docs/components/heading' },
       { title: 'Hover Trigger', path: '/docs/components/hover-trigger' },
       { title: 'Icon', path: '/docs/components/icon' },
       { title: 'Icons', path: '/docs/components/icons' },
@@ -53,8 +77,6 @@ const items = [
       { title: 'Switch', path: '/docs/components/switch' },
       { title: 'Table', path: '/docs/components/table' },
       { title: 'Tabs', path: '/docs/components/tabs' },
-      { title: 'Text', path: '/docs/components/text' },
-      { title: 'Text Overflow', path: '/docs/components/text-overflow' },
       { title: 'Text Field', path: '/docs/components/text-field' },
       { title: 'Toast', path: '/docs/components/toast' },
       { title: 'Toggle', path: '/docs/components/toggle' },
@@ -68,11 +90,11 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <div className={styles.menu}>
+    <Column gap="5">
       {items.map(({ name, children }) => {
         return (
-          <div key={name} className={styles.group}>
-            <Text weight="bold">{name}</Text>
+          <Column key={name} gap="2">
+            <Heading size="2">{name}</Heading>
             {children.map(({ title, path }) => {
               return (
                 <div
@@ -85,9 +107,9 @@ export function Nav() {
                 </div>
               );
             })}
-          </div>
+          </Column>
         );
       })}
-    </div>
+    </Column>
   );
 }

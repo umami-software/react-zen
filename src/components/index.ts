@@ -30,6 +30,7 @@ import { Dialog } from './Dialog';
 import { DataTable, DataColumn } from './DataTable';
 import { Dots } from './Dots';
 import { Flexbox } from './Flexbox';
+import { Grid } from './Grid';
 import { Heading } from './Heading';
 import { HoverTrigger } from './HoverTrigger';
 import { Icon } from './Icon';
@@ -99,6 +100,7 @@ export {
   Dots,
   FileTrigger,
   Flexbox,
+  Grid,
   Heading,
   HoverTrigger,
   Icon,

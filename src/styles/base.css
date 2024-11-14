@@ -30,7 +30,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
   text-wrap: balance;
   letter-spacing: -0.05ch;
-  margin-block-end: 1em;
 }
 
 p {
@@ -95,13 +94,4 @@ pre code {
   padding: 0;
   border: 0;
   background: transparent;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
 }
