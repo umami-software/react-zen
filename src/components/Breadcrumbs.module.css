@@ -7,7 +7,7 @@
 .breadcrumb {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size);
   gap: var(--gap);
   list-style: none;
 }

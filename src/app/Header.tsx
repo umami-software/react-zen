@@ -8,7 +8,7 @@ export function Header() {
   const { setTheme } = useTheme();
 
   return (
-    <Row alignItems="center" justifyContent="space-between" paddingX={4} paddingY={2}>
+    <Row alignItems="center" justifyContent="space-between" paddingX="4" paddingY="2">
       <div>
         <Link href={'/'}>
           <b>zen</b>

@@ -17,11 +17,13 @@ import { useToast } from './hooks/useToast';
 import { Accordion, AccordionItem } from './Accordion';
 import { AlertBanner } from './AlertBanner';
 import { AlertDialog } from './AlertDialog';
+import { Blockquote } from './Blockquote';
 import { Box } from './Box';
 import { Breadcrumbs, Breadcrumb } from './Breadcrumbs';
 import { Button } from './Button';
 import { Calendar } from './Calendar';
 import { Checkbox } from './Checkbox';
+import { Code } from './Code';
 import { Column } from './Column';
 import { Combobox } from './Combobox';
 import { Container } from './Container';
@@ -83,12 +85,14 @@ export {
   AccordionItem,
   AlertBanner,
   AlertDialog,
+  Blockquote,
   Box,
   Breadcrumb,
   Breadcrumbs,
   Button,
   Calendar,
   Checkbox,
+  Code,
   Column,
   Combobox,
   Container,

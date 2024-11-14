@@ -1,0 +1,9 @@
+.code {
+  font-family: var(--font-family-monospace), monospace;
+  font-size: var(--font-size-2);
+  color: var(--font-color);
+  background: var(--highlight-color);
+  border-radius: var(--border-radius);
+  border: var(--border);
+  padding: var(--spacing-1);
+}

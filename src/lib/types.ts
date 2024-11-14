@@ -37,7 +37,8 @@ export type Bottom = Spacing | NegativeSpacing;
 export type Left = Spacing | NegativeSpacing;
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
-export type BorderRadius = 'sm' | 'md' | 'lg' | 'full';
+export type BorderSize = 'thin' | 'medium' | 'thick';
+export type BorderRadius = '1' | '2' | '3' | '4' | '5' | '6' | 'full';
 export type BoxShadow = '1' | '2' | '3' | '4' | '5' | '6';
 
 export type FontSize = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
@@ -47,3 +48,18 @@ export type TextWrap = 'wrap' | 'nowrap' | 'pretty' | 'balance';
 export type TextAlign = 'left' | 'center' | 'right';
 
 export type LetterSpacing = 'tighter' | 'tight' | 'normal' | 'wide' | 'wider';
+
+export type AlignSelf =
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'self-start'
+  | 'self-end'
+  | 'flex-start'
+  | 'flex-end'
+  | 'baseline'
+  | 'first baseline'
+  | 'last baseline'
+  | 'stretch'
+  | 'safe center'
+  | 'unsafe center';

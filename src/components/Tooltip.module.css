@@ -1,5 +1,5 @@
 .tooltip {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size);
   color: var(--light-color);
   background: rgba(0, 0, 0, 0.8);
   forced-color-adjust: none;

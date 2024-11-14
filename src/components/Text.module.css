@@ -10,26 +10,3 @@
 .faded {
   color: var(--font-faded-color);
 }
-
-.letter-spacing-tighter {
-  letter-spacing: -0.05em;
-}
-.letter-spacing-tight {
-  letter-spacing: -0.025em;
-}
-.letter-spacing-wide {
-  letter-spacing: 0.025em;
-}
-.letter-spacing-wider {
-  letter-spacing: 0.05em;
-}
-
-.align-left {
-  text-align: left;
-}
-.align-center {
-  text-align: center;
-}
-.align-right {
-  text-align: right;
-}

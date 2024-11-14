@@ -14,13 +14,13 @@ const items = [
     ],
   },
   {
-    name: 'Styles',
+    name: 'Design',
     children: [
-      { title: 'Colors', path: '/docs/styles/colors' },
-      { title: 'Spacing', path: '/docs/styles/spacing' },
-      { title: 'Shadows', path: '/docs/styles/shadows' },
-      { title: 'Border Radius', path: '/docs/styles/border-radius' },
-      { title: 'Breakpoints', path: '/docs/styles/breakpoints' },
+      { title: 'Colors', path: '/docs/design/colors' },
+      { title: 'Spacing', path: '/docs/design/spacing' },
+      { title: 'Shadows', path: '/docs/design/shadows' },
+      { title: 'Border Radius', path: '/docs/design/border-radius' },
+      { title: 'Breakpoints', path: '/docs/design/breakpoints' },
     ],
   },
   {
@@ -28,6 +28,8 @@ const items = [
     children: [
       { title: 'Text', path: '/docs/typography/text' },
       { title: 'Heading', path: '/docs/typography/heading' },
+      { title: 'Blockquote', path: '/docs/typography/blockquote' },
+      { title: 'Code', path: '/docs/typography/code' },
     ],
   },
   {
@@ -44,7 +46,6 @@ const items = [
       { title: 'Accordion', path: '/docs/components/accordion' },
       { title: 'Alert Banner', path: '/docs/components/alert-banner' },
       { title: 'Alert Dialog', path: '/docs/components/alert-dialog' },
-      { title: 'Box', path: '/docs/components/box' },
       { title: 'Button', path: '/docs/components/button' },
       { title: 'Breadcrumbs', path: '/docs/components/breadcrumbs' },
       { title: 'Calendar', path: '/docs/components/calendar' },

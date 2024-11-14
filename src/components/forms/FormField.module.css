@@ -4,8 +4,8 @@
 }
 
 .description {
-  color: var(--font-muted-color);
   line-height: 1.8rem;
+  font-size: var(--font-size);
 }
 
 .error {

@@ -1,12 +1,14 @@
 'use client';
 export { AlertDialogExample } from './AlertDialogExample';
-export { FormInputsExample } from './FormInputsExample';
+export { ConfirmationDialogExample } from './ConfirmationDialogExample';
 export { DialogExample } from './DialogExample';
+export { ExampleBox } from './ExampleBox';
 export { FormExample } from './FormExample';
+export { FormInputsExample } from './FormInputsExample';
 export { IconLibrary } from './IconLibrary';
 export { InlineEditExample } from './InlineEditExample';
 export { SearchDelayExample } from './SearchDelayExample';
-export { ConfirmationDialogExample } from './ConfirmationDialogExample';
+export { SpacingExample } from './SpacingExample';
 export {
   ToastExample,
   ToastActionExample,

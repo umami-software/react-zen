@@ -1,37 +1,23 @@
-import { ReactNode, HTMLProps, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import {
   BackgroundColor,
+  BorderSize,
   BorderRadius,
   BoxShadow,
   Spacing,
   Responsive,
   Position,
   Display,
+  TextAlign,
 } from '@/lib/types';
+import { mapClasses, mapStyles } from '@/lib/utils';
 import { Slot } from './Slot';
-import globalStyles from './global.module.css';
-import styles from './Box.module.css';
-
-type AlignSelf =
-  | 'center'
-  | 'start'
-  | 'end'
-  | 'self-start'
-  | 'self-end'
-  | 'flex-start'
-  | 'flex-end'
-  | 'baseline'
-  | 'first baseline'
-  | 'last baseline'
-  | 'stretch'
-  | 'safe center'
-  | 'unsafe center';
 
 interface BoxProps extends HTMLAttributes<HTMLElement> {
   display?: Responsive<Display>;
   backgroundColor?: BackgroundColor;
-  borderSize?: Responsive<string>;
+  borderSize?: Responsive<BorderSize>;
   borderRadius?: Responsive<BorderRadius>;
   shadow?: Responsive<BoxShadow>;
 
@@ -60,6 +46,7 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   maxHeight?: Responsive<string>;
 
   position?: Responsive<Position>;
+  align?: Responsive<TextAlign>;
 
   className?: string;
   as?: string;
@@ -86,6 +73,13 @@ function Box({
   marginRight,
   marginBottom,
   marginLeft,
+  width,
+  minWidth,
+  maxWidth,
+  height,
+  minHeight,
+  maxHeight,
+  position,
   as = 'div',
   asChild,
   className,
@@ -100,28 +94,29 @@ function Box({
       {...props}
       className={classNames(
         className,
-        display && styles[`display-${display}`],
-        backgroundColor && globalStyles[`background-color-${backgroundColor}`],
-        borderSize && globalStyles[`border-size-${borderSize}`],
-        borderRadius && globalStyles[`border-radius-${borderRadius}`],
-        shadow && globalStyles[`shadow-${shadow}`],
-
-        padding && globalStyles[`padding-${padding}`],
-        paddingX && globalStyles[`padding-x-${paddingX}`],
-        paddingY && globalStyles[`padding-y-${paddingY}`],
-        paddingTop && globalStyles[`padding-top-${paddingTop}`],
-        paddingRight && globalStyles[`padding-right-${paddingRight}`],
-        paddingBottom && globalStyles[`padding-bottom-${paddingBottom}`],
-        paddingLeft && globalStyles[`padding-left-${paddingLeft}`],
-
-        margin && globalStyles[`margin-${margin}`],
-        marginX && globalStyles[`margin-x-${marginX}`],
-        marginY && globalStyles[`margin-y-${marginY}`],
-        marginTop && globalStyles[`margin-top-${marginTop}`],
-        marginRight && globalStyles[`margin-right-${marginRight}`],
-        marginBottom && globalStyles[`margin-bottom-${marginBottom}`],
-        marginLeft && globalStyles[`margin-left-${marginLeft}`],
+        mapClasses({
+          display,
+          backgroundColor,
+          borderSize,
+          borderRadius,
+          shadow,
+          padding,
+          paddingX,
+          paddingY,
+          paddingTop,
+          paddingRight,
+          paddingBottom,
+          paddingLeft,
+          margin,
+          marginX,
+          marginY,
+          marginTop,
+          marginRight,
+          marginBottom,
+          marginLeft,
+        }),
       )}
+      style={mapStyles({ width, minWidth, maxWidth, height, minHeight, maxHeight })}
     >
       {children}
     </Component>

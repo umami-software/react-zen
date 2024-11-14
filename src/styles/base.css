@@ -67,17 +67,6 @@ a:hover {
   text-decoration: underline;
 }
 
-code {
-  font-family: monospace;
-  font-size: var(--font-size);
-  color: var(--font-color);
-  background: var(--highlight-color);
-  border-radius: var(--border-radius);
-  border: var(--border);
-  padding: var(--spacing-1) var(--spacing-2);
-  font-weight: 600;
-}
-
 pre {
   color: var(--font-color);
   background: var(--highlight-color);

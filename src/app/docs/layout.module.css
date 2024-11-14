@@ -20,3 +20,7 @@
 .docs a:hover {
   text-decoration: underline var(--font-color);
 }
+
+.docs h2 {
+  margin: 16px 0;
+}

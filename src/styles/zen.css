@@ -17,20 +17,27 @@
 
   --spacing-1: 4px;
   --spacing-2: 8px;
-  --spacing-3: 16px;
-  --spacing-4: 20px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
   --spacing-5: 24px;
-  --spacing-6: 28px;
-  --spacing-7: 32px;
-  --spacing-8: 36px;
-  --spacing-9: 48px;
-  --spacing-10: 64px;
+  --spacing-6: 32px;
+  --spacing-7: 40px;
+  --spacing-8: 48px;
+  --spacing-9: 64px;
+  --spacing-10: 80px;
   --spacing-11: 96px;
   --spacing-12: 128px;
 
-  --border-radius-sm: 2px;
-  --border-radius-md: 4px;
-  --border-radius-lg: 8px;
+  --border-size-thin: 1px;
+  --border-size-medium: 2px;
+  --border-size-thick: 4px;
+
+  --border-radius-1: 2px;
+  --border-radius-2: 4px;
+  --border-radius-3: 8px;
+  --border-radius-4: 16px;
+  --border-radius-5: 18px;
+  --border-radius-6: 20px;
   --border-radius-full: 100%;
 
   --box-shadow-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -72,12 +79,13 @@
   /* Settings */
 
   --font-family: Inter;
+  --font-family-monospace: 'JetBrains Mono';
 
   --font-size: var(--font-size-2);
 
-  --border-radius: var(--border-radius-md);
+  --border-radius: var(--border-radius-2);
 
-  --border-width: 1px;
+  --border-width: var(--border-size-thin);
 
   --gap: var(--spacing-3);
 

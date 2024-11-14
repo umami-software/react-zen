@@ -1,4 +1,4 @@
-import { cloneElement, HTMLAttributes, forwardRef, Ref } from 'react';
+import { cloneElement, HTMLAttributes, forwardRef, Ref, Children } from 'react';
 import {
   useController,
   useFormContext,
@@ -7,7 +7,6 @@ import {
   FieldValues,
 } from 'react-hook-form';
 import classNames from 'classnames';
-import { mapChildren } from '@/lib/utils';
 import styles from './FormField.module.css';
 
 interface FormFieldProps extends HTMLAttributes<HTMLDivElement>, Partial<UseFormReturn> {
@@ -32,7 +31,7 @@ const FormField = forwardRef(
       <div {...props} ref={ref} className={classNames(styles.input, className)}>
         {typeof children === 'function'
           ? children(field)
-          : mapChildren(children, child =>
+          : Children.map(children, child =>
               child ? cloneElement(child, { ...field, label: child.props.label || label }) : null,
             )}
         {description && <div className={styles.description}>{description}</div>}
