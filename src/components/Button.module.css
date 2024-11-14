@@ -126,6 +126,7 @@
   padding: 1.25rem 1.5rem;
 }
 
-.button a {
+body a.button {
   color: inherit;
+  text-decoration: none;
 }
