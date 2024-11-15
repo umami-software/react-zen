@@ -20,6 +20,7 @@ const items = [
       { title: 'Spacing', path: '/docs/design/spacing' },
       { title: 'Shadows', path: '/docs/design/shadows' },
       { title: 'Border Radius', path: '/docs/design/border-radius' },
+      { title: 'Breakpoints', path: '/docs/design/breakpoints' },
     ],
   },
   {
@@ -37,7 +38,6 @@ const items = [
       { title: 'Box', path: '/docs/layout/box' },
       { title: 'Flexbox', path: '/docs/layout/flexbox' },
       { title: 'Grid', path: '/docs/layout/grid' },
-      { title: 'Breakpoints', path: '/docs/layout/breakpoints' },
     ],
   },
   {
