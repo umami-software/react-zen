@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { Responsive, FontSize, FontWeight } from '@/lib/types';
-import { mapClasses } from '@/lib/utils';
+import { mapClasses, mapStyles } from '@/lib/utils';
 import { Box, BoxProps } from './Box';
 import styles from './Heading.module.css';
 
@@ -9,10 +9,21 @@ interface HeadingProps extends BoxProps {
   weight?: Responsive<FontWeight>;
 }
 
-function Heading({ size = '5', align, className, children, ...props }: HeadingProps) {
-  console.log(size, mapClasses({ size }));
+function Heading({
+  size = '5',
+  weight,
+  align,
+  className,
+  style,
+  children,
+  ...props
+}: HeadingProps) {
   return (
-    <Box {...props} className={classNames(styles.heading, className, mapClasses({ size, align }))}>
+    <Box
+      {...props}
+      className={classNames(styles.heading, className, mapClasses({ size, align }))}
+      style={{ ...mapStyles({ size, weight }), ...style }}
+    >
       {children}
     </Box>
   );

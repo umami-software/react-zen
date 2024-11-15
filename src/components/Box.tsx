@@ -48,7 +48,6 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   position?: Responsive<Position>;
   align?: Responsive<TextAlign>;
 
-  className?: string;
   as?: string;
   asChild?: boolean;
 }
@@ -116,7 +115,10 @@ function Box({
           marginLeft,
         }),
       )}
-      style={mapStyles({ width, minWidth, maxWidth, height, minHeight, maxHeight })}
+      style={{
+        ...mapStyles({ width, minWidth, maxWidth, height, minHeight, maxHeight }),
+        ...style,
+      }}
     >
       {children}
     </Component>

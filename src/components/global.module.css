@@ -1,3 +1,33 @@
+:root {
+  --display: block;
+  --display-xs: var(--display);
+  --display-sm: var(--display);
+  --display-md: var(--display);
+  --display-lg: var(--display);
+  --display-xl: var(--display);
+
+  --font-size-xs: var(--font-size);
+  --font-size-sm: var(--font-size);
+  --font-size-md: var(--font-size);
+  --font-size-lg: var(--font-size);
+  --font-size-xl: var(--font-size);
+
+  --width-xs: auto;
+  --width-sm: auto;
+  --width-md: auto;
+  --width-lg: auto;
+  --width-xl: auto;
+
+  --height-xs: auto;
+  --height-sm: auto;
+  --height-md: auto;
+  --height-lg: auto;
+  --height-xl: auto;
+}
+
+.display {
+  display: var(--display);
+}
 .display-none {
   display: none;
 }
@@ -16,10 +46,41 @@
 .display-inline-flex {
   display: inline-flex;
 }
+.display-xs {
+  display: var(--display-xs);
+}
+.display-sm {
+  display: var(--display-sm);
+}
+.display-md {
+  display: var(--display-md);
+}
+.display-lg {
+  display: var(--display-lg);
+}
+.display-xl {
+  display: var(--display-xl);
+}
 
 .font-size {
   font-size: var(--font-size);
 }
+.font-size-xs {
+  font-size: var(--font-size-xs);
+}
+.font-size-sm {
+  font-size: var(--font-size-sm);
+}
+.font-size-md {
+  font-size: var(--font-size-md);
+}
+.font-size-lg {
+  font-size: var(--font-size-lg);
+}
+.font-size-xl {
+  font-size: var(--font-size-xl);
+}
+
 .font-size-1 {
   font-size: var(--font-size-1);
 }

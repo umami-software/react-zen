@@ -1,0 +1,68 @@
+---
+title: Breakpoints
+---
+
+There are 6 predefined breakpoint values that help you build responsive layouts.
+
+<Example>
+  <DataTable
+    data={[
+      { id: 1, name: 'default', device: 'Phones (portrait)', width: '0px' },
+      { id: 2, name: 'xs', device: 'Phones (landscape)', width: '520px' },
+      { id: 3, name: 'sm', device: 'Tablets (portrait)', width: '728px' },
+      { id: 4, name: 'md', device: 'Tablets (landscape)', width: '1024px' },
+      { id: 5, name: 'lg', device: 'Laptops', width: '1280px' },
+      { id: 6, name: 'xl', device: 'Desktops', width: '1640px' },
+    ]}
+  >
+    <DataColumn id="name" label="Size" />
+    <DataColumn id="device" label="Device" />
+    <DataColumn id="width" label="Width" />
+  </DataTable>
+</Example>
+
+## Usage
+
+All layout and typography components accept a `Responsive` object. The value defined at the
+given breakpoint when the screen size is greater than the breakpoint width.
+
+<Example>
+  <Heading
+    size={{
+      default: '1',
+      xs: '2',
+      sm: '3',
+      md: '5',
+      lg: '6',
+      xl: '7',
+    }}
+  >
+    This text will shrink/grow as the screen resizes.
+  </Heading>
+  <Box
+    width="50px"
+    height={{
+      default: '10px',
+      xs: '20px',
+      sm: '40px;',
+      md: '80px',
+      lg: '100px',
+      xl: '120px;',
+    }}
+    borderRadius="2"
+    borderSize="thin"
+  />
+</Example>
+
+```jsx
+<Heading
+  size={{
+    default: '1',
+    xs: '1',
+    sm: '3',
+    md: '5',
+    lg: '7',
+    xl: '9',
+  }}
+/>
+```

@@ -24,17 +24,20 @@ const CSS_MAP = {
   marginRight: 'margin-right',
   marginBottom: 'margin-bottom',
   marginLeft: 'margin-left',
+  width: 'width',
+  height: 'height',
 };
 
 export function mapClasses(props: Record<string, Responsive<any>>) {
   return Object.keys(props).reduce(
     (obj, key) => {
       const value = props[key];
+      const name = CSS_MAP[key as keyof typeof CSS_MAP];
 
       if (typeof value === 'string') {
-        const prefix = CSS_MAP[key as keyof typeof CSS_MAP];
-
-        obj[styles[`${prefix}-${value}`]] = true;
+        obj[styles[`${name}-${value}`]] = true;
+      } else if (typeof value === 'object') {
+        obj[styles[name]] = true;
       }
 
       return obj;
@@ -48,12 +51,34 @@ export function mapStyles(props: Record<string, Responsive<any>>) {
     (obj, key) => {
       const value = props[key];
 
+      if (typeof value !== 'string' && typeof value !== 'undefined') {
+        console.log({ key, value, t: typeof value });
+      }
+
       if (typeof value === 'string') {
         obj[key] = value;
+      } else if (typeof value === 'object') {
+        Object.keys(value).forEach(breakpoint => {
+          const name = CSS_MAP[key as keyof typeof CSS_MAP];
+
+          obj[`--${name}${breakpoint === 'default' ? '' : `-${breakpoint}`}`] = parseValue(
+            value[breakpoint],
+            name,
+          );
+        });
       }
+
+      console.log({ obj });
 
       return obj;
     },
     {} as { [key: string]: any },
   );
+}
+
+function parseValue(value: string, name: string) {
+  if (/^\d+$/.test(value)) {
+    return `var(--${name}-${value})`;
+  }
+  return value;
 }

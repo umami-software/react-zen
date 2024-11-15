@@ -32,7 +32,7 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
         {row => {
           return (
             <TableRow>
-              {columns.map(({ id, value, className, ...cellProps }) => {
+              {columns.map(({ id, value, className, ...cellProps }, index) => {
                 return (
                   <TableCell {...cellProps} key={id} className={classNames(styles.cell, className)}>
                     {!value && row[id]}
