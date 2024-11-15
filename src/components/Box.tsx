@@ -11,7 +11,7 @@ import {
   Display,
   TextAlign,
 } from '@/lib/types';
-import { mapClasses, mapStyles } from '@/lib/utils';
+import { mapProps } from '@/lib/utils';
 import { Slot } from './Slot';
 
 interface BoxProps extends HTMLAttributes<HTMLElement> {
@@ -87,36 +87,41 @@ function Box({
   ...props
 }: BoxProps) {
   const Component = asChild ? Slot : as;
+  const [classes, styleProps] = mapProps({
+    display,
+    backgroundColor,
+    borderSize,
+    borderRadius,
+    shadow,
+    padding,
+    paddingX,
+    paddingY,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+    margin,
+    marginX,
+    marginY,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    width,
+    minWidth,
+    maxWidth,
+    height,
+    minHeight,
+    maxHeight,
+    position,
+  });
 
   return (
     <Component
       {...props}
-      className={classNames(
-        className,
-        mapClasses({
-          display,
-          backgroundColor,
-          borderSize,
-          borderRadius,
-          shadow,
-          padding,
-          paddingX,
-          paddingY,
-          paddingTop,
-          paddingRight,
-          paddingBottom,
-          paddingLeft,
-          margin,
-          marginX,
-          marginY,
-          marginTop,
-          marginRight,
-          marginBottom,
-          marginLeft,
-        }),
-      )}
+      className={classNames(className, classes)}
       style={{
-        ...mapStyles({ width, minWidth, maxWidth, height, minHeight, maxHeight }),
+        ...styleProps,
         ...style,
       }}
     >

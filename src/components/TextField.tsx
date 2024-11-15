@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { Slot } from './Slot';
 import { Label } from './Label';
 import { CopyButton } from './CopyButton';
-import inputStyles from './input.module.css';
+import inputStyles from './styles/input.module.css';
 import styles from './TextField.module.css';
 
 interface TextFieldProps extends AriaTextFieldProps {

@@ -12,7 +12,7 @@ import { Popover } from './Popover';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { Row } from './Row';
-import inputStyles from './input.module.css';
+import inputStyles from './styles/input.module.css';
 import styles from './Select.module.css';
 
 interface SelectProps extends AriaSelectProps<HTMLSelectElement> {

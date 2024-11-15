@@ -3,6 +3,10 @@
   line-height: 1.2em;
 }
 
+:where(.text) {
+  font-size: var(--font-size);
+}
+
 .muted {
   color: var(--font-muted-color);
 }

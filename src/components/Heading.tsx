@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { Responsive, FontSize, FontWeight } from '@/lib/types';
-import { mapClasses, mapStyles } from '@/lib/utils';
+import { mapProps } from '@/lib/utils';
 import { Box, BoxProps } from './Box';
 import styles from './Heading.module.css';
 
@@ -18,11 +18,13 @@ function Heading({
   children,
   ...props
 }: HeadingProps) {
+  const [classes, styleProps] = mapProps({ size, align, weight });
+
   return (
     <Box
       {...props}
-      className={classNames(styles.heading, className, mapClasses({ size, align }))}
-      style={{ ...mapStyles({ size, weight }), ...style }}
+      className={classNames(styles.heading, className, classes)}
+      style={{ ...styleProps, ...style }}
     >
       {children}
     </Box>

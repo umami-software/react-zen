@@ -1,0 +1,169 @@
+:root {
+  --display-xs: ;
+  --display-sm: ;
+  --display-md: ;
+  --display-lg: ;
+  --display-xl: ;
+
+  --font-size-xs: ;
+  --font-size-sm: ;
+  --font-size-md: ;
+  --font-size-lg: ;
+  --font-size-xl: ;
+
+  --font-weight-xs: ;
+  --font-weight-sm: ;
+  --font-weight-md: ;
+  --font-weight-lg: ;
+  --font-weight-xl: ;
+
+  --border-size-xs: ;
+  --border-size-sm: ;
+  --border-size-md: ;
+  --border-size-lg: ;
+  --border-size-xl: ;
+
+  --border-radius-xs: ;
+  --border-radius-sm: ;
+  --border-radius-md: ;
+  --border-radius-lg: ;
+  --border-radius-xl: ;
+
+  --shadow-xs: ;
+  --shadow-sm: ;
+  --shadow-md: ;
+  --shadow-lg: ;
+  --shadow-xl: ;
+
+  --background-color-xs: ;
+  --background-color-sm: ;
+  --background-color-md: ;
+  --background-color-lg: ;
+  --background-color-xl: ;
+
+  --align-xs: ;
+  --align-sm: ;
+  --align-md: ;
+  --align-lg: ;
+  --align-xl: ;
+
+  --letter-spacing-xs: ;
+  --letter-spacing-sm: ;
+  --letter-spacing-md: ;
+  --letter-spacing-lg: ;
+  --letter-spacing-xl: ;
+
+  --padding-xs: ;
+  --padding-sm: ;
+  --padding-md: ;
+  --padding-lg: ;
+  --padding-xl: ;
+
+  --padding-x-xs: ;
+  --padding-x-sm: ;
+  --padding-x-md: ;
+  --padding-x-lg: ;
+  --padding-x-xl: ;
+
+  --padding-y-xs: ;
+  --padding-y-sm: ;
+  --padding-y-md: ;
+  --padding-y-lg: ;
+  --padding-y-xl: ;
+
+  --padding-top-xs: ;
+  --padding-top-sm: ;
+  --padding-top-md: ;
+  --padding-top-lg: ;
+  --padding-top-xl: ;
+
+  --padding-right-xs: ;
+  --padding-right-sm: ;
+  --padding-right-md: ;
+  --padding-right-lg: ;
+  --padding-right-xl: ;
+
+  --padding-bottom-xs: ;
+  --padding-bottom-sm: ;
+  --padding-bottom-md: ;
+  --padding-bottom-lg: ;
+  --padding-bottom-xl: ;
+
+  --padding-left-xs: ;
+  --padding-left-sm: ;
+  --padding-left-md: ;
+  --padding-left-lg: ;
+  --padding-left-xl: ;
+  
+  --margin-xs: ;
+  --margin-sm: ;
+  --margin-md: ;
+  --margin-lg: ;
+  --margin-xl: ;
+
+  --margin-x-xs: ;
+  --margin-x-sm: ;
+  --margin-x-md: ;
+  --margin-x-lg: ;
+  --margin-x-xl: ;
+
+  --margin-y-xs: ;
+  --margin-y-sm: ;
+  --margin-y-md: ;
+  --margin-y-lg: ;
+  --margin-y-xl: ;
+
+  --margin-top-xs: ;
+  --margin-top-sm: ;
+  --margin-top-md: ;
+  --margin-top-lg: ;
+  --margin-top-xl: ;
+
+  --margin-right-xs: ;
+  --margin-right-sm: ;
+  --margin-right-md: ;
+  --margin-right-lg: ;
+  --margin-right-xl: ;
+
+  --margin-bottom-xs: ;
+  --margin-bottom-sm: ;
+  --margin-bottom-md: ;
+  --margin-bottom-lg: ;
+  --margin-bottom-xl: ;
+
+  --margin-left-xs: ;
+  --margin-left-sm: ;
+  --margin-left-md: ;
+  --margin-left-lg: ;
+  --margin-left-xl: ;
+
+  --gap-xs: ;
+  --gap-sm: ;
+  --gap-md: ;
+  --gap-lg: ;
+  --gap-xl: ;
+
+  --gap-x-xs: ;
+  --gap-x-sm: ;
+  --gap-x-md: ;
+  --gap-x-lg: ;
+  --gap-x-xl: ;
+
+  --gap-y-xs: ;
+  --gap-y-sm: ;
+  --gap-y-md: ;
+  --gap-y-lg: ;
+  --gap-y-xl: ;
+  
+  --width-xs: ;
+  --width-sm: ;
+  --width-md: ;
+  --width-lg: ;
+  --width-xl: ;
+
+  --height-xs: ;
+  --height-sm: ;
+  --height-md: ;
+  --height-lg: ;
+  --height-xl: ;
+}

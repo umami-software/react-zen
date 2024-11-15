@@ -1,5 +1,5 @@
 import { Responsive } from '@/lib/types';
-import styles from '@/components/global.module.css';
+import styles from '@/components/styles/global.module.css';
 
 const CSS_MAP = {
   display: 'display',
@@ -26,54 +26,57 @@ const CSS_MAP = {
   marginLeft: 'margin-left',
   width: 'width',
   height: 'height',
+  minHeight: 'min-height',
+  maxHeight: 'max-height',
+  minWidth: 'min-width',
+  maxWidth: 'max-width',
+  gap: 'gap',
+  gapX: 'gap-x',
+  gapY: 'gap-y',
+  direction: 'flex-direction',
+  flexWrap: 'flex-wrap',
+  justifyContent: 'justify-content',
+  justifyItems: 'justify-items',
+  alignContent: 'align-content',
+  alignItems: 'align-items',
+  alignSelf: 'align-self',
 };
 
-export function mapClasses(props: Record<string, Responsive<any>>) {
-  return Object.keys(props).reduce(
-    (obj, key) => {
-      const value = props[key];
-      const name = CSS_MAP[key as keyof typeof CSS_MAP];
+const excludedProps = ['width', 'height', 'minWidth', 'maxWidth', 'minHeight', 'maxHeight'];
 
+export function mapProps(
+  props: Record<string, Responsive<any>>,
+): [string[], { [key: string]: any }] {
+  const classes: string[] = [];
+  const styleProps: { [key: string]: any } = {};
+
+  Object.keys(props).forEach(key => {
+    const name = CSS_MAP[key as keyof typeof CSS_MAP];
+    const value = props[key];
+
+    if (value) {
       if (typeof value === 'string') {
-        obj[styles[`${name}-${value}`]] = true;
-      } else if (typeof value === 'object') {
-        obj[styles[name]] = true;
-      }
-
-      return obj;
-    },
-    {} as { [key: string]: any },
-  );
-}
-
-export function mapStyles(props: Record<string, Responsive<any>>) {
-  return Object.keys(props).reduce(
-    (obj, key) => {
-      const value = props[key];
-
-      if (typeof value !== 'string' && typeof value !== 'undefined') {
-        console.log({ key, value, t: typeof value });
-      }
-
-      if (typeof value === 'string') {
-        obj[key] = value;
+        if (excludedProps.includes(key)) {
+          styleProps[key] = value;
+        } else {
+          classes.push(styles[`${name}-${value}`]);
+        }
       } else if (typeof value === 'object') {
         Object.keys(value).forEach(breakpoint => {
-          const name = CSS_MAP[key as keyof typeof CSS_MAP];
+          const className = `${name}${breakpoint === 'default' ? '' : `-${breakpoint}`}`;
 
-          obj[`--${name}${breakpoint === 'default' ? '' : `-${breakpoint}`}`] = parseValue(
-            value[breakpoint],
-            name,
-          );
+          if (styles[className]) {
+            classes.push(styles[className]);
+            styleProps[`--${className}`] = parseValue(value[breakpoint], name);
+          } else {
+            styleProps[`--${className}`] = value;
+          }
         });
       }
+    }
+  });
 
-      console.log({ obj });
-
-      return obj;
-    },
-    {} as { [key: string]: any },
-  );
+  return [classes, styleProps];
 }
 
 function parseValue(value: string, name: string) {

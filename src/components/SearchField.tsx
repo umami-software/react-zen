@@ -10,7 +10,7 @@ import { useDebounce } from './hooks/useDebounce';
 import { Label } from './Label';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
-import inputStyles from './input.module.css';
+import inputStyles from './styles/input.module.css';
 import styles from './SearchField.module.css';
 
 interface SearchFieldProps extends AriaSearchFieldProps {
