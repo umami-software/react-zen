@@ -1,3 +1,4 @@
+/* Not used. This file is here so my IDE stops complaining about undeclared variables. */
 :root {
   --display-xs: ;
   --display-sm: ;
@@ -166,4 +167,70 @@
   --height-md: ;
   --height-lg: ;
   --height-xl: ;
+
+  --min-width-xs: ;
+  --min-width-sm: ;
+  --min-width-md: ;
+  --min-width-lg: ;
+  --min-width-xl: ;
+
+  --min-height-xs: ;
+  --min-height-sm: ;
+  --min-height-md: ;
+  --min-height-lg: ;
+  --min-height-xl: ;
+  
+  --max-width-xs: ;
+  --max-width-sm: ;
+  --max-width-md: ;
+  --max-width-lg: ;
+  --max-width-xl: ;
+
+  --max-height-xs: ;
+  --max-height-sm: ;
+  --max-height-md: ;
+  --max-height-lg: ;
+  --max-height-xl: ;
+
+  --flex-direction-xs: ;
+  --flex-direction-sm: ;
+  --flex-direction-md: ;
+  --flex-direction-lg: ;
+  --flex-direction-xl: ;
+
+  --flex-wrap-xs: ;
+  --flex-wrap-sm: ;
+  --flex-wrap-md: ;
+  --flex-wrap-lg: ;
+  --flex-wrap-xl: ;
+
+  --justify-content-xs: ;
+  --justify-content-sm: ;
+  --justify-content-md: ;
+  --justify-content-lg: ;
+  --justify-content-xl: ;
+
+  --justify-items-xs: ;
+  --justify-items-sm: ;
+  --justify-items-md: ;
+  --justify-items-lg: ;
+  --justify-items-xl: ;
+
+  --align-content-xs: ;
+  --align-content-sm: ;
+  --align-content-md: ;
+  --align-content-lg: ;
+  --align-content-xl: ;
+
+  --align-items-xs: ;
+  --align-items-sm: ;
+  --align-items-md: ;
+  --align-items-lg: ;
+  --align-items-xl: ;
+
+  --align-self-xs: ;
+  --align-self-sm: ;
+  --align-self-md: ;
+  --align-self-lg: ;
+  --align-self-xl: ;
 }

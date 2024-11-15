@@ -4,6 +4,6 @@
 
 .icon {
   position: absolute;
-  top: 9px;
-  right: 9px;
+  top: var(--padding-y);
+  right: var(--padding-x);
 }

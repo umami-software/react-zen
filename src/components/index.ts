@@ -48,7 +48,6 @@ import { MenuItem } from './MenuItem';
 import { Modal } from './Modal';
 import { NavigationMenu, NavigationMenuItem } from './NavigationMenu';
 import { PasswordField } from './PasswordField';
-import { Page } from './Page';
 import { Popover } from './Popover';
 import { ProgressBar } from './ProgressBar';
 import { ProgressCircle } from './ProgressCircle';
@@ -122,7 +121,6 @@ export {
   NavigationMenu,
   NavigationMenuItem,
   PasswordField,
-  Page,
   Popover,
   ProgressBar,
   ProgressCircle,

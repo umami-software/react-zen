@@ -79,7 +79,7 @@
   /* Settings */
 
   --font-family: Inter;
-  --font-family-monospace: 'JetBrains Mono';
+  --font-family-code: 'JetBrains Mono';
 
   --font-size: var(--font-size-2);
 

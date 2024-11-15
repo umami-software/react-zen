@@ -66,21 +66,3 @@ a:visited {
 a:hover {
   text-decoration: underline;
 }
-
-pre {
-  color: var(--font-color);
-  background: var(--highlight-color);
-  border-radius: var(--border-radius);
-  font-family: monospace;
-  font-size: 14px;
-  line-height: 1.5rem;
-  padding: 20px;
-}
-
-pre code {
-  color: var(--font-color);
-  font-weight: 400;
-  padding: 0;
-  border: 0;
-  background: transparent;
-}

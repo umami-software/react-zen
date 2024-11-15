@@ -3,6 +3,8 @@ import { HiMiniWifi } from 'react-icons/hi2';
 import { IoRocketSharp } from 'react-icons/io5';
 import { MdFormatAlignCenter, MdFormatAlignLeft, MdFormatAlignRight } from 'react-icons/md';
 import * as Components from '@/components';
+import { CodeBlock } from '@/components/CodeBlock';
+import { Code } from '@/components';
 import * as Examples from './examples';
 import { Example } from './docs/Example';
 
@@ -15,6 +17,8 @@ const components = {
   AlignCenter: MdFormatAlignCenter,
   AlignLeft: MdFormatAlignLeft,
   AlignRight: MdFormatAlignRight,
+  pre: CodeBlock,
+  code: Code,
 };
 
 export function Markdown({ children }: { children: any }) {
