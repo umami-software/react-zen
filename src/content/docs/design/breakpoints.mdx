@@ -2,7 +2,9 @@
 title: Breakpoints
 ---
 
-There are 6 predefined breakpoint values that help you build responsive layouts.
+Breakpoints allow you to build responsive layouts by reacting to screen size changes.
+There are 6 predefined breakpoint values, `xs`, `sm`, `md`, `lg`, `xl` and `default`.
+Breakpoints are triggered once the screen width is greater than the specified width value.
 
 <Example>
   <DataTable
@@ -23,8 +25,8 @@ There are 6 predefined breakpoint values that help you build responsive layouts.
 
 ## Usage
 
-All layout and typography components accept a `Responsive` object. The value defined at the
-given breakpoint when the screen size is greater than the breakpoint width.
+Certain properties of layout components accept a `Responsive` object, which specifies what value
+to apply at a given breakpoint.
 
 <Example>
   <Heading

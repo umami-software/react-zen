@@ -8,17 +8,18 @@
 
 .docs {
   font-size: 16px;
+  margin-bottom: 60px;
 }
 
-.docs p {
-  color: var(--font-muted-color);
+.docs > p {
+  color: var(--base-color-600);
   line-height: 1.8;
 }
 
 .docs a {
   color: var(--font-color);
   font-weight: 600;
-  text-decoration: underline var(--font-faded-color);
+  text-decoration: underline var(--base-color-300);
   text-underline-offset: 4px;
 }
 
@@ -27,5 +28,9 @@
 }
 
 .docs h2 {
-  margin: 16px 0;
+  margin: 40px 0 1rem 0;
+}
+
+.docs h3 {
+  margin: 30px 0 1rem 0;
 }

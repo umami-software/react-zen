@@ -1,16 +1,16 @@
-.popover[data-placement=top] {
+.popover[data-placement='top'] {
   --origin: translateY(8px);
-  }
+}
 
-.popover[data-placement=bottom] {
+.popover[data-placement='bottom'] {
   --origin: translateY(-8px);
 }
 
-.popover[data-placement=right] {
+.popover[data-placement='right'] {
   --origin: translateX(-8px);
 }
 
-.popover[data-placement=left] {
+.popover[data-placement='left'] {
   --origin: translateX(8px);
 }
 

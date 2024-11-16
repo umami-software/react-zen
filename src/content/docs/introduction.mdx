@@ -1,0 +1,74 @@
+---
+title: Introduction
+---
+
+**Zen** is a modern, minimalist design system created by [Umami](https://umami.is).
+
+**[@umami/react-zen](https://github.com/umami-software/react-zen)** is a React component library that represents our design system.
+It is built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) and [Radix](https://www.radix-ui.com/primitives) primitives and styled with vanilla CSS.
+
+## Why Zen?
+
+We wanted to create an opinionated design system that is easy to use and simple to understand.
+
+We've taken inspiration from a lot of great projects including [React Spectrum](https://react-spectrum.adobe.com/react-spectrum/index.html), [Radix UI](https://www.radix-ui.com/),
+[shadcn/ui](https://ui.shadcn.com/) and [Tailwind](https://tailwindcss.com/), but our focus is more on simplicity than customization.
+
+The goal of this project is to provide a strong foundation for building
+consistent, maintainable, and accessible UI interfaces.
+
+## The Zen way
+
+Our focus is on improving the developer experience. These are the main principles that drive our design system:
+
+### 1. No CSS or HTML
+
+**&mdash; Developers should not have to write any CSS or HTML.**
+
+This simplifies the development process to just composing tags and passing props. All design customizations
+can be done via props instead of messing with CSS.
+
+For example, this code:
+
+```jsx
+<Box padding="6" borderSize="thin" borderRadius="3" shadow="3">
+  <Flexbox direction="column" alignItems="center" gap="6">
+    <Heading size="4">Welcome</Heading>
+    <Text type="muted" weight="mediumn">
+      This is the zen way.
+    </Text>
+    <Button variant="primary">Enter</Button>
+  </Flexbox>
+</Box>
+```
+
+Produces this output:
+
+<Example>
+  <Box padding="6" borderSize="thin" borderRadius="3" shadow="3">
+    <Flexbox direction="column" alignItems="center" gap="6">
+      <Heading size="4">Welcome</Heading>
+      <Text type="muted" weight="mediumn">{`This is the zen way.`}</Text>
+      <Button variant="primary">Enter</Button>
+    </Flexbox>
+
+  </Box>
+</Example>
+
+Although all components can be styled using the standard `className` and `style` props, they should only be used in special cases.
+
+### 2. No CSS dependencies
+
+**&mdash; Use only vanilla CSS and CSS variables.**
+
+This means no CSS preprocessors ([Sass](https://sass-lang.com/), [Less](https://lesscss.org/))
+or frameworks ([Tailwind](https://tailwindcss.com/), [StyleX](https://stylexjs.com/)).
+Developers and contributors do not have to learn anything else besides CSS.
+
+### 3. No arbitrary values
+
+**&mdash; All design tokens should be defined in CSS variables.**
+
+This enforces consistency throughout your project.
+
+All the variables are defined [here](https://raw.githubusercontent.com/umami-software/react-zen/refs/heads/master/src/styles/zen.css).

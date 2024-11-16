@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Script from 'next/script';
 import type { Metadata } from 'next';
 import { App } from './App';
 import '@/styles/zen.css';
@@ -17,6 +18,14 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            defer
+            data-website-id="b12b8a02-b6eb-413d-b9aa-af43b442487f"
+            data-domains="zen.umami.is"
+            src="/a/script.js"
+          />
+        )}
       </head>
       <body>
         <App>{children}</App>

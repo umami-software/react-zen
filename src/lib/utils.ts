@@ -4,7 +4,9 @@ import styles from '@/components/styles/global.module.css';
 const CSS_MAP = {
   display: 'display',
   size: 'font-size',
+  weight: 'font-weight',
   align: 'align',
+  wrap: 'wrap',
   letterSpacing: 'letter-spacing',
   backgroundColor: 'background-color',
   borderSize: 'border-size',

@@ -33,10 +33,10 @@ export default async function ({ params }: { params: Promise<{ id: string[] }> }
   }
 
   return (
-    <div>
+    <>
       <h1>{doc?.meta?.title}</h1>
       <p>{doc?.meta?.description}</p>
       <Markdown>{doc?.body}</Markdown>
-    </div>
+    </>
   );
 }

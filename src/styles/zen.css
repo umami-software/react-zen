@@ -37,8 +37,7 @@
   --border-radius-3: 8px;
   --border-radius-4: 16px;
   --border-radius-5: 18px;
-  --border-radius-6: 20px;
-  --border-radius-full: 9999px;
+  --border-radius-6: 9999px;
 
   --box-shadow-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --box-shadow-2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);

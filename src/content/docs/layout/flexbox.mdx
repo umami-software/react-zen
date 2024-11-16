@@ -2,17 +2,23 @@
 title: Flexbox
 ---
 
-A Flex box.
+Component for building flexible box layouts.
 
-<Example>
-  <Flexbox direction="row" gap="3">
-    <Box width="50px" height="50px" backgroundColor="50" />
-    <Box width="50px" height="50px" backgroundColor="50" />
-    <Box width="50px" height="50px" backgroundColor="50" />
-  </Flexbox>
-  <Flexbox direction="column" gap="3">
-    <Box width="50px" height="50px" backgroundColor="50" />
-    <Box width="50px" height="50px" backgroundColor="50" />
-    <Box width="50px" height="50px" backgroundColor="50" />
-  </Flexbox>
+<Example gap="8">
+  <Column alignItems="center">
+    <Label>Row</Label>
+    <Flexbox direction="row" gap="3">
+      <ExampleBox borderSize="thin" />
+      <ExampleBox borderSize="thin" />
+      <ExampleBox borderSize="thin" />
+    </Flexbox>
+  </Column>
+  <Column>
+    <Label>Column</Label>
+    <Flexbox direction="column" gap="3">
+      <ExampleBox borderSize="thin" />
+      <ExampleBox borderSize="thin" />
+      <ExampleBox borderSize="thin" />
+    </Flexbox>
+  </Column>
 </Example>
