@@ -1,11 +1,9 @@
 # zen
 
-Zen is UI component library built using [React](https://react.dev/), 
-[React-Aria](https://react-spectrum.adobe.com/react-aria/) and 
-[Radix UI](https://www.radix-ui.com/primitives)
-primitives and styled using plain CSS and CSS variables.
+**zen** is a React component library built on top of 
+[React Aria](https://react-spectrum.adobe.com/react-aria/) and [Radix](https://www.radix-ui.com/primitives) primitives and styled with vanilla CSS.
 
-[Learn more](https://zen.umami.is/docs)
+[Learn more](https://zen.umami.is/)
 
 ## Installation
 
