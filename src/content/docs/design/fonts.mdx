@@ -1,0 +1,61 @@
+---
+title: Fonts
+---
+
+The default fonts we use are [Inter](https://fonts.google.com/specimen/Inter) for regular text and
+[JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) for monospace text.
+
+## CSS variables
+
+Font sizes are defined in a 9-step scale from smallest to largest.
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--font-size-1', value: '12px' },
+      { name: '--font-size-2', value: '14px' },
+      { name: '--font-size-3', value: '16px' },
+      { name: '--font-size-4', value: '18px' },
+      { name: '--font-size-5', value: '20px' },
+      { name: '--font-size-6', value: '24px' },
+      { name: '--font-size-7', value: '28px' },
+      { name: '--font-size-8', value: '36px' },
+      { name: '--font-size-9', value: '60px' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" />
+  </DataTable>
+</Example>
+
+Font weigths are defined as `light`, `regular`, `medium` and `bold`.
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--font-weight-light', value: '300' },
+      { name: '--font-weight-regular', value: '400' },
+      { name: '--font-weight-medium', value: '500' },
+      { name: '--font-weight-bold', value: '700' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" />
+  </DataTable>
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'size', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9">' },
+      { name: 'weight', value: 'Responsive<"light" | "normal" | "medium" | "bold">' },
+    ]}
+  >
+
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" as="code" />
+
+  </DataTable>
+</Example>

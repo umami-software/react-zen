@@ -42,7 +42,7 @@ export type BorderRadius = '1' | '2' | '3' | '4' | '5' | '6' | 'full';
 export type BoxShadow = '1' | '2' | '3' | '4' | '5' | '6';
 
 export type FontSize = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
-export type FontWeight = 'light' | 'normal' | 'medium' | 'bold';
+export type FontWeight = 'light' | 'regular' | 'medium' | 'bold';
 
 export type TextWrap = 'wrap' | 'nowrap' | 'pretty' | 'balance';
 export type TextAlign = 'left' | 'center' | 'right';

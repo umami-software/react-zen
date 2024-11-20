@@ -17,6 +17,7 @@ const items = [
     name: 'Design',
     children: [
       { title: 'Colors', path: '/docs/design/colors' },
+      { title: 'Fonts', path: '/docs/design/fonts' },
       { title: 'Spacing', path: '/docs/design/spacing' },
       { title: 'Shadows', path: '/docs/design/shadows' },
       { title: 'Border Radius', path: '/docs/design/border-radius' },
