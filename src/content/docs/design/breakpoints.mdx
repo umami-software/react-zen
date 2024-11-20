@@ -9,12 +9,12 @@ Breakpoints are triggered once the screen width is greater than the specified wi
 <Example>
   <DataTable
     data={[
-      { id: 1, name: 'default', device: 'Phones (portrait)', width: '0px' },
-      { id: 2, name: 'xs', device: 'Phones (landscape)', width: '520px' },
-      { id: 3, name: 'sm', device: 'Tablets (portrait)', width: '728px' },
-      { id: 4, name: 'md', device: 'Tablets (landscape)', width: '1024px' },
-      { id: 5, name: 'lg', device: 'Laptops', width: '1280px' },
-      { id: 6, name: 'xl', device: 'Desktops', width: '1640px' },
+      { name: 'default', device: 'Phones (portrait)', width: '0px' },
+      { name: 'xs', device: 'Phones (landscape)', width: '520px' },
+      { name: 'sm', device: 'Tablets (portrait)', width: '728px' },
+      { name: 'md', device: 'Tablets (landscape)', width: '1024px' },
+      { name: 'lg', device: 'Laptops', width: '1280px' },
+      { name: 'xl', device: 'Desktops', width: '1640px' },
     ]}
   >
     <DataColumn id="name" label="Size" />
@@ -27,6 +27,9 @@ Breakpoints are triggered once the screen width is greater than the specified wi
 
 Certain properties of layout components accept a `Responsive` object, which specifies what value
 to apply at a given breakpoint.
+
+For example, the [Heading](/docs/typeography/heading) component takes a `size` prop. If we pass in a
+`Responsive` object, we can specify which sizes to display at different breakpoints.
 
 <Example>
   <Heading
@@ -53,5 +56,7 @@ to apply at a given breakpoint.
     lg: '7',
     xl: '9',
   }}
-/>
+>
+  This text will shrink/grow as the screen resizes.
+</Heading>
 ```

@@ -2,31 +2,53 @@
 title: Introduction
 ---
 
-**Zen** is a modern, minimalist design system created by [Umami](https://umami.is).
+**Zen** is a modern, minimalist React component library created by [Umami](https://umami.is).
 
-**[@umami/react-zen](https://github.com/umami-software/react-zen)** is a React component library that represents our design system.
-It is built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) and [Radix](https://www.radix-ui.com/primitives) primitives and styled with vanilla CSS.
+The components are built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) and [Radix](https://www.radix-ui.com/primitives) primitives which provide
+out-of-the-box accessibility handling. They are styled with vanilla CSS and CSS variables.
+
+Open source. MIT license. Source code is available on [GitHub](https://github.com/umami-software/react-zen)
 
 ## Why Zen?
 
-We wanted to create an opinionated design system that is easy to use and simple to understand.
+We created Zen with strong focus on the developer experience. We believe it should be as easy to
+use as possible with a low barrier to entry. The goal of this project is to provide a foundation for building
+consistent, maintainable, and accessible user interfaces.
 
-We've taken inspiration from a lot of great projects including [React Spectrum](https://react-spectrum.adobe.com/react-spectrum/index.html), [Radix UI](https://www.radix-ui.com/),
-[shadcn/ui](https://ui.shadcn.com/) and [Tailwind](https://tailwindcss.com/), but our focus is more on simplicity than customization.
+Out of the box, Zen provides predefined styles and a collection of design tokens that cover
+[colors](/docs/design/colors),
+[fonts](/docs/design/fonts),
+[spacing](/docs/design/spacing),
+[shadows](/docs/design/shadows),
+and [borders](/docs/design/border-radius).
 
-The goal of this project is to provide a strong foundation for building
-consistent, maintainable, and accessible UI interfaces.
+Also, [breakpoints](/docs/design/breakpoints) are handled by the library so you can create
+responsive layouts by just passing props to your components.
 
-## The Zen way
+## Design Principles
 
-Our focus is on improving the developer experience. These are the main principles that drive our design system:
+We've taken inspiration from other great projects including [React Spectrum](https://react-spectrum.adobe.com/react-spectrum/index.html), [Radix UI](https://www.radix-ui.com/),
+[shadcn/ui](https://ui.shadcn.com/) and [Tailwind](https://tailwindcss.com/), but our focus is more on simplicity and ease of use
+than customization. We came up with a few basic principles that we believe deliver a better development experience.
 
-### 1. No CSS or HTML
+### 1. Only vanilla CSS.
 
-**&mdash; Developers should not have to write any CSS or HTML.**
+There should be no overhead for learning or contributing to this library. This means no CSS preprocessors ([Sass](https://sass-lang.com/), [Less](https://lesscss.org/))
+or frameworks ([Bootstrap](https://getbootstrap.com/), [Tailwind](https://tailwindcss.com/), [StyleX](https://stylexjs.com/)), just plain CSS.
 
-This simplifies the development process to just composing tags and passing props. All design customizations
-can be done via props instead of messing with CSS.
+### 2. Everything defined in CSS variables.
+
+This enforces consistency throughout your project. If you need to create your own custom components, using the
+defined CSS variables ensures you end up with a consistent look and feel. Additionally, it is more maintainable
+than managing CSS spread among various files.
+
+All the variables are defined in [zen.css](https://raw.githubusercontent.com/umami-software/react-zen/refs/heads/master/src/styles/zen.css).
+
+### 3. Comprehensive components.
+
+Components should automatically handle all design and layout.
+All design customizations can be done via props instead of manipulating CSS.
+This simplifies your workflow to just composing tags and passing props.
 
 For example, this code:
 
@@ -34,7 +56,7 @@ For example, this code:
 <Box padding="6" borderSize="thin" borderRadius="3" shadow="3">
   <Flexbox direction="column" alignItems="center" gap="6">
     <Heading size="4">Welcome</Heading>
-    <Text type="muted" weight="mediumn">
+    <Text type="muted" weight="medium">
       This is the zen way.
     </Text>
     <Button variant="primary">Enter</Button>
@@ -48,27 +70,18 @@ Produces this output:
   <Box padding="6" borderSize="thin" borderRadius="3" shadow="3">
     <Flexbox direction="column" alignItems="center" gap="6">
       <Heading size="4">Welcome</Heading>
-      <Text type="muted" weight="mediumn">{`This is the zen way.`}</Text>
+      <Text type="muted" weight="medium">{`This is the zen way.`}</Text>
       <Button variant="primary">Enter</Button>
     </Flexbox>
 
   </Box>
 </Example>
 
-Although all components can be styled using the standard `className` and `style` props, they should only be used in special cases.
+In this example we have:
 
-### 2. No CSS dependencies
+- A [Box](/docs/layout/box) component that provides a styled container.
+- A [Flexbox](/docs/layout/flexbox) component that aligns the content and provides spacing.
+- A [Text](/docs/typography/text) component to provides styled text.
+- A [Button](/docs/components/button) component for interactivity.
 
-**&mdash; Use only vanilla CSS and CSS variables.**
-
-This means no CSS preprocessors ([Sass](https://sass-lang.com/), [Less](https://lesscss.org/))
-or frameworks ([Tailwind](https://tailwindcss.com/), [StyleX](https://stylexjs.com/)).
-Developers and contributors do not have to learn anything else besides CSS.
-
-### 3. No arbitrary values
-
-**&mdash; All design tokens should be defined in CSS variables.**
-
-This enforces consistency throughout your project.
-
-All the variables are defined [here](https://raw.githubusercontent.com/umami-software/react-zen/refs/heads/master/src/styles/zen.css).
+All components can still be styled using the standard `className` and `style` props, but they should only be used in special cases.

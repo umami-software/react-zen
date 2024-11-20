@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Children, ReactElement, ReactNode } from 'react';
+import { Children, createElement, ReactElement, ReactNode } from 'react';
 import { ColumnProps, TableProps } from 'react-aria-components';
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from './Table';
 import styles from './DataTable.module.css';
@@ -9,14 +9,20 @@ interface DataTableProps extends TableProps {
 }
 
 function DataTable({ data = [], className, children, ...props }: DataTableProps) {
+  // We must map an id for react-aria
+  const items =
+    data.length && data?.[0]?.id === undefined
+      ? data.map((record, id) => ({ ...record, id }))
+      : data;
+
   const columns = Children.map(children as ReactElement, (child: ReactElement) => {
-    return { ...child.props, value: child.props.children };
+    return { ...child.props };
   });
 
   return (
     <Table {...props} className={classNames(styles.datatable, className)}>
       <TableHeader>
-        {columns.map(({ id, label, hidden, ...columnProps }) => {
+        {columns.map(({ id, label, as, hidden, ...columnProps }) => {
           if (hidden) {
             return null;
           }
@@ -28,15 +34,17 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
           );
         })}
       </TableHeader>
-      <TableBody items={data}>
+      <TableBody items={items}>
         {row => {
           return (
             <TableRow>
-              {columns.map(({ id, value, className, ...cellProps }, index) => {
+              {columns.map(({ id, as, children, className, ...cellProps }) => {
+                const value =
+                  typeof children === 'function' ? children(row, id) : children || row[id];
+                const Component = as || 'div';
                 return (
                   <TableCell {...cellProps} key={id} className={classNames(styles.cell, className)}>
-                    {!value && row[id]}
-                    {typeof value === 'function' ? value(row, id) : value}
+                    {as ? createElement(as, {}, value) : value}
                   </TableCell>
                 );
               })}

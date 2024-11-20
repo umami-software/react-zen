@@ -16,7 +16,6 @@ const items = [
   {
     name: 'Design',
     children: [
-      { title: 'Overview', path: '/docs/design/overview' },
       { title: 'Colors', path: '/docs/design/colors' },
       { title: 'Spacing', path: '/docs/design/spacing' },
       { title: 'Shadows', path: '/docs/design/shadows' },

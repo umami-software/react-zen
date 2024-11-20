@@ -12,5 +12,6 @@
 
 .item.selected a {
   color: var(--base-color-700);
-  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }

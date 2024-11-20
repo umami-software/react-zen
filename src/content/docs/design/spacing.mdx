@@ -2,8 +2,48 @@
 title: Spacing
 ---
 
-There are 12 predefined spacing values. These should be used for padding, margins and gaps.
+Spacing values are a 12-step value range going from smallest to largest.
+They are used in margin, padding and gap values.
 
 <Example>
   <SpacingExample />
+</Example>
+
+## CSS variables
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--spacing-1', value: '4px' },
+      { name: '--spacing-2', value: '8px' },
+      { name: '--spacing-3', value: '12px' },
+      { name: '--spacing-4', value: '14px' },
+      { name: '--spacing-5', value: '16px' },
+      { name: '--spacing-6', value: '24px' },
+      { name: '--spacing-7', value: '32px' },
+      { name: '--spacing-8', value: '40px' },
+      { name: '--spacing-9', value: '48px' },
+      { name: '--spacing-10', value: '64px' },
+      { name: '--spacing-11', value: '96px' },
+      { name: '--spacing-12', value: '128px' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" />
+  </DataTable>
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'spacing', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12">' },
+    ]}
+  >
+
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" as="code" />
+
+  </DataTable>
 </Example>

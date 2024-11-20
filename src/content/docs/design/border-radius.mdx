@@ -18,3 +18,36 @@ Border radius values are defined in a 6-step scale.
   <Label>Radius 6</Label>
   <ExampleBox borderSize="thin" borderRadius="6" />
 </Example>
+
+## CSS variables
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--border-radius-1', value: '2px' },
+      { name: '--border-radius-2', value: '4px' },
+      { name: '--border-radius-3', value: '8px' },
+      { name: '--border-radius-4', value: '16px' },
+      { name: '--border-radius-5', value: '18px' },
+      { name: '--border-radius-6', value: '9999px' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" />
+  </DataTable>
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6">' },
+    ]}
+  >
+
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" as="code" />
+
+  </DataTable>
+</Example>

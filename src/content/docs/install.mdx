@@ -3,10 +3,19 @@ title: Installation
 ---
 
 ```shell
-npm install @umami/react-zen
+npm install @umami/react-zen --save
 ```
 
 ## Usage
+
+### 1. Import styles
+
+```javascript
+import '@umami/react-zen/dist/zen.css';
+import '@umami/react-zen/dist/index.css';
+```
+
+### 2. Import components
 
 ```javscript
 import { Button } from '@umami/react-zen';
@@ -15,3 +24,7 @@ export function Component() {
   return <Button variant="primary">Button</Button>;
 }
 ```
+
+<Example>
+  <Button variant="primary">Button</Button>
+</Example>

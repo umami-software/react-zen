@@ -7,9 +7,9 @@ export function Example({
   justifyContent = 'center',
   gap = '3',
   padding = '8',
+  marginY = '8',
   borderSize = 'thin',
   borderRadius = '3',
-  marginBottom = '8',
   minHeight = '300px',
   children,
   ...props
@@ -25,7 +25,7 @@ export function Example({
         padding,
         borderSize,
         borderRadius,
-        marginBottom,
+        marginY,
         minHeight,
       }}
     >

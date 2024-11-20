@@ -2,7 +2,11 @@
 title: Colors
 ---
 
-These colors are used for the background of UI elements.
+There are several categories of colors that we use in this library and they are all defined in CSS variables.
+
+## Base colors
+
+These colors are used for the basis of every UI element including backgrounds, borders, and text.
 
 <Example direction="row">
   <ExampleBox backgroundColor="50" />
@@ -16,4 +20,31 @@ These colors are used for the background of UI elements.
   <ExampleBox backgroundColor="800" />
   <ExampleBox backgroundColor="900" />
   <ExampleBox backgroundColor="950" />
+</Example>
+
+## CSS variables
+
+The base colors are a 11-step color range going from lightest to darkest.
+We used the colors created by [Tailwind](https://tailwindcss.com/docs/customizing-colors), so you can
+easily swap these out with any or their other color palettes.
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--base-color-50', value: '#fafafa' },
+      { name: '--base-color-100', value: '#f5f5f5' },
+      { name: '--base-color-200', value: '#e5e5e5' },
+      { name: '--base-color-300', value: '#d4d4d4' },
+      { name: '--base-color-400', value: '#a3a3a3' },
+      { name: '--base-color-500', value: '#737373' },
+      { name: '--base-color-600', value: '#525252' },
+      { name: '--base-color-700', value: '#404040' },
+      { name: '--base-color-800', value: '#262626' },
+      { name: '--base-color-900', value: '#171717' },
+      { name: '--base-color-950', value: '#0a0a0a' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" />
+  </DataTable>
 </Example>
