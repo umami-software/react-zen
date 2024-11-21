@@ -2,8 +2,6 @@ import { ReactNode } from 'react';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 import { App } from './App';
-import '@/styles/zen.css';
-import '@/styles/base.css';
 
 export default function RootLayout({
   children,
