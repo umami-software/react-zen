@@ -1,8 +1,5 @@
 import { ReactNode } from 'react';
 import { ToastProvider, ToastProviderProps, Toaster } from './Toast';
-import '@/styles/zen.css';
-import '@/styles/reset.css';
-import '@/styles/base.css';
 
 interface ZenProviderProps {
   config?: {

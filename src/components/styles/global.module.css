@@ -101,9 +101,6 @@
 .border-radius-6 {
   border-radius: var(--border-radius-6);
 }
-.border-radius-full {
-  border-radius: var(--border-radius-full);
-}
 
 /* Shadows */
 
@@ -869,6 +866,7 @@
 .gap-y-12 {
   row-gap: var(--spacing-12);
 }
+
 
 /* Flex */
 
