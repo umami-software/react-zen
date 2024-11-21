@@ -1,0 +1,85 @@
+---
+title: Borders
+---
+
+## Border radius
+
+Border radius values are defined as a 6-step scale from smallest to largest.
+
+<Example gap="5">
+  <Label>Radius 1</Label>
+  <ExampleBox borderSize="1" borderRadius="1" />
+  <Label>Radius 2</Label>
+  <ExampleBox borderSize="1" borderRadius="2" />
+  <Label>Radius 3</Label>
+  <ExampleBox borderSize="1" borderRadius="3" />
+  <Label>Radius 4</Label>
+  <ExampleBox borderSize="1" borderRadius="4" />
+  <Label>Radius 5</Label>
+  <ExampleBox borderSize="1" borderRadius="5" />
+  <Label>Radius 6</Label>
+  <ExampleBox borderSize="1" borderRadius="6" />
+</Example>
+
+## Border size
+
+Border sizes are defined as a 4-step scale from smallest to largest.
+
+<Example gap="5">
+  <Label>Size 1</Label>
+  <ExampleBox borderSize="1" borderRadius="3" />
+  <Label>Size 2</Label>
+  <ExampleBox borderSize="2" borderRadius="3" />
+  <Label>Size 3</Label>
+  <ExampleBox borderSize="3" borderRadius="3" />
+  <Label>Size 4</Label>
+  <ExampleBox borderSize="4" borderRadius="3" />
+</Example>
+
+## CSS variables
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--border-radius-1', value: '2px' },
+      { name: '--border-radius-2', value: '4px' },
+      { name: '--border-radius-3', value: '8px' },
+      { name: '--border-radius-4', value: '16px' },
+      { name: '--border-radius-5', value: '18px' },
+      { name: '--border-radius-6', value: '9999px' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" />
+  </DataTable>
+</Example>
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--border-size-1', value: '1px' },
+      { name: '--border-size-2', value: '2px' },
+      { name: '--border-size-3', value: '4px' },
+      { name: '--border-size-4', value: '8px' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" />
+  </DataTable>
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6">' },
+      { name: 'borderSize', value: 'Responsive<"1" | "2" | "3" | "4">' },
+    ]}
+  >
+
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" as="code" />
+
+  </DataTable>
+</Example>

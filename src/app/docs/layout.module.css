@@ -12,14 +12,14 @@
 }
 
 .docs > p {
-  color: var(--base-color-600);
+  color: var(--font-muted-color);
   line-height: 1.8;
 }
 
 .docs a {
   color: var(--font-color);
   font-weight: 600;
-  text-decoration: underline var(--base-color-300);
+  text-decoration: underline var(--font-faded-color);
   text-underline-offset: 4px;
 }
 
@@ -48,5 +48,5 @@
 }
 
 .docs pre {
-  margin: 48px 0;
+  margin: var(--spacing-6) 0;
 }

@@ -28,9 +28,10 @@
   --spacing-11: 96px;
   --spacing-12: 128px;
 
-  --border-size-thin: 1px;
-  --border-size-medium: 2px;
-  --border-size-thick: 4px;
+  --border-size-1: 1px;
+  --border-size-2: 2px;
+  --border-size-3: 4px;
+  --border-size-4: 8px;
 
   --border-radius-1: 2px;
   --border-radius-2: 4px;
@@ -84,7 +85,7 @@
 
   --border-radius: var(--border-radius-2);
 
-  --border-width: var(--border-size-thin);
+  --border-width: var(--border-size-1);
 
   --gap: var(--spacing-3);
 
@@ -125,7 +126,7 @@
   --input-disabled-color: var(--base-color-100);
 
   [data-theme='dark'] {
-    --background-color: var(--base-color-950);
+    --background-color: #0f0f0f;
 
     --font-color: var(--base-color-200);
     --font-muted-color: var(--base-color-400);

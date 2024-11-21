@@ -37,7 +37,7 @@ export type Bottom = Spacing | NegativeSpacing;
 export type Left = Spacing | NegativeSpacing;
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
-export type BorderSize = 'thin' | 'medium' | 'thick';
+export type BorderSize = '1' | '2' | '3' | '4';
 export type BorderRadius = '1' | '2' | '3' | '4' | '5' | '6' | 'full';
 export type BoxShadow = '1' | '2' | '3' | '4' | '5' | '6';
 

@@ -70,14 +70,17 @@
 
 /* Borders */
 
-.border-size-thin {
-  border: var(--border-size-thin) solid var(--border-color);
+.border-size-1 {
+  border: var(--border-size-1) solid var(--border-color);
 }
-.border-size-medium {
-  border: var(--border-size-medium) solid var(--border-color);
+.border-size-2 {
+  border: var(--border-size-2) solid var(--border-color);
 }
-.border-size-thick {
-  border: var(--border-size-thick) solid var(--border-color);
+.border-size-3 {
+  border: var(--border-size-3) solid var(--border-color);
+}
+.border-size-4 {
+  border: var(--border-size-4) solid var(--border-color);
 }
 
 .border-radius-1 {

@@ -6,12 +6,9 @@
   color: var(--font-muted-color);
 }
 
-.item a:hover {
+.item a:hover,
+.item.selected a{
   color: var(--font-color);
-}
-
-.item.selected a {
-  color: var(--base-color-700);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
