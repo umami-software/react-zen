@@ -1,14 +1,15 @@
-import { forwardRef, ReactNode, Ref } from 'react';
-import { Button as AriaButton, ButtonProps as _ButtonProps } from 'react-aria-components';
+import { forwardRef, HTMLAttributes, ReactNode, Ref } from 'react';
+import { Button as AriaButton, ButtonProps as AriaButtonProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Slot } from './Slot';
 import styles from './Button.module.css';
 
-interface ButtonProps extends _ButtonProps {
+interface ButtonProps extends AriaButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'quiet' | 'danger' | 'zero';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   asChild?: boolean;
   slot?: string;
+  children?: ReactNode;
 }
 
 const Button = forwardRef(

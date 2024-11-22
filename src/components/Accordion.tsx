@@ -1,8 +1,8 @@
 import { ReactElement, ReactNode, useState } from 'react';
 import {
-  UNSTABLE_Disclosure as Disclosure,
-  UNSTABLE_DisclosurePanel as DisclosurePanel,
-  UNSTABLE_DisclosureGroup as DisclosureGroup,
+  Disclosure,
+  DisclosurePanel,
+  DisclosureGroup,
   DisclosureProps,
   DisclosureGroupProps,
 } from 'react-aria-components';

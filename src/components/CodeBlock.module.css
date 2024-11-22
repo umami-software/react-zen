@@ -8,7 +8,7 @@
 }
 
 pre.container code {
-  font-family: var(--font-family-code), monospace;
+  font-family: var(--font-family-code);
   color: var(--base-color-300);
   padding: 0;
   border: 0;

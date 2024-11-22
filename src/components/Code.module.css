@@ -1,5 +1,5 @@
 .code {
-  font-family: var(--font-family-code), monospace;
+  font-family: var(--font-family-code);
   font-size: var(--font-size-2);
   font-weight: var(--font-weight-medium);
   color: var(--font-color);
