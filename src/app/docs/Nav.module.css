@@ -2,12 +2,14 @@
   display: flex;
 }
 
-.item a {
+.item a,
+.item a:active,
+.item a:visited {
   color: var(--font-muted-color);
 }
 
 .item a:hover,
-.item.selected a{
+.item.selected a {
   color: var(--font-color);
   text-decoration: underline;
   text-underline-offset: 4px;
