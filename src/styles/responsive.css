@@ -251,4 +251,22 @@
   --grid-template-rows-md: ;
   --grid-template-rows-lg: ;
   --grid-template-rows-xl: ;
+
+  --flex-basis-xs: ;
+  --flex-basis-sm: ;
+  --flex-basis-md: ;
+  --flex-basis-lg: ;
+  --flex-basis-xl: ;
+
+  --flex-grow-xs: ;
+  --flex-grow-sm: ;
+  --flex-grow-md: ;
+  --flex-grow-lg: ;
+  --flex-grow-xl: ;
+
+  --flex-shrink-xs: ;
+  --flex-shrink-sm: ;
+  --flex-shrink-md: ;
+  --flex-shrink-lg: ;
+  --flex-shrink-xl: ;
 }

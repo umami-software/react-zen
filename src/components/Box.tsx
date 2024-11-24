@@ -10,6 +10,8 @@ import {
   Position,
   Display,
   TextAlign,
+  FlexGrow,
+  FlexShrink,
 } from '@/lib/types';
 import { mapProps } from '@/lib/utils';
 import { Slot } from './Slot';
@@ -48,6 +50,10 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   position?: Responsive<Position>;
   align?: Responsive<TextAlign>;
 
+  basis?: string;
+  grow?: Responsive<FlexGrow>;
+  shrink?: Responsive<FlexShrink>;
+
   as?: string;
   asChild?: boolean;
 }
@@ -80,6 +86,9 @@ function Box({
   maxHeight,
   position,
   align,
+  basis,
+  grow,
+  shrink,
   as = 'div',
   asChild,
   className,
@@ -116,6 +125,9 @@ function Box({
     maxHeight,
     position,
     textAlign: align,
+    flexBasis: basis,
+    flexGrow: grow,
+    flexShrink: shrink,
   });
 
   return (

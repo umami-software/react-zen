@@ -15,3 +15,48 @@ Base box component.
     I am a box.
   </Box>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'as', value: 'string' },
+      { name: 'asChild', value: 'boolean' },
+      { name: 'display', value: 'Responsive<"block" | "inline-block" | "none">' },
+      {
+        name: 'position',
+        value: 'Responsive<"static" | "relative" | "absolute" | "fixed" | "sticky">',
+      },
+      { name: 'backgroundColor', value: 'string' },
+      { name: 'borderSize', value: 'Responsive<"1" | "2" | "3" | "4">' },
+      { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6">' },
+      { name: 'padding', value: 'Responsive<Spacing>' },
+      { name: 'paddingX', value: 'Responsive<Spacing>' },
+      { name: 'paddingY', value: 'Responsive<Spacing>' },
+      { name: 'paddingTop', value: 'Responsive<Spacing>' },
+      { name: 'paddingRight', value: 'Responsive<Spacing>' },
+      { name: 'paddingBottom', value: 'Responsive<Spacing>' },
+      { name: 'paddingLeft', value: 'Responsive<Spacing>' },
+      { name: 'margin', value: 'Responsive<Spacing>' },
+      { name: 'marginX', value: 'Responsive<Spacing>' },
+      { name: 'marginY', value: 'Responsive<Spacing>' },
+      { name: 'marginTop', value: 'Responsive<Spacing>' },
+      { name: 'marginRight', value: 'Responsive<Spacing>' },
+      { name: 'marginBottom', value: 'Responsive<Spacing>' },
+      { name: 'marginLeft', value: 'Responsive<Spacing>' },
+      { name: 'width', value: 'Responsive<string>' },
+      { name: 'minWidth', value: 'Responsive<string>' },
+      { name: 'maxWidth', value: 'Responsive<string>' },
+      { name: 'height', value: 'Responsive<string>' },
+      { name: 'minHeight', value: 'Responsive<string>' },
+      { name: 'maxHeight', value: 'Responsive<string>' },
+      { name: 'basis', value: 'Responsive<string>' },
+      { name: 'grow', value: 'Responsive<string>' },
+      { name: 'shrink', value: 'Responsive<string>' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+  </DataTable>
+</Example>

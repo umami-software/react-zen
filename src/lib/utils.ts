@@ -45,6 +45,9 @@ const CSS_MAP = {
   gridAutoRows: 'grid-auto-rows',
   gridTemplateRows: 'grid-template-rows',
   gridTemplateColumns: 'grid-template-columns',
+  flexBasis: 'flex-basis',
+  flexGrow: 'flex-grow',
+  flexShrink: 'flex-shrink',
 };
 
 const excludedProps = [
@@ -56,6 +59,9 @@ const excludedProps = [
   'maxHeight',
   'gridTemplateRows',
   'gridTemplateColumns',
+  'flexBasis',
+  'flexGrow',
+  'flexShrink',
 ];
 
 type Keys = keyof typeof CSS_MAP;
