@@ -18,7 +18,7 @@ function Heading({
   children,
   ...props
 }: HeadingProps) {
-  const [classes, styleProps] = mapProps({ size, align, weight });
+  const [classes, styleProps] = mapProps({ fontSize: size, textAlign: align, fontWeight: weight });
 
   return (
     <Box

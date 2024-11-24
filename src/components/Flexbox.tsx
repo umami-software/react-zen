@@ -44,8 +44,8 @@ export function Flexbox({
 }: FlexboxProps) {
   const [classes, styleProps] = mapProps({
     display,
-    direction,
-    wrap,
+    flexDirection: direction,
+    flexWrap: wrap,
     justifyContent,
     justifyItems,
     alignContent,

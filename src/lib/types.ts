@@ -52,6 +52,12 @@ export type LetterSpacing = 'tighter' | 'tight' | 'normal' | 'wide' | 'wider';
 export type FlexDisplay = 'none' | 'flex' | 'inline-flex';
 export type FlexDirection = 'column' | 'row' | 'row-reverse' | 'column-reverse';
 export type FlexWrap = 'wrap' | 'nowrap' | 'wrap-reverse';
+
+export type GridDisplay = 'none' | 'grid' | 'inline-grid';
+export type GridAutoFlow = 'row' | 'column' | 'dense' | 'row-dense' | 'column-dense';
+export type GridTemplateRows = string;
+export type GridTemplateColumns = string;
+
 export type JustifyContent =
   | 'center'
   | 'start'

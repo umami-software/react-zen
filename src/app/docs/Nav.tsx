@@ -39,6 +39,7 @@ const items = [
       { title: 'Box', path: '/docs/layout/box' },
       { title: 'Flexbox', path: '/docs/layout/flexbox' },
       { title: 'Grid', path: '/docs/layout/grid' },
+      { title: 'Container', path: '/docs/layout/container' },
     ],
   },
   {

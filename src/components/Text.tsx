@@ -31,7 +31,13 @@ export function Text({
   ...props
 }: TextProps) {
   const Component = asChild ? Slot : as;
-  const [classes, styleProps] = mapProps({ size, letterSpacing, weight, align, wrap });
+  const [classes, styleProps] = mapProps({
+    fontSize: size,
+    textAlign: align,
+    textWrap: wrap,
+    fontWeight: weight,
+    letterSpacing,
+  });
 
   return (
     <Component

@@ -1,8 +1,9 @@
 import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
+import { Box, BoxProps } from './Box';
 import styles from './Container.module.css';
 
-export interface ContainerProps extends HTMLAttributes<HTMLElement> {
+export interface ContainerProps extends BoxProps {
   isFluid?: boolean;
   isCentered?: boolean;
 }
@@ -15,7 +16,7 @@ export function Container({
   ...props
 }: ContainerProps) {
   return (
-    <div
+    <Box
       {...props}
       className={classNames(
         styles.container,
@@ -25,6 +26,6 @@ export function Container({
       )}
     >
       {children}
-    </div>
+    </Box>
   );
 }

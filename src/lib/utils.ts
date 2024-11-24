@@ -1,12 +1,12 @@
 import { Responsive } from '@/lib/types';
-import styles from '@/components/styles/global.module.css';
+import styles from '../components/styles/global.module.css';
 
 const CSS_MAP = {
   display: 'display',
-  size: 'font-size',
-  weight: 'font-weight',
-  align: 'align',
-  wrap: 'wrap',
+  fontSize: 'font-size',
+  fontWeight: 'font-weight',
+  textAlign: 'text-align',
+  textWrap: 'text-wrap',
   letterSpacing: 'letter-spacing',
   backgroundColor: 'background-color',
   borderSize: 'border-size',
@@ -35,16 +35,28 @@ const CSS_MAP = {
   gap: 'gap',
   gapX: 'gap-x',
   gapY: 'gap-y',
-  direction: 'flex-direction',
+  flexDirection: 'flex-direction',
   flexWrap: 'flex-wrap',
   justifyContent: 'justify-content',
   justifyItems: 'justify-items',
   alignContent: 'align-content',
   alignItems: 'align-items',
   alignSelf: 'align-self',
+  gridAutoRows: 'grid-auto-rows',
+  gridTemplateRows: 'grid-template-rows',
+  gridTemplateColumns: 'grid-template-columns',
 };
 
-const excludedProps = ['width', 'height', 'minWidth', 'maxWidth', 'minHeight', 'maxHeight'];
+const excludedProps = [
+  'width',
+  'height',
+  'minWidth',
+  'maxWidth',
+  'minHeight',
+  'maxHeight',
+  'gridTemplateRows',
+  'gridTemplateColumns',
+];
 
 export function mapProps(
   props: Record<string, Responsive<any>>,

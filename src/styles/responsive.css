@@ -233,4 +233,16 @@
   --align-self-md: ;
   --align-self-lg: ;
   --align-self-xl: ;
+
+  --grid-template-columns-xs: ;
+  --grid-template-columns-sm: ;
+  --grid-template-columns-md: ;
+  --grid-template-columns-lg: ;
+  --grid-template-columns-xl: ;
+
+  --grid-template-rows-xs: ;
+  --grid-template-rows-sm: ;
+  --grid-template-rows-md: ;
+  --grid-template-rows-lg: ;
+  --grid-template-rows-xl: ;
 }
