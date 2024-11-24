@@ -1,8 +1,8 @@
-import { Responsive } from '@/lib/types';
 import styles from '../components/styles/global.module.css';
 
 const CSS_MAP = {
   display: 'display',
+  position: 'position',
   fontSize: 'font-size',
   fontWeight: 'font-weight',
   textAlign: 'text-align',
@@ -58,15 +58,15 @@ const excludedProps = [
   'gridTemplateColumns',
 ];
 
-export function mapProps(
-  props: Record<string, Responsive<any>>,
-): [string[], { [key: string]: any }] {
+type Keys = keyof typeof CSS_MAP;
+
+export function mapProps(props: { [K in Keys]?: any }): [string[], { [key: string]: any }] {
   const classes: string[] = [];
   const styleProps: { [key: string]: any } = {};
 
   Object.keys(props).forEach(key => {
-    const name = CSS_MAP[key as keyof typeof CSS_MAP];
-    const value = props[key];
+    const name = CSS_MAP[key as Keys];
+    const value = props[key as Keys];
 
     if (value) {
       if (typeof value === 'string') {

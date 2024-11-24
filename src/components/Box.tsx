@@ -79,6 +79,7 @@ function Box({
   minHeight,
   maxHeight,
   position,
+  align,
   as = 'div',
   asChild,
   className,
@@ -114,6 +115,7 @@ function Box({
     minHeight,
     maxHeight,
     position,
+    textAlign: align,
   });
 
   return (
