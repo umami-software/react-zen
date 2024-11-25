@@ -1,5 +1,6 @@
 :root {
-  /* Base values */
+  /* Fonts */
+
   --font-size-1: 12px;
   --font-size-2: 14px;
   --font-size-3: 16px;
@@ -15,6 +16,8 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
+  /* Spacing */
+
   --spacing-1: 4px;
   --spacing-2: 8px;
   --spacing-3: 12px;
@@ -28,6 +31,8 @@
   --spacing-11: 96px;
   --spacing-12: 128px;
 
+  /* Borders */
+
   --border-size-1: 1px;
   --border-size-2: 2px;
   --border-size-3: 4px;
@@ -40,6 +45,8 @@
   --border-radius-5: 18px;
   --border-radius-6: 9999px;
 
+  /* Shadows */
+
   --box-shadow-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --box-shadow-2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --box-shadow-3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -47,7 +54,7 @@
   --box-shadow-5: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --box-shadow-6: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
-  /* Color values */
+  /* Colors */
 
   --base-color-50: #fafafa;
   --base-color-100: #f5f5f5;
@@ -76,10 +83,10 @@
   --inactive-color: var(--base-color-400);
   --inactive-font-color: var(--base-color-900);
 
-  /* Settings */
+  /* Global */
 
-  --font-family: Inter;
-  --font-family-code: 'JetBrains Mono';
+  --font-family: Inter, sans-serif;
+  --font-family-code: 'JetBrains Mono', monospace;
 
   --font-size: var(--font-size-2);
 

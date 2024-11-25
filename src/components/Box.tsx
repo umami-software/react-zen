@@ -58,10 +58,10 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   grow?: Responsive<FlexGrow>;
   shrink?: Responsive<FlexShrink>;
 
-  top: Responsive<Top>;
-  right: Responsive<Right>;
-  bottom: Responsive<Bottom>;
-  left: Responsive<Left>;
+  top?: Responsive<Top>;
+  right?: Responsive<Right>;
+  bottom?: Responsive<Bottom>;
+  left?: Responsive<Left>;
 
   as?: string;
   asChild?: boolean;

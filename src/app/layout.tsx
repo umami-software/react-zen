@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Script from 'next/script';
 import type { Metadata } from 'next';
+import { inter } from '@/styles/fonts';
 import { App } from './App';
 import '@/styles/zen.css';
 import '@/styles/reset.css';
@@ -28,7 +29,7 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body>
+      <body className={inter.className}>
         <App>{children}</App>
       </body>
     </html>

@@ -27,8 +27,8 @@
     "types": "tsc -p tsconfig.build.json",
     "esbuild": "node esbuild.mjs",
     "rollup": "rollup -c",
-    "dts": "node ./dts.js",
-    "css": "node ./css.mjs",
+    "dts": "node dts.mjs",
+    "css": "node css.mjs",
     "bundle": "npm-run-all types dts esbuild css"
   },
   "lint-staged": {
