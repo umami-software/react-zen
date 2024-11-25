@@ -45,9 +45,14 @@ const CSS_MAP = {
   gridAutoRows: 'grid-auto-rows',
   gridTemplateRows: 'grid-template-rows',
   gridTemplateColumns: 'grid-template-columns',
+  gridAutoFlow: 'grid-auto-flow',
   flexBasis: 'flex-basis',
   flexGrow: 'flex-grow',
   flexShrink: 'flex-shrink',
+  top: 'top',
+  right: 'right',
+  bottom: 'bottom',
+  left: 'left',
 };
 
 const excludedProps = [

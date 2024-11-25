@@ -31,10 +31,10 @@ export type NegativeSpacing =
   | '-12';
 
 export type Position = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
-export type Top = Spacing | NegativeSpacing;
-export type Right = Spacing | NegativeSpacing;
-export type Bottom = Spacing | NegativeSpacing;
-export type Left = Spacing | NegativeSpacing;
+export type Top = Spacing | NegativeSpacing | string;
+export type Right = Spacing | NegativeSpacing | string;
+export type Bottom = Spacing | NegativeSpacing | string;
+export type Left = Spacing | NegativeSpacing | string;
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
 export type BorderSize = '1' | '2' | '3' | '4';

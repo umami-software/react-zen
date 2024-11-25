@@ -12,6 +12,10 @@ import {
   TextAlign,
   FlexGrow,
   FlexShrink,
+  Top,
+  Right,
+  Bottom,
+  Left,
 } from '@/lib/types';
 import { mapProps } from '@/lib/utils';
 import { Slot } from './Slot';
@@ -54,6 +58,11 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   grow?: Responsive<FlexGrow>;
   shrink?: Responsive<FlexShrink>;
 
+  top: Responsive<Top>;
+  right: Responsive<Right>;
+  bottom: Responsive<Bottom>;
+  left: Responsive<Left>;
+
   as?: string;
   asChild?: boolean;
 }
@@ -89,6 +98,10 @@ function Box({
   basis,
   grow,
   shrink,
+  top,
+  right,
+  bottom,
+  left,
   as = 'div',
   asChild,
   className,
@@ -128,6 +141,10 @@ function Box({
     flexBasis: basis,
     flexGrow: grow,
     flexShrink: shrink,
+    top,
+    right,
+    bottom,
+    left,
   });
 
   return (
