@@ -11,8 +11,8 @@ export function SpacingExample() {
             <Column key={index} gap="2">
               <Label>Spacing {index + 1}</Label>
               <Row gap={(index + 1).toString() as any}>
-                <ExampleBox borderSize="1" />
-                <ExampleBox borderSize="1" />
+                <ExampleBox />
+                <ExampleBox />
               </Row>
             </Column>
           );

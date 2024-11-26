@@ -21,3 +21,21 @@ Constrains content to fit within a fixed width.
     </Modal>
   </DialogTrigger>
 </Example>
+
+The container at each breakpoint has a `max-width`.
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'xs', width: '520px', maxWidth: '500px' },
+      { name: 'sm', width: '768px', maxWidth: '740px' },
+      { name: 'md', width: '1024px', maxWidth: '1000px' },
+      { name: 'lg', width: '1280px', maxWidth: '1240px' },
+      { name: 'xl', width: '1640px', maxWidth: '1600px' },
+    ]}
+  >
+    <DataColumn id="name" label="Size" />
+    <DataColumn id="width" label="Breakpoint" />
+    <DataColumn id="maxWidth" label="Max width" />
+  </DataTable>
+</Example>

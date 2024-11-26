@@ -222,6 +222,12 @@
   --justify-items-lg: ;
   --justify-items-xl: ;
 
+  --justify-self-xs: ;
+  --justify-self-sm: ;
+  --justify-self-md: ;
+  --justify-self-lg: ;
+  --justify-self-xl: ;
+
   --align-content-xs: ;
   --align-content-sm: ;
   --align-content-md: ;
@@ -269,4 +275,22 @@
   --flex-shrink-md: ;
   --flex-shrink-lg: ;
   --flex-shrink-xl: ;
+
+  --overflow-xs: ;
+  --overflow-sm: ;
+  --overflow-md: ;
+  --overflow-lg: ;
+  --overflow-xl: ;
+
+  --overflow-x-xs: ;
+  --overflow-x-sm: ;
+  --overflow-x-md: ;
+  --overflow-x-lg: ;
+  --overflow-x-xl: ;
+
+  --overflow-y-xs: ;
+  --overflow-y-sm: ;
+  --overflow-y-md: ;
+  --overflow-y-lg: ;
+  --overflow-y-xl: ;
 }

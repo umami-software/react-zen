@@ -6,12 +6,97 @@ A grid component.
 
 <Example>
   <Grid gap="3" columns="repeat(3, 1fr)">
-    <ExampleBox borderSize="1" />
-    <ExampleBox borderSize="1" />
-    <ExampleBox borderSize="1" />
-    <ExampleBox borderSize="1" />
-    <ExampleBox borderSize="1" />
-    <ExampleBox borderSize="1" />
-    <ExampleBox borderSize="1" />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
   </Grid>
+</Example>
+
+## Grid item placement
+
+<Example>
+  <Grid gap="3" columns="repeat(3, 1fr)" rows="repeat(3, 1fr)">
+    <ExampleBox width="auto" gridRow="1 / 2" gridColumn="1 / 3" />
+    <ExampleBox width="auto" height="auto" gridRow="2 / 4" gridColumn="1 / 3" />
+    <ExampleBox height="auto" gridRow="1 / 4" gridColumn="3 / 4" />
+  </Grid>
+</Example>
+
+## Component props
+
+A Grid renders a [Box](/docs/layout/box) as a child, so it also accepts all Box props.
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'display', value: 'Responsive<"grid" | "inline-grid" | "none">' },
+      { name: 'columns', value: 'Responsive<string>' },
+      { name: 'rows', value: 'Responsive<string>' },
+      {
+        name: 'autoFlow',
+        value: 'Responsive<"row" | "column" | "dense" | "row-dense" | "column-dense">',
+      },
+      { name: 'justifyContent', value: `Responsive<"center"
+          | "start"
+          | "end"
+          | "flex-start"
+          | "flex-end"
+          | "left"
+          | "right"
+          | "space-between"
+          | "space-around"
+          | "space-evenly"
+          | "stretch">`
+      },
+      { name: 'justifyItems', value: `Responsive<"center"
+          | "start"
+          | "end"
+          | "flex-start"
+          | "flex-end"
+          | "self-start"
+          | "self-end"
+          | "stretch"
+          | "left"
+          | "right"
+          | "baseline">`
+      },
+      { name: 'alignContent', value: `Responsive<"center"
+          | "start"
+          | "end"
+          | "flex-start"
+          | "flex-end"
+          | "baseline"
+          | "space-between"
+          | "space-around"
+          | "space-evenly"
+          | "stretch">`
+      },
+      { name: 'alignItems', value: `Responsive<"center"
+          | "start"
+          | "end"
+          | "flex-start"
+          | "flex-end"
+          | "self-start"
+          | "self-end"
+          | "stretch"
+          | "baseline">`
+      },
+      { name: 'gap', value: 'Responsive<Spacing>' },
+      { name: 'gapX', value: 'Responsive<Spacing>' },
+      { name: 'gapY', value: 'Responsive<Spacing>' },
+      { name: 'as', value: 'string' },
+      { name: 'asChild', value: 'boolean' },
+    ]}
+  >
+
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+
+  </DataTable>
 </Example>

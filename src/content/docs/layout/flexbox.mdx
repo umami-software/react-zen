@@ -8,17 +8,89 @@ Component for building flexible box layouts.
   <Column alignItems="center">
     <Label>Row</Label>
     <Flexbox direction="row" gap="3">
-      <ExampleBox borderSize="1" />
-      <ExampleBox borderSize="1" />
-      <ExampleBox borderSize="1" />
+      <ExampleBox />
+      <ExampleBox />
+      <ExampleBox />
     </Flexbox>
   </Column>
   <Column>
     <Label>Column</Label>
     <Flexbox direction="column" gap="3">
-      <ExampleBox borderSize="1" />
-      <ExampleBox borderSize="1" />
-      <ExampleBox borderSize="1" />
+      <ExampleBox />
+      <ExampleBox />
+      <ExampleBox />
     </Flexbox>
   </Column>
+</Example>
+
+## Component props
+
+A Flexbox renders a [Box](/docs/layout/box) as a child, so it also accepts all Box props.
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'display', value: 'Responsive<"flex" | "inline-flex" | "none">' },
+      {
+        name: 'direction',
+        value: 'Responsive<"row" | "column" | "row-reverse" | "column-reverse">',
+      },
+      { name: 'wrap', value: 'Responsive<"wrap" | "nowrap" | "wrap-reverse">' },
+      { name: 'justifyContent', value: `Responsive<"center"
+          | "start"
+          | "end"
+          | "flex-start"
+          | "flex-end"
+          | "left"
+          | "right"
+          | "space-between"
+          | "space-around"
+          | "space-evenly"
+          | "stretch">`
+      },
+      { name: 'justifyItems', value: `Responsive<"center"
+          | "start"
+          | "end"
+          | "flex-start"
+          | "flex-end"
+          | "self-start"
+          | "self-end"
+          | "stretch"
+          | "left"
+          | "right"
+          | "baseline">`
+      },
+      { name: 'alignContent', value: `Responsive<"center"
+          | "start"
+          | "end"
+          | "flex-start"
+          | "flex-end"
+          | "baseline"
+          | "space-between"
+          | "space-around"
+          | "space-evenly"
+          | "stretch">`
+      },
+      { name: 'alignItems', value: `Responsive<"center"
+          | "start"
+          | "end"
+          | "flex-start"
+          | "flex-end"
+          | "self-start"
+          | "self-end"
+          | "stretch"
+          | "baseline">`
+      },
+      { name: 'gap', value: 'Responsive<Spacing>' },
+      { name: 'gapX', value: 'Responsive<Spacing>' },
+      { name: 'gapY', value: 'Responsive<Spacing>' },
+      { name: 'as', value: 'string' },
+      { name: 'asChild', value: 'boolean' },
+    ]}
+>
+
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+
+  </DataTable>
 </Example>

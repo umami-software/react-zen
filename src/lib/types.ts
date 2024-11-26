@@ -35,6 +35,7 @@ export type Top = Spacing | NegativeSpacing | string;
 export type Right = Spacing | NegativeSpacing | string;
 export type Bottom = Spacing | NegativeSpacing | string;
 export type Left = Spacing | NegativeSpacing | string;
+export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
 export type BorderSize = '1' | '2' | '3' | '4';
@@ -86,6 +87,17 @@ export type JustifyItems =
   | 'right'
   | 'baseline';
 
+export type JustifySelf =
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'self-start'
+  | 'self-end'
+  | 'flex-start'
+  | 'flex-end'
+  | 'baseline'
+  | 'stretch';
+
 export type AlignContent =
   | 'center'
   | 'start'
@@ -93,8 +105,6 @@ export type AlignContent =
   | 'flex-start'
   | 'flex-end'
   | 'baseline'
-  | 'first baseline'
-  | 'last baseline'
   | 'space-between'
   | 'space-around'
   | 'space-evenly'

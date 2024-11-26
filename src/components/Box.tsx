@@ -16,6 +16,9 @@ import {
   Right,
   Bottom,
   Left,
+  Overflow,
+  AlignSelf,
+  JustifySelf,
 } from '@/lib/types';
 import { mapProps } from '@/lib/utils';
 import { Slot } from './Slot';
@@ -54,14 +57,25 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   position?: Responsive<Position>;
   align?: Responsive<TextAlign>;
 
-  basis?: string;
-  grow?: Responsive<FlexGrow>;
-  shrink?: Responsive<FlexShrink>;
-
   top?: Responsive<Top>;
   right?: Responsive<Right>;
   bottom?: Responsive<Bottom>;
   left?: Responsive<Left>;
+
+  overflow?: Responsive<Overflow>;
+  overflowX?: Responsive<Overflow>;
+  overflowY?: Responsive<Overflow>;
+
+  alignSelf?: Responsive<AlignSelf>;
+  justifySelf?: Responsive<JustifySelf>;
+
+  flexBasis?: Responsive<string>;
+  flexGrow?: Responsive<FlexGrow>;
+  flexShrink?: Responsive<FlexShrink>;
+
+  gridArea?: Responsive<string>;
+  gridRow?: Responsive<string>;
+  gridColumn?: Responsive<string>;
 
   as?: string;
   asChild?: boolean;
@@ -95,13 +109,16 @@ function Box({
   maxHeight,
   position,
   align,
-  basis,
-  grow,
-  shrink,
   top,
   right,
   bottom,
   left,
+  flexBasis,
+  flexGrow,
+  flexShrink,
+  gridArea,
+  gridRow,
+  gridColumn,
   as = 'div',
   asChild,
   className,
@@ -138,13 +155,16 @@ function Box({
     maxHeight,
     position,
     textAlign: align,
-    flexBasis: basis,
-    flexGrow: grow,
-    flexShrink: shrink,
     top,
     right,
     bottom,
     left,
+    flexBasis,
+    flexGrow,
+    flexShrink,
+    gridArea,
+    gridRow,
+    gridColumn,
   });
 
   return (

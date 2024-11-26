@@ -1,4 +1,3 @@
-import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import { Box, BoxProps } from './Box';
 import styles from './Container.module.css';
