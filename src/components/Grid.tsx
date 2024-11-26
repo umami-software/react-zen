@@ -6,6 +6,7 @@ import {
   Spacing,
   GridTemplateRows,
   GridTemplateColumns,
+  GridTemplateAreas,
   AlignContent,
   AlignItems,
   JustifyContent,
@@ -26,6 +27,7 @@ export interface GridProps extends Omit<BoxProps, 'display'> {
   autoFlow?: Responsive<GridAutoFlow>;
   rows?: Responsive<GridTemplateRows>;
   columns?: Responsive<GridTemplateColumns>;
+  areas?: Responsive<GridTemplateAreas>;
 }
 
 export function Grid({
@@ -40,6 +42,7 @@ export function Grid({
   autoFlow,
   rows,
   columns,
+  areas,
   className,
   style,
   children,
@@ -56,6 +59,7 @@ export function Grid({
     gapY,
     gridTemplateRows: rows,
     gridTemplateColumns: columns,
+    gridTemplateAreas: areas,
     gridAutoFlow: autoFlow,
   });
 

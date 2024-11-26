@@ -77,6 +77,8 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   gridRow?: Responsive<string>;
   gridColumn?: Responsive<string>;
 
+  order?: Responsive<number>;
+
   as?: string;
   asChild?: boolean;
 }
@@ -119,6 +121,7 @@ function Box({
   gridArea,
   gridRow,
   gridColumn,
+  order,
   as = 'div',
   asChild,
   className,
@@ -165,6 +168,7 @@ function Box({
     gridArea,
     gridRow,
     gridColumn,
+    order,
   });
 
   return (

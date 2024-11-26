@@ -60,6 +60,7 @@ export type GridDisplay = 'none' | 'grid' | 'inline-grid';
 export type GridAutoFlow = 'row' | 'column' | 'dense' | 'row-dense' | 'column-dense';
 export type GridTemplateRows = string;
 export type GridTemplateColumns = string;
+export type GridTemplateAreas = string;
 
 export type JustifyContent =
   | 'center'

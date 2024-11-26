@@ -47,6 +47,7 @@ const CSS_MAP = {
   flexShrink: 'flex-shrink',
   gridTemplateRows: 'grid-template-rows',
   gridTemplateColumns: 'grid-template-columns',
+  gridTemplateAreas: 'grid-template-areas',
   gridAutoRows: 'grid-auto-rows',
   gridAutoColumns: 'grid-auto-columns',
   gridAutoFlow: 'grid-auto-flow',
@@ -57,6 +58,7 @@ const CSS_MAP = {
   right: 'right',
   bottom: 'bottom',
   left: 'left',
+  order: 'order',
 };
 
 const excludedProps = [
@@ -68,6 +70,7 @@ const excludedProps = [
   'maxHeight',
   'gridTemplateRows',
   'gridTemplateColumns',
+  'gridTemplateAreas',
   'gridAutoRows',
   'gridAutoColumns',
   'gridArea',
@@ -79,6 +82,7 @@ const excludedProps = [
   'gridArea',
   'gridRow',
   'gridColumn',
+  'order',
 ];
 
 type Keys = keyof typeof CSS_MAP;

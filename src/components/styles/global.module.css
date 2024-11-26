@@ -1323,6 +1323,9 @@
   .overflow-y-xs {
     overflow: var(--overflow-y-xs);
   }
+  .order-xs {
+    order: var(--order-xs);
+  }
 }
 @media (min-width: 768px) {
   .display-sm {
@@ -1472,6 +1475,9 @@
   }
   .overflow-y-sm {
     overflow: var(--overflow-y-sm);
+  }
+  .order-sm {
+    order: var(--order-sm);
   }
 }
 @media (min-width: 1024px) {
@@ -1623,6 +1629,9 @@
   .overflow-y-md {
     overflow: var(--overflow-y-md);
   }
+  .order-md {
+    order: var(--order-md);
+  }
 }
 @media (min-width: 1280px) {
   .display-lg {
@@ -1773,6 +1782,9 @@
   .overflow-y-lg {
     overflow: var(--overflow-y-lg);
   }
+  .order-lg {
+    order: var(--order-lg);
+  }
 }
 @media (min-width: 1640px) {
   .display-xl {
@@ -1922,5 +1934,8 @@
   }
   .overflow-y-xl {
     overflow: var(--overflow-y-xl);
+  }
+  .order-xl {
+    order: var(--order-xl);
   }
 }
