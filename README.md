@@ -16,6 +16,14 @@ yarn add @umami/react-zen
 
 ## Usage
 
+### Import styles
+
+```javascript
+import '@umami/react-zen/dist/styles.css';
+```
+
+### Import components
+
 ```javascript
 import { Button } from '@umami/react-zen';
 

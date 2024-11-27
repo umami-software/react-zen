@@ -88,6 +88,7 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
 
 function Box({
   display,
+  color,
   backgroundColor,
   borderSize,
   borderRadius,
@@ -135,6 +136,7 @@ function Box({
   const Component = asChild ? Slot : as;
   const [classes, styleProps] = useDesignProps({
     display,
+    color,
     backgroundColor,
     borderSize,
     borderRadius,

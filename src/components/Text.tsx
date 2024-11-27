@@ -6,25 +6,26 @@ import { Slot } from './Slot';
 import styles from './Text.module.css';
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
-  as?: 'span' | 'div' | 'label' | 'p';
-  asChild?: boolean;
   type?: 'muted' | 'faded';
   size?: Responsive<FontSize>;
   spacing?: Responsive<LetterSpacing>;
   weight?: Responsive<FontWeight>;
   align?: Responsive<TextAlign>;
   wrap?: Responsive<TextWrap>;
+  as?: 'span' | 'div' | 'label' | 'p';
+  asChild?: boolean;
 }
 
 export function Text({
-  as = 'span',
-  asChild,
   type,
   size,
   spacing,
   weight,
   align,
   wrap,
+  color,
+  as = 'span',
+  asChild,
   className,
   style,
   children,
@@ -37,6 +38,7 @@ export function Text({
     textWrap: wrap,
     fontWeight: weight,
     letterSpacing: spacing,
+    color,
   });
 
   return (
