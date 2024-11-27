@@ -48,7 +48,7 @@ export type FontWeight = 'light' | 'regular' | 'medium' | 'bold';
 export type TextWrap = 'wrap' | 'nowrap' | 'pretty' | 'balance';
 export type TextAlign = 'left' | 'center' | 'right';
 
-export type LetterSpacing = 'tighter' | 'tight' | 'normal' | 'wide' | 'wider';
+export type LetterSpacing = '1' | '2' | '3' | '4' | '5';
 
 export type FlexDisplay = 'none' | 'flex' | 'inline-flex';
 export type FlexDirection = 'column' | 'row' | 'row-reverse' | 'column-reverse';

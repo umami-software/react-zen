@@ -10,7 +10,7 @@ import {
   AlignContent,
   AlignItems,
 } from '@/lib/types';
-import { mapProps } from '@/lib/utils';
+import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
 
 export interface FlexboxProps extends Omit<BoxProps, 'display'> {
@@ -42,7 +42,7 @@ export function Flexbox({
   children,
   ...props
 }: FlexboxProps) {
-  const [classes, styleProps] = mapProps({
+  const [classes, styleProps] = useDesignProps({
     display,
     flexDirection: direction,
     flexWrap: wrap,

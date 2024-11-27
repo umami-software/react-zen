@@ -211,16 +211,19 @@
   text-wrap: stable;
 }
 
-.letter-spacing-tighter {
-  letter-spacing: -0.05em;
+.letter-spacing-1 {
+  letter-spacing: var(--letter-spacing-1);
 }
-.letter-spacing-tight {
+.letter-spacing-2 {
   letter-spacing: -0.025em;
 }
-.letter-spacing-wide {
+.letter-spacing-3 {
+  letter-spacing: 0;
+}
+.letter-spacing-4 {
   letter-spacing: 0.025em;
 }
-.letter-spacing-wider {
+.letter-spacing-5 {
   letter-spacing: 0.05em;
 }
 

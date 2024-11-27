@@ -1,24 +1,31 @@
 import classNames from 'classnames';
-import type { Responsive, FontSize, FontWeight } from '@/lib/types';
-import { mapProps } from '@/lib/utils';
+import type { Responsive, FontSize, FontWeight, LetterSpacing } from '@/lib/types';
+import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
 import styles from './Heading.module.css';
 
 interface HeadingProps extends BoxProps {
   size?: Responsive<FontSize>;
   weight?: Responsive<FontWeight>;
+  spacing?: Responsive<LetterSpacing>;
 }
 
 function Heading({
   size = '5',
   weight,
   align,
+  spacing = '1',
   className,
   style,
   children,
   ...props
 }: HeadingProps) {
-  const [classes, styleProps] = mapProps({ fontSize: size, textAlign: align, fontWeight: weight });
+  const [classes, styleProps] = useDesignProps({
+    fontSize: size,
+    textAlign: align,
+    fontWeight: weight,
+    letterSpacing: spacing,
+  });
 
   return (
     <Box

@@ -12,7 +12,7 @@ import {
   JustifyContent,
   JustifyItems,
 } from '@/lib/types';
-import { mapProps } from '@/lib/utils';
+import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
 
 export interface GridProps extends Omit<BoxProps, 'display'> {
@@ -48,7 +48,7 @@ export function Grid({
   children,
   ...props
 }: GridProps) {
-  const [classes, styleProps] = mapProps({
+  const [classes, styleProps] = useDesignProps({
     display,
     justifyContent,
     justifyItems,

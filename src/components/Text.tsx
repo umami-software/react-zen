@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import { Responsive, TextAlign, FontWeight, LetterSpacing, FontSize, TextWrap } from '@/lib/types';
-import { mapProps } from '@/lib/utils';
+import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
 import styles from './Text.module.css';
 
@@ -10,7 +10,7 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
   asChild?: boolean;
   type?: 'muted' | 'faded';
   size?: Responsive<FontSize>;
-  letterSpacing?: Responsive<LetterSpacing>;
+  spacing?: Responsive<LetterSpacing>;
   weight?: Responsive<FontWeight>;
   align?: Responsive<TextAlign>;
   wrap?: Responsive<TextWrap>;
@@ -21,7 +21,7 @@ export function Text({
   asChild,
   type,
   size,
-  letterSpacing,
+  spacing,
   weight,
   align,
   wrap,
@@ -31,12 +31,12 @@ export function Text({
   ...props
 }: TextProps) {
   const Component = asChild ? Slot : as;
-  const [classes, styleProps] = mapProps({
+  const [classes, styleProps] = useDesignProps({
     fontSize: size,
     textAlign: align,
     textWrap: wrap,
     fontWeight: weight,
-    letterSpacing,
+    letterSpacing: spacing,
   });
 
   return (

@@ -20,7 +20,7 @@ import {
   AlignSelf,
   JustifySelf,
 } from '@/lib/types';
-import { mapProps } from '@/lib/utils';
+import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
 
 interface BoxProps extends HTMLAttributes<HTMLElement> {
@@ -130,7 +130,7 @@ function Box({
   ...props
 }: BoxProps) {
   const Component = asChild ? Slot : as;
-  const [classes, styleProps] = mapProps({
+  const [classes, styleProps] = useDesignProps({
     display,
     backgroundColor,
     borderSize,

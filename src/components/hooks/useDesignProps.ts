@@ -1,4 +1,4 @@
-import styles from '../components/styles/global.module.css';
+import styles from '../styles/global.module.css';
 
 const CSS_MAP = {
   display: 'display',
@@ -87,7 +87,14 @@ const excludedProps = [
 
 type Keys = keyof typeof CSS_MAP;
 
-export function mapProps(props: { [K in Keys]?: any }): [string[], { [key: string]: any }] {
+function parseValue(value: string, name: string) {
+  if (/^\d+$/.test(value)) {
+    return `var(--${name}-${value})`;
+  }
+  return value;
+}
+
+export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key: string]: any }] {
   const classes: string[] = [];
   const styleProps: { [key: string]: any } = {};
 
@@ -118,11 +125,4 @@ export function mapProps(props: { [K in Keys]?: any }): [string[], { [key: strin
   });
 
   return [classes, styleProps];
-}
-
-function parseValue(value: string, name: string) {
-  if (/^\d+$/.test(value)) {
-    return `var(--${name}-${value})`;
-  }
-  return value;
 }

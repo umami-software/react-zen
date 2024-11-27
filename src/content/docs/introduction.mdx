@@ -21,17 +21,23 @@ Out of the box, Zen provides predefined styles that cover
 [fonts](/docs/design/fonts),
 [spacing](/docs/design/spacing),
 [shadows](/docs/design/shadows),
-and [borders](/docs/design/border-radius).
+and [borders](/docs/design/border-radius),
+as well as components that deal specifically with [typography](/docs/typography/text) and [layout](/docs/layout/box).
 Additionally, [breakpoints](/docs/design/breakpoints) are handled natively so you can create
 responsive layouts by just passing props to your components.
+
+### No CSS required
+
+You shouldn't have to write any CSS.
+Zen makes extensive use of CSS variables that you can modify to adjust the design to your needs.
+Layout components, such as [Flexbox](/docs/layout/flexbox) and [Grid](/docs/layout/grid), allow you to compose almost any UI.
+All components can still be styled through the standard `className` and `style` props for special cases.
 
 ### Comprehensive components
 
 Components automatically handle all design and layout.
 All design customizations can be done via props instead of manipulating CSS.
 This simplifies your workflow to just composing tags and passing props.
-
-For example, this code:
 
 ```jsx
 <Box padding="6" borderSize="1" borderRadius="3" shadow="3">
@@ -44,8 +50,6 @@ For example, this code:
   </Flexbox>
 </Box>
 ```
-
-Produces this output:
 
 <Example>
   <Box padding="6" borderSize="1" borderRadius="3" shadow="3">
@@ -64,5 +68,3 @@ In this example we have:
 - A [Flexbox](/docs/layout/flexbox) component that aligns the content and provides spacing.
 - A [Text](/docs/typography/text) component to provides styled text.
 - A [Button](/docs/components/button) component for interactivity.
-
-All components can still be styled using the standard `className` and `style` props, but they should only be used in special cases.

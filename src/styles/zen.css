@@ -16,6 +16,12 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
+  --letter-spacing-1: -0.05em;
+  --letter-spacing-2: -0.025em;
+  --letter-spacing-3: 0;
+  --letter-spacing-4: 0.025em;
+  --letter-spacing-5: 0.05em;
+
   /* Spacing */
 
   --spacing-1: 4px;
@@ -42,8 +48,7 @@
   --border-radius-2: 4px;
   --border-radius-3: 8px;
   --border-radius-4: 16px;
-  --border-radius-5: 18px;
-  --border-radius-6: 9999px;
+  --border-radius-5: 9999px;
 
   /* Shadows */
 
