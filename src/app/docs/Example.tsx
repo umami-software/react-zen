@@ -11,6 +11,7 @@ export function Example({
   borderSize = '1',
   borderRadius = '3',
   minHeight = '300px',
+  wrap = 'wrap',
   children,
   ...props
 }: FlexboxProps) {
@@ -27,6 +28,7 @@ export function Example({
         borderRadius,
         marginY,
         minHeight,
+        wrap,
       }}
     >
       {children}

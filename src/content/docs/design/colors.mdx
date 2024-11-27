@@ -6,9 +6,9 @@ There are several categories of colors that we use in this library and they are 
 
 ## Base colors
 
-These colors are used as the basis of every UI element including backgrounds, borders, and text.
+Base colors are used as the basis of every UI element including backgrounds, borders, and text.
 
-<Example direction="row">
+<Example direction="row" gap="2">
   <ExampleBox backgroundColor="50" />
   <ExampleBox backgroundColor="100" />
   <ExampleBox backgroundColor="200" />
@@ -20,6 +20,14 @@ These colors are used as the basis of every UI element including backgrounds, bo
   <ExampleBox backgroundColor="800" />
   <ExampleBox backgroundColor="900" />
   <ExampleBox backgroundColor="950" />
+</Example>
+
+## Accent colors
+
+Accent colors provide additional meaning to design elements.
+
+<Example direction="row" wrap="wrap">
+  <AccentColorsExample />
 </Example>
 
 ## CSS variables
@@ -42,6 +50,44 @@ easily swap these out with any of their other color palettes.
       { name: '--base-color-800', value: '#262626' },
       { name: '--base-color-900', value: '#171717' },
       { name: '--base-color-950', value: '#0a0a0a' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" />
+  </DataTable>
+</Example>
+
+For accent colors, we used the colors from [Radix Themes](https://www.radix-ui.com/themes/docs/theme/color).
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--accent-color-gray', value: '#8d8d8d' },
+      { name: '--accent-color-gold', value: '#978365' },
+      { name: '--accent-color-bronze', value: '#a18072' },
+      { name: '--accent-color-brown', value: '#ad7f58' },
+      { name: '--accent-color-yellow', value: '#ffe629' },
+      { name: '--accent-color-amber', value: '#ffc53d' },
+      { name: '--accent-color-orange', value: '#f76b15' },
+      { name: '--accent-color-tomato', value: '#e54d2e' },
+      { name: '--accent-color-red', value: '#e5484d' },
+      { name: '--accent-color-ruby', value: '#e54666' },
+      { name: '--accent-color-crimson', value: '#e93d82' },
+      { name: '--accent-color-pink', value: '#d6409f' },
+      { name: '--accent-color-plum', value: '#ab4aba' },
+      { name: '--accent-color-purple', value: '#8e4ec6' },
+      { name: '--accent-color-violet', value: '#6e56cf' },
+      { name: '--accent-color-iris', value: '#5b5bd6' },
+      { name: '--accent-color-indigo', value: '#3e63dd' },
+      { name: '--accent-color-blue', value: '#0090ff' },
+      { name: '--accent-color-cyan', value: '#00a2c7' },
+      { name: '--accent-color-teal', value: '#12a594' },
+      { name: '--accent-color-jade', value: '#29a383' },
+      { name: '--accent-color-green', value: '#30a46c' },
+      { name: '--accent-color-grass', value: '#46a758' },
+      { name: '--accent-color-lime', value: '#bdee63' },
+      { name: '--accent-color-mint', value: '#86ead4' },
+      { name: '--accent-color-sky', value: '#7ce2fe' },
     ]}
   >
     <DataColumn id="name" label="Name" />

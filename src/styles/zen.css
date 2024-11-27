@@ -73,20 +73,39 @@
   --base-color-900: #171717;
   --base-color-950: #0a0a0a;
 
-  --success-color: #22c55e;
-  --success-font-color: var(--base-color-50);
+  --base-color-gray: #8d8d8d;
+  --base-color-mauve: #8e8c99;
+  --base-color-slate: #8b8d98;
+  --base-color-sage: #868e8b;
+  --base-color-olive: #898e87;
+  --base-color-sand: #8d8d86;
 
-  --danger-color: #ef4444;
-  --danger-font-color: var(--base-color-50);
-
-  --warning-color: #f97316;
-  --warning-font-color: var(--base-color-50);
-
-  --active-color: #3b82f6;
-  --active-font-color: var(--base-color-50);
-
-  --inactive-color: var(--base-color-400);
-  --inactive-font-color: var(--base-color-900);
+  --accent-color-gray: #8d8d8d;
+  --accent-color-gold: #978365;
+  --accent-color-bronze: #a18072;
+  --accent-color-brown: #ad7f58;
+  --accent-color-yellow: #ffe629;
+  --accent-color-amber: #ffc53d;
+  --accent-color-orange: #f76b15;
+  --accent-color-tomato: #e54d2e;
+  --accent-color-red: #e5484d;
+  --accent-color-ruby: #e54666;
+  --accent-color-crimson: #e93d82;
+  --accent-color-pink: #d6409f;
+  --accent-color-plum: #ab4aba;
+  --accent-color-purple: #8e4ec6;
+  --accent-color-violet: #6e56cf;
+  --accent-color-iris: #5b5bd6;
+  --accent-color-indigo: #3e63dd;
+  --accent-color-blue: #0090ff;
+  --accent-color-cyan: #00a2c7;
+  --accent-color-teal: #12a594;
+  --accent-color-jade: #29a383;
+  --accent-color-green: #30a46c;
+  --accent-color-grass: #46a758;
+  --accent-color-lime: #bdee63;
+  --accent-color-mint: #86ead4;
+  --accent-color-sky: #7ce2fe;
 
   /* Global */
 
@@ -110,6 +129,21 @@
   --light-color: var(--base-color-50);
 
   --dark-color: var(--base-color-950);
+
+  --success-color: var(--accent-color-green);
+  --success-font-color: var(--base-color-50);
+
+  --danger-color: var(--accent-color-red);
+  --danger-font-color: var(--base-color-50);
+
+  --warning-color: var(--accent-color-orange);
+  --warning-font-color: var(--base-color-50);
+
+  --active-color: var(--accent-color-blue);
+  --active-font-color: var(--base-color-50);
+
+  --inactive-color: var(--accent-color-gray);
+  --inactive-font-color: var(--base-color-900);
 
   /* Theme settings */
 

@@ -183,6 +183,104 @@
   background-color: var(--base-color-950);
 }
 
+.background-color-gray {
+  background-color: var(--base-color-gray);
+}
+.background-color-mauve {
+  background-color: var(--base-color-mauve);
+}
+.background-color-slate {
+  background-color: var(--base-color-slate);
+}
+.background-color-sage {
+  background-color: var(--base-color-sage);
+}
+.background-color-olive {
+  background-color: var(--base-color-olive);
+}
+.background-color-sand {
+  background-color: var(--base-color-sand);
+}
+
+.background-color-gray {
+  background-color: var(--accent-color-gray);
+}
+.background-color-gold {
+  background-color: var(--accent-color-gold);
+}
+.background-color-bronze {
+  background-color: var(--accent-color-bronze);
+}
+.background-color-brown {
+  background-color: var(--accent-color-brown);
+}
+.background-color-yellow {
+  background-color: var(--accent-color-yellow);
+}
+.background-color-amber {
+  background-color: var(--accent-color-amber);
+}
+.background-color-orange {
+  background-color: var(--accent-color-orange);
+}
+.background-color-tomato {
+  background-color: var(--accent-color-tomato);
+}
+.background-color-red {
+  background-color: var(--accent-color-red);
+}
+.background-color-ruby {
+  background-color: var(--accent-color-ruby);
+}
+.background-color-crimson {
+  background-color: var(--accent-color-crimson);
+}
+.background-color-pink {
+  background-color: var(--accent-color-pink);
+}
+.background-color-plum {
+  background-color: var(--accent-color-plum);
+}
+.background-color-purple {
+  background-color: var(--accent-color-purple);
+}
+.background-color-violet {
+  background-color: var(--accent-color-violet);
+}
+.background-color-iris {
+  background-color: var(--accent-color-iris);
+}
+.background-color-indigo {
+  background-color: var(--accent-color-indigo);
+}
+.background-color-blue {
+  background-color: var(--accent-color-blue);
+}
+.background-color-cyan {
+  background-color: var(--accent-color-cyan);
+}
+.background-color-teal {
+  background-color: var(--accent-color-teal);
+}
+.background-color-jade {
+  background-color: var(--accent-color-jade);
+}
+.background-color-green {
+  background-color: var(--accent-color-green);
+}
+.background-color-grass {
+  background-color: var(--accent-color-grass);
+}
+.background-color-lime {
+  background-color: var(--accent-color-lime);
+}
+.background-color-mint {
+  background-color: var(--accent-color-mint);
+}
+.background-color-sky {
+  background-color: var(--accent-color-sky);
+}
+
 /* Text */
 
 .text-align-left {
@@ -925,7 +1023,7 @@
   flex-direction: column-reverse;
 }
 
-.flex-wrap {
+.flex-wrap-wrap {
   flex-wrap: wrap;
 }
 .flex-wrap-nowrap {

@@ -1,4 +1,5 @@
 'use client';
+export { AccentColorsExample } from './AccentColorsExample';
 export { AlertDialogExample } from './AlertDialogExample';
 export { ConfirmationDialogExample } from './ConfirmationDialogExample';
 export { DialogExample } from './DialogExample';
