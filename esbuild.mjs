@@ -21,7 +21,12 @@ async function processCSSModules(css, filename) {
 
   const result = await postcss([
     postcssModules({
-      generateScopedName: '[name]_[local]__[hash:base64:5]',
+      generateScopedName: function (name, filename, css) {
+        const file = path.basename(filename, '.module.css');
+        const hash = btoa(md5(filename + name + css)).substring(0, 5);
+
+        return `${file}_${name}__${hash}`.replace('global_', '');
+      },
       getJSON: (cssFileName, json) => {
         cssModulesJSON = json;
       },
@@ -89,9 +94,7 @@ esbuild
     ...config,
     outfile: 'dist/index.js',
     format: 'cjs',
-    loader: {
-      '.css': 'empty',
-    },
+    plugins: [commonjs(), cssModulesPlugin],
   })
   .catch(e => {
     console.error(e);
