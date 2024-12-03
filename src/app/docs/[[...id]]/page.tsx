@@ -8,7 +8,7 @@ const FOLDER = path.resolve(process.cwd(), './src/content/docs');
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string[] };
+  params: Promise<{ id: string[] }>;
 }): Promise<Metadata> {
   const { id } = await params;
   const name = id?.length ? id.join('/') : 'index';
@@ -16,8 +16,8 @@ export async function generateMetadata({
 
   return {
     title: {
-      absolute: `${doc?.meta?.title} – Umami`,
-      default: 'Umami',
+      absolute: `${doc?.meta?.title} – zen`,
+      default: 'zen',
     },
   };
 }

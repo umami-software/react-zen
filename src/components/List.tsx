@@ -20,7 +20,7 @@ function List({ items, className, children, ...props }: ListProps) {
           }
 
           return (
-            <ListItem key={index} id={item}>
+            <ListItem key={index} id={item} className={styles.item}>
               {item}
             </ListItem>
           );

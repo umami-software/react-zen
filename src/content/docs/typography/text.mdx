@@ -39,6 +39,22 @@ A text element with controls for size, color, weight and letter spacing.
   <Text weight="bold">Bold text</Text>
 </Example>
 
+## Alignment
+
+<Example>
+  <Box width="100%">
+    <Text align="left" as="div">
+      {'Left'}
+    </Text>
+    <Text align="center" as="div">
+      {'Center'}
+    </Text>
+    <Text align="right" as="div">
+      {'Right'}
+    </Text>
+  </Box>
+</Example>
+
 ## Letter spacing
 
 <Example>
@@ -47,4 +63,23 @@ A text element with controls for size, color, weight and letter spacing.
   <Text spacing="3">Letter spacing 3 (normal)</Text>
   <Text spacing="4">Letter spacing 4</Text>
   <Text spacing="5">Letter spacing 5</Text>
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'type', value: 'Responsive<"muted" | "faded">' },
+      { name: 'size', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9">' },
+      { name: 'weight', value: 'Responsive<"light" | "regular" | "medium" | "bold">' },
+      { name: 'align', value: 'Responsive<"left" | "center" | "right">' },
+      { name: 'spacing', value: 'Responsive<"1" | "2" | "3" | "4" | "5">' },
+      { name: 'as', value: 'string' },
+      { name: 'asChild', value: 'boolean' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+  </DataTable>
 </Example>

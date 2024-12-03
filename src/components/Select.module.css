@@ -13,7 +13,13 @@
 
 .list {
   min-width: 200px;
+  border: var(--border);
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-3);
+}
+
+.list > * {
+  border-radius: 0;
 }
 
 .icon {

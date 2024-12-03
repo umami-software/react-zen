@@ -37,6 +37,6 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
-  title: 'Umami Zen',
-  description: 'React components built by Umami.',
+  title: 'zen',
+  description: 'A modern. minimalist React component library.',
 };

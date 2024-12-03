@@ -25,15 +25,11 @@ A heading element.
 ## Alignment
 
 <Example>
-  <Heading align="left" width="100%">
-    Left
-  </Heading>
-  <Heading align="center" width="100%">
-    Center
-  </Heading>
-  <Heading align="right" width="100%">
-    Right
-  </Heading>
+  <Box width="100%">
+    <Heading align="left">Left</Heading>
+    <Heading align="center">Center</Heading>
+    <Heading align="right">Right</Heading>
+  </Box>
 </Example>
 
 ## Letter spacing
@@ -44,4 +40,21 @@ A heading element.
   <Heading spacing="3">Letter spacing 3</Heading>
   <Heading spacing="4">Letter spacing 4</Heading>
   <Heading spacing="5">Letter spacing 5</Heading>
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'size', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9">' },
+      { name: 'align', value: 'Responsive<"left" | "center" | "right">' },
+      { name: 'spacing', value: 'Responsive<"1" | "2" | "3" | "4" | "5">' },
+      { name: 'as', value: 'string' },
+      { name: 'asChild', value: 'boolean' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+  </DataTable>
 </Example>
