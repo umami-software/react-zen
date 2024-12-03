@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Grid, Column } from '@/components';
+import { Grid, Box } from '@/components';
 import { Nav } from './Nav';
 import styles from './layout.module.css';
 
@@ -12,7 +12,7 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
       style={{ margin: '0 auto' }}
     >
       <Nav />
-      <Column className={styles.docs}>{children}</Column>
+      <Box className={styles.docs}>{children}</Box>
     </Grid>
   );
 }
