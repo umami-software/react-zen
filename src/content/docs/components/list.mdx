@@ -5,33 +5,77 @@ title: List
 A list displays a collection of items and allows a user to select one or more of them.
 
 <Example>
-  <List items={['One', 'Two', 'Three', 'Four', 'Five']} />
+  <List>
+    <ListItem>One</ListItem>
+    <ListItem>Two</ListItem>
+    <ListItem>Three</ListItem>
+    <ListItem>Four</ListItem>
+    <ListItem>Five</ListItem>
+  </List>
 </Example>
 
 ## Separators
 
 <Example>
-  <List items={['One', null, 'Two', 'Three', null, 'Four', 'Five']} />
+  <List>
+    <ListItem>One</ListItem>
+    <ListItem>Two</ListItem>
+    <ListSeparator />
+    <ListItem>Three</ListItem>
+    <ListItem>Four</ListItem>
+    <ListSeparator />
+    <ListItem>Five</ListItem>
+  </List>
+</Example>
+
+## Sections
+
+<Example>
+  <List>
+    <ListSection title="Introduction">
+      <ListItem>One</ListItem>
+      <ListItem>Two</ListItem>
+      <ListItem>Three</ListItem>
+    </ListSection>
+    <ListSection title="Summary">
+      <ListItem>Four</ListItem>
+      <ListItem>Five</ListItem>
+    </ListSection>
+  </List>
 </Example>
 
 ## Single select
 
 <Example>
-  <List selectionMode="single" items={['One', 'Two', 'Three', 'Four', 'Five']} />
+  <List selectionMode="single">
+    <ListItem>One</ListItem>
+    <ListItem>Two</ListItem>
+    <ListItem>Three</ListItem>
+    <ListItem>Four</ListItem>
+    <ListItem>Five</ListItem>
+  </List>
 </Example>
 
 ## Multiple select
 
 <Example>
-  <List selectionMode="multiple" items={['One', 'Two', 'Three', 'Four', 'Five']} />
+  <List selectionMode="multiple">
+    <ListItem>One</ListItem>
+    <ListItem>Two</ListItem>
+    <ListItem>Three</ListItem>
+    <ListItem>Four</ListItem>
+    <ListItem>Five</ListItem>
+  </List>
 </Example>
 
 ## Preselected
 
 <Example>
-  <List
-    selectionMode="multiple"
-    selectedKeys={['Three', 'Five']}
-    items={['One', 'Two', 'Three', 'Four', 'Five']}
-  />
+  <List selectionMode="multiple" defaultSelectedKeys={['three', 'five']}>
+    <ListItem id="one">One</ListItem>
+    <ListItem id="two">Tow</ListItem>
+    <ListItem id="three">Three</ListItem>
+    <ListItem id="four">Four</ListItem>
+    <ListItem id="five">Five</ListItem>
+  </List>
 </Example>

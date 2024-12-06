@@ -11,3 +11,13 @@
 .separator {
   border-bottom: var(--border);
 }
+
+.section {
+  margin-bottom: var(--spacing-3);
+}
+
+.header {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-bold);
+  padding: var(--padding-y) var(--padding-x);
+}

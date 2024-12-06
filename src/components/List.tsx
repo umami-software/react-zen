@@ -1,16 +1,24 @@
 import { ReactNode } from 'react';
-import { ListBox, ListBoxProps, Separator } from 'react-aria-components';
+import {
+  ListBox,
+  ListBoxProps,
+  Separator,
+  SeparatorProps,
+  ListBoxSection,
+  ListBoxSectionProps,
+  Header,
+} from 'react-aria-components';
 import classNames from 'classnames';
 import { ListItem } from './ListItem';
 import styles from './List.module.css';
 
-interface ListProps extends ListBoxProps<any> {
+export interface ListProps extends ListBoxProps<any> {
   items?: any[];
   className?: string;
   children?: ReactNode;
 }
 
-function List({ items, className, children, ...props }: ListProps) {
+export function List({ items, className, children, ...props }: ListProps) {
   return (
     <ListBox {...props} items={items} className={classNames(styles.list, className)}>
       {children ||
@@ -29,5 +37,20 @@ function List({ items, className, children, ...props }: ListProps) {
   );
 }
 
-export { List };
-export type { ListProps };
+export function ListSeparator({ className, ...props }: SeparatorProps) {
+  return <Separator {...props} className={classNames(styles.separator, className)} />;
+}
+
+export function ListSection({
+  title,
+  className,
+  children,
+  ...props
+}: ListBoxSectionProps<any> & { title?: string }): ReactNode {
+  return (
+    <ListBoxSection {...props} className={classNames(styles.section, className)}>
+      {title && <Header className={styles.header}>{title}</Header>}
+      {children as any}
+    </ListBoxSection>
+  );
+}

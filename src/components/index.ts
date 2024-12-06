@@ -39,7 +39,7 @@ import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { InlineEditField } from './InlineEditField';
 import { Label } from './Label';
-import { List } from './List';
+import { List, ListSeparator, ListSection } from './List';
 import { ListItem } from './ListItem';
 import { Loading } from './Loading';
 import { LoadingButton } from './LoadingButton';
@@ -112,6 +112,7 @@ export {
   Label,
   List,
   ListItem,
+  ListSection,
   Loading,
   LoadingButton,
   Menu,
@@ -129,6 +130,7 @@ export {
   Row,
   SearchField,
   Select,
+  ListSeparator,
   Slider,
   Slot,
   Spinner,
