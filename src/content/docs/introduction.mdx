@@ -28,10 +28,10 @@ responsive layouts by just passing props to your components.
 
 ### No CSS required
 
-You shouldn't have to write any CSS.
+You shouldn't have to write any custom CSS.
 Zen makes extensive use of CSS variables that you can modify to adjust the design to your needs.
 Layout components, such as [Flexbox](/docs/layout/flexbox) and [Grid](/docs/layout/grid), allow you to compose almost any UI.
-All components can still be styled through the standard `className` and `style` props for special cases.
+Still, all components can be styled through the standard `className` and `style` props if needed.
 
 ### Comprehensive components
 
@@ -58,7 +58,6 @@ This simplifies your workflow to just composing tags and passing props.
       <Text type="muted" weight="medium">{`This is the zen way.`}</Text>
       <Button variant="primary">Enter</Button>
     </Flexbox>
-
   </Box>
 </Example>
 
@@ -66,5 +65,5 @@ In this example we have:
 
 - A [Box](/docs/layout/box) component that provides a styled container.
 - A [Flexbox](/docs/layout/flexbox) component that aligns the content and provides spacing.
-- A [Text](/docs/typography/text) component to provides styled text.
+- A [Text](/docs/typography/text) component that provides styled text.
 - A [Button](/docs/components/button) component for interactivity.
