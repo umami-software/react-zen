@@ -1,82 +1,111 @@
 import classNames from 'classnames';
-import { createElement } from 'react';
-import {
-  ToastProvider,
-  ToastProviderProps,
-  ToastProps,
-  Root,
-  ToastTitle,
-  ToastDescription,
-  ToastAction,
-  ToastClose,
-  Viewport,
-  ToastViewportProps,
-} from '@radix-ui/react-toast';
+import { createElement, HTMLAttributes, createContext } from 'react';
+import { useTransition, animated } from '@react-spring/web';
+import { Button } from '@/components/Button';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { useToast } from './hooks/useToast';
 import styles from './Toast.module.css';
+
+const ToastContext = createContext({});
+
+export interface ToastProviderProps extends HTMLAttributes<HTMLDivElement> {
+  position?:
+    | 'top-left'
+    | 'top'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom'
+    | 'bottom-right'
+    | 'left'
+    | 'right';
+  duration?: number;
+}
+
+const ToastProvider = ({ children, ...config }: ToastProviderProps) => {
+  return <ToastContext.Provider value={config}>{children}</ToastContext.Provider>;
+};
 
 const icons = {
   info: Icons.Info,
   error: Icons.Alert,
 };
 
-interface _ToastProps extends ToastProps {
+interface ToastProps extends HTMLAttributes<HTMLDivElement> {
+  message: string;
   title?: string;
-  description?: string;
-  actionText?: string;
+  actions?: string[];
   allowClose?: boolean;
   variant?: 'info' | 'error';
+  onClose?: (action?: string) => void;
 }
 
 function Toast({
+  message,
   title,
-  description,
-  actionText,
+  actions = [],
   allowClose = true,
   variant,
   className,
   children,
+  onClose,
   ...props
-}: _ToastProps) {
+}: ToastProps) {
+  const hasActions = actions?.length > 0;
+
   return (
-    <Root {...props} className={classNames(styles.toast, className, variant && styles[variant])}>
+    <div {...props} className={classNames(styles.toast, className, variant && styles[variant])}>
       <Icon className={styles.icon} size="md">
         {variant && createElement(icons[variant])}
       </Icon>
-      {title && <ToastTitle className={styles.title}>{title}</ToastTitle>}
-      {description && (
-        <ToastDescription className={styles.description}>{description}</ToastDescription>
+      {title && <div className={styles.title}>{title}</div>}
+      {message && <div className={styles.description}>{message}</div>}
+      {hasActions &&
+        actions.map(action => {
+          return (
+            <Button key={action} className={styles.action} onPress={() => onClose?.(action)}>
+              {action}
+            </Button>
+          );
+        })}
+      {!hasActions && allowClose && (
+        <Icon
+          size="sm"
+          aria-hidden
+          className={styles.close}
+          aria-label="Close"
+          onClick={() => onClose?.()}
+        >
+          <Icons.Close />
+        </Icon>
       )}
-      {children && (
-        <ToastAction className={styles.action} altText={actionText || 'Action'} asChild>
-          {children}
-        </ToastAction>
-      )}
-      {!children && allowClose && (
-        <ToastClose className={styles.close} aria-label="Close">
-          <Icon size="sm" aria-hidden>
-            <Icons.Close />
-          </Icon>
-        </ToastClose>
-      )}
-    </Root>
+    </div>
   );
 }
 
-function Toaster(props: ToastViewportProps) {
+function Toaster() {
   const { toasts } = useToast();
 
+  const transitions = useTransition(toasts, {
+    from: { opacity: 0, transform: 'translateX(100%)' },
+    enter: { opacity: 1, transform: 'translateY(0px)' },
+    leave: { opacity: 0, transform: 'translateY(80%)' },
+    config: { duration: 100 },
+  });
+
   return (
-    <>
-      {toasts.map(({ id, message, props }) => {
-        return <Toast {...props} key={id} description={message} />;
+    <div className={styles.viewport}>
+      {transitions((style, item) => {
+        const { id, ...props } = item;
+        return (
+          <animated.div key={id} style={style}>
+            <Toast {...props} />
+          </animated.div>
+        );
       })}
-      <Viewport className={styles.viewport} {...props} />
-    </>
+    </div>
   );
 }
 
-export { Toast, ToastProvider, Toaster };
-export type { _ToastProps as ToastProps, ToastProviderProps, ToastViewportProps as ToasterProps };
+export { Toast, ToastProvider, ToastContext, Toaster };
+export type { ToastProps as ToastProps };

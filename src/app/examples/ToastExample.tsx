@@ -28,7 +28,7 @@ export function ToastActionExample() {
       onPress={() =>
         toast('The task was deleted successfully.', {
           title: 'Task deleted',
-          children: <Button>Undo</Button>,
+          actions: ['Undo'],
         })
       }
     >

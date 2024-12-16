@@ -1,12 +1,21 @@
 import { create } from 'zustand';
 import { ToastProps } from '../Toast';
 
-let toastId = 1;
+let TOAST_ID = 1;
+const TOAST_DURATION = 3000;
 
-interface ToastState {
-  id: number;
+interface ToastOptions {
+  duration?: number;
+  title?: string;
+  actions?: string[];
+  allowClose?: boolean;
+  variant?: 'info' | 'error';
+  onClose?: (action?: string) => void;
+}
+
+interface ToastState extends ToastOptions {
+  id: string;
   message: string;
-  props: ToastProps;
 }
 
 const initialState: { toasts: ToastState[] } = {
@@ -15,27 +24,33 @@ const initialState: { toasts: ToastState[] } = {
 
 const store = create(() => ({ ...initialState }));
 
-function removeToast(id: number) {
-  // Have to let closing animations play out
-  setTimeout(() => {
-    store.setState(({ toasts }) => {
-      return { toasts: toasts.filter(toast => toast.id !== id) };
-    });
-  }, 1000);
+function removeToast(id: string) {
+  store.setState(({ toasts }) => {
+    return { toasts: toasts.filter(toast => toast.id !== id) };
+  });
 }
 
-function toast(message: string, props: ToastProps = {}) {
-  const id = toastId++;
+function toast(
+  message: string,
+  { onClose, duration = TOAST_DURATION, ...options }: ToastOptions = {},
+) {
+  const id = `toast-${TOAST_ID++}`;
 
-  const handleOpenChange = () => {
+  const handleClose = () => {
+    onClose && onClose();
+
     removeToast(id);
   };
 
   store.setState(({ toasts }) => {
     return {
-      toasts: toasts.concat({ id, message, props: { ...props, onOpenChange: handleOpenChange } }),
+      toasts: [...toasts, { ...options, id, message, onClose: handleClose }],
     };
   });
+
+  if (duration) {
+    setTimeout(() => removeToast(id), duration);
+  }
 }
 
 const useStore = store;
@@ -47,3 +62,4 @@ function useToast() {
 }
 
 export { useToast, toast };
+export type { ToastProps };

@@ -7,9 +7,12 @@ import {
   ListBoxSection,
   ListBoxSectionProps,
   Header,
+  ListBoxItemProps,
+  ListBoxItem,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { ListItem } from './ListItem';
+import { Icon } from '@/components/Icon';
+import { Icons } from '@/components/Icons';
 import styles from './List.module.css';
 
 export interface ListProps extends ListBoxProps<any> {
@@ -34,6 +37,19 @@ export function List({ items, className, children, ...props }: ListProps) {
           );
         })}
     </ListBox>
+  );
+}
+
+export function ListItem({ children, className, ...props }: ListBoxItemProps<any>) {
+  return (
+    <ListBoxItem {...props} className={classNames(styles.item, className)}>
+      {children as any}
+      <span aria-hidden="true">
+        <Icon size="sm" className={styles.check}>
+          <Icons.Check />
+        </Icon>
+      </span>
+    </ListBoxItem>
   );
 }
 

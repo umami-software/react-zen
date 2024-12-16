@@ -2,7 +2,7 @@
 
 **zen** is a modern, minimalist React component library.
 
-- Built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) and [Radix](https://www.radix-ui.com/primitives) primitives.
+- Built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) primitives.
 - No Tailwind, pure CSS.
 - Out-of-the-box accessibility.
 

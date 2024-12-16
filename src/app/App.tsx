@@ -8,7 +8,7 @@ import styles from './App.module.css';
 
 export function App({ children }: { children: ReactNode }) {
   return (
-    <ZenProvider config={{ toast: { duration: 3000 } }}>
+    <ZenProvider toast={{ duration: 3000 }}>
       <Container className={styles.app}>
         <Header />
         <main className={styles.body}>{children}</main>
