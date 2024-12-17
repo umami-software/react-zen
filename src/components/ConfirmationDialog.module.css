@@ -3,6 +3,6 @@
 }
 
 .value {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-4);
   font-weight: 700;
 }

@@ -9,8 +9,7 @@
 }
 
 .title {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-4);
   font-weight: 700;
   margin-bottom: var(--spacing-3);
 }
-

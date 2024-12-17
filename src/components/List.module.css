@@ -1,4 +1,5 @@
 .list {
+  overflow: hidden;
   min-width: 100px;
   outline: none;
 }
