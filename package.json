@@ -76,7 +76,7 @@
     "@svgr/rollup": "^8.1.0",
     "@types/mdx": "^2.0.11",
     "@types/node": "^22.4.0",
-    "@types/react": "^18",
+    "@types/react": "^19.0.1",
     "@types/react-dom": "^18",
     "babel-plugin-inline-react-svg": "^2.0.2",
     "babel-plugin-syntax-hermes-parser": "^0.21.1",

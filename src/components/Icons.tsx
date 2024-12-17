@@ -2,12 +2,11 @@ import { PiEyeLight, PiEyeSlashLight } from 'react-icons/pi';
 import { HiOutlineMenu } from 'react-icons/hi';
 import { HiMagnifyingGlass } from 'react-icons/hi2';
 import { MdCheck, MdArrowForwardIos, MdMoreHoriz, MdLogout, MdRefresh } from 'react-icons/md';
-import { IoCopyOutline } from 'react-icons/io5';
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai';
 import { BiEditAlt } from 'react-icons/bi';
 import { PiTrash, PiArrowRight } from 'react-icons/pi';
 import { GoAlert, GoInfo } from 'react-icons/go';
-import { RxExternalLink } from 'react-icons/rx';
+import { RxExternalLink, RxCopy } from 'react-icons/rx';
 
 export const Icons = {
   Alert: GoAlert,
@@ -15,7 +14,7 @@ export const Icons = {
   Check: MdCheck,
   Chevron: MdArrowForwardIos,
   Close: AiOutlineClose,
-  Copy: IoCopyOutline,
+  Copy: RxCopy,
   Edit: BiEditAlt,
   ExternalLink: RxExternalLink,
   Eye: PiEyeLight,

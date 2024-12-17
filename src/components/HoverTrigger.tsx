@@ -25,7 +25,7 @@ export function HoverTrigger({
   const [open, setOpen] = useState(isOpen);
   const isOverMenu = useRef<boolean>(false);
   const isOverButton = useRef<boolean>(false);
-  const timeout = useRef<NodeJS.Timeout>();
+  const timeout = useRef<NodeJS.Timeout>(null);
 
   useEffect(() => {
     if (isOpen !== open) {
@@ -57,7 +57,10 @@ export function HoverTrigger({
   };
 
   const checkHoverState = () => {
-    clearTimeout(timeout.current);
+    if (timeout.current) {
+      clearTimeout(timeout.current);
+    }
+
     timeout.current = setTimeout(() => {
       if (!isOverMenu.current && !isOverButton.current) {
         setOpen(false);

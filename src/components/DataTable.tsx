@@ -16,7 +16,7 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
       : data;
 
   const columns = Children.map(children as ReactElement, (child: ReactElement) => {
-    return { ...child.props };
+    return { ...(child.props as any) };
   });
 
   return (

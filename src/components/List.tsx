@@ -62,7 +62,7 @@ export function ListSection({
   className,
   children,
   ...props
-}: ListBoxSectionProps<any> & { title?: string }): ReactNode {
+}: ListBoxSectionProps<any> & { title?: string }) {
   return (
     <ListBoxSection {...props} className={classNames(styles.section, className)}>
       {title && <Header className={styles.header}>{title}</Header>}
