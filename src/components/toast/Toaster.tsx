@@ -24,18 +24,6 @@ export function Toaster({ duration = 0, position = 'bottom-right' }: ToasterProp
   const { toasts } = useToast();
   const [hovered, setHovered] = useState(false);
 
-  const handleClose = (id: string) => {
-    removeToast(id);
-  };
-
-  const handleMouseEnter = () => {
-    setHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHovered(false);
-  };
-
   const transitions = useTransition(toasts, {
     from: {
       opacity: 0,
@@ -72,14 +60,14 @@ export function Toaster({ duration = 0, position = 'bottom-right' }: ToasterProp
   return (
     <div
       className={classNames(styles.toaster, styles[`position-${position}`])}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       {transitions((style, item) => {
         const { id, ...props } = item;
         return (
           <animated.div key={id} style={style}>
-            <Toast {...props} id={id} onClose={handleClose.bind(null, id)} />
+            <Toast {...props} id={id} onClose={() => removeToast(id)} />
           </animated.div>
         );
       })}
