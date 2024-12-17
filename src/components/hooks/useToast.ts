@@ -1,10 +1,11 @@
 import { create } from 'zustand';
-import { ToastProps } from '../Toast';
+import { useContext } from 'react';
+import { ToastContext } from '@/components/toast/ToastProvider';
 
 let TOAST_ID = 1;
-const TOAST_DURATION = 3000;
+const TOAST_DURATION = 0;
 
-interface ToastOptions {
+export interface ToastOptions {
   duration?: number;
   title?: string;
   actions?: string[];
@@ -13,53 +14,46 @@ interface ToastOptions {
   onClose?: (action?: string) => void;
 }
 
-interface ToastState extends ToastOptions {
+export interface ToastState extends ToastOptions {
   id: string;
   message: string;
 }
 
-const initialState: { toasts: ToastState[] } = {
+const initialState: { duration: number; toasts: ToastState[] } = {
+  duration: TOAST_DURATION,
   toasts: [],
 };
 
 const store = create(() => ({ ...initialState }));
 
-function removeToast(id: string) {
+export function removeToast(id: string) {
   store.setState(({ toasts }) => {
     return { toasts: toasts.filter(toast => toast.id !== id) };
   });
 }
 
-function toast(
+function displayToast(
   message: string,
-  { onClose, duration = TOAST_DURATION, ...options }: ToastOptions = {},
+  { duration = TOAST_DURATION, ...options }: ToastOptions = {},
 ) {
   const id = `toast-${TOAST_ID++}`;
 
-  const handleClose = () => {
-    onClose && onClose();
-
-    removeToast(id);
-  };
-
   store.setState(({ toasts }) => {
     return {
-      toasts: [...toasts, { ...options, id, message, onClose: handleClose }],
+      toasts: [...toasts, { ...options, id, message }],
     };
   });
-
-  if (duration) {
-    setTimeout(() => removeToast(id), duration);
-  }
 }
 
 const useStore = store;
 
-function useToast() {
+export function useToast() {
   const { toasts } = useStore();
+  const config = useContext(ToastContext);
+
+  const toast = (message: string, options?: ToastOptions) => {
+    displayToast(message, { ...options, ...config });
+  };
 
   return { toast, toasts };
 }
-
-export { useToast, toast };
-export type { ToastProps };

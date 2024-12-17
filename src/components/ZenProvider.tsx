@@ -1,22 +1,18 @@
 import { ReactNode } from 'react';
-import { ToastProvider, ToastProviderProps, Toaster } from './Toast';
+import { ToastProvider } from '@/components/toast/ToastProvider';
+import { ToasterProps } from '@/components/toast/Toaster';
 
 interface ZenProviderProps {
   theme?: string;
   colorScheme?: 'light' | 'dark' | 'system';
-  toast?: ToastProviderProps;
+  toast?: ToasterProps;
   children: ReactNode;
 }
 
 function ZenProvider({ children, ...props }: ZenProviderProps) {
   const { toast } = props;
 
-  return (
-    <ToastProvider {...toast}>
-      {children}
-      <Toaster />
-    </ToastProvider>
-  );
+  return <ToastProvider {...toast}>{children}</ToastProvider>;
 }
 
 export { ZenProvider };
