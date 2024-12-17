@@ -1,15 +1,15 @@
-import { createElement, HTMLAttributes, useEffect } from 'react';
+import { createElement, HTMLAttributes, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Button } from '@/components/Button';
 import { Icon } from '@/components/Icon';
 import { Icons } from '@/components/Icons';
-import { removeToast } from '@/components/hooks/useToast';
 import styles from './Toast.module.css';
+
+const TOAST_CLOSE_ACTION = 'close';
 
 interface ToastProps extends HTMLAttributes<HTMLDivElement> {
   id: string;
   message: string;
-  duration?: number;
   title?: string;
   actions?: string[];
   allowClose?: boolean;
@@ -25,7 +25,6 @@ const icons = {
 function Toast({
   id,
   message,
-  duration,
   title,
   actions = [],
   allowClose = true,
@@ -37,18 +36,6 @@ function Toast({
 }: ToastProps) {
   const hasActions = actions?.length > 0;
 
-  const handleClose = (action?: string) => {
-    onClose && onClose(action);
-
-    removeToast(id);
-  };
-
-  useEffect(() => {
-    if (duration) {
-      setTimeout(() => removeToast(id), duration);
-    }
-  }, [duration]);
-
   return (
     <div {...props} className={classNames(styles.toast, className, variant && styles[variant])}>
       <Icon className={styles.icon} size="md">
@@ -59,7 +46,7 @@ function Toast({
       {hasActions &&
         actions.map(action => {
           return (
-            <Button key={action} className={styles.action} onPress={() => handleClose(action)}>
+            <Button key={action} className={styles.action} onPress={() => onClose?.(action)}>
               {action}
             </Button>
           );
@@ -70,7 +57,7 @@ function Toast({
           aria-hidden
           className={styles.close}
           aria-label="Close"
-          onClick={() => handleClose()}
+          onClick={() => onClose?.(TOAST_CLOSE_ACTION)}
         >
           <Icons.Close />
         </Icon>

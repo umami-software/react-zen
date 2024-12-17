@@ -17,6 +17,7 @@ export interface ToastOptions {
 export interface ToastState extends ToastOptions {
   id: string;
   message: string;
+  timestamp: number;
 }
 
 const initialState: { duration: number; toasts: ToastState[] } = {
@@ -40,7 +41,7 @@ function displayToast(
 
   store.setState(({ toasts }) => {
     return {
-      toasts: [...toasts, { ...options, id, message }],
+      toasts: [...toasts, { ...options, id, message, timestamp: Date.now() }],
     };
   });
 }

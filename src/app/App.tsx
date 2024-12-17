@@ -2,8 +2,7 @@
 import { ReactNode } from 'react';
 import { Header } from '@/app/Header';
 import { Footer } from '@/app/Footer';
-import { ZenProvider } from '@/components';
-import { Container } from '@/components/Container';
+import { ZenProvider, Container } from '@/components';
 import styles from './App.module.css';
 
 export function App({ children }: { children: ReactNode }) {
