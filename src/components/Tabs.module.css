@@ -29,6 +29,10 @@
   cursor: pointer;
 }
 
+.tab:focus {
+  outline: none;
+}
+
 .tab:hover {
   color: var(--font-color);
 }
