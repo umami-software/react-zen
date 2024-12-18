@@ -104,7 +104,7 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
     const value = props[key as Keys];
 
     if (value) {
-      if (typeof value === 'string') {
+      if (typeof value === 'string' || typeof value === 'number') {
         if (excludedProps.includes(key)) {
           styleProps[key] = value;
         } else {
