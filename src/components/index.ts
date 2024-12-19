@@ -65,7 +65,6 @@ import { Switch } from './Switch';
 import { Table, TableHeader, TableBody, TableRow, TableColumn, TableCell } from './Table';
 import { Tabs, TabList, Tab, TabPanel } from './Tabs';
 import { Text } from './Text';
-import { TextOverflow } from './TextOverflow';
 import { TextField } from './TextField';
 import { TextArea } from './TextArea';
 import { Toggle } from './Toggle';
@@ -152,7 +151,6 @@ export {
   TabList,
   TabPanel,
   Text,
-  TextOverflow,
   TextField,
   TextArea,
   Toggle,
