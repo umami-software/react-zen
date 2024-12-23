@@ -3606,10 +3606,10 @@
     thenby "^1.3.4"
     zustand "^5.0.2"
 
-"@umami/shiso@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@umami/shiso/-/shiso-0.9.0.tgz#075bead22a9c910958d06c3c7856a20cbcd7e57c"
-  integrity sha512-WR+lgrQmCAjDnB6uwCLGC45co1xF9QyZyDR2HugnL3XjEE3FKhW2CIvUBl5EKuIa1PaYZUnNSPNpsSwqtAabdA==
+"@umami/shiso@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@umami/shiso/-/shiso-0.10.0.tgz#197a64ad7d67403c8437d462f4f9e7bb8cff68ce"
+  integrity sha512-F3sVixpjAQGGI5s1itURQ1JyaUeeE0oqTY0dWYkM8mvD9WS5yxb0kh0trmPgWrwtuFHDTPH0G7koHHn5HZ3roA==
   dependencies:
     "@mdx-js/loader" "^3.0.0"
     "@mdx-js/mdx" "^3.1.0"
