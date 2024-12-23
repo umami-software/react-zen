@@ -20,7 +20,7 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "next dev -p 9000 --turbo",
+    "dev": "next dev -p 9000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -51,6 +51,7 @@
     "@next/mdx": "^15.0.2",
     "@react-spring/web": "^9.7.5",
     "@umami/esbuild-plugin-css-modules": "0.2.0",
+    "@umami/shiso": "^0.9.0",
     "classnames": "^2.5.1",
     "dts-bundle": "^0.7.3",
     "glob": "^10.3.10",

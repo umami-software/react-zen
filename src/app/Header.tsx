@@ -2,27 +2,26 @@
 import Link from 'next/link';
 import { Button, Row } from '@/components';
 import { useTheme } from '@/components/hooks/useTheme';
-import styles from './Header.module.css';
 
 export function Header() {
   const { setTheme } = useTheme();
 
   return (
-    <Row alignItems="center" justifyContent="space-between" paddingX="4" paddingY="2">
-      <div>
+    <Row alignItems="center" justifyContent="space-between" paddingY="2">
+      <Row gap="4">
         <Link href={'/'}>
           <b>zen</b>
-        </Link>{' '}
-        - <Link href={'/docs'}>docs</Link>
-      </div>
-      <div className={styles.buttons}>
+        </Link>
+        <Link href={'/docs'}>docs</Link>
+      </Row>
+      <Row gap="3">
         <Button size="xs" onPress={() => setTheme('light')}>
           light
         </Button>
         <Button size="xs" onPress={() => setTheme('dark')}>
           dark
         </Button>
-      </div>
+      </Row>
     </Row>
   );
 }

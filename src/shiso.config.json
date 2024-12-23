@@ -1,0 +1,89 @@
+{
+  "contentDir": "./src/content/docs",
+  "docs": {
+    "navigation": {
+      "docs": [
+        {
+          "group": "Getting Started",
+          "pages": [
+            { "label": "Introduction", "url": "/docs" },
+            { "label": "Installation", "url": "/docs/install" }
+          ]
+        },
+        {
+          "group": "Design",
+          "pages": [
+            { "label": "Colors", "url": "/docs/design/colors" },
+            { "label": "Fonts", "url": "/docs/design/fonts" },
+            { "label": "Spacing", "url": "/docs/design/spacing" },
+            { "label": "Shadows", "url": "/docs/design/shadows" },
+            { "label": "Borders", "url": "/docs/design/borders" },
+            { "label": "Breakpoints", "url": "/docs/design/breakpoints" }
+          ]
+        },
+        {
+          "group": "Typography",
+          "pages": [
+            { "label": "Text", "url": "/docs/typography/text" },
+            { "label": "Heading", "url": "/docs/typography/heading" },
+            { "label": "Blockquote", "url": "/docs/typography/blockquote" },
+            { "label": "Code", "url": "/docs/typography/code" }
+          ]
+        },
+        {
+          "group": "Layouts",
+          "pages": [
+            { "label": "Box", "url": "/docs/layout/box" },
+            { "label": "Flexbox", "url": "/docs/layout/flexbox" },
+            { "label": "Grid", "url": "/docs/layout/grid" },
+            { "label": "Container", "url": "/docs/layout/container" }
+          ]
+        },
+        {
+          "group": "Components",
+          "pages": [
+            { "label": "Accordion", "url": "/docs/components/accordion" },
+            { "label": "Alert Banner", "url": "/docs/components/alert-banner" },
+            { "label": "Alert Dialog", "url": "/docs/components/alert-dialog" },
+            { "label": "Button", "url": "/docs/components/button" },
+            { "label": "Breadcrumbs", "url": "/docs/components/breadcrumbs" },
+            { "label": "Calendar", "url": "/docs/components/calendar" },
+            { "label": "Checkbox", "url": "/docs/components/checkbox" },
+            { "label": "Combobox", "url": "/docs/components/combobox" },
+            { "label": "Confirmation Dialog", "url": "/docs/components/confirmation-dialog" },
+            { "label": "Data Table", "url": "/docs/components/data-table" },
+            { "label": "Dialog", "url": "/docs/components/dialog" },
+            { "label": "Dots", "url": "/docs/components/dots" },
+            { "label": "Form", "url": "/docs/components/form" },
+            { "label": "Hover Trigger", "url": "/docs/components/hover-trigger" },
+            { "label": "Icon", "url": "/docs/components/icon" },
+            { "label": "Icons", "url": "/docs/components/icons" },
+            { "label": "Inline Edit Field", "url": "/docs/components/inline-edit-field" },
+            { "label": "List", "url": "/docs/components/list" },
+            { "label": "Loading Button", "url": "/docs/components/loading-button" },
+            { "label": "Menu", "url": "/docs/components/menu" },
+            { "label": "Navigation Menu", "url": "/docs/components/navigation-menu" },
+            { "label": "Password Field", "url": "/docs/components/password-field" },
+            { "label": "Popover", "url": "/docs/components/popover" },
+            { "label": "Progress Bar", "url": "/docs/components/progress-bar" },
+            { "label": "Progress Circle", "url": "/docs/components/progress-circle" },
+            { "label": "Radio Group", "url": "/docs/components/radio-group" },
+            { "label": "Search Field", "url": "/docs/components/search-field" },
+            { "label": "Select", "url": "/docs/components/select" },
+            { "label": "Slider", "url": "/docs/components/slider" },
+            { "label": "Spinner", "url": "/docs/components/spinner" },
+            { "label": "Status Light", "url": "/docs/components/status-light" },
+            { "label": "Switch", "url": "/docs/components/switch" },
+            { "label": "Table", "url": "/docs/components/table" },
+            { "label": "Tabs", "url": "/docs/components/tabs" },
+            { "label": "Text Field", "url": "/docs/components/text-field" },
+            { "label": "Toast", "url": "/docs/components/toast" },
+            { "label": "Toggle", "url": "/docs/components/toggle" },
+            { "label": "Toggle Group", "url": "/docs/components/toggle-group" },
+            { "label": "Tooltip", "url": "/docs/components/tooltip" }
+          ]
+        }
+      ]
+    }
+  }
+}

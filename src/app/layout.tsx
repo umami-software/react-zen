@@ -6,6 +6,7 @@ import { App } from './App';
 import '@/styles/zen.css';
 import '@/styles/reset.css';
 import '@/styles/global.css';
+import '@umami/shiso/dist/index.css';
 
 export default function RootLayout({
   children,
@@ -38,5 +39,5 @@ export default function RootLayout({
 
 export const metadata: Metadata = {
   title: 'zen',
-  description: 'A modern. minimalist React component library.',
+  description: 'A modern, minimalist React component library.',
 };
