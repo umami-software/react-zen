@@ -20,7 +20,7 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "next dev -p 9000",
+    "dev": "next dev -p 9000 --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

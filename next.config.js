@@ -16,10 +16,7 @@ const nextConfig = {
     },
   },
   async rewrites() {
-    return [
-      { source: '/a/script.js', destination: 'https://tracker-script.umami.dev/' },
-      { source: '/docs', destination: '/docs/introduction' },
-    ];
+    return [{ source: '/a/script.js', destination: 'https://tracker-script.umami.dev/' }];
   },
 };
 
