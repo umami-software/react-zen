@@ -23,6 +23,6 @@ async function concatFiles(filePaths, destFile) {
       './src/styles/global.css',
       './dist/index.css',
     ],
-    './dist/styles.css',
+    './styles.css',
   );
 })();

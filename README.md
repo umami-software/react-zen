@@ -19,7 +19,7 @@ yarn add @umami/react-zen
 ### Import styles
 
 ```javascript
-import '@umami/react-zen/dist/styles.css';
+import '@umami/react-zen/styles.css';
 ```
 
 ### Import components

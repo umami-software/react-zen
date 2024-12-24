@@ -17,6 +17,7 @@
 /dist
 /build
 /types
+/styles.css
 
 # misc
 .DS_Store
