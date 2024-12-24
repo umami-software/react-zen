@@ -42,7 +42,7 @@
 }
 
 .checkbox[data-disabled] {
-  color: var(--font-muted-color);
+  color: var(--font-color-muted);
 }
 
 .checkbox[data-disabled] .box {

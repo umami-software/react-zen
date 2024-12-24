@@ -107,29 +107,6 @@
   --accent-color-mint: #86ead4;
   --accent-color-sky: #7ce2fe;
 
-  /* Global */
-
-  --font-family: Inter, sans-serif;
-  --font-family-code: 'JetBrains Mono', monospace;
-
-  --font-size: var(--font-size-2);
-
-  --border-radius: var(--border-radius-2);
-
-  --border-width: var(--border-size-1);
-
-  --gap: var(--spacing-3);
-
-  --padding-x: var(--spacing-3);
-  --padding-y: var(--spacing-2);
-  --padding: var(--padding-y) var(--padding-x);
-
-  --box-shadow: var(--box-shadow-1);
-
-  --light-color: var(--base-color-50);
-
-  --dark-color: var(--base-color-950);
-
   --success-color: var(--accent-color-green);
   --success-font-color: var(--base-color-50);
 
@@ -145,13 +122,33 @@
   --inactive-color: var(--accent-color-gray);
   --inactive-font-color: var(--base-color-900);
 
+  /* Global settings */
+
+  --font-family: Inter, sans-serif;
+  --font-family-code: 'JetBrains Mono', monospace;
+  --font-size: var(--font-size-2);
+
+  --border-radius: var(--border-radius-2);
+  --border-width: var(--border-size-1);
+
+  --gap: var(--spacing-3);
+
+  --padding-x: var(--spacing-3);
+  --padding-y: var(--spacing-2);
+  --padding: var(--padding-y) var(--padding-x);
+
+  --box-shadow: var(--box-shadow-1);
+
+  --light-color: var(--base-color-50);
+  --dark-color: var(--base-color-950);
+
   /* Theme settings */
 
   --background-color: #fff;
 
   --font-color: var(--base-color-950);
-  --font-muted-color: var(--base-color-500);
-  --font-faded-color: var(--base-color-400);
+  --font-color-muted: var(--base-color-500);
+  --font-color-disabled: var(--base-color-400);
 
   --border-color: var(--base-color-300);
   --border: var(--border-width) solid var(--border-color);
@@ -162,21 +159,19 @@
   --primary-color: var(--base-color-900);
   --primary-font-color: var(--base-color-50);
 
-  --secondary-color: var(--base-color-100);
-  --secondary-font-color: var(--font-color);
+  --input-color: var(--base-color-100);
+  --input-font-color: var(--font-color);
+  --input-disabled-color: var(--base-color-100);
 
   --highlight-color: var(--base-color-50);
   --highlight-font-color: var(--font-color);
-
-  --input-background-color: var(--base-color-200);
-  --input-disabled-color: var(--base-color-100);
 
   [data-theme='dark'] {
     --background-color: #0f0f0f;
 
     --font-color: var(--base-color-200);
-    --font-muted-color: var(--base-color-400);
-    --font-faded-color: var(--base-color-500);
+    --font-color-muted: var(--base-color-400);
+    --font-color-disabled: var(--base-color-500);
 
     --border-color: var(--base-color-700);
     --border: var(--border-width) solid var(--border-color);
@@ -187,13 +182,13 @@
     --primary-color: var(--base-color-50);
     --primary-font-color: var(--base-color-900);
 
-    --secondary-color: var(--base-color-800);
-    --secondary-font-color: var(--font-color);
+    --input-color: var(--base-color-800);
+    --input-font-color: var(--font-color);
 
     --highlight-color: var(--base-color-800);
     --highlight-font-color: var(--font-color);
 
-    --input-background-color: var(--base-color-700);
+    --input-color: var(--base-color-700);
     --input-disabled-color: var(--base-color-800);
   }
 

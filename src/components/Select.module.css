@@ -23,7 +23,7 @@
 }
 
 .icon {
-  color: var(--font-faded-color);
+  color: var(--font-color-disabled);
 }
 
 .icon:hover {

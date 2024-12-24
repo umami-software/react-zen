@@ -7,8 +7,8 @@
   font-size: var(--font-size);
   font-family: inherit;
   font-weight: 500;
-  color: var(--font-color);
-  background: transparent;
+  color: var(--input-font-color);
+  background: var(--input-color);
   border: 1px solid transparent;
   border-radius: var(--border-radius);
   padding: var(--padding);
@@ -18,8 +18,16 @@
 }
 
 .button:disabled {
-  color: var(--font-muted-color);
+  color: var(--font-color-muted);
   pointer-events: none;
+}
+
+.button:hover {
+  background: color-mix(in srgb, var(--input-color), 5% var(--font-color));
+}
+
+.button[data-pressed] {
+  background: color-mix(in srgb, var(--input-color), 10% var(--font-color));
 }
 
 .button.primary {
@@ -40,23 +48,6 @@
   background: var(--base-color-500);
 }
 
-.button.secondary {
-  color: var(--secondary-font-color);
-  background: var(--secondary-color);
-}
-
-.button.secondary:hover {
-  background: color-mix(in srgb, var(--secondary-color), 5% var(--font-color));
-}
-
-.button.secondary[data-pressed] {
-  background: color-mix(in srgb, var(--secondary-color), 10% var(--font-color));
-}
-
-.button.secondary:disabled {
-  color: var(--font-faded-color);
-}
-
 .button.outline {
   background: transparent;
   border: var(--border);
@@ -64,11 +55,11 @@
 }
 
 .button.outline:hover {
-  background: var(--secondary-color);
+  background: var(--input-color);
 }
 
 .button.outline[data-pressed] {
-  background: color-mix(in srgb, var(--secondary-color), 5% var(--font-color));
+  background: color-mix(in srgb, var(--input-color), 5% var(--font-color));
 }
 
 .button.quiet {
@@ -76,11 +67,11 @@
 }
 
 .button.quiet:hover {
-  background: var(--secondary-color);
+  background: var(--input-color);
 }
 
 .button.quiet[data-pressed] {
-  background: color-mix(in srgb, var(--secondary-color), 5% var(--font-color));
+  background: color-mix(in srgb, var(--input-color), 5% var(--font-color));
 }
 
 .button.danger {

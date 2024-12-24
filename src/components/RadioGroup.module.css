@@ -48,7 +48,7 @@
 }
 
 .radio[data-disabled] {
-  color: var(--font-muted-color);
+  color: var(--font-color-muted);
 }
 
 .radio[data-disabled]:before {

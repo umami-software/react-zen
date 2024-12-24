@@ -1,12 +1,21 @@
 import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
-import { Responsive, TextAlign, FontWeight, LetterSpacing, FontSize, TextWrap } from '@/lib/types';
+import {
+  Responsive,
+  TextAlign,
+  FontWeight,
+  LetterSpacing,
+  FontSize,
+  TextWrap,
+  AccentColor,
+  BaseColor,
+} from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
 import styles from './Text.module.css';
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
-  type?: 'muted' | 'faded';
+  color: AccentColor | BaseColor | 'muted' | 'disabled';
   size?: Responsive<FontSize>;
   spacing?: Responsive<LetterSpacing>;
   weight?: Responsive<FontWeight>;
@@ -17,13 +26,12 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
 }
 
 export function Text({
-  type,
+  color,
   size,
   spacing,
   weight,
   align,
   wrap,
-  color,
   as = 'span',
   asChild,
   className,
@@ -44,7 +52,7 @@ export function Text({
   return (
     <Component
       {...props}
-      className={classNames(styles.text, className, type && styles[type], classes)}
+      className={classNames(styles.text, className, classes)}
       style={{ ...styleProps, ...style }}
     >
       {children}

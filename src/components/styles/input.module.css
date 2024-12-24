@@ -29,11 +29,11 @@
 }
 
 .input::placeholder {
-  color: var(--font-muted-color);
+  color: var(--font-color-muted);
 }
 
 .input:disabled {
-  color: var(--font-muted-color);
+  color: var(--font-color-muted);
 }
 
 .input::-webkit-search-cancel-button,
@@ -42,7 +42,7 @@
 }
 
 .icon {
-  color: var(--font-muted-color);
+  color: var(--font-color-muted);
   background: var(--background-color);
 }
 

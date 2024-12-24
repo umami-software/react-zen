@@ -146,131 +146,137 @@
 
 /* Colors */
 
+.font-color-muted {
+  color: var(--font-color-muted);
+}
+.font-color-disabled {
+  color: var(--font-color-disabled);
+}
 .font-color-50 {
-  background-color: var(--base-color-50);
+  color: var(--base-color-50);
 }
 .font-color-100 {
-  background-color: var(--base-color-100);
+  color: var(--base-color-100);
 }
 .font-color-200 {
-  background-color: var(--base-color-200);
+  color: var(--base-color-200);
 }
 .font-color-300 {
-  background-color: var(--base-color-300);
+  color: var(--base-color-300);
 }
 .font-color-400 {
-  background-color: var(--base-color-400);
+  color: var(--base-color-400);
 }
 .font-color-500 {
-  background-color: var(--base-color-500);
+  color: var(--base-color-500);
 }
 .font-color-600 {
-  background-color: var(--base-color-600);
+  color: var(--base-color-600);
 }
 .font-color-700 {
-  background-color: var(--base-color-700);
+  color: var(--base-color-700);
 }
 .font-color-800 {
-  background-color: var(--base-color-800);
+  color: var(--base-color-800);
 }
 .font-color-900 {
-  background-color: var(--base-color-900);
+  color: var(--base-color-900);
 }
 .font-color-950 {
-  background-color: var(--base-color-950);
+  color: var(--base-color-950);
 }
 .font-color-gray {
-  background-color: var(--base-color-gray);
+  color: var(--base-color-gray);
 }
 .font-color-mauve {
-  background-color: var(--base-color-mauve);
+  color: var(--base-color-mauve);
 }
 .font-color-slate {
-  background-color: var(--base-color-slate);
+  color: var(--base-color-slate);
 }
 .font-color-sage {
-  background-color: var(--base-color-sage);
+  color: var(--base-color-sage);
 }
 .font-color-olive {
-  background-color: var(--base-color-olive);
+  color: var(--base-color-olive);
 }
 .font-color-sand {
-  background-color: var(--base-color-sand);
+  color: var(--base-color-sand);
 }
 .font-color-gold {
-  background-color: var(--accent-color-gold);
+  color: var(--accent-color-gold);
 }
 .font-color-bronze {
-  background-color: var(--accent-color-bronze);
+  color: var(--accent-color-bronze);
 }
 .font-color-brown {
-  background-color: var(--accent-color-brown);
+  color: var(--accent-color-brown);
 }
 .font-color-yellow {
-  background-color: var(--accent-color-yellow);
+  color: var(--accent-color-yellow);
 }
 .font-color-amber {
-  background-color: var(--accent-color-amber);
+  color: var(--accent-color-amber);
 }
 .font-color-orange {
-  background-color: var(--accent-color-orange);
+  color: var(--accent-color-orange);
 }
 .font-color-tomato {
-  background-color: var(--accent-color-tomato);
+  color: var(--accent-color-tomato);
 }
 .font-color-red {
-  background-color: var(--accent-color-red);
+  color: var(--accent-color-red);
 }
 .font-color-ruby {
-  background-color: var(--accent-color-ruby);
+  color: var(--accent-color-ruby);
 }
 .font-color-crimson {
-  background-color: var(--accent-color-crimson);
+  color: var(--accent-color-crimson);
 }
 .font-color-pink {
-  background-color: var(--accent-color-pink);
+  color: var(--accent-color-pink);
 }
 .font-color-plum {
-  background-color: var(--accent-color-plum);
+  color: var(--accent-color-plum);
 }
 .font-color-purple {
-  background-color: var(--accent-color-purple);
+  color: var(--accent-color-purple);
 }
 .font-color-violet {
-  background-color: var(--accent-color-violet);
+  color: var(--accent-color-violet);
 }
 .font-color-iris {
-  background-color: var(--accent-color-iris);
+  color: var(--accent-color-iris);
 }
 .font-color-indigo {
-  background-color: var(--accent-color-indigo);
+  color: var(--accent-color-indigo);
 }
 .font-color-blue {
-  background-color: var(--accent-color-blue);
+  color: var(--accent-color-blue);
 }
 .font-color-cyan {
-  background-color: var(--accent-color-cyan);
+  color: var(--accent-color-cyan);
 }
 .font-color-teal {
-  background-color: var(--accent-color-teal);
+  color: var(--accent-color-teal);
 }
 .font-color-jade {
-  background-color: var(--accent-color-jade);
+  color: var(--accent-color-jade);
 }
 .font-color-green {
-  background-color: var(--accent-color-green);
+  color: var(--accent-color-green);
 }
 .font-color-grass {
-  background-color: var(--accent-color-grass);
+  color: var(--accent-color-grass);
 }
 .font-color-lime {
-  background-color: var(--accent-color-lime);
+  color: var(--accent-color-lime);
 }
 .font-color-mint {
-  background-color: var(--accent-color-mint);
+  color: var(--accent-color-mint);
 }
 .font-color-sky {
-  background-color: var(--accent-color-sky);
+  color: var(--accent-color-sky);
 }
 
 .background-color-50 {

@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--font-muted-color);
+  color: var(--font-color-muted);
   min-height: 3rem;
   border-bottom: 2px solid transparent;
   user-select: none;
@@ -43,7 +43,7 @@
 }
 
 .tab[data-disabled] {
-  color: var(--font-faded-color);
+  color: var(--font-color-disabled);
   cursor: default;
 }
 

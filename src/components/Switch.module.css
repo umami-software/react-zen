@@ -17,7 +17,7 @@
   height: calc(var(--knob-size) + var(--knob-border-size) * 2);
   border: var(--knob-border-size) solid transparent;
   border-radius: calc(var(--knob-size) + var(--knob-border-size) * 2);
-  background: var(--input-background-color);
+  background: var(--input-color);
   transition: background-color 0.2s;
   cursor: pointer;
 }
@@ -42,7 +42,7 @@
 }
 
 .switch[data-disabled] {
-  color: var(--font-faded-color);
+  color: var(--font-color-disabled);
   pointer-events: none;
 }
 

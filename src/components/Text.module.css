@@ -1,16 +1,5 @@
-.text {
-  color: var(--font-color);
-  line-height: 1.2em;
-}
-
 :where(.text) {
+  color: var(--font-color);
   font-size: var(--font-size);
-}
-
-.muted {
-  color: var(--font-muted-color);
-}
-
-.faded {
-  color: var(--font-faded-color);
+  line-height: 1.2em;
 }

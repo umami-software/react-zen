@@ -27,7 +27,7 @@
   justify-content: center;
   border: 0;
   background: transparent;
-  color: var(--font-faded-color);
+  color: var(--font-color-disabled);
 }
 
 .list {
@@ -35,7 +35,7 @@
 }
 
 .icon {
-  color: var(--font-muted-color);
+  color: var(--font-color-muted);
   margin-right: var(--spacing-2);
 }
 
