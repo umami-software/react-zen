@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { Button, Row } from '@/components';
 import { useTheme } from '@/components/hooks/useTheme';
+import ThemeButton from '@/components/ThemeButton';
 
 export function Header() {
   const { setTheme } = useTheme();
@@ -15,12 +16,7 @@ export function Header() {
         <Link href={'/docs'}>docs</Link>
       </Row>
       <Row gap="3">
-        <Button size="xs" onPress={() => setTheme('light')}>
-          light
-        </Button>
-        <Button size="xs" onPress={() => setTheme('dark')}>
-          dark
-        </Button>
+        <ThemeButton />
       </Row>
     </Row>
   );

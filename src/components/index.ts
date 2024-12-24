@@ -67,6 +67,7 @@ import { Tabs, TabList, Tab, TabPanel } from './Tabs';
 import { Text } from './Text';
 import { TextField } from './TextField';
 import { TextArea } from './TextArea';
+import { ThemeButton } from './ThemeButton';
 import { Toggle } from './Toggle';
 import { ToggleGroup, ToggleGroupItem } from './ToggleGroup';
 import { Tooltip } from './Tooltip';
@@ -153,6 +154,7 @@ export {
   Text,
   TextField,
   TextArea,
+  ThemeButton,
   Toggle,
   ToggleGroup,
   ToggleGroupItem,

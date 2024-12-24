@@ -77,6 +77,7 @@
             { "label": "Table", "url": "/docs/components/table" },
             { "label": "Tabs", "url": "/docs/components/tabs" },
             { "label": "Text Field", "url": "/docs/components/text-field" },
+            { "label": "Theme Button", "url": "/docs/components/theme-button" },
             { "label": "Toast", "url": "/docs/components/toast" },
             { "label": "Toggle", "url": "/docs/components/toggle" },
             { "label": "Toggle Group", "url": "/docs/components/toggle-group" },
