@@ -1,12 +1,14 @@
 import esbuild from 'esbuild';
 import { commonjs } from '@hyrious/esbuild-plugin-commonjs';
 import cssModules from '@umami/esbuild-plugin-css-modules';
+import svgr from 'esbuild-plugin-svgr'
 
 const config = {
   entryPoints: ['src/components/index.ts'],
   bundle: true,
   external: ['react', 'react-dom', 'react-jsx/runtime'],
   jsx: 'automatic',
+  plugins: [commonjs(), cssModules(), svgr()],
 };
 
 esbuild
@@ -14,7 +16,6 @@ esbuild
     ...config,
     outfile: 'dist/index.js',
     format: 'cjs',
-    plugins: [commonjs(), cssModules()],
   })
   .catch(e => {
     console.error(e);
@@ -26,7 +27,6 @@ esbuild
     ...config,
     outfile: 'dist/index.mjs',
     format: 'esm',
-    plugins: [commonjs(), cssModules()],
   })
   .catch(e => {
     console.error(e);
