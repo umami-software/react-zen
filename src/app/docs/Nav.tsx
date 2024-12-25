@@ -103,7 +103,7 @@ export function Nav() {
                   key={path}
                   className={classNames(styles.item, pathname.endsWith(path) && styles.selected)}
                 >
-                  <Text type="faded">
+                  <Text color="disabled">
                     <Link href={path}>{title}</Link>
                   </Text>
                 </div>

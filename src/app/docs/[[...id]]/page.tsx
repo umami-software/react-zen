@@ -4,6 +4,19 @@ import { DocsPage } from './DocsPage';
 
 const contentDir = './src/content/docs';
 
+export async function generateMetadata({ params }: { params: Promise<{ id: string[] }> }) {
+  const name = (await params)?.id?.join('/');
+
+  const content = await getContent(name, contentDir);
+
+  return {
+    title: {
+      absolute: `${content?.meta?.title} – Zen`,
+      default: 'Zen',
+    },
+  };
+}
+
 export async function generateStaticParams() {
   const ids = await getContentIds(contentDir);
 
