@@ -46,10 +46,8 @@ function displayToast(
   });
 }
 
-const useStore = store;
-
 export function useToast() {
-  const { toasts } = useStore();
+  const { toasts } = store();
   const config = useContext(ToastContext);
 
   const toast = (message: string, options?: ToastOptions) => {

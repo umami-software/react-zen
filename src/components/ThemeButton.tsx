@@ -1,11 +1,10 @@
 import { useTransition, animated } from '@react-spring/web';
+import classNames from 'classnames';
 import { Button, ButtonProps } from './Button';
 import { Icon } from './Icon';
 import { useTheme } from './hooks/useTheme';
-import Moon from '@/assets/moon.svg';
-import Sun from '@/assets/sun.svg';
+import { Moon, Sun } from './icons/index';
 import styles from './ThemeButton.module.css';
-import classNames from 'classnames';
 
 export function ThemeButton({ className, variant = 'quiet', ...props }: ButtonProps) {
   const { theme, setTheme } = useTheme();

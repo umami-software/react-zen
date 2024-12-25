@@ -7,15 +7,7 @@ export default {
     ignoreBuildErrors: true,
   },
   experimental: {
-    turbo: {
-      resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
+    turbo: true,
   },
   async rewrites() {
     return [{ source: '/a/script.js', destination: 'https://tracker-script.umami.dev/' }];
