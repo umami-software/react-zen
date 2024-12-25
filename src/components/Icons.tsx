@@ -8,7 +8,12 @@ import { PiTrash, PiArrowRight } from 'react-icons/pi';
 import { GoAlert, GoInfo } from 'react-icons/go';
 import { RxExternalLink, RxCopy } from 'react-icons/rx';
 
+import Moon from '@/assets/moon.svg';
+import Sun from '@/assets/sun.svg';
+
 export const Icons = {
+  Moon,
+  Sun,
   Alert: GoAlert,
   Arrow: PiArrowRight,
   Check: MdCheck,
