@@ -182,14 +182,12 @@
     --primary-color: var(--base-color-50);
     --primary-font-color: var(--base-color-900);
 
-    --input-color: var(--base-color-800);
+    --input-color: var(--base-color-700);
     --input-font-color: var(--font-color);
+    --input-disabled-color: var(--base-color-800);
 
     --highlight-color: var(--base-color-800);
     --highlight-font-color: var(--font-color);
-
-    --input-color: var(--base-color-700);
-    --input-disabled-color: var(--base-color-800);
   }
 
   :where(input, textarea, select) {

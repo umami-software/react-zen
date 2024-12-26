@@ -15,7 +15,7 @@ import { Slot } from './Slot';
 import styles from './Text.module.css';
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
-  color?: AccentColor | BaseColor | 'muted' | 'disabled';
+  color?: AccentColor | BaseColor | 'primary' | 'muted' | 'disabled';
   size?: Responsive<FontSize>;
   spacing?: Responsive<LetterSpacing>;
   weight?: Responsive<FontWeight>;

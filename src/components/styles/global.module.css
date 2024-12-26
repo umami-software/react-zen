@@ -146,6 +146,9 @@
 
 /* Colors */
 
+.font-color-primary {
+  color: var(--primary-color);
+}
 .font-color-muted {
   color: var(--font-color-muted);
 }
