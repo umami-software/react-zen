@@ -194,7 +194,7 @@
     min-width: 240px;
   }
 
-  * {
+  :where(*) {
     outline-color: var(--primary-color);
   }
 }
