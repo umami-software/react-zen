@@ -5,14 +5,12 @@ import { MdFormatAlignCenter, MdFormatAlignLeft, MdFormatAlignRight } from 'reac
 import * as Components from '@/components';
 import { CodeBlock } from '@/components/CodeBlock';
 import { Code } from '@/components';
-import * as Examples from '../../examples';
-import { Example } from '../Example';
+import * as Examples from '@/app/examples';
 import { Shiso } from '@umami/shiso';
 
 const components = {
   ...Components,
   ...Examples,
-  Example,
   WifiIcon: HiMiniWifi,
   RocketIcon: IoRocketSharp,
   AlignCenter: MdFormatAlignCenter,

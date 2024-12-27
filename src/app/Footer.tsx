@@ -1,11 +1,14 @@
-import { Row } from '@/components/Row';
+import { Box, Text } from '@/components';
 
 export function Footer() {
   return (
-    <Row as="footer" justifyContent="center" alignItems="center" height="80px">
-      <a href="https://umami.is" target="_blank">
-        Built by <strong>umami</strong>
-      </a>
-    </Row>
+    <Box as="footer" paddingY="8">
+      <Text align="center" as="div">
+        Built by{' '}
+        <a href="https://umami.is?ref=zen">
+          <strong>umami</strong>
+        </a>
+      </Text>
+    </Box>
   );
 }
