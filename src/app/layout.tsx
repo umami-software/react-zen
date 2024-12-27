@@ -7,7 +7,6 @@ import '@/styles/zen.css';
 import '@/styles/reset.css';
 import '@/styles/global.css';
 import '@umami/shiso/dist/index.css';
-import 'highlight.js/styles/github-dark.css';
 
 export default function RootLayout({
   children,
