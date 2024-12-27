@@ -25,7 +25,7 @@ export function NavigationMenu({
 }
 
 export interface NavigationMenuItemProps extends HTMLAttributes<HTMLElement> {
-  label: string;
+  label?: string;
   children?: ReactNode;
 }
 

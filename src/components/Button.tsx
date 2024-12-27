@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes, ReactNode, Ref } from 'react';
+import { forwardRef, ReactNode, Ref } from 'react';
 import { Button as AriaButton, ButtonProps as AriaButtonProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Slot } from './Slot';

@@ -7,7 +7,7 @@ import { ZenProvider, Container, Box, Column } from '@/components';
 export function App({ children }: { children: ReactNode }) {
   return (
     <ZenProvider toast={{ duration: 3000 }}>
-      <Container className="booobb">
+      <Container>
         <Column minHeight="100vh">
           <Header />
           <Box flexGrow={1} as="main">

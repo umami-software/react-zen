@@ -20,6 +20,7 @@ async function concatFiles(filePaths, destFile) {
     [
       './src/styles/zen.css',
       './src/styles/reset.css',
+      './src/styles/global.css',
       './dist/index.css',
     ],
     './styles.css',

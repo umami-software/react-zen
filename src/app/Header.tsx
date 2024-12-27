@@ -1,18 +1,17 @@
 'use client';
 import Link from 'next/link';
-import { Button, Row, Icon } from '@/components';
-import { useTheme } from '@/components/hooks/useTheme';
+import { Button, Row, Icon, Text } from '@/components';
 import ThemeButton from '@/components/ThemeButton';
 import GitHub from '@/assets/github.svg';
 
 export function Header() {
-  const { setTheme } = useTheme();
-
   return (
     <Row alignItems="center" justifyContent="space-between" paddingY="2">
-      <Row gap="4">
+      <Row gap="5">
         <Link href={'/'}>
-          <b>zen</b>
+          <Text weight="bold" size="4">
+            zen
+          </Text>
         </Link>
         <Link href={'/docs'}>docs</Link>
       </Row>
