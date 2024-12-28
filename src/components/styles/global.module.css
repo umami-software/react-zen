@@ -79,6 +79,25 @@
   font-size: var(--font-size-9);
 }
 
+.heading-size-1 {
+  font-size: var(--heading-size-1);
+}
+.heading-size-2 {
+  font-size: var(--heading-size-2);
+}
+.heading-size-3 {
+  font-size: var(--heading-size-3);
+}
+.heading-size-4 {
+  font-size: var(--heading-size-4);
+}
+.heading-size-5 {
+  font-size: var(--heading-size-5);
+}
+.heading-size-6 {
+  font-size: var(--heading-size-6);
+}
+
 .font-weight-light {
   font-weight: var(--font-weight-light);
 }

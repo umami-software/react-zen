@@ -11,7 +11,7 @@ interface HeadingProps extends BoxProps {
 }
 
 function Heading({
-  size = '5',
+  size = '3',
   weight,
   align,
   spacing = '1',
@@ -21,7 +21,7 @@ function Heading({
   ...props
 }: HeadingProps) {
   const [classes, styleProps] = useDesignProps({
-    fontSize: size,
+    headingSize: size,
     textAlign: align,
     fontWeight: weight,
     letterSpacing: spacing,

@@ -8,6 +8,7 @@ const CSS_MAP = {
   textAlign: 'text-align',
   textWrap: 'text-wrap',
   letterSpacing: 'letter-spacing',
+  headingSize: 'heading-size',
   color: 'font-color',
   backgroundColor: 'background-color',
   borderSize: 'border-size',
