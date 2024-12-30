@@ -1,17 +1,17 @@
 {
-  "contentDir": "./src/content/docs",
+  "contentDir": "./src/content",
   "docs": {
     "navigation": {
       "docs": [
         {
-          "group": "Getting Started",
+          "section": "Getting Started",
           "pages": [
             { "label": "Introduction", "url": "/docs" },
             { "label": "Installation", "url": "/docs/install" }
           ]
         },
         {
-          "group": "Design",
+          "section": "Design",
           "pages": [
             { "label": "Colors", "url": "/docs/design/colors" },
             { "label": "Fonts", "url": "/docs/design/fonts" },
@@ -22,7 +22,7 @@
           ]
         },
         {
-          "group": "Typography",
+          "section": "Typography",
           "pages": [
             { "label": "Text", "url": "/docs/typography/text" },
             { "label": "Heading", "url": "/docs/typography/heading" },
@@ -31,7 +31,7 @@
           ]
         },
         {
-          "group": "Layouts",
+          "section": "Layouts",
           "pages": [
             { "label": "Box", "url": "/docs/layout/box" },
             { "label": "Flexbox", "url": "/docs/layout/flexbox" },
@@ -40,7 +40,7 @@
           ]
         },
         {
-          "group": "Components",
+          "section": "Components",
           "pages": [
             { "label": "Accordion", "url": "/docs/components/accordion" },
             { "label": "Alert Banner", "url": "/docs/components/alert-banner" },
