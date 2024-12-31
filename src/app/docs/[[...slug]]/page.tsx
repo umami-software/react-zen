@@ -1,4 +1,4 @@
-import config from '@/shiso.config.json';
+import config from '@/app/shiso.config.json';
 import { next } from '@umami/shiso/server';
 import { DocsPage } from './DocsPage';
 

@@ -1,7 +1,7 @@
 :where(html, body) {
   font-size: var(--font-size);
   color: var(--font-color);
-  background: var(--background-color);
+  background-color: var(--background-color);
 }
 
 :where(a, a:active, a:visited, a:hover) {
