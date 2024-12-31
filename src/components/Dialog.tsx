@@ -5,11 +5,15 @@ import styles from './Dialog.module.css';
 
 interface DialogProps extends AriaDialogProps {
   title?: ReactNode;
+  variant?: 'fullscreen';
 }
 
-function Dialog({ title, children, className, ...props }: DialogProps) {
+function Dialog({ title, variant, children, className, ...props }: DialogProps) {
   return (
-    <AriaDialog {...props} className={classNames(styles.dialog, className)}>
+    <AriaDialog
+      {...props}
+      className={classNames(styles.dialog, variant && styles[variant], className)}
+    >
       {({ close }) => {
         return (
           <>

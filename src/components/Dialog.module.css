@@ -8,6 +8,14 @@
   outline: none;
 }
 
+.dialog.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 .title {
   font-size: var(--font-size-4);
   font-weight: 700;
