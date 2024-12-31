@@ -79,6 +79,9 @@
   font-size: var(--font-size-9);
 }
 
+.heading-size {
+  font-size: var(--heading-size-3);
+}
 .heading-size-1 {
   font-size: var(--heading-size-1);
 }
@@ -1435,6 +1438,9 @@
   .font-weight-xs {
     font-weight: var(--font-weight-xs);
   }
+  .heading-size-xs {
+    font-size: var(--heading-size-xs);
+  }
   .border-size-xs {
     border: var(--border-size-xs) solid var(--border-color);
   }
@@ -1587,6 +1593,9 @@
   }
   .font-weight-sm {
     font-weight: var(--font-weight-sm);
+  }
+  .heading-size-sm {
+    font-size: var(--heading-size-sm);
   }
   .border-size-sm {
     border: var(--border-size-sm) solid var(--border-color);
@@ -1741,6 +1750,9 @@
   .font-weight-md {
     font-weight: var(--font-weight-md);
   }
+  .heading-size-md {
+    font-size: var(--heading-size-md);
+  }
   .border-size-md {
     border: var(--border-size-md) solid var(--border-color);
   }
@@ -1894,6 +1906,9 @@
   .font-weight-lg {
     font-weight: var(--font-weight-lg);
   }
+  .heading-size-lg {
+    font-size: var(--heading-size-lg);
+  }
   .border-size-lg {
     border: var(--border-size-lg) solid var(--border-color);
   }
@@ -2046,6 +2061,9 @@
   }
   .font-weight-xl {
     font-weight: var(--font-weight-xl);
+  }
+  .heading-size-xl {
+    font-size: var(--heading-size-xl);
   }
   .border-size-xl {
     border: var(--border-size-xl) solid var(--border-color);
