@@ -58,6 +58,7 @@ import { Radio, RadioGroup } from './RadioGroup';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Select } from './Select';
+import { Sheet } from './Sheet';
 import { Slider } from './Slider';
 import { Slot } from './Slot';
 import { Spinner } from './Spinner';
@@ -136,6 +137,7 @@ export {
   Row,
   SearchField,
   Select,
+  Sheet,
   ListSeparator,
   Slider,
   Slot,
