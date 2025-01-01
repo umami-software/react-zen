@@ -47,6 +47,7 @@ import { Loading } from './Loading';
 import { LoadingButton } from './LoadingButton';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
+import { MobileMenuButton } from './MobileMenuButton';
 import { Modal } from './Modal';
 import { NavigationMenu, NavigationMenuItem } from './NavigationMenu';
 import { PasswordField } from './PasswordField';
@@ -122,6 +123,7 @@ export {
   Menu,
   MenuItem,
   MenuTrigger,
+  MobileMenuButton,
   Modal,
   NavigationMenu,
   NavigationMenuItem,

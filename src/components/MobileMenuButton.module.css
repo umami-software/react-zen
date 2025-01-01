@@ -1,0 +1,15 @@
+.modal, .dialog {
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden;
+}
+
+.dialog {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.content {
+  overflow: auto;
+}
