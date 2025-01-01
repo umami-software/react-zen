@@ -49,7 +49,7 @@
     "@fontsource/jetbrains-mono": "^5.0.18",
     "@react-spring/web": "^9.7.5",
     "@umami/esbuild-plugin-css-modules": "0.2.0",
-    "@umami/shiso": "^0.22.0",
+    "@umami/shiso": "^0.24.0",
     "classnames": "^2.5.1",
     "dts-bundle": "^0.7.3",
     "glob": "^10.3.10",
