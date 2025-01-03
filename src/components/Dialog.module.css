@@ -13,3 +13,11 @@
   font-weight: 700;
   margin-bottom: var(--spacing-3);
 }
+
+.sheet {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 9999;
+}

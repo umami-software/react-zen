@@ -47,7 +47,6 @@ import { Loading } from './Loading';
 import { LoadingButton } from './LoadingButton';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
-import { MobileMenuButton } from './MobileMenuButton';
 import { Modal } from './Modal';
 import { NavigationMenu, NavigationMenuItem } from './NavigationMenu';
 import { PasswordField } from './PasswordField';
@@ -58,7 +57,6 @@ import { Radio, RadioGroup } from './RadioGroup';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Select } from './Select';
-import { Sheet } from './Sheet';
 import { Slider } from './Slider';
 import { Slot } from './Slot';
 import { Spinner } from './Spinner';
@@ -124,7 +122,6 @@ export {
   Menu,
   MenuItem,
   MenuTrigger,
-  MobileMenuButton,
   Modal,
   NavigationMenu,
   NavigationMenuItem,
@@ -137,7 +134,6 @@ export {
   Row,
   SearchField,
   Select,
-  Sheet,
   ListSeparator,
   Slider,
   Slot,

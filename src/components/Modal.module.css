@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  --modal-offset: 50%;
 }
 
 .overlay[data-entering] {
@@ -29,7 +30,7 @@
   left: 0;
   bottom: 0;
   margin: auto;
-  width: calc(100dvw - var(--modal-offset));
+  width: calc(100dvw - var(--modal-offset, 0));
 }
 
 .modal.right {
@@ -38,7 +39,7 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  width: calc(100dvw - var(--modal-offset));
+  width: calc(100dvw - var(--modal-offset, 0));
 }
 
 .modal.top {
@@ -47,7 +48,7 @@
   left: 0;
   right: 0;
   margin: auto;
-  height: calc(100dvh - var(--modal-offset));
+  height: calc(100dvh - var(--modal-offset, 0));
 }
 
 .modal.bottom {
@@ -56,7 +57,7 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  height: calc(100dvh - var(--modal-offset));
+  height: calc(100dvh - var(--modal-offset, 0));
 }
 
 .modal.fullscreen {

@@ -10,12 +10,12 @@ import {
   FormField,
 } from '@/components';
 
-export function DialogExample({ variant }: { variant?: any }) {
+export function DialogExample() {
   return (
     <DialogTrigger>
       <Button variant="primary">Click me</Button>
       <Modal>
-        <Dialog title="Sign up for newsletter" variant={variant}>
+        <Dialog title="Sign up for newsletter">
           {({ close }) => {
             return (
               <Form>
