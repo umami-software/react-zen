@@ -64,7 +64,6 @@
             { "label": "List", "url": "/docs/components/list" },
             { "label": "Loading Button", "url": "/docs/components/loading-button" },
             { "label": "Menu", "url": "/docs/components/menu" },
-            { "label": "Mobile Menu Button", "url": "/docs/components/mobile-menu-button" },
             { "label": "Modal", "url": "/docs/components/modal" },
             { "label": "Navigation Menu", "url": "/docs/components/navigation-menu" },
             { "label": "Password Field", "url": "/docs/components/password-field" },
