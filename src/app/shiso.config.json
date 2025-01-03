@@ -2,7 +2,6 @@
   "contentDir": "./src/content",
   "docs": {
     "title": "Docs - zen",
-    "top": "30px",
     "navigation": {
       "docs": [
         {

@@ -15,8 +15,8 @@ Borders are always solid and a fixed color. You can control the `radius` and `si
   <ExampleBox borderRadius="3" />
   <Label>Radius 4</Label>
   <ExampleBox borderRadius="4" />
-  <Label>Radius 5</Label>
-  <ExampleBox borderRadius="5" />
+  <Label>Radius full</Label>
+  <ExampleBox borderRadius="full" />
 </Example>
 
 ## Border size
@@ -43,7 +43,7 @@ Border radius values are defined as a 5-step scale from smallest to largest.
       { name: '--border-radius-2', value: '4px' },
       { name: '--border-radius-3', value: '8px' },
       { name: '--border-radius-4', value: '16px' },
-      { name: '--border-radius-5', value: '9999px' },
+      { name: '--border-radius-full', value: '9999px' },
     ]}
   >
     <DataColumn id="name" label="Name" />
@@ -72,7 +72,7 @@ Border sizes are defined as a 4-step scale from smallest to largest.
 <Example>
   <DataTable
     data={[
-      { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6">' },
+      { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "full">' },
       { name: 'borderSize', value: 'Responsive<"1" | "2" | "3" | "4">' },
     ]}
   >
