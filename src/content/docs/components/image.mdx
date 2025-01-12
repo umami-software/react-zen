@@ -1,0 +1,38 @@
+---
+title: Image
+---
+
+An image.
+
+<Example>
+  <Box maxWidth="480px">
+    <Image src="/images/sample.jpg" alt="Image" />
+  </Box>
+</Example>
+
+## Object fit
+
+<Example>
+  <Column gap="4">
+    <Label>Cover</Label>
+    <Box maxWidth="480px" height="480px">
+      <Image src="/images/sample.jpg" alt="Image" objectFit="cover" />
+    </Box>
+    <Label>Fill</Label>
+    <Box maxWidth="480px" height="480px">
+      <Image src="/images/sample.jpg" alt="Image" objectFit="fill" />
+    </Box>
+    <Label>Contain</Label>
+    <Box maxWidth="480px" height="480px">
+      <Image src="/images/sample.jpg" alt="Image" objectFit="contain" />
+    </Box>
+    <Label>Scale down</Label>
+    <Box maxWidth="480px" height="480px">
+      <Image src="/images/sample.jpg" alt="Image" objectFit="scale-down" />
+    </Box>
+    <Label>None</Label>
+    <Box maxWidth="480px" height="480px" overflow="hidden">
+      <Image src="/images/sample.jpg" alt="Image" objectFit="none" />
+    </Box>
+  </Column>
+</Example>

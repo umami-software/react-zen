@@ -40,6 +40,7 @@ import { Heading } from './Heading';
 import { HoverTrigger } from './HoverTrigger';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
+import { Image } from './Image';
 import { InlineEditField } from './InlineEditField';
 import { Label } from './Label';
 import { List, ListItem, ListSeparator, ListSection } from './List';
@@ -112,6 +113,7 @@ export {
   HoverTrigger,
   Icon,
   Icons,
+  Image,
   InlineEditField,
   Label,
   List,

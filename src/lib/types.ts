@@ -162,3 +162,5 @@ export type AlignSelf =
   | 'flex-end'
   | 'baseline'
   | 'stretch';
+
+export type ObjectFit = 'fill' | 'contain' | 'cover' | 'scale-down' | 'none';

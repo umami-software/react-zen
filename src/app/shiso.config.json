@@ -59,6 +59,7 @@
             { "label": "Hover Trigger", "url": "/docs/components/hover-trigger" },
             { "label": "Icon", "url": "/docs/components/icon" },
             { "label": "Icons", "url": "/docs/components/icons" },
+            { "label": "Image", "url": "/docs/components/image" },
             { "label": "Inline Edit Field", "url": "/docs/components/inline-edit-field" },
             { "label": "List", "url": "/docs/components/list" },
             { "label": "Loading Button", "url": "/docs/components/loading-button" },
