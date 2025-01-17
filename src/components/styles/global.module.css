@@ -80,7 +80,7 @@
 }
 
 .heading-size {
-  font-size: var(--heading-size-3);
+  font-size: var(--heading-size);
 }
 .heading-size-1 {
   font-size: var(--heading-size-1);

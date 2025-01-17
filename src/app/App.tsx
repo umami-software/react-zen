@@ -10,7 +10,7 @@ export function App({ children }: { children: ReactNode }) {
       <Container>
         <Column minHeight="100vh">
           <Header />
-          <Box flexGrow={1} as="main">
+          <Box flexGrow="1" as="main">
             {children}
           </Box>
           <Footer />
