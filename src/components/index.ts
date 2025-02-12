@@ -46,8 +46,7 @@ import { Label } from './Label';
 import { List, ListItem, ListSeparator, ListSection } from './List';
 import { Loading } from './Loading';
 import { LoadingButton } from './LoadingButton';
-import { Menu } from './Menu';
-import { MenuItem } from './MenuItem';
+import { Menu, MenuItem, MenuSection, MenuSeparator } from './Menu';
 import { Modal } from './Modal';
 import { NavigationMenu, NavigationMenuItem } from './NavigationMenu';
 import { PasswordField } from './PasswordField';
@@ -119,10 +118,13 @@ export {
   List,
   ListItem,
   ListSection,
+  ListSeparator,
   Loading,
   LoadingButton,
   Menu,
   MenuItem,
+  MenuSection,
+  MenuSeparator,
   MenuTrigger,
   Modal,
   NavigationMenu,
@@ -136,7 +138,6 @@ export {
   Row,
   SearchField,
   Select,
-  ListSeparator,
   Slider,
   Slot,
   Spinner,

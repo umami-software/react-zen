@@ -1,5 +1,4 @@
 .list {
-  overflow: hidden;
   min-width: 100px;
   outline: none;
 }
@@ -8,7 +7,7 @@
   border-bottom: var(--border);
 }
 
-.section {
+.section:not(:last-child) {
   margin-bottom: var(--spacing-4);
 }
 

@@ -5,10 +5,10 @@ import styles from './Dialog.module.css';
 
 interface DialogProps extends AriaDialogProps {
   title?: ReactNode;
-  variant?: 'sheet';
+  variant?: 'sheet' | 'modal' | 'none';
 }
 
-function Dialog({ title, variant, children, className, ...props }: DialogProps) {
+function Dialog({ title, variant = 'modal', children, className, ...props }: DialogProps) {
   return (
     <AriaDialog
       {...props}

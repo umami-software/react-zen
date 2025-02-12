@@ -1,7 +1,6 @@
 import { ComboBox, ComboBoxProps, Input, Button } from 'react-aria-components';
 import classNames from 'classnames';
-import { List } from './List';
-import { ListItem } from './ListItem';
+import { List, ListItem } from './List';
 import { Icon } from './Icon';
 import { Popover } from './Popover';
 import { Icons } from './Icons';

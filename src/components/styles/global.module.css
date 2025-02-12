@@ -141,7 +141,7 @@
 .border-radius-4 {
   border-radius: var(--border-radius-4);
 }
-.border-radius-5 {
+.border-radius-full {
   border-radius: var(--border-radius-full);
 }
 

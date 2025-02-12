@@ -5,33 +5,77 @@ title: Menu
 A menu displays a list of actions or options that a user can choose.
 
 <Example>
-  <Menu items={['One', 'Two', 'Three', 'Four', 'Five']} />
+  <Menu>
+    <MenuItem>One</MenuItem>
+    <MenuItem>Two</MenuItem>
+    <MenuItem>Three</MenuItem>
+    <MenuItem>Four</MenuItem>
+    <MenuItem>Five</MenuItem>
+  </Menu>
 </Example>
 
 ## Separators
 
 <Example>
-  <Menu items={['One', null, 'Two', 'Three', null, 'Four', 'Five']} />
+  <Menu>
+    <MenuItem>One</MenuItem>
+    <MenuItem>Two</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Three</MenuItem>
+    <MenuItem>Four</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Five</MenuItem>
+  </Menu>
+</Example>
+
+## Sections
+
+<Example>
+  <Menu>
+    <MenuSection title="Introduction">
+      <MenuItem>One</MenuItem>
+      <MenuItem>Two</MenuItem>
+      <MenuItem>Three</MenuItem>
+    </MenuSection>
+    <MenuSection title="Summary">
+      <MenuItem>Four</MenuItem>
+      <MenuItem>Five</MenuItem>
+    </MenuSection>
+  </Menu>
 </Example>
 
 ## Single select
 
 <Example>
-  <Menu selectionMode="single" items={['One', 'Two', 'Three', 'Four', 'Five']} />
+  <Menu selectionMode="single">
+    <MenuItem>One</MenuItem>
+    <MenuItem>Two</MenuItem>
+    <MenuItem>Three</MenuItem>
+    <MenuItem>Four</MenuItem>
+    <MenuItem>Five</MenuItem>
+  </Menu>
 </Example>
 
 ## Multiple select
 
 <Example>
-  <Menu selectionMode="multiple" items={['One', 'Two', 'Three', 'Four', 'Five']} />
+  <Menu selectionMode="multiple">
+    <MenuItem>One</MenuItem>
+    <MenuItem>Two</MenuItem>
+    <MenuItem>Three</MenuItem>
+    <MenuItem>Four</MenuItem>
+    <MenuItem>Five</MenuItem>
+  </Menu>
 </Example>
 
 ## Preselected
 
 <Example>
-  <Menu
-    selectionMode="multiple"
-    selectedKeys={['Three', 'Five']}
-    items={['One', 'Two', 'Three', 'Four', 'Five']}
-  />
+  <Menu selectionMode="multiple" defaultSelectedKeys={['three', 'five']}>
+    <MenuItem id="one">One</MenuItem>
+    <MenuItem id="two">Two</MenuItem>
+    <MenuItem id="three">Three</MenuItem>
+    <MenuItem id="four">Four</MenuItem>
+    <MenuItem id="five">Five</MenuItem>
+  </Menu>
 </Example>
