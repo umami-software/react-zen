@@ -1,4 +1,4 @@
-import { Row, Text, ThemeButton, Button, Icon } from '@umami/react-zen';
+import { Row, Text, ThemeButton, Button, Icon } from '@/components';
 import Link from 'next/link';
 import Github from '@/assets/github.svg';
 
