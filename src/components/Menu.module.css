@@ -24,15 +24,15 @@
 .item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--gap);
   font-size: var(--font-size);
   color: var(--font-color);
   background: var(--background-color);
   padding: var(--padding);
   border-radius: var(--border-radius);
-  gap: var(--gap);
   cursor: pointer;
   outline: none;
+  width: 100%;
 }
 
 .item[data-focus],
@@ -50,7 +50,9 @@
 }
 
 .item[data-selected] .check {
-  display: block;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .check {

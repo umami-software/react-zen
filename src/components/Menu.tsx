@@ -1,11 +1,10 @@
 import { ReactNode } from 'react';
 import {
   Header,
-  ListBoxSection,
-  ListBoxSectionProps,
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
   MenuSection as AriaMenuSection,
+  MenuSectionProps,
   MenuItemProps,
   MenuProps as AriaMenuProps,
   Separator,
@@ -45,11 +44,11 @@ function MenuItem({ children, className, ...props }: MenuItemProps<any>) {
   return (
     <AriaMenuItem {...props} className={classNames(styles.item, className)}>
       {children as any}
-      <span aria-hidden="true">
-        <Icon className={styles.check}>
+      <div aria-hidden="true" className={styles.check}>
+        <Icon>
           <Icons.Check />
         </Icon>
-      </span>
+      </div>
     </AriaMenuItem>
   );
 }
@@ -63,7 +62,7 @@ function MenuSection({
   className,
   children,
   ...props
-}: ListBoxSectionProps<any> & { title?: string }) {
+}: MenuSectionProps<any> & { title?: string }) {
   return (
     <AriaMenuSection {...props} className={classNames(styles.section, className)}>
       {title && <Header className={styles.header}>{title}</Header>}

@@ -44,11 +44,11 @@ export function ListItem({ children, className, ...props }: ListBoxItemProps<any
   return (
     <ListBoxItem {...props} className={classNames(styles.item, className)}>
       {children as any}
-      <span aria-hidden="true">
-        <Icon size="sm" className={styles.check}>
+      <div aria-hidden="true" className={styles.check}>
+        <Icon>
           <Icons.Check />
         </Icon>
-      </span>
+      </div>
     </ListBoxItem>
   );
 }

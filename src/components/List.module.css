@@ -47,7 +47,9 @@
 }
 
 .item[data-selected] .check {
-  display: block;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .check {
