@@ -52,7 +52,7 @@
 .item[data-selected] .check {
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  flex: 1;
 }
 
 .check {
