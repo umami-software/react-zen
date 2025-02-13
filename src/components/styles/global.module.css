@@ -304,6 +304,9 @@
   color: var(--accent-color-sky);
 }
 
+.background-color-solid {
+  background-color: var(--background-color);
+}
 .background-color-50 {
   background-color: var(--base-color-50);
 }

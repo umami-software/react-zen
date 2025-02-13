@@ -17,7 +17,16 @@
   border-radius: var(--border-radius);
 }
 
+.menu {
+  padding: var(--spacing-3);
+  box-shadow: var(--box-shadow-3);
+  background: var(--background-color);
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
 .sheet {
+  background: var(--background-color);
   width: 100%;
   height: 100%;
   border-radius: 0;

@@ -109,7 +109,7 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
 
     if (value) {
       if (typeof value === 'string' || typeof value === 'number') {
-        if (excludedProps.includes(key)) {
+        if (excludedProps.includes(key) || /var\(.*\)/.test(value.toString())) {
           styleProps[key] = value;
         } else {
           classes.push(styles[`${name}-${value}`]);
