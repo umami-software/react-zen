@@ -31,7 +31,7 @@
 }
 
 .button.primary {
-  color: var(--primary-font-color);
+  color: var(--primary-font-color) !important;
   background: var(--primary-color);
 }
 
@@ -55,11 +55,11 @@
 }
 
 .button.outline:hover {
-  background: var(--input-color);
+  background: var(--highlight-color);
 }
 
 .button.outline[data-pressed] {
-  background: color-mix(in srgb, var(--input-color), 5% var(--font-color));
+  background: color-mix(in srgb, var(--highlight-color), 5% var(--font-color));
 }
 
 .button.quiet {
@@ -67,11 +67,11 @@
 }
 
 .button.quiet:hover {
-  background: var(--input-color);
+  background: var(--highlight-color);
 }
 
 .button.quiet[data-pressed] {
-  background: color-mix(in srgb, var(--input-color), 5% var(--font-color));
+  background: color-mix(in srgb, var(--highlight-color), 5% var(--font-color));
 }
 
 .button.danger {
