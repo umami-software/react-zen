@@ -9,7 +9,7 @@ const store = create(() => ({ ...initialState }));
 function setTheme(theme: string) {
   store.setState({ theme });
 
-  document.body.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-theme', theme);
 }
 
 function useTheme() {
