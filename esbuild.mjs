@@ -34,7 +34,7 @@ const config = {
     commonjs(),
     cssModules(),
     svgr(),
-    nullImportPlugin({ matches: [/[a-z]-[A-Z]/] }),
+    nullImportPlugin({ matches: [/[a-z]{2}-[A-Z]{2}/] }),
   ],
 };
 
