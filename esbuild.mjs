@@ -19,7 +19,7 @@ const nullImportPlugin = ({ matches = [] }) => ({
 
     // Replace matched imports with undefined
     build.onLoad({ filter: /.*/, namespace: 'null-import' }, () => ({
-      contents: `export default undefined;`,
+      contents: `export default {};`,
       loader: 'js',
     }));
   },
@@ -34,7 +34,7 @@ const config = {
     commonjs(),
     cssModules(),
     svgr(),
-    nullImportPlugin({ matches: [/[a-z]{2}-[A-Z]{2}/] }),
+    //nullImportPlugin({ matches: [/[a-z]{2}-[A-Z]{2}/] }),
   ],
 };
 

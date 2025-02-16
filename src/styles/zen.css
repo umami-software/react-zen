@@ -131,8 +131,8 @@
 
   /* Global settings */
 
-  --font-family: Inter, sans-serif;
-  --font-family-code: 'JetBrains Mono', monospace;
+  --font-family: Inter;
+  --font-family-code: 'JetBrains Mono';
   --font-size: var(--font-size-2);
 
   --border-radius: var(--border-radius-2);
@@ -152,6 +152,10 @@
   /* Theme settings */
 
   --background-color: #fff;
+
+  --layer-color-1: var(--base-color-50);
+  --layer-color-2: var(--base-color-100);
+  --layer-color-3: var(--base-color-200);
 
   --font-color: var(--base-color-950);
   --font-color-muted: var(--base-color-600);
@@ -176,6 +180,10 @@
 
 html[data-theme='dark'] {
   --background-color: #0f0f0f;
+
+  --layer-color-1: var(--base-color-900);
+  --layer-color-2: var(--base-color-800);
+  --layer-color-3: var(--base-color-700);
 
   --font-color: var(--base-color-200);
   --font-color-muted: var(--base-color-400);
