@@ -1,5 +1,6 @@
 import { useTransition, animated } from '@react-spring/web';
 import classNames from 'classnames';
+import { PressEvent } from 'react-aria-components';
 import { Button, ButtonProps } from './Button';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
@@ -16,6 +17,7 @@ export function ThemeButton({
   variant = 'quiet',
   ...props
 }: ThemeButtonProps) {
+export function ThemeButton({ className, variant = 'quiet', onPress, ...props }: ButtonProps) {
   const { theme, setTheme } = useTheme();
 
   const transitions = useTransition(theme, {
@@ -31,8 +33,9 @@ export function ThemeButton({
     },
   });
 
-  function handleClick() {
+  function handleClick(e: PressEvent) {
     setTheme(theme === 'light' ? 'dark' : 'light');
+    onPress?.(e);
   }
 
   return (

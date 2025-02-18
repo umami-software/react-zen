@@ -15,13 +15,14 @@ import styles from './SearchField.module.css';
 
 interface SearchFieldProps extends AriaSearchFieldProps {
   label?: string;
+  placeholder?: string;
   value?: string;
   delay?: number;
   onSearch?: (value: string) => void;
 }
 
 const SearchField = forwardRef(
-  ({ label, value, delay = 0, onSearch, className, ...props }: SearchFieldProps, ref: Ref<any>) => {
+  ({ label, placeholder, value, delay = 0, onSearch, className, ...props }: SearchFieldProps, ref: Ref<any>) => {
     const [search, setSearch] = useState(value ?? '');
     const searchValue = useDebounce(search, delay);
 
@@ -56,6 +57,7 @@ const SearchField = forwardRef(
                 <Icons.MagnifyingGlass className={classNames(styles.search, inputStyles.icon)} />
                 <Input
                   className={classNames(styles.input, inputStyles.input)}
+                  placeholder={placeholder}
                   onChange={handleChange}
                 />
                 {state.value && (
