@@ -12,6 +12,7 @@ export function Example({
   borderRadius = '3',
   minHeight = '300px',
   wrap = 'wrap',
+  position = 'relative',
   children,
   ...props
 }: FlexboxProps) {
@@ -29,7 +30,9 @@ export function Example({
         marginY,
         minHeight,
         wrap,
+        position,
       }}
+      style={{ overflow: 'hidden' }}
     >
       {children}
     </Flexbox>

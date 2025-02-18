@@ -48,7 +48,7 @@ import { Loading } from './Loading';
 import { LoadingButton } from './LoadingButton';
 import { Menu, MenuItem, MenuSection, MenuSeparator } from './Menu';
 import { Modal } from './Modal';
-import { NavigationMenu, NavigationMenuItem } from './NavigationMenu';
+import { NavBar, NavBarItem } from './NavBar';
 import { PasswordField } from './PasswordField';
 import { Popover } from './Popover';
 import { ProgressBar } from './ProgressBar';
@@ -57,6 +57,7 @@ import { Radio, RadioGroup } from './RadioGroup';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Select } from './Select';
+import { SideNav, SideNavHeader, SideNavItem, SideNavSection } from './SideNav';
 import { Slider } from './Slider';
 import { Slot } from './Slot';
 import { Spinner } from './Spinner';
@@ -108,6 +109,8 @@ export {
   FileTrigger,
   Flexbox,
   Grid,
+  NavBar,
+  NavBarItem,
   Heading,
   HoverTrigger,
   Icon,
@@ -127,8 +130,6 @@ export {
   MenuSeparator,
   MenuTrigger,
   Modal,
-  NavigationMenu,
-  NavigationMenuItem,
   PasswordField,
   Popover,
   ProgressBar,
@@ -138,6 +139,10 @@ export {
   Row,
   SearchField,
   Select,
+  SideNav,
+  SideNavHeader,
+  SideNavItem,
+  SideNavSection,
   Slider,
   Slot,
   Spinner,

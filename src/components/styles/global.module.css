@@ -310,9 +310,6 @@
 .background-color-solid {
   background-color: var(--background-color);
 }
-.background-color-panel {
-  background-color: var(--panel-color);
-}
 .background-color-50 {
   background-color: var(--base-color-50);
 }

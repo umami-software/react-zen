@@ -6,7 +6,16 @@ import { Icons } from './Icons';
 import { useTheme } from './hooks/useTheme';
 import styles from './ThemeButton.module.css';
 
-export function ThemeButton({ className, variant = 'quiet', ...props }: ButtonProps) {
+export interface ThemeButtonProps extends ButtonProps {
+  defaultTheme?: string;
+}
+
+export function ThemeButton({
+  defaultTheme = 'light',
+  className,
+  variant = 'quiet',
+  ...props
+}: ThemeButtonProps) {
   const { theme, setTheme } = useTheme();
 
   const transitions = useTransition(theme, {

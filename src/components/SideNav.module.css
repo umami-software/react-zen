@@ -1,0 +1,46 @@
+.sidenav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: var(--layer-color-1);
+  border-right: 1px solid var(--border-color);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: var(--padding);
+}
+
+.name {
+  font-weight: var(--font-weight-bold);
+}
+
+.section {
+  padding: var(--spacing-3);
+}
+
+.title {
+  font-weight: var(--font-weight-bold);
+}
+
+.content {
+  display: grid;
+  gap: var(--gap);
+}
+
+.item {
+  color: var(--font-color-muted) !important;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: var(--padding);
+}
+
+.item:hover {
+  color: var(--font-color) !important;
+  background-color: var(--layer-color-2);
+}
