@@ -12,13 +12,13 @@ export interface ThemeButtonProps extends ButtonProps {
 }
 
 export function ThemeButton({
-  defaultTheme = 'light',
   className,
   variant = 'quiet',
+  defaultTheme,
+  onPress,
   ...props
 }: ThemeButtonProps) {
-export function ThemeButton({ className, variant = 'quiet', onPress, ...props }: ButtonProps) {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme(defaultTheme);
 
   const transitions = useTransition(theme, {
     initial: { opacity: 1 },
@@ -55,5 +55,3 @@ export function ThemeButton({ className, variant = 'quiet', onPress, ...props }:
     </Button>
   );
 }
-
-export default ThemeButton;

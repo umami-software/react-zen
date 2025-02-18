@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { useEffect } from 'react';
 
 const initialState = {
   theme: 'light',
@@ -12,10 +13,14 @@ function setTheme(theme: string) {
   document.documentElement.setAttribute('data-theme', theme);
 }
 
-function useTheme() {
+export function useTheme(defaultTheme?: string) {
   const { theme } = store();
+
+  useEffect(() => {
+    if (defaultTheme) {
+      setTheme(defaultTheme);
+    }
+  }, [defaultTheme]);
 
   return { theme, setTheme };
 }
-
-export { useTheme };
