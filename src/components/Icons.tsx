@@ -7,13 +7,11 @@ import { BiEditAlt } from 'react-icons/bi';
 import { PiTrash, PiArrowRight } from 'react-icons/pi';
 import { GoAlert, GoInfo } from 'react-icons/go';
 import { RxExternalLink, RxCopy } from 'react-icons/rx';
-
-import Moon from '@/assets/moon.svg';
-import Sun from '@/assets/sun.svg';
+import { LuSun, LuMoon } from 'react-icons/lu';
 
 export const Icons = {
-  Moon,
-  Sun,
+  Moon: LuMoon,
+  Sun: LuSun,
   Alert: GoAlert,
   Arrow: PiArrowRight,
   Check: MdCheck,
