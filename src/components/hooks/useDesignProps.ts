@@ -1,4 +1,4 @@
-import styles from '../styles/global.module.css';
+import styles from '../styles/vars.module.css';
 
 const CSS_MAP = {
   display: 'display',

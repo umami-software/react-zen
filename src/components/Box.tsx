@@ -19,16 +19,15 @@ import {
   Overflow,
   AlignSelf,
   JustifySelf,
-  AccentColor,
-  BaseColor,
+  FontColor,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
 
 interface BoxProps extends HTMLAttributes<HTMLElement> {
   display?: Responsive<Display>;
-  color?: BaseColor | AccentColor;
-  backgroundColor?: BackgroundColor | BaseColor | AccentColor;
+  color?: FontColor;
+  backgroundColor?: BackgroundColor;
   borderSize?: Responsive<BorderSize>;
   borderRadius?: Responsive<BorderRadius>;
   shadow?: Responsive<BoxShadow>;

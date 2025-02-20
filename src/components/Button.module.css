@@ -45,7 +45,7 @@
 
 .button.primary:disabled {
   color: var(--primary-font-color);
-  background: var(--base-color-500);
+  background: var(--base-color-9);
 }
 
 .button.outline {
@@ -89,7 +89,7 @@
 
 .button.danger:disabled {
   color: var(--primary-font-color);
-  background: var(--base-color-500);
+  background: var(--base-color-8);
 }
 
 .button.xs {

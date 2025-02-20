@@ -1,6 +1,5 @@
 .container {
   position: relative;
-  background: var(--base-color-900);
   padding: var(--spacing-4) var(--spacing-5);
   border-radius: 6px;
   white-space: pre-wrap;
@@ -9,7 +8,6 @@
 
 pre.container code {
   font-family: var(--font-family-code);
-  color: var(--base-color-300);
   padding: 0;
   border: 0;
   background: transparent;
@@ -25,11 +23,11 @@ pre.container code {
 }
 
 .copy {
-  color: var(--base-color-200);
+  color: var(--base-color-5);
 }
 
 .copy:hover {
-  color: var(--base-color-50);
+  color: var(--base-color-3);
 }
 
 .check {

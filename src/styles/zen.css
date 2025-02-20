@@ -1,4 +1,4 @@
-:root {
+:root, .light-theme {
   /* Fonts */
 
   --font-size-1: 12px;
@@ -68,25 +68,6 @@
 
   /* Colors */
 
-  --base-color-50: #fafafa;
-  --base-color-100: #f5f5f5;
-  --base-color-200: #e5e5e5;
-  --base-color-300: #d4d4d4;
-  --base-color-400: #a3a3a3;
-  --base-color-500: #737373;
-  --base-color-600: #525252;
-  --base-color-700: #404040;
-  --base-color-800: #262626;
-  --base-color-900: #171717;
-  --base-color-950: #0a0a0a;
-
-  --base-color-gray: #8d8d8d;
-  --base-color-mauve: #8e8c99;
-  --base-color-slate: #8b8d98;
-  --base-color-sage: #868e8b;
-  --base-color-olive: #898e87;
-  --base-color-sand: #8d8d86;
-
   --accent-color-gray: #8d8d8d;
   --accent-color-gold: #978365;
   --accent-color-bronze: #a18072;
@@ -114,21 +95,6 @@
   --accent-color-mint: #86ead4;
   --accent-color-sky: #7ce2fe;
 
-  --success-color: var(--accent-color-green);
-  --success-font-color: var(--base-color-50);
-
-  --danger-color: var(--accent-color-red);
-  --danger-font-color: var(--base-color-50);
-
-  --warning-color: var(--accent-color-orange);
-  --warning-font-color: var(--base-color-50);
-
-  --active-color: var(--accent-color-blue);
-  --active-font-color: var(--base-color-50);
-
-  --inactive-color: var(--accent-color-gray);
-  --inactive-font-color: var(--base-color-900);
-
   /* Global settings */
 
   --font-family: Inter;
@@ -146,62 +112,134 @@
 
   --box-shadow: var(--box-shadow-1);
 
-  --light-color: var(--base-color-50);
-  --dark-color: var(--base-color-950);
-
   /* Theme settings */
 
+  --base-color-1: #fcfcfc;
+  --base-color-2: #f9f9f9;
+  --base-color-3: #f0f0f0;
+  --base-color-4: #e8e8e8;
+  --base-color-5: #e0e0e0;
+  --base-color-6: #d9d9d9;
+  --base-color-7: #cecece;
+  --base-color-8: #bbbbbb;
+  --base-color-9: #8d8d8d;
+  --base-color-10: #838383;
+  --base-color-11: #646464;
+  --base-color-12: #202020;
+
   --background-color: #fff;
+  --background-color-1: var(--base-color-1);
+  --background-color-2: var(--base-color-2);
 
-  --layer-color-1: var(--base-color-50);
-  --layer-color-2: var(--base-color-100);
-  --layer-color-3: var(--base-color-200);
+  --layer-color-1: var(--base-color-3);
+  --layer-color-2: var(--base-color-4);
+  --layer-color-3: var(--base-color-5);
 
-  --font-color: var(--base-color-950);
-  --font-color-muted: var(--base-color-600);
-  --font-color-disabled: var(--base-color-400);
-
-  --border-color: var(--base-color-300);
+  --border-color-1: var(--base-color-6);
+  --border-color-2: var(--base-color-7);
+  --border-color-3: var(--base-color-8);
+  --border-color: var(--base-color-6);
   --border: var(--border-width) solid var(--border-color);
 
-  --outline-color: var(--base-color-400);
+  --solid-color-1: var(--base-color-9);
+  --solid-color-2: var(--base-color-10);
+
+  --font-color: var(--base-color-12);
+  --font-color-muted: var(--base-color-10);
+  --font-color-disabled: var(--base-color-8);
+
+  --heading-color: var(--base-color-12);
+
+  --outline-color: var(--base-color-10);
   --outline: var(--border-width) solid var(--outline-color);
 
-  --primary-color: var(--base-color-900);
-  --primary-font-color: var(--base-color-50);
+  --primary-color: var(--base-color-12);
+  --primary-font-color: var(--base-color-1);
 
-  --input-color: var(--base-color-100);
+  --input-color: var(--base-color-3);
   --input-font-color: var(--font-color);
-  --input-disabled-color: var(--base-color-100);
 
-  --highlight-color: var(--base-color-50);
+  --highlight-color: var(--base-color-2);
   --highlight-font-color: var(--font-color);
+
+  --success-color: var(--accent-color-green);
+  --success-font-color: var(--base-color-1);
+
+  --danger-color: var(--accent-color-red);
+  --danger-font-color: var(--base-color-1);
+
+  --warning-color: var(--accent-color-orange);
+  --warning-font-color: var(--base-color-1);
+
+  --active-color: var(--accent-color-blue);
+  --active-font-color: var(--base-color-1);
+
+  --inactive-color: var(--accent-color-gray);
+  --inactive-font-color: var(--base-color-12);
 }
 
-html[data-theme='dark'] {
+html[data-theme='dark'], .dark-theme {
+  --base-color-1: #111111;
+  --base-color-2: #191919;
+  --base-color-3: #222222;
+  --base-color-4: #2a2a2a;
+  --base-color-5: #313131;
+  --base-color-6: #3a3a3a;
+  --base-color-7: #484848;
+  --base-color-8: #606060;
+  --base-color-9: #6e6e6e;
+  --base-color-10: #7b7b7b;
+  --base-color-11: #b4b4b4;
+  --base-color-12: #eeeeee;
+  
   --background-color: #0f0f0f;
+  --background-color-1: var(--base-color-1);
+  --background-color-2: var(--base-color-2);
 
-  --layer-color-1: var(--base-color-900);
-  --layer-color-2: var(--base-color-800);
-  --layer-color-3: var(--base-color-700);
+  --layer-color-1: var(--base-color-3);
+  --layer-color-2: var(--base-color-4);
+  --layer-color-3: var(--base-color-5);
 
-  --font-color: var(--base-color-200);
-  --font-color-muted: var(--base-color-400);
-  --font-color-disabled: var(--base-color-500);
-
-  --border-color: var(--base-color-700);
+  --border-color-1: var(--base-color-6);
+  --border-color-2: var(--base-color-7);
+  --border-color-3: var(--base-color-8);
+  --border-color: var(--base-color-6);
   --border: var(--border-width) solid var(--border-color);
 
-  --outline-color: var(--base-color-600);
+  --solid-color-1: var(--base-color-9);
+  --solid-color-2: var(--base-color-10);
+
+  --font-color: var(--base-color-12);
+  --font-color-muted: var(--base-color-10);
+  --font-color-disabled: var(--base-color-8);
+
+  --heading-color: var(--base-color-12);
+
+  --outline-color: var(--base-color-10);
   --outline: var(--border-width) solid var(--outline-color);
 
-  --primary-color: var(--base-color-50);
-  --primary-font-color: var(--base-color-900);
+  --primary-color: var(--base-color-12);
+  --primary-font-color: var(--base-color-1);
 
-  --input-color: var(--base-color-700);
+  --input-color: var(--base-color-2);
   --input-font-color: var(--font-color);
-  --input-disabled-color: var(--base-color-800);
+  --input-disabled-color: var(--base-color-2);
 
-  --highlight-color: var(--base-color-800);
+  --highlight-color: var(--base-color-1);
   --highlight-font-color: var(--font-color);
+
+  --success-color: var(--accent-color-green);
+  --success-font-color: var(--base-color-1);
+
+  --danger-color: var(--accent-color-red);
+  --danger-font-color: var(--base-color-1);
+
+  --warning-color: var(--accent-color-orange);
+  --warning-font-color: var(--base-color-1);
+
+  --active-color: var(--accent-color-blue);
+  --active-font-color: var(--base-color-1);
+
+  --inactive-color: var(--accent-color-gray);
+  --inactive-font-color: var(--base-color-12);
 }

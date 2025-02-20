@@ -2,18 +2,7 @@ export const breakpoints = ['default', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type Breakpoint = (typeof breakpoints)[number];
 export type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 
-export type BackgroundColor =
-  | '50'
-  | '100'
-  | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
-  | '700'
-  | '800'
-  | '900'
-  | '950';
+export type BaseColor = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
 
 export type AccentColor =
   | 'gray'
@@ -43,9 +32,12 @@ export type AccentColor =
   | 'mint'
   | 'sky';
 
-export type BaseColor = 'gray' | 'mauve' | 'slate' | 'sage' | 'olive' | 'sand';
+export type BackgroundColor = BaseColor | AccentColor;
+
+export type FontColor = AccentColor | 'primary' | 'muted' | 'disabled';
 
 export type Spacing = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+
 export type NegativeSpacing =
   | '-1'
   | '-2'

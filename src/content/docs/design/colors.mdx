@@ -2,24 +2,25 @@
 title: Colors
 ---
 
-There are several categories of colors that we use in this library and they are all defined in CSS variables.
+Our color system is based off of [Radix Colors](https://www.radix-ui.com/colors). There are several categories of colors that we use in this library and they are all defined in CSS variables.
 
 ## Base colors
 
 Base colors are used as the basis of every UI element including backgrounds, borders, and text.
 
 <Example direction="row" gap="2">
-  <ExampleBox backgroundColor="50" />
-  <ExampleBox backgroundColor="100" />
-  <ExampleBox backgroundColor="200" />
-  <ExampleBox backgroundColor="300" />
-  <ExampleBox backgroundColor="400" />
-  <ExampleBox backgroundColor="500" />
-  <ExampleBox backgroundColor="600" />
-  <ExampleBox backgroundColor="700" />
-  <ExampleBox backgroundColor="800" />
-  <ExampleBox backgroundColor="900" />
-  <ExampleBox backgroundColor="950" />
+  <ExampleBox backgroundColor="1" />
+  <ExampleBox backgroundColor="2" />
+  <ExampleBox backgroundColor="3" />
+  <ExampleBox backgroundColor="4" />
+  <ExampleBox backgroundColor="5" />
+  <ExampleBox backgroundColor="6" />
+  <ExampleBox backgroundColor="7" />
+  <ExampleBox backgroundColor="8" />
+  <ExampleBox backgroundColor="9" />
+  <ExampleBox backgroundColor="10" />
+  <ExampleBox backgroundColor="11" />
+  <ExampleBox backgroundColor="12" />
 </Example>
 
 ## Accent colors
@@ -32,24 +33,25 @@ Accent colors provide additional meaning to UI elements and are used in buttons,
 
 ## CSS variables
 
-The base colors are a 11-step color range going from lightest to darkest.
-We used the colors created by [Tailwind](https://tailwindcss.com/docs/customizing-colors), so you can
-easily swap these out with any of their other color palettes.
+The base colors are a 12-step color range going from lightest to darkest.
+
+### Light theme
 
 <Example>
   <DataTable
     data={[
-      { name: '--base-color-50', value: '#fafafa' },
-      { name: '--base-color-100', value: '#f5f5f5' },
-      { name: '--base-color-200', value: '#e5e5e5' },
-      { name: '--base-color-300', value: '#d4d4d4' },
-      { name: '--base-color-400', value: '#a3a3a3' },
-      { name: '--base-color-500', value: '#737373' },
-      { name: '--base-color-600', value: '#525252' },
-      { name: '--base-color-700', value: '#404040' },
-      { name: '--base-color-800', value: '#262626' },
-      { name: '--base-color-900', value: '#171717' },
-      { name: '--base-color-950', value: '#0a0a0a' },
+      { name: '--base-color-1', value: '#fcfcfc' },
+      { name: '--base-color-2', value: '#f9f9f9' },
+      { name: '--base-color-3', value: '#f0f0f0' },
+      { name: '--base-color-4', value: '#e8e8e8' },
+      { name: '--base-color-5', value: '#e0e0e0' },
+      { name: '--base-color-6', value: '#d9d9d9' },
+      { name: '--base-color-7', value: '#cecece' },
+      { name: '--base-color-8', value: '#bbbbbb' },
+      { name: '--base-color-9', value: '#8d8d8d' },
+      { name: '--base-color-10', value: '#838383' },
+      { name: '--base-color-11', value: '#646464' },
+      { name: '--base-color-12', value: '#202020' },
     ]}
   >
     <DataColumn id="name" label="Name" />
@@ -57,7 +59,31 @@ easily swap these out with any of their other color palettes.
   </DataTable>
 </Example>
 
-For accent colors, we used the colors from [Radix Themes](https://www.radix-ui.com/themes/docs/theme/color).
+### Dark theme
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--base-color-1', value: '#111111' },
+      { name: '--base-color-2', value: '#191919' },
+      { name: '--base-color-3', value: '#222222' },
+      { name: '--base-color-4', value: '#2a2a2a' },
+      { name: '--base-color-5', value: '#313131' },
+      { name: '--base-color-6', value: '#3a3a3a' },
+      { name: '--base-color-7', value: '#484848' },
+      { name: '--base-color-8', value: '#606060' },
+      { name: '--base-color-9', value: '#6e6e6e' },
+      { name: '--base-color-10', value: '#7b7b7b' },
+      { name: '--base-color-11', value: '#b4b4b4' },
+      { name: '--base-color-12', value: '#eeeeee' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Value" />
+  </DataTable>
+</Example>
+
+### Accent colors (light/dark)
 
 <Example>
   <DataTable

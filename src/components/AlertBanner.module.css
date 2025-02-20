@@ -32,13 +32,13 @@
 }
 
 .error {
-  color: var(--light-color);
+  color: var(--danger-font-color);
   background-color: var(--danger-color);
   border: 0;
 }
 
 .error .close {
-  color: var(--light-color);
+  color: var(--danger-font-color);
 }
 
 .info {

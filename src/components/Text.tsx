@@ -7,15 +7,14 @@ import {
   LetterSpacing,
   FontSize,
   TextWrap,
-  AccentColor,
-  BaseColor,
+  FontColor,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
 import styles from './Text.module.css';
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
-  color?: AccentColor | BaseColor | 'primary' | 'muted' | 'disabled';
+  color?: FontColor;
   size?: Responsive<FontSize>;
   spacing?: Responsive<LetterSpacing>;
   weight?: Responsive<FontWeight>;
