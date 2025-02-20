@@ -1,5 +1,7 @@
 .list {
+  background-color: var(--background-color);
   min-width: 100px;
+  overflow: hidden;
   outline: none;
 }
 
@@ -33,7 +35,6 @@
 
 .item[data-focus],
 .item[data-focus-visible] {
-  outline: var(--outline);
   background: var(--highlight-color);
 }
 

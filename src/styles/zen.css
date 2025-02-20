@@ -221,11 +221,10 @@ html[data-theme='dark'], .dark-theme {
   --primary-color: var(--base-color-12);
   --primary-font-color: var(--base-color-1);
 
-  --input-color: var(--base-color-2);
+  --input-color: var(--base-color-3);
   --input-font-color: var(--font-color);
-  --input-disabled-color: var(--base-color-2);
 
-  --highlight-color: var(--base-color-1);
+  --highlight-color: var(--base-color-2);
   --highlight-font-color: var(--font-color);
 
   --success-color: var(--accent-color-green);

@@ -4,7 +4,7 @@
   left: 0;
   width: 200px;
   height: 100%;
-  background-color: var(--layer-color-1);
+  background-color: var(--base-color-2);
   border-right: 1px solid var(--border-color);
 }
 
@@ -33,7 +33,7 @@
 }
 
 .item {
-  color: var(--font-color-muted) !important;
+  color: var(--font-color-muted);
   display: flex;
   align-items: center;
   gap: var(--gap);
@@ -41,6 +41,6 @@
 }
 
 .item:hover {
-  color: var(--font-color) !important;
-  background-color: var(--layer-color-2);
+  color: var(--font-color);
+  background-color: var(--base-color-3);
 }
