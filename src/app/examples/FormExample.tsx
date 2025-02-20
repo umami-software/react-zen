@@ -4,9 +4,9 @@ import {
   FormField,
   FormResetButton,
   FormSubmitButton,
+  FormButtons,
   TextField,
   PasswordField,
-  Row,
   Checkbox,
 } from '@/components';
 
@@ -28,10 +28,10 @@ export function FormExample() {
       <FormField name="remember_password">
         <Checkbox>Remember me</Checkbox>
       </FormField>
-      <Row gap="3" alignItems="center" justifyContent="flex-end">
+      <FormButtons>
         <FormResetButton>Reset</FormResetButton>
         <FormSubmitButton variant="primary">Submit</FormSubmitButton>
-      </Row>
+      </FormButtons>
     </Form>
   );
 }

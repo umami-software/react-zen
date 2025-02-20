@@ -2,12 +2,12 @@ import { useEffect, HTMLAttributes, ReactNode } from 'react';
 import { useForm, UseFormProps, SubmitHandler, FormProvider, UseFormReturn } from 'react-hook-form';
 import classNames from 'classnames';
 import { Responsive, Spacing } from '@/lib/types';
+import styles from './Form.module.css';
 import { AlertBanner } from '../AlertBanner';
 import { Column } from '../Column';
 import { Text } from '../Text';
 import { Icon } from '../Icon';
 import { Icons } from '../Icons';
-import styles from './Form.module.css';
 
 interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 'children'> {
   gap?: Responsive<Spacing>;

@@ -8,6 +8,7 @@ import {
 } from 'react-aria-components';
 
 import { Form } from './forms/Form';
+import { FormButtons } from './forms/FormButtons';
 import { FormField } from './forms/FormField';
 import { FormResetButton } from './forms/FormResetButton';
 import { FormSubmitButton } from './forms/FormSubmitButton';
@@ -76,6 +77,7 @@ import { ZenProvider } from './ZenProvider';
 
 export {
   Form,
+  FormButtons,
   FormField,
   FormResetButton,
   FormSubmitButton,

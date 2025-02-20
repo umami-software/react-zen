@@ -1,12 +1,12 @@
 'use client';
 import {
   Form,
+  FormButtons,
   FormField,
   FormResetButton,
   FormSubmitButton,
   TextField,
   PasswordField,
-  Row,
   Checkbox,
   SearchField,
   Box,
@@ -17,6 +17,7 @@ import {
   Switch,
   Toggle,
   Slider,
+  Row,
 } from '@/components';
 
 const defaultValues = {
@@ -78,12 +79,11 @@ export function FormInputsExample() {
         <FormField name="slider" label="Slider">
           <Slider />
         </FormField>
-        <Row gap="3" alignItems="center" justifyContent="flex-end">
+        <FormButtons>
           <FormResetButton>Reset</FormResetButton>
           <FormSubmitButton variant="primary">Submit</FormSubmitButton>
-        </Row>
+        </FormButtons>
       </Form>
-      <Box></Box>
     </Row>
   );
 }

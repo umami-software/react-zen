@@ -5,9 +5,9 @@ import {
   Button,
   TextField,
   Modal,
-  Row,
   Form,
   FormField,
+  FormButtons,
 } from '@/components';
 
 export function DialogExample() {
@@ -25,12 +25,12 @@ export function DialogExample() {
                 <FormField name="email" label="Email">
                   <TextField />
                 </FormField>
-                <Row gap="3" justifyContent="space-between">
+                <FormButtons>
                   <Button onPress={close}>Cancel</Button>
                   <Button variant="primary" onPress={close}>
                     Sign up
                   </Button>
-                </Row>
+                </FormButtons>
               </Form>
             );
           }}
