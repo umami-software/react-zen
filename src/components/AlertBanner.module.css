@@ -50,3 +50,15 @@
 .info .close {
   color: var(--primary-font-color);
 }
+
+.start {
+  text-align: start;
+}
+
+.end {
+  text-align: end;
+}
+
+.center {
+  text-align: center;
+}

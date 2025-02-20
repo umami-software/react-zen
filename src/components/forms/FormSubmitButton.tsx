@@ -1,7 +1,13 @@
 import { useFormContext } from 'react-hook-form';
 import { LoadingButton, LoadingButtonProps } from '../LoadingButton';
 
-function FormSubmitButton({ children, disabled, isLoading, ...props }: LoadingButtonProps) {
+function FormSubmitButton({
+  variant = 'primary',
+  children,
+  disabled,
+  isLoading,
+  ...props
+}: LoadingButtonProps) {
   const {
     formState: { isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful },
   } = useFormContext();
@@ -10,6 +16,7 @@ function FormSubmitButton({ children, disabled, isLoading, ...props }: LoadingBu
     <LoadingButton
       {...props}
       type="submit"
+      variant={variant}
       disabled={
         disabled !== undefined ? disabled : !isDirty || !isValid || isSubmitting || isSubmitted
       }

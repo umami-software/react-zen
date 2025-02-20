@@ -1,14 +1,15 @@
-import React, { createElement, ReactNode } from 'react';
+import { createElement, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import styles from './AlertBanner.module.css';
 
 interface AlertBannerProps {
-  title?: string;
-  description?: string;
+  title?: ReactNode;
+  description?: ReactNode;
   icon?: ReactNode;
   variant?: 'error' | 'info';
+  align?: 'start' | 'center' | 'end';
   allowClose?: boolean;
   onClose?: () => void;
   className?: string;
@@ -20,6 +21,7 @@ function AlertBanner({
   description,
   icon,
   variant,
+  align,
   allowClose,
   onClose,
   children,
@@ -27,7 +29,15 @@ function AlertBanner({
   ...props
 }: AlertBannerProps) {
   return (
-    <div {...props} className={classNames(styles.banner, className, variant && styles[variant])}>
+    <div
+      {...props}
+      className={classNames(
+        styles.banner,
+        className,
+        variant && styles[variant],
+        align && styles[align],
+      )}
+    >
       {(icon || variant) && (
         <Icon size="md">{variant ? createElement(AlertIcons[variant]) : icon}</Icon>
       )}

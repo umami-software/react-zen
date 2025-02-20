@@ -13,7 +13,7 @@ interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 
   gap?: Responsive<Spacing>;
   autoComplete?: string;
   onSubmit?: SubmitHandler<any>;
-  error?: ReactNode;
+  error?: ReactNode | Error;
   preventSubmit?: boolean;
   children?: ReactNode | ((e: UseFormReturn) => ReactNode);
 }
@@ -79,12 +79,11 @@ function Form({
   return (
     <FormProvider {...formValues}>
       {error && (
-        <AlertBanner variant="error" className={styles.error}>
-          <Icon size="lg" className={styles.icon}>
-            <Icons.Alert />
-          </Icon>
-          <Text className={styles.text}>{error}</Text>
-        </AlertBanner>
+        <AlertBanner
+          variant="error"
+          align="center"
+          description={error instanceof Error ? error?.message : error}
+        />
       )}
       <form
         {...props}
