@@ -22,7 +22,10 @@ interface SearchFieldProps extends AriaSearchFieldProps {
 }
 
 const SearchField = forwardRef(
-  ({ label, placeholder, value, delay = 0, onSearch, className, ...props }: SearchFieldProps, ref: Ref<any>) => {
+  (
+    { label, placeholder, value, delay = 0, onSearch, className, ...props }: SearchFieldProps,
+    ref: Ref<any>,
+  ) => {
     const [search, setSearch] = useState(value ?? '');
     const searchValue = useDebounce(search, delay);
 
@@ -54,7 +57,9 @@ const SearchField = forwardRef(
             <>
               {label && <Label>{label}</Label>}
               <div className={inputStyles.row}>
-                <Icons.MagnifyingGlass className={classNames(styles.search, inputStyles.icon)} />
+                <Icon className={classNames(styles.search, inputStyles.icon)}>
+                  <Icons.MagnifyingGlass />
+                </Icon>
                 <Input
                   className={classNames(styles.input, inputStyles.input)}
                   placeholder={placeholder}
@@ -65,7 +70,7 @@ const SearchField = forwardRef(
                     className={classNames(styles.close, inputStyles.icon)}
                     onPress={resetSearch}
                   >
-                    <Icon>
+                    <Icon size="sm">
                       <Icons.Close />
                     </Icon>
                   </Button>
