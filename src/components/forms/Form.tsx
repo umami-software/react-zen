@@ -2,12 +2,9 @@ import { useEffect, HTMLAttributes, ReactNode } from 'react';
 import { useForm, UseFormProps, SubmitHandler, FormProvider, UseFormReturn } from 'react-hook-form';
 import classNames from 'classnames';
 import { Responsive, Spacing } from '@/lib/types';
+import { AlertBanner } from '@/components/AlertBanner';
+import { Column } from '@/components/Column';
 import styles from './Form.module.css';
-import { AlertBanner } from '../AlertBanner';
-import { Column } from '../Column';
-import { Text } from '../Text';
-import { Icon } from '../Icon';
-import { Icons } from '../Icons';
 
 interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 'children'> {
   gap?: Responsive<Spacing>;
@@ -82,7 +79,7 @@ function Form({
         <AlertBanner
           variant="error"
           align="center"
-          description={error instanceof Error ? error?.message : error}
+          title={error instanceof Error ? error?.message : error}
         />
       )}
       <form

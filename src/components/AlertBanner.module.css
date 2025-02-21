@@ -32,23 +32,12 @@
 }
 
 .error {
-  color: var(--danger-font-color);
-  background-color: var(--danger-color);
-  border: 0;
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
 }
 
 .error .close {
-  color: var(--danger-font-color);
-}
-
-.info {
-  color: var(--primary-font-color);
-  background-color: var(--primary-color);
-  border: 0;
-}
-
-.info .close {
-  color: var(--primary-font-color);
+  color: var(--danger-color);
 }
 
 .start {

@@ -8,7 +8,7 @@ interface AlertBannerProps {
   title?: ReactNode;
   description?: ReactNode;
   icon?: ReactNode;
-  variant?: 'error' | 'info';
+  variant?: 'error';
   align?: 'start' | 'center' | 'end';
   allowClose?: boolean;
   onClose?: () => void;
@@ -39,7 +39,7 @@ function AlertBanner({
       )}
     >
       {(icon || variant) && (
-        <Icon size="md">{variant ? createElement(AlertIcons[variant]) : icon}</Icon>
+        <Icon size="sm">{variant ? createElement(AlertIcons[variant]) : icon}</Icon>
       )}
       <div className={styles.message}>
         {title && <div className={styles.title}>{title}</div>}

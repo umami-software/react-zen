@@ -2,6 +2,10 @@ import { ReactNode } from 'react';
 import { ToastProvider } from '@/components/toast/ToastProvider';
 import { ToasterProps } from '@/components/toast/Toaster';
 
+const defaultToastCofig = {
+  delay: 3000,
+};
+
 interface ZenProviderProps {
   theme?: string;
   colorScheme?: 'light' | 'dark' | 'system';
@@ -10,7 +14,7 @@ interface ZenProviderProps {
 }
 
 function ZenProvider({ children, ...props }: ZenProviderProps) {
-  const { toast } = props;
+  const { toast = defaultToastCofig } = props;
 
   return <ToastProvider {...toast}>{children}</ToastProvider>;
 }

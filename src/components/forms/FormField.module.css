@@ -10,6 +10,6 @@
 
 .error {
   color: var(--danger-color);
-  line-height: 1.8rem;
+  line-height: 2rem;
   font-weight: 600;
 }

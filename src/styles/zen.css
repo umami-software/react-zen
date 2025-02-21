@@ -112,6 +112,9 @@
 
   --box-shadow: var(--box-shadow-1);
 
+  --light-color: #fff;
+  --dark-color: #000;
+
   /* Theme settings */
 
   --base-color-1: #fcfcfc;
@@ -175,7 +178,7 @@
   --active-font-color: var(--base-color-1);
 
   --inactive-color: var(--accent-color-gray);
-  --inactive-font-color: var(--base-color-12);
+  --inactive-font-color: var(--font-color);
 }
 
 html[data-theme='dark'], .dark-theme {
@@ -231,13 +234,13 @@ html[data-theme='dark'], .dark-theme {
   --success-font-color: var(--base-color-1);
 
   --danger-color: var(--accent-color-red);
-  --danger-font-color: var(--base-color-1);
+  --danger-font-color: var(--base-color-12);
 
   --warning-color: var(--accent-color-orange);
-  --warning-font-color: var(--base-color-1);
+  --warning-font-color: var(--base-color-12);
 
   --active-color: var(--accent-color-blue);
-  --active-font-color: var(--base-color-1);
+  --active-font-color: var(--base-color-12);
 
   --inactive-color: var(--accent-color-gray);
   --inactive-font-color: var(--base-color-12);

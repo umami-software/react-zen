@@ -1,4 +1,4 @@
-import { createElement, HTMLAttributes, useEffect, useRef, useState } from 'react';
+import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import { Button } from '@/components/Button';
 import { Icon } from '@/components/Icon';
@@ -17,11 +17,6 @@ interface ToastProps extends HTMLAttributes<HTMLDivElement> {
   onClose?: (action?: string) => void;
 }
 
-const icons = {
-  info: Icons.Info,
-  error: Icons.Alert,
-};
-
 function Toast({
   id,
   message,
@@ -38,9 +33,6 @@ function Toast({
 
   return (
     <div {...props} className={classNames(styles.toast, className, variant && styles[variant])}>
-      <Icon className={styles.icon} size="md">
-        {variant && createElement(icons[variant])}
-      </Icon>
       {title && <div className={styles.title}>{title}</div>}
       {message && <div className={styles.description}>{message}</div>}
       {hasActions &&
