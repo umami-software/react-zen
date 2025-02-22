@@ -16,11 +16,11 @@ import classNames from 'classnames';
 import styles from './Table.module.css';
 
 interface TableColumnProps extends ColumnProps {
-  alignment?: 'start' | 'center' | 'end';
+  align?: 'start' | 'center' | 'end';
 }
 
 interface TableCellProps extends CellProps {
-  alignment?: 'start' | 'center' | 'end';
+  align?: 'start' | 'center' | 'end';
 }
 
 function Table({ children, className, ...props }: TableProps) {
@@ -55,11 +55,11 @@ function TableRow({ children, className, ...props }: RowProps<any>) {
   );
 }
 
-function TableColumn({ children, className, alignment, ...props }: TableColumnProps) {
+function TableColumn({ children, className, align, ...props }: TableColumnProps) {
   return (
     <Column
       {...props}
-      className={classNames(styles.column, className, alignment && styles[alignment])}
+      className={classNames(styles.column, className, align && styles[align])}
       isRowHeader
     >
       {children}
@@ -67,12 +67,13 @@ function TableColumn({ children, className, alignment, ...props }: TableColumnPr
   );
 }
 
-function TableCell({ children, className, alignment, ...props }: TableCellProps) {
+function TableCell({ children, className, align, ...props }: TableCellProps) {
   return (
-    <Cell {...props} className={classNames(styles.cell, className, alignment && styles[alignment])}>
+    <Cell {...props} className={classNames(styles.cell, className, align && styles[align])}>
       {children}
     </Cell>
   );
 }
 
 export { Table, TableHeader, TableBody, TableRow, TableColumn, TableCell };
+export type { TableCellProps, TableColumnProps, TableBodyProps };

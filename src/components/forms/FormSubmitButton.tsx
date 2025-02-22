@@ -3,9 +3,9 @@ import { LoadingButton, LoadingButtonProps } from '../LoadingButton';
 
 function FormSubmitButton({
   variant = 'primary',
-  children,
-  disabled,
+  isDisabled,
   isLoading,
+  children,
   ...props
 }: LoadingButtonProps) {
   const {
@@ -18,7 +18,7 @@ function FormSubmitButton({
       type="submit"
       variant={variant}
       disabled={
-        disabled !== undefined ? disabled : !isDirty || !isValid || isSubmitting || isSubmitted
+        isDisabled !== undefined ? isDisabled : !isDirty || !isValid || isSubmitting || isSubmitted
       }
       isLoading={
         isLoading !== undefined

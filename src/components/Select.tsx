@@ -16,7 +16,7 @@ import inputStyles from './styles/input.module.css';
 import styles from './Select.module.css';
 
 interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
-  items: any[];
+  items?: any[];
   value?: string;
   label?: string;
   onChange?: (e: any) => void;

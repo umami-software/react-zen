@@ -3,7 +3,7 @@ import { ToastProvider } from '@/components/toast/ToastProvider';
 import { ToasterProps } from '@/components/toast/Toaster';
 
 const defaultToastCofig = {
-  delay: 3000,
+  duration: 3000,
 };
 
 interface ZenProviderProps {

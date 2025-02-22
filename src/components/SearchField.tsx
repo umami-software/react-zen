@@ -29,9 +29,7 @@ const SearchField = forwardRef(
     const [search, setSearch] = useState(value ?? '');
     const searchValue = useDebounce(search, delay);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const { value } = e.target;
-
+    const handleChange = (value: string) => {
       setSearch(value);
 
       if (delay === 0 || value === '') {
@@ -48,10 +46,15 @@ const SearchField = forwardRef(
       if (delay > 0) {
         onSearch?.(searchValue);
       }
-    }, [searchValue, delay, onSearch]);
+    }, [searchValue, delay]);
 
     return (
-      <AriaSearchField {...props} ref={ref} className={classNames(inputStyles.field, className)}>
+      <AriaSearchField
+        {...props}
+        ref={ref}
+        className={classNames(inputStyles.field, className)}
+        onChange={handleChange}
+      >
         {({ state }) => {
           return (
             <>
@@ -63,7 +66,6 @@ const SearchField = forwardRef(
                 <Input
                   className={classNames(styles.input, inputStyles.input)}
                   placeholder={placeholder}
-                  onChange={handleChange}
                 />
                 {state.value && (
                   <Button

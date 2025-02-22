@@ -7,11 +7,11 @@ export interface ToastProviderProps extends ToasterProps {
 
 export const ToastContext = createContext({});
 
-export function ToastProvider({ children, ...config }: ToastProviderProps) {
+export function ToastProvider({ children, ...props }: ToastProviderProps) {
   return (
-    <ToastContext.Provider value={config}>
+    <ToastContext.Provider value={props}>
       {children}
-      <Toaster {...config} />
+      <Toaster {...props} />
     </ToastContext.Provider>
   );
 }

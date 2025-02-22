@@ -1,7 +1,15 @@
 import classNames from 'classnames';
 import { Children, createElement, ReactElement, ReactNode } from 'react';
 import { ColumnProps, TableProps } from 'react-aria-components';
-import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from './Table';
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableColumn,
+  TableRow,
+  TableCell,
+  TableCellProps,
+} from './Table';
 import styles from './DataTable.module.css';
 
 interface DataTableProps extends TableProps {
@@ -16,7 +24,7 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
       : data;
 
   const columns = Children.map(children as ReactElement, (child: ReactElement) => {
-    return { ...(child.props as any) };
+    return { ...(child.props as DataColumnProps) };
   });
 
   return (
@@ -35,15 +43,18 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
         })}
       </TableHeader>
       <TableBody items={items}>
-        {row => {
+        {(row: any) => {
           return (
             <TableRow>
-              {columns.map(({ id, as, children, className, ...cellProps }) => {
-                const value =
-                  typeof children === 'function' ? children(row, id) : children || row[id];
-                const Component = as || 'div';
+              {columns.map(({ id, as, hidden, className, children, ...cellProps }) => {
+                const value = typeof children === 'function' ? children(row) : children || row[id];
+
                 return (
-                  <TableCell {...cellProps} key={id} className={classNames(styles.cell, className)}>
+                  <TableCell
+                    {...(cellProps as TableCellProps)}
+                    key={id}
+                    className={classNames(styles.cell, className, hidden && styles.hidden)}
+                  >
                     {as ? createElement(as, {}, value) : value}
                   </TableCell>
                 );
@@ -59,6 +70,9 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
 interface DataColumnProps extends ColumnProps {
   id: string;
   label?: ReactNode;
+  align?: 'start' | 'center' | 'end';
+  as?: string;
+  hidden?: boolean;
 }
 
 function DataColumn(props: DataColumnProps) {

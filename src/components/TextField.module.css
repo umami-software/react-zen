@@ -4,6 +4,7 @@
 
 .icon {
   position: absolute;
-  top: var(--padding-y);
-  right: var(--padding-x);
+  top: var(--spacing-4);
+  right: var(--spacing-3);
+  background: none;
 }

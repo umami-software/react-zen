@@ -10,7 +10,7 @@
 
 .separator {
   border-bottom: var(--border);
-  margin: var(--spacing-1) calc(-1* var(--spacing-3));
+  margin: var(--spacing-2) calc(-1 * var(--spacing-3));
 }
 
 .section:not(:last-child) {
