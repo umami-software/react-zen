@@ -1,0 +1,9 @@
+.block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: var(--font-size);
+  gap: var(--gap);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+}

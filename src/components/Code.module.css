@@ -3,7 +3,7 @@
   font-size: var(--font-size-2);
   font-weight: var(--font-weight-medium);
   color: var(--font-color);
-  background: var(--layer-color-1);
+  background: var(--base-color-1);
   border-radius: var(--border-radius);
   padding: var(--spacing-1);
 }

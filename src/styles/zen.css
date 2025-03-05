@@ -134,10 +134,6 @@
   --background-color-1: var(--base-color-1);
   --background-color-2: var(--base-color-2);
 
-  --layer-color-1: var(--base-color-3);
-  --layer-color-2: var(--base-color-4);
-  --layer-color-3: var(--base-color-5);
-
   --border-color-1: var(--base-color-6);
   --border-color-2: var(--base-color-7);
   --border-color-3: var(--base-color-8);
@@ -198,10 +194,6 @@ html[data-theme='dark'], .dark-theme {
   --background-color: #0f0f0f;
   --background-color-1: var(--base-color-1);
   --background-color-2: var(--base-color-2);
-
-  --layer-color-1: var(--base-color-3);
-  --layer-color-2: var(--base-color-4);
-  --layer-color-3: var(--base-color-5);
 
   --border-color-1: var(--base-color-6);
   --border-color-2: var(--base-color-7);

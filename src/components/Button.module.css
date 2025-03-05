@@ -9,12 +9,11 @@
   font-weight: 500;
   color: var(--input-font-color);
   background: var(--input-color);
-  border: 1px solid transparent;
+  border: 0;
   border-radius: var(--border-radius);
   padding: var(--padding);
   position: relative;
   cursor: pointer;
-  line-height: 1;
 }
 
 .button:disabled {
@@ -93,28 +92,28 @@
 }
 
 .button.xs {
-  font-size: .8rem;
-  padding: 0.5rem 0.75rem;
+  font-size: calc(0.8 * var(--font-size));
+  padding: calc(0.5 * var(--padding-y)) calc(0.75 * var(--padding-x));
 }
 
 .button.sm {
-  font-size: .9rem;
-  padding: 0.5rem 0.75rem;
+  font-size: calc(0.9 * var(--font-size));
+  padding: calc(0.5 * var(--padding-y)) calc(0.75 * var(--padding-x));
 }
 
 .button.md {
-  font-size: 1rem;
-  padding: 0.75rem 1rem;
+  font-size: var(--font-size);
+  padding: var(--padding);
 }
 
 .button.lg {
-  font-size: 1.1rem;
-  padding: 1rem 1.25rem;
+  font-size: calc(1.1 * var(--font-size));
+  padding: var(--padding-y) calc(1.25 * var(--padding-x));
 }
 
 .button.xl {
-  font-size: 1.3rem;
-  padding: 1.25rem 1.5rem;
+  font-size: calc(1.3 * var(--font-size));
+  padding: calc(1.25 * var(--padding-y)) calc(1.25 * var(--padding-x));
 }
 
 body a.button {

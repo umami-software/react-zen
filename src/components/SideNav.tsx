@@ -1,9 +1,20 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
+import classNames from 'classnames';
+import { Button, ButtonProps } from '@/components/Button';
+import { Block } from '@/components/Block';
 import { Icon } from '@/components/Icon';
+import { Text } from '@/components/Text';
 import styles from './SideNav.module.css';
 
-export function SideNav({ children }: { children: ReactNode }) {
-  return <div className={styles.sidenav}>{children}</div>;
+export interface SideNavProps {
+  isCollapsed?: boolean;
+  children: ReactNode;
+}
+
+export function SideNav({ isCollapsed, children }: SideNavProps) {
+  return (
+    <div className={classNames(styles.sidenav, isCollapsed && styles.collapsed)}>{children}</div>
+  );
 }
 
 export function SideNavHeader({
@@ -16,11 +27,11 @@ export function SideNavHeader({
   children?: ReactNode;
 }) {
   return (
-    <div className={styles.header} data-theme="dark">
+    <Block style={{ justifyContent: 'flex-start' }}>
       {icon && <Icon size="sm">{icon}</Icon>}
-      <div className={styles.name}>{name}</div>
+      <div className={classNames(styles.name, styles.label)}>{name}</div>
       {children}
-    </div>
+    </Block>
   );
 }
 
@@ -36,17 +47,18 @@ export function SideNavSection({ title, children }: { title?: string; children: 
 export function SideNavItem({
   label,
   icon,
+  className,
   children,
+  ...props
 }: {
-  label: string;
-  icon: ReactNode;
-  children?: ReactNode;
-}) {
+  label?: string;
+  icon?: ReactNode;
+} & ButtonProps) {
   return (
-    <div className={styles.item}>
+    <Button variant="quiet" {...props} className={classNames(styles.item, className)}>
       {icon && <Icon size="sm">{icon}</Icon>}
-      {label}
+      {label && <Text className={styles.label}>{label}</Text>}
       {children}
-    </div>
+    </Button>
   );
 }

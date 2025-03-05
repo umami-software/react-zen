@@ -21,6 +21,7 @@ import { useToast } from './hooks/useToast';
 import { Accordion, AccordionItem } from './Accordion';
 import { AlertBanner } from './AlertBanner';
 import { AlertDialog } from './AlertDialog';
+import { Block } from './Block';
 import { Blockquote } from './Blockquote';
 import { Box } from './Box';
 import { Breadcrumbs, Breadcrumb } from './Breadcrumbs';
@@ -91,6 +92,7 @@ export {
   AccordionItem,
   AlertBanner,
   AlertDialog,
+  Block,
   Blockquote,
   Box,
   Breadcrumb,

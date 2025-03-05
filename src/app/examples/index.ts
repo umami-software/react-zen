@@ -10,6 +10,7 @@ export { FormInputsExample } from './FormInputsExample';
 export { IconLibrary } from './IconLibrary';
 export { InlineEditExample } from './InlineEditExample';
 export { SearchDelayExample } from './SearchDelayExample';
+export { SideNavExample } from './SideNavExample';
 export { SpacingExample } from './SpacingExample';
 export {
   ToastExample,

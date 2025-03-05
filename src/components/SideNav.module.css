@@ -1,10 +1,7 @@
 .sidenav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
   height: 100%;
-  background-color: var(--base-color-2);
+  font-size: var(--font-size);
+  background-color: var(--base-color-1);
   border-right: 1px solid var(--border-color);
 }
 
@@ -36,11 +33,21 @@
   color: var(--font-color-muted);
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: var(--gap);
   padding: var(--padding);
+  cursor: pointer;
 }
 
 .item:hover {
   color: var(--font-color);
-  background-color: var(--base-color-3);
+  background-color: var(--base-color-4);
+}
+
+.collapsed .label {
+  display: none;
+}
+
+.collapsed {
+
 }
