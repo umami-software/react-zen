@@ -52,5 +52,5 @@
 }
 
 .radio[data-disabled]:before {
-  background-color: var(--input-disabled-color);
+  background-color: var(--base-color-4);
 }

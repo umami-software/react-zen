@@ -7,7 +7,7 @@
 
 .track {
   height: 10px;
-  background: var(--input-color);
+  background: var(--base-color-3);
   flex-basis: 100%;
   width: fit-content;
   border-radius: var(--border-radius);

@@ -3,6 +3,7 @@
   font-size: var(--font-size);
   background-color: var(--base-color-1);
   border-right: 1px solid var(--border-color);
+  width: 200px;
 }
 
 .header {
@@ -30,10 +31,11 @@
 }
 
 .item {
-  color: var(--font-color-muted);
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
+  color: var(--font-color-muted);
   gap: var(--gap);
   padding: var(--padding);
   cursor: pointer;
@@ -49,5 +51,6 @@
 }
 
 .collapsed {
-
+  width: 64px;
+  transition: width 0.3s ease-in-out;
 }

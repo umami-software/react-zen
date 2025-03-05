@@ -14,7 +14,7 @@
 }
 
 .track {
-  stroke: var(--input-color);
+  stroke: var(--base-color-4);
 }
 
 .fill {

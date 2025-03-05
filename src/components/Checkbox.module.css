@@ -46,7 +46,7 @@
 }
 
 .checkbox[data-disabled] .box {
-  background: var(--input-disabled-color);
+  background: var(--base-color-4);
   pointer-events: none;
 }
 

@@ -8,7 +8,7 @@
   font-family: inherit;
   font-weight: 500;
   color: var(--input-font-color);
-  background: var(--input-color);
+  background: var(--base-color-3);
   border: 0;
   border-radius: var(--border-radius);
   padding: var(--padding);
@@ -22,11 +22,11 @@
 }
 
 .button:hover {
-  background: color-mix(in srgb, var(--input-color), 5% var(--dark-color));
+  background: color-mix(in srgb, var(--base-color-3), 5% var(--dark-color));
 }
 
 .button[data-pressed] {
-  background: color-mix(in srgb, var(--input-color), 10% var(--dark-color));
+  background: color-mix(in srgb, var(--base-color-3), 10% var(--dark-color));
 }
 
 .button.primary {

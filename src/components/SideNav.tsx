@@ -27,7 +27,7 @@ export function SideNavHeader({
   children?: ReactNode;
 }) {
   return (
-    <Block style={{ justifyContent: 'flex-start' }}>
+    <Block>
       {icon && <Icon size="sm">{icon}</Icon>}
       <div className={classNames(styles.name, styles.label)}>{name}</div>
       {children}
@@ -55,10 +55,12 @@ export function SideNavItem({
   icon?: ReactNode;
 } & ButtonProps) {
   return (
-    <Button variant="quiet" {...props} className={classNames(styles.item, className)}>
-      {icon && <Icon size="sm">{icon}</Icon>}
-      {label && <Text className={styles.label}>{label}</Text>}
-      {children}
+    <Button variant="quiet" {...props} className={classNames(styles.item, className)} asChild>
+      <div>
+        {icon && <Icon size="sm">{icon}</Icon>}
+        {label && <Text className={styles.label}>{label}</Text>}
+        {children}
+      </div>
     </Button>
   );
 }

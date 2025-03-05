@@ -9,7 +9,7 @@
 
 .field[data-readonly] .input,
 .field[data-disabled] .input {
-  background: var(--input-disabled-color);
+  background: var(--base-color-4);
 }
 
 .input {
