@@ -1,9 +1,12 @@
-import { ReactNode } from 'react';
+import { ReactNode, createContext, useContext, useRef } from 'react';
 import classNames from 'classnames';
-import { Button, ButtonProps } from '@/components/Button';
-import { Block } from '@/components/Block';
+import { useFocusable } from '@react-aria/focus';
+import { TooltipTrigger } from 'react-aria-components';
+import { Block, BlockProps } from '@/components/Block';
 import { Icon } from '@/components/Icon';
 import { Text } from '@/components/Text';
+import { Button } from '@/components/Button';
+import { Tooltip } from '@/components/Tooltip';
 import styles from './SideNav.module.css';
 
 export interface SideNavProps {
@@ -11,9 +14,13 @@ export interface SideNavProps {
   children: ReactNode;
 }
 
+const SideNavContext = createContext(null as any);
+
 export function SideNav({ isCollapsed, children }: SideNavProps) {
   return (
-    <div className={classNames(styles.sidenav, isCollapsed && styles.collapsed)}>{children}</div>
+    <SideNavContext.Provider value={{ isCollapsed }}>
+      <div className={classNames(styles.sidenav, isCollapsed && styles.collapsed)}>{children}</div>
+    </SideNavContext.Provider>
   );
 }
 
@@ -48,19 +55,30 @@ export function SideNavItem({
   label,
   icon,
   className,
-  children,
   ...props
 }: {
   label?: string;
   icon?: ReactNode;
-} & ButtonProps) {
+} & BlockProps) {
+  const { isCollapsed } = useContext(SideNavContext);
+  const ref = useRef(null);
+  const { focusableProps } = useFocusable({ isDisabled: false }, ref);
+
+  if (isCollapsed) {
+    return (
+      <TooltipTrigger delay={0}>
+        <div {...focusableProps} ref={ref} className={classNames(styles.item)}>
+          {icon && <Icon size="sm">{icon}</Icon>}
+        </div>
+        <Tooltip placement="right">{label}</Tooltip>
+      </TooltipTrigger>
+    );
+  }
+
   return (
-    <Button variant="quiet" {...props} className={classNames(styles.item, className)} asChild>
-      <div>
-        {icon && <Icon size="sm">{icon}</Icon>}
-        {label && <Text className={styles.label}>{label}</Text>}
-        {children}
-      </div>
-    </Button>
+    <Block {...props} className={classNames(styles.item, className)}>
+      {icon && <Icon size="sm">{icon}</Icon>}
+      {label && <Text className={styles.label}>{label}</Text>}
+    </Block>
   );
 }
