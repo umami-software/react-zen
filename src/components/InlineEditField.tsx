@@ -6,6 +6,7 @@ import { Icons } from './Icons';
 import styles from './InlineEditField.module.css';
 
 interface InlineEditFieldProps {
+  name: string;
   value: string;
   defaultEdit?: boolean;
   onChange?: (value: string) => void;
@@ -16,6 +17,7 @@ interface InlineEditFieldProps {
 }
 
 function InlineEditField({
+  name = '',
   value: defaultValue = '',
   defaultEdit,
   className,
@@ -70,6 +72,7 @@ function InlineEditField({
       )}
       {edit && (
         <TextField
+          name={name}
           value={value}
           onKeyDown={handleKeyDown}
           onBlur={handleCommit}

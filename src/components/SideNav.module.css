@@ -40,11 +40,12 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  min-height: 40px;
   color: var(--font-color-muted);
   gap: var(--gap);
   padding: var(--padding);
   cursor: pointer;
-  min-height: 40px;
+  white-space: nowrap;
   overflow: hidden;
 }
 

@@ -12,12 +12,14 @@ function FormSubmitButton({
     formState: { isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful },
   } = useFormContext();
 
+  console.log({ isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful });
+
   return (
     <LoadingButton
       {...props}
       type="submit"
       variant={variant}
-      disabled={
+      isDisabled={
         isDisabled !== undefined ? isDisabled : !isDirty || !isValid || isSubmitting || isSubmitted
       }
       isLoading={
