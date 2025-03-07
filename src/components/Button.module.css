@@ -9,11 +9,13 @@
   font-weight: 500;
   color: var(--input-font-color);
   background: var(--base-color-3);
-  border: 0;
+  border: 1px solid transparent;
   border-radius: var(--border-radius);
   padding: var(--padding);
   position: relative;
   cursor: pointer;
+  line-height: 1.5;
+  --button-height: calc(1.5 * var(--font-size) + 2 * var(--padding-y))
 }
 
 .button:disabled {
@@ -35,11 +37,11 @@
 }
 
 .button.primary:hover {
-  background: color-mix(in srgb, var(--primary-color), 10% var(--dark-color));
+  background: color-mix(in srgb, var(--primary-color), 10% var(--primary-font-color));
 }
 
 .button.primary[data-pressed] {
-  background: color-mix(in srgb, var(--primary-color), 20% var(--dark-color));
+  background: color-mix(in srgb, var(--primary-color), 20% var(--primary-font-color));
 }
 
 .button.primary:disabled {
@@ -91,29 +93,28 @@
   background: var(--base-color-8);
 }
 
-.button.xs {
-  font-size: calc(0.8 * var(--font-size));
-  padding: calc(0.5 * var(--padding-y)) calc(0.75 * var(--padding-x));
-}
-
 .button.sm {
   font-size: calc(0.9 * var(--font-size));
   padding: calc(0.5 * var(--padding-y)) calc(0.75 * var(--padding-x));
+  min-height: calc(0.9 * var(--button-height));
 }
 
 .button.md {
   font-size: var(--font-size);
   padding: var(--padding);
+  min-height: var(--button-height);
 }
 
 .button.lg {
-  font-size: calc(1.1 * var(--font-size));
+  font-size: calc(1.25 * var(--font-size));
   padding: var(--padding-y) calc(1.25 * var(--padding-x));
+  min-height: calc(1.25 * var(--button-height));
 }
 
 .button.xl {
-  font-size: calc(1.3 * var(--font-size));
+  font-size: calc(1.5 * var(--font-size));
   padding: calc(1.25 * var(--padding-y)) calc(1.25 * var(--padding-x));
+  min-height: calc(1.5 * var(--button-height));
 }
 
 body a.button {

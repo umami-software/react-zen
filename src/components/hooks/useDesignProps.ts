@@ -64,6 +64,7 @@ const CSS_MAP = {
   bottom: 'bottom',
   left: 'left',
   order: 'order',
+  textTransform: 'text-transform',
 };
 
 const excludedProps = [

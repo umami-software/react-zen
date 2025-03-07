@@ -1402,6 +1402,27 @@
   overflow-y: auto;
 }
 
+/* Text transform */
+
+.text-transform-capitalize {
+  text-transform: capitalize;
+}
+.text-transform-uppercase {
+  text-transform: uppercase;
+}
+.text-transform-lowercase {
+  text-transform: lowercase;
+}
+.text-transform-none {
+  text-transform: none;
+}
+.text-transform-full-width {
+  text-transform: full-width;
+}
+.text-transform-full-size-kana {
+  text-transform: full-size-kana;
+}
+
 /* Responsive media queries */
 
 @media (min-width: 520px) {

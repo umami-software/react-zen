@@ -5,6 +5,7 @@ import {
   MenuTrigger,
   SubmenuTrigger,
   TooltipTrigger,
+  RouterProvider,
 } from 'react-aria-components';
 
 import { Form } from './forms/Form';
@@ -77,14 +78,6 @@ import { Tooltip } from './Tooltip';
 import { ZenProvider } from './ZenProvider';
 
 export {
-  Form,
-  FormButtons,
-  FormField,
-  FormResetButton,
-  FormSubmitButton,
-  Toast,
-  Toaster,
-  ToastProvider,
   useDebounce,
   useTheme,
   useToast,
@@ -112,6 +105,11 @@ export {
   Dots,
   FileTrigger,
   Flexbox,
+  Form,
+  FormButtons,
+  FormField,
+  FormResetButton,
+  FormSubmitButton,
   Grid,
   NavBar,
   NavBarItem,
@@ -141,6 +139,7 @@ export {
   Radio,
   RadioGroup,
   Row,
+  RouterProvider,
   SearchField,
   Select,
   SideNav,
@@ -167,6 +166,9 @@ export {
   TextField,
   TextArea,
   ThemeButton,
+  Toast,
+  Toaster,
+  ToastProvider,
   Toggle,
   ToggleGroup,
   ToggleGroupItem,

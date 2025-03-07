@@ -6,4 +6,5 @@
   gap: var(--gap);
   padding: var(--padding);
   border-radius: var(--border-radius);
+  line-height: 1.5;
 }

@@ -69,6 +69,13 @@ export type FontWeight = 'light' | 'regular' | 'medium' | 'bold';
 
 export type TextWrap = 'wrap' | 'nowrap' | 'pretty' | 'balance';
 export type TextAlign = 'left' | 'center' | 'right';
+export type TextTransform =
+  | 'capitalize'
+  | 'uppercase'
+  | 'lowercase'
+  | 'none'
+  | 'full-width'
+  | 'full-size-kana';
 
 export type LetterSpacing = '1' | '2' | '3' | '4' | '5';
 

@@ -7,6 +7,7 @@ import {
   LetterSpacing,
   FontSize,
   TextWrap,
+  TextTransform,
   FontColor,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
@@ -20,6 +21,7 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
   weight?: Responsive<FontWeight>;
   align?: Responsive<TextAlign>;
   wrap?: Responsive<TextWrap>;
+  transform?: Responsive<TextTransform>;
   as?: 'span' | 'div' | 'label' | 'p';
   asChild?: boolean;
 }

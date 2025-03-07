@@ -80,3 +80,4 @@ function DataColumn(props: DataColumnProps) {
 }
 
 export { DataTable, DataColumn };
+export type { DataTableProps, DataColumnProps };
