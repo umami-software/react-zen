@@ -9,6 +9,7 @@ import {
   Button,
   Icon,
   Icons,
+  Row,
 } from '@/components';
 
 export function SideNavExample() {
@@ -26,11 +27,13 @@ export function SideNavExample() {
           <SideNavItem icon={<Settings />} label="Settings" />
         </SideNavSection>
         <SideNavSection>
-          <Button variant="quiet" onPress={() => setCollapsed(!isCollapsed)}>
-            <Icon>
-              <Icons.PanelLeft />
-            </Icon>
-          </Button>
+          <Row>
+            <Button variant="quiet" onPress={() => setCollapsed(!isCollapsed)}>
+              <Icon>
+                <Icons.PanelLeft />
+              </Icon>
+            </Button>
+          </Row>
         </SideNavSection>
       </SideNav>
     </Box>

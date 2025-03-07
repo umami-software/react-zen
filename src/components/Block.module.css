@@ -5,6 +5,8 @@
   font-size: var(--font-size);
   gap: var(--gap);
   padding: var(--padding);
+  border: 1px solid transparent;
   border-radius: var(--border-radius);
   line-height: 1.5;
+  min-height: calc((1.5 * var(--font-size)) + (2 * var(--padding-y)));
 }

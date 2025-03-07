@@ -50,17 +50,17 @@
 }
 
 .button.outline {
-  background: transparent;
+  background: var(--background-color);
   border: var(--border);
   box-shadow: var(--box-shadow-1);
 }
 
 .button.outline:hover {
-  background: var(--highlight-color);
+  border-color: var(--border-color-3);
 }
 
 .button.outline[data-pressed] {
-  background: color-mix(in srgb, var(--highlight-color), 5% var(--dark-color));
+  background: var(--highlight-color);
 }
 
 .button.quiet {

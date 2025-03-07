@@ -65,14 +65,15 @@ export function SideNavItem({
   const { focusableProps } = useFocusable({ isDisabled: false }, ref);
 
   if (isCollapsed) {
+    /*
     return (
       <TooltipTrigger delay={0}>
-        <div {...focusableProps} ref={ref} className={classNames(styles.item)}>
+        <Block {...focusableProps} ref={ref} className={classNames(styles.item, className)}>
           {icon && <Icon size="sm">{icon}</Icon>}
-        </div>
+        </Block>
         <Tooltip placement="right">{label}</Tooltip>
       </TooltipTrigger>
-    );
+    );*/
   }
 
   return (

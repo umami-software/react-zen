@@ -4,6 +4,8 @@
   background-color: var(--base-color-1);
   border-right: 1px solid var(--border-color);
   width: 200px;
+  transition: width 0.2s ease-in-out;
+  overflow: hidden;
 }
 
 .header {
@@ -19,6 +21,7 @@
 
 .section {
   padding: var(--spacing-3);
+  overflow: hidden;
 }
 
 .title {
@@ -27,7 +30,9 @@
 
 .content {
   display: grid;
+  min-height: 40px;
   gap: var(--gap);
+  overflow: hidden;
 }
 
 .item {
@@ -39,6 +44,8 @@
   gap: var(--gap);
   padding: var(--padding);
   cursor: pointer;
+  min-height: 40px;
+  overflow: hidden;
 }
 
 .item:hover {
@@ -46,11 +53,15 @@
   background-color: var(--base-color-2);
 }
 
+.label {
+  transition: opacity 0.5s;
+}
+
 .collapsed .label {
-  display: none;
+  opacity: 0;
 }
 
 .collapsed {
-  width: 64px;
+  width: 68px;
   transition: width 0.3s ease-in-out;
 }
