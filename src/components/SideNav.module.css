@@ -1,11 +1,10 @@
 .sidenav {
   height: 100%;
   font-size: var(--font-size);
-  background-color: var(--base-color-1);
   border-right: 1px solid var(--border-color);
   width: 200px;
-  transition: width 0.1s ease-out;
   overflow: hidden;
+  transition: width 0.1s ease-out;
 }
 
 .header {
@@ -51,18 +50,47 @@
 
 .item:hover {
   color: var(--font-color);
-  background-color: var(--base-color-2);
 }
 
 .label {
+  opacity: 1;
   transition: opacity 0.3s;
 }
 
 .collapsed .label {
   opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .collapsed {
   width: 68px;
   transition: width 0.2s ease-in-out;
+}
+
+.variant-1 {
+  background: transparent;
+
+  & .item:hover {
+    background: var(--base-color-1);
+  }
+}
+
+.variant-2 {
+  background: var(--base-color-1);
+
+  & .item:hover {
+    background: var(--base-color-2);
+  }
+}
+
+.variant-3 {
+  background: var(--base-color-2);
+
+  & .item:hover {
+    background: var(--base-color-3);
+  }
+}
+
+.sidenav.noborder {
+  border: 0;
 }

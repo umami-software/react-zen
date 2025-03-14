@@ -11,15 +11,16 @@ import {
   Icons,
   Row,
 } from '@/components';
+import { SideNavProps } from '@/components/SideNav';
 
-export function SideNavExample() {
+export function SideNavExample(props: SideNavProps) {
   const [isCollapsed, setCollapsed] = useState(false);
 
   return (
     <Box style={{ position: 'absolute', top: 0, left: 0, bottom: 0 }}>
-      <SideNav isCollapsed={isCollapsed}>
+      <SideNav {...props} isCollapsed={isCollapsed}>
         <SideNavSection>
-          <SideNavHeader icon={<BoxIcon />} name="MyApp" />
+          <SideNavHeader icon={<BoxIcon />} label="MyApp" />
         </SideNavSection>
         <SideNavSection>
           <SideNavItem icon={<LayoutGrid />} label="Dashboard" />
