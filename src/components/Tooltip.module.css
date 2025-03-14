@@ -10,13 +10,6 @@
   border-radius: var(--border-radius);
 }
 
-.floating {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, calc(-100% - 5px));
-}
-
 .tooltip[data-placement='top'] {
   margin-bottom: 8px;
   --origin: translateY(4px);

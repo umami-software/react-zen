@@ -1,6 +1,6 @@
-.tooltip {
+.floating {
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, calc(-100% - 6px));
+  transform: translate(-50%, calc(-100% - 10px));
 }

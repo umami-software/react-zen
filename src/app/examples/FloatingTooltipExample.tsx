@@ -20,9 +20,7 @@ export function FloatingTooltipExample() {
       />
       {show && (
         <FloatingTooltip>
-          <TooltipBubble>
-            <Text size="2">Hello</Text>
-          </TooltipBubble>
+          <Text size="2">Hello</Text>
         </FloatingTooltip>
       )}
     </>

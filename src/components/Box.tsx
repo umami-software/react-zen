@@ -20,6 +20,8 @@ import {
   AlignSelf,
   JustifySelf,
   FontColor,
+  FontSize,
+  FontWeight,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
@@ -28,6 +30,8 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   display?: Responsive<Display>;
   color?: FontColor;
   backgroundColor?: BackgroundColor;
+  fontSize?: Responsive<FontSize>;
+  fontWeight?: Responsive<FontWeight>;
   borderSize?: Responsive<BorderSize>;
   borderRadius?: Responsive<BorderRadius>;
   shadow?: Responsive<BoxShadow>;
@@ -89,6 +93,8 @@ function Box({
   display,
   color,
   backgroundColor,
+  fontSize,
+  fontWeight,
   borderSize,
   borderRadius,
   shadow,
@@ -140,6 +146,8 @@ function Box({
     display,
     color,
     backgroundColor,
+    fontSize,
+    fontWeight,
     borderSize,
     borderRadius,
     shadow,
