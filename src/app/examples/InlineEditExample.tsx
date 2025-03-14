@@ -5,7 +5,7 @@ export function InlineEditExample() {
   const [value, setValue] = useState('Click me to edit.');
 
   return (
-    <InlineEditField value={value} onCommit={value => setValue(value)}>
+    <InlineEditField name="text" value={value} onCommit={value => setValue(value)}>
       <Text>{value}</Text>
     </InlineEditField>
   );

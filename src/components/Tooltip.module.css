@@ -1,14 +1,20 @@
 .tooltip {
-  font-size: var(--font-size);
-  color: var(--light-color);
-  background: rgba(0, 0, 0, 0.8);
   forced-color-adjust: none;
   outline: none;
+}
+
+.bubble {
+  color: var(--light-color);
+  background: rgba(0, 0, 0, 0.8);
   padding: var(--padding);
   border-radius: var(--border-radius);
-  max-width: 150px;
-  /* fixes FF gap */
-  transform: translate3d(0, 0, 0);
+}
+
+.floating {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, calc(-100% - 5px));
 }
 
 .tooltip[data-placement='top'] {
@@ -41,6 +47,11 @@
 
 .tooltip[data-placement='left'] .arrow svg {
   transform: rotate(-90deg);
+}
+
+.tooltip .arrow {
+  width: 8px;
+  height: 8px;
 }
 
 .tooltip .arrow svg {

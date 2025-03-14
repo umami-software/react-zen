@@ -1,6 +1,6 @@
 {
   "name": "@umami/react-zen",
-  "version": "0.63.0",
+  "version": "0.64.0",
   "description": "React components built by Umami",
   "author": "Umami <hello@umami.is>",
   "license": "MIT",
@@ -46,14 +46,15 @@
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^5.2.5",
-    "@react-aria/focus": "^3.19.1",
+    "@react-aria/focus": "^3.20.1",
     "@react-spring/web": "^9.7.5",
     "classnames": "^2.5.1",
     "glob": "^10.3.10",
-    "lucide-react": "^0.475.0",
-    "next": "^15.2.1",
+    "highlight.js": "^11.11.1",
+    "lucide-react": "^0.479.0",
+    "next": "^15.2.2",
     "react": "^19.0.0",
-    "react-aria-components": "^1.6.0",
+    "react-aria-components": "^1.7.1",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
     "react-icons": "^5.4.0",
@@ -72,17 +73,17 @@
     "@types/react": "^19.0.9",
     "@types/react-dom": "^19.0.3",
     "@umami/esbuild-plugin-css-modules": "0.4.0",
-    "@umami/shiso": "^0.42.0",
+    "@umami/shiso": "^0.47.0",
     "babel-plugin-inline-react-svg": "^2.0.2",
     "babel-plugin-syntax-hermes-parser": "^0.26.0",
     "dts-bundle": "^0.7.3",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.25.1",
     "esbuild-css-modules-plugin": "^3.1.2",
     "esbuild-plugin-svgr": "^3.1.0",
     "esbuild-postcss": "^0.0.4",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.3",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint": "^9.22.0",
+    "eslint-config-next": "15.2.2",
+    "eslint-config-prettier": "^10.1.1",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.1.3",
@@ -96,10 +97,15 @@
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-esbuild": "^6.1.1",
     "rollup-plugin-postcss": "^4.0.2",
-    "stylelint": "^15.10.1",
+    "stylelint": "^16.15.0",
     "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-recommended": "^14.0.1",
+    "stylelint-config-recommended": "^15.0.0",
     "typescript": "^5.7.3"
   },
-  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b"
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  }
 }

@@ -6,6 +6,8 @@ import {
   SubmenuTrigger,
   TooltipTrigger,
   RouterProvider,
+  Focusable,
+  Pressable,
 } from 'react-aria-components';
 
 import { Form } from './forms/Form';
@@ -38,6 +40,7 @@ import { Dialog } from './Dialog';
 import { DataTable, DataColumn } from './DataTable';
 import { Dots } from './Dots';
 import { Flexbox } from './Flexbox';
+import { FloatingTooltip } from './FloatingTooltip';
 import { Grid } from './Grid';
 import { Heading } from './Heading';
 import { HoverTrigger } from './HoverTrigger';
@@ -74,7 +77,7 @@ import { TextArea } from './TextArea';
 import { ThemeButton } from './ThemeButton';
 import { Toggle } from './Toggle';
 import { ToggleGroup, ToggleGroupItem } from './ToggleGroup';
-import { Tooltip } from './Tooltip';
+import { Tooltip, TooltipBubble } from './Tooltip';
 import { ZenProvider } from './ZenProvider';
 
 export {
@@ -105,6 +108,8 @@ export {
   Dots,
   FileTrigger,
   Flexbox,
+  FloatingTooltip,
+  Focusable,
   Form,
   FormButtons,
   FormField,
@@ -134,6 +139,7 @@ export {
   Modal,
   PasswordField,
   Popover,
+  Pressable,
   ProgressBar,
   ProgressCircle,
   Radio,
@@ -173,6 +179,7 @@ export {
   ToggleGroup,
   ToggleGroupItem,
   Tooltip,
+  TooltipBubble,
   TooltipTrigger,
   ZenProvider,
 };

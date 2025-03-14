@@ -44,7 +44,6 @@
 
 .icon {
   color: var(--font-color-muted);
-  background: var(--background-color);
 }
 
 .icon:hover {

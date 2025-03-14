@@ -5,6 +5,7 @@ export { AlertDialogExample } from './AlertDialogExample';
 export { ConfirmationDialogExample } from './ConfirmationDialogExample';
 export { DialogExample } from './DialogExample';
 export { ExampleBox } from './ExampleBox';
+export { FloatingTooltipExample } from './FloatingTooltipExample';
 export { FormExample } from './FormExample';
 export { FormInputsExample } from './FormInputsExample';
 export { IconLibrary } from './IconLibrary';

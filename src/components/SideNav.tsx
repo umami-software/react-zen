@@ -1,11 +1,9 @@
-import { ReactNode, createContext, useContext, useRef } from 'react';
+import { ReactNode, createContext, useContext } from 'react';
 import classNames from 'classnames';
-import { useFocusable } from '@react-aria/focus';
-import { TooltipTrigger } from 'react-aria-components';
+import { TooltipTrigger, Focusable } from 'react-aria-components';
 import { Block, BlockProps } from '@/components/Block';
 import { Icon } from '@/components/Icon';
 import { Text } from '@/components/Text';
-import { Button } from '@/components/Button';
 import { Tooltip } from '@/components/Tooltip';
 import styles from './SideNav.module.css';
 
@@ -61,19 +59,18 @@ export function SideNavItem({
   icon?: ReactNode;
 } & BlockProps) {
   const { isCollapsed } = useContext(SideNavContext);
-  const ref = useRef(null);
-  const { focusableProps } = useFocusable({ isDisabled: false }, ref);
 
   if (isCollapsed) {
-    /*
     return (
-      <TooltipTrigger delay={0}>
-        <Block {...focusableProps} ref={ref} className={classNames(styles.item, className)}>
-          {icon && <Icon size="sm">{icon}</Icon>}
-        </Block>
+      <TooltipTrigger delay={0} closeDelay={0}>
+        <Focusable>
+          <Block className={classNames(styles.item, className)}>
+            {icon && <Icon size="sm">{icon}</Icon>}
+          </Block>
+        </Focusable>
         <Tooltip placement="right">{label}</Tooltip>
       </TooltipTrigger>
-    );*/
+    );
   }
 
   return (

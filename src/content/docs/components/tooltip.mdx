@@ -15,19 +15,54 @@ A tooltip displays a description of an element on hover or focus.
 
 <Example>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">Top</Button>
-    <Tooltip placement="top">Hello</Tooltip>
+    <Button variant="secondary">{`Top`}</Button>
+    <Tooltip placement="top">{`Hello`}</Tooltip>
   </TooltipTrigger>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">Left</Button>
-    <Tooltip placement="left">Hello</Tooltip>
+    <Button variant="secondary">{`Left`}</Button>
+    <Tooltip placement="left">{`Hello`}</Tooltip>
   </TooltipTrigger>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">Right</Button>
-    <Tooltip placement="right">Hello</Tooltip>
+    <Button variant="secondary">{`Right`}</Button>
+    <Tooltip placement="right">{`Hello`}</Tooltip>
   </TooltipTrigger>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">Bottom</Button>
-    <Tooltip placement="bottom">Hello</Tooltip>
+    <Button variant="secondary">{`Bottom`}</Button>
+    <Tooltip placement="bottom">{`Hello`}</Tooltip>
   </TooltipTrigger>
+</Example>
+
+## Hide arrow
+
+<Example>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">{`Top`}</Button>
+    <Tooltip placement="top" showArrow={false}>
+      {`Hello`}
+    </Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">{`Left`}</Button>
+    <Tooltip placement="left" showArrow={false}>
+      {`Hello`}
+    </Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">{`Right`}</Button>
+    <Tooltip placement="right" showArrow={false}>
+      {`Hello`}
+    </Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">{`Bottom`}</Button>
+    <Tooltip placement="bottom" showArrow={false}>
+      {`Hello`}
+    </Tooltip>
+  </TooltipTrigger>
+</Example>
+
+## Floating
+
+<Example>
+  <FloatingTooltipExample />
 </Example>

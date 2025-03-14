@@ -6,7 +6,7 @@ import { Icons } from './Icons';
 import styles from './InlineEditField.module.css';
 
 interface InlineEditFieldProps {
-  name: string;
+  name?: string;
   value: string;
   defaultEdit?: boolean;
   onChange?: (value: string) => void;
