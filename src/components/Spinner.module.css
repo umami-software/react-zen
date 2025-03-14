@@ -49,6 +49,10 @@
   display: none;
 }
 
+.disabled .fill {
+  stroke: var(--base-color-12);
+}
+
 @keyframes spinner-rotate {
   0% {
     transform: rotate(0deg);

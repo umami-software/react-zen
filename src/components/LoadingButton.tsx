@@ -1,21 +1,27 @@
-import { ReactNode } from 'react';
 import { Button, ButtonProps } from './Button';
 import { Icon } from './Icon';
 import { Spinner } from './Spinner';
 
 interface LoadingButtonProps extends ButtonProps {
-  disabled?: boolean;
+  isDisabled?: boolean;
   isLoading?: boolean;
+  showText?: boolean;
 }
-function LoadingButton({ isLoading, children, ...props }: LoadingButtonProps) {
+function LoadingButton({
+  isLoading,
+  isDisabled,
+  showText = true,
+  children,
+  ...props
+}: LoadingButtonProps) {
   return (
-    <Button {...props}>
+    <Button {...props} isDisabled={isDisabled}>
       {isLoading && (
         <Icon size="sm">
-          <Spinner />
+          <Spinner isDisabled={isDisabled} />
         </Icon>
       )}
-      {children as ReactNode}
+      {showText && children}
     </Button>
   );
 }

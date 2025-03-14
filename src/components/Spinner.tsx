@@ -5,15 +5,17 @@ export interface SpinnerProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   quiet?: boolean;
   className?: string;
+  isDisabled?: boolean;
 }
 
 export function Spinner(props: SpinnerProps) {
-  const { size = 'lg', quiet, className, ...domProps } = props;
+  const { size = 'lg', quiet, className, isDisabled, ...domProps } = props;
   return (
     <div
       {...domProps}
       className={classNames(styles.spinner, className, styles[`size-${size}`], {
         [styles.quiet]: quiet,
+        [styles.disabled]: isDisabled,
       })}
     >
       <svg viewBox="25 25 50 50">
