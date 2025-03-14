@@ -54,12 +54,14 @@
 
 .label {
   opacity: 1;
-  transition: opacity 0.3s;
+  width: 100%;
+  transition: all 0.3s;
 }
 
 .collapsed .label {
   opacity: 0;
-  transition: opacity 0.3s;
+  width: 0;
+  transition: all 0.3s;
 }
 
 .collapsed {

@@ -90,7 +90,7 @@ export function SideNavItem({
       <Focusable>
         <Box {...props} className={classNames(styles.item, className)}>
           {icon && <Icon size="sm">{icon}</Icon>}
-          <div className={classNames(styles.name, styles.label)}>{label}</div>
+          <div className={classNames(styles.label)}>{label}</div>
           {children}
         </Box>
       </Focusable>
