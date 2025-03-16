@@ -35,8 +35,8 @@ export function List({
     <ListBox {...props} items={items} className={classNames(styles.list, className)}>
       {children ||
         items?.map(item => {
-          const id = item[idProperty] || item;
-          const label = item[labelProperty] || item;
+          const id = item[idProperty] || item.toString();
+          const label = item[labelProperty] || item.toString();
 
           return (
             <Fragment key={id}>

@@ -2,6 +2,7 @@ import { forwardRef, Ref } from 'react';
 import classNames from 'classnames';
 import {
   Button,
+  PopoverProps,
   Select as AriaSelect,
   SelectProps as AriaSelectProps,
   SelectValue,
@@ -28,6 +29,7 @@ interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   onSearch?: (value: string) => void;
   onChange?: (e: any) => void;
   listProps?: ListProps;
+  popoverProps?: PopoverProps;
 }
 
 const Select = forwardRef(
@@ -37,12 +39,13 @@ const Select = forwardRef(
       value,
       label,
       isLoading,
-      listProps,
       allowSearch,
       searchDelay,
       onSearch,
       onSelectionChange,
       onChange,
+      listProps,
+      popoverProps,
       className,
       children,
       ...props
@@ -72,7 +75,7 @@ const Select = forwardRef(
             </span>
           </Row>
         </Button>
-        <Popover>
+        <Popover {...popoverProps}>
           <Column className={styles.popover}>
             {allowSearch && (
               <SearchField
@@ -85,9 +88,8 @@ const Select = forwardRef(
             {isLoading && <Loading icon="dots" position="center" size="sm" />}
             <List
               {...listProps}
-              items={items}
               className={classNames(styles.list, listProps?.className)}
-              style={{ display: isLoading ? 'none' : undefined }}
+              style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
             >
               {children}
             </List>

@@ -1,6 +1,7 @@
 .list {
   min-width: 100px;
   outline: none;
+  overflow: auto;
 }
 
 .separator {
