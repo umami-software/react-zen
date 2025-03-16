@@ -6,24 +6,22 @@ import {
   SelectProps as AriaSelectProps,
   SelectValue,
 } from 'react-aria-components';
-import { Column } from '@/components/Column';
-import { Label } from '@/components/Label';
-import { List, ListProps } from '@/components/List';
-import { Popover } from '@/components/Popover';
-import { Icon } from '@/components/Icon';
-import { Icons } from '@/components/Icons';
-import { Row } from '@/components/Row';
-import { SearchField } from '@/components/SearchField';
-import { Loading } from '@/components/Loading';
-import inputStyles from '@/components/styles/input.module.css';
-import styles from '@/components/Select.module.css';
+import { Column } from './Column';
+import { Label } from './Label';
+import { List, ListProps } from './List';
+import { Popover } from './Popover';
+import { Icon } from './Icon';
+import { Icons } from './Icons';
+import { Row } from './Row';
+import { SearchField } from './SearchField';
+import { Loading } from './Loading';
+import inputStyles from './styles/input.module.css';
+import styles from './Select.module.css';
 
 interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items?: any[];
   value?: string;
   label?: string;
-  listHeight?: string;
-  listWidth?: string;
   isLoading?: boolean;
   allowSearch?: boolean;
   searchDelay?: number;
@@ -39,8 +37,6 @@ const Select = forwardRef(
       value,
       label,
       isLoading,
-      listWidth,
-      listHeight,
       listProps,
       allowSearch,
       searchDelay,
