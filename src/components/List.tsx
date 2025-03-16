@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import {
   ListBox,
   ListBoxProps,
@@ -33,21 +34,17 @@ export function List({
   return (
     <ListBox {...props} items={items} className={classNames(styles.list, className)}>
       {children ||
-        items?.map((item, index) => {
+        items?.map(item => {
           const id = item[idProperty] || item;
           const label = item[labelProperty] || item;
 
-          console.log({ item, id, label });
-
           return (
-            <>
-              {item[separatorProperty] && (
-                <Separator key={`separator-${id}`} className={styles.separator} />
-              )}
-              <ListItem key={index} id={id} className={styles.item}>
+            <Fragment key={id}>
+              {item[separatorProperty] && <Separator className={styles.separator} />}
+              <ListItem id={id} className={styles.item}>
                 {label}
               </ListItem>
-            </>
+            </Fragment>
           );
         })}
     </ListBox>

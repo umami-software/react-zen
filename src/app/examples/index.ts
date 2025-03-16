@@ -11,6 +11,7 @@ export { FormInputsExample } from './FormInputsExample';
 export { IconLibrary } from './IconLibrary';
 export { InlineEditExample } from './InlineEditExample';
 export { SearchDelayExample } from './SearchDelayExample';
+export { SelectSearchExample } from './SelectSearchExample';
 export { SideNavExample } from './SideNavExample';
 export { SpacingExample } from './SpacingExample';
 export {
