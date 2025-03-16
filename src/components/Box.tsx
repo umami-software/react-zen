@@ -1,4 +1,4 @@
-import { HTMLAttributes, Ref } from 'react';
+import { HTMLAttributes, ReactNode, Ref } from 'react';
 import classNames from 'classnames';
 import {
   BackgroundColor,
@@ -87,7 +87,6 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
 
   as?: string;
   asChild?: boolean;
-  ref?: Ref<any>;
 }
 
 function Box({

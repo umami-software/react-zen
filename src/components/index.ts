@@ -8,6 +8,7 @@ import {
   RouterProvider,
   Focusable,
   Pressable,
+  Selection,
 } from 'react-aria-components';
 
 import { Form } from './forms/Form';
@@ -15,12 +16,15 @@ import { FormButtons } from './forms/FormButtons';
 import { FormField } from './forms/FormField';
 import { FormResetButton } from './forms/FormResetButton';
 import { FormSubmitButton } from './forms/FormSubmitButton';
+
 import { Toast } from './toast/Toast';
 import { Toaster } from './toast/Toaster';
 import { ToastProvider } from './toast/ToastProvider';
+
 import { useDebounce } from './hooks/useDebounce';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
+
 import { Accordion, AccordionItem } from './Accordion';
 import { AlertBanner } from './AlertBanner';
 import { AlertDialog } from './AlertDialog';
@@ -183,3 +187,5 @@ export {
   TooltipTrigger,
   ZenProvider,
 };
+
+export type { Selection };

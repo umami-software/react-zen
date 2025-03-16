@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import {
   ListBox,
   ListBoxProps,
@@ -17,23 +16,38 @@ import styles from './List.module.css';
 
 export interface ListProps extends ListBoxProps<any> {
   items?: any[];
-  className?: string;
-  children?: ReactNode;
+  idProperty?: string;
+  labelProperty?: string;
+  separatorProperty?: string;
 }
 
-export function List({ items, className, children, ...props }: ListProps) {
+export function List({
+  items,
+  idProperty = 'id',
+  labelProperty = 'label',
+  separatorProperty = 'separatpr',
+  className,
+  children,
+  ...props
+}: ListProps) {
   return (
     <ListBox {...props} items={items} className={classNames(styles.list, className)}>
       {children ||
         items?.map((item, index) => {
-          if (item === null) {
-            return <Separator key={index} className={styles.separator} />;
-          }
+          const id = item[idProperty] || item;
+          const label = item[labelProperty] || item;
+
+          console.log({ item, id, label });
 
           return (
-            <ListItem key={index} id={item} className={styles.item}>
-              {item}
-            </ListItem>
+            <>
+              {item[separatorProperty] && (
+                <Separator key={`separator-${id}`} className={styles.separator} />
+              )}
+              <ListItem key={index} id={id} className={styles.item}>
+                {label}
+              </ListItem>
+            </>
           );
         })}
     </ListBox>

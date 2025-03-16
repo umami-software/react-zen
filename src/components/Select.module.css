@@ -17,6 +17,7 @@
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-3);
   background: var(--background-color);
+  overflow: hidden;
 }
 
 .list > * {
@@ -30,4 +31,18 @@
 .icon:hover {
   color: var(--font-color);
   cursor: pointer;
+}
+
+.search {
+  border-bottom: var(--border);
+  outline: none;
+}
+
+.search input {
+  border: 0;
+  box-shadow: none;
+}
+
+.search input[data-focused] {
+  outline: none;
 }

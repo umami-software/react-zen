@@ -16,7 +16,6 @@ import { Icons } from '@/components/Icons';
 import styles from './Menu.module.css';
 
 interface MenuProps extends AriaMenuProps<any> {
-  items?: any[];
   className?: string;
   children?: ReactNode;
 }
@@ -24,18 +23,7 @@ interface MenuProps extends AriaMenuProps<any> {
 function Menu({ items, className, children, ...props }: MenuProps) {
   return (
     <AriaMenu {...props} className={classNames(styles.menu, className)}>
-      {children ||
-        items?.map((item, index) => {
-          if (item === null) {
-            return <Separator key={index} className={styles.separator} />;
-          }
-
-          return (
-            <MenuItem key={index} id={item}>
-              {item}
-            </MenuItem>
-          );
-        })}
+      {children}
     </AriaMenu>
   );
 }

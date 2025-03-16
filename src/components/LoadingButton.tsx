@@ -7,6 +7,7 @@ interface LoadingButtonProps extends ButtonProps {
   isLoading?: boolean;
   showText?: boolean;
 }
+
 function LoadingButton({
   isLoading,
   isDisabled,

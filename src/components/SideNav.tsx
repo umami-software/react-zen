@@ -1,16 +1,17 @@
-import { ReactNode, createContext, useContext, forwardRef } from 'react';
+import { ReactNode, createContext, useContext } from 'react';
 import classNames from 'classnames';
 import { TooltipTrigger, Focusable } from 'react-aria-components';
-import { Box, BoxProps } from '@/components/Box';
+import { Column, ColumnProps } from '@/components/Column';
+import { Row, RowProps } from '@/components/Row';
 import { Icon } from '@/components/Icon';
-import { Text } from '@/components/Text';
 import { Tooltip } from '@/components/Tooltip';
 import styles from './SideNav.module.css';
 
-export interface SideNavProps extends BoxProps {
+export interface SideNavProps extends ColumnProps {
   variant?: '1' | '2' | '3';
   isCollapsed?: boolean;
   showBorder?: boolean;
+  children?: ReactNode;
 }
 
 const SideNavContext = createContext(null as any);
@@ -25,7 +26,7 @@ export function SideNav({
 }: SideNavProps) {
   return (
     <SideNavContext.Provider value={{ isCollapsed }}>
-      <Box
+      <Column
         {...props}
         className={classNames(
           styles.sidenav,
@@ -36,7 +37,7 @@ export function SideNav({
         )}
       >
         {children}
-      </Box>
+      </Column>
     </SideNavContext.Provider>
   );
 }
@@ -44,12 +45,12 @@ export function SideNav({
 export function SideNavSection({
   title,
   children,
-}: { title?: string; children: ReactNode } & BoxProps) {
+}: { title?: string; children: ReactNode } & ColumnProps) {
   return (
-    <Box className={styles.section}>
+    <Column className={styles.section}>
       {title && <div className={styles.title}>{title}</div>}
       <div className={styles.content}>{children}</div>
-    </Box>
+    </Column>
   );
 }
 
@@ -63,13 +64,13 @@ export function SideNavHeader({
   label: string;
   icon?: ReactNode;
   children?: ReactNode;
-} & BoxProps) {
+} & RowProps) {
   return (
-    <Box {...props} className={classNames(styles.header, className)}>
+    <Row {...props} className={classNames(styles.header, className)}>
       {icon && <Icon size="sm">{icon}</Icon>}
       <div className={classNames(styles.name, styles.label)}>{label}</div>
       {children}
-    </Box>
+    </Row>
   );
 }
 
@@ -82,17 +83,17 @@ export function SideNavItem({
 }: {
   label?: string;
   icon?: ReactNode;
-} & BoxProps) {
+} & RowProps) {
   const { isCollapsed } = useContext(SideNavContext);
 
   return (
     <TooltipTrigger delay={0} closeDelay={0} isDisabled={!isCollapsed}>
       <Focusable>
-        <Box {...props} className={classNames(styles.item, className)}>
+        <Row {...props} className={classNames(styles.item, className)}>
           {icon && <Icon size="sm">{icon}</Icon>}
           <div className={classNames(styles.label)}>{label}</div>
           {children}
-        </Box>
+        </Row>
       </Focusable>
       <Tooltip placement="right">{label}</Tooltip>
     </TooltipTrigger>
