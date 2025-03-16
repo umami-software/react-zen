@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const values = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 
-export function SelectSearchExample() {
+export function SelectSearchExample({ isLoading }: { isLoading?: boolean }) {
   const [items, setItems] = useState<string[]>(values);
 
   const handleSearch = (search: string) => {
@@ -19,6 +19,7 @@ export function SelectSearchExample() {
       placeholder="Please select an option"
       allowSearch
       onSearch={handleSearch}
+      isLoading={isLoading}
     />
   );
 }

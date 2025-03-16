@@ -1,4 +1,4 @@
-import { forwardRef, Ref, useState } from 'react';
+import { forwardRef, Ref } from 'react';
 import classNames from 'classnames';
 import {
   Button,
@@ -6,25 +6,30 @@ import {
   SelectProps as AriaSelectProps,
   SelectValue,
 } from 'react-aria-components';
-import { Column } from './Column';
-import { Label } from './Label';
-import { List } from './List';
-import { Popover } from './Popover';
-import { Icon } from './Icon';
-import { Icons } from './Icons';
-import { Row } from './Row';
-import { SearchField } from './SearchField';
-import inputStyles from './styles/input.module.css';
-import styles from './Select.module.css';
+import { Column } from '@/components/Column';
+import { Label } from '@/components/Label';
+import { List, ListProps } from '@/components/List';
+import { Popover } from '@/components/Popover';
+import { Icon } from '@/components/Icon';
+import { Icons } from '@/components/Icons';
+import { Row } from '@/components/Row';
+import { SearchField } from '@/components/SearchField';
+import { Loading } from '@/components/Loading';
+import inputStyles from '@/components/styles/input.module.css';
+import styles from '@/components/Select.module.css';
 
 interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items?: any[];
   value?: string;
   label?: string;
+  listHeight?: string;
+  listWidth?: string;
+  isLoading?: boolean;
   allowSearch?: boolean;
   searchDelay?: number;
   onSearch?: (value: string) => void;
   onChange?: (e: any) => void;
+  listProps?: ListProps;
 }
 
 const Select = forwardRef(
@@ -33,6 +38,10 @@ const Select = forwardRef(
       items = [],
       value,
       label,
+      isLoading,
+      listWidth,
+      listHeight,
+      listProps,
       allowSearch,
       searchDelay,
       onSearch,
@@ -68,7 +77,7 @@ const Select = forwardRef(
           </Row>
         </Button>
         <Popover>
-          <Column className={styles.list}>
+          <Column className={styles.popover}>
             {allowSearch && (
               <SearchField
                 className={styles.search}
@@ -77,7 +86,15 @@ const Select = forwardRef(
                 autoFocus
               />
             )}
-            <List items={items}>{children}</List>
+            {isLoading && <Loading icon="dots" position="center" size="sm" />}
+            <List
+              {...listProps}
+              items={items}
+              className={classNames(styles.list, listProps?.className)}
+              style={{ display: isLoading ? 'none' : undefined }}
+            >
+              {children}
+            </List>
           </Column>
         </Popover>
       </AriaSelect>
