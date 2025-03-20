@@ -20,7 +20,7 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "next dev -p 9000 --turbo",
+    "dev": "next dev -p 9001 --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -81,7 +81,7 @@
     "esbuild-css-modules-plugin": "^3.1.2",
     "esbuild-plugin-svgr": "^3.1.0",
     "esbuild-postcss": "^0.0.4",
-    "eslint": "^9.22.0",
+    "eslint": "^8.16.0",
     "eslint-config-next": "15.2.2",
     "eslint-config-prettier": "^10.1.1",
     "eslint-import-resolver-alias": "^1.1.2",

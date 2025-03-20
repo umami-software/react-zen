@@ -11,33 +11,46 @@ Source code is available on [GitHub](https://github.com/umami-software/react-zen
 
 ## Why Zen?
 
-We created Zen with strong focus on the developer experience.
-The goal of this project is to deliver a foundation for building consistent, maintainable, and accessible user interfaces.
+Zen is built with a strong focus on the **developer experience**, making UI development faster, more
+predictable, and less error-prone. Our goal is to provide a foundation for building consistent,
+maintainable, and accessible user interfaces with minimal effort.
 
-### Opinionated design
+## Opinionated, Yet Flexible Design
 
-Out of the box, Zen provides predefined styles that cover
-[colors](/docs/design/colors),
+Zen comes with a beautiful, consistent design system that eliminates decision fatigue. It provides predefined styles
+for [colors](/docs/design/colors),
 [fonts](/docs/design/fonts),
 [spacing](/docs/design/spacing),
 [shadows](/docs/design/shadows),
-and [borders](/docs/design/borders),
-as well as components that deal specifically with [typography](/docs/typography/text) and [layout](/docs/layout/box).
-Additionally, [breakpoints](/docs/design/breakpoints) are handled natively so you can create
-responsive layouts by just passing props to your components.
+and [borders](/docs/design/borders), ensuring visual consistency across your project.
 
-### No CSS required
+Breakpoints are handled natively, so you can create responsive layouts effortlessly by passing props to
+components—no need to write custom media queries.
 
-You shouldn't have to write any custom CSS.
-Zen makes extensive use of CSS variables that you can modify to adjust the design to your needs.
-Layout components, such as [Flexbox](/docs/layout/flexbox) and [Grid](/docs/layout/grid), allow you to compose almost any UI.
-Still, all components can be styled through the standard `className` and `style` props if needed.
+At the same time, Zen remains flexible. You can override styles using CSS variables or extend the design system
+through the provided utility props. This strikes a balance between having a solid design foundation and
+allowing customization when needed.
 
-### Comprehensive components
+## Zero CSS Required
 
-Components automatically handle all design and layout.
-All design customizations can be done via props instead of manipulating CSS.
-This simplifies your workflow to just composing tags and passing props.
+Writing custom CSS shouldn’t be a requirement for building beautiful and functional interfaces. Zen’s components are
+designed to work out of the box, leveraging CSS variables that you can tweak to match your design preferences.
+
+For layout composition, Zen includes utility components like [Flexbox](/docs/layout/flexbox) and [Grid](/docs/layout/grid), which let you structure your UI without
+diving into CSS files. However, if you ever need full control, you can still style components using the standard
+`className` and `style` props.
+
+## Comprehensive & Accessible Components
+
+Zen takes care of the design, layout, and accessibility for you. Components automatically adjust to their context and
+support built-in accessibility features powered by [React Aria](https://react-spectrum.adobe.com/react-aria/). This means you get fully keyboard-navigable,
+screen reader-friendly UI elements without any extra work.
+
+Instead of worrying about CSS rules or low-level behavior, you simply compose tags and pass props. Every component is
+designed to be self-contained, reducing complexity and making UI development more intuitive.
+
+By using Zen, you can spend less time on styling and accessibility concerns and more time focusing on building great
+user experiences.
 
 ```jsx
 <Box padding="6" borderSize="1" borderRadius="3" shadow="3">
