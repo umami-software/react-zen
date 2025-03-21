@@ -40,9 +40,10 @@
   justify-content: flex-start;
   width: 100%;
   min-height: 40px;
-  color: var(--font-color-muted);
+  color: var(--font-color);
   gap: var(--gap);
   padding: var(--padding);
+  border: 1px solid transparent;
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
@@ -69,27 +70,52 @@
   transition: width 0.2s ease-in-out;
 }
 
-.variant-1 {
+.muted .item {
+  color: var(--font-color-muted);
+}
+
+.muted .item:hover {
+  color: var(--font-color);
+}
+
+.muted .item.selected {
+  color: var(--font-color);
+}
+
+.variant-quiet {
   background: transparent;
 
-  & .item:hover {
-    background: var(--base-color-1);
+  & .item:hover,
+  .selected {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
   }
 }
 
-.variant-2 {
+.variant-1 {
   background: var(--base-color-1);
 
-  & .item:hover {
+  & .item:hover,
+  .selected {
     background: var(--base-color-2);
   }
 }
 
-.variant-3 {
+.variant-2 {
   background: var(--base-color-2);
 
-  & .item:hover {
+  & .item:hover,
+  .selected {
     background: var(--base-color-3);
+  }
+}
+
+.variant-3 {
+  background: var(--base-color-3);
+
+  & .item:hover,
+  .selected {
+    background: var(--base-color-4);
   }
 }
 

@@ -5,11 +5,13 @@ import { Column, ColumnProps } from '@/components/Column';
 import { Row, RowProps } from '@/components/Row';
 import { Icon } from '@/components/Icon';
 import { Tooltip } from '@/components/Tooltip';
+import { Text } from '@/components/Text';
 import styles from './SideNav.module.css';
 
 export interface SideNavProps extends ColumnProps {
-  variant?: '1' | '2' | '3';
+  variant?: '1' | '2' | '3' | 'quiet';
   isCollapsed?: boolean;
+  muteItems?: boolean;
   showBorder?: boolean;
   children?: ReactNode;
 }
@@ -17,8 +19,9 @@ export interface SideNavProps extends ColumnProps {
 const SideNavContext = createContext(null as any);
 
 export function SideNav({
-  variant = '2',
+  variant = '1',
   isCollapsed,
+  muteItems = true,
   showBorder = true,
   className,
   children,
@@ -31,6 +34,7 @@ export function SideNav({
         className={classNames(
           styles.sidenav,
           isCollapsed && styles.collapsed,
+          muteItems && styles.muted,
           variant && styles[`variant-${variant}`],
           !showBorder && styles.noborder,
           className,
@@ -74,24 +78,32 @@ export function SideNavHeader({
   );
 }
 
+export interface SideNavItemProps extends RowProps {
+  isSelected?: boolean;
+}
+
 export function SideNavItem({
   label,
   icon,
+  isSelected,
   className,
   children,
   ...props
 }: {
   label?: string;
   icon?: ReactNode;
-} & RowProps) {
+} & SideNavItemProps) {
   const { isCollapsed } = useContext(SideNavContext);
 
   return (
     <TooltipTrigger delay={0} closeDelay={0} isDisabled={!isCollapsed}>
       <Focusable>
-        <Row {...props} className={classNames(styles.item, className)}>
+        <Row
+          {...props}
+          className={classNames(styles.item, className, isSelected && styles.selected)}
+        >
           {icon && <Icon size="sm">{icon}</Icon>}
-          <div className={classNames(styles.label)}>{label}</div>
+          {label && <Text className={classNames(styles.label)}>{label}</Text>}
           {children}
         </Row>
       </Focusable>

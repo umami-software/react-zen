@@ -1,5 +1,5 @@
-import { Row, Text, ThemeButton, Button, Icon } from '@/components';
 import Link from 'next/link';
+import { Row, Text, ThemeButton, Button, Icon } from '@/components';
 import Github from '@/assets/github.svg';
 
 export function Header() {

@@ -17,8 +17,8 @@ const Button = forwardRef(
     {
       variant = 'secondary',
       size = 'md',
-      preventFocusOnPress = true,
       asChild,
+      preventFocusOnPress = true,
       className,
       children,
       ...props

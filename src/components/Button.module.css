@@ -24,6 +24,7 @@
 }
 
 .button:hover {
+  color: var(--font-color);
   background: color-mix(in srgb, var(--base-color-3), 5% var(--dark-color));
 }
 
