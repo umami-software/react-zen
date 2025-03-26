@@ -64,8 +64,17 @@ export type BorderSize = '1' | '2' | '3' | '4';
 export type BorderRadius = '1' | '2' | '3' | '4' | 'full';
 export type BoxShadow = '1' | '2' | '3' | '4' | '5' | '6';
 
-export type FontSize = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
-export type FontWeight = 'light' | 'regular' | 'medium' | 'bold';
+export type FontSize = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+export type FontWeight =
+  | 'thin'
+  | 'extra-light'
+  | 'light'
+  | 'regular'
+  | 'medium'
+  | 'semi-bold'
+  | 'bold'
+  | 'extra-bold'
+  | 'black';
 
 export type TextWrap = 'wrap' | 'nowrap' | 'pretty' | 'balance';
 export type TextAlign = 'left' | 'center' | 'right';

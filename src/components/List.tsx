@@ -53,7 +53,11 @@ export function List({
 
 export function ListItem({ children, className, ...props }: ListBoxItemProps<any>) {
   return (
-    <ListBoxItem {...props} className={classNames(styles.item, className)}>
+    <ListBoxItem
+      {...props}
+      className={classNames(styles.item, className)}
+      aria-label={props.id?.toString()}
+    >
       {children as any}
       <div aria-hidden="true" className={styles.check}>
         <Icon>

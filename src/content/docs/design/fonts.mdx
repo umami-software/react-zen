@@ -7,7 +7,7 @@ The default fonts we use are [Inter](https://fonts.google.com/specimen/Inter) fo
 
 ## CSS variables
 
-Font sizes are defined in a 9-step scale from smallest to largest.
+Font sizes are defined in a 12-step scale from smallest to largest.
 
 <Example>
   <DataTable
@@ -18,9 +18,12 @@ Font sizes are defined in a 9-step scale from smallest to largest.
       { name: '--font-size-4', value: '18px' },
       { name: '--font-size-5', value: '20px' },
       { name: '--font-size-6', value: '24px' },
-      { name: '--font-size-7', value: '28px' },
+      { name: '--font-size-7', value: '30px' },
       { name: '--font-size-8', value: '36px' },
-      { name: '--font-size-9', value: '60px' },
+      { name: '--font-size-9', value: '48px' },
+      { name: '--font-size-10', value: '60px' },
+      { name: '--font-size-11', value: '72px' },
+      { name: '--font-size-12', value: '96px' },
     ]}
   >
     <DataColumn id="name" label="Name" />
@@ -33,10 +36,15 @@ Font weights are defined as `light`, `regular`, `medium` and `bold`.
 <Example>
   <DataTable
     data={[
+      { name: '--font-weight-thin', value: '100' },
+      { name: '--font-weight-extra-light', value: '200' },
       { name: '--font-weight-light', value: '300' },
       { name: '--font-weight-regular', value: '400' },
       { name: '--font-weight-medium', value: '500' },
+      { name: '--font-weight-semi-bold', value: '600' },
       { name: '--font-weight-bold', value: '700' },
+      { name: '--font-weight-extra-bold', value: '800' },
+      { name: '--font-weight-black', value: '900' },
     ]}
   >
     <DataColumn id="name" label="Name" />

@@ -88,6 +88,7 @@ const Select = forwardRef(
             {isLoading && <Loading icon="dots" position="center" size="sm" />}
             <List
               {...listProps}
+              items={items}
               className={classNames(styles.list, listProps?.className)}
               style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
             >

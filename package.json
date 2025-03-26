@@ -1,7 +1,7 @@
 {
   "name": "@umami/react-zen",
-  "version": "0.66.0",
-  "description": "React components built by Umami",
+  "version": "0.68.0",
+  "description": "Modern, minimalist React component library",
   "author": "Umami <hello@umami.is>",
   "license": "MIT",
   "homepage": "https://umami.is/zen",
