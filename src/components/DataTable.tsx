@@ -30,17 +30,19 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
   return (
     <Table {...props} className={classNames(styles.datatable, className)}>
       <TableHeader>
-        {columns.map(({ id, label, as, hidden, ...columnProps }) => {
-          if (hidden) {
-            return null;
-          }
+        {columns
+          .filter(n => n)
+          .map(({ id, label, as, hidden, ...columnProps }) => {
+            if (hidden) {
+              return null;
+            }
 
-          return (
-            <TableColumn {...columnProps} key={id} id={id}>
-              {label}
-            </TableColumn>
-          );
-        })}
+            return (
+              <TableColumn {...columnProps} key={id} id={id}>
+                {label}
+              </TableColumn>
+            );
+          })}
       </TableHeader>
       <TableBody items={items}>
         {(row: any) => {
