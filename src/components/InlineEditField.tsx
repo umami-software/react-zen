@@ -1,22 +1,20 @@
-import { ReactNode, useState, useCallback } from 'react';
+import { ReactNode, useState, useCallback, HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import { TextField } from './TextField';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import styles from './InlineEditField.module.css';
 
-interface InlineEditFieldProps {
+export interface InlineEditFieldProps extends HTMLAttributes<HTMLDivElement> {
   name?: string;
   value: string;
   defaultEdit?: boolean;
-  onChange?: (value: string) => void;
-  onCommit?: (value: string) => void;
+  onChange?: (value: any) => void;
+  onCommit?: (value: any) => void;
   onCancel?: () => void;
-  className?: string;
-  children?: ReactNode;
 }
 
-function InlineEditField({
+export function InlineEditField({
   name = '',
   value: defaultValue = '',
   defaultEdit,
@@ -59,8 +57,8 @@ function InlineEditField({
 
   return (
     <div
-      aria-label="Edit"
       {...props}
+      aria-label="Edit"
       className={classNames(styles.edit, className)}
       onClick={handleEdit}
     >
@@ -83,6 +81,3 @@ function InlineEditField({
     </div>
   );
 }
-
-export { InlineEditField };
-export type { InlineEditFieldProps };
