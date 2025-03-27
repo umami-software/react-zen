@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import {
   BackgroundColor,
-  BorderSize,
+  BorderColor,
   BorderRadius,
   BoxShadow,
   Spacing,
@@ -32,8 +32,13 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   backgroundColor?: BackgroundColor;
   fontSize?: Responsive<FontSize>;
   fontWeight?: Responsive<FontWeight>;
-  borderSize?: Responsive<BorderSize>;
+  border?: Responsive<boolean>;
+  borderColor?: BorderColor;
   borderRadius?: Responsive<BorderRadius>;
+  borderTop?: Responsive<boolean>;
+  borderRight?: Responsive<boolean>;
+  borderBottom?: Responsive<boolean>;
+  borderLeft?: Responsive<boolean>;
   shadow?: Responsive<BoxShadow>;
 
   padding?: Responsive<Spacing>;
@@ -95,8 +100,13 @@ function Box({
   backgroundColor,
   fontSize,
   fontWeight,
-  borderSize,
+  border,
+  borderColor,
   borderRadius,
+  borderTop,
+  borderRight,
+  borderBottom,
+  borderLeft,
   shadow,
   padding,
   paddingX,
@@ -148,8 +158,13 @@ function Box({
     backgroundColor,
     fontSize,
     fontWeight,
-    borderSize,
+    border,
+    borderColor,
     borderRadius,
+    borderTop,
+    borderRight,
+    borderBottom,
+    borderLeft,
     shadow,
     padding,
     paddingX,

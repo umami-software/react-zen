@@ -11,7 +11,7 @@ Base box component.
 ## With properties
 
 <Example>
-  <Box padding="5" shadow="3" border="sm" borderRadius="3" borderSize="1">
+  <Box padding="5" shadow="3" borderRadius="3" border>
     I am a box.
   </Box>
 </Example>
@@ -26,8 +26,13 @@ Base box component.
         name: 'position',
         value: 'Responsive<"static" | "relative" | "absolute" | "fixed" | "sticky">',
       },
-      { name: 'backgroundColor', value: 'string' },
+      { name: 'backgroundColor', value: 'BackgroundColor' },
+      { name: 'borderColor', value: 'BorderColor' },
       { name: 'borderSize', value: 'Responsive<"1" | "2" | "3" | "4">' },
+      { name: 'borderTop', value: 'Responsive<"1" | "2" | "3" | "4">' },
+      { name: 'borderRight', value: 'Responsive<"1" | "2" | "3" | "4">' },
+      { name: 'borderBottom', value: 'Responsive<"1" | "2" | "3" | "4">' },
+      { name: 'borderLeft', value: 'Responsive<"1" | "2" | "3" | "4">' },
       { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6">' },
       { name: 'padding', value: 'Responsive<Spacing>' },
       { name: 'paddingX', value: 'Responsive<Spacing>' },
@@ -58,8 +63,10 @@ Base box component.
       { name: 'as', value: 'string' },
       { name: 'asChild', value: 'boolean' },
     ]}
-  >
+>
+
     <DataColumn id="name" label="Name" />
     <DataColumn id="value" label="Type" />
+
   </DataTable>
 </Example>

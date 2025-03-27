@@ -138,13 +138,8 @@
   --base-color-11: #646464;
   --base-color-12: #202020;
 
-  --background-color: #fff;
-
   --background-color-1: var(--base-color-1);
   --background-color-2: var(--base-color-2);
-
-  --border-color: var(--base-color-6);
-  --border: var(--border-width) solid var(--border-color);
 
   --border-color-1: var(--base-color-6);
   --border-color-2: var(--base-color-7);
@@ -156,6 +151,11 @@
   --font-color: var(--base-color-12);
   --font-color-muted: var(--base-color-10);
   --font-color-disabled: var(--base-color-8);
+
+  --background-color: #fff;
+
+  --border-color: var(--base-color-6);
+  --border: var(--border-width) solid var(--border-color);
 
   --heading-color: var(--base-color-12);
 
@@ -200,16 +200,13 @@ html[data-theme='dark'], .dark-theme {
   --base-color-10: #7b7b7b;
   --base-color-11: #b4b4b4;
   --base-color-12: #eeeeee;
-  
-  --background-color: #0f0f0f;
+
   --background-color-1: var(--base-color-1);
   --background-color-2: var(--base-color-2);
 
   --border-color-1: var(--base-color-6);
   --border-color-2: var(--base-color-7);
   --border-color-3: var(--base-color-8);
-  --border-color: var(--base-color-6);
-  --border: var(--border-width) solid var(--border-color);
 
   --solid-color-1: var(--base-color-9);
   --solid-color-2: var(--base-color-10);
@@ -217,6 +214,11 @@ html[data-theme='dark'], .dark-theme {
   --font-color: var(--base-color-12);
   --font-color-muted: var(--base-color-10);
   --font-color-disabled: var(--base-color-8);
+
+  --background-color: #0f0f0f;
+
+  --border-color: var(--base-color-6);
+  --border: var(--border-width) solid var(--border-color);
 
   --heading-color: var(--base-color-12);
 

@@ -34,6 +34,8 @@ export type AccentColor =
 
 export type BackgroundColor = BaseColor | AccentColor;
 
+export type BorderColor = BaseColor | AccentColor;
+
 export type FontColor = AccentColor | 'primary' | 'muted' | 'disabled';
 
 export type Spacing = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
@@ -60,7 +62,6 @@ export type Left = Spacing | NegativeSpacing | string;
 export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
-export type BorderSize = '1' | '2' | '3' | '4';
 export type BorderRadius = '1' | '2' | '3' | '4' | 'full';
 export type BoxShadow = '1' | '2' | '3' | '4' | '5' | '6';
 

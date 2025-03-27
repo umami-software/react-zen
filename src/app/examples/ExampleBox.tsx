@@ -11,8 +11,8 @@ export function ExampleBox({
   size = 'md',
   width,
   height,
+  border = true,
   borderRadius = '2',
-  borderSize = '1',
   color,
   ...props
 }: { size?: keyof typeof SIZES } & BoxProps) {
@@ -22,7 +22,7 @@ export function ExampleBox({
       width={width || SIZES[size]}
       height={height || SIZES[size]}
       borderRadius={borderRadius}
-      borderSize={borderSize}
+      border={border}
     />
   );
 }

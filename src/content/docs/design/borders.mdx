@@ -2,7 +2,22 @@
 title: Borders
 ---
 
-Borders are always solid and a fixed color. You can control the `radius` and `size` of borders.
+Borders are always solid and a fixed color. You can control the `radius` and `position` of borders.
+
+## Borders
+
+<Example gap="5">
+  <Label>Border</Label>
+  <ExampleBox border borderRadius="3" />
+  <Label>Border top</Label>
+  <ExampleBox borderTop borderRadius="3" />
+  <Label>Border right</Label>
+  <ExampleBox borderRight borderRadius="3" />
+  <Label>Border bottom</Label>
+  <ExampleBox borderBottom borderRadius="3" />
+  <Label>Border left</Label>
+  <ExampleBox borderLeft borderRadius="3" />
+</Example>
 
 ## Border radius
 
@@ -17,19 +32,6 @@ Borders are always solid and a fixed color. You can control the `radius` and `si
   <ExampleBox borderRadius="4" />
   <Label>Radius full</Label>
   <ExampleBox borderRadius="full" />
-</Example>
-
-## Border size
-
-<Example gap="5">
-  <Label>Size 1</Label>
-  <ExampleBox borderRadius="3" />
-  <Label>Size 2</Label>
-  <ExampleBox borderSize="2" borderRadius="3" />
-  <Label>Size 3</Label>
-  <ExampleBox borderSize="3" borderRadius="3" />
-  <Label>Size 4</Label>
-  <ExampleBox borderSize="4" borderRadius="3" />
 </Example>
 
 ## CSS variables

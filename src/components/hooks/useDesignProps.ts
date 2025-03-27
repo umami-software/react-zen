@@ -11,8 +11,13 @@ const CSS_MAP = {
   headingSize: 'heading-size',
   color: 'font-color',
   backgroundColor: 'background-color',
-  borderSize: 'border-size',
+  border: 'border',
+  borderColor: 'border-color',
   borderRadius: 'border-radius',
+  borderTop: 'border-top',
+  borderRight: 'border-right',
+  borderBottom: 'border-bottom',
+  borderLeft: 'border-left',
   shadow: 'shadow',
   padding: 'padding',
   paddingX: 'padding-x',
@@ -109,6 +114,12 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
     const value = props[key as Keys];
 
     if (value) {
+      if (typeof value === 'boolean') {
+        if (name.startsWith('border')) {
+          console.log({ name, value });
+        }
+        classes.push(styles[name]);
+      }
       if (typeof value === 'string' || typeof value === 'number') {
         if (excludedProps.includes(key) || /var\(.*\)/.test(value.toString())) {
           styleProps[key] = value;
