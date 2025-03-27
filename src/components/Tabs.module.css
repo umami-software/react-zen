@@ -1,6 +1,8 @@
 .tabs {
+  display: grid;
   position: relative;
   width: 100%;
+  gap: var(--spacing-6)
 }
 
 .tabs .list a.tab {
@@ -13,7 +15,6 @@
   align-items: center;
   border-bottom: 1px solid var(--border-color);
   gap: var(--spacing-6);
-  margin-bottom: var(--spacing-6);
 }
 
 .list.quiet {
