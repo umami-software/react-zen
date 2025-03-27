@@ -12,7 +12,7 @@ export function ExampleBox({
   width,
   height,
   border = true,
-  borderRadius = '2',
+  borderRadius = true,
   color,
   ...props
 }: { size?: keyof typeof SIZES } & BoxProps) {

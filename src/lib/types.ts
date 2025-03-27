@@ -32,9 +32,9 @@ export type AccentColor =
   | 'mint'
   | 'sky';
 
-export type BackgroundColor = BaseColor | AccentColor;
+export type BackgroundColor = true | BaseColor | AccentColor;
 
-export type BorderColor = BaseColor | AccentColor;
+export type BorderColor = true | BaseColor | AccentColor;
 
 export type FontColor = AccentColor | 'primary' | 'muted' | 'disabled';
 
@@ -54,6 +54,7 @@ export type NegativeSpacing =
   | '-11'
   | '-12';
 
+export type Padding = Spacing | NegativeSpacing | true;
 export type Position = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
 export type Top = Spacing | NegativeSpacing | string;
 export type Right = Spacing | NegativeSpacing | string;
@@ -62,7 +63,7 @@ export type Left = Spacing | NegativeSpacing | string;
 export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
-export type BorderRadius = '1' | '2' | '3' | '4' | 'full';
+export type BorderRadius = true | '1' | '2' | '3' | '4' | 'full';
 export type BoxShadow = '1' | '2' | '3' | '4' | '5' | '6';
 
 export type FontSize = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';

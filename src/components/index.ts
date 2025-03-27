@@ -28,7 +28,6 @@ export { useToast } from './hooks/useToast';
 export { Accordion, AccordionItem } from './Accordion';
 export { AlertBanner } from './AlertBanner';
 export { AlertDialog } from './AlertDialog';
-export { Block } from './Block';
 export { Blockquote } from './Blockquote';
 export { Box } from './Box';
 export { Breadcrumbs, Breadcrumb } from './Breadcrumbs';

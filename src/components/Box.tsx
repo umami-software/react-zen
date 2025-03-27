@@ -22,6 +22,7 @@ import {
   FontColor,
   FontSize,
   FontWeight,
+  Padding,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
@@ -41,13 +42,13 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   borderLeft?: Responsive<boolean>;
   shadow?: Responsive<BoxShadow>;
 
-  padding?: Responsive<Spacing>;
-  paddingX?: Responsive<Spacing>;
-  paddingY?: Responsive<Spacing>;
-  paddingTop?: Responsive<Spacing>;
-  paddingRight?: Responsive<Spacing>;
-  paddingBottom?: Responsive<Spacing>;
-  paddingLeft?: Responsive<Spacing>;
+  padding?: Responsive<Padding>;
+  paddingX?: Responsive<Padding>;
+  paddingY?: Responsive<Padding>;
+  paddingTop?: Responsive<Padding>;
+  paddingRight?: Responsive<Padding>;
+  paddingBottom?: Responsive<Padding>;
+  paddingLeft?: Responsive<Padding>;
 
   margin?: Responsive<Spacing>;
   marginX?: Responsive<Spacing>;

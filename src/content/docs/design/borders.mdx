@@ -2,21 +2,21 @@
 title: Borders
 ---
 
-Borders are always solid and a fixed color. You can control the `radius` and `position` of borders.
+Borders are always solid with a default border color. You can control the `position`, `radius`, and `color` of borders.
 
-## Borders
+## Border position
 
 <Example gap="5">
-  <Label>Border</Label>
-  <ExampleBox border borderRadius="3" />
+  <Label>Default</Label>
+  <ExampleBox border backgroundColor="2" borderRadius="0" />
   <Label>Border top</Label>
-  <ExampleBox borderTop borderRadius="3" />
+  <ExampleBox borderTop backgroundColor="2" border="0" borderRadius="0" />
   <Label>Border right</Label>
-  <ExampleBox borderRight borderRadius="3" />
+  <ExampleBox borderRight backgroundColor="2" border="0" borderRadius="0" />
   <Label>Border bottom</Label>
-  <ExampleBox borderBottom borderRadius="3" />
+  <ExampleBox borderBottom backgroundColor="2" border="0" borderRadius="0" />
   <Label>Border left</Label>
-  <ExampleBox borderLeft borderRadius="3" />
+  <ExampleBox borderLeft backgroundColor="2" border="0" borderRadius="0" />
 </Example>
 
 ## Border radius
@@ -32,6 +32,16 @@ Borders are always solid and a fixed color. You can control the `radius` and `po
   <ExampleBox borderRadius="4" />
   <Label>Radius full</Label>
   <ExampleBox borderRadius="full" />
+</Example>
+
+## Border color
+
+<Example gap="5" direction="row">
+  <ExampleBox />
+  <ExampleBox borderColor="primary" />
+  <ExampleBox borderColor="red" />
+  <ExampleBox borderColor="blue" />
+  <ExampleBox borderColor="green" />
 </Example>
 
 ## CSS variables
@@ -53,29 +63,14 @@ Border radius values are defined as a 5-step scale from smallest to largest.
   </DataTable>
 </Example>
 
-Border sizes are defined as a 4-step scale from smallest to largest.
-
-<Example>
-  <DataTable
-    data={[
-      { name: '--border-size-1', value: '1px' },
-      { name: '--border-size-2', value: '2px' },
-      { name: '--border-size-3', value: '4px' },
-      { name: '--border-size-4', value: '8px' },
-    ]}
-  >
-    <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
-  </DataTable>
-</Example>
-
 ## Component props
 
 <Example>
   <DataTable
     data={[
+      { name: 'border', value: 'Responsive<boolean>' },
       { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "full">' },
-      { name: 'borderSize', value: 'Responsive<"1" | "2" | "3" | "4">' },
+      { name: 'borderColor', value: 'Responsive<BorderColor>' },
     ]}
   >
 
