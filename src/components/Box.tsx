@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import {
   BackgroundColor,
   BorderColor,
+  BorderPosition,
   BorderRadius,
   BoxShadow,
   Spacing,
@@ -33,13 +34,9 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   backgroundColor?: BackgroundColor;
   fontSize?: Responsive<FontSize>;
   fontWeight?: Responsive<FontWeight>;
-  border?: Responsive<boolean>;
+  border?: Responsive<BorderPosition>;
   borderColor?: BorderColor;
   borderRadius?: Responsive<BorderRadius>;
-  borderTop?: Responsive<boolean>;
-  borderRight?: Responsive<boolean>;
-  borderBottom?: Responsive<boolean>;
-  borderLeft?: Responsive<boolean>;
   shadow?: Responsive<BoxShadow>;
 
   padding?: Responsive<Padding>;
@@ -104,10 +101,6 @@ function Box({
   border,
   borderColor,
   borderRadius,
-  borderTop,
-  borderRight,
-  borderBottom,
-  borderLeft,
   shadow,
   padding,
   paddingX,
@@ -162,10 +155,6 @@ function Box({
     border,
     borderColor,
     borderRadius,
-    borderTop,
-    borderRight,
-    borderBottom,
-    borderLeft,
     shadow,
     padding,
     paddingX,

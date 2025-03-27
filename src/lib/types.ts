@@ -33,9 +33,7 @@ export type AccentColor =
   | 'sky';
 
 export type BackgroundColor = true | BaseColor | AccentColor;
-
 export type BorderColor = true | BaseColor | AccentColor;
-
 export type FontColor = AccentColor | 'primary' | 'muted' | 'disabled';
 
 export type Spacing = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
@@ -63,7 +61,10 @@ export type Left = Spacing | NegativeSpacing | string;
 export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
+
+export type BorderPosition = true | 'top' | 'right' | 'bottom' | 'left';
 export type BorderRadius = true | '1' | '2' | '3' | '4' | 'full';
+
 export type BoxShadow = '1' | '2' | '3' | '4' | '5' | '6';
 
 export type FontSize = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';

@@ -1193,6 +1193,9 @@
 
 /* Gap */
 
+.gap {
+  gap: var(--gap);
+}
 .gap-1 {
   gap: var(--spacing-1);
 }
@@ -1230,6 +1233,9 @@
   gap: var(--spacing-12);
 }
 
+.gap-x {
+  column-gap: var(--gap);
+}
 .gap-x-1 {
   column-gap: var(--spacing-1);
 }
@@ -1267,6 +1273,9 @@
   column-gap: var(--spacing-12);
 }
 
+.gap-y {
+  row-gap: var(--gap);
+}
 .gap-y-1 {
   row-gap: var(--spacing-1);
 }
