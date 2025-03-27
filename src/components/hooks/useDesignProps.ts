@@ -115,9 +115,6 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
 
     if (value) {
       if (typeof value === 'boolean') {
-        if (name.startsWith('border')) {
-          console.log({ name, value });
-        }
         classes.push(styles[name]);
       }
       if (typeof value === 'string' || typeof value === 'number') {
