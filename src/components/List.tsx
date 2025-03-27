@@ -32,7 +32,12 @@ export function List({
   ...props
 }: ListProps) {
   return (
-    <ListBox {...props} items={items} className={classNames(styles.list, className)}>
+    <ListBox
+      aria-label="list"
+      {...props}
+      items={items}
+      className={classNames(styles.list, className)}
+    >
       {children ||
         items?.map(item => {
           const id = item[idProperty] || item.toString();
@@ -51,12 +56,12 @@ export function List({
   );
 }
 
-export function ListItem({ children, className, ...props }: ListBoxItemProps<any>) {
+export function ListItem({ id, children, className, ...props }: ListBoxItemProps<any>) {
   return (
     <ListBoxItem
       {...props}
       className={classNames(styles.item, className)}
-      aria-label={props.id?.toString()}
+      textValue={typeof children === 'string' ? children : id?.toString()}
     >
       {children as any}
       <div aria-hidden="true" className={styles.check}>
