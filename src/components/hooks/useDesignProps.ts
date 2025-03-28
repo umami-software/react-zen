@@ -113,9 +113,6 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
       if (typeof value === 'boolean') {
         classes.push(styles[name]);
       } else if (typeof value === 'string' || typeof value === 'number') {
-        if (name === 'border') {
-          console.log({ name, value });
-        }
         if (excludedProps.includes(key) || /var\(.*\)/.test(value.toString())) {
           styleProps[key] = value;
         } else {

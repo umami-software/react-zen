@@ -36,7 +36,6 @@ export { Calendar } from './Calendar';
 export { Checkbox } from './Checkbox';
 export { Code } from './Code';
 export { Column } from './Column';
-export { Combobox } from './Combobox';
 export { Container } from './Container';
 export { ConfirmationDialog } from './ConfirmationDialog';
 export { Dialog } from './Dialog';
