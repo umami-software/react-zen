@@ -1,8 +1,16 @@
 import { create } from 'zustand';
 import { useEffect } from 'react';
 
+function getDefaultTheme() {
+  return typeof window !== 'undefined'
+    ? window?.matchMedia('(prefers-color-scheme: dark)')?.matches
+      ? 'dark'
+      : 'light'
+    : 'light';
+}
+
 const initialState = {
-  theme: 'light',
+  theme: getDefaultTheme(),
 };
 
 const store = create(() => ({ ...initialState }));
