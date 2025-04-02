@@ -50,7 +50,6 @@
             { "label": "Breadcrumbs", "url": "/docs/components/breadcrumbs" },
             { "label": "Calendar", "url": "/docs/components/calendar" },
             { "label": "Checkbox", "url": "/docs/components/checkbox" },
-            { "label": "Combobox", "url": "/docs/components/combobox" },
             { "label": "Confirmation Dialog", "url": "/docs/components/confirmation-dialog" },
             { "label": "Data Table", "url": "/docs/components/data-table" },
             { "label": "Dialog", "url": "/docs/components/dialog" },
