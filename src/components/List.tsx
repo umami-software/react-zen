@@ -60,6 +60,7 @@ export function ListItem({ id, children, className, ...props }: ListBoxItemProps
   return (
     <ListBoxItem
       {...props}
+      id={id}
       className={classNames(styles.item, className)}
       textValue={typeof children === 'string' ? children : id?.toString()}
     >
