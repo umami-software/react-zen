@@ -1,9 +1,11 @@
 :where(html, body) {
+  color: var(--font-color);
   font-size: var(--font-size);
   background-color: var(--background-color);
 }
 
 :where(a, a:active, a:visited, a:hover) {
+  color: var(--font-color);
   text-decoration: none;
 }
 
@@ -16,6 +18,5 @@
 }
 
 :where(*) {
-  color: var(--font-color);
   outline-color: var(--primary-color);
 }
