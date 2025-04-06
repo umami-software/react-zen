@@ -1,7 +1,7 @@
 import { Breakpoints } from '@/lib/types';
 import styles from '../styles/vars.module.css';
 
-const CSS_MAP = {
+const cssMap = {
   display: 'display',
   position: 'position',
   fontSize: 'font-size',
@@ -69,6 +69,12 @@ const CSS_MAP = {
   textTransform: 'text-transform',
 };
 
+const aliasMap = {
+  gap: 'spacing',
+  'gap-x': 'spacing',
+  'gap-y': 'spacing',
+};
+
 const excludedProps = [
   'width',
   'height',
@@ -93,11 +99,12 @@ const excludedProps = [
   'order',
 ];
 
-type Keys = keyof typeof CSS_MAP;
+type Keys = keyof typeof cssMap;
 
-function parseValue(value: string, name: string) {
+function parseValue(name: string, value: string) {
+  // Predefined value exists
   if (/^\d+$/.test(value)) {
-    return `var(--${name}-${value})`;
+    return `var(--${aliasMap[name as keyof typeof aliasMap] || name}-${value})`;
   }
   return value;
 }
@@ -107,7 +114,7 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
   const styleProps: { [key: string]: any } = {};
 
   Object.keys(props).forEach(key => {
-    const name = CSS_MAP[key as Keys];
+    const name = cssMap[key as Keys];
     const value = props[key as Keys];
 
     if (value) {
@@ -130,7 +137,7 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
 
           if (styles[className]) {
             classes.push(styles[className]);
-            styleProps[`--${className}`] = parseValue(value[breakpoint], name);
+            styleProps[`--${className}`] = parseValue(name, value[breakpoint]);
           } else {
             styleProps[`--${className}`] = value;
           }
@@ -139,7 +146,7 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
         // Add default style
         classes.push(styles[name]);
         const breakpoint = Breakpoints.find(breakpoint => styles[`${name}-${breakpoint}`]);
-        styleProps[`--${name}`] = breakpoint ? parseValue(value[breakpoint], name) : value;
+        styleProps[`--${name}`] = breakpoint ? parseValue(name, value[breakpoint]) : value;
       }
     }
   });
