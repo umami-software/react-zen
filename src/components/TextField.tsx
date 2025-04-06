@@ -49,6 +49,7 @@ const TextField = forwardRef(
 
     return (
       <AriaTextField
+        aria-label="Text"
         {...props}
         ref={ref}
         value={inputValue}

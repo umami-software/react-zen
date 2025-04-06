@@ -50,6 +50,7 @@ const SearchField = forwardRef(
 
     return (
       <AriaSearchField
+        aria-label="Search"
         {...props}
         ref={ref}
         className={classNames(inputStyles.field, className)}

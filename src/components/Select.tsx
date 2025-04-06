@@ -59,7 +59,7 @@ const Select = forwardRef(
 
     return (
       <AriaSelect
-        aria-label="select"
+        aria-label="Select"
         {...props}
         ref={ref}
         className={classNames(inputStyles.field, className)}
