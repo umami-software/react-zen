@@ -13,6 +13,12 @@
   --position-lg: ;
   --position-xl: ;
 
+  --font-color-xs: ;
+  --font-color-sm: ;
+  --font-color-md: ;
+  --font-color-lg: ;
+  --font-color-xl: ;
+
   --font-size-xs: ;
   --font-size-sm: ;
   --font-size-md: ;
@@ -32,11 +38,11 @@
   --heading-size-lg: ;
   --heading-size-xl: ;
 
-  --border-size-xs: ;
-  --border-size-sm: ;
-  --border-size-md: ;
-  --border-size-lg: ;
-  --border-size-xl: ;
+  --border-width-xs: ;
+  --border-width-sm: ;
+  --border-width-md: ;
+  --border-width-lg: ;
+  --border-width-xl: ;
 
   --border-radius-xs: ;
   --border-radius-sm: ;

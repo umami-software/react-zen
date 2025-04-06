@@ -1,6 +1,6 @@
 :where(html, body) {
-  font-size: var(--font-size);
   color: var(--font-color);
+  font-size: var(--font-size);
   background-color: var(--background-color);
 }
 

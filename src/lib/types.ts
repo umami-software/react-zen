@@ -1,5 +1,5 @@
-export const breakpoints = ['default', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
-export type Breakpoint = (typeof breakpoints)[number];
+export const Breakpoints = ['', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
+export type Breakpoint = (typeof Breakpoints)[number];
 export type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 
 export type BaseColor = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';

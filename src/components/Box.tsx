@@ -88,6 +88,8 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
 
   order?: Responsive<number>;
 
+  theme?: string;
+
   as?: string;
   asChild?: boolean;
 }
@@ -138,6 +140,7 @@ function Box({
   gridRow,
   gridColumn,
   order,
+  theme,
   as = 'div',
   asChild,
   className,
@@ -197,7 +200,7 @@ function Box({
   return (
     <Component
       {...props}
-      className={classNames(className, classes)}
+      className={classNames(className, classes, theme && `${theme}-theme`)}
       style={{
         ...styleProps,
         ...style,

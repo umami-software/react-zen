@@ -194,7 +194,9 @@
 }
 
 /* Colors */
-
+.font-color {
+  color: var(--font-color);
+}
 .font-color-primary {
   color: var(--primary-color);
 }
@@ -1612,13 +1614,16 @@
     font-size: var(--heading-size-xs);
   }
   .border-size-xs {
-    border: var(--border-size-xs) solid var(--border-color);
+    border: var(--border-width-xs) solid var(--border-color);
   }
   .border-radius-xs {
     border-radius: var(--border-radius-xs);
   }
   .shadow-xs {
     box-shadow: var(--shadow-xs);
+  }
+  .font-color-xs {
+    color: var(--font-color-xs);
   }
   .background-color-xs {
     background-color: var(--background-color-xs);
@@ -1768,13 +1773,16 @@
     font-size: var(--heading-size-sm);
   }
   .border-size-sm {
-    border: var(--border-size-sm) solid var(--border-color);
+    border: var(--border-width-sm) solid var(--border-color);
   }
   .border-radius-sm {
     border-radius: var(--border-radius-sm);
   }
   .shadow-sm {
     box-shadow: var(--shadow-sm);
+  }
+  .font-color-sm {
+    color: var(--font-color-sm);
   }
   .background-color-sm {
     background-color: var(--background-color-sm);
@@ -1924,13 +1932,16 @@
     font-size: var(--heading-size-md);
   }
   .border-size-md {
-    border: var(--border-size-md) solid var(--border-color);
+    border: var(--border-width-md) solid var(--border-color);
   }
   .border-radius-md {
     border-radius: var(--border-radius-md);
   }
   .shadow-md {
     box-shadow: var(--shadow-md);
+  }
+  .font-color-md {
+    color: var(--font-color-md);
   }
   .background-color-md {
     background-color: var(--background-color-md);
@@ -2080,13 +2091,16 @@
     font-size: var(--heading-size-lg);
   }
   .border-size-lg {
-    border: var(--border-size-lg) solid var(--border-color);
+    border: var(--border-width-lg) solid var(--border-color);
   }
   .border-radius-lg {
     border-radius: var(--border-radius-lg);
   }
   .shadow-lg {
     box-shadow: var(--shadow-lg);
+  }
+  .font-color-lg {
+    color: var(--font-color-lg);
   }
   .background-color-lg {
     background-color: var(--background-color-lg);
@@ -2236,13 +2250,16 @@
     font-size: var(--heading-size-xl);
   }
   .border-size-xl {
-    border: var(--border-size-xl) solid var(--border-color);
+    border: var(--border-width-xl) solid var(--border-color);
   }
   .border-radius-xl {
     border-radius: var(--border-radius-xl);
   }
   .shadow-xl {
     box-shadow: var(--shadow-xl);
+  }
+  .font-color-xl {
+    color: var(--font-color-xl);
   }
   .background-color-xl {
     background-color: var(--background-color-xl);

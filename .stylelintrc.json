@@ -1,10 +1,8 @@
 {
   "extends": [
-    "stylelint-config-recommended",
-    "stylelint-config-prettier"
+    "stylelint-config-recommended"
   ],
   "rules": {
     "no-descending-specificity": null
-  },
-  "ignoreFiles": ["**/*.js", "**/*.ts", "**/*.tsx", "**/*.md", "**/*.mdx"]
+  }
 }
