@@ -1,3 +1,4 @@
+import { Breakpoints } from '@/lib/types';
 import styles from '../styles/vars.module.css';
 
 const CSS_MAP = {
@@ -110,17 +111,22 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
     const value = props[key as Keys];
 
     if (value) {
+      // Apply default style
       if (typeof value === 'boolean') {
         classes.push(styles[name]);
-      } else if (typeof value === 'string' || typeof value === 'number') {
+      }
+      // Apply defined style
+      else if (typeof value === 'string' || typeof value === 'number') {
         if (excludedProps.includes(key) || /var\(.*\)/.test(value.toString())) {
           styleProps[key] = value;
         } else {
           classes.push(styles[`${name}-${value}`]);
         }
-      } else if (typeof value === 'object') {
+      }
+      // Handle responsive styles
+      else if (typeof value === 'object') {
         Object.keys(value).forEach(breakpoint => {
-          const className = `${name}${breakpoint === 'default' ? '' : `-${breakpoint}`}`;
+          const className = `${name}-${breakpoint}`;
 
           if (styles[className]) {
             classes.push(styles[className]);
@@ -129,6 +135,11 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
             styleProps[`--${className}`] = value;
           }
         });
+
+        // Add default style
+        classes.push(styles[name]);
+        const breakpoint = Breakpoints.find(breakpoint => styles[`${name}-${breakpoint}`]);
+        styleProps[`--${name}`] = breakpoint ? parseValue(value[breakpoint], name) : value;
       }
     }
   });
