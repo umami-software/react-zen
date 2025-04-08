@@ -20,7 +20,7 @@ interface MenuProps extends AriaMenuProps<any> {
   children?: ReactNode;
 }
 
-function Menu({ items, className, children, ...props }: MenuProps) {
+function Menu({ className, children, ...props }: MenuProps) {
   return (
     <AriaMenu {...props} className={classNames(styles.menu, className)}>
       {children}

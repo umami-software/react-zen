@@ -32,6 +32,10 @@
   border-radius: var(--border-radius);
 }
 
+.item[data-disabled] {
+  color: var(--font-color-disabled);
+}
+
 .item[data-focus],
 .item[data-focus-visible] {
   background: var(--highlight-color);
