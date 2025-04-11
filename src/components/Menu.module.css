@@ -38,7 +38,7 @@
 }
 
 .item[data-disabled] {
-
+  color: var(--font-color-disabled);
 }
 
 .item[data-focus],

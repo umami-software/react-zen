@@ -23,6 +23,9 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
   wrap?: Responsive<TextWrap>;
   transform?: Responsive<TextTransform>;
   truncate?: Responsive<boolean>;
+  italic?: Responsive<boolean>;
+  underline?: Responsive<boolean>;
+  strikethrough?: Responsive<boolean>;
   as?: 'span' | 'div' | 'label' | 'p';
   asChild?: boolean;
 }
@@ -36,6 +39,9 @@ export function Text({
   wrap,
   transform,
   truncate,
+  italic,
+  underline,
+  strikethrough,
   as = 'span',
   asChild,
   className,
@@ -57,7 +63,15 @@ export function Text({
   return (
     <Component
       {...props}
-      className={classNames(styles.text, className, classes, truncate && styles.truncate)}
+      className={classNames(
+        styles.text,
+        className,
+        classes,
+        truncate && styles.truncate,
+        italic && styles.italic,
+        underline && styles.underline,
+        strikethrough && styles.strikethrough,
+      )}
       style={{ ...styleProps, ...style }}
     >
       {children}

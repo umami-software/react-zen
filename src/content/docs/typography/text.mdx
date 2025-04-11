@@ -69,6 +69,14 @@ A text element with controls for size, color, weight and letter spacing.
   <Text spacing="5">Letter spacing 5</Text>
 </Example>
 
+## Formatting
+
+<Example>
+  <Text italic>Italic</Text>
+  <Text underline>Underline</Text>
+  <Text strikethrough>Strikethrough</Text>
+</Example>
+
 ## Transform
 
 <Example>
@@ -102,6 +110,9 @@ A text element with controls for size, color, weight and letter spacing.
       { name: 'weight', value: 'Responsive<"light" | "regular" | "medium" | "bold">' },
       { name: 'align', value: 'Responsive<"left" | "center" | "right">' },
       { name: 'spacing', value: 'Responsive<"1" | "2" | "3" | "4" | "5">' },
+      { name: 'italic', value: 'boolean' },
+      { name: 'underline', value: 'boolean' },
+      { name: 'strikethrough', value: 'boolean' },
       { name: 'as', value: 'string' },
       { name: 'asChild', value: 'boolean' },
     ]}

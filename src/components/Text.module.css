@@ -5,3 +5,15 @@
   text-overflow: ellipsis;
   max-width: 100%
 }
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
