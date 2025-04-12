@@ -14,7 +14,7 @@
 }
 
 :where(input, textarea, select) {
-  min-width: 240px;
+  width: 240px;
 }
 
 :where(*) {

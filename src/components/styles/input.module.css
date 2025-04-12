@@ -1,6 +1,6 @@
 .field {
   position: relative;
-  min-width: 240px;
+  width: 240px;
 }
 
 .field, .row {
