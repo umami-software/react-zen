@@ -9,11 +9,12 @@ import {
   Heading,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { toCalendarDate } from '@/lib/date';
+import { fromCalendarDate, toCalendarDate } from '@/lib/date';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import styles from './Calendar.module.css';
+import { CalendarDate } from '@internationalized/date';
 
 function Calendar({
   className,
@@ -21,8 +22,15 @@ function Calendar({
   minValue,
   maxValue,
   defaultValue,
+  onChange,
   ...props
-}: CalendarProps<any> & { value: Date; minValue?: Date; maxValue?: Date; defaultValue?: Date }) {
+}: CalendarProps<any> & {
+  value: Date;
+  minValue?: Date;
+  maxValue?: Date;
+  defaultValue?: Date;
+  onChange?: (value?: Date) => void;
+}) {
   const dateProps = {
     value: toCalendarDate(value),
     minValue: toCalendarDate(minValue),
@@ -30,8 +38,17 @@ function Calendar({
     defaultValue: toCalendarDate(defaultValue),
   };
 
+  const handleChange = (date: CalendarDate | Date | undefined) => {
+    onChange?.(fromCalendarDate(date));
+  };
+
   return (
-    <AriaCalendar {...props} {...dateProps} className={classNames(styles.calendar, className)}>
+    <AriaCalendar
+      {...props}
+      {...dateProps}
+      className={classNames(styles.calendar, className)}
+      onChange={handleChange}
+    >
       <header className={styles.header}>
         <Button slot="previous" className={styles.button} variant="quiet">
           <Icon rotate={180}>
