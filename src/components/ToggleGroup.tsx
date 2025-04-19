@@ -5,24 +5,34 @@ import styles from './ToggleGroup.module.css';
 
 export interface ToggleGroupProps extends TagGroupProps {
   label?: string;
+  value?: string[];
+  defaultValue?: string[];
   onChange?: (value: string | string[]) => void;
 }
 
 function ToggleGroup({
   label,
+  value,
+  defaultValue,
+  onChange,
   className,
   children,
   selectionMode = 'single',
-  onChange,
+  selectedKeys,
+  defaultSelectedKeys,
+  onSelectionChange,
   ...props
 }: ToggleGroupProps) {
   const handleChange = (keys: Selection) => {
+    onSelectionChange?.(keys);
     onChange?.(Array.from(keys).map(k => k.toString()));
   };
 
   return (
     <TagGroup
       {...props}
+      selectedKeys={value || selectedKeys}
+      defaultSelectedKeys={defaultValue || defaultSelectedKeys}
       selectionMode={selectionMode}
       onSelectionChange={handleChange}
       className={classNames(styles.group, className)}
