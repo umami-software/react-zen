@@ -7,7 +7,7 @@ export interface ToggleGroupProps extends TagGroupProps {
   label?: string;
   value?: string[];
   defaultValue?: string[];
-  onChange?: (value: string | string[]) => void;
+  onChange?: (value: string[]) => void;
 }
 
 function ToggleGroup({
