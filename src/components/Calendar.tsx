@@ -9,14 +9,29 @@ import {
   Heading,
 } from 'react-aria-components';
 import classNames from 'classnames';
+import { toCalendarDate } from '@/lib/date';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import styles from './Calendar.module.css';
 
-function Calendar({ className, ...props }: CalendarProps<any>) {
+function Calendar({
+  className,
+  value,
+  minValue,
+  maxValue,
+  defaultValue,
+  ...props
+}: CalendarProps<any> & { value: Date; minValue?: Date; maxValue?: Date; defaultValue?: Date }) {
+  const dateProps = {
+    value: toCalendarDate(value),
+    minValue: toCalendarDate(minValue),
+    maxValue: toCalendarDate(maxValue),
+    defaultValue: toCalendarDate(defaultValue),
+  };
+
   return (
-    <AriaCalendar {...props} className={classNames(styles.calendar, className)}>
+    <AriaCalendar {...props} {...dateProps} className={classNames(styles.calendar, className)}>
       <header className={styles.header}>
         <Button slot="previous" className={styles.button} variant="quiet">
           <Icon rotate={180}>

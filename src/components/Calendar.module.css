@@ -61,3 +61,7 @@
   border-color: var(--primary-color);
   background: var(--primary-color);
 }
+
+.cell[data-disabled] {
+  color: var(--font-color-disabled);
+}
