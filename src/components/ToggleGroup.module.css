@@ -35,6 +35,5 @@
 .item[data-selected] {
   font-weight: 700;
   background-color: var(--highlight-color);
-  font-size-adjust: 0.5;
 }
 
