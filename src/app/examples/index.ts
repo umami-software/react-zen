@@ -12,6 +12,7 @@ export { IconLibrary } from './IconLibrary';
 export { InlineEditExample } from './InlineEditExample';
 export { SearchDelayExample } from './SearchDelayExample';
 export { SelectSearchExample } from './SelectSearchExample';
+export { SelectValueExample } from './SelectValueExample';
 export { SideNavExample } from './SideNavExample';
 export { SpacingExample } from './SpacingExample';
 export {

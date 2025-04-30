@@ -30,12 +30,12 @@
   --letter-spacing-4: 0.025em;
   --letter-spacing-5: 0.05em;
 
-  --heading-size-1: 60px;
-  --heading-size-2: 36px;
-  --heading-size-3: 28px;
-  --heading-size-4: 24px;
-  --heading-size-5: 16px;
-  --heading-size-6: 14px;
+  --heading-size-1: 16px;
+  --heading-size-2: 20px;
+  --heading-size-3: 24px;
+  --heading-size-4: 32px;
+  --heading-size-5: 42px;
+  --heading-size-6: 60px;
 
   /* Spacing */
 

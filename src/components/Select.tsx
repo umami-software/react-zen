@@ -1,4 +1,4 @@
-import { forwardRef, Ref } from 'react';
+import { forwardRef, ReactNode, Ref } from 'react';
 import classNames from 'classnames';
 import {
   Button,
@@ -6,6 +6,7 @@ import {
   Select as AriaSelect,
   SelectProps as AriaSelectProps,
   SelectValue,
+  SelectValueRenderProps,
 } from 'react-aria-components';
 import { Column } from './Column';
 import { Label } from './Label';
@@ -30,6 +31,9 @@ interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   onChange?: (e: any) => void;
   listProps?: ListProps;
   popoverProps?: PopoverProps;
+  renderValue?:
+    | ReactNode
+    | ((values: SelectValueRenderProps<object> & { defaultChildren: ReactNode }) => ReactNode);
 }
 
 const Select = forwardRef(
@@ -46,6 +50,7 @@ const Select = forwardRef(
       onChange,
       listProps,
       popoverProps,
+      renderValue,
       className,
       children,
       ...props
@@ -68,7 +73,7 @@ const Select = forwardRef(
         {label && <Label>{label}</Label>}
         <Button className={classNames(inputStyles.input, className)}>
           <Row justifyContent="space-between" gap="3">
-            <SelectValue />
+            <SelectValue>{renderValue}</SelectValue>
             <span aria-hidden="true">
               <Icon rotate={90} size="xs" className={inputStyles.icon}>
                 <Icons.Chevron />

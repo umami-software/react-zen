@@ -1,5 +1,5 @@
-import { Select } from '@/components';
 import { useState } from 'react';
+import { Select } from '@/components';
 
 const values = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 
