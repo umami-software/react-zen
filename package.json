@@ -74,7 +74,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
     "@umami/esbuild-plugin-css-modules": "0.4.0",
-    "@umami/shiso": "^0.50.0",
+    "@umami/shiso": "^0.51.0",
     "babel-plugin-inline-react-svg": "^2.0.2",
     "babel-plugin-syntax-hermes-parser": "^0.26.0",
     "dts-bundle": "^0.7.3",
