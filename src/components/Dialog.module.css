@@ -1,6 +1,7 @@
 .dialog {
   position: relative;
   outline: none;
+  overflow: auto;
 }
 
 .title {
