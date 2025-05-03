@@ -1,6 +1,5 @@
 .field {
   position: relative;
-  width: 240px;
 }
 
 .field, .row {
@@ -27,6 +26,7 @@
 .input:focus {
   border-color: transparent;
   outline: var(--outline);
+  outline-offset: -1px;
 }
 
 .input::placeholder {

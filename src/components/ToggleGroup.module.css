@@ -15,7 +15,9 @@
 }
 
 .item {
+  color: var(--font-color-muted);
   background-color: var(--background-color);
+  font-weight: var(--font-weight-bold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +35,7 @@
 }
 
 .item[data-selected] {
-  font-weight: 700;
+  color: var(--font-color);
   background-color: var(--highlight-color);
 }
 

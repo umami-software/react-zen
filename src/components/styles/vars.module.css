@@ -194,6 +194,7 @@
 }
 
 /* Colors */
+
 .font-color {
   color: var(--font-color);
 }
@@ -565,6 +566,380 @@
   border-color: var(--accent-color-mint);
 }
 .border-color-sky {
+  border-color: var(--accent-color-sky);
+}
+
+/* Hover color */
+
+.hover-color:hover {
+  color: var(--font-color);
+}
+.hover-color-primary:hover {
+  color: var(--primary-color);
+}
+.hover-color-muted:hover {
+  color: var(--font-color-muted);
+}
+.hover-color-disabled:hover {
+  color: var(--font-color-disabled);
+}
+.hover-color-1:hover {
+  color: var(--base-color-1);
+}
+.hover-color-2:hover {
+  color: var(--base-color-2);
+}
+.hover-color-3:hover {
+  color: var(--base-color-3);
+}
+.hover-color-4:hover {
+  color: var(--base-color-4);
+}
+.hover-color-5:hover {
+  color: var(--base-color-5);
+}
+.hover-color-6:hover {
+  color: var(--base-color-6);
+}
+.hover-color-7:hover {
+  color: var(--base-color-7);
+}
+.hover-color-8:hover {
+  color: var(--base-color-9);
+}
+.hover-color-10:hover {
+  color: var(--base-color-10);
+}
+.hover-color-11:hover {
+  color: var(--base-color-11);
+}
+.hover-color-12:hover {
+  color: var(--base-color-12);
+}
+.hover-color-gray:hover {
+  color: var(--accent-color-gray);
+}
+.hover-color-gold:hover {
+  color: var(--accent-color-gold);
+}
+.hover-color-bronze:hover {
+  color: var(--accent-color-bronze);
+}
+.hover-color-brown:hover {
+  color: var(--accent-color-brown);
+}
+.hover-color-yellow:hover {
+  color: var(--accent-color-yellow);
+}
+.hover-color-amber:hover {
+  color: var(--accent-color-amber);
+}
+.hover-color-orange:hover {
+  color: var(--accent-color-orange);
+}
+.hover-color-tomato:hover {
+  color: var(--accent-color-tomato);
+}
+.hover-color-red:hover {
+  color: var(--accent-color-red);
+}
+.hover-color-ruby:hover {
+  color: var(--accent-color-ruby);
+}
+.hover-color-crimson:hover {
+  color: var(--accent-color-crimson);
+}
+.hover-color-pink:hover {
+  color: var(--accent-color-pink);
+}
+.hover-color-plum:hover {
+  color: var(--accent-color-plum);
+}
+.hover-color-purple:hover {
+  color: var(--accent-color-purple);
+}
+.hover-color-violet:hover {
+  color: var(--accent-color-violet);
+}
+.hover-color-iris:hover {
+  color: var(--accent-color-iris);
+}
+.hover-color-indigo:hover {
+  color: var(--accent-color-indigo);
+}
+.hover-color-blue:hover {
+  color: var(--accent-color-blue);
+}
+.hover-color-cyan:hover {
+  color: var(--accent-color-cyan);
+}
+.hover-color-teal:hover {
+  color: var(--accent-color-teal);
+}
+.hover-color-jade:hover {
+  color: var(--accent-color-jade);
+}
+.hover-color-green:hover {
+  color: var(--accent-color-green);
+}
+.hover-color-grass:hover {
+  color: var(--accent-color-grass);
+}
+.hover-color-lime:hover {
+  color: var(--accent-color-lime);
+}
+.hover-color-mint:hover {
+  color: var(--accent-color-mint);
+}
+.hover-color-sky:hover {
+  color: var(--accent-color-sky);
+}
+
+.hover-background-color:hover {
+  background-color: var(--background-color);
+}
+.hover-background-color-transparent:hover {
+  background-color: transparent;
+}
+.hover-background-color-primary:hover {
+  background-color: var(--primary-color);
+}
+.hover-background-color-1:hover {
+  background-color: var(--base-color-1);
+}
+.hover-background-color-2:hover {
+  background-color: var(--base-color-2);
+}
+.hover-background-color-3:hover {
+  background-color: var(--base-color-3);
+}
+.hover-background-color-4:hover {
+  background-color: var(--base-color-4);
+}
+.hover-background-color-5:hover {
+  background-color: var(--base-color-5);
+}
+.hover-background-color-6:hover {
+  background-color: var(--base-color-6);
+}
+.hover-background-color-7:hover {
+  background-color: var(--base-color-7);
+}
+.hover-background-color-8:hover {
+  background-color: var(--base-color-8);
+}
+.hover-background-color-9:hover {
+  background-color: var(--base-color-9);
+}
+.hover-background-color-10:hover {
+  background-color: var(--base-color-10);
+}
+.hover-background-color-11:hover {
+  background-color: var(--base-color-11);
+}
+.hover-background-color-12:hover {
+  background-color: var(--base-color-12);
+}
+.hover-background-color-gray:hover {
+  background-color: var(--accent-color-gray);
+}
+.hover-background-color-gold:hover {
+  background-color: var(--accent-color-gold);
+}
+.hover-background-color-bronze:hover {
+  background-color: var(--accent-color-bronze);
+}
+.hover-background-color-brown:hover {
+  background-color: var(--accent-color-brown);
+}
+.hover-background-color-yellow:hover {
+  background-color: var(--accent-color-yellow);
+}
+.hover-background-color-amber:hover {
+  background-color: var(--accent-color-amber);
+}
+.hover-background-color-orange:hover {
+  background-color: var(--accent-color-orange);
+}
+.hover-background-color-tomato:hover {
+  background-color: var(--accent-color-tomato);
+}
+.hover-background-color-red:hover {
+  background-color: var(--accent-color-red);
+}
+.hover-background-color-ruby:hover {
+  background-color: var(--accent-color-ruby);
+}
+.hover-background-color-crimson:hover {
+  background-color: var(--accent-color-crimson);
+}
+.hover-background-color-pink:hover {
+  background-color: var(--accent-color-pink);
+}
+.hover-background-color-plum:hover {
+  background-color: var(--accent-color-plum);
+}
+.hover-background-color-purple:hover {
+  background-color: var(--accent-color-purple);
+}
+.hover-background-color-violet:hover {
+  background-color: var(--accent-color-violet);
+}
+.hover-background-color-iris:hover {
+  background-color: var(--accent-color-iris);
+}
+.hover-background-color-indigo:hover {
+  background-color: var(--accent-color-indigo);
+}
+.hover-background-color-blue:hover {
+  background-color: var(--accent-color-blue);
+}
+.hover-background-color-cyan:hover {
+  background-color: var(--accent-color-cyan);
+}
+.hover-background-color-teal:hover {
+  background-color: var(--accent-color-teal);
+}
+.hover-background-color-jade:hover {
+  background-color: var(--accent-color-jade);
+}
+.hover-background-color-green:hover {
+  background-color: var(--accent-color-green);
+}
+.hover-background-color-grass:hover {
+  background-color: var(--accent-color-grass);
+}
+.hover-background-color-lime:hover {
+  background-color: var(--accent-color-lime);
+}
+.hover-background-color-mint:hover {
+  background-color: var(--accent-color-mint);
+}
+.hover-background-color-sky:hover {
+  background-color: var(--accent-color-sky);
+}
+
+.hover-border-color:hover {
+  border-color: var(--border-color);
+}
+.hover-border-color-transparent:hover {
+  border-color: transparent;
+}
+.hover-border-color-primary:hover {
+  border-color: var(--primary-color);
+}
+.hover-border-color-1:hover {
+  border-color: var(--base-color-1);
+}
+.hover-border-color-2:hover {
+  border-color: var(--base-color-2);
+}
+.hover-border-color-3:hover {
+  border-color: var(--base-color-3);
+}
+.hover-border-color-4:hover {
+  border-color: var(--base-color-4);
+}
+.hover-border-color-5:hover {
+  border-color: var(--base-color-5);
+}
+.hover-border-color-6:hover {
+  border-color: var(--base-color-6);
+}
+.hover-border-color-7:hover {
+  border-color: var(--base-color-7);
+}
+.hover-border-color-8:hover {
+  border-color: var(--base-color-8);
+}
+.hover-border-color-9:hover {
+  border-color: var(--base-color-9);
+}
+.hover-border-color-10:hover {
+  border-color: var(--base-color-10);
+}
+.hover-border-color-11:hover {
+  border-color: var(--base-color-11);
+}
+.hover-border-color-12:hover {
+  border-color: var(--base-color-12);
+}
+.hover-border-color-gray:hover {
+  border-color: var(--accent-color-gray);
+}
+.hover-border-color-gold:hover {
+  border-color: var(--accent-color-gold);
+}
+.hover-border-color-bronze:hover {
+  border-color: var(--accent-color-bronze);
+}
+.hover-border-color-brown:hover {
+  border-color: var(--accent-color-brown);
+}
+.hover-border-color-yellow:hover {
+  border-color: var(--accent-color-yellow);
+}
+.hover-border-color-amber:hover {
+  border-color: var(--accent-color-amber);
+}
+.hover-border-color-orange:hover {
+  border-color: var(--accent-color-orange);
+}
+.hover-border-color-tomato:hover {
+  border-color: var(--accent-color-tomato);
+}
+.hover-border-color-red:hover {
+  border-color: var(--accent-color-red);
+}
+.hover-border-color-ruby:hover {
+  border-color: var(--accent-color-ruby);
+}
+.hover-border-color-crimson:hover {
+  border-color: var(--accent-color-crimson);
+}
+.hover-border-color-pink:hover {
+  border-color: var(--accent-color-pink);
+}
+.hover-border-color-plum:hover {
+  border-color: var(--accent-color-plum);
+}
+.hover-border-color-purple:hover {
+  border-color: var(--accent-color-purple);
+}
+.hover-border-color-violet:hover {
+  border-color: var(--accent-color-violet);
+}
+.hover-border-color-iris:hover {
+  border-color: var(--accent-color-iris);
+}
+.hover-border-color-indigo:hover {
+  border-color: var(--accent-color-indigo);
+}
+.hover-border-color-blue:hover {
+  border-color: var(--accent-color-blue);
+}
+.hover-border-color-cyan:hover {
+  border-color: var(--accent-color-cyan);
+}
+.hover-border-color-teal:hover {
+  border-color: var(--accent-color-teal);
+}
+.hover-border-color-jade:hover {
+  border-color: var(--accent-color-jade);
+}
+.hover-border-color-green:hover {
+  border-color: var(--accent-color-green);
+}
+.hover-border-color-grass:hover {
+  border-color: var(--accent-color-grass);
+}
+.hover-border-color-lime:hover {
+  border-color: var(--accent-color-lime);
+}
+.hover-border-color-mint:hover {
+  border-color: var(--accent-color-mint);
+}
+.hover-border-color-sky:hover {
   border-color: var(--accent-color-sky);
 }
 
