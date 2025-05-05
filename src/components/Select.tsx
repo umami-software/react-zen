@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, Ref } from 'react';
+import { forwardRef, ReactNode, Ref, useState } from 'react';
 import classNames from 'classnames';
 import {
   Button,
@@ -26,6 +26,7 @@ interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   label?: string;
   isLoading?: boolean;
   allowSearch?: boolean;
+  searchValue?: string;
   searchDelay?: number;
   onSearch?: (value: string) => void;
   onChange?: (e: any) => void;
@@ -44,6 +45,7 @@ const Select = forwardRef(
       label,
       isLoading,
       allowSearch,
+      searchValue,
       searchDelay,
       onSearch,
       onSelectionChange,
@@ -57,9 +59,16 @@ const Select = forwardRef(
     }: SelectProps,
     ref: Ref<any>,
   ) => {
+    const [search, setSearch] = useState('');
+
     const handleChange = (e: any) => {
       onSelectionChange?.(e);
       onChange?.(e);
+    };
+
+    const handleSearch = (value: string) => {
+      setSearch(value);
+      onSearch?.(value);
     };
 
     return (
@@ -86,8 +95,10 @@ const Select = forwardRef(
             {allowSearch && (
               <SearchField
                 className={styles.search}
-                onSearch={onSearch}
+                value={search}
+                onSearch={handleSearch}
                 delay={searchDelay}
+                defaultValue={searchValue}
                 autoFocus
               />
             )}

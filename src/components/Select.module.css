@@ -11,6 +11,10 @@
   cursor: pointer;
 }
 
+.list {
+  padding: var(--spacing-2);
+}
+
 .popover {
   min-width: 200px;
   border: var(--border);
@@ -18,10 +22,6 @@
   box-shadow: var(--box-shadow-3);
   background: var(--background-color);
   overflow: hidden;
-}
-
-.list > * {
-  border-radius: 0;
 }
 
 .icon {
