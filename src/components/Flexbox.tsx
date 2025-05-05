@@ -21,9 +21,9 @@ export interface FlexboxProps extends Omit<BoxProps, 'display'> {
   justifyItems?: Responsive<JustifyItems>;
   alignContent?: AlignContent;
   alignItems?: AlignItems;
-  gap?: Responsive<Spacing>;
-  gapX?: Responsive<Spacing>;
-  gapY?: Responsive<Spacing>;
+  gap?: Responsive<Spacing | true>;
+  gapX?: Responsive<Spacing | true>;
+  gapY?: Responsive<Spacing | true>;
 }
 
 export function Flexbox({

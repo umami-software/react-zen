@@ -1,4 +1,4 @@
-import { Select, Text } from '@/components';
+import { Select, Text, Row } from '@/components';
 
 const items = ['One', 'Two', 'Three', 'Four', 'Five'];
 
@@ -7,7 +7,10 @@ export function SelectValueExample() {
     return isPlaceholder ? (
       <Text>Choose wisely</Text>
     ) : (
-      <Text weight="bold">{defaultChildren}</Text>
+      <Row gap>
+        <Text>You selected:</Text>
+        <Text weight="bold">{defaultChildren}</Text>
+      </Row>
     );
   };
 

@@ -1,13 +1,13 @@
 import { forwardRef, ReactNode, Ref, useState } from 'react';
-import classNames from 'classnames';
 import {
-  Button,
   PopoverProps,
   Select as AriaSelect,
   SelectProps as AriaSelectProps,
   SelectValue,
   SelectValueRenderProps,
 } from 'react-aria-components';
+import { Button, ButtonProps } from './Button';
+import { Box } from './Box';
 import { Column } from './Column';
 import { Label } from './Label';
 import { List, ListProps } from './List';
@@ -17,8 +17,6 @@ import { Icons } from './Icons';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Loading } from './Loading';
-import inputStyles from './styles/input.module.css';
-import styles from './Select.module.css';
 
 interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items?: any[];
@@ -30,6 +28,7 @@ interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   searchDelay?: number;
   onSearch?: (value: string) => void;
   onChange?: (e: any) => void;
+  buttonProps?: ButtonProps;
   listProps?: ListProps;
   popoverProps?: PopoverProps;
   renderValue?:
@@ -50,6 +49,7 @@ const Select = forwardRef(
       onSearch,
       onSelectionChange,
       onChange,
+      buttonProps,
       listProps,
       popoverProps,
       renderValue,
@@ -72,45 +72,41 @@ const Select = forwardRef(
     };
 
     return (
-      <AriaSelect
-        aria-label="Select"
-        {...props}
-        ref={ref}
-        className={classNames(inputStyles.field, className)}
-        onSelectionChange={handleChange}
-      >
+      <AriaSelect aria-label="Select" {...props} ref={ref} onSelectionChange={handleChange}>
         {label && <Label>{label}</Label>}
-        <Button className={classNames(inputStyles.input, className)}>
+        <Button variant="outline" {...buttonProps}>
           <Row justifyContent="space-between" gap="3">
             <SelectValue>{renderValue}</SelectValue>
             <span aria-hidden="true">
-              <Icon rotate={90} size="xs" className={inputStyles.icon}>
+              <Icon rotate={90} size="xs">
                 <Icons.Chevron />
               </Icon>
             </span>
           </Row>
         </Button>
         <Popover {...popoverProps}>
-          <Column className={styles.popover}>
-            {allowSearch && (
-              <SearchField
-                className={styles.search}
-                value={search}
-                onSearch={handleSearch}
-                delay={searchDelay}
-                defaultValue={searchValue}
-                autoFocus
-              />
-            )}
-            {isLoading && <Loading icon="dots" position="center" size="sm" />}
-            <List
-              {...listProps}
-              items={items}
-              className={classNames(styles.list, listProps?.className)}
-              style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
-            >
-              {children}
-            </List>
+          <Column>
+            <Box padding="2" border borderRadius backgroundColor shadow="3">
+              {allowSearch && (
+                <Box marginBottom="2">
+                  <SearchField
+                    value={search}
+                    onSearch={handleSearch}
+                    delay={searchDelay}
+                    defaultValue={searchValue}
+                    autoFocus
+                  />
+                </Box>
+              )}
+              {isLoading && <Loading icon="dots" position="center" size="sm" />}
+              <List
+                {...listProps}
+                items={items}
+                style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
+              >
+                {children}
+              </List>
+            </Box>
           </Column>
         </Popover>
       </AriaSelect>
