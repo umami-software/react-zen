@@ -32,10 +32,19 @@ export type AccentColor =
   | 'mint'
   | 'sky';
 
-export type BackgroundColor = true | BaseColor | AccentColor;
-export type BorderColor = true | BaseColor | AccentColor;
-export type FontColor = AccentColor | 'primary' | 'muted' | 'disabled';
-export type HoverColor = BaseColor | AccentColor;
+export type FontColor = BaseColor | AccentColor | 'primary' | 'muted' | 'disabled' | true;
+export type BackgroundColor = BaseColor | AccentColor | 'primary' | 'transparent' | true;
+export type BorderColor =
+  | BaseColor
+  | AccentColor
+  | 'primary'
+  | 'muted'
+  | 'disabled'
+  | 'transparent'
+  | true;
+export type HoverColor = FontColor;
+export type StrokeColor = FontColor;
+export type FillColor = FontColor;
 
 export type Spacing = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
 

@@ -25,17 +25,21 @@ import {
   FontWeight,
   Padding,
   HoverColor,
+  FillColor,
+  StrokeColor,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
 
-interface BoxProps extends HTMLAttributes<HTMLElement> {
+export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   display?: Responsive<Display>;
   color?: FontColor;
   backgroundColor?: BackgroundColor;
   hoverColor?: HoverColor;
   hoverBackgroundColor?: HoverColor;
   hoverBorderColor?: HoverColor;
+  fillColor?: FillColor;
+  strokeColor?: StrokeColor;
   fontSize?: Responsive<FontSize>;
   fontWeight?: Responsive<FontWeight>;
   border?: Responsive<BorderPosition>;
@@ -98,7 +102,7 @@ interface BoxProps extends HTMLAttributes<HTMLElement> {
   asChild?: boolean;
 }
 
-function Box({
+export function Box({
   display,
   color,
   backgroundColor,
@@ -220,6 +224,3 @@ function Box({
     </Component>
   );
 }
-
-export { Box };
-export type { BoxProps };

@@ -15,6 +15,8 @@ const cssMap = {
   hoverColor: 'hover-color',
   hoverBackgroundColor: 'hover-background-color',
   hoverBorderColor: 'hover-border-color',
+  strokeColor: 'stroke-color',
+  fillColor: 'fill-color',
   border: 'border',
   borderColor: 'border-color',
   borderRadius: 'border-radius',

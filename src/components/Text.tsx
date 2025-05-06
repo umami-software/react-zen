@@ -14,7 +14,7 @@ import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
 import styles from './Text.module.css';
 
-export interface TextProps extends HTMLAttributes<HTMLElement> {
+export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   color?: FontColor;
   size?: Responsive<FontSize>;
   spacing?: Responsive<LetterSpacing>;

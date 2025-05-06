@@ -322,11 +322,11 @@
 .background-color {
   background-color: var(--background-color);
 }
-.background-color-transparent {
-  background-color: transparent;
-}
 .background-color-primary {
   background-color: var(--primary-color);
+}
+.background-color-transparent {
+  background-color: transparent;
 }
 .background-color-1 {
   background-color: var(--base-color-1);
@@ -448,11 +448,17 @@
 .border-color {
   border-color: var(--border-color);
 }
-.border-color-transparent {
-  border-color: transparent;
-}
 .border-color-primary {
   border-color: var(--primary-color);
+}
+.border-color-muted {
+  border-color: var(--font-color-muted);
+}
+.border-color-disabled {
+  border-color: var(--font-color-disabled);
+}
+.border-color-transparent {
+  border-color: transparent;
 }
 .border-color-1 {
   border-color: var(--base-color-1);
@@ -698,11 +704,11 @@
 .hover-background-color:hover {
   background-color: var(--background-color);
 }
-.hover-background-color-transparent:hover {
-  background-color: transparent;
-}
 .hover-background-color-primary:hover {
   background-color: var(--primary-color);
+}
+.hover-background-color-transparent:hover {
+  background-color: transparent;
 }
 .hover-background-color-1:hover {
   background-color: var(--base-color-1);
@@ -941,6 +947,258 @@
 }
 .hover-border-color-sky:hover {
   border-color: var(--accent-color-sky);
+}
+
+/* Fill color */
+
+.fill-color {
+  fill: var(--font-color);
+}
+.fill-color-primary {
+  fill: var(--primary-color);
+}
+.fill-color-muted {
+  fill: var(--font-color-muted);
+}
+.fill-color-disabled {
+  fill: var(--font-color-disabled);
+}
+.fill-color-1 {
+  fill: var(--base-color-1);
+}
+.fill-color-2 {
+  fill: var(--base-color-2);
+}
+.fill-color-3 {
+  fill: var(--base-color-3);
+}
+.fill-color-4 {
+  fill: var(--base-color-4);
+}
+.fill-color-5 {
+  fill: var(--base-color-5);
+}
+.fill-color-6 {
+  fill: var(--base-color-6);
+}
+.fill-color-7 {
+  fill: var(--base-color-7);
+}
+.fill-color-8 {
+  fill: var(--base-color-9);
+}
+.fill-color-10 {
+  fill: var(--base-color-10);
+}
+.fill-color-11 {
+  fill: var(--base-color-11);
+}
+.fill-color-12 {
+  fill: var(--base-color-12);
+}
+.fill-color-gray {
+  fill: var(--accent-color-gray);
+}
+.fill-color-gold {
+  fill: var(--accent-color-gold);
+}
+.fill-color-bronze {
+  fill: var(--accent-color-bronze);
+}
+.fill-color-brown {
+  fill: var(--accent-color-brown);
+}
+.fill-color-yellow {
+  fill: var(--accent-color-yellow);
+}
+.fill-color-amber {
+  fill: var(--accent-color-amber);
+}
+.fill-color-orange {
+  fill: var(--accent-color-orange);
+}
+.fill-color-tomato {
+  fill: var(--accent-color-tomato);
+}
+.fill-color-red {
+  fill: var(--accent-color-red);
+}
+.fill-color-ruby {
+  fill: var(--accent-color-ruby);
+}
+.fill-color-crimson {
+  fill: var(--accent-color-crimson);
+}
+.fill-color-pink {
+  fill: var(--accent-color-pink);
+}
+.fill-color-plum {
+  fill: var(--accent-color-plum);
+}
+.fill-color-purple {
+  fill: var(--accent-color-purple);
+}
+.fill-color-violet {
+  fill: var(--accent-color-violet);
+}
+.fill-color-iris {
+  fill: var(--accent-color-iris);
+}
+.fill-color-indigo {
+  fill: var(--accent-color-indigo);
+}
+.fill-color-blue {
+  fill: var(--accent-color-blue);
+}
+.fill-color-cyan {
+  fill: var(--accent-color-cyan);
+}
+.fill-color-teal {
+  fill: var(--accent-color-teal);
+}
+.fill-color-jade {
+  fill: var(--accent-color-jade);
+}
+.fill-color-green {
+  fill: var(--accent-color-green);
+}
+.fill-color-grass {
+  fill: var(--accent-color-grass);
+}
+.fill-color-lime {
+  fill: var(--accent-color-lime);
+}
+.fill-color-mint {
+  fill: var(--accent-color-mint);
+}
+.fill-color-sky {
+  fill: var(--accent-color-sky);
+}
+
+/* Stroke color */
+
+.stroke-color {
+  stroke: var(--font-color);
+}
+.stroke-color-primary {
+  stroke: var(--primary-color);
+}
+.stroke-color-muted {
+  stroke: var(--font-color-muted);
+}
+.stroke-color-disabled {
+  stroke: var(--font-color-disabled);
+}
+.stroke-color-1 {
+  stroke: var(--base-color-1);
+}
+.stroke-color-2 {
+  stroke: var(--base-color-2);
+}
+.stroke-color-3 {
+  stroke: var(--base-color-3);
+}
+.stroke-color-4 {
+  stroke: var(--base-color-4);
+}
+.stroke-color-5 {
+  stroke: var(--base-color-5);
+}
+.stroke-color-6 {
+  stroke: var(--base-color-6);
+}
+.stroke-color-7 {
+  stroke: var(--base-color-7);
+}
+.stroke-color-8 {
+  stroke: var(--base-color-9);
+}
+.stroke-color-10 {
+  stroke: var(--base-color-10);
+}
+.stroke-color-11 {
+  stroke: var(--base-color-11);
+}
+.stroke-color-12 {
+  stroke: var(--base-color-12);
+}
+.stroke-color-gray {
+  stroke: var(--accent-color-gray);
+}
+.stroke-color-gold {
+  stroke: var(--accent-color-gold);
+}
+.stroke-color-bronze {
+  stroke: var(--accent-color-bronze);
+}
+.stroke-color-brown {
+  stroke: var(--accent-color-brown);
+}
+.stroke-color-yellow {
+  stroke: var(--accent-color-yellow);
+}
+.stroke-color-amber {
+  stroke: var(--accent-color-amber);
+}
+.stroke-color-orange {
+  stroke: var(--accent-color-orange);
+}
+.stroke-color-tomato {
+  stroke: var(--accent-color-tomato);
+}
+.stroke-color-red {
+  stroke: var(--accent-color-red);
+}
+.stroke-color-ruby {
+  stroke: var(--accent-color-ruby);
+}
+.stroke-color-crimson {
+  stroke: var(--accent-color-crimson);
+}
+.stroke-color-pink {
+  stroke: var(--accent-color-pink);
+}
+.stroke-color-plum {
+  stroke: var(--accent-color-plum);
+}
+.stroke-color-purple {
+  stroke: var(--accent-color-purple);
+}
+.stroke-color-violet {
+  stroke: var(--accent-color-violet);
+}
+.stroke-color-iris {
+  stroke: var(--accent-color-iris);
+}
+.stroke-color-indigo {
+  stroke: var(--accent-color-indigo);
+}
+.stroke-color-blue {
+  stroke: var(--accent-color-blue);
+}
+.stroke-color-cyan {
+  stroke: var(--accent-color-cyan);
+}
+.stroke-color-teal {
+  stroke: var(--accent-color-teal);
+}
+.stroke-color-jade {
+  stroke: var(--accent-color-jade);
+}
+.stroke-color-green {
+  stroke: var(--accent-color-green);
+}
+.stroke-color-grass {
+  stroke: var(--accent-color-grass);
+}
+.stroke-color-lime {
+  stroke: var(--accent-color-lime);
+}
+.stroke-color-mint {
+  stroke: var(--accent-color-mint);
+}
+.stroke-color-sky {
+  stroke: var(--accent-color-sky);
 }
 
 /* Text */
