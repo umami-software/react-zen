@@ -23,18 +23,21 @@ export function DataTable({ data = [], className, children, ...props }: DataTabl
       ? data.map((record, id) => ({ ...record, id }))
       : data;
 
-  const columns = Children.map(children as ReactElement, (child: ReactElement) => {
+  const widths: string[] = [];
+
+  const columns = Children.map(children as ReactElement, (child: ReactElement<any, any>) => {
+    widths.push(child?.props?.width || '1fr');
     return { ...(child.props as DataColumnProps) };
   });
 
-  const gridTemplateColumns = columns.map(({ width }) => width || '1fr').join(' ');
+  const gridTemplateColumns = widths.join(' ');
 
   return (
     <Table {...props} className={classNames(styles.datatable, className)}>
       <TableHeader style={{ gridTemplateColumns }}>
         {columns
           .filter(n => n)
-          .map(({ id, label, as, hidden, ...columnProps }) => {
+          .map(({ id, label, as, hidden, width, ...columnProps }) => {
             if (hidden) {
               return null;
             }
