@@ -30,3 +30,33 @@ A data table.
     </DataColumn>
   </DataTable>
 </Example>
+
+## Column widths
+
+<Example>
+  <DataTable
+    data={[
+      { id: 1, name: 'Bob', title: 'CEO', email: 'bob@aol.com' },
+      { id: 2, name: 'Fred', title: 'VP Marketing', email: 'fred@aol.com' },
+      { id: 3, name: 'Ted', title: 'Engineer', email: 'ted@aol.com' },
+    ]}
+  >
+    <DataColumn id="id" label="ID" width="50px" />
+    <DataColumn id="name" label="Name" width="2fr" />
+    <DataColumn id="title" label="Title" />
+    <DataColumn id="email" label="Email" />
+    <DataColumn id="actions" label="" align="end">
+      <MenuTrigger>
+        <Button variant="outline" size="xs">
+          {`⋯`}
+        </Button>
+        <Popover>
+          <Menu>
+            <MenuItem id="email">Send email</MenuItem>
+            <MenuItem id="phone">Call phone</MenuItem>
+          </Menu>
+        </Popover>
+      </MenuTrigger>
+    </DataColumn>
+  </DataTable>
+</Example>

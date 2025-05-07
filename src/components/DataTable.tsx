@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { Children, createElement, ReactElement, ReactNode } from 'react';
-import { ColumnProps, TableProps } from 'react-aria-components';
+import { Children, createElement, HTMLAttributes, ReactElement, ReactNode } from 'react';
+import { TableProps } from 'react-aria-components';
 import {
   Table,
   TableHeader,
@@ -27,6 +27,7 @@ export function DataTable({ data = [], className, children, ...props }: DataTabl
 
   const columns = Children.map(children as ReactElement, (child: ReactElement<any, any>) => {
     widths.push(child?.props?.width || '1fr');
+
     return { ...(child.props as DataColumnProps) };
   });
 
@@ -74,12 +75,14 @@ export function DataTable({ data = [], className, children, ...props }: DataTabl
   );
 }
 
-export interface DataColumnProps extends ColumnProps {
+export interface DataColumnProps extends Omit<HTMLAttributes<any>, 'children'> {
   id: string;
   label?: ReactNode;
   align?: 'start' | 'center' | 'end';
+  width?: string;
   as?: string;
   hidden?: boolean;
+  children?: ReactNode | ((props: DataColumnProps) => void);
 }
 
 export function DataColumn(props: DataColumnProps) {
