@@ -7,14 +7,15 @@ A data table.
 <Example>
   <DataTable
     data={[
-      { id: 1, name: 'Bob', title: 'CEO' },
-      { id: 2, name: 'Fred', title: 'VP Marketing' },
-      { id: 3, name: 'Ted', title: 'Engineer' },
+      { id: 1, name: 'Bob', title: 'CEO', email: <a href="#">bob@aol.com</a> },
+      { id: 2, name: 'Fred', title: 'VP Marketing', email: <a href="#">fred@aol.com</a> },
+      { id: 3, name: 'Ted', title: 'Engineer', email: <a href="#">ted@aol.com</a> },
     ]}
   >
     <DataColumn id="id" label="ID" />
     <DataColumn id="name" label="Name" />
     <DataColumn id="title" label="Title" />
+    <DataColumn id="email" label="Email" />
     <DataColumn id="actions" label="" align="end">
       <MenuTrigger>
         <Button variant="outline" size="xs">
@@ -36,9 +37,9 @@ A data table.
 <Example>
   <DataTable
     data={[
-      { id: 1, name: 'Bob', title: 'CEO', email: 'bob@aol.com' },
-      { id: 2, name: 'Fred', title: 'VP Marketing', email: 'fred@aol.com' },
-      { id: 3, name: 'Ted', title: 'Engineer', email: 'ted@aol.com' },
+      { id: 1, name: 'Bob', title: 'CEO', email: <a href="#">bob@aol.com</a> },
+      { id: 2, name: 'Fred', title: 'VP Marketing', email: <a href="#">fred@aol.com</a> },
+      { id: 3, name: 'Ted', title: 'Engineer', email: <a href="#">ted@aol.com</a> },
     ]}
   >
     <DataColumn id="id" label="ID" width="50px" />

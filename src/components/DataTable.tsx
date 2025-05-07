@@ -19,9 +19,7 @@ export interface DataTableProps extends TableProps {
 export function DataTable({ data = [], className, children, ...props }: DataTableProps) {
   // We must map an id for react-aria
   const items =
-    data.length && data?.[0]?.id === undefined
-      ? data.map((record, id) => ({ ...record, id }))
-      : data;
+    data.length && data?.[0]?.id === undefined ? data.map((row, id) => ({ ...row, id })) : data;
 
   const widths: string[] = [];
 

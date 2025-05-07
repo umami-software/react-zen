@@ -53,6 +53,14 @@
   padding: var(--padding);
   flex: 1;
 }
+.row .cell a {
+  font-weight: 500;
+  text-decoration: underline var(--base-color-6);
+  text-underline-offset: 4px;
+}
+.row .cell a:hover {
+  text-decoration: underline var(--base-color-10);
+}
 
 .start {
   justify-content: flex-start;
