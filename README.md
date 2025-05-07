@@ -2,16 +2,16 @@
 
 **zen** is a modern, minimalist React component library.
 
+- Beautifully-designed components
 - Built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) primitives.
 - No Tailwind, pure CSS.
-- Out-of-the-box accessibility.
 
 [Learn more](https://zen.umami.is/)
 
 ## Installation
 
 ```shell
-yarn add @umami/react-zen
+npm install @umami/react-zen
 ```
 
 ## Usage

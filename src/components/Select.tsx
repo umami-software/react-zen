@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, Ref, useState } from 'react';
+import { forwardRef, ReactNode, Ref, useState, Key } from 'react';
 import {
   PopoverProps,
   Select as AriaSelect,
@@ -21,6 +21,7 @@ import { Loading } from './Loading';
 interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items?: any[];
   value?: string;
+  defaultValue?: string;
   label?: string;
   isLoading?: boolean;
   allowSearch?: boolean;
@@ -41,6 +42,7 @@ const Select = forwardRef(
     {
       items = [],
       value,
+      defaultValue,
       label,
       isLoading,
       allowSearch,
@@ -72,7 +74,14 @@ const Select = forwardRef(
     };
 
     return (
-      <AriaSelect aria-label="Select" {...props} ref={ref} onSelectionChange={handleChange}>
+      <AriaSelect
+        aria-label="Select"
+        {...props}
+        ref={ref}
+        selectedKey={value}
+        defaultSelectedKey={defaultValue}
+        onSelectionChange={handleChange}
+      >
         {label && <Label>{label}</Label>}
         <Button variant="outline" {...buttonProps}>
           <Row justifyContent="space-between" gap="3">

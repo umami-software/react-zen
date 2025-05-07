@@ -12,11 +12,11 @@ import {
 } from './Table';
 import styles from './DataTable.module.css';
 
-interface DataTableProps extends TableProps {
+export interface DataTableProps extends TableProps {
   data?: any[];
 }
 
-function DataTable({ data = [], className, children, ...props }: DataTableProps) {
+export function DataTable({ data = [], className, children, ...props }: DataTableProps) {
   // We must map an id for react-aria
   const items =
     data.length && data?.[0]?.id === undefined
@@ -27,9 +27,11 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
     return { ...(child.props as DataColumnProps) };
   });
 
+  const gridTemplateColumns = columns.map(({ width }) => width || '1fr').join(' ');
+
   return (
     <Table {...props} className={classNames(styles.datatable, className)}>
-      <TableHeader>
+      <TableHeader style={{ gridTemplateColumns }}>
         {columns
           .filter(n => n)
           .map(({ id, label, as, hidden, ...columnProps }) => {
@@ -47,7 +49,7 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
       <TableBody items={items}>
         {(row: any) => {
           return (
-            <TableRow>
+            <TableRow style={{ gridTemplateColumns }}>
               {columns.map(({ id, as, hidden, className, children, ...cellProps }) => {
                 const value = typeof children === 'function' ? children(row) : children || row[id];
 
@@ -69,7 +71,7 @@ function DataTable({ data = [], className, children, ...props }: DataTableProps)
   );
 }
 
-interface DataColumnProps extends ColumnProps {
+export interface DataColumnProps extends ColumnProps {
   id: string;
   label?: ReactNode;
   align?: 'start' | 'center' | 'end';
@@ -77,9 +79,6 @@ interface DataColumnProps extends ColumnProps {
   hidden?: boolean;
 }
 
-function DataColumn(props: DataColumnProps) {
+export function DataColumn(props: DataColumnProps) {
   return null;
 }
-
-export { DataTable, DataColumn };
-export type { DataTableProps, DataColumnProps };

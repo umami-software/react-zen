@@ -9,7 +9,7 @@ import {
 import classNames from 'classnames';
 import styles from './FormField.module.css';
 
-interface FormFieldProps extends HTMLAttributes<HTMLDivElement>, Partial<UseFormReturn> {
+export interface FormFieldProps extends HTMLAttributes<HTMLDivElement>, Partial<UseFormReturn> {
   name: string;
   description?: string;
   label?: string;
@@ -17,7 +17,7 @@ interface FormFieldProps extends HTMLAttributes<HTMLDivElement>, Partial<UseForm
   children: any;
 }
 
-const FormField = forwardRef(
+export const FormField = forwardRef(
   (
     { name, description, label, rules, className, children, ...props }: FormFieldProps,
     ref: Ref<any>,
@@ -40,6 +40,3 @@ const FormField = forwardRef(
     );
   },
 );
-
-export { FormField };
-export type { FormFieldProps };

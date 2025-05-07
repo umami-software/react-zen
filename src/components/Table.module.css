@@ -16,13 +16,17 @@
   display: contents;
 }
 
-.header tr {
-  display: flex;
+.header {
+  display: grid;
   border-bottom: 1px solid var(--border-color);
 }
 
+.header tr {
+  display: contents;
+}
+
 .row {
-  display: flex;
+  display: grid;
   border-bottom: 1px solid color-mix(in srgb, var(--border-color), 50% transparent);
 }
 

@@ -15,6 +15,8 @@ import {
 import classNames from 'classnames';
 import styles from './Table.module.css';
 
+const gridTemplateColumns = 'repeat(auto-fit, minmax(140px, 1fr))';
+
 interface TableColumnProps extends ColumnProps {
   align?: 'start' | 'center' | 'end';
 }
@@ -31,9 +33,13 @@ function Table({ children, className, ...props }: TableProps) {
   );
 }
 
-function TableHeader({ children, className, ...props }: TableHeaderProps<any>) {
+function TableHeader({ children, className, style, ...props }: TableHeaderProps<any>) {
   return (
-    <AriaTableHeader {...props} className={classNames(styles.header, className)}>
+    <AriaTableHeader
+      {...props}
+      className={classNames(styles.header, className)}
+      style={{ gridTemplateColumns, ...style }}
+    >
       {children}
     </AriaTableHeader>
   );
@@ -47,9 +53,13 @@ function TableBody({ children, className, ...props }: TableBodyProps<any>) {
   );
 }
 
-function TableRow({ children, className, ...props }: RowProps<any>) {
+function TableRow({ children, className, style, ...props }: RowProps<any>) {
   return (
-    <Row {...props} className={classNames(styles.row, className)}>
+    <Row
+      {...props}
+      className={classNames(styles.row, className)}
+      style={{ gridTemplateColumns, ...style }}
+    >
       {children}
     </Row>
   );
