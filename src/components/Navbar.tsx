@@ -12,45 +12,45 @@ import { Text } from './Text';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import { HoverTrigger } from './HoverTrigger';
-import styles from './NavBar.module.css';
+import styles from './Navbar.module.css';
 
 type NavigationContext = {
   activeMenu: string;
   setActiveMenu: Dispatch<SetStateAction<string>>;
 };
 
-export const NavBarContext = createContext<NavigationContext | undefined>(undefined);
+export const NavbarContext = createContext<NavigationContext | undefined>(undefined);
 
-export interface NavBarProps extends HTMLAttributes<HTMLElement> {
+export interface NavbarProps extends HTMLAttributes<HTMLElement> {
   showArrow?: boolean;
 }
 
 const useNavigationContext = () => {
-  const context = useContext(NavBarContext);
+  const context = useContext(NavbarContext);
   if (!context) {
-    throw new Error('useNavigationContext must be used within a NavBar');
+    throw new Error('useNavigationContext must be used within a Navbar');
   }
   return context;
 };
 
-export function NavBar({ showArrow = true, className, children, ...props }: NavBarProps) {
+export function Navbar({ showArrow = true, className, children, ...props }: NavbarProps) {
   const [activeMenu, setActiveMenu] = useState<string>('');
 
   return (
-    <NavBarContext.Provider value={{ activeMenu, setActiveMenu }}>
+    <NavbarContext.Provider value={{ activeMenu, setActiveMenu }}>
       <div {...props} className={classNames(styles.nav, className)}>
         {children}
       </div>
-    </NavBarContext.Provider>
+    </NavbarContext.Provider>
   );
 }
 
-export interface NavBarItemProps extends HTMLAttributes<HTMLElement> {
+export interface NavbarItemProps extends HTMLAttributes<HTMLElement> {
   label?: string;
   children?: ReactNode;
 }
 
-export function NavBarItem({ label, children, className, ...props }: NavBarItemProps) {
+export function NavbarItem({ label, children, className, ...props }: NavbarItemProps) {
   const { activeMenu, setActiveMenu } = useNavigationContext();
 
   if (label) {

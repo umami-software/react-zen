@@ -6,9 +6,9 @@ import { Row, RowProps } from '@/components/Row';
 import { Icon } from '@/components/Icon';
 import { Tooltip } from '@/components/Tooltip';
 import { Text } from '@/components/Text';
-import styles from './SideNav.module.css';
+import styles from './Sidebar.module.css';
 
-export interface SideNavProps extends ColumnProps {
+export interface SidebarProps extends ColumnProps {
   variant?: '1' | '2' | '3' | 'quiet';
   isCollapsed?: boolean;
   muteItems?: boolean;
@@ -16,9 +16,9 @@ export interface SideNavProps extends ColumnProps {
   children?: ReactNode;
 }
 
-const SideNavContext = createContext(null as any);
+const SidebarContext = createContext(null as any);
 
-export function SideNav({
+export function Sidebar({
   variant = '1',
   isCollapsed,
   muteItems = true,
@@ -26,9 +26,9 @@ export function SideNav({
   className,
   children,
   ...props
-}: SideNavProps) {
+}: SidebarProps) {
   return (
-    <SideNavContext.Provider value={{ isCollapsed }}>
+    <SidebarContext.Provider value={{ isCollapsed }}>
       <Column
         {...props}
         className={classNames(
@@ -42,11 +42,11 @@ export function SideNav({
       >
         {children}
       </Column>
-    </SideNavContext.Provider>
+    </SidebarContext.Provider>
   );
 }
 
-export function SideNavSection({
+export function SidebarSection({
   title,
   children,
 }: { title?: string; children: ReactNode } & ColumnProps) {
@@ -58,7 +58,7 @@ export function SideNavSection({
   );
 }
 
-export function SideNavHeader({
+export function SidebarHeader({
   label,
   icon,
   className,
@@ -78,11 +78,11 @@ export function SideNavHeader({
   );
 }
 
-export interface SideNavItemProps extends RowProps {
+export interface SidebarItemProps extends RowProps {
   isSelected?: boolean;
 }
 
-export function SideNavItem({
+export function SidebarItem({
   label,
   icon,
   isSelected,
@@ -92,8 +92,8 @@ export function SideNavItem({
 }: {
   label?: string;
   icon?: ReactNode;
-} & SideNavItemProps) {
-  const { isCollapsed } = useContext(SideNavContext);
+} & SidebarItemProps) {
+  const { isCollapsed } = useContext(SidebarContext);
 
   return (
     <TooltipTrigger delay={0} closeDelay={0} isDisabled={!isCollapsed}>

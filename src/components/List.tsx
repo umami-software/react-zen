@@ -20,6 +20,7 @@ export interface ListProps extends ListBoxProps<any> {
   idProperty?: string;
   labelProperty?: string;
   separatorProperty?: string;
+  variant?: '1' | '2' | '3';
 }
 
 export function List({
@@ -27,6 +28,7 @@ export function List({
   idProperty = 'id',
   labelProperty = 'label',
   separatorProperty = 'separatpr',
+  variant = '1',
   className,
   children,
   ...props
@@ -36,7 +38,7 @@ export function List({
       aria-label="list"
       {...props}
       items={items}
-      className={classNames(styles.list, className)}
+      className={classNames(styles.list, className, variant && styles[`variant-${variant}`])}
     >
       {children ||
         items?.map(item => {
