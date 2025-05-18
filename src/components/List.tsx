@@ -13,7 +13,7 @@ import {
 import classNames from 'classnames';
 import { Icon } from '@/components/Icon';
 import { Icons } from '@/components/Icons';
-import { HoverColor } from '@/lib/types';
+import { getHighlightColor } from '@/lib/styles';
 import styles from './List.module.css';
 
 export interface ListProps extends ListBoxProps<any> {
@@ -21,7 +21,7 @@ export interface ListProps extends ListBoxProps<any> {
   idProperty?: string;
   labelProperty?: string;
   separatorProperty?: string;
-  highlightColor?: HoverColor;
+  highlightColor?: string;
   showCheckmark?: boolean;
 }
 
@@ -106,12 +106,4 @@ export function ListSection({ title, className, children, ...props }: ListSectio
       {children as any}
     </ListBoxSection>
   );
-}
-
-function getHighlightColor(color?: HoverColor) {
-  if (!color) return;
-
-  if (/\d+/.test(color.toString())) {
-    return { '--highlight-color': `var(--base-color-${color})` };
-  }
 }

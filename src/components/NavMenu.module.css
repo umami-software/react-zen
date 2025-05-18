@@ -1,0 +1,25 @@
+.navmenu {
+  font-size: var(--font-size);
+  width: 100%;
+  gap: var(--spacing-2);
+}
+
+.item {
+  color: var(--font-color-muted);
+  gap: var(--gap);
+  padding: var(--padding);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item:hover {
+  color: var(--font-color);
+  background: var(--highlight-color);
+}
+
+.item.selected {
+  color: var(--font-color);
+  background: var(--highlight-color);
+  font-weight: var(--font-weight-bold);
+}

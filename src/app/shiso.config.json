@@ -65,6 +65,7 @@
             { "label": "Menu", "url": "/docs/components/menu" },
             { "label": "Modal", "url": "/docs/components/modal" },
             { "label": "Navbar", "url": "/docs/components/navbar" },
+            { "label": "Nav Menu", "url": "/docs/components/nav-menu" },
             { "label": "Password Field", "url": "/docs/components/password-field" },
             { "label": "Popover", "url": "/docs/components/popover" },
             { "label": "Progress Bar", "url": "/docs/components/progress-bar" },
