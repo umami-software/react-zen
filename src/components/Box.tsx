@@ -25,8 +25,6 @@ import {
   FontWeight,
   Padding,
   HoverColor,
-  FillColor,
-  StrokeColor,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
@@ -70,7 +68,7 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   maxHeight?: Responsive<string>;
 
   position?: Responsive<Position>;
-  align?: Responsive<TextAlign>;
+  textAlign?: Responsive<TextAlign>;
 
   top?: Responsive<Top>;
   right?: Responsive<Right>;
@@ -134,7 +132,7 @@ export function Box({
   minHeight,
   maxHeight,
   position,
-  align,
+  textAlign,
   top,
   right,
   bottom,
@@ -197,7 +195,7 @@ export function Box({
     minHeight,
     maxHeight,
     position,
-    textAlign: align,
+    textAlign,
     top,
     right,
     bottom,
