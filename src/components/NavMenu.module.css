@@ -11,6 +11,7 @@
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
+  transition: color 0.2s;
 }
 
 .item:hover {
