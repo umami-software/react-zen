@@ -1,6 +1,5 @@
 .list {
   display: grid;
-  min-width: 100px;
   outline: none;
   overflow: auto;
   gap: var(--spacing-1);
@@ -50,34 +49,17 @@
 .item[data-selected] {
   font-weight: bold;
 
-  & .check {
+  & .checkmark {
     display: flex;
     justify-content: flex-end;
     flex: 1;
   }
 }
 
-.variant-1 {
-  & .item:hover,
-  .item[data-selected] {
-    background: var(--base-color-2);
-  }
+.checkmark {
+  display: none;
 }
 
-.variant-2 {
-  & .item:hover,
-  .item[data-selected] {
-    background: var(--base-color-3);
-  }
-}
-
-.variant-3 {
-  & .item:hover,
-  .item[data-selected] {
-    background: var(--base-color-4);
-  }
-}
-
-.check {
+.hideCheckmark .checkmark {
   display: none;
 }

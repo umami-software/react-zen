@@ -13,6 +13,7 @@ import {
 import classNames from 'classnames';
 import { Icon } from '@/components/Icon';
 import { Icons } from '@/components/Icons';
+import { HoverColor } from '@/lib/types';
 import styles from './List.module.css';
 
 export interface ListProps extends ListBoxProps<any> {
@@ -20,7 +21,8 @@ export interface ListProps extends ListBoxProps<any> {
   idProperty?: string;
   labelProperty?: string;
   separatorProperty?: string;
-  variant?: '1' | '2' | '3';
+  highlightColor?: HoverColor;
+  showCheckmark?: boolean;
 }
 
 export function List({
@@ -28,8 +30,10 @@ export function List({
   idProperty = 'id',
   labelProperty = 'label',
   separatorProperty = 'separatpr',
-  variant = '1',
+  highlightColor,
+  showCheckmark = true,
   className,
+  style,
   children,
   ...props
 }: ListProps) {
@@ -38,7 +42,8 @@ export function List({
       aria-label="list"
       {...props}
       items={items}
-      className={classNames(styles.list, className, variant && styles[`variant-${variant}`])}
+      className={classNames(styles.list, className, !showCheckmark && styles.hideCheckmark)}
+      style={{ ...style, ...getHighlightColor(highlightColor) }}
     >
       {children ||
         items?.map(item => {
@@ -58,7 +63,17 @@ export function List({
   );
 }
 
-export function ListItem({ id, children, className, ...props }: ListBoxItemProps<any>) {
+export interface ListItemProps extends ListBoxItemProps<any> {
+  showCheckmark?: boolean;
+}
+
+export function ListItem({
+  id,
+  children,
+  className,
+  showCheckmark = true,
+  ...props
+}: ListItemProps) {
   return (
     <ListBoxItem
       {...props}
@@ -67,11 +82,11 @@ export function ListItem({ id, children, className, ...props }: ListBoxItemProps
       textValue={typeof children === 'string' ? children : id?.toString()}
     >
       {children as any}
-      <div aria-hidden="true" className={styles.check}>
-        <Icon>
+      {showCheckmark && (
+        <Icon aria-hidden="true" className={styles.checkmark}>
           <Icons.Check />
         </Icon>
-      </div>
+      )}
     </ListBoxItem>
   );
 }
@@ -80,16 +95,23 @@ export function ListSeparator({ className, ...props }: SeparatorProps) {
   return <Separator {...props} className={classNames(styles.separator, className)} />;
 }
 
-export function ListSection({
-  title,
-  className,
-  children,
-  ...props
-}: ListBoxSectionProps<any> & { title?: string }) {
+export interface ListSectionProps extends ListBoxSectionProps<any> {
+  title?: string;
+}
+
+export function ListSection({ title, className, children, ...props }: ListSectionProps) {
   return (
     <ListBoxSection {...props} className={classNames(styles.section, className)}>
       {title && <Header className={styles.header}>{title}</Header>}
       {children as any}
     </ListBoxSection>
   );
+}
+
+function getHighlightColor(color?: HoverColor) {
+  if (!color) return;
+
+  if (/\d+/.test(color.toString())) {
+    return { '--highlight-color': `var(--base-color-${color})` };
+  }
 }
