@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { Responsive, FontSize, FontWeight, LetterSpacing } from '@/lib/types';
+import type { Responsive, FontSize, FontWeight, LetterSpacing, TextAlign } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
 import styles from './Heading.module.css';
@@ -8,6 +8,7 @@ interface HeadingProps extends BoxProps {
   size?: Responsive<FontSize>;
   weight?: Responsive<FontWeight>;
   spacing?: Responsive<LetterSpacing>;
+  align?: Responsive<TextAlign>;
 }
 
 function Heading({

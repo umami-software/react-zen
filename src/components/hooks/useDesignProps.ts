@@ -102,6 +102,10 @@ const excludedProps = [
   'gridArea',
   'gridRow',
   'gridColumn',
+  'top',
+  'right',
+  'bottom',
+  'left',
   'order',
 ];
 
