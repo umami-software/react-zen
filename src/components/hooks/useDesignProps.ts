@@ -51,6 +51,7 @@ const cssMap = {
   flexWrap: 'flex-wrap',
   justifyContent: 'justify-content',
   justifyItems: 'justify-items',
+  justifySelf: 'justify-self',
   alignContent: 'align-content',
   alignItems: 'align-items',
   alignSelf: 'align-self',

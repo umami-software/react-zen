@@ -38,8 +38,6 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   hoverColor?: HoverColor;
   hoverBackgroundColor?: HoverColor;
   hoverBorderColor?: HoverColor;
-  fillColor?: FillColor;
-  strokeColor?: StrokeColor;
   fontSize?: Responsive<FontSize>;
   fontWeight?: Responsive<FontWeight>;
   border?: Responsive<BorderPosition>;
@@ -129,9 +127,6 @@ export function Box({
   marginRight,
   marginBottom,
   marginLeft,
-  overflow,
-  overflowX,
-  overflowY,
   width,
   minWidth,
   maxWidth,
@@ -144,6 +139,11 @@ export function Box({
   right,
   bottom,
   left,
+  overflow,
+  overflowX,
+  overflowY,
+  alignSelf,
+  justifySelf,
   flexBasis,
   flexGrow,
   flexShrink,

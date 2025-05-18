@@ -36,7 +36,7 @@
 .position-fixed {
   position: fixed;
 }
-.position-stick {
+.position-sticky {
   position: sticky;
 }
 .position-static {
