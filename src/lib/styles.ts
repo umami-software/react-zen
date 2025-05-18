@@ -8,4 +8,6 @@ export function getHighlightColor(color?: string) {
   } else if (ACCENT_COLORS.includes(color as any)) {
     return { '--highlight-color': `var(--accent-color-${color})` };
   }
+
+  return { '--highlight-color': color };
 }
