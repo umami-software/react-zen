@@ -5,7 +5,7 @@
 }
 
 :where(a, a:active, a:visited, a:hover) {
-  color: var(--font-color);
+  color: var(--primary-color);
   text-decoration: none;
 }
 

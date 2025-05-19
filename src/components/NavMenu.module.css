@@ -8,19 +8,24 @@
   color: var(--font-color-muted);
   gap: var(--gap);
   padding: var(--padding);
+  border-radius: var(--border-radius);
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
   transition: color 0.2s;
-}
 
-.item:hover {
-  color: var(--font-color);
-  background: var(--highlight-color);
-}
+  & a {
+    color: currentColor;
+  }
 
-.item.selected {
-  color: var(--font-color);
-  background: var(--highlight-color);
-  font-weight: var(--font-weight-bold);
+  &:hover {
+    color: var(--font-color);
+    background: var(--highlight-color);
+  }
+
+  &.selected {
+    color: var(--font-color);
+    background: var(--highlight-color);
+    font-weight: var(--font-weight-bold);
+  }
 }

@@ -48,18 +48,22 @@ export function DataTable({ data = [], className, children, ...props }: DataTabl
             );
           })}
       </TableHeader>
-      <TableBody items={items}>
-        {(row: any) => {
+      <TableBody>
+        {items.map((row, index) => {
           return (
-            <TableRow style={{ gridTemplateColumns }}>
+            <TableRow key={index} style={{ gridTemplateColumns }}>
               {columns.map(({ id, as, hidden, className, children, ...cellProps }) => {
+                if (hidden) {
+                  return null;
+                }
+
                 const value = typeof children === 'function' ? children(row) : children || row[id];
 
                 return (
                   <TableCell
                     {...(cellProps as TableCellProps)}
                     key={id}
-                    className={classNames(styles.cell, className, hidden && styles.hidden)}
+                    className={classNames(styles.cell, className)}
                   >
                     {as ? createElement(as, {}, value) : value}
                   </TableCell>
@@ -67,7 +71,7 @@ export function DataTable({ data = [], className, children, ...props }: DataTabl
               })}
             </TableRow>
           );
-        }}
+        })}
       </TableBody>
     </Table>
   );
