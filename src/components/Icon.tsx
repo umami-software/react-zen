@@ -5,7 +5,8 @@ import { useDesignProps } from '@/components/hooks/useDesignProps';
 import { Slot } from './Slot';
 import styles from './Icon.module.css';
 
-export interface IconProps extends HTMLAttributes<HTMLElement> {
+export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
+  color?: FontColor;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'input';
   rotate?: number;
@@ -15,6 +16,7 @@ export interface IconProps extends HTMLAttributes<HTMLElement> {
 }
 
 export function Icon({
+  color,
   size = 'sm',
   variant,
   rotate,
@@ -29,6 +31,7 @@ export function Icon({
   const [classes, styleProps] = useDesignProps({
     strokeColor,
     fillColor,
+    color,
   });
 
   return (
