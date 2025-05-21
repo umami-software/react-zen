@@ -96,9 +96,6 @@ importers:
       babel-plugin-inline-react-svg:
         specifier: ^2.0.2
         version: 2.0.2(@babel/core@7.26.9)
-      babel-plugin-syntax-hermes-parser:
-        specifier: ^0.26.0
-        version: 0.26.0
       dts-bundle:
         specifier: ^0.7.3
         version: 0.7.3
@@ -2485,9 +2482,6 @@ packages:
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
 
-  babel-plugin-syntax-hermes-parser@0.26.0:
-    resolution: {integrity: sha512-gU/U5ASnPmm1GY9vptiJF20BNsULFuetjJX6gvNdJCUsftbFQ1STGYMOfkFgVTtpZo+iGTz4tzDNA/IW0U8dvA==}
-
   bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
 
@@ -3461,12 +3455,6 @@ packages:
 
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
-
-  hermes-estree@0.26.0:
-    resolution: {integrity: sha512-If1T7lhfXnGlVLbnsmwerNB5cyJm2oIE8TN1UKEq6/OUX1nOGUhjXMpqAwZ1wkkn9Brda0VRyJEWOGT2GgVcAQ==}
-
-  hermes-parser@0.26.0:
-    resolution: {integrity: sha512-fWT40jJ/BtlzuyiiQS7lzNIlB5h6flVZoN8Jn8v5l987HL5dK9s+/4+py0FaBmeIEROC2zxt5qMLwXFTPLQ7BA==}
 
   highlight.js@11.11.1:
     resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
@@ -8368,10 +8356,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  babel-plugin-syntax-hermes-parser@0.26.0:
-    dependencies:
-      hermes-parser: 0.26.0
-
   bail@2.0.2: {}
 
   balanced-match@1.0.2: {}
@@ -9635,12 +9619,6 @@ snapshots:
   hast-util-whitespace@3.0.0:
     dependencies:
       '@types/hast': 3.0.4
-
-  hermes-estree@0.26.0: {}
-
-  hermes-parser@0.26.0:
-    dependencies:
-      hermes-estree: 0.26.0
 
   highlight.js@11.11.1: {}
 
