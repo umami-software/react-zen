@@ -56,7 +56,7 @@ export { Loading } from './Loading';
 export { LoadingButton } from './LoadingButton';
 export { Menu, MenuItem, MenuSection, MenuSeparator } from './Menu';
 export { Modal } from './Modal';
-export { Navbar, NavbarItem } from './Navbar';
+export { Navbar, NavbarItem, NavbarContext, useNavigationContext } from './Navbar';
 export { NavMenu, NavMenuItem } from './NavMenu';
 export { PasswordField } from './PasswordField';
 export { Popover } from './Popover';

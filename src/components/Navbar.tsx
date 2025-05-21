@@ -14,7 +14,7 @@ import { Icons } from './Icons';
 import { HoverTrigger } from './HoverTrigger';
 import styles from './Navbar.module.css';
 
-type NavigationContext = {
+export type NavigationContext = {
   activeMenu: string;
   setActiveMenu: Dispatch<SetStateAction<string>>;
 };
@@ -25,7 +25,7 @@ export interface NavbarProps extends HTMLAttributes<HTMLElement> {
   showArrow?: boolean;
 }
 
-const useNavigationContext = () => {
+export const useNavigationContext = () => {
   const context = useContext(NavbarContext);
   if (!context) {
     throw new Error('useNavigationContext must be used within a Navbar');

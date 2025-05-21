@@ -1,5 +1,3 @@
-import path from 'path';
-import crypto from 'crypto';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import alias from '@rollup/plugin-alias';
@@ -8,6 +6,8 @@ import copy from 'rollup-plugin-copy';
 import del from 'rollup-plugin-delete';
 import esbuild from 'rollup-plugin-esbuild';
 import svgr from '@svgr/rollup';
+import path from 'node:path';
+import crypto from 'node:crypto';
 
 const md5 = str => crypto.createHash('md5').update(str).digest('hex');
 
