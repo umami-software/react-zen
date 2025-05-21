@@ -2,6 +2,7 @@
 export { Example } from './Example';
 export { AccentColorsExample } from './AccentColorsExample';
 export { AlertDialogExample } from './AlertDialogExample';
+export { CalendarExample } from './CalendarExample';
 export { ConfirmationDialogExample } from './ConfirmationDialogExample';
 export { DialogExample } from './DialogExample';
 export { ExampleBox } from './ExampleBox';

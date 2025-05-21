@@ -1,22 +1,35 @@
 import {
   Calendar as AriaCalendar,
-  CalendarProps,
+  CalendarProps as AriaCalendarProps,
   CalendarCell,
   CalendarGrid,
   CalendarGridHeader,
   CalendarHeaderCell,
   CalendarGridBody,
   Heading,
+  DateValue,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { fromCalendarDate, toCalendarDate } from '@/lib/date';
+import { getLocalTimeZone, fromDate } from '@internationalized/date';
+import { toCalendarDate } from '@/lib/date';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { Icons } from './Icons';
 import styles from './Calendar.module.css';
-import { CalendarDate } from '@internationalized/date';
 
-function Calendar({
+export interface CalendarProps
+  extends Omit<
+    AriaCalendarProps<any>,
+    'value' | 'minValue' | 'maxValue' | 'defaultValue' | 'onChange'
+  > {
+  value: Date;
+  minValue?: Date;
+  maxValue?: Date;
+  defaultValue?: Date;
+  onChange?: (date: Date) => void;
+}
+
+export function Calendar({
   className,
   value,
   minValue,
@@ -24,28 +37,19 @@ function Calendar({
   defaultValue,
   onChange,
   ...props
-}: CalendarProps<any> & {
-  value: Date;
-  minValue?: Date;
-  maxValue?: Date;
-  defaultValue?: Date;
-  onChange?: (value?: Date) => void;
-}) {
-  const dateProps = {
-    value: toCalendarDate(value),
-    minValue: toCalendarDate(minValue),
-    maxValue: toCalendarDate(maxValue),
-    defaultValue: toCalendarDate(defaultValue),
-  };
-
-  const handleChange = (date: CalendarDate | Date | undefined) => {
-    onChange?.(fromCalendarDate(date));
+}: CalendarProps) {
+  const handleChange = (date: DateValue) => {
+    console.log({ raw: date });
+    onChange?.(date.toDate(getLocalTimeZone()));
   };
 
   return (
     <AriaCalendar
       {...props}
-      {...dateProps}
+      value={toCalendarDate(value)}
+      minValue={toCalendarDate(minValue)}
+      maxValue={toCalendarDate(maxValue)}
+      defaultValue={toCalendarDate(defaultValue)}
       className={classNames(styles.calendar, className)}
       onChange={handleChange}
     >
@@ -73,6 +77,3 @@ function Calendar({
     </AriaCalendar>
   );
 }
-
-export { Calendar };
-export type { CalendarProps };

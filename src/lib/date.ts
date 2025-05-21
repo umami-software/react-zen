@@ -1,19 +1,7 @@
-import { CalendarDate, getLocalTimeZone } from '@internationalized/date';
+import { CalendarDate } from '@internationalized/date';
 
-export function toCalendarDate(date?: CalendarDate | Date): CalendarDate | undefined {
-  if (date instanceof CalendarDate) {
-    return date;
+export function toCalendarDate(date?: Date): CalendarDate | undefined {
+  if (date) {
+    return new CalendarDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
   }
-
-  return date
-    ? new CalendarDate(date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate())
-    : date;
-}
-
-export function fromCalendarDate(date?: CalendarDate | Date): Date | undefined {
-  if (date instanceof CalendarDate) {
-    return date.toDate(getLocalTimeZone());
-  }
-
-  return date;
 }
