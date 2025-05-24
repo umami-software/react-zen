@@ -5,6 +5,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "declaration":  true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -30,6 +33,7 @@
     "target": "es2022"
   },
   "include": [
+    "src",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

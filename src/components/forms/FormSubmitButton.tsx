@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { LoadingButton, LoadingButtonProps } from '../LoadingButton';
 
-function FormSubmitButton({
+export function FormSubmitButton({
   variant = 'primary',
   isDisabled,
   isLoading,
@@ -30,5 +30,3 @@ function FormSubmitButton({
     </LoadingButton>
   );
 }
-
-export { FormSubmitButton };
