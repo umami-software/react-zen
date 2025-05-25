@@ -2,9 +2,8 @@ import {
   Checkbox as AriaCheckbox,
   CheckboxProps as AriaCheckboxProps,
 } from 'react-aria-components';
-import { ImCheckmark } from 'react-icons/im';
 import classNames from 'classnames';
-import { Icons } from './Icons';
+import { Check, Minus } from './icons';
 import { Icon } from './Icon';
 import styles from './Checkbox.module.css';
 
@@ -25,8 +24,8 @@ export function Checkbox({ label, className, children, ...props }: CheckboxProps
         return (
           <>
             <div className={styles.box}>
-              <Icon className={styles.icon} size="xs">
-                {isIndeterminate ? <Icons.Minus /> : isSelected ? <ImCheckmark /> : null}
+              <Icon className={styles.icon} size="sm">
+                {isIndeterminate ? <Minus /> : isSelected ? <Check /> : null}
               </Icon>
             </div>
             {children as any}

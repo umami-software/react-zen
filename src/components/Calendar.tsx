@@ -14,7 +14,7 @@ import { getLocalTimeZone, fromDate } from '@internationalized/date';
 import { toCalendarDate } from '@/lib/date';
 import { Button } from './Button';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
+import { Chevron } from './icons';
 import styles from './Calendar.module.css';
 
 export interface CalendarProps
@@ -56,13 +56,13 @@ export function Calendar({
       <header className={styles.header}>
         <Button slot="previous" className={styles.button} variant="quiet">
           <Icon rotate={180}>
-            <Icons.Chevron />
+            <Chevron />
           </Icon>
         </Button>
         <Heading className={styles.heading} />
         <Button slot="next" className={styles.button} variant="quiet">
           <Icon>
-            <Icons.Chevron />
+            <Chevron />
           </Icon>
         </Button>
       </header>

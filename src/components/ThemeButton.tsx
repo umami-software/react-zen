@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { PressEvent } from 'react-aria-components';
 import { Button, ButtonProps } from './Button';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
+import { Sun, Moon } from './icons';
 import { useTheme } from './hooks/useTheme';
 import styles from './ThemeButton.module.css';
 
@@ -48,7 +48,7 @@ export function ThemeButton({
       {transitions((style, item) => (
         // @ts-ignore
         <animated.div key={item} style={style}>
-          <Icon size="sm">{item === 'light' ? <Icons.Sun /> : <Icons.Moon />}</Icon>
+          <Icon size="sm">{item === 'light' ? <Sun /> : <Moon />}</Icon>
         </animated.div>
       ))}
       &nbsp;

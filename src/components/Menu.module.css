@@ -53,14 +53,17 @@
 
 .item[data-selected] {
   font-weight: bold;
+
+  & .checkmark {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
-.item[data-selected] .check {
-  display: flex;
-  justify-content: flex-end;
-  flex: 1;
+.checkmark {
+  display: none;
 }
 
-.check {
+.hideCheckmark .checkmark {
   display: none;
 }

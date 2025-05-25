@@ -13,7 +13,7 @@ import { Label } from './Label';
 import { List, ListProps } from './List';
 import { Popover } from './Popover';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
+import { Chevron } from './icons';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Loading } from './Loading';
@@ -79,13 +79,11 @@ export function Select({
     >
       {label && <Label>{label}</Label>}
       <Button variant="outline" {...buttonProps}>
-        <Row justifyContent="space-between" gap="3">
+        <Row alignItems="center" justifyContent="space-between" gap="3">
           <SelectValue>{renderValue}</SelectValue>
-          <span aria-hidden="true">
-            <Icon rotate={90} size="xs">
-              <Icons.Chevron />
-            </Icon>
-          </span>
+          <Icon aria-hidden="true" rotate={90} size="sm">
+            <Chevron />
+          </Icon>
         </Row>
       </Button>
       <Popover {...popoverProps}>

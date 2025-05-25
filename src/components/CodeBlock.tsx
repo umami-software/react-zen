@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef } from 'react';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
+import { Check, Copy } from './icons';
 import styles from './CodeBlock.module.css';
 
 export function CodeBlock(props: any) {
@@ -23,11 +23,7 @@ export function CodeBlock(props: any) {
       {props.children}
       <button aria-label="Copy code" className={styles.button} onClick={handleCopy}>
         <Icon size="sm">
-          {copied ? (
-            <Icons.Check className={styles.check} />
-          ) : (
-            <Icons.Copy className={styles.copy} />
-          )}
+          {copied ? <Check className={styles.check} /> : <Copy className={styles.copy} />}
         </Icon>
       </button>
     </pre>

@@ -57,7 +57,6 @@ export { Grid, type GridProps } from './Grid';
 export { Heading, type HeadingProps } from './Heading';
 export { HoverTrigger, type HoverButtonProps } from './HoverTrigger';
 export { Icon, type IconProps } from './Icon';
-export { Icons } from './Icons';
 export { Image, type ImageProps } from './Image';
 export { InlineEditField, type InlineEditFieldProps } from './InlineEditField';
 export { Label, type LabelProps } from './Label';
@@ -136,7 +135,6 @@ export {
 } from './Tabs';
 export { Text, type TextProps } from './Text';
 export { TextField, type TextFieldProps } from './TextField';
-export { TextArea, type TextAreaProps } from './TextArea';
 export { ThemeButton, type ThemeButtonProps } from './ThemeButton';
 export { Toggle, type ToggleProps } from './Toggle';
 export {

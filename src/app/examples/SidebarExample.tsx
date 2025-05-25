@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box as BoxIcon, LayoutGrid, User, Settings } from 'lucide-react';
+import { Box as BoxIcon, LayoutGrid, User, Settings, PanelLeft } from 'lucide-react';
 import {
   Box,
   Sidebar,
@@ -8,7 +8,6 @@ import {
   SidebarSection,
   Button,
   Icon,
-  Icons,
   Row,
   Heading,
 } from '@/components';
@@ -34,7 +33,7 @@ export function SidebarExample({ name, ...props }: { name: string } & SidebarPro
             <Row>
               <Button variant="quiet" onPress={() => setCollapsed(!isCollapsed)}>
                 <Icon>
-                  <Icons.PanelLeft />
+                  <PanelLeft />
                 </Icon>
               </Button>
             </Row>

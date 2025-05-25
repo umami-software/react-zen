@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Input, TextField, TextFieldProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
+import { Eye, EyeSlash } from './icons';
 import { Label } from './Label';
 import inputStyles from './styles/input.module.css';
 import styles from './PasswordField.module.css';
@@ -23,7 +23,7 @@ export function PasswordField({ label, className, ...props }: PasswordFieldProps
       <div className={inputStyles.row}>
         <Input type={type} className={inputStyles.input} />
         <Icon onClick={handleShowPassword} className={classNames(styles.icon, inputStyles.icon)}>
-          {show ? <Icons.EyeSlash /> : <Icons.Eye />}
+          {show ? <EyeSlash /> : <Eye />}
         </Icon>
       </div>
     </TextField>
