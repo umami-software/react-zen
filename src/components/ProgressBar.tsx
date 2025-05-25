@@ -5,7 +5,7 @@ import {
 import classNames from 'classnames';
 import styles from './ProgressBar.module.css';
 
-interface ProgressBarProps extends AriaProgressBarProps {
+export interface ProgressBarProps extends AriaProgressBarProps {
   showValue?: boolean;
 }
 

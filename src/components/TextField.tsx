@@ -1,4 +1,4 @@
-import { useEffect, useState, forwardRef, Ref } from 'react';
+import { useEffect, useState } from 'react';
 import {
   TextField as AriaTextField,
   TextFieldProps as AriaTextFieldProps,
@@ -11,7 +11,7 @@ import { CopyButton } from './CopyButton';
 import inputStyles from './styles/input.module.css';
 import styles from './TextField.module.css';
 
-interface TextFieldProps extends AriaTextFieldProps {
+export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
   placeholder?: string;
   allowCopy?: boolean;
@@ -19,59 +19,50 @@ interface TextFieldProps extends AriaTextFieldProps {
   onChange?: (e: any) => void;
 }
 
-const TextField = forwardRef(
-  (
-    {
-      value,
-      defaultValue,
-      label,
-      placeholder,
-      allowCopy,
-      asChild,
-      className,
-      onChange,
-      children,
-      ...props
-    }: TextFieldProps,
-    ref: Ref<HTMLInputElement>,
-  ) => {
-    const [inputValue, setInputValue] = useState(defaultValue || value);
-    const Component = asChild ? Slot : Input;
+export function TextField({
+  value,
+  defaultValue,
+  label,
+  placeholder,
+  allowCopy,
+  asChild,
+  className,
+  onChange,
+  children,
+  ...props
+}: TextFieldProps) {
+  const [inputValue, setInputValue] = useState(defaultValue || value);
+  const Component = asChild ? Slot : Input;
 
-    const handleChange = (e: any) => {
-      setInputValue(e.target.value);
-      return onChange?.(e);
-    };
+  const handleChange = (e: any) => {
+    setInputValue(e.target.value);
+    return onChange?.(e);
+  };
 
-    useEffect(() => {
-      setInputValue(value);
-    }, [value]);
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
 
-    return (
-      <AriaTextField
-        aria-label="Text"
-        {...props}
-        ref={ref}
-        value={inputValue}
-        className={classNames(inputStyles.field, className)}
-      >
-        {label && <Label>{label}</Label>}
-        <div className={inputStyles.row}>
-          <Component
-            className={classNames(styles.input, inputStyles.input, allowCopy && styles.allowCopy)}
-            placeholder={placeholder}
-            onChange={handleChange}
-          >
-            {children as any}
-          </Component>
-          {allowCopy && (
-            <CopyButton className={classNames(styles.icon, inputStyles.icon)} value={inputValue} />
-          )}
-        </div>
-      </AriaTextField>
-    );
-  },
-);
-
-export { TextField };
-export type { TextFieldProps };
+  return (
+    <AriaTextField
+      aria-label="Text"
+      {...props}
+      value={inputValue}
+      className={classNames(inputStyles.field, className)}
+    >
+      {label && <Label>{label}</Label>}
+      <div className={inputStyles.row}>
+        <Component
+          className={classNames(styles.input, inputStyles.input, allowCopy && styles.allowCopy)}
+          placeholder={placeholder}
+          onChange={handleChange}
+        >
+          {children as any}
+        </Component>
+        {allowCopy && (
+          <CopyButton className={classNames(styles.icon, inputStyles.icon)} value={inputValue} />
+        )}
+      </div>
+    </AriaTextField>
+  );
+}

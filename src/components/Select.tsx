@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, Ref, useState, Key } from 'react';
+import { ReactNode, useState } from 'react';
 import {
   PopoverProps,
   Select as AriaSelect,
@@ -18,7 +18,7 @@ import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Loading } from './Loading';
 
-interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
+export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items?: any[];
   value?: string;
   defaultValue?: string;
@@ -37,91 +37,82 @@ interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
     | ((values: SelectValueRenderProps<object> & { defaultChildren: ReactNode }) => ReactNode);
 }
 
-const Select = forwardRef(
-  (
-    {
-      items = [],
-      value,
-      defaultValue,
-      label,
-      isLoading,
-      allowSearch,
-      searchValue,
-      searchDelay,
-      onSearch,
-      onSelectionChange,
-      onChange,
-      buttonProps,
-      listProps,
-      popoverProps,
-      renderValue,
-      className,
-      children,
-      ...props
-    }: SelectProps,
-    ref: Ref<any>,
-  ) => {
-    const [search, setSearch] = useState('');
+export function Select({
+  items = [],
+  value,
+  defaultValue,
+  label,
+  isLoading,
+  allowSearch,
+  searchValue,
+  searchDelay,
+  onSearch,
+  onSelectionChange,
+  onChange,
+  buttonProps,
+  listProps,
+  popoverProps,
+  renderValue,
+  className,
+  children,
+  ...props
+}: SelectProps) {
+  const [search, setSearch] = useState('');
 
-    const handleChange = (e: any) => {
-      onSelectionChange?.(e);
-      onChange?.(e);
-    };
+  const handleChange = (e: any) => {
+    onSelectionChange?.(e);
+    onChange?.(e);
+  };
 
-    const handleSearch = (value: string) => {
-      setSearch(value);
-      onSearch?.(value);
-    };
+  const handleSearch = (value: string) => {
+    setSearch(value);
+    onSearch?.(value);
+  };
 
-    return (
-      <AriaSelect
-        aria-label="Select"
-        {...props}
-        ref={ref}
-        selectedKey={value}
-        defaultSelectedKey={defaultValue}
-        onSelectionChange={handleChange}
-      >
-        {label && <Label>{label}</Label>}
-        <Button variant="outline" {...buttonProps}>
-          <Row justifyContent="space-between" gap="3">
-            <SelectValue>{renderValue}</SelectValue>
-            <span aria-hidden="true">
-              <Icon rotate={90} size="xs">
-                <Icons.Chevron />
-              </Icon>
-            </span>
-          </Row>
-        </Button>
-        <Popover {...popoverProps}>
-          <Column>
-            <Box padding="2" border borderRadius backgroundColor shadow="3">
-              {allowSearch && (
-                <Box marginBottom="2">
-                  <SearchField
-                    value={search}
-                    onSearch={handleSearch}
-                    delay={searchDelay}
-                    defaultValue={searchValue}
-                    autoFocus
-                  />
-                </Box>
-              )}
-              {isLoading && <Loading icon="dots" position="center" size="sm" />}
-              <List
-                {...listProps}
-                items={items}
-                style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
-              >
-                {children}
-              </List>
-            </Box>
-          </Column>
-        </Popover>
-      </AriaSelect>
-    );
-  },
-);
-
-export { Select };
-export type { SelectProps };
+  return (
+    <AriaSelect
+      aria-label="Select"
+      {...props}
+      selectedKey={value}
+      defaultSelectedKey={defaultValue}
+      onSelectionChange={handleChange}
+    >
+      {label && <Label>{label}</Label>}
+      <Button variant="outline" {...buttonProps}>
+        <Row justifyContent="space-between" gap="3">
+          <SelectValue>{renderValue}</SelectValue>
+          <span aria-hidden="true">
+            <Icon rotate={90} size="xs">
+              <Icons.Chevron />
+            </Icon>
+          </span>
+        </Row>
+      </Button>
+      <Popover {...popoverProps}>
+        <Column>
+          <Box padding="2" border borderRadius backgroundColor shadow="3">
+            {allowSearch && (
+              <Box marginBottom="2">
+                <SearchField
+                  value={search}
+                  onSearch={handleSearch}
+                  delay={searchDelay}
+                  defaultValue={searchValue}
+                  autoFocus
+                />
+              </Box>
+            )}
+            {isLoading && <Loading icon="dots" position="center" size="sm" />}
+            <List
+              {...listProps}
+              items={items}
+              style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
+            >
+              {children}
+            </List>
+          </Box>
+        </Column>
+      </Popover>
+    </AriaSelect>
+  );
+}

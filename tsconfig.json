@@ -5,7 +5,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "declaration":  true,
+    "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
     "allowJs": true,
@@ -17,7 +17,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "incremental": true,
     "tsBuildInfoFile": "./.tsbuildinfo",
     "plugins": [

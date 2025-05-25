@@ -4,8 +4,8 @@ import {
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
   MenuSection as AriaMenuSection,
-  MenuSectionProps,
-  MenuItemProps,
+  MenuSectionProps as AriaMenuSectionProps,
+  MenuItemProps as AriaMenuItemProps,
   MenuProps as AriaMenuProps,
   Separator,
   SeparatorProps,
@@ -15,12 +15,12 @@ import { Icon } from '@/components/Icon';
 import { Icons } from '@/components/Icons';
 import styles from './Menu.module.css';
 
-interface MenuProps extends AriaMenuProps<any> {
+export interface MenuProps extends AriaMenuProps<any> {
   className?: string;
   children?: ReactNode;
 }
 
-function Menu({ className, children, ...props }: MenuProps) {
+export function Menu({ className, children, ...props }: MenuProps) {
   return (
     <AriaMenu {...props} className={classNames(styles.menu, className)}>
       {children}
@@ -28,29 +28,34 @@ function Menu({ className, children, ...props }: MenuProps) {
   );
 }
 
-function MenuItem({ children, className, ...props }: MenuItemProps<any>) {
+export interface MenuItemProps extends AriaMenuItemProps {
+  showChecked?: boolean;
+}
+
+export function MenuItem({ showChecked = false, children, className, ...props }: MenuItemProps) {
   return (
     <AriaMenuItem {...props} className={classNames(styles.item, className)}>
       {children as any}
-      <div aria-hidden="true" className={styles.check}>
-        <Icon>
-          <Icons.Check />
-        </Icon>
-      </div>
+      {showChecked && (
+        <div aria-hidden="true" className={styles.check}>
+          <Icon>
+            <Icons.Check />
+          </Icon>
+        </div>
+      )}
     </AriaMenuItem>
   );
 }
 
-function MenuSeparator({ className, ...props }: SeparatorProps) {
+export function MenuSeparator({ className, ...props }: SeparatorProps) {
   return <Separator {...props} className={classNames(styles.separator, className)} />;
 }
 
-function MenuSection({
-  title,
-  className,
-  children,
-  ...props
-}: MenuSectionProps<any> & { title?: string }) {
+export interface MenuSectionProps extends AriaMenuSectionProps<any> {
+  title?: string;
+}
+
+export function MenuSection({ title, className, children, ...props }: MenuSectionProps) {
   return (
     <AriaMenuSection {...props} className={classNames(styles.section, className)}>
       {title && <Header className={styles.header}>{title}</Header>}
@@ -58,6 +63,3 @@ function MenuSection({
     </AriaMenuSection>
   );
 }
-
-export { Menu, MenuItem, MenuSeparator, MenuSection };
-export type { MenuProps };

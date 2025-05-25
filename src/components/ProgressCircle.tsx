@@ -2,11 +2,11 @@ import { ProgressBar, ProgressBarProps } from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './ProgressCircle.module.css';
 
-interface ProgressCircleProps extends ProgressBarProps {
+export interface ProgressCircleProps extends ProgressBarProps {
   showValue?: boolean;
 }
 
-function ProgressCircle({ className, showValue, ...props }: ProgressCircleProps) {
+export function ProgressCircle({ className, showValue, ...props }: ProgressCircleProps) {
   return (
     <ProgressBar {...props} className={classNames(styles.progresscircle, className)}>
       {({ percentage = 0, valueText }) => {
@@ -34,5 +34,3 @@ function ProgressCircle({ className, showValue, ...props }: ProgressCircleProps)
     </ProgressBar>
   );
 }
-
-export { ProgressCircle };

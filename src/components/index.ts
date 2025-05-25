@@ -72,7 +72,15 @@ export {
 } from './List';
 export { Loading, type LoadingProps } from './Loading';
 export { LoadingButton, type LoadingButtonProps } from './LoadingButton';
-export { Menu, MenuItem, MenuSection, MenuSeparator, type MenuProps } from './Menu';
+export {
+  Menu,
+  MenuItem,
+  MenuSection,
+  MenuSeparator,
+  type MenuProps,
+  type MenuItemProps,
+  type MenuSectionProps,
+} from './Menu';
 export { Modal, type ModalProps } from './Modal';
 export {
   Navbar,
@@ -84,10 +92,10 @@ export {
   type NavigationContext,
 } from './Navbar';
 export { NavMenu, NavMenuItem, type NavMenuItemProps, type NavMenuProps } from './NavMenu';
-export { PasswordField } from './PasswordField';
+export { PasswordField, type PasswordFieldProps } from './PasswordField';
 export { Popover, type PopoverProps } from './Popover';
-export { ProgressBar } from './ProgressBar';
-export { ProgressCircle } from './ProgressCircle';
+export { ProgressBar, type ProgressBarProps } from './ProgressBar';
+export { ProgressCircle, type ProgressCircleProps } from './ProgressCircle';
 export { Radio, RadioGroup, type RadioGroupProps, type RadioProps } from './RadioGroup';
 export { Row, type RowProps } from './Row';
 export { SearchField, type SearchFieldProps } from './SearchField';
