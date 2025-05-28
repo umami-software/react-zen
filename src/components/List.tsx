@@ -12,7 +12,7 @@ import {
 } from 'react-aria-components';
 import classNames from 'classnames';
 import { Icon } from '@/components/Icon';
-import { Icons } from '@/components/Icons';
+import { Check } from '@/components/icons';
 import { getHighlightColor } from '@/lib/styles';
 import styles from './List.module.css';
 
@@ -84,7 +84,7 @@ export function ListItem({
       {children as any}
       {showCheckmark && (
         <Icon aria-hidden="true" className={styles.checkmark}>
-          <Icons.Check />
+          <Check />
         </Icon>
       )}
     </ListBoxItem>

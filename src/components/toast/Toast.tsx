@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import { Button } from '@/components/Button';
 import { Icon } from '@/components/Icon';
-import { Icons } from '@/components/Icons';
+import { Close } from '@/components/icons';
 import styles from './Toast.module.css';
 
 const TOAST_CLOSE_ACTION = 'close';
@@ -51,7 +51,7 @@ function Toast({
           aria-label="Close"
           onClick={() => onClose?.(TOAST_CLOSE_ACTION)}
         >
-          <Icons.Close />
+          <Close />
         </Icon>
       )}
     </div>

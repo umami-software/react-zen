@@ -11,8 +11,8 @@ import {
   SeparatorProps,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { Icon } from '@/components/Icon';
-import { Icons } from '@/components/Icons';
+import { Check } from '@/components/icons';
+import { Icon } from './Icon';
 import styles from './Menu.module.css';
 
 export interface MenuProps extends AriaMenuProps<any> {
@@ -32,14 +32,14 @@ export interface MenuItemProps extends AriaMenuItemProps {
   showChecked?: boolean;
 }
 
-export function MenuItem({ showChecked = false, children, className, ...props }: MenuItemProps) {
+export function MenuItem({ showChecked = true, children, className, ...props }: MenuItemProps) {
   return (
     <AriaMenuItem {...props} className={classNames(styles.item, className)}>
       {children as any}
       {showChecked && (
-        <div aria-hidden="true" className={styles.check}>
+        <div aria-hidden="true" className={styles.checkmark}>
           <Icon>
-            <Icons.Check />
+            <Check />
           </Icon>
         </div>
       )}

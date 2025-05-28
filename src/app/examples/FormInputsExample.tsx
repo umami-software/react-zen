@@ -9,8 +9,6 @@ import {
   PasswordField,
   Checkbox,
   SearchField,
-  Box,
-  TextArea,
   RadioGroup,
   Radio,
   Select,
@@ -49,7 +47,7 @@ export function FormInputsExample() {
           <TextField autoComplete="off" />
         </FormField>
         <FormField name="bio" label="Bio">
-          <TextArea autoComplete="off" resize="none" />
+          <TextField autoComplete="off" asTextArea />
         </FormField>
         <FormField name="password" label="Password">
           <PasswordField autoComplete="off" />

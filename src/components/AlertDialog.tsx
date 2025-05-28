@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 import { Dialog, DialogProps } from './Dialog';
-import { Text } from './Text';
 import { Column } from './Column';
 import { Row } from './Row';
 import { Button } from './Button';
 import styles from './AlertDialog.module.css';
 
-interface AlertDialogProps extends DialogProps {
+export interface AlertDialogProps extends DialogProps {
   title?: ReactNode;
   description?: ReactNode;
   isDanger?: boolean;
@@ -18,7 +17,7 @@ interface AlertDialogProps extends DialogProps {
   onCancel?: () => void;
 }
 
-function AlertDialog({
+export function AlertDialog({
   title,
   description,
   isDanger,
@@ -63,6 +62,3 @@ function AlertDialog({
     </Dialog>
   );
 }
-
-export { AlertDialog };
-export type { AlertDialogProps };

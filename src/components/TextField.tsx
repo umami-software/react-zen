@@ -2,20 +2,19 @@ import { useEffect, useState } from 'react';
 import {
   TextField as AriaTextField,
   TextFieldProps as AriaTextFieldProps,
+  TextArea,
   Input,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { Slot } from './Slot';
 import { Label } from './Label';
 import { CopyButton } from './CopyButton';
-import inputStyles from './styles/input.module.css';
 import styles from './TextField.module.css';
 
 export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
   placeholder?: string;
   allowCopy?: boolean;
-  asChild?: boolean;
+  asTextArea?: boolean;
   onChange?: (e: any) => void;
 }
 
@@ -25,18 +24,20 @@ export function TextField({
   label,
   placeholder,
   allowCopy,
-  asChild,
-  className,
+  asTextArea,
   onChange,
+  isReadOnly,
+  isDisabled,
+  className,
   children,
   ...props
 }: TextFieldProps) {
   const [inputValue, setInputValue] = useState(defaultValue || value);
-  const Component = asChild ? Slot : Input;
+  const Component = asTextArea ? TextArea : Input;
 
-  const handleChange = (e: any) => {
-    setInputValue(e.target.value);
-    return onChange?.(e);
+  const handleChange = (value: string) => {
+    setInputValue(value);
+    return onChange?.(value);
   };
 
   useEffect(() => {
@@ -44,25 +45,20 @@ export function TextField({
   }, [value]);
 
   return (
-    <AriaTextField
-      aria-label="Text"
-      {...props}
-      value={inputValue}
-      className={classNames(inputStyles.field, className)}
-    >
+    <>
       {label && <Label>{label}</Label>}
-      <div className={inputStyles.row}>
-        <Component
-          className={classNames(styles.input, inputStyles.input, allowCopy && styles.allowCopy)}
-          placeholder={placeholder}
-          onChange={handleChange}
-        >
-          {children as any}
-        </Component>
-        {allowCopy && (
-          <CopyButton className={classNames(styles.icon, inputStyles.icon)} value={inputValue} />
-        )}
-      </div>
-    </AriaTextField>
+      <AriaTextField
+        aria-label="Text"
+        {...props}
+        className={classNames(styles.field, asTextArea && styles.textarea, className)}
+        value={inputValue}
+        isReadOnly={isReadOnly}
+        isDisabled={isDisabled}
+        onChange={handleChange}
+      >
+        <Component placeholder={placeholder} />
+        {allowCopy && <CopyButton value={inputValue} />}
+      </AriaTextField>
+    </>
   );
 }

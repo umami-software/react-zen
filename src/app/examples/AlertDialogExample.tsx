@@ -3,7 +3,6 @@ import {
   Button,
   Modal,
   AlertDialog,
-  Row,
   Text,
   Menu,
   MenuItem,
@@ -27,16 +26,6 @@ export function AlertDialogExample() {
       ],
     },
   ];
-
-  return (
-    <Menu>
-      <MenuSection items={items} selectionMode="single">
-        {({ id, name }) => {
-          return <MenuItem id={id}>{name}</MenuItem>;
-        }}
-      </MenuSection>
-    </Menu>
-  );
 
   return (
     <DialogTrigger>

@@ -10,7 +10,7 @@ import {
 import classNames from 'classnames';
 import { Text } from './Text';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
+import { Chevron } from './icons';
 import { HoverTrigger } from './HoverTrigger';
 import styles from './Navbar.module.css';
 
@@ -58,8 +58,8 @@ export function NavbarItem({ label, children, className, ...props }: NavbarItemP
       <HoverTrigger isOpen={activeMenu === label} onHoverStart={() => setActiveMenu(label)}>
         <div {...props} className={classNames(styles.item, className)}>
           <Text>{label}</Text>
-          <Icon rotate={90} size="xs" className={styles.icon}>
-            <Icons.Chevron />
+          <Icon rotate={90} size="sm" className={styles.icon}>
+            <Chevron />
           </Icon>
         </div>
         {children as any}

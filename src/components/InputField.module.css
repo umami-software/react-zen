@@ -12,26 +12,6 @@
   box-shadow: var(--box-shadow);
   line-height: 1.5rem;
   position: relative;
-
-  &[data-readonly] {
-    background: var(--base-color-2);
-  }
-
-  &[data-disabled] {
-    color: var(--font-color-muted);
-    background: var(--base-color-2);
-  }
-
-  &:focus-within {
-    border-color: transparent;
-    outline: var(--outline);
-    outline-offset: -1px;
-
-    &[data-readonly] {
-      border-color: var(--border-color);
-      outline: none;
-    }
-  }
 }
 
 .field input,
@@ -46,12 +26,28 @@
     color: var(--font-color-muted);
   }
 
+  &:disabled {
+    color: var(--font-color-muted);
+  }
+
   &::-webkit-search-cancel-button,
   &::-webkit-search-decoration {
     -webkit-appearance: none;
   }
 }
 
-.textarea {
-  padding-right: 0;
+.readonly,
+.disabled {
+  background: var(--base-color-2);
+}
+
+.field:focus-within {
+  border-color: transparent;
+  outline: var(--outline);
+  outline-offset: -1px;
+
+  &.readonly {
+    border-color: var(--border-color);
+    outline: none;
+  }
 }

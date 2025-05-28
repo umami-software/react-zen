@@ -1,10 +1,15 @@
 import { createElement, ReactNode } from 'react';
 import classNames from 'classnames';
+import { Info, Alert, Close } from '@/components/icons';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
 import styles from './AlertBanner.module.css';
 
-interface AlertBannerProps {
+const AlertIcons = {
+  error: Alert,
+  info: Info,
+};
+
+export interface AlertBannerProps {
   title?: ReactNode;
   description?: ReactNode;
   icon?: ReactNode;
@@ -16,7 +21,7 @@ interface AlertBannerProps {
   children?: ReactNode;
 }
 
-function AlertBanner({
+export function AlertBanner({
   title,
   description,
   icon,
@@ -48,17 +53,9 @@ function AlertBanner({
       {children}
       {allowClose && (
         <Icon className={styles.close} onClick={onClose}>
-          <Icons.Close />
+          <Close />
         </Icon>
       )}
     </div>
   );
 }
-
-const AlertIcons = {
-  error: Icons.Alert,
-  info: Icons.Info,
-};
-
-export { AlertBanner };
-export type { AlertBannerProps };

@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import { Button } from './Button';
 import { Text } from './Text';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
+import { Chevron } from './icons';
 import styles from './Accordion.module.css';
 
 export interface AccordionProps extends DisclosureGroupProps {
@@ -51,7 +51,7 @@ export function AccordionItem({
       <Button slot="trigger" className={styles.button}>
         <Text>{trigger}</Text>
         <Icon className={styles.icon} size="xs">
-          <Icons.Chevron />
+          <Chevron />
         </Icon>
       </Button>
       <DisclosurePanel className={classNames(styles.panel, expanded && styles.expanded)}>

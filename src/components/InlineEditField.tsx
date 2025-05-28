@@ -2,7 +2,7 @@ import { ReactNode, useState, useCallback, HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import { TextField } from './TextField';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
+import { Edit } from './icons';
 import styles from './InlineEditField.module.css';
 
 export interface InlineEditFieldProps extends HTMLAttributes<HTMLDivElement> {
@@ -57,15 +57,15 @@ export function InlineEditField({
 
   return (
     <div
-      {...props}
       aria-label="Edit"
+      {...props}
       className={classNames(styles.edit, className)}
       onClick={handleEdit}
     >
       {!edit && (children as ReactNode)}
       {!edit && (
         <Icon className={styles.icon}>
-          <Icons.Edit />
+          <Edit />
         </Icon>
       )}
       {edit && (

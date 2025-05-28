@@ -6,8 +6,8 @@ import {
   BreadcrumbProps,
 } from 'react-aria-components';
 import classNames from 'classnames';
+import { Chevron } from '@/components/icons';
 import { Icon } from './Icon';
-import { Icons } from './Icons';
 import styles from './Breadcrumbs.module.css';
 
 function Breadcrumbs({ children, className, ...props }: BreadcrumbsProps<any>) {
@@ -23,7 +23,7 @@ function Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
     <AriaBreadcrumb {...props} className={classNames(styles.breadcrumb, className)}>
       {children as ReactNode}
       <Icon className={styles.icon} size="xs">
-        <Icons.Chevron />
+        <Chevron />
       </Icon>
     </AriaBreadcrumb>
   );
