@@ -26,15 +26,19 @@ export function FormField({
   children,
   ...props
 }: FormFieldProps) {
-  const { formState, control } = useFormContext();
-  const { field } = useController({ name, control, rules });
+  const context = useFormContext();
+  const { formState, control } = context;
+
+  const controller = useController({ name, control, rules });
+  const { field } = controller;
+
   const errors = formState?.errors || {};
   const errorMessage = errors[name]?.message as string;
 
   return (
     <div {...props} className={classNames(styles.input, className)}>
       {typeof children === 'function'
-        ? children(field)
+        ? children({ context, controller })
         : Children.map(children, child =>
             child ? cloneElement(child, { ...field, label: child.props.label || label }) : null,
           )}

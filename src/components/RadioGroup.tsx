@@ -17,7 +17,7 @@ export function RadioGroup({ label, children, className, ...props }: RadioGroupP
   return (
     <AriaRadioGroup {...props} className={classNames(styles.radiogroup, className)}>
       {label && <Label>{label}</Label>}
-      {children as ReactNode}
+      <div className={styles.inputs}>{children as ReactNode}</div>
     </AriaRadioGroup>
   );
 }

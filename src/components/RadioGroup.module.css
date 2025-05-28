@@ -1,23 +1,27 @@
 .radiogroup {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
   font-size: var(--font-size);
   color: var(--font-color);
 }
 
-.radiogroup[data-orientation='vertical'] {
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.radiogroup[data-orientation='vertical'] .inputs {
   flex-direction: column;
 }
 
-.radiogroup[data-orientation='horizontal'] {
+.radiogroup[data-orientation='horizontal'] .inputs {
   flex-direction: row;
+  gap: var(--spacing-6);
 }
 
 .radio {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
+  gap: var(--gap);
   forced-color-adjust: none;
 }
 
