@@ -1,6 +1,8 @@
 .form {
+  display: grid;
   position: relative;
   font-size: var(--font-size);
+  gap: var(--gap);
 }
 
 .text {
@@ -11,3 +13,4 @@
 .icon {
   align-self: flex-start;
 }
+

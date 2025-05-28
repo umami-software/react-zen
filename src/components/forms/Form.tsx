@@ -1,13 +1,10 @@
 import { useEffect, HTMLAttributes, ReactNode } from 'react';
 import { useForm, UseFormProps, SubmitHandler, FormProvider, UseFormReturn } from 'react-hook-form';
 import classNames from 'classnames';
-import { Responsive, Spacing } from '@/lib/types';
 import { AlertBanner } from '@/components/AlertBanner';
-import { Column } from '@/components/Column';
 import styles from './Form.module.css';
 
 interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 'children'> {
-  gap?: Responsive<Spacing>;
   autoComplete?: string;
   onSubmit?: SubmitHandler<any>;
   error?: ReactNode | Error;
@@ -16,11 +13,11 @@ interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 
 }
 
 function Form({
-  gap = '3',
   autoComplete,
   onSubmit,
   error,
   preventSubmit = false,
+  // useForm props
   mode,
   disabled,
   reValidateMode,
@@ -36,6 +33,7 @@ function Form({
   progressive,
   criteriaMode,
   delayError,
+  // Element props
   className,
   children,
   ...props
@@ -57,6 +55,7 @@ function Form({
     criteriaMode,
     delayError,
   });
+
   const { handleSubmit } = formValues;
   const onKeyDown =
     !onSubmit || preventSubmit
@@ -89,9 +88,7 @@ function Form({
         onSubmit={onSubmit ? handleSubmit(onSubmit) : undefined}
         onKeyDown={onKeyDown}
       >
-        <Column gap={gap}>
-          {typeof children === 'function' ? children(formValues) : children}
-        </Column>
+        {typeof children === 'function' ? children(formValues) : children}
       </form>
     </FormProvider>
   );

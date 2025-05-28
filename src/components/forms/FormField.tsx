@@ -37,11 +37,11 @@ export function FormField({
 
   return (
     <div {...props} className={classNames(styles.input, className)}>
-      {typeof children === 'function'
-        ? children({ context, controller })
-        : Children.map(children, child =>
-            child ? cloneElement(child, { ...field, label: child.props.label || label }) : null,
-          )}
+      {Children.map(
+        typeof children === 'function' ? children({ context, controller }) : children,
+        child =>
+          child ? cloneElement(child, { ...field, label: child.props.label || label }) : null,
+      )}
       {description && <div className={styles.description}>{description}</div>}
       {errorMessage && <div className={styles.error}>{errorMessage}</div>}
     </div>
