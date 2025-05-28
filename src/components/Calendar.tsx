@@ -12,9 +12,9 @@ import {
 import classNames from 'classnames';
 import { getLocalTimeZone, fromDate } from '@internationalized/date';
 import { toCalendarDate } from '@/lib/date';
+import { Chevron } from '@/components/icons';
 import { Button } from './Button';
 import { Icon } from './Icon';
-import { Chevron } from './icons';
 import styles from './Calendar.module.css';
 
 export interface CalendarProps

@@ -1,7 +1,7 @@
 import { useState, ReactNode, useRef } from 'react';
 import classNames from 'classnames';
+import { Check, Copy } from '@/components/icons';
 import { Icon } from './Icon';
-import { Check, Copy } from './icons';
 import styles from './CopyButton.module.css';
 
 const TIMEOUT = 2000;

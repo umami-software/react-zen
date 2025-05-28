@@ -6,6 +6,7 @@ import {
   SelectValue,
   SelectValueRenderProps,
 } from 'react-aria-components';
+import { Chevron } from '@/components/icons';
 import { Button, ButtonProps } from './Button';
 import { Box } from './Box';
 import { Column } from './Column';
@@ -13,7 +14,6 @@ import { Label } from './Label';
 import { List, ListProps } from './List';
 import { Popover } from './Popover';
 import { Icon } from './Icon';
-import { Chevron } from './icons';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Loading } from './Loading';

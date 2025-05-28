@@ -7,10 +7,10 @@ import {
   DisclosureGroupProps,
 } from 'react-aria-components';
 import classNames from 'classnames';
+import { Chevron } from '@/components/icons';
 import { Button } from './Button';
 import { Text } from './Text';
 import { Icon } from './Icon';
-import { Chevron } from './icons';
 import styles from './Accordion.module.css';
 
 export interface AccordionProps extends DisclosureGroupProps {

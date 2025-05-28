@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Input, TextField, TextFieldProps } from 'react-aria-components';
 import classNames from 'classnames';
+import { Eye, EyeSlash } from '@/components/icons';
 import { Icon } from './Icon';
-import { Eye, EyeSlash } from './icons';
 import { Label } from './Label';
 import inputStyles from './styles/input.module.css';
 import styles from './PasswordField.module.css';

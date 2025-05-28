@@ -1,9 +1,9 @@
 import { useTransition, animated } from '@react-spring/web';
 import classNames from 'classnames';
 import { PressEvent } from 'react-aria-components';
+import { Sun, Moon } from '@/components/icons';
 import { Button, ButtonProps } from './Button';
 import { Icon } from './Icon';
-import { Sun, Moon } from './icons';
 import { useTheme } from './hooks/useTheme';
 import styles from './ThemeButton.module.css';
 

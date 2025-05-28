@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef } from 'react';
+import { Check, Copy } from '@/components/icons';
 import { Icon } from './Icon';
-import { Check, Copy } from './icons';
 import styles from './CodeBlock.module.css';
 
 export function CodeBlock(props: any) {

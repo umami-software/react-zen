@@ -3,7 +3,7 @@ import {
   CheckboxProps as AriaCheckboxProps,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { Check, Minus } from './icons';
+import { Check, Minus } from '@/components/icons';
 import { Icon } from './Icon';
 import styles from './Checkbox.module.css';
 

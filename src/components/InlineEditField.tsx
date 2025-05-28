@@ -1,8 +1,8 @@
 import { ReactNode, useState, useCallback, HTMLAttributes } from 'react';
 import classNames from 'classnames';
+import { Edit } from '@/components/icons';
 import { TextField } from './TextField';
 import { Icon } from './Icon';
-import { Edit } from './icons';
 import styles from './InlineEditField.module.css';
 
 export interface InlineEditFieldProps extends HTMLAttributes<HTMLDivElement> {

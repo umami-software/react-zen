@@ -8,9 +8,9 @@ import {
   SetStateAction,
 } from 'react';
 import classNames from 'classnames';
+import { Chevron } from '@/components/icons';
 import { Text } from './Text';
 import { Icon } from './Icon';
-import { Chevron } from './icons';
 import { HoverTrigger } from './HoverTrigger';
 import styles from './Navbar.module.css';
 
