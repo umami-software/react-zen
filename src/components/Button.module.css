@@ -64,6 +64,10 @@
   background: var(--highlight-color);
 }
 
+.button.outline:disabled {
+  background: var(--base-color-2);
+}
+
 .button.quiet {
   background: transparent;
 }
