@@ -6,10 +6,10 @@ import {
   SelectValue,
   SelectValueRenderProps,
 } from 'react-aria-components';
+import classNames from 'classnames';
 import { Chevron } from '@/components/icons';
 import { Button, ButtonProps } from './Button';
 import { Box } from './Box';
-import { Column } from './Column';
 import { Label } from './Label';
 import { List, ListProps } from './List';
 import { Popover } from './Popover';
@@ -17,6 +17,7 @@ import { Icon } from './Icon';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Loading } from './Loading';
+import styles from './Select.module.css';
 
 export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items?: any[];
@@ -78,38 +79,39 @@ export function Select({
       onSelectionChange={handleChange}
     >
       {label && <Label>{label}</Label>}
-      <Button variant="outline" {...buttonProps}>
-        <Row alignItems="center" justifyContent="space-between" gap="3">
+      <Button
+        variant="outline"
+        {...buttonProps}
+        className={classNames(styles.button, buttonProps?.className)}
+      >
+        <div className={styles.value}>
           <SelectValue>{renderValue}</SelectValue>
           <Icon aria-hidden="true" rotate={90} size="sm">
             <Chevron />
           </Icon>
-        </Row>
+        </div>
       </Button>
       <Popover {...popoverProps}>
-        <Column>
-          <Box padding="2" border borderRadius backgroundColor shadow="3">
-            {allowSearch && (
-              <Box marginBottom="2">
-                <SearchField
-                  value={search}
-                  onSearch={handleSearch}
-                  delay={searchDelay}
-                  defaultValue={searchValue}
-                  autoFocus
-                />
-              </Box>
-            )}
-            {isLoading && <Loading icon="dots" position="center" size="sm" />}
-            <List
-              {...listProps}
-              items={items}
-              style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
-            >
-              {children}
-            </List>
-          </Box>
-        </Column>
+        <div className={styles.list}>
+          {allowSearch && (
+            <SearchField
+              className={styles.search}
+              value={search}
+              onSearch={handleSearch}
+              delay={searchDelay}
+              defaultValue={searchValue}
+              autoFocus
+            />
+          )}
+          {isLoading && <Loading icon="dots" position="center" size="sm" />}
+          <List
+            {...listProps}
+            items={items}
+            style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
+          >
+            {children}
+          </List>
+        </div>
       </Popover>
     </AriaSelect>
   );

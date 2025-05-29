@@ -16,6 +16,7 @@ import {
   Toggle,
   Slider,
   Row,
+  Box,
 } from '@/components';
 
 const defaultValues = {
@@ -36,13 +37,8 @@ export function FormInputsExample() {
   };
 
   return (
-    <Row gap="4">
-      <Form
-        defaultValues={defaultValues}
-        gap="4"
-        onSubmit={handleSubmit}
-        style={{ width: '300px', margin: '0 auto' }}
-      >
+    <Box width="300px">
+      <Form defaultValues={defaultValues} onSubmit={handleSubmit}>
         <FormField name="name" label="Name">
           <TextField autoComplete="off" />
         </FormField>
@@ -82,6 +78,6 @@ export function FormInputsExample() {
           <FormSubmitButton variant="primary">Submit</FormSubmitButton>
         </FormButtons>
       </Form>
-    </Row>
+    </Box>
   );
 }

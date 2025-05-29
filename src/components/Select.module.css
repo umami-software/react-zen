@@ -1,48 +1,22 @@
 .button {
+  width: 100%;
+}
+
+.value {
   display: flex;
   align-items: center;
-  font-size: var(--font-size);
-  color: var(--font-color);
-  gap: var(--gap);
-  border: var(--border);
-  padding: var(--padding);
-  border-radius: var(--border-radius);
-  background: var(--background-color);
-  cursor: pointer;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .list {
   padding: var(--spacing-2);
-}
-
-.popover {
-  min-width: 200px;
+  background-color: var(--background-color);
   border: var(--border);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-3);
-  background: var(--background-color);
-  overflow: hidden;
-}
-
-.icon {
-  color: var(--font-color-disabled);
-}
-
-.icon:hover {
-  color: var(--font-color);
-  cursor: pointer;
 }
 
 .search {
-  border-bottom: var(--border);
-  outline: none;
-}
-
-.search input {
-  border: 0;
-  box-shadow: none;
-}
-
-.search input[data-focused] {
-  outline: none;
+  margin-bottom: var(--spacing-2);
 }

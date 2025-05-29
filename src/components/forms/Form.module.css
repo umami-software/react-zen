@@ -1,5 +1,6 @@
 .form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   position: relative;
   font-size: var(--font-size);
   gap: var(--gap);
