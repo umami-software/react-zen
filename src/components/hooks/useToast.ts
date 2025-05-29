@@ -5,12 +5,14 @@ import { ToastContext } from '@/components/toast/ToastProvider';
 let TOAST_ID = 1;
 const TOAST_DURATION = 0;
 
+export type ToastVariant = 'success' | 'error';
+
 export interface ToastOptions {
   duration?: number;
   title?: string;
   actions?: string[];
   allowClose?: boolean;
-  variant?: 'info' | 'error';
+  variant?: ToastVariant;
   onClose?: (action?: string) => void;
 }
 

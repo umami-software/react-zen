@@ -42,11 +42,11 @@ export function ToastVariantsExample() {
 
   return (
     <>
+      <Button onPress={() => toast('Your message was sent.', { variant: 'success' })}>
+        Success toast
+      </Button>
       <Button onPress={() => toast('Something went wrong.', { variant: 'error' })}>
         Error toast
-      </Button>
-      <Button onPress={() => toast('Your message was sent.', { variant: 'info' })}>
-        Info toast
       </Button>
     </>
   );

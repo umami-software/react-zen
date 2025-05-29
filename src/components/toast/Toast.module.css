@@ -4,7 +4,8 @@
   grid-template-columns: auto 1fr auto;
   grid-auto-columns: auto;
   align-items: center;
-  background-color: var(--background-color);
+  color: var(--base-color-1);
+  background-color: var(--base-color-12);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-3);
   padding: var(--spacing-4) var(--spacing-5);
@@ -27,9 +28,7 @@
 
 .title {
   grid-area: title;
-  color: var(--font-color);
   font-weight: 700;
-
 }
 
 .description {
@@ -43,12 +42,9 @@
 }
 
 .close {
+  grid-area: action;
   display: none;
   color: currentColor;
-  position: absolute;
-  right: var(--spacing-3);
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .toast:hover .close {
@@ -56,9 +52,9 @@
   cursor: pointer;
 }
 
-.toast.info {
-  color: var(--primary-font-color);
-  background: var(--primary-color);
+.toast.success {
+  color: var(--success-font-color);
+  background: var(--success-color);
   border: 0;
 }
 

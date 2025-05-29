@@ -237,7 +237,7 @@ html[data-theme='dark'], .dark-theme {
   --highlight-font-color: var(--font-color);
 
   --success-color: var(--accent-color-green);
-  --success-font-color: var(--base-color-1);
+  --success-font-color: var(--base-color-12);
 
   --danger-color: var(--accent-color-red);
   --danger-font-color: var(--base-color-12);

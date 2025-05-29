@@ -13,7 +13,7 @@ interface ToastProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
   actions?: string[];
   allowClose?: boolean;
-  variant?: 'info' | 'error';
+  variant?: 'success' | 'error';
   onClose?: (action?: string) => void;
 }
 
@@ -38,17 +38,22 @@ function Toast({
       {hasActions &&
         actions.map(action => {
           return (
-            <Button key={action} className={styles.action} onPress={() => onClose?.(action)}>
+            <Button
+              key={action}
+              variant="outline"
+              className={styles.action}
+              onPress={() => onClose?.(action)}
+            >
               {action}
             </Button>
           );
         })}
       {!hasActions && allowClose && (
         <Icon
-          size="sm"
           aria-hidden
-          className={styles.close}
           aria-label="Close"
+          size="sm"
+          className={styles.close}
           onClick={() => onClose?.(TOAST_CLOSE_ACTION)}
         >
           <Close />
