@@ -3,7 +3,6 @@ import {
   GridDisplay,
   GridAutoFlow,
   Responsive,
-  Spacing,
   GridTemplateRows,
   GridTemplateColumns,
   GridTemplateAreas,
@@ -11,6 +10,7 @@ import {
   AlignItems,
   JustifyContent,
   JustifyItems,
+  Gap,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
@@ -21,9 +21,9 @@ export interface GridProps extends Omit<BoxProps, 'display'> {
   justifyItems?: Responsive<JustifyItems>;
   alignContent?: AlignContent;
   alignItems?: AlignItems;
-  gap?: Responsive<Spacing>;
-  gapX?: Responsive<Spacing>;
-  gapY?: Responsive<Spacing>;
+  gap?: Responsive<Gap>;
+  gapX?: Responsive<Gap>;
+  gapY?: Responsive<Gap>;
   autoFlow?: Responsive<GridAutoFlow>;
   rows?: Responsive<GridTemplateRows>;
   columns?: Responsive<GridTemplateColumns>;

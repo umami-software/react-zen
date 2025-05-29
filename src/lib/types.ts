@@ -63,11 +63,12 @@ export type NegativeSpacing =
   | '-12';
 
 export type Padding = Spacing | NegativeSpacing | true;
-export type Position = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
 export type Top = Spacing | NegativeSpacing | string;
 export type Right = Spacing | NegativeSpacing | string;
 export type Bottom = Spacing | NegativeSpacing | string;
 export type Left = Spacing | NegativeSpacing | string;
+export type Gap = Spacing | true;
+export type Position = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
 export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';

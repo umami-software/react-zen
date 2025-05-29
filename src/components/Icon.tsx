@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
-import { FontColor } from '@/lib/types';
+import { FontColor, StrokeColor, FillColor } from '@/lib/types';
 import { useDesignProps } from '@/components/hooks/useDesignProps';
 import { Slot } from './Slot';
 import styles from './Icon.module.css';
@@ -11,8 +11,8 @@ export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   variant?: 'input';
   rotate?: number;
   strokeWidth?: string;
-  strokeColor?: FontColor;
-  fillColor?: FontColor;
+  strokeColor?: StrokeColor;
+  fillColor?: FillColor;
 }
 
 export function Icon({

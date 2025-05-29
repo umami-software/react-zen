@@ -9,6 +9,7 @@ import {
   JustifyItems,
   AlignContent,
   AlignItems,
+  Gap,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
@@ -21,9 +22,9 @@ export interface FlexboxProps extends Omit<BoxProps, 'display'> {
   justifyItems?: Responsive<JustifyItems>;
   alignContent?: AlignContent;
   alignItems?: AlignItems;
-  gap?: Responsive<Spacing | true>;
-  gapX?: Responsive<Spacing | true>;
-  gapY?: Responsive<Spacing | true>;
+  gap?: Responsive<Gap>;
+  gapX?: Responsive<Gap>;
+  gapY?: Responsive<Gap>;
 }
 
 export function Flexbox({
