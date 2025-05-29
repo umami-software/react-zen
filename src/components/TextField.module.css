@@ -40,6 +40,7 @@
   outline: none;
   padding: var(--padding-y) 0;
   background: transparent;
+  width: 100%;
   flex: 1;
 
   &::placeholder {
@@ -53,5 +54,9 @@
 }
 
 .textarea {
-  padding-right: 0;
+  padding: 0;
+
+  & textarea {
+    padding: var(--padding);
+  }
 }

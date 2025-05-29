@@ -1,4 +1,4 @@
-import { Column, Box, ColumnProps } from '@/components';
+import { Flexbox, FlexboxProps } from '@/components';
 
 export function Example({
   direction = 'column',
@@ -12,11 +12,12 @@ export function Example({
   minHeight = '300px',
   wrap = 'wrap',
   position = 'relative',
+  overflow = 'hidden',
   children,
   ...props
-}: ColumnProps) {
+}: FlexboxProps) {
   return (
-    <Column
+    <Flexbox
       {...props}
       {...{
         direction,
@@ -30,10 +31,10 @@ export function Example({
         minHeight,
         wrap,
         position,
+        overflow,
       }}
-      style={{ overflow: 'hidden' }}
     >
-      <Box width="300px">{children}</Box>
-    </Column>
+      {children}
+    </Flexbox>
   );
 }

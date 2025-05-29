@@ -19,6 +19,7 @@
   border: var(--border);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-3);
+  width: 260px;
 }
 
 .search {
