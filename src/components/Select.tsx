@@ -9,12 +9,10 @@ import {
 import classNames from 'classnames';
 import { Chevron } from '@/components/icons';
 import { Button, ButtonProps } from './Button';
-import { Box } from './Box';
 import { Label } from './Label';
 import { List, ListProps } from './List';
 import { Popover } from './Popover';
 import { Icon } from './Icon';
-import { Row } from './Row';
 import { SearchField } from './SearchField';
 import { Loading } from './Loading';
 import styles from './Select.module.css';
@@ -74,6 +72,7 @@ export function Select({
     <AriaSelect
       aria-label="Select"
       {...props}
+      className={classNames(styles.select, className)}
       selectedKey={value}
       defaultSelectedKey={defaultValue}
       onSelectionChange={handleChange}
