@@ -11,11 +11,22 @@ import styles from './RadioGroup.module.css';
 
 export interface RadioGroupProps extends AriaRadioGroupProps {
   label?: string;
+  variant?: 'circle' | 'box';
 }
 
-export function RadioGroup({ label, children, className, ...props }: RadioGroupProps) {
+export function RadioGroup({
+  variant = 'circle',
+  label,
+  children,
+  className,
+  ...props
+}: RadioGroupProps) {
   return (
-    <AriaRadioGroup {...props} className={classNames(styles.radiogroup, className)}>
+    <AriaRadioGroup
+      aria-label="RadioGroup"
+      {...props}
+      className={classNames(styles.radiogroup, styles[`variant-${variant}`], className)}
+    >
       {label && <Label>{label}</Label>}
       <div className={styles.inputs}>{children as ReactNode}</div>
     </AriaRadioGroup>
@@ -26,7 +37,7 @@ export type { RadioProps };
 
 export function Radio({ children, className, ...props }: RadioProps) {
   return (
-    <AriaRadio {...props} className={classNames(styles.radio, className)}>
+    <AriaRadio aria-label="Radio" {...props} className={classNames(styles.radio, className)}>
       {children}
     </AriaRadio>
   );

@@ -1,4 +1,5 @@
 .radiogroup {
+  display: grid;
   font-size: var(--font-size);
   color: var(--font-color);
 }
@@ -6,7 +7,7 @@
 .inputs {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4);
+  gap: var(--spacing-3);
 }
 
 .radiogroup[data-orientation='vertical'] .inputs {
@@ -15,7 +16,6 @@
 
 .radiogroup[data-orientation='horizontal'] .inputs {
   flex-direction: row;
-  gap: var(--spacing-6);
 }
 
 .radio {
@@ -24,38 +24,78 @@
   gap: var(--gap);
   forced-color-adjust: none;
   cursor: pointer;
-}
-
-.radio:before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 20px;
-  box-sizing: border-box;
-  border: var(--border);
-  background: var(--background-color);
-  border-radius: 20px;
   transition: all 200ms;
-  box-shadow: var(--box-shadow);
 }
 
-.radio[data-pressed]:before {
-  border-color: var(--border-color);
+.radiogroup.variant-circle {
+  &[data-orientation='horizontal'] .inputs {
+    gap: var(--spacing-6);
+  }
+
+  & .radio:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+    border: var(--border);
+    background: var(--background-color);
+    border-radius: 20px;
+    transition: all 200ms;
+    box-shadow: var(--box-shadow);
+  }
+
+  & .radio[data-pressed]:before {
+    border-color: var(--border-color);
+  }
+
+  & .radio[data-selected]:before {
+    border-color: var(--primary-color);
+    border-width: 7px;
+  }
+
+  & .radio[data-selected][data-pressed]:before {
+    border-color: var(--primary-color);
+  }
+
+  & .radio[data-disabled] {
+    color: var(--font-color-muted);
+    cursor: default;
+  }
+
+  & .radio[data-disabled]:before {
+    background-color: var(--base-color-3);
+  }
 }
 
-.radio[data-selected]:before {
-  border-color: var(--primary-color);
-  border-width: 7px;
-}
+.radiogroup.variant-box {
+  & .radio {
+    justify-content: center;
+    padding: var(--padding);
+    border: var(--border);
+    border-radius: var(--border-radius);
+  }
 
-.radio[data-selected][data-pressed]:before {
-  border-color: var(--primary-color);
-}
+  & .radio[data-pressed] {
+    border-color: var(--border-color);
+  }
 
-.radio[data-disabled] {
-  color: var(--font-color-muted);
-}
+  & .radio[data-selected] {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
 
-.radio[data-disabled]:before {
-  background-color: var(--base-color-4);
+  & .radio[data-selected][data-pressed] {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  & .radio[data-disabled] {
+    color: var(--font-color-muted);
+    cursor: default;
+  }
+
+  & .radio[data-disabled] {
+    background-color: var(--base-color-3);
+  }
 }
