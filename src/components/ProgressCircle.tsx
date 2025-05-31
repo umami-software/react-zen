@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import styles from './ProgressCircle.module.css';
 
 export interface ProgressCircleProps extends ProgressBarProps {
-  showValue?: boolean;
+  showPercentage?: boolean;
 }
 
-export function ProgressCircle({ className, showValue, ...props }: ProgressCircleProps) {
+export function ProgressCircle({ className, showPercentage, ...props }: ProgressCircleProps) {
   return (
     <ProgressBar {...props} className={classNames(styles.progresscircle, className)}>
       {({ percentage = 0, valueText }) => {
@@ -27,7 +27,7 @@ export function ProgressCircle({ className, showValue, ...props }: ProgressCircl
                 strokeDashoffset={offset}
               />
             </svg>
-            {showValue && <label className={styles.value}>{valueText}</label>}
+            {showPercentage && <label className={styles.value}>{valueText}</label>}
           </>
         );
       }}

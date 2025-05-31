@@ -6,7 +6,7 @@ import { Text } from './Text';
 import styles from './ConfirmationDialog.module.css';
 
 interface ConfirmationDialogProps extends AlertDialogProps {
-  value?: string;
+  value: string;
   confirmMessage?: ReactNode;
 }
 

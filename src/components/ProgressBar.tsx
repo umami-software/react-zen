@@ -6,10 +6,10 @@ import classNames from 'classnames';
 import styles from './ProgressBar.module.css';
 
 export interface ProgressBarProps extends AriaProgressBarProps {
-  showValue?: boolean;
+  showPercentage?: boolean;
 }
 
-function ProgressBar({ className, showValue, ...props }: ProgressBarProps) {
+function ProgressBar({ className, showPercentage, ...props }: ProgressBarProps) {
   return (
     <AriaProgressBar {...props} className={classNames(styles.progressbar, className)}>
       {({ percentage = 0, valueText }) => {
@@ -18,7 +18,7 @@ function ProgressBar({ className, showValue, ...props }: ProgressBarProps) {
             <div className={styles.track}>
               <div className={styles.fill} style={{ width: `${percentage}%` }} />
             </div>
-            {showValue && <div className={styles.value}>{valueText}</div>}
+            {showPercentage && <div className={styles.value}>{valueText}</div>}
           </>
         );
       }}
