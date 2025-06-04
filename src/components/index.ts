@@ -14,6 +14,7 @@ export type { Selection } from 'react-aria-components';
 export { Form, type FormProps } from './forms/Form';
 export { FormButtons, type FormButtonsProps } from './forms/FormButtons';
 export { FormField, type FormFieldProps } from './forms/FormField';
+export { FormFieldArray, type FormFieldArrayProps } from './forms/FormFieldArray';
 export { FormResetButton, type FormResetButtonProps } from './forms/FormResetButton';
 export { FormSubmitButton } from './forms/FormSubmitButton';
 
