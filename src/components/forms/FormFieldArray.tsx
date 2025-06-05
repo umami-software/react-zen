@@ -1,13 +1,14 @@
 import { HTMLAttributes, ReactNode } from 'react';
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import { FieldValues, RegisterOptions, useFieldArray, useFormContext } from 'react-hook-form';
 import classNames from 'classnames';
-import { Label } from '@/components';
 import styles from './FormField.module.css';
+import { Label } from '../Label';
 
 export interface FormFieldArrayProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   name: string;
   description?: string;
   label?: string;
+  rules?: RegisterOptions<FieldValues, string>;
   children: (props: any) => ReactNode;
 }
 
@@ -15,12 +16,14 @@ export function FormFieldArray({
   name,
   description,
   label,
+  rules,
   className,
   children,
   ...props
 }: FormFieldArrayProps) {
   const context = useFormContext();
-  const { control, formState } = context;
+  const { formState, control } = context;
+
   const fieldProps = useFieldArray({
     control,
     name,
@@ -34,7 +37,7 @@ export function FormFieldArray({
       {label && <Label>{label}</Label>}
       {description && <div className={styles.description}>{description}</div>}
       {errorMessage && <div className={styles.error}>{errorMessage}</div>}
-      {children({ context, ...fieldProps })}
+      {children({ ...context, ...fieldProps })}
     </div>
   );
 }

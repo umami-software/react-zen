@@ -9,6 +9,8 @@ export { ExampleBox } from './ExampleBox';
 export { FloatingTooltipExample } from './FloatingTooltipExample';
 export { FormExample } from './FormExample';
 export { FormInputsExample } from './FormInputsExample';
+export { FormFieldArrayExample } from './FormFieldArrayExample';
+export { FormValidationExample } from './FormValidationExample';
 export { InlineEditExample } from './InlineEditExample';
 export { SearchDelayExample } from './SearchDelayExample';
 export { SelectSearchExample } from './SelectSearchExample';

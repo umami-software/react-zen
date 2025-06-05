@@ -1,12 +1,7 @@
 import { cloneElement, HTMLAttributes, Children } from 'react';
-import {
-  useController,
-  useFormContext,
-  RegisterOptions,
-  UseFormReturn,
-  FieldValues,
-} from 'react-hook-form';
+import { useFormContext, RegisterOptions, UseFormReturn, FieldValues } from 'react-hook-form';
 import classNames from 'classnames';
+import { FormController } from './FormController';
 import styles from './FormField.module.css';
 
 export interface FormFieldProps extends HTMLAttributes<HTMLDivElement>, Partial<UseFormReturn> {
@@ -29,19 +24,20 @@ export function FormField({
   const context = useFormContext();
   const { formState, control } = context;
 
-  const controller = useController({ name, control, rules });
-  const { field } = controller;
-
   const errors = formState?.errors || {};
   const errorMessage = errors[name]?.message as string;
 
   return (
     <div {...props} className={classNames(styles.input, className)}>
-      {Children.map(
-        typeof children === 'function' ? children({ context, controller }) : children,
-        child =>
-          child ? cloneElement(child, { ...field, label: child.props.label || label }) : null,
-      )}
+      <FormController name={name} control={control} rules={rules}>
+        {({ field }) => {
+          return Children.map(
+            typeof children === 'function' ? children({ ...context }) : children,
+            child =>
+              child ? cloneElement(child, { ...field, label: child.props.label || label }) : null,
+          );
+        }}
+      </FormController>
       {description && <div className={styles.description}>{description}</div>}
       {errorMessage && <div className={styles.error}>{errorMessage}</div>}
     </div>

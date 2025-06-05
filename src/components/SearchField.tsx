@@ -17,6 +17,7 @@ export interface SearchFieldProps extends AriaSearchFieldProps {
   value?: string;
   defaultValue?: string;
   delay?: number;
+  onChange?: (value: string) => void;
   onSearch?: (value: string) => void;
 }
 
@@ -26,6 +27,7 @@ export function SearchField({
   value,
   defaultValue = '',
   delay = 0,
+  onChange,
   onSearch,
   className,
   ...props
@@ -39,11 +41,14 @@ export function SearchField({
     if (delay === 0 || value === '') {
       onSearch?.(value);
     }
+
+    onChange?.(value);
   };
 
   const resetSearch = () => {
     setSearch('');
     onSearch?.('');
+    onChange?.('');
   };
 
   useEffect(() => {
