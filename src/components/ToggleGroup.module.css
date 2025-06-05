@@ -42,3 +42,10 @@
 .item[data-disabled] {
   color: var(--font-color-disabled);
 }
+
+.primary {
+  & .item[data-selected] {
+    color: var(--primary-font-color);
+    background-color: var(--primary-color);
+  }
+}
