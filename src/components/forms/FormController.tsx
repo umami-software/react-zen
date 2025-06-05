@@ -8,7 +8,7 @@ import {
   type UseFormStateReturn,
 } from 'react-hook-form';
 
-export interface FormControllerProps extends ControllerProps {
+export interface FormControllerProps extends Omit<ControllerProps, 'render'> {
   children: ({
     field,
     fieldState,
