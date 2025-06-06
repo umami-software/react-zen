@@ -72,6 +72,7 @@ const cssMap = {
   bottom: 'bottom',
   left: 'left',
   order: 'order',
+  zIndex: 'z-index',
   textTransform: 'text-transform',
 };
 
@@ -107,6 +108,7 @@ const excludedProps = [
   'bottom',
   'left',
   'order',
+  'zIndex',
 ];
 
 type Keys = keyof typeof cssMap;

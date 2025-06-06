@@ -91,6 +91,7 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   gridColumn?: Responsive<string>;
 
   order?: Responsive<number>;
+  zIndex?: Responsive<number>;
 
   theme?: string;
 
@@ -149,6 +150,7 @@ export function Box({
   gridRow,
   gridColumn,
   order,
+  zIndex,
   theme,
   as = 'div',
   asChild,
@@ -209,6 +211,7 @@ export function Box({
     gridRow,
     gridColumn,
     order,
+    zIndex,
   });
 
   return (
