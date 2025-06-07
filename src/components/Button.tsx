@@ -5,15 +5,14 @@ import { Slot } from './Slot';
 import styles from './Button.module.css';
 
 export interface ButtonProps extends AriaButtonProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'quiet' | 'danger' | 'zero';
+  variant?: 'primary' | 'outline' | 'quiet' | 'danger' | 'wrapper';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   asChild?: boolean;
-  slot?: string;
   children?: ReactNode;
 }
 
 export function Button({
-  variant = 'secondary',
+  variant,
   size = 'md',
   asChild,
   preventFocusOnPress = true,
@@ -31,7 +30,7 @@ export function Button({
       className={classNames(
         styles.button,
         className,
-        variant && styles[variant],
+        variant && styles[`variant-${variant}`],
         size && styles[size],
       )}
     >

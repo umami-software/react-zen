@@ -32,70 +32,87 @@
   background: color-mix(in srgb, var(--base-color-3), 10% var(--dark-color));
 }
 
-.button.primary {
+.button.variant-primary {
   color: var(--primary-font-color) !important;
   background: var(--primary-color);
 }
 
-.button.primary:hover {
+.button.variant-primary:hover {
   background: color-mix(in srgb, var(--primary-color), 10% var(--primary-font-color));
 }
 
-.button.primary[data-pressed] {
+.button.variant-primary[data-pressed] {
   background: color-mix(in srgb, var(--primary-color), 20% var(--primary-font-color));
 }
 
-.button.primary:disabled {
+.button.variant-primary:disabled {
   color: var(--primary-font-color);
   background: var(--base-color-9);
 }
 
-.button.outline {
+.button.variant-outline {
   background: var(--background-color);
   border: var(--border);
   box-shadow: var(--box-shadow-1);
 }
 
-.button.outline:hover {
+.button.variant-outline:hover {
   border-color: var(--border-color-3);
 }
 
-.button.outline[data-pressed] {
+.button.variant-outline[data-pressed] {
   background: var(--highlight-color);
 }
 
-.button.outline:disabled {
+.button.variant-outline:disabled {
   background: var(--base-color-2);
 }
 
-.button.quiet {
+.button.variant-quiet {
   background: transparent;
 }
 
-.button.quiet:hover {
+.button.variant-quiet:hover {
   background: var(--highlight-color);
 }
 
-.button.quiet[data-pressed] {
+.button.variant-quiet[data-pressed] {
   background: color-mix(in srgb, var(--highlight-color), 5% var(--dark-color));
 }
 
-.button.danger {
+.button.variant-danger {
   color: var(--light-color);
   background: var(--danger-color);
 }
 
-.button.danger:hover {
+.button.variant-danger:hover {
   background: color-mix(in srgb, var(--danger-color), 6% black);
 }
 
-.button.danger[data-pressed] {
+.button.variant-danger[data-pressed] {
   background: color-mix(in srgb, var(--danger-color), 12% black);
 }
 
-.button.danger:disabled {
+.button.variant-danger:disabled {
   color: var(--primary-font-color);
   background: var(--base-color-8);
+}
+
+.button.variant-zero {
+  border: 0;
+  background: transparent;
+}
+
+.button.variant-zero:hover {
+  background: transparent;
+}
+
+.button.variant-zero[data-pressed] {
+  background: transparent;
+}
+
+.button.variant-zero:disabled {
+  background: transparent;
 }
 
 .button.sm {
@@ -122,6 +139,7 @@
   min-height: calc(1.5 * var(--button-height));
 }
 
+/* Links that have button styles */
 body a.button {
   color: inherit;
   text-decoration: none;
