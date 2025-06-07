@@ -1,3 +1,5 @@
+export type Primitive = string | number | boolean | bigint | symbol | null | undefined;
+
 export const Breakpoints = ['', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type Breakpoint = (typeof Breakpoints)[number];
 export type Responsive<T> = T | Partial<Record<Breakpoint, T>>;

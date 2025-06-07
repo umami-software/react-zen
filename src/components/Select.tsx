@@ -19,8 +19,8 @@ import styles from './Select.module.css';
 
 export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items?: any[];
-  value?: string;
-  defaultValue?: string;
+  value?: string | number;
+  defaultValue?: string | number;
   label?: string;
   isLoading?: boolean;
   allowSearch?: boolean;
