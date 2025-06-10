@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, Key } from 'react';
 import {
   ListBox,
   ListBoxProps,
@@ -9,9 +9,11 @@ import {
   Header,
   ListBoxItemProps,
   ListBoxItem,
+  Selection,
 } from 'react-aria-components';
 import classNames from 'classnames';
 import { Icon } from '@/components/Icon';
+import { Label } from '@/components/Label';
 import { Check } from '@/components/icons';
 import { getHighlightColor } from '@/lib/styles';
 import styles from './List.module.css';
@@ -23,6 +25,9 @@ export interface ListProps extends ListBoxProps<any> {
   separatorProperty?: string;
   highlightColor?: string;
   showCheckmark?: boolean;
+  label?: string;
+  value?: string[];
+  onChange?: (value: string[]) => void;
 }
 
 export function List({
@@ -32,34 +37,53 @@ export function List({
   separatorProperty = 'separatpr',
   highlightColor,
   showCheckmark = true,
+  label,
+  value,
+  onChange,
   className,
+  selectedKeys,
+  defaultSelectedKeys,
+  onSelectionChange,
   style,
   children,
   ...props
 }: ListProps) {
-  return (
-    <ListBox
-      aria-label="list"
-      {...props}
-      items={items}
-      className={classNames(styles.list, className, !showCheckmark && styles.hideCheckmark)}
-      style={{ ...style, ...getHighlightColor(highlightColor) }}
-    >
-      {children ||
-        items?.map(item => {
-          const id = item[idProperty] || item.toString();
-          const label = item[labelProperty] || item.toString();
+  const handleSelectionChange = (keys: Selection) => {
+    onSelectionChange?.(keys);
+    if (keys !== 'all') {
+      onChange?.([...keys].map(String));
+    }
+  };
 
-          return (
-            <Fragment key={id}>
-              {item[separatorProperty] && <Separator className={styles.separator} />}
-              <ListItem id={id} className={styles.item}>
-                {label}
-              </ListItem>
-            </Fragment>
-          );
-        })}
-    </ListBox>
+  return (
+    <>
+      {label && <Label>{label}</Label>}
+      <ListBox
+        aria-label="list"
+        {...props}
+        selectedKeys={value || selectedKeys}
+        defaultSelectedKeys={value || defaultSelectedKeys}
+        items={items}
+        className={classNames(styles.list, className, !showCheckmark && styles.hideCheckmark)}
+        onSelectionChange={handleSelectionChange}
+        style={{ ...style, ...getHighlightColor(highlightColor) }}
+      >
+        {children ||
+          items?.map(item => {
+            const id = item[idProperty] || item.toString();
+            const label = item[labelProperty] || item.toString();
+
+            return (
+              <Fragment key={id}>
+                {item[separatorProperty] && <Separator className={styles.separator} />}
+                <ListItem id={id} className={styles.item}>
+                  {label}
+                </ListItem>
+              </Fragment>
+            );
+          })}
+      </ListBox>
+    </>
   );
 }
 

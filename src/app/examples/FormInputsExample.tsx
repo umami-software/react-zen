@@ -15,6 +15,8 @@ import {
   Switch,
   Toggle,
   Slider,
+  List,
+  ListItem,
 } from '@/components';
 
 const defaultValues = {
@@ -27,6 +29,7 @@ const defaultValues = {
   toggle: '',
   switch: '',
   slider: 0,
+  list: [],
 };
 
 export function FormInputsExample() {
@@ -69,6 +72,15 @@ export function FormInputsExample() {
       </FormField>
       <FormField name="slider" label="Slider">
         <Slider />
+      </FormField>
+      <FormField name="list" label="List">
+        <List selectionMode="multiple">
+          <ListItem id="one">One</ListItem>
+          <ListItem id="two">Two</ListItem>
+          <ListItem id="three">Three</ListItem>
+          <ListItem id="four">Four</ListItem>
+          <ListItem id="five">Five</ListItem>
+        </List>
       </FormField>
       <FormButtons>
         <FormResetButton>Reset</FormResetButton>
