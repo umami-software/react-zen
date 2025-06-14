@@ -4,7 +4,22 @@
   justify-content: center;
   align-items: center;
   min-height: 50px;
-  gap: 8px;
+
+  &.size-sm {
+    gap: 4px;
+  }
+
+  &.size-md {
+    gap: 6px;
+  }
+
+  &.size-lg {
+    gap: 10px;
+  }
+
+  &.size-xl {
+    gap: 14px;
+  }
 }
 
 .dot {
@@ -14,6 +29,26 @@
   background: color-mix(in srgb, var(--font-color), 50% transparent);
   animation: dots-blink 1.2s infinite;
   animation-fill-mode: both;
+}
+
+.size-sm  .dot{
+  height: 6px;
+  width: 6px;
+}
+
+.size-md .dot {
+  height: 8px;
+  width: 8px;
+}
+
+.size-lg .dot {
+  height: 12px;
+  width: 12px;
+}
+
+.size-xl .dot {
+  height: 16px;
+  width: 16px;
 }
 
 .dot:nth-child(2) {

@@ -1,19 +1,17 @@
+import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import styles from './Dots.module.css';
 
-interface DotsProps {
-  className?: string;
+export interface DotsProps extends HTMLAttributes<HTMLDivElement> {
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
-function Dots({ className, ...props }: DotsProps) {
+export function Dots({ size = 'md', className, ...props }: DotsProps) {
   return (
-    <div {...props} className={classNames(styles.dots, className)}>
+    <div {...props} className={classNames(styles.dots, className, styles[`size-${size}`])}>
       <div className={styles.dot} />
       <div className={styles.dot} />
       <div className={styles.dot} />
     </div>
   );
 }
-
-export { Dots };
-export type { DotsProps };

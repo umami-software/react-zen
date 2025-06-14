@@ -1,10 +1,10 @@
+import { HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import styles from './Spinner.module.css';
 
-export interface SpinnerProps {
+export interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   quiet?: boolean;
-  className?: string;
   isDisabled?: boolean;
 }
 

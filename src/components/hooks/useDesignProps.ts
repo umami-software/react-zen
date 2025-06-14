@@ -130,34 +130,44 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
     const value = props[key as Keys];
 
     if (value) {
-      // Apply default style
+      // 1. Handle boolean values (e.g., <div display />)
       if (typeof value === 'boolean') {
         classes.push(styles[name]);
       }
-      // Apply defined style
+      // 2. Handle string or number values (e.g., <div fontSize="large" /> or <div padding={10} />)
       else if (typeof value === 'string' || typeof value === 'number') {
+        // If the prop is excluded or already a CSS variable, set as inline style
         if (excludedProps.includes(key) || /var\(.*\)/.test(value.toString())) {
           styleProps[key] = value;
         } else {
+          // Otherwise, try to find a CSS Module class (e.g., 'fontSize-large')
           classes.push(styles[`${name}-${value}`]);
         }
       }
-      // Handle responsive styles
+      // 3. Handle object values (responsive styles, e.g., <div display={{ sm: 'block', md: 'flex' }} />)
       else if (typeof value === 'object') {
         Object.keys(value).forEach(breakpoint => {
           const className = `${name}-${breakpoint}`;
 
           if (styles[className]) {
+            // If a CSS Module class exists for the breakpoint, add it
             classes.push(styles[className]);
+
+            // And set a CSS variable for the actual value at that breakpoint
             styleProps[`--${className}`] = parseValue(name, value[breakpoint]);
           } else {
+            // If no specific CSS Module class, just set the CSS variable
             styleProps[`--${className}`] = value;
           }
         });
 
-        // Add default style
+        // Add a default style (base class for the property)
         classes.push(styles[name]);
+
+        // Find a matching breakpoint from the `Breakpoints` array
         const breakpoint = Breakpoints.find(breakpoint => styles[`${name}-${breakpoint}`]);
+
+        // Set a default CSS variable for the property, potentially using the first matching breakpoint's value
         styleProps[`--${name}`] = breakpoint ? parseValue(name, value[breakpoint]) : value;
       }
     }

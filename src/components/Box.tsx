@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import {
   BackgroundColor,
   BorderColor,
-  BorderPosition,
+  Border,
   BorderRadius,
   BoxShadow,
   Spacing,
@@ -38,7 +38,7 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   hoverBorderColor?: HoverColor;
   fontSize?: Responsive<FontSize>;
   fontWeight?: Responsive<FontWeight>;
-  border?: Responsive<BorderPosition>;
+  border?: Responsive<Border>;
   borderColor?: BorderColor;
   borderRadius?: Responsive<BorderRadius>;
   shadow?: Responsive<BoxShadow>;

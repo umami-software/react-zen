@@ -48,7 +48,20 @@ export type HoverColor = FontColor;
 export type StrokeColor = FontColor;
 export type FillColor = FontColor;
 
-export type Spacing = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+export type Spacing =
+  | '0'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12';
 
 export type NegativeSpacing =
   | '-1'
@@ -75,10 +88,10 @@ export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
 
-export type BorderPosition = true | 'top' | 'right' | 'bottom' | 'left';
-export type BorderRadius = true | '1' | '2' | '3' | '4' | 'full';
+export type Border = true | 'top' | 'right' | 'bottom' | 'left' | 'none';
+export type BorderRadius = '0' | '1' | '2' | '3' | '4' | 'full' | true;
 
-export type BoxShadow = '1' | '2' | '3' | '4' | '5' | '6';
+export type BoxShadow = '0' | '1' | '2' | '3' | '4' | '5' | '6' | 'none';
 
 export type FontSize = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
 export type FontWeight =

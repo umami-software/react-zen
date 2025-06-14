@@ -8,8 +8,8 @@ export {
   RouterProvider,
   Focusable,
   Pressable,
+  type Selection,
 } from 'react-aria-components';
-export type { Selection } from 'react-aria-components';
 
 export { Form, type FormProps } from './forms/Form';
 export { FormButtons, type FormButtonsProps } from './forms/FormButtons';
