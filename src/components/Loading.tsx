@@ -4,7 +4,7 @@ import { Spinner } from './Spinner';
 import styles from './Loading.module.css';
 
 export interface LoadingProps {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg';
   icon?: 'dots' | 'spinner';
   position?: 'page' | 'center' | 'inline';
   className?: string;

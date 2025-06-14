@@ -31,18 +31,13 @@
 }
 
 .size-md svg {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
 }
 
 .size-lg svg {
-  width: 32px;
-  height: 32px;
-}
-
-.size-xl svg {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 }
 
 .quiet .track {

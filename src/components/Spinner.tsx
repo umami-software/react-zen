@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import styles from './Spinner.module.css';
 
 export interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg';
   quiet?: boolean;
   isDisabled?: boolean;
 }
 
 export function Spinner(props: SpinnerProps) {
-  const { size = 'lg', quiet, className, isDisabled, ...domProps } = props;
+  const { size = 'md', quiet, className, isDisabled, ...domProps } = props;
   return (
     <div
       {...domProps}

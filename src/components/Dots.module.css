@@ -14,11 +14,7 @@
   }
 
   &.size-lg {
-    gap: 10px;
-  }
-
-  &.size-xl {
-    gap: 14px;
+    gap: 8px;
   }
 }
 
@@ -31,7 +27,7 @@
   animation-fill-mode: both;
 }
 
-.size-sm  .dot{
+.size-sm .dot{
   height: 6px;
   width: 6px;
 }
@@ -44,11 +40,6 @@
 .size-lg .dot {
   height: 12px;
   width: 12px;
-}
-
-.size-xl .dot {
-  height: 16px;
-  width: 16px;
 }
 
 .dot:nth-child(2) {

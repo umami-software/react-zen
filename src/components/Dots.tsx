@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './Dots.module.css';
 
 export interface DotsProps extends HTMLAttributes<HTMLDivElement> {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg';
 }
 
 export function Dots({ size = 'md', className, ...props }: DotsProps) {
