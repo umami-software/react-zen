@@ -5,7 +5,7 @@ import { Slot } from './Slot';
 import styles from './Button.module.css';
 
 export interface ButtonProps extends AriaButtonProps {
-  variant?: 'primary' | 'outline' | 'quiet' | 'danger' | 'wrapper';
+  variant?: 'primary' | 'outline' | 'quiet' | 'danger' | 'zero';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   asChild?: boolean;
   children?: ReactNode;

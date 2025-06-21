@@ -1,6 +1,7 @@
 import { Switch as AriaSwitch, SwitchProps as AriaSwitchProps } from 'react-aria-components';
 import classNames from 'classnames';
 import { Label } from './Label';
+import { Column } from './Column';
 import styles from './Switch.module.css';
 
 export interface SwitchProps extends AriaSwitchProps {
@@ -8,21 +9,15 @@ export interface SwitchProps extends AriaSwitchProps {
 }
 
 export function Switch({ label, children, className, ...props }: SwitchProps) {
-  const isSelected = typeof props.value !== 'undefined' ? !!props.value : undefined;
-
   return (
-    <>
+    <Column>
       {label && <Label>{label}</Label>}
-      <AriaSwitch
-        {...props}
-        isSelected={isSelected}
-        className={classNames(styles.switch, className)}
-      >
+      <AriaSwitch {...props} className={classNames(styles.switch, className)}>
         <div className={styles.track}>
           <div className={styles.knob} />
         </div>
         {children as any}
       </AriaSwitch>
-    </>
+    </Column>
   );
 }
