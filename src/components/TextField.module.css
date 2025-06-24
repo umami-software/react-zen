@@ -53,10 +53,27 @@
   }
 }
 
+.icon {
+  color: var(--font-color-muted);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--font-color);
+  }
+}
+
 .textarea {
   padding: 0;
 
   & textarea {
     padding: var(--padding);
+  }
+
+  & .icon {
+    position: absolute;
+    top: var(--padding-x);
+    right: var(--padding-x);
+    background-color: var(--background-color);
+    z-index: 1;
   }
 }

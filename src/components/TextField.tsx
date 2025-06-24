@@ -50,14 +50,19 @@ export function TextField({
       <AriaTextField
         aria-label="Text"
         {...props}
-        className={classNames(styles.field, asTextArea && styles.textarea, className)}
+        className={classNames(
+          styles.field,
+          asTextArea && styles.textarea,
+          allowCopy && styles.copy,
+          className,
+        )}
         value={inputValue}
         isReadOnly={isReadOnly}
         isDisabled={isDisabled}
         onChange={handleChange}
       >
         <Component placeholder={placeholder} />
-        {allowCopy && <CopyButton value={inputValue} />}
+        {allowCopy && <CopyButton value={inputValue} className={styles.icon} />}
       </AriaTextField>
     </>
   );

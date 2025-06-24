@@ -26,14 +26,15 @@ A text field allows a user to enter a plain text value with a keyboard.
   <TextField defaultValue="Read only" isReadOnly />
 </Example>
 
-## Copy button
-
-<Example>
-  <TextField value="Here is some text." allowCopy={true} />
-</Example>
-
 ## As textarea
 
 <Example>
-  <TextField placeholder="Enter your name." asTextArea />
+  <TextField placeholder="Enter some text." asTextArea />
+</Example>
+
+## Copy button
+
+<Example>
+  <TextField placeholder="Enter some text." allowCopy />
+  <TextField placeholder="Enter some text." asTextArea allowCopy />
 </Example>
