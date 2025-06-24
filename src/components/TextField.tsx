@@ -15,6 +15,7 @@ export interface TextFieldProps extends AriaTextFieldProps {
   placeholder?: string;
   allowCopy?: boolean;
   asTextArea?: boolean;
+  resize?: 'vertical' | 'horizontal' | 'both' | 'none';
   onChange?: (e: any) => void;
 }
 
@@ -25,6 +26,7 @@ export function TextField({
   placeholder,
   allowCopy,
   asTextArea,
+  resize,
   onChange,
   isReadOnly,
   isDisabled,
@@ -54,6 +56,8 @@ export function TextField({
           styles.field,
           asTextArea && styles.textarea,
           allowCopy && styles.copy,
+          !inputValue && styles.novalue,
+          resize && styles[`resize-${resize}`],
           className,
         )}
         value={inputValue}

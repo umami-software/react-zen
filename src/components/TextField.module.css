@@ -62,6 +62,10 @@
   }
 }
 
+.novalue .icon {
+  color: var(--font-color-disabled);
+}
+
 .textarea {
   padding: 0;
 
@@ -73,7 +77,18 @@
     position: absolute;
     top: var(--padding-x);
     right: var(--padding-x);
-    background-color: var(--background-color);
     z-index: 1;
   }
+}
+
+.resize-vertical {
+  resize: vertical;
+}
+
+.resize-horizontal {
+  resize: horizontal;
+}
+
+.resize-none {
+  resize: none;
 }
