@@ -81,14 +81,14 @@
   }
 }
 
-.resize-vertical {
+.resize-vertical textarea {
   resize: vertical;
 }
 
-.resize-horizontal {
+.resize-horizontal textarea {
   resize: horizontal;
 }
 
-.resize-none {
+.resize-none textarea {
   resize: none;
 }
