@@ -34,6 +34,19 @@ Borders are always solid with a default border color. You can control the `posit
   <ExampleBox borderRadius="full" />
 </Example>
 
+## Border width
+
+<Example gap="5">
+  <Label>Width 1</Label>
+  <ExampleBox borderWidth="1" />
+  <Label>Width 2</Label>
+  <ExampleBox borderWidth="2" />
+  <Label>Width 3</Label>
+  <ExampleBox borderWidth="3" />
+  <Label>Width 4</Label>
+  <ExampleBox borderWidth="4" />
+</Example>
+
 ## Border color
 
 <Example gap="5" direction="row">
@@ -46,11 +59,13 @@ Borders are always solid with a default border color. You can control the `posit
 
 ## CSS variables
 
-Border radius values are defined as a 5-step scale from smallest to largest.
-
 <Example>
   <DataTable
     data={[
+      { name: '--border-width-1', value: '1px' },
+      { name: '--border-width-2', value: '2px' },
+      { name: '--border-width-3', value: '3px' },
+      { name: '--border-width-4', value: '4px' },
       { name: '--border-radius-1', value: '2px' },
       { name: '--border-radius-2', value: '4px' },
       { name: '--border-radius-3', value: '8px' },
@@ -68,7 +83,8 @@ Border radius values are defined as a 5-step scale from smallest to largest.
 <Example>
   <DataTable
     data={[
-      { name: 'border', value: 'Responsive<boolean>' },
+      { name: 'border', value: 'Responsive<boolean | "top" | "right" | "bottom" | "left">' },
+      { name: 'borderWidth', value: 'Responsive<"1" | "2" | "3" | "4">' },
       { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "full">' },
       { name: 'borderColor', value: 'Responsive<BorderColor>' },
     ]}
