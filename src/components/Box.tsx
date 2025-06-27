@@ -25,6 +25,7 @@ import {
   FontWeight,
   Padding,
   HoverColor,
+  BorderWidth,
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
@@ -39,6 +40,7 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   fontSize?: Responsive<FontSize>;
   fontWeight?: Responsive<FontWeight>;
   border?: Responsive<Border>;
+  borderWidth?: Responsive<BorderWidth>;
   borderColor?: BorderColor;
   borderRadius?: Responsive<BorderRadius>;
   shadow?: Responsive<BoxShadow>;
@@ -109,6 +111,7 @@ export function Box({
   fontSize,
   fontWeight,
   border,
+  borderWidth,
   borderColor,
   borderRadius,
   shadow,
@@ -170,6 +173,7 @@ export function Box({
     fontSize,
     fontWeight,
     border,
+    borderWidth,
     borderColor,
     borderRadius,
     shadow,

@@ -156,6 +156,23 @@
   border-left: var(--border-width) solid var(--border-color);
 }
 
+.border-width-0 {
+  border-width: 0;
+}
+.border-width-1 {
+  border: var(--border-width-1) solid var(--border-color);
+
+}
+.border-width-2 {
+  border: var(--border-width-2) solid var(--border-color);
+  }
+.border-width-3 {
+  border: var(--border-width-3) solid var(--border-color);
+}
+.border-width-4 {
+  border: var(--border-width-4) solid var(--border-color);
+}
+
 .border-radius {
   border-radius: var(--border-radius);
 }

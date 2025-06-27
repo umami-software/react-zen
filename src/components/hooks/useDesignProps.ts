@@ -18,6 +18,7 @@ const cssMap = {
   strokeColor: 'stroke-color',
   fillColor: 'fill-color',
   border: 'border',
+  borderWidth: 'border-width',
   borderColor: 'border-color',
   borderRadius: 'border-radius',
   shadow: 'shadow',

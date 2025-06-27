@@ -89,6 +89,7 @@ export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
 
 export type Border = true | 'top' | 'right' | 'bottom' | 'left' | 'none';
+export type BorderWidth = '1' | '2' | '3' | '4';
 export type BorderRadius = '0' | '1' | '2' | '3' | '4' | 'full' | true;
 
 export type BoxShadow = '0' | '1' | '2' | '3' | '4' | '5' | '6' | 'none';
