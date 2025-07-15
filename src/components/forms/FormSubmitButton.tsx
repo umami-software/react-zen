@@ -12,8 +12,6 @@ export function FormSubmitButton({
     formState: { isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful },
   } = useFormContext();
 
-  console.log({ isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful });
-
   return (
     <LoadingButton
       {...props}
