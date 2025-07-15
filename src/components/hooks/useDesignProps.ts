@@ -141,7 +141,7 @@ export function useDesignProps(props: { [K in Keys]?: any }): [string[], { [key:
         if (excludedProps.includes(key) || /var\(.*\)/.test(value.toString())) {
           styleProps[key] = value;
         } else {
-          // Otherwise, try to find a CSS Module class (e.g., 'fontSize-large')
+          // Otherwise, try to find a CSS Module class (e.g., 'font-size-large')
           classes.push(styles[`${name}-${value}`]);
         }
       }

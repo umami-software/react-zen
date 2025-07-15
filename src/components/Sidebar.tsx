@@ -48,10 +48,12 @@ export function Sidebar({
 
 export function SidebarSection({
   title,
+  className,
   children,
+  ...props
 }: { title?: string; children: ReactNode } & ColumnProps) {
   return (
-    <Column className={styles.section}>
+    <Column {...props} className={classNames(styles.section, className)}>
       {title && <div className={styles.title}>{title}</div>}
       <div className={styles.content}>{children}</div>
     </Column>
