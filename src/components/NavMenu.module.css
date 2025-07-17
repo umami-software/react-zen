@@ -29,3 +29,7 @@
     font-weight: var(--font-weight-bold);
   }
 }
+
+.group {
+  gap: var(--gap);
+}

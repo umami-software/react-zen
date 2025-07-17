@@ -92,7 +92,14 @@ export {
   type NavbarProps,
   type NavigationContext,
 } from './Navbar';
-export { NavMenu, NavMenuItem, type NavMenuItemProps, type NavMenuProps } from './NavMenu';
+export {
+  NavMenu,
+  NavMenuItem,
+  NavMenuGroup,
+  type NavMenuItemProps,
+  type NavMenuProps,
+  type NavMenuGroupProps,
+} from './NavMenu';
 export { PasswordField, type PasswordFieldProps } from './PasswordField';
 export { Popover, type PopoverProps } from './Popover';
 export { ProgressBar, type ProgressBarProps } from './ProgressBar';
