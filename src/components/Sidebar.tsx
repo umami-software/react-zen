@@ -32,7 +32,7 @@ export function Sidebar({
       <Column
         {...props}
         className={classNames(
-          styles.sidenav,
+          styles.sidebar,
           isCollapsed && styles.collapsed,
           muteItems && styles.muted,
           variant && styles[`variant-${variant}`],

@@ -1,8 +1,13 @@
-.sidenav {
+:root {
+  --sidebar-expanded-width: 260px;
+  --sidebar-collapsed-width: 68px;
+}
+
+.sidebar {
   height: 100%;
   font-size: var(--font-size);
   border-right: 1px solid var(--border-color);
-  width: 200px;
+  width: var(--sidebar-expanded-width);
   overflow: hidden;
   transition: width 0.1s ease-out;
 }
@@ -66,7 +71,7 @@
 }
 
 .collapsed {
-  width: 68px;
+  width: var(--sidebar-collapsed-width);
   transition: width 0.2s ease-in-out;
 }
 
@@ -118,6 +123,6 @@
   }
 }
 
-.sidenav.noborder {
+.sidebar.noborder {
   border: 0;
 }

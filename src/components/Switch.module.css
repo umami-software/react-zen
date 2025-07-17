@@ -1,3 +1,8 @@
+:root {
+  --switch-knob-size: 16px;
+  --switch-knob-border-size: 2px;
+}
+
 .switch {
   position: relative;
   display: flex;
@@ -5,18 +10,16 @@
   font-size: var(--font-size);
   color: var(--font-color);
   gap: var(--gap);
-  --knob-size: 16px;
-  --knob-border-size: 2px;
 }
 
 .track {
   position: relative;
   display: flex;
   align-items: center;
-  width: calc((var(--knob-size) + var(--knob-border-size)) * 2);
-  height: calc(var(--knob-size) + var(--knob-border-size) * 2);
-  border: var(--knob-border-size) solid transparent;
-  border-radius: calc(var(--knob-size) + var(--knob-border-size) * 2);
+  width: calc((var(--switch-knob-size) + var(--switch-knob-border-size)) * 2);
+  height: calc(var(--switch-knob-size) + var(--switch-knob-border-size) * 2);
+  border: var(--switch-knob-border-size) solid transparent;
+  border-radius: calc(var(--switch-knob-size) + var(--switch-knob-border-size) * 2);
   background: var(--base-color-3);
   transition: background-color 0.2s;
   cursor: pointer;
@@ -25,8 +28,8 @@
 }
 
 .knob {
-  width: var(--knob-size);
-  height: var(--knob-size);
+  width: var(--switch-knob-size);
+  height: var(--switch-knob-size);
   border-radius: 100%;
   background: var(--background-color);
   transition: all 0.2s;
@@ -40,7 +43,7 @@
 }
 
 .switch[data-selected] .knob {
-  margin-left: var(--knob-size);
+  margin-left: var(--switch-knob-size);
   outline-color: var(--primary-color);
 }
 
