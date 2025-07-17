@@ -36,15 +36,13 @@ export function NavMenuGroup({
   isMinimized,
   className,
   children,
+  gap = true,
   ...props
 }: NavMenuGroupProps) {
   const [minimized, setMinimized] = useState(!!isMinimized);
 
   return (
-    <Column
-      {...props}
-      className={classNames(styles.group, className, minimized && styles.minimized)}
-    >
+    <Column {...props} gap={gap} className={classNames(className, minimized && styles.minimized)}>
       <Row
         className={classNames(styles.title, styles.item)}
         alignItems="center"
