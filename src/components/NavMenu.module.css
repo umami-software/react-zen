@@ -5,7 +5,6 @@
 }
 
 .item {
-  color: var(--font-color-muted);
   gap: var(--gap);
   padding: var(--padding);
   border-radius: var(--border-radius);
@@ -28,4 +27,11 @@
     background: var(--highlight-color);
     font-weight: var(--font-weight-bold);
   }
+}
+
+.title {
+  color: var(--font-color-muted);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
 }

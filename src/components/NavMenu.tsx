@@ -44,15 +44,13 @@ export function NavMenuGroup({
   return (
     <Column {...props} gap={gap} className={classNames(className, minimized && styles.minimized)}>
       <Row
-        className={classNames(styles.title, styles.item)}
+        className={styles.item}
         alignItems="center"
         justifyContent="space-between"
         onClick={() => setMinimized(!minimized)}
       >
-        <Text transform="uppercase" size="1" weight="bold" color>
-          {title}
-        </Text>
-        <Icon rotate={minimized ? 0 : 90}>
+        <Text className={styles.title}>{title}</Text>
+        <Icon rotate={minimized ? 0 : 90} color="muted">
           <Chevron />
         </Icon>
       </Row>
