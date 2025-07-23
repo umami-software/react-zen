@@ -87,42 +87,6 @@
   color: var(--font-color);
 }
 
-.variant-quiet {
-  background: transparent;
-
-  & .item:hover,
-  .selected {
-    background: var(--base-color-2);
-  }
-}
-
-.variant-1 {
-  background: var(--base-color-1);
-
-  & .item:hover,
-  .selected {
-    background: var(--base-color-2);
-  }
-}
-
-.variant-2 {
-  background: var(--base-color-2);
-
-  & .item:hover,
-  .selected {
-    background: var(--base-color-3);
-  }
-}
-
-.variant-3 {
-  background: var(--base-color-3);
-
-  & .item:hover,
-  .selected {
-    background: var(--base-color-4);
-  }
-}
-
 .sidebar.noborder {
   border: 0;
 }

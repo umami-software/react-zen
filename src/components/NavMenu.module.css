@@ -19,14 +19,24 @@
 
   &:hover {
     color: var(--font-color);
-    background: var(--highlight-color);
   }
 
   &.selected {
     color: var(--font-color);
-    background: var(--highlight-color);
     font-weight: var(--font-weight-bold);
   }
+}
+
+.muted .item {
+  color: var(--font-color-muted);
+}
+
+.muted .item:hover {
+  color: var(--font-color);
+}
+
+.muted .item.selected {
+  color: var(--font-color);
 }
 
 .title {

@@ -1,26 +1,36 @@
-import { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import classNames from 'classnames';
 import { Column, ColumnProps } from '@/components/Column';
 import { Row, RowProps } from '@/components/Row';
 import { Icon } from '@/components/Icon';
 import { Text } from '@/components/Text';
 import { Chevron } from '@/components/icons';
-import { getHighlightColor } from '@/lib/styles';
 import styles from './NavMenu.module.css';
 
 export interface NavMenuProps extends ColumnProps {
-  highlightColor?: string;
+  itemBackgroundColor?: string;
+  muteItems?: boolean;
 }
 
-export function NavMenu({ highlightColor, className, style, children, ...props }: NavMenuProps) {
+const NavMenuContext = createContext(null as any);
+
+export function NavMenu({
+  itemBackgroundColor = '2',
+  muteItems = true,
+  className,
+  style,
+  children,
+  ...props
+}: NavMenuProps) {
   return (
-    <Column
-      {...props}
-      className={classNames(styles.navmenu, className)}
-      style={{ ...style, ...getHighlightColor(highlightColor) }}
-    >
-      {children}
-    </Column>
+    <NavMenuContext.Provider value={{ itemBackgroundColor }}>
+      <Column
+        {...props}
+        className={classNames(styles.navmenu, muteItems && styles.muted, className)}
+      >
+        {children}
+      </Column>
+    </NavMenuContext.Provider>
   );
 }
 
@@ -64,8 +74,14 @@ export interface NavMenuItemProps extends RowProps {
 }
 
 export function NavMenuItem({ isSelected, className, children, ...props }: NavMenuItemProps) {
+  const { itemBackgroundColor } = useContext(NavMenuContext);
+
   return (
-    <Row {...props} className={classNames(styles.item, className, isSelected && styles.selected)}>
+    <Row
+      {...props}
+      backgroundColor={isSelected && itemBackgroundColor}
+      className={classNames(styles.item, className, isSelected && styles.selected)}
+    >
       {children}
     </Row>
   );

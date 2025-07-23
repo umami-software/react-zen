@@ -16,20 +16,6 @@ A collection of navigation links.
   </Box>
 </Example>
 
-## Highlight color
-
-<Example>
-  <Box width="200px">
-    <NavMenu highlightColor="6">
-      <NavMenuItem isSelected>One</NavMenuItem>
-      <NavMenuItem>Two</NavMenuItem>
-      <NavMenuItem>Three</NavMenuItem>
-      <NavMenuItem>Four</NavMenuItem>
-      <NavMenuItem>Five</NavMenuItem>
-    </NavMenu>
-  </Box>
-</Example>
-
 ## Groups
 
 <Example>
@@ -49,6 +35,34 @@ A collection of navigation links.
         <NavMenuItem>Four</NavMenuItem>
         <NavMenuItem>Five</NavMenuItem>
       </NavMenuGroup>
+    </NavMenu>
+  </Box>
+</Example>
+
+## Not muted
+
+<Example>
+  <Box width="200px">
+    <NavMenu muteItems={false}>
+      <NavMenuItem isSelected>One</NavMenuItem>
+      <NavMenuItem>Two</NavMenuItem>
+      <NavMenuItem>Three</NavMenuItem>
+      <NavMenuItem>Four</NavMenuItem>
+      <NavMenuItem>Five</NavMenuItem>
+    </NavMenu>
+  </Box>
+</Example>
+
+## Custom colors
+
+<Example>
+  <Box width="200px">
+    <NavMenu backgroundColor="2" itemBackgroundColor="3">
+      <NavMenuItem isSelected>One</NavMenuItem>
+      <NavMenuItem>Two</NavMenuItem>
+      <NavMenuItem>Three</NavMenuItem>
+      <NavMenuItem>Four</NavMenuItem>
+      <NavMenuItem>Five</NavMenuItem>
     </NavMenu>
   </Box>
 </Example>

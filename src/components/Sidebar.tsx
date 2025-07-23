@@ -9,7 +9,7 @@ import { Text } from '@/components/Text';
 import styles from './Sidebar.module.css';
 
 export interface SidebarProps extends ColumnProps {
-  variant?: '1' | '2' | '3' | 'quiet';
+  itemBackgroundColor?: string;
   isCollapsed?: boolean;
   muteItems?: boolean;
   showBorder?: boolean;
@@ -19,7 +19,7 @@ export interface SidebarProps extends ColumnProps {
 const SidebarContext = createContext(null as any);
 
 export function Sidebar({
-  variant = '1',
+  itemBackgroundColor = '2',
   isCollapsed,
   muteItems = true,
   showBorder = true,
@@ -28,14 +28,13 @@ export function Sidebar({
   ...props
 }: SidebarProps) {
   return (
-    <SidebarContext.Provider value={{ isCollapsed }}>
+    <SidebarContext.Provider value={{ isCollapsed, itemBackgroundColor }}>
       <Column
         {...props}
         className={classNames(
           styles.sidebar,
           isCollapsed && styles.collapsed,
           muteItems && styles.muted,
-          variant && styles[`variant-${variant}`],
           !showBorder && styles.noborder,
           className,
         )}
@@ -95,13 +94,14 @@ export function SidebarItem({
   label?: string;
   icon?: ReactNode;
 } & SidebarItemProps) {
-  const { isCollapsed } = useContext(SidebarContext);
+  const { isCollapsed, itemBackgroundColor } = useContext(SidebarContext);
 
   return (
     <TooltipTrigger delay={0} closeDelay={0} isDisabled={!isCollapsed}>
       <Focusable>
         <Row
           {...props}
+          backgroundColor={isSelected && itemBackgroundColor}
           className={classNames(styles.item, className, isSelected && styles.selected)}
         >
           {icon && <Icon size="sm">{icon}</Icon>}
