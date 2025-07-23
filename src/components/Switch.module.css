@@ -1,8 +1,3 @@
-:root {
-  --switch-knob-size: 16px;
-  --switch-knob-border-size: 2px;
-}
-
 .switch {
   position: relative;
   display: flex;
@@ -10,6 +5,8 @@
   font-size: var(--font-size);
   color: var(--font-color);
   gap: var(--gap);
+  --switch-knob-size: 16px;
+  --switch-knob-border-size: 2px;
 }
 
 .track {
