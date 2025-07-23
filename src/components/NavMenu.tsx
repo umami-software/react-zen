@@ -80,6 +80,7 @@ export function NavMenuItem({ isSelected, className, children, ...props }: NavMe
     <Row
       {...props}
       backgroundColor={isSelected && itemBackgroundColor}
+      hoverBackgroundColor={itemBackgroundColor}
       className={classNames(styles.item, className, isSelected && styles.selected)}
     >
       {children}
