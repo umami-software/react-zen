@@ -23,36 +23,37 @@ export function DataTable({ data = [], className, children, ...props }: DataTabl
 
   const widths: string[] = [];
 
-  const columns = Children.map(children as ReactElement, (child: ReactElement<any, any>) => {
-    widths.push(child?.props?.width || '1fr');
+  const columns = Children.map(children as ReactElement, (child?: ReactElement<any, any>) => {
+    if (child) {
+      widths.push(child?.props?.width || '1fr');
 
-    return { ...(child.props as DataColumnProps) };
-  });
+      return { ...(child?.props as DataColumnProps) };
+    }
+    return null;
+  })?.filter(n => n);
 
   const gridTemplateColumns = widths.join(' ');
 
   return (
     <Table {...props} className={classNames(styles.datatable, className)}>
       <TableHeader style={{ gridTemplateColumns }}>
-        {columns
-          .filter(n => n)
-          .map(({ id, label, as, hidden, width, ...columnProps }) => {
-            if (hidden) {
-              return null;
-            }
+        {columns?.map(({ id, label, as, hidden, width, ...columnProps }) => {
+          if (hidden) {
+            return null;
+          }
 
-            return (
-              <TableColumn {...columnProps} key={id} id={id}>
-                {label}
-              </TableColumn>
-            );
-          })}
+          return (
+            <TableColumn {...columnProps} key={id} id={id}>
+              {label}
+            </TableColumn>
+          );
+        })}
       </TableHeader>
       <TableBody>
         {items.map((row, index) => {
           return (
             <TableRow key={index} style={{ gridTemplateColumns }}>
-              {columns.map(({ id, as, hidden, className, children, ...cellProps }) => {
+              {columns?.map(({ id, as, hidden, className, children, ...cellProps }) => {
                 if (hidden) {
                   return null;
                 }
