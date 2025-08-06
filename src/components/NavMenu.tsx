@@ -42,7 +42,7 @@ export interface NavMenuGroupProps extends ColumnProps {
 
 export function NavMenuGroup({
   title,
-  allowMinimize,
+  allowMinimize = true,
   isMinimized,
   className,
   children,
@@ -52,7 +52,11 @@ export function NavMenuGroup({
   const [minimized, setMinimized] = useState(!!isMinimized);
 
   return (
-    <Column {...props} gap={gap} className={classNames(className, minimized && styles.minimized)}>
+    <Column
+      {...props}
+      gap={gap}
+      className={classNames(className, allowMinimize && minimized && styles.minimized)}
+    >
       <Row
         className={styles.item}
         alignItems="center"
@@ -60,9 +64,11 @@ export function NavMenuGroup({
         onClick={() => setMinimized(!minimized)}
       >
         <Text className={styles.title}>{title}</Text>
-        <Icon rotate={minimized ? 0 : 90} color="muted">
-          <Chevron />
-        </Icon>
+        {allowMinimize && (
+          <Icon rotate={minimized ? 0 : 90} color="muted">
+            <Chevron />
+          </Icon>
+        )}
       </Row>
       {!minimized && children}
     </Column>
