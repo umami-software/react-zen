@@ -51,6 +51,12 @@ export function NavMenuGroup({
 }: NavMenuGroupProps) {
   const [minimized, setMinimized] = useState(!!isMinimized);
 
+  const handleClick = () => {
+    if (allowMinimize) {
+      setMinimized(state => !state);
+    }
+  };
+
   return (
     <Column
       {...props}
@@ -61,7 +67,7 @@ export function NavMenuGroup({
         className={styles.item}
         alignItems="center"
         justifyContent="space-between"
-        onClick={() => setMinimized(!minimized)}
+        onClick={handleClick}
       >
         <Text className={styles.title}>{title}</Text>
         {allowMinimize && (
