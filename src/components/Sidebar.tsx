@@ -106,7 +106,7 @@ export function SidebarItem({
           className={classNames(styles.item, className, isSelected && styles.selected)}
         >
           {icon && <Icon size="sm">{icon}</Icon>}
-          {label && <Text className={classNames(styles.label)}>{label}</Text>}
+          {label && !isCollapsed && <Text className={classNames(styles.label)}>{label}</Text>}
           {children}
         </Row>
       </Focusable>
