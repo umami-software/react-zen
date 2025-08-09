@@ -73,7 +73,7 @@ export function SidebarHeader({
   return (
     <Row {...props} className={classNames(styles.header, className)}>
       {icon && <Icon size="sm">{icon}</Icon>}
-      <div className={classNames(styles.name, styles.label)}>{label}</div>
+      {label && <div className={styles.label}>{label}</div>}
       {children}
     </Row>
   );

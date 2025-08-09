@@ -16,7 +16,7 @@
   padding: var(--padding);
 }
 
-.name {
+.header .label {
   font-weight: var(--font-weight-bold);
 }
 
@@ -70,14 +70,12 @@
   transition: width 0.2s ease-in-out;
 }
 
-.collapsed .label {
-  opacity: 0;
-  width: 0;
-  transition: all 0.3s;
-}
-
 .collapsed .item {
   gap: 0;
+}
+
+.collapsed .label {
+  display: none;
 }
 
 .muted .item {
