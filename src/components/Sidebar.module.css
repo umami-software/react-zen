@@ -51,6 +51,14 @@
   overflow: hidden;
 }
 
+.item.selected {
+  font-weight: var(--font-weight-bold);
+}
+
+.item.collapsed {
+  gap: 0;
+}
+
 .item:hover {
   color: var(--font-color);
 }
