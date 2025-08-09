@@ -103,12 +103,7 @@ export function SidebarItem({
           {...props}
           backgroundColor={isSelected && itemBackgroundColor}
           hoverBackgroundColor={itemBackgroundColor}
-          className={classNames(
-            styles.item,
-            className,
-            isSelected && styles.selected,
-            isCollapsed && styles.collapsed,
-          )}
+          className={classNames(styles.item, className, isSelected && styles.selected)}
         >
           {icon && <Icon size="sm">{icon}</Icon>}
           {label && <Text className={classNames(styles.label)}>{label}</Text>}

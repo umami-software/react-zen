@@ -55,10 +55,6 @@
   font-weight: var(--font-weight-bold);
 }
 
-.item.collapsed {
-  gap: 0;
-}
-
 .item:hover {
   color: var(--font-color);
 }
@@ -69,15 +65,19 @@
   transition: all 0.3s;
 }
 
+.collapsed {
+  width: var(--sidebar-collapsed-width);
+  transition: width 0.2s ease-in-out;
+}
+
 .collapsed .label {
   opacity: 0;
   width: 0;
   transition: all 0.3s;
 }
 
-.collapsed {
-  width: var(--sidebar-collapsed-width);
-  transition: width 0.2s ease-in-out;
+.collapsed .item {
+  gap: 0;
 }
 
 .muted .item {
