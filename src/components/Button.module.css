@@ -15,7 +15,6 @@
   position: relative;
   cursor: pointer;
   line-height: 1.5;
-  --button-height: calc(1.5 * var(--font-size) + 2 * var(--padding-y))
 }
 
 .button:disabled {
@@ -118,25 +117,21 @@
 .button.sm {
   font-size: calc(0.9 * var(--font-size));
   padding: calc(0.5 * var(--padding-y)) calc(0.75 * var(--padding-x));
-  min-height: calc(0.9 * var(--button-height));
 }
 
 .button.md {
   font-size: var(--font-size);
   padding: var(--padding);
-  min-height: var(--button-height);
 }
 
 .button.lg {
   font-size: calc(1.25 * var(--font-size));
   padding: var(--padding-y) calc(1.25 * var(--padding-x));
-  min-height: calc(1.25 * var(--button-height));
 }
 
 .button.xl {
   font-size: calc(1.5 * var(--font-size));
   padding: calc(1.25 * var(--padding-y)) calc(1.25 * var(--padding-x));
-  min-height: calc(1.5 * var(--button-height));
 }
 
 /* Links that have button styles */
