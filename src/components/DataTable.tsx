@@ -58,7 +58,8 @@ export function DataTable({ data = [], className, children, ...props }: DataTabl
                   return null;
                 }
 
-                const value = typeof children === 'function' ? children(row) : children || row[id];
+                const value =
+                  typeof children === 'function' ? children(row, index) : children || row[id];
 
                 return (
                   <TableCell
@@ -85,7 +86,7 @@ export interface DataColumnProps extends Omit<HTMLAttributes<any>, 'children'> {
   width?: string;
   as?: string;
   hidden?: boolean;
-  children?: ReactNode | ((props: DataColumnProps) => void);
+  children?: ReactNode | ((row: any, index: number) => void);
 }
 
 export function DataColumn(props: DataColumnProps) {
