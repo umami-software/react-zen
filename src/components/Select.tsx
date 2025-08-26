@@ -68,6 +68,10 @@ export function Select({
     onSearch?.(value);
   };
 
+  const handleOpenChange = () => {
+    setSearch('');
+  };
+
   return (
     <AriaSelect
       aria-label="Select"
@@ -90,7 +94,7 @@ export function Select({
           </Icon>
         </div>
       </Button>
-      <Popover {...popoverProps}>
+      <Popover {...popoverProps} onOpenChange={handleOpenChange}>
         <div className={styles.list}>
           {allowSearch && (
             <SearchField
