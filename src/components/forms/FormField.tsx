@@ -32,9 +32,13 @@ export function FormField({
       <FormController name={name} control={control} rules={rules}>
         {({ field }) => {
           return Children.map(
-            typeof children === 'function' ? children({ ...context }) : children,
-            child =>
-              child ? cloneElement(child, { ...field, label: child?.props?.label || label }) : null,
+            typeof children === 'function' ? children({ ...context, field }) : children,
+            child => {
+              if (!child) {
+                return null;
+              }
+              return cloneElement(child, { ...field, label: child?.props?.label || label });
+            },
           );
         }}
       </FormController>
