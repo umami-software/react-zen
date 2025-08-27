@@ -70,6 +70,7 @@ export function Select({
 
   const handleOpenChange = () => {
     setSearch('');
+    onSearch?.('');
   };
 
   return (
