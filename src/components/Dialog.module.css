@@ -1,6 +1,8 @@
 .dialog {
   position: relative;
   outline: none;
+  max-height: 100vh;
+  max-width: 100vw;
   overflow: auto;
 }
 

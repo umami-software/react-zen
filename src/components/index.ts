@@ -46,7 +46,7 @@ export {
 export { Button, type ButtonProps } from './Button';
 export { Calendar, type CalendarProps } from './Calendar';
 export { Checkbox, type CheckboxProps } from './Checkbox';
-export { ComboBox, type ComboboxProps } from './ComboBox';
+export { ComboBox, type ComboBoxProps } from './ComboBox';
 export { Code, type CodeProps } from './Code';
 export { Column, type ColumnProps } from './Column';
 export { Container, type ContainerProps } from './Container';

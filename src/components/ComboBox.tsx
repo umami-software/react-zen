@@ -5,8 +5,6 @@ import {
   Input,
   Popover,
   Button,
-  ListBox,
-  ListBoxItem,
   ListBoxRenderProps,
   PopoverProps,
 } from 'react-aria-components';
@@ -17,7 +15,7 @@ import { Icon } from './Icon';
 import { Grid } from './Grid';
 import styles from './ComboBox.module.css';
 
-export interface ComboboxProps extends AriaComboBoxProps<any> {
+export interface ComboBoxProps extends AriaComboBoxProps<any> {
   items?: any[];
   renderEmptyState?: (props: ListBoxRenderProps) => ReactNode;
   listProps?: ListProps;
@@ -32,9 +30,13 @@ export function ComboBox({
   popoverProps,
   children,
   ...props
-}: ComboboxProps) {
+}: ComboBoxProps) {
   return (
-    <AriaComboBox {...props} className={classNames(styles.combobox, className)}>
+    <AriaComboBox
+      aria-label="ComboBox"
+      {...props}
+      className={classNames(styles.combobox, className)}
+    >
       <Grid alignItems="center" columns="1fr auto" width="100%">
         <Input className={styles.input} />
         <Button className={styles.button}>
