@@ -46,7 +46,6 @@ export function NavMenuGroup({
   isMinimized,
   className,
   children,
-  gap = true,
   ...props
 }: NavMenuGroupProps) {
   const [minimized, setMinimized] = useState(!!isMinimized);
@@ -59,9 +58,13 @@ export function NavMenuGroup({
 
   return (
     <Column
+      gap={true}
       {...props}
-      gap={gap}
-      className={classNames(className, allowMinimize && minimized && styles.minimized)}
+      className={classNames(
+        className,
+        allowMinimize && styles.clickable,
+        allowMinimize && minimized && styles.minimized,
+      )}
     >
       <Row
         className={styles.item}

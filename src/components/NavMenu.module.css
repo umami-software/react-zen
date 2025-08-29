@@ -8,7 +8,6 @@
   gap: var(--gap);
   padding: var(--padding);
   border-radius: var(--border-radius);
-  cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
   transition: color 0.2s;
@@ -40,8 +39,10 @@
 }
 
 .title {
-  color: var(--font-color-muted);
-  font-size: var(--font-size-1);
+  color: var(--font-color);
   font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
+}
+
+.clickable {
+  cursor: pointer;
 }
