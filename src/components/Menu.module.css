@@ -26,7 +26,6 @@
 .item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--gap);
   font-size: var(--font-size);
   color: var(--font-color);

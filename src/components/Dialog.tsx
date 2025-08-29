@@ -11,6 +11,7 @@ interface DialogProps extends AriaDialogProps {
 function Dialog({ title, variant = 'modal', children, className, ...props }: DialogProps) {
   return (
     <AriaDialog
+      aria-label="Dialog"
       {...props}
       className={classNames(styles.dialog, variant && styles[variant], className)}
     >

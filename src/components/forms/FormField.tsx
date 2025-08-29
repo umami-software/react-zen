@@ -22,17 +22,15 @@ export function FormField({
   ...props
 }: FormFieldProps) {
   const context = useFormContext();
-  const { formState, control } = context;
-
-  const errors = formState?.errors || {};
-  const errorMessage = errors[name]?.message as string;
+  const { control } = context;
+  const { invalid, error } = context.getFieldState(name);
 
   return (
     <div {...props} className={classNames(styles.input, className)}>
       <FormController name={name} control={control} rules={rules}>
         {({ field }) => {
           return Children.map(
-            typeof children === 'function' ? children({ ...context, field }) : children,
+            typeof children === 'function' ? children({ context, field }) : children,
             child => {
               if (!child) {
                 return null;
@@ -43,7 +41,7 @@ export function FormField({
         }}
       </FormController>
       {description && <div className={styles.description}>{description}</div>}
-      {errorMessage && <div className={styles.error}>{errorMessage}</div>}
+      {invalid && <div className={styles.error}>{error?.message}</div>}
     </div>
   );
 }
