@@ -64,13 +64,13 @@ function Form({
 
   useEffect(() => {
     formValues.reset(values);
-  }, [values]);
+  }, [formValues, values]);
 
   useEffect(() => {
     if (formValues.formState.isSubmitted) {
       formValues.reset(undefined, { keepDirty: true, keepValues: true });
     }
-  }, [error]);
+  }, [error, formValues]);
 
   return (
     <FormProvider {...formValues}>

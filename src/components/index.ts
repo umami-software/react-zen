@@ -25,7 +25,7 @@ export { ToastProvider, type ToastProviderProps } from './toast/ToastProvider';
 
 export { useDebounce } from './hooks/useDebounce';
 export { useTheme } from './hooks/useTheme';
-export { useToast } from './hooks/useToast';
+export { useToast, type ToastOptions, type ToastVariant, type ToastState } from './hooks/useToast';
 
 export {
   Accordion,
