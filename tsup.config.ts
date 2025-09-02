@@ -10,4 +10,8 @@ export default defineConfig({
   clean: true,
   // You might need to adjust external based on your package's dependencies
   external: ['react', 'react-dom', 'react/jsx-runtime'],
+  esbuildOptions(options) {
+    options.sourceRoot = '/';
+    options.sourcesContent = false;
+  },
 });
