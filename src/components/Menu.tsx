@@ -7,6 +7,8 @@ import {
   MenuSectionProps as AriaMenuSectionProps,
   MenuItemProps as AriaMenuItemProps,
   MenuProps as AriaMenuProps,
+  SubmenuTrigger as AriaSubmenuTrigger,
+  SubmenuTriggerProps as AriaSubmenuTriggerProps,
   Separator,
   SeparatorProps,
 } from 'react-aria-components';
@@ -62,4 +64,10 @@ export function MenuSection({ title, className, children, ...props }: MenuSectio
       {children as any}
     </AriaMenuSection>
   );
+}
+
+export interface SubmenuTriggerProps extends AriaSubmenuTriggerProps {}
+
+export function SubMenuTrigger({ children, ...props }: SubmenuTriggerProps) {
+  return <AriaSubmenuTrigger {...props}>{children}</AriaSubmenuTrigger>;
 }

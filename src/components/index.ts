@@ -79,9 +79,11 @@ export {
   MenuItem,
   MenuSection,
   MenuSeparator,
+  SubMenuTrigger,
   type MenuProps,
   type MenuItemProps,
   type MenuSectionProps,
+  type SubmenuTriggerProps,
 } from './Menu';
 export { Modal, type ModalProps } from './Modal';
 export {

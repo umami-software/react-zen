@@ -79,3 +79,25 @@ A menu displays a list of actions or options that a user can choose.
     <MenuItem id="five">Five</MenuItem>
   </Menu>
 </Example>
+
+## Submenu
+
+<Example>
+  <Menu>
+    <MenuItem id="one">One</MenuItem>
+    <MenuItem id="two">Two</MenuItem>
+    <MenuItem id="three">Three</MenuItem>
+    <MenuItem id="four">Four</MenuItem>
+    <SubMenuTrigger>
+      <MenuItem id="five">Five</MenuItem>
+      <Popover>
+        <Menu>
+          <MenuItem id="six">Six</MenuItem>
+          <MenuItem id="seven">Seven</MenuItem>
+          <MenuItem id="eight">Eight</MenuItem>
+        </Menu>
+      </Popover>
+    </SubMenuTrigger>
+
+  </Menu>
+</Example>
