@@ -35,7 +35,7 @@ export interface MenuItemProps extends AriaMenuItemProps {
 export function MenuItem({ showChecked = true, children, className, ...props }: MenuItemProps) {
   return (
     <AriaMenuItem {...props} className={classNames(styles.item, className)}>
-      {children as any}
+      <div className={styles.label}>{children as any}</div>
       {showChecked && (
         <div aria-hidden="true" className={styles.checkmark}>
           <Icon>

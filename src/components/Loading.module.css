@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-.page {
+.absolute {
   position: absolute;
   top: 0;
   left: 0;

@@ -6,15 +6,20 @@ import styles from './Loading.module.css';
 export interface LoadingProps {
   size?: 'sm' | 'md' | 'lg';
   icon?: 'dots' | 'spinner';
-  position?: 'page' | 'center' | 'inline';
+  placement?: 'absolute' | 'center' | 'inline';
   className?: string;
 }
 
-export function Loading(props: LoadingProps) {
-  const { size, position = 'inline', icon = 'spinner', className, ...domProps } = props;
+export function Loading({
+  size,
+  placement = 'inline',
+  icon = 'spinner',
+  className,
+  ...props
+}: LoadingProps) {
   return (
-    <div {...domProps} className={classNames(styles.loading, className, styles[position])}>
-      {icon === 'dots' && <Dots />}
+    <div {...props} className={classNames(styles.loading, className, styles[placement])}>
+      {icon === 'dots' && <Dots size={size} />}
       {icon === 'spinner' && <Spinner size={size} />}
     </div>
   );
