@@ -13,8 +13,9 @@ import {
   SeparatorProps,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { Check } from '@/components/icons';
+import { Check, Chevron } from '@/components/icons';
 import { Icon } from './Icon';
+import { Text } from './Text';
 import styles from './Menu.module.css';
 
 export interface MenuProps extends AriaMenuProps<any> {
@@ -31,19 +32,37 @@ export function Menu({ className, children, ...props }: MenuProps) {
 }
 
 export interface MenuItemProps extends AriaMenuItemProps {
+  icon?: ReactNode;
+  label?: string;
   showChecked?: boolean;
+  showSubMenuIcon?: boolean;
 }
 
-export function MenuItem({ showChecked = true, children, className, ...props }: MenuItemProps) {
+export function MenuItem({
+  icon,
+  label,
+  showChecked = true,
+  showSubMenuIcon,
+  children,
+  className,
+  ...props
+}: MenuItemProps) {
   return (
     <AriaMenuItem {...props} className={classNames(styles.item, className)}>
-      <div className={styles.label}>{children as any}</div>
+      <div className={styles.label}>
+        {icon && <Icon>{icon}</Icon>}
+        {label && <Text>{label}</Text>}
+        {children as any}
+      </div>
       {showChecked && (
-        <div aria-hidden="true" className={styles.checkmark}>
-          <Icon>
-            <Check />
-          </Icon>
-        </div>
+        <Icon aria-hidden="true" className={styles.checkmark}>
+          <Check />
+        </Icon>
+      )}
+      {showSubMenuIcon && (
+        <Icon aria-hidden="true">
+          <Chevron />
+        </Icon>
       )}
     </AriaMenuItem>
   );
