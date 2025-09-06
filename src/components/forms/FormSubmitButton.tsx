@@ -9,7 +9,7 @@ export function FormSubmitButton({
   ...props
 }: LoadingButtonProps) {
   const {
-    formState: { isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful },
+    formState: { isDirty, isValid, isSubmitting, isLoading: formLoading },
   } = useFormContext();
 
   return (
@@ -17,8 +17,8 @@ export function FormSubmitButton({
       {...props}
       type="submit"
       variant={variant}
-      isDisabled={isDisabled !== undefined ? isDisabled : !isDirty || !isValid || isSubmitting}
-      isLoading={isLoading !== undefined ? isLoading : isSubmitting}
+      isDisabled={isDisabled ?? (!isDirty || !isValid || isSubmitting)}
+      isLoading={isLoading ?? (formLoading || isSubmitting)}
     >
       {children}
     </LoadingButton>
