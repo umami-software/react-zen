@@ -13,7 +13,7 @@ export interface AlertBannerProps {
   title?: ReactNode;
   description?: ReactNode;
   icon?: ReactNode;
-  variant?: 'error';
+  variant?: 'error' | 'info';
   align?: 'start' | 'center' | 'end';
   allowClose?: boolean;
   onClose?: () => void;

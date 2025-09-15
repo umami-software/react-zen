@@ -1,6 +1,7 @@
 import { cloneElement, HTMLAttributes, Children, useId } from 'react';
 import { useFormContext, RegisterOptions, UseFormReturn, FieldValues } from 'react-hook-form';
 import classNames from 'classnames';
+import { useFieldId } from '@/components/hooks/useFieldId';
 import { FormController } from './FormController';
 import styles from './FormField.module.css';
 import { Label } from '../Label';
@@ -23,14 +24,13 @@ export function FormField({
   children,
   ...props
 }: FormFieldProps) {
-  const generatedId = useId();
+  const fieldId = useFieldId(id);
   const context = useFormContext();
   const { control } = context;
   const { invalid, error } = context.getFieldState(name);
-  const fieldId = id ?? generatedId;
 
   return (
-    <div {...props} id={id} className={classNames(styles.input, className)}>
+    <div {...props} className={classNames(styles.input, className)}>
       {label && <Label htmlFor={fieldId}>{label}</Label>}
       <FormController name={name} control={control} rules={rules}>
         {({ field }) => {

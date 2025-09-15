@@ -1,4 +1,4 @@
-import { Fragment, Key } from 'react';
+import { Fragment } from 'react';
 import {
   ListBox,
   ListBoxProps,
@@ -15,6 +15,7 @@ import classNames from 'classnames';
 import { Icon } from '@/components/Icon';
 import { Label } from '@/components/Label';
 import { Check } from '@/components/icons';
+import { useFieldId } from '@/components/hooks/useFieldId';
 import { getHighlightColor } from '@/lib/styles';
 import styles from './List.module.css';
 
@@ -31,7 +32,8 @@ export interface ListProps extends ListBoxProps<any> {
 }
 
 export function List({
-  items,
+  id,
+  items = [],
   idProperty = 'id',
   labelProperty = 'label',
   separatorProperty = 'separatpr',
@@ -54,11 +56,13 @@ export function List({
       onChange?.([...keys].map(String));
     }
   };
+  const fieldId = useFieldId(id);
 
   return (
     <>
-      {label && <Label>{label}</Label>}
+      {label && <Label htmlFor={fieldId}>{label}</Label>}
       <ListBox
+        id={fieldId}
         aria-label="list"
         {...props}
         selectedKeys={value || selectedKeys}
