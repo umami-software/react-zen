@@ -1,20 +1,26 @@
 import { ReactNode } from 'react';
 import { ToastProvider } from '@/components/toast/ToastProvider';
 import { ToasterProps } from '@/components/toast/Toaster';
+import { useInitTheme, Theme } from '@/components/hooks/useTheme';
 
-const defaultToastCofig = {
+const defaultToastConfig = {
   duration: 3000,
 };
 
 interface ZenProviderProps {
-  theme?: string;
+  theme?: Theme;
   colorScheme?: 'light' | 'dark' | 'system';
   toast?: ToasterProps;
   children: ReactNode;
 }
 
-function ZenProvider({ children, ...props }: ZenProviderProps) {
-  const { toast = defaultToastCofig } = props;
+function ZenProvider({
+  children,
+  theme,
+  colorScheme,
+  toast = defaultToastConfig,
+}: ZenProviderProps) {
+  useInitTheme(theme, colorScheme);
 
   return <ToastProvider {...toast}>{children}</ToastProvider>;
 }

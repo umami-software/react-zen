@@ -148,7 +148,7 @@ export {
 } from './Tabs';
 export { Text, type TextProps } from './Text';
 export { TextField, type TextFieldProps } from './TextField';
-export { ThemeButton, type ThemeButtonProps } from './ThemeButton';
+export { ThemeButton } from './ThemeButton';
 export { Toggle, type ToggleProps } from './Toggle';
 export {
   ToggleGroup,
