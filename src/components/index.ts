@@ -61,6 +61,7 @@ export { Grid, type GridProps } from './Grid';
 export { Heading, type HeadingProps } from './Heading';
 export { HoverTrigger, type HoverButtonProps } from './HoverTrigger';
 export { Icon, type IconProps } from './Icon';
+export { IconLabel, type IconLabelProps } from './IconLabel';
 export { Image, type ImageProps } from './Image';
 export { InlineEditField, type InlineEditFieldProps } from './InlineEditField';
 export { Label, type LabelProps } from './Label';

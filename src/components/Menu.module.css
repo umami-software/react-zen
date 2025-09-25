@@ -5,6 +5,7 @@
   padding: var(--spacing-2);
   box-shadow: var(--box-shadow-3);
   background: var(--background-color);
+  overflow: hidden;
 }
 
 .separator {

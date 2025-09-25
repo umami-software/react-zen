@@ -5,7 +5,7 @@ import { useDesignProps } from '@/components/hooks/useDesignProps';
 import { Slot } from './Slot';
 import styles from './Icon.module.css';
 
-export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
+export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'color' | 'size'> {
   color?: FontColor;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'input';
@@ -27,7 +27,7 @@ export function Icon({
   className,
   children,
   ...props
-}: IconProps & HTMLAttributes<HTMLElement>) {
+}: IconProps) {
   const [classes, styleProps] = useDesignProps({
     strokeColor,
     fillColor,

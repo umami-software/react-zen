@@ -57,6 +57,7 @@
             { "label": "Form", "url": "/docs/components/form" },
             { "label": "Hover Trigger", "url": "/docs/components/hover-trigger" },
             { "label": "Icon", "url": "/docs/components/icon" },
+            { "label": "Icon Label", "url": "/docs/components/icon-label" },
             { "label": "Image", "url": "/docs/components/image" },
             { "label": "Inline Edit Field", "url": "/docs/components/inline-edit-field" },
             { "label": "List", "url": "/docs/components/list" },

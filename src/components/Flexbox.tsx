@@ -14,7 +14,7 @@ import {
 import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
 
-export interface FlexboxProps extends Omit<BoxProps, 'display'> {
+export interface FlexboxProps extends Omit<BoxProps, 'display' | 'gap'> {
   display?: Responsive<FlexDisplay>;
   direction?: Responsive<FlexDirection>;
   wrap?: Responsive<FlexWrap>;

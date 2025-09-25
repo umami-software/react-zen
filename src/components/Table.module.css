@@ -4,6 +4,7 @@
   border-collapse: collapse;
   width: 100%;
   position: relative;
+  --table-row-height: 40px;
 }
 
 .table th,
@@ -28,6 +29,7 @@
 .row {
   display: grid;
   border-bottom: 1px solid color-mix(in srgb, var(--border-color), 50% transparent);
+  min-height: var(--table-row-height);
 }
 
 .header .column:first-child,

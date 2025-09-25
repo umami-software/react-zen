@@ -17,6 +17,7 @@ import { Check, Chevron } from '@/components/icons';
 import { Icon } from './Icon';
 import { Text } from './Text';
 import styles from './Menu.module.css';
+import { IconLabel } from '@/components/IconLabel';
 
 export interface MenuProps extends AriaMenuProps<any> {
   className?: string;
@@ -49,11 +50,9 @@ export function MenuItem({
 }: MenuItemProps) {
   return (
     <AriaMenuItem {...props} className={classNames(styles.item, className)}>
-      <div className={styles.label}>
-        {icon && <Icon>{icon}</Icon>}
-        {label && <Text>{label}</Text>}
+      <IconLabel icon={icon} label={label}>
         {children as any}
-      </div>
+      </IconLabel>
       {showChecked && (
         <Icon aria-hidden="true" className={styles.checkmark}>
           <Check />

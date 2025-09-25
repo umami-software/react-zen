@@ -10,9 +10,9 @@ import {
 } from 'react-aria-components';
 import classNames from 'classnames';
 import { Chevron } from '@/components/icons';
-import { List, ListItem, ListProps } from './List';
-import { Icon } from './Icon';
-import { Grid } from './Grid';
+import { List, ListItem, ListProps } from '@/components/List';
+import { Icon } from '@/components/Icon';
+import { Grid } from '@/components/Grid';
 import styles from './ComboBox.module.css';
 
 export interface ComboBoxProps extends AriaComboBoxProps<any> {
