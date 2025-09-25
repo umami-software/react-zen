@@ -74,14 +74,33 @@ export function MenuSeparator({ className, ...props }: SeparatorProps) {
 
 export interface MenuSectionProps extends AriaMenuSectionProps<any> {
   title?: string;
+  maxHeight?: number;
 }
 
-export function MenuSection({ title, className, children, ...props }: MenuSectionProps) {
+export function MenuSection({
+  title,
+  maxHeight,
+  className,
+  style,
+  children,
+  ...props
+}: MenuSectionProps) {
+  const sectionStyle = {
+    maxHeight,
+    overflow: maxHeight ? 'auto' : undefined,
+  };
+
   return (
-    <AriaMenuSection {...props} className={classNames(styles.section, className)}>
+    <>
       {title && <Header className={styles.header}>{title}</Header>}
-      {children as any}
-    </AriaMenuSection>
+      <AriaMenuSection
+        {...props}
+        className={classNames(styles.section, className)}
+        style={{ ...sectionStyle, ...style }}
+      >
+        {children as any}
+      </AriaMenuSection>
+    </>
   );
 }
 

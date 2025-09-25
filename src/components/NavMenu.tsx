@@ -16,7 +16,7 @@ const NavMenuContext = createContext(null as any);
 
 export function NavMenu({
   itemBackgroundColor = '2',
-  muteItems = true,
+  muteItems,
   className,
   style,
   children,

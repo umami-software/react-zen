@@ -12,7 +12,6 @@ export interface SidebarProps extends ColumnProps {
   itemBackgroundColor?: string;
   isCollapsed?: boolean;
   muteItems?: boolean;
-  showBorder?: boolean;
   children?: ReactNode;
 }
 
@@ -21,8 +20,7 @@ const SidebarContext = createContext(null as any);
 export function Sidebar({
   itemBackgroundColor = '2',
   isCollapsed,
-  muteItems = true,
-  showBorder = true,
+  muteItems,
   className,
   children,
   ...props
@@ -30,12 +28,12 @@ export function Sidebar({
   return (
     <SidebarContext.Provider value={{ isCollapsed, itemBackgroundColor }}>
       <Column
+        border="right"
         {...props}
         className={classNames(
           styles.sidebar,
           isCollapsed && styles.collapsed,
           muteItems && styles.muted,
-          !showBorder && styles.noborder,
           className,
         )}
       >
