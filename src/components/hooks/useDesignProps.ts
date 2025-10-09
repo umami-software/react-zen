@@ -78,6 +78,20 @@ const cssMap = {
 };
 
 const aliasMap = {
+  padding: 'spacing',
+  'padding-x': 'spacing',
+  'padding-y': 'spacing',
+  'padding-top': 'spacing',
+  'padding-bottom': 'spacing',
+  'padding-left': 'spacing',
+  'padding-right': 'spacing',
+  margin: 'spacing',
+  'margin-x': 'spacing',
+  'margin-y': 'spacing',
+  'margin-top': 'spacing',
+  'margin-bottom': 'spacing',
+  'margin-left': 'spacing',
+  'margin-right': 'spacing',
   gap: 'spacing',
   'gap-x': 'spacing',
   'gap-y': 'spacing',
