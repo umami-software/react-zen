@@ -2448,6 +2448,12 @@
   .grid-template-columns-xs {
     grid-template-columns: var(--grid-template-columns-xs);
   }
+  .grid-column-xs {
+    grid-column: var(--grid-column-xs);
+  }
+  .grid-row-xs {
+    grid-row: var(--grid-row-xs);
+  }
   .flex-basis-xs {
     flex-basis: var(--flex-basis-xs);
   }
@@ -2606,6 +2612,12 @@
   }
   .grid-template-columns-sm {
     grid-template-columns: var(--grid-template-columns-sm);
+  }
+  .grid-column-sm {
+    grid-column: var(--grid-column-sm);
+  }
+  .grid-row-sm {
+    grid-row: var(--grid-row-sm);
   }
   .flex-basis-sm {
     flex-basis: var(--flex-basis-sm);
@@ -2766,6 +2778,12 @@
   .grid-template-columns-md {
     grid-template-columns: var(--grid-template-columns-md);
   }
+  .grid-column-md {
+    grid-column: var(--grid-column-md);
+  }
+  .grid-row-md {
+    grid-row: var(--grid-row-md);
+  }
   .flex-basis-md {
     flex-basis: var(--flex-basis-md);
   }
@@ -2925,6 +2943,12 @@
   .grid-template-columns-lg {
     grid-template-columns: var(--grid-template-columns-lg);
   }
+  .grid-column-lg {
+    grid-column: var(--grid-column-lg);
+  }
+  .grid-row-lg {
+    grid-row: var(--grid-row-lg);
+  }
   .flex-basis-lg {
     flex-basis: var(--flex-basis-lg);
   }
@@ -3083,6 +3107,12 @@
   }
   .grid-template-columns-xl {
     grid-template-columns: var(--grid-template-columns-xl);
+  }
+  .grid-column-xl {
+    grid-column: var(--grid-column-xl);
+  }
+  .grid-row-xl {
+    grid-row: var(--grid-row-xl);
   }
   .flex-basis-xl {
     flex-basis: var(--flex-basis-xl);

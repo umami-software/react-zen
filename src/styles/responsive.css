@@ -271,6 +271,18 @@
   --grid-template-rows-lg: ;
   --grid-template-rows-xl: ;
 
+  --grid-column-xs: ;
+  --grid-column-sm: ;
+  --grid-column-md: ;
+  --grid-column-lg: ;
+  --grid-column-xl: ;
+
+  --grid-row-xs: ;
+  --grid-row-sm: ;
+  --grid-row-md: ;
+  --grid-row-lg: ;
+  --grid-row-xl: ;
+
   --flex-basis-xs: ;
   --flex-basis-sm: ;
   --flex-basis-md: ;
