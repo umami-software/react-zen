@@ -54,6 +54,7 @@ export { ConfirmationDialog, type ConfirmationDialogProps } from './Confirmation
 export { Container, type ContainerProps } from './Container';
 export { CopyButton } from './CopyButton';
 export { Dialog, type DialogProps } from './Dialog';
+export { DataCard } from './DataCard';
 export { DataTable, DataColumn, type DataTableProps, type DataColumnProps } from './DataTable';
 export { Dots, type DotsProps } from './Dots';
 export { Flexbox, type FlexboxProps } from './Flexbox';

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { Children, createElement, HTMLAttributes, ReactElement, ReactNode } from 'react';
 import { TableProps } from 'react-aria-components';
+import { mapIdProperty } from '@/lib/utils';
 import {
   Table,
   TableHeader,
@@ -17,10 +18,7 @@ export interface DataTableProps extends TableProps {
 }
 
 export function DataTable({ data = [], className, children, ...props }: DataTableProps) {
-  // We must map an id for react-aria
-  const items =
-    data.length && data?.[0]?.id === undefined ? data.map((row, id) => ({ ...row, id })) : data;
-
+  const rows = mapIdProperty(data);
   const widths: string[] = [];
 
   const columns = Children.map(children as ReactElement, (child?: ReactElement<any, any>) => {
@@ -50,7 +48,7 @@ export function DataTable({ data = [], className, children, ...props }: DataTabl
         })}
       </TableHeader>
       <TableBody>
-        {items.map((row, index) => {
+        {rows.map((row, index) => {
           return (
             <TableRow key={index} style={{ gridTemplateColumns }}>
               {columns?.map(({ id, as, hidden, className, children, ...cellProps }) => {

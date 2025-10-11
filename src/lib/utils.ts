@@ -1,4 +1,4 @@
-export const debounce = (func: (...args: any[]) => void, delay: number): VoidFunction => {
+export function debounce(func: (...args: any[]) => void, delay: number) {
   let timer: number;
 
   return (...args: any[]) => {
@@ -7,4 +7,10 @@ export const debounce = (func: (...args: any[]) => void, delay: number): VoidFun
       func(...args);
     }, delay);
   };
-};
+}
+
+export function mapIdProperty(data: any[]) {
+  return data.length && data?.[0]?.id === undefined
+    ? data.map((row, id) => ({ ...row, id }))
+    : data;
+}

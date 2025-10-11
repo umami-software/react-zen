@@ -52,6 +52,7 @@
             { "label": "Checkbox", "url": "/docs/components/checkbox" },
             { "label": "ComboBox", "url": "/docs/components/combobox" },
             { "label": "Confirmation Dialog", "url": "/docs/components/confirmation-dialog" },
+            { "label": "Data Card", "url": "/docs/components/data-card" },
             { "label": "Data Table", "url": "/docs/components/data-table" },
             { "label": "Dialog", "url": "/docs/components/dialog" },
             { "label": "Form", "url": "/docs/components/form" },
