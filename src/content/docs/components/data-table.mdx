@@ -61,3 +61,21 @@ A data table.
     </DataColumn>
   </DataTable>
 </Example>
+
+## As cards
+
+<Example>
+  <DataTable
+    data={[
+      { id: 1, name: 'Bob', title: 'CEO', email: <a href="#">bob@aol.com</a> },
+      { id: 2, name: 'Fred', title: 'VP Marketing', email: <a href="#">fred@aol.com</a> },
+      { id: 3, name: 'Ted', title: 'Engineer', email: <a href="#">ted@aol.com</a> },
+    ]}
+    displayMode="cards"
+  >
+    <DataColumn id="id" label="ID" width="50px" />
+    <DataColumn id="name" label="Name" width="2fr" />
+    <DataColumn id="title" label="Title" />
+    <DataColumn id="email" label="Email" />
+  </DataTable>
+</Example>
