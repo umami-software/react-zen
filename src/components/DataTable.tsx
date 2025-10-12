@@ -43,7 +43,7 @@ export function DataTable({
 
   if (displayMode === 'cards') {
     return (
-      <Grid gap="6" width="100%">
+      <Grid id="grid" width="100%" gap="6">
         {rows.map((row, index) => {
           const items = columns
             ?.filter(({ hidden }) => !hidden)
@@ -54,7 +54,7 @@ export function DataTable({
               return { id, label, value };
             });
 
-          return <DataCard key={row.id} data={items} />;
+          return <DataCard key={`${row.id}-${index}`} data={items} />;
         })}
       </Grid>
     );
