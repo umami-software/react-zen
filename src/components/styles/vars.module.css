@@ -2311,7 +2311,7 @@
 
 /* Responsive media queries */
 
-@media (min-width: 520px) {
+@media (min-width: 576px) {
   .display-xs {
     display: var(--display-xs);
   }
@@ -2641,7 +2641,7 @@
     order: var(--order-sm);
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
   .display-md {
     display: var(--display-md);
   }

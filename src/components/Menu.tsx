@@ -14,10 +14,9 @@ import {
 } from 'react-aria-components';
 import classNames from 'classnames';
 import { Check, Chevron } from '@/components/icons';
-import { Icon } from './Icon';
-import { Text } from './Text';
-import styles from './Menu.module.css';
 import { IconLabel } from '@/components/IconLabel';
+import { Icon } from './Icon';
+import styles from './Menu.module.css';
 
 export interface MenuProps extends AriaMenuProps<any> {
   className?: string;

@@ -1,9 +1,10 @@
 import classNames from 'classnames';
+import { Box, type BoxProps } from './Box';
 import { Dots } from './Dots';
 import { Spinner } from './Spinner';
 import styles from './Loading.module.css';
 
-export interface LoadingProps {
+export interface LoadingProps extends BoxProps {
   size?: 'sm' | 'md' | 'lg';
   icon?: 'dots' | 'spinner';
   placement?: 'absolute' | 'center' | 'inline';
@@ -18,9 +19,9 @@ export function Loading({
   ...props
 }: LoadingProps) {
   return (
-    <div {...props} className={classNames(styles.loading, className, styles[placement])}>
+    <Box {...props} className={classNames(styles.loading, className, styles[placement])}>
       {icon === 'dots' && <Dots size={size} />}
       {icon === 'spinner' && <Spinner size={size} />}
-    </div>
+    </Box>
   );
 }
