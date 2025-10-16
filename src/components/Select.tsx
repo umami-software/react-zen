@@ -107,7 +107,7 @@ export function Select({
               autoFocus
             />
           )}
-          {isLoading && <Loading icon="dots" placement="center" size="sm" />}
+          {isLoading && <Loading icon="dots" placement="center" size="sm" height="60px" />}
           <List
             {...listProps}
             items={items}
