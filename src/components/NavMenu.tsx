@@ -10,6 +10,7 @@ import styles from './NavMenu.module.css';
 export interface NavMenuProps extends ColumnProps {
   itemBackgroundColor?: string;
   muteItems?: boolean;
+  onItemClick?: () => void;
 }
 
 const NavMenuContext = createContext(null as any);
@@ -17,13 +18,13 @@ const NavMenuContext = createContext(null as any);
 export function NavMenu({
   itemBackgroundColor = '2',
   muteItems,
+  onItemClick,
   className,
-  style,
   children,
   ...props
 }: NavMenuProps) {
   return (
-    <NavMenuContext.Provider value={{ itemBackgroundColor }}>
+    <NavMenuContext.Provider value={{ itemBackgroundColor, onItemClick }}>
       <Column
         {...props}
         className={classNames(styles.navmenu, muteItems && styles.muted, className)}
@@ -89,11 +90,12 @@ export interface NavMenuItemProps extends RowProps {
 }
 
 export function NavMenuItem({ isSelected, className, children, ...props }: NavMenuItemProps) {
-  const { itemBackgroundColor } = useContext(NavMenuContext);
+  const { itemBackgroundColor, onItemClick } = useContext(NavMenuContext);
 
   return (
     <Row
       {...props}
+      onClick={onItemClick}
       backgroundColor={isSelected && itemBackgroundColor}
       hoverBackgroundColor={itemBackgroundColor}
       className={classNames(styles.item, className, isSelected && styles.selected)}
