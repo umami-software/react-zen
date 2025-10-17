@@ -1,8 +1,11 @@
 .dialog {
+  padding: var(--spacing-6);
+  box-shadow: var(--box-shadow-4);
+  background: var(--background-color);
+  border: var(--border);
+  border-radius: var(--border-radius);
   position: relative;
   outline: none;
-  max-height: 100vh;
-  max-width: 100vw;
   overflow: auto;
 }
 
@@ -10,22 +13,6 @@
   font-size: var(--font-size-5);
   font-weight: 700;
   margin-bottom: var(--spacing-3);
-}
-
-.modal {
-  padding: var(--spacing-6);
-  box-shadow: var(--box-shadow-4);
-  background: var(--background-color);
-  border: var(--border);
-  border-radius: var(--border-radius);
-}
-
-.menu {
-  padding: var(--spacing-2);
-  box-shadow: var(--box-shadow-3);
-  background: var(--background-color);
-  border: var(--border);
-  border-radius: var(--border-radius);
 }
 
 .sheet {

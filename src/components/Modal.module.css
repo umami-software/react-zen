@@ -64,6 +64,7 @@
 .modal.fullscreen {
   width: 100dvw;
   height: 100dvh;
+  border-radius: 0;
 }
 
 .modal.center[data-entering] {

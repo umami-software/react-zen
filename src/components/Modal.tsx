@@ -9,13 +9,13 @@ import classNames from 'classnames';
 import styles from './Modal.module.css';
 
 interface ModalProps extends AriaModalOverlayProps {
-  position?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'fullscreen';
+  placement?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'fullscreen';
   offset?: string;
   children?: ReactNode | ((values: ModalRenderProps & { defaultChildren: ReactNode }) => ReactNode);
 }
 
 function Modal({
-  position = 'center',
+  placement = 'center',
   offset,
   children,
   className,
@@ -29,7 +29,7 @@ function Modal({
 
   return (
     <AriaModalOverlay {...props} className={styles.overlay} style={style} isDismissable>
-      <AriaModal className={classNames(styles.modal, position && styles[position], className)}>
+      <AriaModal className={classNames(styles.modal, placement && styles[placement], className)}>
         {children}
       </AriaModal>
     </AriaModalOverlay>
