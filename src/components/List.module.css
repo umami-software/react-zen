@@ -62,3 +62,15 @@
 .hideCheckmark .checkmark {
   display: none;
 }
+
+.fullscreen {
+  display: block;
+  padding: var(--spacing-3);
+  border: 0;
+  border-radius: 0;
+  position: fixed;
+  inset: 0;
+  overflow: auto;
+  z-index: 9999;
+  background: var(--background-color);
+}

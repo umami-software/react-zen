@@ -26,6 +26,7 @@ export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   allowSearch?: boolean;
   searchValue?: string;
   searchDelay?: number;
+  isFullscreen?: boolean;
   onSearch?: (value: string) => void;
   onChange?: (e: any) => void;
   buttonProps?: ButtonProps;
@@ -45,8 +46,8 @@ export function Select({
   allowSearch,
   searchValue,
   searchDelay,
+  isFullscreen,
   onSearch,
-  onSelectionChange,
   onChange,
   buttonProps,
   listProps,
@@ -59,7 +60,6 @@ export function Select({
   const [search, setSearch] = useState('');
 
   const handleChange = (e: any) => {
-    onSelectionChange?.(e);
     onChange?.(e);
   };
 
@@ -78,9 +78,9 @@ export function Select({
       aria-label="Select"
       {...props}
       className={classNames(styles.select, className)}
-      selectedKey={value}
-      defaultSelectedKey={defaultValue}
-      onSelectionChange={handleChange}
+      value={value}
+      defaultValue={defaultValue}
+      onChange={handleChange}
     >
       {label && <Label>{label}</Label>}
       <Button
@@ -95,7 +95,7 @@ export function Select({
           </Icon>
         </div>
       </Button>
-      <Popover {...popoverProps} onOpenChange={handleOpenChange}>
+      <Popover {...popoverProps} onOpenChange={handleOpenChange} isFullscreen={isFullscreen}>
         <div className={styles.list}>
           {allowSearch && (
             <SearchField
@@ -111,6 +111,7 @@ export function Select({
           <List
             {...listProps}
             items={items}
+            isFullscreen={isFullscreen}
             style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
           >
             {children}

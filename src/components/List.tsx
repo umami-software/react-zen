@@ -26,6 +26,7 @@ export interface ListProps extends ListBoxProps<any> {
   separatorProperty?: string;
   highlightColor?: string;
   showCheckmark?: boolean;
+  isFullscreen?: boolean;
   label?: string;
   value?: string[];
   onChange?: (value: string[]) => void;
@@ -36,9 +37,10 @@ export function List({
   items = [],
   idProperty = 'id',
   labelProperty = 'label',
-  separatorProperty = 'separatpr',
+  separatorProperty = 'separator',
   highlightColor,
   showCheckmark = true,
+  isFullscreen,
   label,
   value,
   onChange,
@@ -68,7 +70,12 @@ export function List({
         selectedKeys={value || selectedKeys}
         defaultSelectedKeys={value || defaultSelectedKeys}
         items={items}
-        className={classNames(styles.list, className, !showCheckmark && styles.hideCheckmark)}
+        className={classNames(
+          styles.list,
+          className,
+          !showCheckmark && styles.hideCheckmark,
+          isFullscreen && styles.fullscreen,
+        )}
         onSelectionChange={handleSelectionChange}
         style={{ ...style, ...getHighlightColor(highlightColor) }}
       >

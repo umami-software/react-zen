@@ -1,14 +1,18 @@
-import { Popover as AriaPopover, PopoverProps } from 'react-aria-components';
+import { Popover as AriaPopover, PopoverProps as AriaPopoverProps } from 'react-aria-components';
 import classNames from 'classnames';
 import styles from './Popover.module.css';
 
-function Popover({ children, className, ...props }: PopoverProps) {
+export interface PopoverProps extends AriaPopoverProps {
+  isFullscreen?: boolean;
+}
+
+export function Popover({ children, isFullscreen, className, ...props }: PopoverProps) {
   return (
-    <AriaPopover {...props} className={classNames(styles.popover, className)}>
+    <AriaPopover
+      {...props}
+      className={classNames(styles.popover, isFullscreen && styles.fullscreen, className)}
+    >
       {children as any}
     </AriaPopover>
   );
 }
-
-export { Popover };
-export type { PopoverProps };
