@@ -12,7 +12,6 @@ import {
 } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
-import styles from './Text.module.css';
 
 export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   color?: FontColor;
@@ -64,13 +63,12 @@ export function Text({
     <Component
       {...props}
       className={classNames(
-        styles.text,
         className,
         classes,
-        truncate && styles.truncate,
-        italic && styles.italic,
-        underline && styles.underline,
-        strikethrough && styles.strikethrough,
+        truncate && 'text-truncate',
+        italic && 'italic',
+        underline && 'underline',
+        strikethrough && 'strikethrough',
       )}
       style={{ ...styleProps, ...style }}
     >

@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import type { Responsive, FontSize, FontWeight, LetterSpacing, TextAlign } from '@/lib/types';
 import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
-import styles from './Heading.module.css';
 
 interface HeadingProps extends BoxProps {
   size?: Responsive<FontSize>;
@@ -31,9 +30,14 @@ function Heading({
   return (
     <Box
       {...props}
-      className={classNames(styles.heading, className, classes)}
+      className={classNames(
+        'text-[--heading-color] [font-weight:--font-weight-bold] leading-[1.2]',
+        className,
+        classes,
+      )}
       style={{ ...styleProps, ...style }}
     >
+      <div className="text-red-500 font-bold">Test Tailwind</div>
       {children}
     </Box>
   );

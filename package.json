@@ -68,6 +68,7 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@svgr/cli": "^8.1.0",
+    "@tailwindcss/cli": "^4.1.14",
     "@types/mdx": "^2.0.11",
     "@types/node": "^22.18.0",
     "@types/react": "^19.1.12",
@@ -98,6 +99,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "stylelint": "^16.23.1",
     "stylelint-config-recommended": "^15.0.0",
+    "tailwindcss": "^4.1.14",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2"
   },

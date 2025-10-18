@@ -3,6 +3,9 @@
     "stylelint-config-recommended"
   ],
   "rules": {
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": ["tailwind", "layer", "apply", "variants", "responsive", "screen", "theme"]
+    }]
   }
 }
