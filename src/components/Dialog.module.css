@@ -15,10 +15,12 @@
   margin-bottom: var(--spacing-3);
 }
 
-.sheet {
+.dialog.sheet {
   background: var(--background-color);
   width: 100%;
   height: 100%;
+  padding: 0;
+  border: 0;
   border-radius: 0;
   box-shadow: none;
   z-index: 9999;
