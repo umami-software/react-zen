@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Input, TextField, TextFieldProps } from 'react-aria-components';
 import classNames from 'classnames';
-import { Eye, EyeSlash } from '@/components/icons';
+import { Eye, EyeSlash } from '@/components/svg';
 import { Icon } from './Icon';
 import { Label } from './Label';
 import styles from './TextField.module.css';

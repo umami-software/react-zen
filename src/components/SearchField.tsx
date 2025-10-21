@@ -5,7 +5,7 @@ import {
   Input,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { Search, Close } from '@/components/icons';
+import { Search, X } from '@/components/icons';
 import { useDebounce } from './hooks/useDebounce';
 import { Label } from './Label';
 import { Icon } from './Icon';
@@ -72,7 +72,7 @@ export function SearchField({
         <Input placeholder={placeholder} value={search} />
         {search && (
           <Icon size="sm" color="8" onClick={resetSearch}>
-            <Close />
+            <X />
           </Icon>
         )}
       </AriaSearchField>

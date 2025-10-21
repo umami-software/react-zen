@@ -7,7 +7,7 @@ import {
   SelectValueRenderProps,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { Chevron } from '@/components/icons';
+import { ChevronDown } from '@/components/icons';
 import { Button, ButtonProps } from './Button';
 import { Label } from './Label';
 import { List, ListProps } from './List';
@@ -91,7 +91,7 @@ export function Select({
         <div className={styles.value}>
           <SelectValue>{renderValue}</SelectValue>
           <Icon aria-hidden="true" rotate={90} size="sm">
-            <Chevron />
+            <ChevronDown />
           </Icon>
         </div>
       </Button>
@@ -112,6 +112,11 @@ export function Select({
             {...listProps}
             items={items}
             isFullscreen={isFullscreen}
+            {...(isFullscreen && {
+              shouldSelectOnPressUp: true,
+              shouldFocusOnHover: false,
+              autoFocus: 'first',
+            })}
             style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
           >
             {children}

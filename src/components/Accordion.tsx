@@ -7,7 +7,7 @@ import {
   DisclosureGroupProps,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { Chevron } from '@/components/icons';
+import { ChevronDown } from '@/components/icons';
 import { Button } from './Button';
 import { Text } from './Text';
 import { Icon } from './Icon';
@@ -51,7 +51,7 @@ export function AccordionItem({
       <Button slot="trigger" className={styles.button}>
         <Text>{trigger}</Text>
         <Icon className={styles.icon} size="xs">
-          <Chevron />
+          <ChevronDown />
         </Icon>
       </Button>
       <DisclosurePanel className={classNames(styles.panel, expanded && styles.expanded)}>

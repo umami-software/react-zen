@@ -12,7 +12,7 @@ import {
 import classNames from 'classnames';
 import { getLocalTimeZone, fromDate } from '@internationalized/date';
 import { toCalendarDate } from '@/lib/date';
-import { Chevron } from '@/components/icons';
+import { ChevronDown } from '@/components/icons';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import styles from './Calendar.module.css';
@@ -56,13 +56,13 @@ export function Calendar({
       <header className={styles.header}>
         <Button slot="previous" className={styles.button} variant="quiet">
           <Icon rotate={180}>
-            <Chevron />
+            <ChevronDown />
           </Icon>
         </Button>
         <Heading className={styles.heading} />
         <Button slot="next" className={styles.button} variant="quiet">
           <Icon>
-            <Chevron />
+            <ChevronDown />
           </Icon>
         </Button>
       </header>

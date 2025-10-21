@@ -1,11 +1,11 @@
 import { createElement, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Info, Alert, Close } from '@/components/icons';
+import { Info, TriangleAlert, X } from '@/components/icons';
 import { Icon } from './Icon';
 import styles from './AlertBanner.module.css';
 
 const AlertIcons = {
-  error: Alert,
+  error: TriangleAlert,
   info: Info,
 };
 
@@ -53,7 +53,7 @@ export function AlertBanner({
       {children}
       {allowClose && (
         <Icon className={styles.close} onClick={onClose}>
-          <Close />
+          <X />
         </Icon>
       )}
     </div>

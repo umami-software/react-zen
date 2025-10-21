@@ -8,7 +8,7 @@ import {
   SetStateAction,
 } from 'react';
 import classNames from 'classnames';
-import { Chevron } from '@/components/icons';
+import { ChevronDown } from '@/components/icons';
 import { Text } from './Text';
 import { Icon } from './Icon';
 import { HoverTrigger } from './HoverTrigger';
@@ -59,7 +59,7 @@ export function NavbarItem({ label, children, className, ...props }: NavbarItemP
         <div {...props} className={classNames(styles.item, className)}>
           <Text>{label}</Text>
           <Icon rotate={90} size="sm" className={styles.icon}>
-            <Chevron />
+            <ChevronDown />
           </Icon>
         </div>
         {children as any}

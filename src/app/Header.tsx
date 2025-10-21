@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Row, Text, ThemeButton, Button, Icon } from '@/components';
-import { Github } from '@/components/icons';
+import { Github } from '@/components/svg';
 
 export function Header() {
   return (

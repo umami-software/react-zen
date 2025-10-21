@@ -4,7 +4,7 @@ import { Column, ColumnProps } from '@/components/Column';
 import { Row, RowProps } from '@/components/Row';
 import { Icon } from '@/components/Icon';
 import { Text } from '@/components/Text';
-import { Chevron } from '@/components/icons';
+import { ChevronDown } from '@/components/icons';
 import styles from './NavMenu.module.css';
 
 export interface NavMenuProps extends ColumnProps {
@@ -76,7 +76,7 @@ export function NavMenuGroup({
         <Text className={styles.title}>{title}</Text>
         {allowMinimize && (
           <Icon rotate={minimized ? 0 : 90} color="muted">
-            <Chevron />
+            <ChevronDown />
           </Icon>
         )}
       </Row>
