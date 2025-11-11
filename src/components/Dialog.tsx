@@ -19,7 +19,7 @@ function Dialog({ title, variant, children, className, ...props }: DialogProps) 
     >
       {dialogProps => {
         return (
-          <Column gap>
+          <Column height="100%" gap>
             {title && <Heading size="2">{title}</Heading>}
             {typeof children === 'function' ? children(dialogProps) : children}
           </Column>
