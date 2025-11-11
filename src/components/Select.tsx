@@ -90,7 +90,7 @@ export function Select({
       >
         <div className={styles.value}>
           <SelectValue>{renderValue}</SelectValue>
-          <Icon aria-hidden="true" rotate={90} size="sm">
+          <Icon aria-hidden="true" size="sm">
             <ChevronDown />
           </Icon>
         </div>
