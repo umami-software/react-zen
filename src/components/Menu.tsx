@@ -13,7 +13,7 @@ import {
   SeparatorProps,
 } from 'react-aria-components';
 import classNames from 'classnames';
-import { Check, ChevronDown } from '@/components/icons';
+import { Check, ChevronRight } from '@/components/icons';
 import { IconLabel } from '@/components/IconLabel';
 import { Icon } from './Icon';
 import styles from './Menu.module.css';
@@ -59,7 +59,7 @@ export function MenuItem({
       )}
       {showSubMenuIcon && (
         <Icon aria-hidden="true">
-          <ChevronDown />
+          <ChevronRight />
         </Icon>
       )}
     </AriaMenuItem>
