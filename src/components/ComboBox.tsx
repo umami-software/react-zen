@@ -40,7 +40,7 @@ export function ComboBox({
       <Grid alignItems="center" columns="1fr auto" width="100%">
         <Input className={styles.input} />
         <Button className={styles.button}>
-          <Icon aria-hidden="true" rotate={90} size="sm">
+          <Icon aria-hidden="true" size="sm">
             <ChevronDown />
           </Icon>
         </Button>
