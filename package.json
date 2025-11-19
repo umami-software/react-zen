@@ -1,6 +1,6 @@
 {
   "name": "@umami/react-zen",
-  "version": "0.207.0",
+  "version": "0.208.0",
   "description": "Modern, minimalist React component library",
   "author": "Umami <hello@umami.is>",
   "license": "MIT",
@@ -32,16 +32,8 @@
     "bundle": "npm-run-all types esbuild css"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint"
-    ],
-    "**/*.css": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "**/*.json": [
-      "prettier --write"
+    "**/*.{js,jsx,ts,tsx,json,css}": [
+      "biome check --apply"
     ]
   },
   "dependencies": {
@@ -81,7 +73,6 @@
     "esbuild-css-modules-plugin": "^3.1.5",
     "esbuild-plugin-svgr": "^3.1.1",
     "esbuild-postcss": "^0.0.4",
-    "eslint": "^8.16.0",
     "husky": "^9.1.1",
     "lint-staged": "^15.5.2",
     "npm-run-all": "^4.1.5",
@@ -98,7 +89,6 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild",
       "sharp"
     ]
   }
