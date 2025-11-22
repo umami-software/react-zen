@@ -31,3 +31,7 @@
   box-shadow: var(--box-shadow-3);
   width: 260px;
 }
+
+.icon {
+  cursor: pointer;
+}

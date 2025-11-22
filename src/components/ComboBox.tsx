@@ -1,18 +1,18 @@
-import { ReactNode } from 'react';
+import classNames from 'classnames';
+import type { ReactNode } from 'react';
 import {
   ComboBox as AriaComboBox,
-  ComboBoxProps as AriaComboBoxProps,
-  Input,
-  Popover,
+  type ComboBoxProps as AriaComboBoxProps,
   Button,
-  ListBoxRenderProps,
-  PopoverProps,
+  Input,
+  type ListBoxRenderProps,
+  Popover,
+  type PopoverProps,
 } from 'react-aria-components';
-import classNames from 'classnames';
-import { ChevronDown } from '@/components/icons';
-import { List, ListItem, ListProps } from '@/components/List';
-import { Icon } from '@/components/Icon';
 import { Grid } from '@/components/Grid';
+import { Icon } from '@/components/Icon';
+import { ChevronRight } from '@/components/icons';
+import { List, ListItem, type ListProps } from '@/components/List';
 import styles from './ComboBox.module.css';
 
 export interface ComboBoxProps extends AriaComboBoxProps<any> {
@@ -40,8 +40,8 @@ export function ComboBox({
       <Grid alignItems="center" columns="1fr auto" width="100%">
         <Input className={styles.input} />
         <Button className={styles.button}>
-          <Icon aria-hidden="true" size="sm">
-            <ChevronDown />
+          <Icon rotate={90} className={styles.icon} aria-hidden="true" size="sm">
+            <ChevronRight />
           </Icon>
         </Button>
       </Grid>

@@ -1,21 +1,21 @@
+import { fromDate, getLocalTimeZone } from '@internationalized/date';
+import classNames from 'classnames';
 import {
   Calendar as AriaCalendar,
-  CalendarProps as AriaCalendarProps,
+  type CalendarProps as AriaCalendarProps,
   CalendarCell,
   CalendarGrid,
+  CalendarGridBody,
   CalendarGridHeader,
   CalendarHeaderCell,
-  CalendarGridBody,
+  type DateValue,
   Heading,
-  DateValue,
 } from 'react-aria-components';
-import classNames from 'classnames';
-import { getLocalTimeZone, fromDate } from '@internationalized/date';
+import { ChevronRight } from '@/components/icons';
 import { toCalendarDate } from '@/lib/date';
-import { ChevronDown } from '@/components/icons';
 import { Button } from './Button';
-import { Icon } from './Icon';
 import styles from './Calendar.module.css';
+import { Icon } from './Icon';
 
 export interface CalendarProps
   extends Omit<
@@ -56,13 +56,13 @@ export function Calendar({
       <header className={styles.header}>
         <Button slot="previous" className={styles.button} variant="quiet">
           <Icon rotate={180}>
-            <ChevronDown />
+            <ChevronRight />
           </Icon>
         </Button>
         <Heading className={styles.heading} />
         <Button slot="next" className={styles.button} variant="quiet">
           <Icon>
-            <ChevronDown />
+            <ChevronRight />
           </Icon>
         </Button>
       </header>

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { createContext, useContext, useState } from 'react';
 import { Column, type ColumnProps } from '@/components/Column';
 import { Icon } from '@/components/Icon';
-import { ChevronDown } from '@/components/icons';
+import { ChevronRight } from '@/components/icons';
 import { Row, type RowProps } from '@/components/Row';
 import { Text } from '@/components/Text';
 import styles from './NavMenu.module.css';
@@ -75,9 +75,8 @@ export function NavMenuGroup({
       >
         <Text className={styles.title}>{title}</Text>
         {allowMinimize && (
-          <Icon rotate={minimized ? -90 : 0} color="muted">
-            3+ 6.
-            <ChevronDown />
+          <Icon rotate={minimized ? 0 : 90} color="muted">
+            <ChevronRight />
           </Icon>
         )}
       </Row>

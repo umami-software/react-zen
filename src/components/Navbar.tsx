@@ -1,18 +1,18 @@
+import classNames from 'classnames';
 import {
   createContext,
-  HTMLAttributes,
-  ReactNode,
+  type Dispatch,
+  type HTMLAttributes,
+  type ReactNode,
+  type SetStateAction,
   useContext,
   useState,
-  Dispatch,
-  SetStateAction,
 } from 'react';
-import classNames from 'classnames';
-import { ChevronDown } from '@/components/icons';
-import { Text } from './Text';
-import { Icon } from './Icon';
+import { ChevronRight } from '@/components/icons';
 import { HoverTrigger } from './HoverTrigger';
+import { Icon } from './Icon';
 import styles from './Navbar.module.css';
+import { Text } from './Text';
 
 export type NavigationContext = {
   activeMenu: string;
@@ -59,7 +59,7 @@ export function NavbarItem({ label, children, className, ...props }: NavbarItemP
         <div {...props} className={classNames(styles.item, className)}>
           <Text>{label}</Text>
           <Icon rotate={90} size="sm" className={styles.icon}>
-            <ChevronDown />
+            <ChevronRight />
           </Icon>
         </div>
         {children as any}

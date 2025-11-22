@@ -1,14 +1,14 @@
-import { ReactNode } from 'react';
-import {
-  Breadcrumbs as AriaBreadcrumbs,
-  BreadcrumbsProps,
-  Breadcrumb as AriaBreadcrumb,
-  BreadcrumbProps,
-} from 'react-aria-components';
 import classNames from 'classnames';
-import { ChevronDown } from '@/components/icons';
-import { Icon } from './Icon';
+import type { ReactNode } from 'react';
+import {
+  Breadcrumb as AriaBreadcrumb,
+  Breadcrumbs as AriaBreadcrumbs,
+  type BreadcrumbProps,
+  type BreadcrumbsProps,
+} from 'react-aria-components';
+import { ChevronRight } from '@/components/icons';
 import styles from './Breadcrumbs.module.css';
+import { Icon } from './Icon';
 
 function Breadcrumbs({ children, className, ...props }: BreadcrumbsProps<any>) {
   return (
@@ -23,7 +23,7 @@ function Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
     <AriaBreadcrumb {...props} className={classNames(styles.breadcrumb, className)}>
       {children as ReactNode}
       <Icon className={styles.icon} size="xs">
-        <ChevronDown />
+        <ChevronRight />
       </Icon>
     </AriaBreadcrumb>
   );
