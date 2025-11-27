@@ -4,7 +4,6 @@
 
 - Beautifully-designed components
 - Built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) primitives.
-- No Tailwind, pure CSS.
 
 [Learn more](https://zen.umami.is/)
 
