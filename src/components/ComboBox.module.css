@@ -11,6 +11,7 @@
   font-size: var(--font-size);
   border: none;
   outline: none;
+	background-color: inherit;
 }
 
 .button {
