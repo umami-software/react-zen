@@ -33,7 +33,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json,css}": [
-      "biome check --apply"
+      "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
     ]
   },
   "dependencies": {
