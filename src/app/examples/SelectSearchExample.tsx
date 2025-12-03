@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Select } from '@/components';
 
-const values = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+const valuesPredefined = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 
-export function SelectSearchExample({ isLoading }: { isLoading?: boolean }) {
-  const [items, setItems] = useState<string[]>(values);
+export function SelectSearchExample({ isLoading, values }: { isLoading?: boolean, values?: string[] }) {
+  const [items, setItems] = useState<string[]>(values || valuesPredefined);
   const [search, setSearch] = useState<string>('');
 
   const handleSearch = (search: string) => {

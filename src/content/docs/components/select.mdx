@@ -58,3 +58,19 @@ Displays a list of options for the user to pick from—triggered by a button.
     <SelectValueExample />
   </Box>
 </Example>
+
+## Scrollable with search 
+
+<Example>
+  <Box width="300px">
+    <SelectSearchExample values={Array.from(Array(42).keys().map(e => `${e}`))} />
+  </Box>
+</Example>
+
+## Scrollable
+
+<Example>
+  <Box width="300px">
+    <Select items={Array.from(Array(42).keys())} placeholder="Please select an option" />
+  </Box>
+</Example>
