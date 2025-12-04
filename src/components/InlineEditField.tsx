@@ -1,11 +1,11 @@
-import { ReactNode, useState, useCallback, HTMLAttributes } from 'react';
 import classNames from 'classnames';
+import { type ReactNode, useCallback, useState } from 'react';
 import { Edit } from '@/components/icons';
-import { TextField } from './TextField';
 import { Icon } from './Icon';
 import styles from './InlineEditField.module.css';
+import { TextField, type TextFieldProps } from './TextField';
 
-export interface InlineEditFieldProps extends HTMLAttributes<HTMLDivElement> {
+export interface InlineEditFieldProps extends TextFieldProps {
   name?: string;
   value: string;
   defaultEdit?: boolean;
@@ -30,10 +30,9 @@ export function InlineEditField({
 
   const handleEdit = () => setEdit(true);
 
-  const handleChange = (e: { target: { value: any } }) => {
-    const val = e.target.value;
-    setValue(val);
-    onChange?.(val);
+  const handleChange = (value: string) => {
+    setValue(value);
+    onChange?.(value);
   };
 
   const handleCommit = () => {
@@ -56,12 +55,7 @@ export function InlineEditField({
   };
 
   return (
-    <div
-      aria-label="Edit"
-      {...props}
-      className={classNames(styles.edit, className)}
-      onClick={handleEdit}
-    >
+    <div aria-label="Edit" className={classNames(styles.edit, className)} onClick={handleEdit}>
       {!edit && (children as ReactNode)}
       {!edit && (
         <Icon className={styles.icon}>
@@ -70,6 +64,7 @@ export function InlineEditField({
       )}
       {edit && (
         <TextField
+          {...props}
           name={name}
           value={value}
           onKeyDown={handleKeyDown}
