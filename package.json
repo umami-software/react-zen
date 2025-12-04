@@ -67,7 +67,6 @@
     "@types/react-dom": "^19.2.3",
     "@umami/esbuild-plugin-css-modules": "0.4.0",
     "@umami/shiso": "^0.55.0",
-    "babel-plugin-inline-react-svg": "^2.0.2",
     "dts-bundle": "^0.7.3",
     "esbuild": "^0.27.0",
     "esbuild-css-modules-plugin": "^3.1.5",
