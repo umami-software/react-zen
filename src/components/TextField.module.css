@@ -95,11 +95,16 @@
 
 .field.variant-quiet {
   padding: 0;
-  border: 0;
   outline: none;
   box-shadow: none;
+  border-radius: 0;
+  border-color: transparent;
 
-  & input:focus {
-    border-bottom: var(--border);
+  & input {
+    background: transparent;
+  }
+
+  &:focus-within {
+    border-bottom-color: var(--border-color);
   }
 }
