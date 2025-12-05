@@ -1,13 +1,13 @@
+import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import {
   TextField as AriaTextField,
-  TextFieldProps as AriaTextFieldProps,
-  TextArea,
+  type TextFieldProps as AriaTextFieldProps,
   Input,
+  TextArea,
 } from 'react-aria-components';
-import classNames from 'classnames';
-import { Label } from './Label';
 import { CopyButton } from './CopyButton';
+import { Label } from './Label';
 import styles from './TextField.module.css';
 
 export interface TextFieldProps extends AriaTextFieldProps {
@@ -16,6 +16,7 @@ export interface TextFieldProps extends AriaTextFieldProps {
   allowCopy?: boolean;
   asTextArea?: boolean;
   resize?: 'vertical' | 'horizontal' | 'both' | 'none';
+  variant?: 'quiet' | 'none';
   onChange?: (e: any) => void;
 }
 
@@ -27,6 +28,7 @@ export function TextField({
   allowCopy,
   asTextArea,
   resize,
+  variant,
   onChange,
   isReadOnly,
   isDisabled,
@@ -58,6 +60,7 @@ export function TextField({
           allowCopy && styles.copy,
           !inputValue && styles.novalue,
           resize && styles[`resize-${resize}`],
+          variant && styles[`variant-${variant}`],
           className,
         )}
         value={inputValue}

@@ -92,3 +92,14 @@
 .resize-none textarea {
   resize: none;
 }
+
+.field.variant-quiet {
+  padding: 0;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+
+  & input:focus {
+    border-bottom: var(--border);
+  }
+}
