@@ -99,10 +99,7 @@
   box-shadow: none;
   border-radius: 0;
   border-color: transparent;
-
-  & input {
-    background: transparent;
-  }
+  background: transparent;
 
   &:focus-within {
     border-bottom-color: var(--border-color);
