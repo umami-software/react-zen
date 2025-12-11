@@ -2,13 +2,13 @@
   "name": "@umami/react-zen",
   "version": "0.216.0",
   "description": "Modern, minimalist React component library",
-  "author": "Umami <hello@umami.is>",
-  "license": "MIT",
   "homepage": "https://zen.umami.is",
   "repository": {
     "type": "git",
     "url": "https://github.com/umami-software/react-zen.git"
   },
+  "license": "MIT",
+  "author": "Umami <hello@umami.is>",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -16,47 +16,30 @@
     "dist",
     "styles.css"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
-    "dev": "next dev -p 9001 --turbo",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "icons": "svgr ./src/assets --out-dir src/components/svg --typescript",
-    "esbuild": "node esbuild.mjs",
-    "rollup": "rollup -c",
+    "bundle": "npm-run-all types esbuild css",
     "css": "node css.mjs",
-    "types": "tsup",
-    "bundle": "npm-run-all types esbuild css"
+    "dev": "next dev -p 9001 --turbo",
+    "esbuild": "node esbuild.mjs",
+    "icons": "svgr ./src/assets --out-dir src/components/svg --typescript",
+    "lint": "next lint",
+    "rollup": "rollup -c",
+    "start": "next start",
+    "types": "tsup"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json,css}": [
       "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
     ]
   },
-  "dependencies": {
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.7",
     "@fontsource/jetbrains-mono": "^5.2.8",
+    "@hyrious/esbuild-plugin-commonjs": "^0.2.6",
     "@internationalized/date": "^3.10.0",
     "@react-aria/focus": "^3.21.2",
     "@react-spring/web": "^9.7.5",
-    "classnames": "^2.5.1",
-    "glob": "^13.0.0",
-    "highlight.js": "^11.11.1",
-    "lucide-react": "^0.555.0",
-    "next": "^16.0.7",
-    "react": "^19.2.1",
-    "react-aria-components": "^1.13.0",
-    "react-dom": "^19.2.1",
-    "react-hook-form": "^7.66.1",
-    "react-icons": "^5.4.0",
-    "thenby": "^1.3.4",
-    "zustand": "^5.0.8"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.3.7",
-    "@hyrious/esbuild-plugin-commonjs": "^0.2.6",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -67,21 +50,36 @@
     "@types/react-dom": "^19.2.3",
     "@umami/esbuild-plugin-css-modules": "0.4.0",
     "@umami/shiso": "^0.55.0",
+    "classnames": "^2.5.1",
     "dts-bundle": "^0.7.3",
     "esbuild": "^0.27.0",
     "esbuild-css-modules-plugin": "^3.1.5",
     "esbuild-plugin-svgr": "^3.1.1",
     "esbuild-postcss": "^0.0.4",
+    "glob": "^13.0.0",
+    "highlight.js": "^11.11.1",
     "husky": "^9.1.1",
     "lint-staged": "^16.2.7",
+    "lucide-react": "^0.555.0",
+    "next": "^16.0.7",
     "npm-run-all": "^4.1.5",
+    "react": "^19.2.1",
+    "react-aria-components": "^1.13.0",
+    "react-dom": "^19.2.1",
+    "react-hook-form": "^7.66.1",
+    "react-icons": "^5.4.0",
     "rollup": "^4.53.3",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-dts": "^6.3.0",
     "rollup-plugin-esbuild": "^6.1.1",
     "rollup-plugin-postcss": "^4.0.2",
+    "thenby": "^1.3.4",
     "tsup": "^8.5.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "zustand": "^5.0.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
