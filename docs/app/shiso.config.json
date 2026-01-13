@@ -1,5 +1,5 @@
 {
-  "contentDir": "./src/content",
+  "contentDir": "content",
   "docs": {
     "title": "Docs - zen",
     "navigation": {
