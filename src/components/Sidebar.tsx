@@ -1,5 +1,6 @@
 import { createContext, type ReactNode, useContext } from 'react';
 import { Focusable, TooltipTrigger } from 'react-aria-components';
+import { Box } from '@/components/Box';
 import { Column, type ColumnProps } from '@/components/Column';
 import { Icon } from '@/components/Icon';
 import { Row, type RowProps } from '@/components/Row';
@@ -41,13 +42,15 @@ export function SidebarSection({
   ...props
 }: { title?: string; children: ReactNode } & ColumnProps) {
   return (
-    <Column {...props} className={cn('py-2', className)}>
+    <Column {...props} paddingY="2" className={className}>
       {title && (
-        <div className="px-4 py-2 text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
-          {title}
-        </div>
+        <Box paddingX="4" paddingY="2">
+          <Text size="xs" weight="semibold" transform="uppercase" color="muted">
+            {title}
+          </Text>
+        </Box>
       )}
-      <div className="flex flex-col">{children}</div>
+      <Column>{children}</Column>
     </Column>
   );
 }
@@ -64,9 +67,9 @@ export function SidebarHeader({
   children?: ReactNode;
 } & RowProps) {
   return (
-    <Row {...props} className={cn('px-4 py-3 gap-3 items-center', className)}>
+    <Row {...props} paddingX="4" paddingY="3" gap="3" alignItems="center" className={className}>
       {icon && <Icon size="sm">{icon}</Icon>}
-      {label && <div className="font-semibold">{label}</div>}
+      {label && <Text weight="semibold">{label}</Text>}
       {children}
     </Row>
   );
@@ -94,11 +97,16 @@ export function SidebarItem({
       <Focusable>
         <Row
           {...props}
+          paddingX={isCollapsed ? '0' : '4'}
+          paddingY="2"
+          gap="3"
+          alignItems="center"
+          justifyContent={isCollapsed ? 'center' : undefined}
+          borderRadius="md"
           className={cn(
-            'px-4 py-2 gap-3 items-center rounded cursor-pointer',
+            'cursor-pointer',
             'hover:bg-gray-100 dark:hover:bg-gray-800',
             isSelected && 'bg-gray-100 dark:bg-gray-800 font-medium',
-            isCollapsed && 'justify-center px-0',
             className,
           )}
         >

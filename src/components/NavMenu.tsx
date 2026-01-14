@@ -24,11 +24,9 @@ export function NavMenu({
     <NavMenuContext.Provider value={{ onItemClick }}>
       <Column
         {...props}
-        className={cn(
-          'text-sm',
-          muteItems && 'text-gray-500 dark:text-gray-400',
-          className
-        )}
+        fontSize="sm"
+        color={muteItems ? 'muted' : undefined}
+        className={className}
       >
         {children}
       </Column>
@@ -69,12 +67,13 @@ export function NavMenuGroup({
       )}
     >
       <Row
-        className="py-2 px-3"
+        paddingY="2"
+        paddingX="3"
         alignItems="center"
         justifyContent="space-between"
         onClick={handleClick}
       >
-        <Text className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+        <Text size="xs" weight="semibold" color="muted" className="uppercase">
           {title}
         </Text>
         {allowMinimize && (
@@ -83,7 +82,7 @@ export function NavMenuGroup({
           </Icon>
         )}
       </Row>
-      {!minimized && <div className="navmenu-children">{children}</div>}
+      {!minimized && <Column className="navmenu-children">{children}</Column>}
     </Column>
   );
 }
@@ -98,12 +97,15 @@ export function NavMenuItem({ isSelected, className, children, ...props }: NavMe
   return (
     <Row
       {...props}
+      paddingY="2"
+      paddingX="3"
+      borderRadius="md"
       onClick={onItemClick}
       className={cn(
-        'py-2 px-3 rounded cursor-pointer',
+        'cursor-pointer',
         'hover:bg-gray-100 dark:hover:bg-gray-800',
         isSelected && 'bg-gray-100 dark:bg-gray-800 font-medium',
-        className
+        className,
       )}
     >
       {children}

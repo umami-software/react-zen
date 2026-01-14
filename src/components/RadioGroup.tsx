@@ -5,14 +5,19 @@ import {
   Radio as AriaRadio,
   RadioProps,
 } from 'react-aria-components';
-import classNames from 'classnames';
+import { Column } from './Column';
 import { Label } from './Label';
-import styles from './RadioGroup.module.css';
+import { cn } from './lib/tailwind';
 
 export interface RadioGroupProps extends AriaRadioGroupProps {
   label?: string;
   variant?: 'circle' | 'box';
 }
+
+const variantClasses = {
+  circle: '',
+  box: '[&_.radio]:border [&_.radio]:rounded [&_.radio]:p-3 [&_.radio]:border-gray-300 dark:[&_.radio]:border-gray-700 [&_.radio[data-selected]]:border-gray-900 dark:[&_.radio[data-selected]]:border-gray-100',
+};
 
 export function RadioGroup({
   variant = 'circle',
@@ -25,10 +30,10 @@ export function RadioGroup({
     <AriaRadioGroup
       aria-label="RadioGroup"
       {...props}
-      className={classNames(styles.radiogroup, styles[`variant-${variant}`], className)}
+      className={cn('flex flex-col gap-2', variantClasses[variant], className)}
     >
       {label && <Label>{label}</Label>}
-      <div className={styles.inputs}>{children as ReactNode}</div>
+      <Column gap="2">{children as ReactNode}</Column>
     </AriaRadioGroup>
   );
 }
@@ -37,7 +42,18 @@ export type { RadioProps };
 
 export function Radio({ children, className, ...props }: RadioProps) {
   return (
-    <AriaRadio aria-label="Radio" {...props} className={classNames(styles.radio, className)}>
+    <AriaRadio
+      aria-label="Radio"
+      {...props}
+      className={cn(
+        'radio group flex items-center gap-3 cursor-pointer text-base',
+        'before:content-[\'\'] before:w-4 before:h-4 before:rounded-full before:border-2 before:border-gray-400',
+        'data-[selected]:before:border-gray-900 data-[selected]:before:bg-gray-900',
+        'dark:data-[selected]:before:border-gray-100 dark:data-[selected]:before:bg-gray-100',
+        'data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
+        className,
+      )}
+    >
       {children}
     </AriaRadio>
   );

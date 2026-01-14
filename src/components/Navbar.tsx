@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import {
   createContext,
   type Dispatch,
@@ -11,8 +10,9 @@ import {
 import { ChevronRight } from '@/components/icons';
 import { HoverTrigger } from './HoverTrigger';
 import { Icon } from './Icon';
-import styles from './Navbar.module.css';
+import { Row } from './Row';
 import { Text } from './Text';
+import { cn } from './lib/tailwind';
 
 export type NavigationContext = {
   activeMenu: string;
@@ -33,14 +33,14 @@ export const useNavigationContext = () => {
   return context;
 };
 
-export function Navbar({ showArrow = true, className, children, ...props }: NavbarProps) {
+export function Navbar({ showArrow = true, className, children, color: _color, ...props }: NavbarProps) {
   const [activeMenu, setActiveMenu] = useState<string>('');
 
   return (
     <NavbarContext.Provider value={{ activeMenu, setActiveMenu }}>
-      <div {...props} className={classNames(styles.nav, className)}>
+      <Row {...props} alignItems="center" gap="1" className={className}>
         {children}
-      </div>
+      </Row>
     </NavbarContext.Provider>
   );
 }
@@ -50,26 +50,50 @@ export interface NavbarItemProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
 }
 
-export function NavbarItem({ label, children, className, ...props }: NavbarItemProps) {
+export function NavbarItem({ label, children, className, color: _color, ...props }: NavbarItemProps) {
   const { activeMenu, setActiveMenu } = useNavigationContext();
 
   if (label) {
     return (
       <HoverTrigger isOpen={activeMenu === label} onHoverStart={() => setActiveMenu(label)}>
-        <div {...props} className={classNames(styles.item, className)}>
+        <Row
+          {...props}
+          alignItems="center"
+          gap="1"
+          paddingX="3"
+          paddingY="2"
+          borderRadius="md"
+          className={cn(
+            'cursor-pointer',
+            'hover:bg-gray-100 dark:hover:bg-gray-800',
+            className,
+          )}
+        >
           <Text>{label}</Text>
-          <Icon rotate={90} size="sm" className={styles.icon}>
+          <Icon rotate={90} size="sm" color="muted">
             <ChevronRight />
           </Icon>
-        </div>
+        </Row>
         {children as any}
       </HoverTrigger>
     );
   }
 
   return (
-    <div {...props} className={classNames(styles.item, className)}>
+    <Row
+      {...props}
+      alignItems="center"
+      gap="1"
+      paddingX="3"
+      paddingY="2"
+      borderRadius="md"
+      className={cn(
+        'cursor-pointer',
+        'hover:bg-gray-100 dark:hover:bg-gray-800',
+        className,
+      )}
+    >
       {children}
-    </div>
+    </Row>
   );
 }

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import classNames from 'classnames';
-import styles from './StatusLight.module.css';
+import { Row } from './Row';
+import { Box } from './Box';
+import { cn } from './lib/tailwind';
 
 interface StatusLightProps {
   color?: string;
@@ -9,19 +10,35 @@ interface StatusLightProps {
   children?: ReactNode;
 }
 
+const variantColors = {
+  success: 'bg-green-500',
+  warning: 'bg-yellow-500',
+  error: 'bg-red-500',
+  active: 'bg-green-500',
+  inactive: 'bg-gray-400',
+  none: 'bg-transparent',
+};
+
+function StatusDot({ color, variant }: { color?: string; variant: string }) {
+  return (
+    <Row alignItems="center" justifyContent="center" className="relative w-3 h-3">
+      <Box
+        borderRadius="full"
+        className={cn('w-2 h-2', variantColors[variant as keyof typeof variantColors])}
+        style={color ? { backgroundColor: color } : undefined}
+      />
+    </Row>
+  );
+}
+
 function StatusLight(props: StatusLightProps) {
   const { color, variant = 'inactive', children, className, ...domProps } = props;
 
   return (
-    <div {...domProps} className={classNames(styles.statuslight, className)}>
-      <div className={styles.bg}>
-        <div
-          className={classNames(styles.status, styles[variant])}
-          style={{ backgroundColor: color }}
-        />
-      </div>
+    <Row {...domProps} alignItems="center" gap="2" className={className}>
+      <StatusDot color={color} variant={variant} />
       {children}
-    </div>
+    </Row>
   );
 }
 

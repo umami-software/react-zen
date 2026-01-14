@@ -1,9 +1,10 @@
 import { animated, useTransition } from '@react-spring/web';
-import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Toast } from '@/components/toast/Toast';
 import { removeToast, useToast } from '@/components/hooks/useToast';
-import styles from './Toaster.module.css';
+import { Column } from '@/components/Column';
+import { Box } from '@/components/Box';
+import { cn } from '@/components/lib/tailwind';
 
 export type ToastPosition =
   | 'top-left'
@@ -19,6 +20,19 @@ export interface ToasterProps {
   duration?: number;
   position?: ToastPosition;
 }
+
+const positionClasses: Record<ToastPosition, string> = {
+  'top-left': 'top-4 left-4 items-start',
+  'top': 'top-4 left-1/2 -translate-x-1/2 items-center',
+  'top-right': 'top-4 right-4 items-end',
+  'bottom-left': 'bottom-4 left-4 items-start',
+  'bottom': 'bottom-4 left-1/2 -translate-x-1/2 items-center',
+  'bottom-right': 'bottom-4 right-4 items-end',
+  'left': 'top-1/2 left-4 -translate-y-1/2 items-start',
+  'right': 'top-1/2 right-4 -translate-y-1/2 items-end',
+};
+
+const AnimatedBox = animated(Box);
 
 export function Toaster({ duration = 0, position = 'bottom-right' }: ToasterProps) {
   const { toasts } = useToast();
@@ -58,8 +72,9 @@ export function Toaster({ duration = 0, position = 'bottom-right' }: ToasterProp
   }, [duration, toasts, hovered]);
 
   return (
-    <div
-      className={classNames(styles.toaster, styles[`position-${position}`])}
+    <Column
+      gap="2"
+      className={cn('fixed z-[9999]', positionClasses[position])}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -67,12 +82,11 @@ export function Toaster({ duration = 0, position = 'bottom-right' }: ToasterProp
         const { id, ...props } = item;
 
         return (
-          // @ts-ignore
-          <animated.div key={id} style={style}>
+          <AnimatedBox key={id} style={style}>
             <Toast {...props} id={id} onClose={() => removeToast(id)} />
-          </animated.div>
+          </AnimatedBox>
         );
       })}
-    </div>
+    </Column>
   );
 }

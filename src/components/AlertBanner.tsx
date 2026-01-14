@@ -1,8 +1,11 @@
 import { createElement, ReactNode } from 'react';
-import classNames from 'classnames';
 import { Info, TriangleAlert, X } from '@/components/icons';
 import { Icon } from './Icon';
-import styles from './AlertBanner.module.css';
+import { Row } from './Row';
+import { Column } from './Column';
+import { Text } from './Text';
+import { cn } from './lib/tailwind';
+import { alertBanner } from './variants';
 
 const AlertIcons = {
   error: TriangleAlert,
@@ -21,11 +24,17 @@ export interface AlertBannerProps {
   children?: ReactNode;
 }
 
+const alignClasses = {
+  start: 'justify-start',
+  center: 'justify-center',
+  end: 'justify-end',
+};
+
 export function AlertBanner({
   title,
   description,
   icon,
-  variant,
+  variant = 'info',
   align,
   allowClose,
   onClose,
@@ -34,28 +43,27 @@ export function AlertBanner({
   ...props
 }: AlertBannerProps) {
   return (
-    <div
+    <Row
       {...props}
-      className={classNames(
-        styles.banner,
+      className={cn(
+        alertBanner({ variant }),
+        align && alignClasses[align],
         className,
-        variant && styles[variant],
-        align && styles[align],
       )}
     >
       {(icon || variant) && (
         <Icon size="sm">{variant ? createElement(AlertIcons[variant]) : icon}</Icon>
       )}
-      <div className={styles.message}>
-        {title && <div className={styles.title}>{title}</div>}
-        {description && <div className={styles.description}>{description}</div>}
-      </div>
+      <Column flexGrow={1} gap="1">
+        {title && <Text weight="semibold">{title}</Text>}
+        {description && <Text>{description}</Text>}
+      </Column>
       {children}
       {allowClose && (
-        <Icon className={styles.close} onClick={onClose}>
+        <Icon className="cursor-pointer opacity-60 hover:opacity-100" onClick={onClose}>
           <X />
         </Icon>
       )}
-    </div>
+    </Row>
   );
 }

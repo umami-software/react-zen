@@ -1,9 +1,10 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import { FieldValues, RegisterOptions, useFieldArray, useFormContext } from 'react-hook-form';
-import classNames from 'classnames';
 import { useFieldId } from '@/components/hooks/useFieldId';
-import styles from './FormField.module.css';
+import { Column } from '../Column';
 import { Label } from '../Label';
+import { Text } from '../Text';
+import { cn } from '../lib/tailwind';
 
 export interface FormFieldArrayProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   name: string;
@@ -21,6 +22,7 @@ export function FormFieldArray({
   rules,
   className,
   children,
+  color: _color,
   ...props
 }: FormFieldArrayProps) {
   const fieldId = useFieldId(id);
@@ -38,11 +40,11 @@ export function FormFieldArray({
   const errorMessage = errors[name]?.message as string;
 
   return (
-    <div {...props} className={classNames(styles.input, className)}>
+    <Column {...props} gap="1" className={className}>
       {label && <Label htmlFor={fieldId}>{label}</Label>}
-      {description && <div className={styles.description}>{description}</div>}
-      {errorMessage && <div className={styles.error}>{errorMessage}</div>}
+      {description && <Text size="sm" color="muted">{description}</Text>}
+      {errorMessage && <Text size="sm" className="text-red-500">{errorMessage}</Text>}
       {children({ ...context, ...fieldProps })}
-    </div>
+    </Column>
   );
 }

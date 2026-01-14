@@ -1,6 +1,6 @@
 import { useRef, useState, ReactElement, useEffect } from 'react';
 import { Popover } from '@/components/index';
-import styles from './HoverTrigger.module.css';
+import { Box } from './Box';
 
 const CLOSE_DELAY = 500;
 
@@ -73,17 +73,13 @@ export function HoverTrigger({
 
   return (
     <>
-      <div ref={triggerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <span ref={triggerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {triggerElement}
-      </div>
+      </span>
       <Popover isOpen={open} isNonModal triggerRef={triggerRef}>
-        <div
-          className={styles.wrapper}
-          onMouseEnter={handleMenuEnter}
-          onMouseLeave={handleMenuLeave}
-        >
+        <Box onMouseEnter={handleMenuEnter} onMouseLeave={handleMenuLeave}>
           {popupElement}
-        </div>
+        </Box>
       </Popover>
     </>
   );

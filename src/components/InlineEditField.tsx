@@ -1,9 +1,9 @@
-import classNames from 'classnames';
 import { type ReactNode, useCallback, useState } from 'react';
 import { Edit } from '@/components/icons';
 import { Icon } from './Icon';
-import styles from './InlineEditField.module.css';
+import { Row } from './Row';
 import { TextField, type TextFieldProps } from './TextField';
+import { cn } from './lib/tailwind';
 
 export interface InlineEditFieldProps extends TextFieldProps {
   name?: string;
@@ -55,10 +55,16 @@ export function InlineEditField({
   };
 
   return (
-    <div aria-label="Edit" className={classNames(styles.edit, className)} onClick={handleEdit}>
+    <Row
+      aria-label="Edit"
+      alignItems="center"
+      gap="2"
+      className={cn('cursor-pointer group', className)}
+      onClick={handleEdit}
+    >
       {!edit && (children as ReactNode)}
       {!edit && (
-        <Icon className={styles.icon}>
+        <Icon className="opacity-0 group-hover:opacity-100 transition-opacity">
           <Edit />
         </Icon>
       )}
@@ -73,6 +79,6 @@ export function InlineEditField({
           autoFocus={true}
         />
       )}
-    </div>
+    </Row>
   );
 }

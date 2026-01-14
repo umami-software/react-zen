@@ -1,9 +1,12 @@
 import { HTMLAttributes } from 'react';
-import classNames from 'classnames';
 import { Button } from '@/components/Button';
 import { Icon } from '@/components/Icon';
 import { X } from '@/components/icons';
-import styles from './Toast.module.css';
+import { Row } from '@/components/Row';
+import { Column } from '@/components/Column';
+import { Text } from '@/components/Text';
+import { cn } from '@/components/lib/tailwind';
+import { toast as toastVariant } from '@/components/variants';
 
 const TOAST_CLOSE_ACTION = 'close';
 
@@ -27,21 +30,24 @@ function Toast({
   className,
   children,
   onClose,
+  color: _color,
   ...props
 }: ToastProps) {
   const hasActions = actions?.length > 0;
 
   return (
-    <div {...props} className={classNames(styles.toast, className, variant && styles[variant])}>
-      {title && <div className={styles.title}>{title}</div>}
-      {message && <div className={styles.description}>{message}</div>}
+    <Row {...props} className={cn(toastVariant({ variant }), className)}>
+      <Column flexGrow={1} gap="1">
+        {title && <Text weight="semibold">{title}</Text>}
+        {message && <Text color="muted">{message}</Text>}
+      </Column>
       {hasActions &&
         actions.map(action => {
           return (
             <Button
               key={action}
               variant="outline"
-              className={styles.action}
+              size="sm"
               onPress={() => onClose?.(action)}
             >
               {action}
@@ -53,13 +59,13 @@ function Toast({
           aria-hidden
           aria-label="Close"
           size="sm"
-          className={styles.close}
+          className="cursor-pointer text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
           onClick={() => onClose?.(TOAST_CLOSE_ACTION)}
         >
           <X />
         </Icon>
       )}
-    </div>
+    </Row>
   );
 }
 

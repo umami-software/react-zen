@@ -52,11 +52,11 @@ export const button = tv({
       zero: ['bg-transparent border-0', 'hover:bg-transparent', 'pressed:bg-transparent'],
     },
     size: {
-      xs: 'text-xs py-1 px-2',
-      sm: 'text-sm py-1.5 px-2.5',
-      md: 'text-sm py-2 px-3',
-      lg: 'text-base py-2 px-4',
-      xl: 'text-lg py-2.5 px-5',
+      xs: 'text-sm py-1 px-2',
+      sm: 'text-base py-1.5 px-2.5',
+      md: 'text-base py-2 px-3',
+      lg: 'text-lg py-2.5 px-4',
+      xl: 'text-xl py-3 px-5',
     },
   },
   defaultVariants: {

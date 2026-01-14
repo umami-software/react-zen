@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { type ReactNode, useState } from 'react';
 import {
   Select as AriaSelect,
@@ -9,13 +8,15 @@ import {
 } from 'react-aria-components';
 import { ChevronRight } from '@/components/icons';
 import { Button, type ButtonProps } from './Button';
+import { Column } from './Column';
 import { Icon } from './Icon';
 import { Label } from './Label';
 import { List, type ListProps } from './List';
 import { Loading } from './Loading';
 import { Popover } from './Popover';
+import { Row } from './Row';
 import { SearchField } from './SearchField';
-import styles from './Select.module.css';
+import { cn } from './lib/tailwind';
 
 export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items?: any[];
@@ -77,7 +78,7 @@ export function Select({
     <AriaSelect
       aria-label="Select"
       {...props}
-      className={classNames(styles.select, className)}
+      className={cn('flex flex-col gap-1', className)}
       value={value}
       defaultValue={defaultValue}
       onChange={handleChange}
@@ -86,20 +87,20 @@ export function Select({
       <Button
         variant="outline"
         {...buttonProps}
-        className={classNames(styles.button, buttonProps?.className)}
+        className={cn('w-full', buttonProps?.className)}
       >
-        <div className={styles.value}>
+        <Row flexGrow={1} alignItems="center" justifyContent="space-between">
           <SelectValue>{renderValue}</SelectValue>
           <Icon rotate={90} aria-hidden="true" size="sm">
             <ChevronRight />
           </Icon>
-        </div>
+        </Row>
       </Button>
       <Popover {...popoverProps} onOpenChange={handleOpenChange} isFullscreen={isFullscreen}>
-        <div className={styles.list}>
+        <Column gap="2">
           {allowSearch && (
             <SearchField
-              className={styles.search}
+              className="mb-2"
               value={search}
               onSearch={handleSearch}
               delay={searchDelay}
@@ -121,7 +122,7 @@ export function Select({
           >
             {children}
           </List>
-        </div>
+        </Column>
       </Popover>
     </AriaSelect>
   );

@@ -6,36 +6,63 @@ import {
   SliderThumb,
   SliderTrack,
 } from 'react-aria-components';
-import classNames from 'classnames';
+import { Box } from './Box';
+import { Row } from './Row';
+import { Column } from './Column';
 import { Label } from './Label';
-import styles from './Slider.module.css';
+import { cn } from './lib/tailwind';
 
 export interface SliderProps extends AriaSliderProps {
   label?: ReactNode;
   showValue?: boolean;
 }
 
+function Track({ children }: { children: React.ReactNode }) {
+  return (
+    <Box borderRadius="full" className="relative w-full h-2 bg-gray-200 dark:bg-gray-700">
+      {children}
+    </Box>
+  );
+}
+
+function Fill({ percentage }: { percentage: number }) {
+  return (
+    <Box
+      borderRadius="full"
+      className="absolute inset-y-0 left-0 bg-gray-900 dark:bg-gray-100"
+      style={{ width: `${percentage}%` }}
+    />
+  );
+}
+
+function Thumb() {
+  return (
+    <SliderThumb
+      className={cn(
+        'w-5 h-5 rounded-full bg-white border-2 border-gray-900 shadow',
+        'dark:bg-gray-900 dark:border-gray-100',
+        'focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2',
+        'data-[dragging]:scale-110',
+      )}
+    />
+  );
+}
+
 export function Slider({ className, showValue = true, label, ...props }: SliderProps) {
   return (
-    <AriaSlider {...props} className={classNames(styles.slider, className)}>
-      <div className={styles.header}>
-        {label && <Label className={styles.label}>{label}</Label>}
-        {showValue && <SliderOutput className={styles.output} />}
-      </div>
-      <SliderTrack className={styles.track}>
+    <AriaSlider {...props} className={cn('flex flex-col gap-2 w-full', className)}>
+      <Row justifyContent="space-between" alignItems="center">
+        {label && <Label>{label}</Label>}
+        {showValue && <SliderOutput className="text-sm tabular-nums" />}
+      </Row>
+      <SliderTrack className="relative w-full h-2 rounded-full bg-gray-200 dark:bg-gray-700">
         {({ state }) => {
           const isHorizontal = state.orientation === 'horizontal';
+          const percentage = (isHorizontal ? state.getThumbPercent(0) : 1 - state.getThumbPercent(0)) * 100;
           return (
             <>
-              <div
-                className={styles.fill}
-                style={{
-                  [isHorizontal ? 'width' : 'height']:
-                    (isHorizontal ? state.getThumbPercent(0) : 1 - state.getThumbPercent(0)) * 100 +
-                    '%',
-                }}
-              />
-              <SliderThumb className={styles.thumb} />
+              <Fill percentage={percentage} />
+              <Thumb />
             </>
           );
         }}
