@@ -1,14 +1,12 @@
-import classNames from 'classnames';
 import { createContext, useContext, useState } from 'react';
 import { Column, type ColumnProps } from '@/components/Column';
 import { Icon } from '@/components/Icon';
 import { ChevronRight } from '@/components/icons';
 import { Row, type RowProps } from '@/components/Row';
 import { Text } from '@/components/Text';
-import styles from './NavMenu.module.css';
+import { cn } from './lib/tailwind';
 
 export interface NavMenuProps extends ColumnProps {
-  itemBackgroundColor?: string;
   muteItems?: boolean;
   onItemClick?: () => void;
 }
@@ -16,7 +14,6 @@ export interface NavMenuProps extends ColumnProps {
 const NavMenuContext = createContext(null as any);
 
 export function NavMenu({
-  itemBackgroundColor = '2',
   muteItems,
   onItemClick,
   className,
@@ -24,10 +21,14 @@ export function NavMenu({
   ...props
 }: NavMenuProps) {
   return (
-    <NavMenuContext.Provider value={{ itemBackgroundColor, onItemClick }}>
+    <NavMenuContext.Provider value={{ onItemClick }}>
       <Column
         {...props}
-        className={classNames(styles.navmenu, muteItems && styles.muted, className)}
+        className={cn(
+          'text-sm',
+          muteItems && 'text-gray-500 dark:text-gray-400',
+          className
+        )}
       >
         {children}
       </Column>
@@ -59,28 +60,30 @@ export function NavMenuGroup({
 
   return (
     <Column
-      gap={true}
+      gap="3"
       {...props}
-      className={classNames(
+      className={cn(
         className,
-        allowMinimize && styles.clickable,
-        allowMinimize && minimized && styles.minimized,
+        allowMinimize && 'cursor-pointer',
+        allowMinimize && minimized && '[&_.navmenu-children]:hidden',
       )}
     >
       <Row
-        className={styles.item}
+        className="py-2 px-3"
         alignItems="center"
         justifyContent="space-between"
         onClick={handleClick}
       >
-        <Text className={styles.title}>{title}</Text>
+        <Text className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+          {title}
+        </Text>
         {allowMinimize && (
           <Icon rotate={minimized ? 0 : 90} color="muted">
             <ChevronRight />
           </Icon>
         )}
       </Row>
-      {!minimized && children}
+      {!minimized && <div className="navmenu-children">{children}</div>}
     </Column>
   );
 }
@@ -90,15 +93,18 @@ export interface NavMenuItemProps extends RowProps {
 }
 
 export function NavMenuItem({ isSelected, className, children, ...props }: NavMenuItemProps) {
-  const { itemBackgroundColor, onItemClick } = useContext(NavMenuContext);
+  const { onItemClick } = useContext(NavMenuContext);
 
   return (
     <Row
       {...props}
       onClick={onItemClick}
-      backgroundColor={isSelected && itemBackgroundColor}
-      hoverBackgroundColor={itemBackgroundColor}
-      className={classNames(styles.item, className, isSelected && styles.selected)}
+      className={cn(
+        'py-2 px-3 rounded cursor-pointer',
+        'hover:bg-gray-100 dark:hover:bg-gray-800',
+        isSelected && 'bg-gray-100 dark:bg-gray-800 font-medium',
+        className
+      )}
     >
       {children}
     </Row>

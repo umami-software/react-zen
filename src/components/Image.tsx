@@ -1,8 +1,6 @@
 import { HTMLAttributes } from 'react';
-import classNames from 'classnames';
 import { BorderRadius, BoxShadow, Responsive, ObjectFit } from '@/lib/types';
-import { useDesignProps } from '@/components/hooks/useDesignProps';
-import styles from './Image.module.css';
+import { cn, mapBorderRadius, mapShadow } from './lib/tailwind';
 
 export interface ImageProps extends HTMLAttributes<HTMLImageElement> {
   src: string;
@@ -13,6 +11,14 @@ export interface ImageProps extends HTMLAttributes<HTMLImageElement> {
   shadow?: Responsive<BoxShadow>;
 }
 
+const objectFitMap: Record<ObjectFit, string> = {
+  fill: 'object-fill',
+  contain: 'object-contain',
+  cover: 'object-cover',
+  none: 'object-none',
+  'scale-down': 'object-scale-down',
+};
+
 export function Image({
   src,
   alt,
@@ -21,23 +27,22 @@ export function Image({
   borderRadius,
   shadow,
   className,
-  style,
   ...props
 }: ImageProps) {
-  const [classes, styleProps] = useDesignProps({ borderRadius, shadow });
+  const classes = cn(
+    'block max-w-full',
+    mapBorderRadius(borderRadius as Responsive<string>),
+    mapShadow(shadow),
+    objectFit && objectFitMap[objectFit],
+    objectFit && 'w-full h-full',
+    isCentered && 'mx-auto',
+    className
+  );
 
   return (
     <img
       {...props}
-      className={classNames(
-        styles.image,
-        className,
-        classes,
-        objectFit && styles[objectFit],
-        objectFit && styles.fit,
-        isCentered && styles.centered,
-      )}
-      style={{ ...style, ...styleProps }}
+      className={classes}
       src={src}
       alt={alt}
     />

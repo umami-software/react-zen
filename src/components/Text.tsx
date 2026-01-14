@@ -1,5 +1,4 @@
 import { HTMLAttributes } from 'react';
-import classNames from 'classnames';
 import {
   Responsive,
   TextAlign,
@@ -10,9 +9,17 @@ import {
   TextTransform,
   FontColor,
 } from '@/lib/types';
-import { useDesignProps } from './hooks/useDesignProps';
 import { Slot } from './Slot';
-import styles from './Text.module.css';
+import {
+  cn,
+  mapFontSize,
+  mapTextAlign,
+  mapTextWrap,
+  mapFontWeight,
+  mapLetterSpacing,
+  mapTextTransform,
+  mapTextColor,
+} from './lib/tailwind';
 
 export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   color?: FontColor;
@@ -45,35 +52,32 @@ export function Text({
   as = 'span',
   asChild,
   className,
-  style,
   children,
   ...props
 }: TextProps) {
   const Component = asChild ? Slot : as;
-  const [classes, styleProps] = useDesignProps({
-    fontSize: size,
-    textAlign: align,
-    textWrap: wrap,
-    fontWeight: weight,
-    letterSpacing: spacing,
-    textTransform: transform,
-    color,
-  });
+
+  // Convert color to string for mapping
+  const colorStr = color === true ? 'true' : color;
+
+  const classes = cn(
+    'text-gray-900 dark:text-gray-100',
+    mapFontSize(size),
+    mapTextAlign(align),
+    mapTextWrap(wrap),
+    mapFontWeight(weight),
+    mapLetterSpacing(spacing),
+    mapTextTransform(transform),
+    mapTextColor(colorStr),
+    truncate && 'truncate',
+    italic && 'italic',
+    underline && 'underline',
+    strikethrough && 'line-through',
+    className
+  );
 
   return (
-    <Component
-      {...props}
-      className={classNames(
-        styles.text,
-        className,
-        classes,
-        truncate && styles.truncate,
-        italic && styles.italic,
-        underline && styles.underline,
-        strikethrough && styles.strikethrough,
-      )}
-      style={{ ...styleProps, ...style }}
-    >
+    <Component {...props} className={classes}>
       {children}
     </Component>
   );

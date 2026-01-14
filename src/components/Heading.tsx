@@ -1,8 +1,12 @@
-import classNames from 'classnames';
 import type { Responsive, FontSize, FontWeight, LetterSpacing, TextAlign } from '@/lib/types';
-import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
-import styles from './Heading.module.css';
+import {
+  cn,
+  mapHeadingSize,
+  mapTextAlign,
+  mapFontWeight,
+  mapLetterSpacing,
+} from './lib/tailwind';
 
 interface HeadingProps extends BoxProps {
   size?: Responsive<FontSize>;
@@ -17,23 +21,20 @@ function Heading({
   align,
   spacing = '1',
   className,
-  style,
   children,
   ...props
 }: HeadingProps) {
-  const [classes, styleProps] = useDesignProps({
-    headingSize: size,
-    textAlign: align,
-    fontWeight: weight,
-    letterSpacing: spacing,
-  });
+  const classes = cn(
+    'font-semibold text-gray-900 dark:text-gray-100',
+    mapHeadingSize(size),
+    mapTextAlign(align),
+    mapFontWeight(weight),
+    mapLetterSpacing(spacing),
+    className
+  );
 
   return (
-    <Box
-      {...props}
-      className={classNames(styles.heading, className, classes)}
-      style={{ ...styleProps, ...style }}
-    >
+    <Box {...props} className={classes}>
       {children}
     </Box>
   );

@@ -1,9 +1,7 @@
 import { HTMLAttributes } from 'react';
-import classNames from 'classnames';
 import { FontColor, StrokeColor, FillColor } from '@/lib/types';
-import { useDesignProps } from '@/components/hooks/useDesignProps';
 import { Slot } from './Slot';
-import styles from './Icon.module.css';
+import { cn, mapTextColor } from './lib/tailwind';
 
 export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'color' | 'size'> {
   color?: FontColor;
@@ -14,6 +12,14 @@ export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'color' | '
   strokeColor?: StrokeColor;
   fillColor?: FillColor;
 }
+
+const sizeMap = {
+  xs: 'w-3 h-3',
+  sm: 'w-4 h-4',
+  md: 'w-5 h-5',
+  lg: 'w-6 h-6',
+  xl: 'w-8 h-8',
+};
 
 export function Icon({
   color,
@@ -28,23 +34,27 @@ export function Icon({
   children,
   ...props
 }: IconProps) {
-  const [classes, styleProps] = useDesignProps({
-    strokeColor,
-    fillColor,
-    color,
-  });
+  // Convert color to string for mapping
+  const colorStr = color === true ? 'true' : color;
+
+  const classes = cn(
+    'inline-flex items-center justify-center shrink-0',
+    sizeMap[size],
+    mapTextColor(colorStr),
+    className
+  );
+
+  // Map stroke/fill colors to CSS variables for SVG compatibility
+  const styleProps: React.CSSProperties = {
+    ...style,
+    transform: rotate ? `rotate(${rotate}deg)` : undefined,
+    strokeWidth: strokeWidth,
+    ...(strokeColor && { stroke: `var(--base-color-${strokeColor})` }),
+    ...(fillColor && { fill: `var(--base-color-${fillColor})` }),
+  };
 
   return (
-    <Slot
-      {...props}
-      className={classNames(styles.icon, className, classes, size && styles[size])}
-      style={{
-        ...styleProps,
-        ...style,
-        transform: rotate ? `rotate(${rotate}deg)` : undefined,
-        strokeWidth: strokeWidth,
-      }}
-    >
+    <Slot {...props} className={classes} style={styleProps}>
       {children}
     </Slot>
   );

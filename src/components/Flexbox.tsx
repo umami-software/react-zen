@@ -1,6 +1,4 @@
-import classNames from 'classnames';
-import {
-  Spacing,
+import type {
   Responsive,
   FlexDisplay,
   FlexDirection,
@@ -11,8 +9,18 @@ import {
   AlignItems,
   Gap,
 } from '@/lib/types';
-import { useDesignProps } from './hooks/useDesignProps';
 import { Box, BoxProps } from './Box';
+import {
+  cn,
+  mapDisplay,
+  mapFlexDirection,
+  mapFlexWrap,
+  mapJustifyContent,
+  mapJustifyItems,
+  mapAlignContent,
+  mapAlignItems,
+  mapGap,
+} from './lib/tailwind';
 
 export interface FlexboxProps extends Omit<BoxProps, 'display' | 'gap'> {
   display?: Responsive<FlexDisplay>;
@@ -39,25 +47,25 @@ export function Flexbox({
   gapX,
   gapY,
   className,
-  style,
   children,
   ...props
 }: FlexboxProps) {
-  const [classes, styleProps] = useDesignProps({
-    display,
-    flexDirection: direction,
-    flexWrap: wrap,
-    justifyContent,
-    justifyItems,
-    alignContent,
-    alignItems,
-    gap,
-    gapX,
-    gapY,
-  });
+  const classes = cn(
+    mapDisplay(display),
+    mapFlexDirection(direction),
+    mapFlexWrap(wrap),
+    mapJustifyContent(justifyContent),
+    mapJustifyItems(justifyItems),
+    mapAlignContent(alignContent),
+    mapAlignItems(alignItems),
+    mapGap(gap as Responsive<string>),
+    mapGap(gapX as Responsive<string>, 'x'),
+    mapGap(gapY as Responsive<string>, 'y'),
+    className
+  );
 
   return (
-    <Box {...props} className={classNames(className, classes)} style={{ ...styleProps, ...style }}>
+    <Box {...props} className={classes}>
       {children}
     </Box>
   );
