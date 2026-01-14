@@ -1,14 +1,12 @@
-import classNames from 'classnames';
 import type { ReactNode } from 'react';
 import { Button as AriaButton, type ButtonProps as AriaButtonProps } from 'react-aria-components';
-import styles from './Button.module.css';
 import { Slot } from './Slot';
+import { type ButtonVariants, button } from './variants';
 
-export interface ButtonProps extends AriaButtonProps {
-  variant?: 'primary' | 'outline' | 'quiet' | 'danger' | 'zero';
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export interface ButtonProps extends Omit<AriaButtonProps, 'className'>, ButtonVariants {
   asChild?: boolean;
   children?: ReactNode;
+  className?: string;
 }
 
 export function Button({
@@ -24,16 +22,7 @@ export function Button({
   const buttonProps = Component === AriaButton ? { preventFocusOnPress } : undefined;
 
   return (
-    <Component
-      {...props}
-      {...buttonProps}
-      className={classNames(
-        styles.button,
-        className,
-        variant && styles[`variant-${variant}`],
-        size && styles[size],
-      )}
-    >
+    <Component {...props} {...buttonProps} className={button({ variant, size, className })}>
       {children as ReactNode}
     </Component>
   );

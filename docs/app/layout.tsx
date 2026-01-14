@@ -3,10 +3,11 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 import { inter } from '@/app/fonts';
 import { App } from './App';
-import '@umami/shiso/styles.css';
 import '@/styles/zen.css';
 import '@/styles/reset.css';
 import '@/styles/global.css';
+import './globals.css';
+import '@umami/shiso/styles.css';
 import 'highlight.js/styles/github-dark.css';
 
 export default function RootLayout({
