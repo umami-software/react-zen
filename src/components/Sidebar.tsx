@@ -1,10 +1,10 @@
-import { ReactNode, createContext, useContext } from 'react';
-import { TooltipTrigger, Focusable } from 'react-aria-components';
-import { Column, ColumnProps } from '@/components/Column';
-import { Row, RowProps } from '@/components/Row';
+import { createContext, type ReactNode, useContext } from 'react';
+import { Focusable, TooltipTrigger } from 'react-aria-components';
+import { Column, type ColumnProps } from '@/components/Column';
 import { Icon } from '@/components/Icon';
-import { Tooltip } from '@/components/Tooltip';
+import { Row, type RowProps } from '@/components/Row';
 import { Text } from '@/components/Text';
+import { Tooltip } from '@/components/Tooltip';
 import { cn } from './lib/tailwind';
 
 export interface SidebarProps extends ColumnProps {
@@ -15,13 +15,7 @@ export interface SidebarProps extends ColumnProps {
 
 const SidebarContext = createContext(null as any);
 
-export function Sidebar({
-  isCollapsed,
-  muteItems,
-  className,
-  children,
-  ...props
-}: SidebarProps) {
+export function Sidebar({ isCollapsed, muteItems, className, children, ...props }: SidebarProps) {
   return (
     <SidebarContext.Provider value={{ isCollapsed }}>
       <Column
@@ -105,7 +99,7 @@ export function SidebarItem({
             'hover:bg-gray-100 dark:hover:bg-gray-800',
             isSelected && 'bg-gray-100 dark:bg-gray-800 font-medium',
             isCollapsed && 'justify-center px-0',
-            className
+            className,
           )}
         >
           {icon && <Icon size="sm">{icon}</Icon>}

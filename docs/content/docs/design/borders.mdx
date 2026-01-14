@@ -8,28 +8,30 @@ Borders are always solid with a default border color. You can control the `posit
 
 <Example gap="5">
   <Label>Default</Label>
-  <ExampleBox border backgroundColor="2" borderRadius="0" />
+  <ExampleBox border backgroundColor={true} borderRadius="none" />
   <Label>Border top</Label>
-  <ExampleBox border="top" backgroundColor="2" borderRadius="0" />
+  <ExampleBox border="top" backgroundColor={true} borderRadius="none" />
   <Label>Border right</Label>
-  <ExampleBox border="right" backgroundColor="2" borderRadius="0" />
+  <ExampleBox border="right" backgroundColor={true} borderRadius="none" />
   <Label>Border bottom</Label>
-  <ExampleBox border="bottom" backgroundColor="2" borderRadius="0" />
+  <ExampleBox border="bottom" backgroundColor={true} borderRadius="none" />
   <Label>Border left</Label>
-  <ExampleBox border="left" backgroundColor="2" borderRadius="0" />
+  <ExampleBox border="left" backgroundColor={true} borderRadius="none" />
 </Example>
 
 ## Border radius
 
 <Example gap="5">
-  <Label>Radius 1</Label>
-  <ExampleBox borderRadius="1" />
-  <Label>Radius 2</Label>
-  <ExampleBox borderRadius="2" />
-  <Label>Radius 3</Label>
-  <ExampleBox borderRadius="3" />
-  <Label>Radius 4</Label>
-  <ExampleBox borderRadius="4" />
+  <Label>Radius sm</Label>
+  <ExampleBox borderRadius="sm" />
+  <Label>Radius md</Label>
+  <ExampleBox borderRadius="md" />
+  <Label>Radius lg</Label>
+  <ExampleBox borderRadius="lg" />
+  <Label>Radius xl</Label>
+  <ExampleBox borderRadius="xl" />
+  <Label>Radius 2xl</Label>
+  <ExampleBox borderRadius="2xl" />
   <Label>Radius full</Label>
   <ExampleBox borderRadius="full" />
 </Example>
@@ -37,14 +39,14 @@ Borders are always solid with a default border color. You can control the `posit
 ## Border width
 
 <Example gap="5">
-  <Label>Width 1</Label>
-  <ExampleBox borderWidth="1" />
+  <Label>Width 0</Label>
+  <ExampleBox borderWidth="0" />
   <Label>Width 2</Label>
   <ExampleBox borderWidth="2" />
-  <Label>Width 3</Label>
-  <ExampleBox borderWidth="3" />
   <Label>Width 4</Label>
   <ExampleBox borderWidth="4" />
+  <Label>Width 8</Label>
+  <ExampleBox borderWidth="8" />
 </Example>
 
 ## Border color
@@ -57,35 +59,14 @@ Borders are always solid with a default border color. You can control the `posit
   <ExampleBox borderColor="green" />
 </Example>
 
-## CSS variables
-
-<Example>
-  <DataTable
-    data={[
-      { name: '--border-width-1', value: '1px' },
-      { name: '--border-width-2', value: '2px' },
-      { name: '--border-width-3', value: '3px' },
-      { name: '--border-width-4', value: '4px' },
-      { name: '--border-radius-1', value: '2px' },
-      { name: '--border-radius-2', value: '4px' },
-      { name: '--border-radius-3', value: '8px' },
-      { name: '--border-radius-4', value: '16px' },
-      { name: '--border-radius-full', value: '9999px' },
-    ]}
-  >
-    <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
-  </DataTable>
-</Example>
-
 ## Component props
 
 <Example>
   <DataTable
     data={[
       { name: 'border', value: 'Responsive<boolean | "top" | "right" | "bottom" | "left">' },
-      { name: 'borderWidth', value: 'Responsive<"1" | "2" | "3" | "4">' },
-      { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "full">' },
+      { name: 'borderWidth', value: 'Responsive<"0" | "2" | "4" | "8">' },
+      { name: 'borderRadius', value: 'Responsive<"none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full">' },
       { name: 'borderColor', value: 'Responsive<BorderColor>' },
     ]}
   >

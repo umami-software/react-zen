@@ -2,25 +2,25 @@
 title: Colors
 ---
 
-Our color system is based off of [Radix Colors](https://www.radix-ui.com/colors). There are several categories of colors that we use in this library and they are all defined in CSS variables.
+Our color system is based on Tailwind CSS colors. There are two categories of colors: semantic colors and accent colors.
 
-## Base colors
+## Semantic colors
 
-Base colors are used as the basis of every UI element including backgrounds, borders, and text.
+Semantic colors provide meaning to UI elements and are used for common states.
 
 <Example direction="row" gap="2">
-  <ExampleBox backgroundColor="1" />
-  <ExampleBox backgroundColor="2" />
-  <ExampleBox backgroundColor="3" />
-  <ExampleBox backgroundColor="4" />
-  <ExampleBox backgroundColor="5" />
-  <ExampleBox backgroundColor="6" />
-  <ExampleBox backgroundColor="7" />
-  <ExampleBox backgroundColor="8" />
-  <ExampleBox backgroundColor="9" />
-  <ExampleBox backgroundColor="10" />
-  <ExampleBox backgroundColor="11" />
-  <ExampleBox backgroundColor="12" />
+  <Column alignItems="center">
+    <ExampleBox backgroundColor="primary" />
+    <Text size="xs">primary</Text>
+  </Column>
+  <Column alignItems="center">
+    <ExampleBox backgroundColor="muted" />
+    <Text size="xs">muted</Text>
+  </Column>
+  <Column alignItems="center">
+    <ExampleBox backgroundColor="transparent" />
+    <Text size="xs">transparent</Text>
+  </Column>
 </Example>
 
 ## Accent colors
@@ -31,92 +31,36 @@ Accent colors provide additional meaning to UI elements and are used in buttons,
   <AccentColorsExample />
 </Example>
 
-## CSS variables
+## Text colors
 
-The base colors are a 12-step color range going from lightest to darkest.
+<Example direction="row" gap="4">
+  <Text color="primary">Primary text</Text>
+  <Text color="muted">Muted text</Text>
+  <Text color="disabled">Disabled text</Text>
+  <Text color="red">Colored text</Text>
+</Example>
 
-### Light theme
+## Component props
 
 <Example>
   <DataTable
     data={[
-      { name: '--base-color-1', value: '#fcfcfc' },
-      { name: '--base-color-2', value: '#f9f9f9' },
-      { name: '--base-color-3', value: '#f0f0f0' },
-      { name: '--base-color-4', value: '#e8e8e8' },
-      { name: '--base-color-5', value: '#e0e0e0' },
-      { name: '--base-color-6', value: '#d9d9d9' },
-      { name: '--base-color-7', value: '#cecece' },
-      { name: '--base-color-8', value: '#bbbbbb' },
-      { name: '--base-color-9', value: '#8d8d8d' },
-      { name: '--base-color-10', value: '#838383' },
-      { name: '--base-color-11', value: '#646464' },
-      { name: '--base-color-12', value: '#202020' },
+      { name: 'color', value: '"primary" | "muted" | "disabled" | AccentColor' },
+      { name: 'backgroundColor', value: '"primary" | "transparent" | AccentColor | true' },
+      { name: 'borderColor', value: '"primary" | "muted" | "disabled" | "transparent" | AccentColor | true' },
     ]}
   >
     <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
+    <DataColumn id="value" label="Type" />
   </DataTable>
 </Example>
 
-### Dark theme
+## Available accent colors
 
-<Example>
-  <DataTable
-    data={[
-      { name: '--base-color-1', value: '#111111' },
-      { name: '--base-color-2', value: '#191919' },
-      { name: '--base-color-3', value: '#222222' },
-      { name: '--base-color-4', value: '#2a2a2a' },
-      { name: '--base-color-5', value: '#313131' },
-      { name: '--base-color-6', value: '#3a3a3a' },
-      { name: '--base-color-7', value: '#484848' },
-      { name: '--base-color-8', value: '#606060' },
-      { name: '--base-color-9', value: '#6e6e6e' },
-      { name: '--base-color-10', value: '#7b7b7b' },
-      { name: '--base-color-11', value: '#b4b4b4' },
-      { name: '--base-color-12', value: '#eeeeee' },
-    ]}
-  >
-    <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
-  </DataTable>
-</Example>
+The following Tailwind colors are available as accent colors:
 
-### Accent colors (light/dark)
-
-<Example>
-  <DataTable
-    data={[
-      { name: '--accent-color-gray', value: '#8d8d8d' },
-      { name: '--accent-color-gold', value: '#978365' },
-      { name: '--accent-color-bronze', value: '#a18072' },
-      { name: '--accent-color-brown', value: '#ad7f58' },
-      { name: '--accent-color-yellow', value: '#ffe629' },
-      { name: '--accent-color-amber', value: '#ffc53d' },
-      { name: '--accent-color-orange', value: '#f76b15' },
-      { name: '--accent-color-tomato', value: '#e54d2e' },
-      { name: '--accent-color-red', value: '#e5484d' },
-      { name: '--accent-color-ruby', value: '#e54666' },
-      { name: '--accent-color-crimson', value: '#e93d82' },
-      { name: '--accent-color-pink', value: '#d6409f' },
-      { name: '--accent-color-plum', value: '#ab4aba' },
-      { name: '--accent-color-purple', value: '#8e4ec6' },
-      { name: '--accent-color-violet', value: '#6e56cf' },
-      { name: '--accent-color-iris', value: '#5b5bd6' },
-      { name: '--accent-color-indigo', value: '#3e63dd' },
-      { name: '--accent-color-blue', value: '#0090ff' },
-      { name: '--accent-color-cyan', value: '#00a2c7' },
-      { name: '--accent-color-teal', value: '#12a594' },
-      { name: '--accent-color-jade', value: '#29a383' },
-      { name: '--accent-color-green', value: '#30a46c' },
-      { name: '--accent-color-grass', value: '#46a758' },
-      { name: '--accent-color-lime', value: '#bdee63' },
-      { name: '--accent-color-mint', value: '#86ead4' },
-      { name: '--accent-color-sky', value: '#7ce2fe' },
-    ]}
-  >
-    <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
-  </DataTable>
-</Example>
+- `gray`, `slate`, `zinc`, `neutral`, `stone`
+- `red`, `orange`, `amber`, `yellow`, `lime`
+- `green`, `emerald`, `teal`, `cyan`, `sky`
+- `blue`, `indigo`, `violet`, `purple`, `fuchsia`
+- `pink`, `rose`

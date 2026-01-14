@@ -4,55 +4,49 @@ export const Breakpoints = ['', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type Breakpoint = (typeof Breakpoints)[number];
 export type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 
-export type BaseColor = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
-
+// Colors - semantic and Tailwind color names
 export type AccentColor =
   | 'gray'
-  | 'gold'
-  | 'bronze'
-  | 'brown'
-  | 'yellow'
-  | 'amber'
-  | 'orange'
-  | 'tomato'
+  | 'slate'
+  | 'zinc'
+  | 'neutral'
+  | 'stone'
   | 'red'
-  | 'ruby'
-  | 'crimson'
-  | 'pink'
-  | 'plum'
-  | 'purple'
-  | 'violet'
-  | 'iris'
-  | 'indigo'
-  | 'blue'
-  | 'cyan'
-  | 'teal'
-  | 'jade'
-  | 'green'
-  | 'grass'
+  | 'orange'
+  | 'amber'
+  | 'yellow'
   | 'lime'
-  | 'mint'
-  | 'sky';
+  | 'green'
+  | 'emerald'
+  | 'teal'
+  | 'cyan'
+  | 'sky'
+  | 'blue'
+  | 'indigo'
+  | 'violet'
+  | 'purple'
+  | 'fuchsia'
+  | 'pink'
+  | 'rose';
 
-export type FontColor = BaseColor | AccentColor | 'primary' | 'muted' | 'disabled' | true;
-export type BackgroundColor = BaseColor | AccentColor | 'primary' | 'transparent' | true;
-export type BorderColor =
-  | BaseColor
-  | AccentColor
-  | 'primary'
-  | 'muted'
-  | 'disabled'
-  | 'transparent'
-  | true;
+export type FontColor = AccentColor | 'primary' | 'muted' | 'disabled' | true;
+export type BackgroundColor = AccentColor | 'primary' | 'transparent' | true;
+export type BorderColor = AccentColor | 'primary' | 'muted' | 'disabled' | 'transparent' | true;
 export type HoverColor = FontColor;
 export type StrokeColor = FontColor;
 export type FillColor = FontColor;
 
+// Spacing - Tailwind's native scale
 export type Spacing =
   | '0'
+  | 'px'
+  | '0.5'
   | '1'
+  | '1.5'
   | '2'
+  | '2.5'
   | '3'
+  | '3.5'
   | '4'
   | '5'
   | '6'
@@ -61,12 +55,34 @@ export type Spacing =
   | '9'
   | '10'
   | '11'
-  | '12';
+  | '12'
+  | '14'
+  | '16'
+  | '20'
+  | '24'
+  | '28'
+  | '32'
+  | '36'
+  | '40'
+  | '44'
+  | '48'
+  | '52'
+  | '56'
+  | '60'
+  | '64'
+  | '72'
+  | '80'
+  | '96';
 
 export type NegativeSpacing =
+  | '-px'
+  | '-0.5'
   | '-1'
+  | '-1.5'
   | '-2'
+  | '-2.5'
   | '-3'
+  | '-3.5'
   | '-4'
   | '-5'
   | '-6'
@@ -75,9 +91,13 @@ export type NegativeSpacing =
   | '-9'
   | '-10'
   | '-11'
-  | '-12';
+  | '-12'
+  | '-14'
+  | '-16'
+  | '-20'
+  | '-24';
 
-export type Padding = Spacing | NegativeSpacing | true;
+export type Padding = Spacing | true;
 export type Top = Spacing | NegativeSpacing | string;
 export type Right = Spacing | NegativeSpacing | string;
 export type Bottom = Spacing | NegativeSpacing | string;
@@ -89,28 +109,29 @@ export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
 
 export type Border = true | 'top' | 'right' | 'bottom' | 'left' | 'none';
-export type BorderWidth = '1' | '2' | '3' | '4';
-export type BorderRadius = '0' | '1' | '2' | '3' | '4' | 'full' | true;
+export type BorderWidth = '0' | '2' | '4' | '8';
+export type BorderRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full' | true;
 
-export type BoxShadow = '0' | '1' | '2' | '3' | '4' | '5' | '6' | 'none';
+export type BoxShadow = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'inner' | true;
 
-export type FontSize = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+export type FontSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl';
+export type HeadingSize = 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
 export type FontWeight =
   | 'thin'
-  | 'extra-light'
+  | 'extralight'
   | 'light'
-  | 'regular'
+  | 'normal'
   | 'medium'
-  | 'semi-bold'
+  | 'semibold'
   | 'bold'
-  | 'extra-bold'
+  | 'extrabold'
   | 'black';
 
 export type TextWrap = 'wrap' | 'nowrap' | 'pretty' | 'balance';
 export type TextAlign = 'left' | 'center' | 'right';
 export type TextTransform = 'capitalize' | 'uppercase' | 'lowercase' | 'none';
 
-export type LetterSpacing = '1' | '2' | '3' | '4' | '5';
+export type LetterSpacing = 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest';
 
 export type FlexDisplay = 'none' | 'flex' | 'inline-flex';
 export type FlexDirection = 'column' | 'row' | 'row-reverse' | 'column-reverse';

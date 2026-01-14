@@ -28,17 +28,17 @@ Breakpoints are triggered once the screen width is greater than the specified wi
 Certain properties of layout components accept a `Responsive` object, which specifies what value
 to apply at a given breakpoint.
 
-For example, the [Heading](/docs/typeography/heading) component takes a `size` prop. If we pass in a
+For example, the [Heading](/docs/typography/heading) component takes a `size` prop. If we pass in a
 `Responsive` object, we can specify which sizes to display at different breakpoints.
 
 <Example>
   <Heading
     size={{
-      xs: '2',
-      sm: '3',
-      md: '4',
-      lg: '5',
-      xl: '6',
+      xs: 'lg',
+      sm: 'xl',
+      md: '2xl',
+      lg: '3xl',
+      xl: '4xl',
     }}
   >
     {`This text will shrink/grow as the screen resizes.`}
@@ -48,11 +48,11 @@ For example, the [Heading](/docs/typeography/heading) component takes a `size` p
 ```jsx
 <Heading
   size={{
-    xs: '2',
-    sm: '3',
-    md: '4',
-    lg: '5',
-    xl: '6',
+    xs: 'lg',
+    sm: 'xl',
+    md: '2xl',
+    lg: '3xl',
+    xl: '4xl',
   }}
 >
   {`This text will shrink/grow as the screen resizes.`}

@@ -20,18 +20,14 @@ A text element with controls for size, color, weight and letter spacing.
 ## Sizes
 
 <Example>
-  <Text size="1">Size 1</Text>
-  <Text size="2">Size 2</Text>
-  <Text size="3">Size 3</Text>
-  <Text size="4">Size 4</Text>
-  <Text size="5">Size 5</Text>
-  <Text size="6">Size 6</Text>
-  <Text size="7">Size 7</Text>
-  <Text size="8">Size 8</Text>
-  <Text size="9">Size 9</Text>
-  <Text size="10">Size 10</Text>
-  <Text size="11">Size 11</Text>
-  <Text size="12">Size 12</Text>
+  <Text size="xs">Size xs</Text>
+  <Text size="sm">Size sm</Text>
+  <Text size="base">Size base</Text>
+  <Text size="lg">Size lg</Text>
+  <Text size="xl">Size xl</Text>
+  <Text size="2xl">Size 2xl</Text>
+  <Text size="3xl">Size 3xl</Text>
+  <Text size="4xl">Size 4xl</Text>
 </Example>
 
 ## Weights
@@ -40,6 +36,7 @@ A text element with controls for size, color, weight and letter spacing.
   <Text weight="light">Light text</Text>
   <Text weight="normal">Normal text</Text>
   <Text weight="medium">Medium text</Text>
+  <Text weight="semibold">Semibold text</Text>
   <Text weight="bold">Bold text</Text>
 </Example>
 
@@ -62,11 +59,11 @@ A text element with controls for size, color, weight and letter spacing.
 ## Letter spacing
 
 <Example>
-  <Text spacing="1">Letter spacing 1</Text>
-  <Text spacing="2">Letter spacing 2</Text>
-  <Text spacing="3">Letter spacing 3 (normal)</Text>
-  <Text spacing="4">Letter spacing 4</Text>
-  <Text spacing="5">Letter spacing 5</Text>
+  <Text spacing="tighter">Letter spacing tighter</Text>
+  <Text spacing="tight">Letter spacing tight</Text>
+  <Text spacing="normal">Letter spacing normal</Text>
+  <Text spacing="wide">Letter spacing wide</Text>
+  <Text spacing="wider">Letter spacing wider</Text>
 </Example>
 
 ## Formatting
@@ -105,11 +102,11 @@ A text element with controls for size, color, weight and letter spacing.
 <Example>
   <DataTable
     data={[
-      { name: 'type', value: 'Responsive<"muted" | "faded">' },
-      { name: 'size', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9">' },
-      { name: 'weight', value: 'Responsive<"light" | "regular" | "medium" | "bold">' },
+      { name: 'color', value: '"muted" | "disabled" | AccentColor' },
+      { name: 'size', value: 'Responsive<"xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl">' },
+      { name: 'weight', value: 'Responsive<"thin" | "extralight" | "light" | "normal" | "medium" | "semibold" | "bold" | "extrabold" | "black">' },
       { name: 'align', value: 'Responsive<"left" | "center" | "right">' },
-      { name: 'spacing', value: 'Responsive<"1" | "2" | "3" | "4" | "5">' },
+      { name: 'spacing', value: 'Responsive<"tighter" | "tight" | "normal" | "wide" | "wider" | "widest">' },
       { name: 'italic', value: 'boolean' },
       { name: 'underline', value: 'boolean' },
       { name: 'strikethrough', value: 'boolean' },

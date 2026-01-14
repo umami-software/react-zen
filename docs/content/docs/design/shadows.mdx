@@ -5,50 +5,16 @@ title: Shadows
 Shadows are a set of `box-shadow` values that give the element a sense of depth.
 
 <Example gap="5">
-  <Label>Shadow 1</Label>
-  <ExampleBox shadow="1" />
-  <Label>Shadow 2</Label>
-  <ExampleBox shadow="2" />
-  <Label>Shadow 3</Label>
-  <ExampleBox shadow="3" />
-  <Label>Shadow 4</Label>
-  <ExampleBox shadow="4" />
-  <Label>Shadow 5</Label>
-  <ExampleBox shadow="5" />
-  <Label>Shadow 6</Label>
-  <ExampleBox shadow="6" />
-</Example>
-
-## CSS variables
-
-Shadow values are defined in a 6-step scale.
-
-<Example>
-  <DataTable
-    data={[
-      { name: '--box-shadow-1', value: '0 1px 2px 0 rgb(0 0 0 / 0.05)' },
-      {
-        name: '--box-shadow-2',
-        value: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-      },
-      {
-        name: '--box-shadow-3',
-        value: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-      },
-      {
-        name: '--box-shadow-4',
-        value: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-      },
-      {
-        name: '--box-shadow-5',
-        value: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-      },
-      { name: '--box-shadow-6', value: '0 25px 50px -12px rgb(0 0 0 / 0.25)' },
-    ]}
-  >
-    <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
-  </DataTable>
+  <Label>Shadow sm</Label>
+  <ExampleBox shadow="sm" />
+  <Label>Shadow md</Label>
+  <ExampleBox shadow="md" />
+  <Label>Shadow lg</Label>
+  <ExampleBox shadow="lg" />
+  <Label>Shadow xl</Label>
+  <ExampleBox shadow="xl" />
+  <Label>Shadow 2xl</Label>
+  <ExampleBox shadow="2xl" />
 </Example>
 
 ## Component props
@@ -56,7 +22,7 @@ Shadow values are defined in a 6-step scale.
 <Example>
   <DataTable
     data={[
-      { name: 'shadow', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6">' },
+      { name: 'shadow', value: 'Responsive<"none" | "sm" | "md" | "lg" | "xl" | "2xl" | "inner">' },
     ]}
 >
 

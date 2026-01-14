@@ -186,7 +186,7 @@ export function Box({
     mapBorder(border),
     mapBorderColor(toStringValue(borderColor)),
     mapBorderRadius(borderRadius as Responsive<string>),
-    mapShadow(shadow),
+    mapShadow(shadow as Responsive<string>),
     mapPadding(padding as Responsive<string>),
     mapPadding(paddingX as Responsive<string>, 'x'),
     mapPadding(paddingY as Responsive<string>, 'y'),

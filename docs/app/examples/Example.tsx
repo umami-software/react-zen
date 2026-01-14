@@ -8,7 +8,7 @@ export function Example({
   padding = '8',
   marginY = '6',
   border = true,
-  borderRadius = '3',
+  borderRadius = 'lg',
   minHeight = '300px',
   wrap = 'wrap',
   position = 'relative',

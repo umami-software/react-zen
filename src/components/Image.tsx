@@ -32,7 +32,7 @@ export function Image({
   const classes = cn(
     'block max-w-full',
     mapBorderRadius(borderRadius as Responsive<string>),
-    mapShadow(shadow),
+    mapShadow(shadow as Responsive<string>),
     objectFit && objectFitMap[objectFit],
     objectFit && 'w-full h-full',
     isCentered && 'mx-auto',

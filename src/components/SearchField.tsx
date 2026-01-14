@@ -66,12 +66,12 @@ export function SearchField({
         className={classNames(styles.field, className)}
         onChange={handleChange}
       >
-        <Icon strokeColor="8">
+        <Icon color="muted">
           <Search />
         </Icon>
         <Input placeholder={placeholder} value={search} />
         {search && (
-          <Icon size="sm" color="8" onClick={resetSearch}>
+          <Icon size="sm" color="muted" onClick={resetSearch}>
             <X />
           </Icon>
         )}

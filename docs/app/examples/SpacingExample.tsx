@@ -1,22 +1,22 @@
-import { Box, Row, Column, Label } from '@/components';
 import { ExampleBox } from '@/app/examples/ExampleBox';
+import { Column, Label, Row } from '@/components';
+
+const SPACING_VALUES = ['1', '2', '3', '4', '5', '6', '8', '10', '12', '16', '20', '24'] as const;
 
 export function SpacingExample() {
   return (
     <Column alignItems="flex-start" gap="6">
-      {Array(12)
-        .fill(0)
-        .map((_, index) => {
-          return (
-            <Column key={index} gap="2">
-              <Label>Spacing {index + 1}</Label>
-              <Row gap={(index + 1).toString() as any}>
-                <ExampleBox />
-                <ExampleBox />
-              </Row>
-            </Column>
-          );
-        })}
+      {SPACING_VALUES.map(spacing => {
+        return (
+          <Column key={spacing} gap="2">
+            <Label>Spacing {spacing}</Label>
+            <Row gap={spacing}>
+              <ExampleBox />
+              <ExampleBox />
+            </Row>
+          </Column>
+        );
+      })}
     </Column>
   );
 }

@@ -11,23 +11,7 @@ Base box component.
 ## With properties
 
 <Example>
-  <Box padding="5" shadow="3" borderRadius="3" border>
-    I am a box.
-  </Box>
-</Example>
-
-## Hover properties
-
-<Example>
-  <Box
-    padding="5"
-    shadow="3"
-    borderRadius="3"
-    border
-    hoverColor="jade"
-    hoverBackgroundColor="1"
-    hoverBorderColor="jade"
-  >
+  <Box padding="5" shadow="lg" borderRadius="lg" border>
     I am a box.
   </Box>
 </Example>
@@ -44,15 +28,9 @@ Base box component.
       },
       { name: 'backgroundColor', value: 'BackgroundColor' },
       { name: 'borderColor', value: 'BorderColor' },
-      { name: 'borderSize', value: 'Responsive<"1" | "2" | "3" | "4">' },
-      { name: 'borderTop', value: 'Responsive<"1" | "2" | "3" | "4">' },
-      { name: 'borderRight', value: 'Responsive<"1" | "2" | "3" | "4">' },
-      { name: 'borderBottom', value: 'Responsive<"1" | "2" | "3" | "4">' },
-      { name: 'borderLeft', value: 'Responsive<"1" | "2" | "3" | "4">' },
-      { name: 'borderRadius', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6">' },
-      { name: 'hoverColor', value: 'HoverColor' },
-      { name: 'hoverBackgroundColor', value: 'HoverColor' },
-      { name: 'hoverBorderColor', value: 'HoverColor' },
+      { name: 'borderWidth', value: 'Responsive<"0" | "2" | "4" | "8">' },
+      { name: 'borderRadius', value: 'Responsive<"none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full">' },
+      { name: 'shadow', value: 'Responsive<"none" | "sm" | "md" | "lg" | "xl" | "2xl" | "inner">' },
       { name: 'padding', value: 'Responsive<Spacing>' },
       { name: 'paddingX', value: 'Responsive<Spacing>' },
       { name: 'paddingY', value: 'Responsive<Spacing>' },

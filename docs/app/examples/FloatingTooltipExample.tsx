@@ -12,7 +12,7 @@ export function FloatingTooltipExample() {
   return (
     <>
       <Box
-        backgroundColor="1"
+        backgroundColor={true}
         width="400px"
         height="300px"
         onMouseEnter={handleEnter}
@@ -20,7 +20,7 @@ export function FloatingTooltipExample() {
       />
       {show && (
         <FloatingTooltip>
-          <Text size="2">Hello</Text>
+          <Text size="xs">Hello</Text>
         </FloatingTooltip>
       )}
     </>

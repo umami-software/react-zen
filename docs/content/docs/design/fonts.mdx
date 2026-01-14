@@ -5,51 +5,42 @@ title: Fonts
 The default fonts we use are [Inter](https://fonts.google.com/specimen/Inter) for regular text and
 [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) for monospace text.
 
-## CSS variables
+## Font sizes
 
-Font sizes are defined in a 12-step scale from smallest to largest.
+Font sizes use Tailwind's naming convention.
 
 <Example>
-  <DataTable
-    data={[
-      { name: '--font-size-1', value: '12px' },
-      { name: '--font-size-2', value: '14px' },
-      { name: '--font-size-3', value: '16px' },
-      { name: '--font-size-4', value: '18px' },
-      { name: '--font-size-5', value: '20px' },
-      { name: '--font-size-6', value: '24px' },
-      { name: '--font-size-7', value: '30px' },
-      { name: '--font-size-8', value: '36px' },
-      { name: '--font-size-9', value: '48px' },
-      { name: '--font-size-10', value: '60px' },
-      { name: '--font-size-11', value: '72px' },
-      { name: '--font-size-12', value: '96px' },
-    ]}
-  >
-    <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
-  </DataTable>
+  <Column gap="2" alignItems="start">
+    <Text size="xs">xs</Text>
+    <Text size="sm">sm</Text>
+    <Text size="base">base</Text>
+    <Text size="lg">lg</Text>
+    <Text size="xl">xl</Text>
+    <Text size="2xl">2xl</Text>
+    <Text size="3xl">3xl</Text>
+    <Text size="4xl">4xl</Text>
+    <Text size="5xl">5xl</Text>
+    <Text size="6xl">6xl</Text>
+    <Text size="7xl">7xl</Text>
+    <Text size="8xl">8xl</Text>
+    <Text size="9xl">9xl</Text>
+  </Column>
 </Example>
 
-Font weights are defined as `light`, `regular`, `medium` and `bold`.
+## Font weights
 
 <Example>
-  <DataTable
-    data={[
-      { name: '--font-weight-thin', value: '100' },
-      { name: '--font-weight-extra-light', value: '200' },
-      { name: '--font-weight-light', value: '300' },
-      { name: '--font-weight-regular', value: '400' },
-      { name: '--font-weight-medium', value: '500' },
-      { name: '--font-weight-semi-bold', value: '600' },
-      { name: '--font-weight-bold', value: '700' },
-      { name: '--font-weight-extra-bold', value: '800' },
-      { name: '--font-weight-black', value: '900' },
-    ]}
-  >
-    <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
-  </DataTable>
+  <Column gap="2" alignItems="start">
+    <Text weight="thin">Thin (100)</Text>
+    <Text weight="extralight">Extra Light (200)</Text>
+    <Text weight="light">Light (300)</Text>
+    <Text weight="normal">Normal (400)</Text>
+    <Text weight="medium">Medium (500)</Text>
+    <Text weight="semibold">Semibold (600)</Text>
+    <Text weight="bold">Bold (700)</Text>
+    <Text weight="extrabold">Extra Bold (800)</Text>
+    <Text weight="black">Black (900)</Text>
+  </Column>
 </Example>
 
 ## Component props
@@ -57,8 +48,8 @@ Font weights are defined as `light`, `regular`, `medium` and `bold`.
 <Example>
   <DataTable
     data={[
-      { name: 'size', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9">' },
-      { name: 'weight', value: 'Responsive<"light" | "normal" | "medium" | "bold">' },
+      { name: 'size', value: 'Responsive<"xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl">' },
+      { name: 'weight', value: 'Responsive<"thin" | "extralight" | "light" | "normal" | "medium" | "semibold" | "bold" | "extrabold" | "black">' },
     ]}
   >
 

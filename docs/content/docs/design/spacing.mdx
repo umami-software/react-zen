@@ -2,35 +2,36 @@
 title: Spacing
 ---
 
-Spacing defines values that are used in `margin`, `padding` and `gap` properties.
+Spacing defines values that are used in `margin`, `padding` and `gap` properties. The spacing scale uses Tailwind's native values.
 
 <Example>
   <SpacingExample />
 </Example>
 
-## CSS variables
-
-Spacing values are defined as a 12-step scale from smallest to largest.
+## Common spacing values
 
 <Example>
   <DataTable
     data={[
-      { name: '--spacing-1', value: '4px' },
-      { name: '--spacing-2', value: '8px' },
-      { name: '--spacing-3', value: '12px' },
-      { name: '--spacing-4', value: '14px' },
-      { name: '--spacing-5', value: '16px' },
-      { name: '--spacing-6', value: '24px' },
-      { name: '--spacing-7', value: '32px' },
-      { name: '--spacing-8', value: '40px' },
-      { name: '--spacing-9', value: '48px' },
-      { name: '--spacing-10', value: '64px' },
-      { name: '--spacing-11', value: '96px' },
-      { name: '--spacing-12', value: '128px' },
+      { name: '0', value: '0px' },
+      { name: 'px', value: '1px' },
+      { name: '0.5', value: '2px' },
+      { name: '1', value: '4px' },
+      { name: '2', value: '8px' },
+      { name: '3', value: '12px' },
+      { name: '4', value: '16px' },
+      { name: '5', value: '20px' },
+      { name: '6', value: '24px' },
+      { name: '8', value: '32px' },
+      { name: '10', value: '40px' },
+      { name: '12', value: '48px' },
+      { name: '16', value: '64px' },
+      { name: '20', value: '80px' },
+      { name: '24', value: '96px' },
     ]}
   >
-    <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
+    <DataColumn id="name" label="Value" />
+    <DataColumn id="value" label="Size" />
   </DataTable>
 </Example>
 
@@ -39,7 +40,7 @@ Spacing values are defined as a 12-step scale from smallest to largest.
 <Example>
   <DataTable
     data={[
-      { name: 'margin, padding, gap', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12">' },
+      { name: 'margin, padding, gap', value: 'Responsive<Spacing>' },
     ]}
   >
 
@@ -48,3 +49,5 @@ Spacing values are defined as a 12-step scale from smallest to largest.
 
   </DataTable>
 </Example>
+
+The `Spacing` type includes all Tailwind spacing values: `0`, `px`, `0.5`, `1`, `1.5`, `2`, `2.5`, `3`, `3.5`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `14`, `16`, `20`, `24`, `28`, `32`, `36`, `40`, `44`, `48`, `52`, `56`, `60`, `64`, `72`, `80`, `96`.

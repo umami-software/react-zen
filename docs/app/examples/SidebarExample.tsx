@@ -13,12 +13,12 @@ import {
 } from '@/components';
 import { SidebarProps } from '@/components/Sidebar';
 
-export function SidebarExample({ name, ...props }: { name: string } & SidebarProps) {
+export function SidebarExample({ name, ...props }: { name?: string } & SidebarProps) {
   const [isCollapsed, setCollapsed] = useState(false);
 
   return (
     <>
-      <Heading>{name}</Heading>
+      {name && <Heading>{name}</Heading>}
       <Box style={{ position: 'absolute', top: 0, left: 0, bottom: 0 }}>
         <Sidebar {...props} isCollapsed={isCollapsed}>
           <SidebarSection>

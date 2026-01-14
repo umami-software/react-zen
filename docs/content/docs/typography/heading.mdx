@@ -11,12 +11,15 @@ A heading element.
 ## Sizes
 
 <Example>
-  <Heading size="1">Heading 1</Heading>
-  <Heading size="2">Heading 2</Heading>
-  <Heading size="3">Heading 3</Heading>
-  <Heading size="4">Heading 4</Heading>
-  <Heading size="5">Heading 5</Heading>
-  <Heading size="6">Heading 6</Heading>
+  <Heading size="sm">Heading sm</Heading>
+  <Heading size="base">Heading base</Heading>
+  <Heading size="lg">Heading lg</Heading>
+  <Heading size="xl">Heading xl</Heading>
+  <Heading size="2xl">Heading 2xl</Heading>
+  <Heading size="3xl">Heading 3xl</Heading>
+  <Heading size="4xl">Heading 4xl</Heading>
+  <Heading size="5xl">Heading 5xl</Heading>
+  <Heading size="6xl">Heading 6xl</Heading>
 </Example>
 
 ## Alignment
@@ -32,11 +35,11 @@ A heading element.
 ## Letter spacing
 
 <Example>
-  <Heading spacing="1">Letter spacing 1</Heading>
-  <Heading spacing="2">Letter spacing 2</Heading>
-  <Heading spacing="3">Letter spacing 3</Heading>
-  <Heading spacing="4">Letter spacing 4</Heading>
-  <Heading spacing="5">Letter spacing 5</Heading>
+  <Heading spacing="tighter">Letter spacing tighter</Heading>
+  <Heading spacing="tight">Letter spacing tight</Heading>
+  <Heading spacing="normal">Letter spacing normal</Heading>
+  <Heading spacing="wide">Letter spacing wide</Heading>
+  <Heading spacing="wider">Letter spacing wider</Heading>
 </Example>
 
 ## Component props
@@ -44,9 +47,9 @@ A heading element.
 <Example>
   <DataTable
     data={[
-      { name: 'size', value: 'Responsive<"1" | "2" | "3" | "4" | "5" | "6">' },
+      { name: 'size', value: 'Responsive<"sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl">' },
       { name: 'align', value: 'Responsive<"left" | "center" | "right">' },
-      { name: 'spacing', value: 'Responsive<"1" | "2" | "3" | "4" | "5">' },
+      { name: 'spacing', value: 'Responsive<"tighter" | "tight" | "normal" | "wide" | "wider" | "widest">' },
       { name: 'as', value: 'string' },
       { name: 'asChild', value: 'boolean' },
     ]}

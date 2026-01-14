@@ -4,7 +4,7 @@ import { Text, Row, Column, Button, Heading } from '@/components';
 export default function RootPage() {
   return (
     <Column justifyContent="center" alignItems="center" gap="8" height="100%">
-      <Heading size="6">zen.</Heading>
+      <Heading size="5xl">zen.</Heading>
       <Text color="muted">A modern, minimalist React component library.</Text>
       <Row gap="3">
         <Button variant="primary" asChild>

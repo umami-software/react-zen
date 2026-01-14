@@ -1,4 +1,4 @@
-import type { Responsive, FontSize, FontWeight, LetterSpacing, TextAlign } from '@/lib/types';
+import type { Responsive, HeadingSize, FontWeight, LetterSpacing, TextAlign } from '@/lib/types';
 import { Box, BoxProps } from './Box';
 import {
   cn,
@@ -9,17 +9,17 @@ import {
 } from './lib/tailwind';
 
 interface HeadingProps extends BoxProps {
-  size?: Responsive<FontSize>;
+  size?: Responsive<HeadingSize>;
   weight?: Responsive<FontWeight>;
   spacing?: Responsive<LetterSpacing>;
   align?: Responsive<TextAlign>;
 }
 
 function Heading({
-  size = '3',
+  size = '2xl',
   weight,
   align,
-  spacing = '1',
+  spacing = 'tight',
   className,
   children,
   ...props
