@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
-import { Button as AriaButton, ButtonProps as AriaButtonProps } from 'react-aria-components';
 import classNames from 'classnames';
-import { Slot } from './Slot';
+import type { ReactNode } from 'react';
+import { Button as AriaButton, type ButtonProps as AriaButtonProps } from 'react-aria-components';
 import styles from './Button.module.css';
+import { Slot } from './Slot';
 
 export interface ButtonProps extends AriaButtonProps {
   variant?: 'primary' | 'outline' | 'quiet' | 'danger' | 'zero';
