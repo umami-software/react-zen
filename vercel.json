@@ -1,5 +1,0 @@
-{
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm --filter=react-zen-docs build",
-  "outputDirectory": "docs/.next"
-}
