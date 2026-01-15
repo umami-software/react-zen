@@ -1,5 +1,11 @@
-import { useEffect, HTMLAttributes, ReactNode } from 'react';
-import { useForm, UseFormProps, SubmitHandler, FormProvider, UseFormReturn } from 'react-hook-form';
+import { type HTMLAttributes, type ReactNode, useEffect } from 'react';
+import {
+  FormProvider,
+  type SubmitHandler,
+  type UseFormProps,
+  type UseFormReturn,
+  useForm,
+} from 'react-hook-form';
 import { AlertBanner } from '@/components/AlertBanner';
 import { cn } from '../lib/tailwind';
 
@@ -83,7 +89,7 @@ function Form({
       <form
         {...props}
         autoComplete={autoComplete}
-        className={cn('flex flex-col relative text-sm gap-3', className)}
+        className={cn('flex flex-col relative text-base gap-3', className)}
         onSubmit={onSubmit ? handleSubmit(onSubmit) : undefined}
         onKeyDown={onKeyDown}
       >

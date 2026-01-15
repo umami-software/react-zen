@@ -71,7 +71,7 @@ export type ButtonVariants = VariantProps<typeof button>;
 export const inputField = tv({
   base: [
     'flex items-center px-3 gap-3',
-    'text-sm rounded border border-gray-300 bg-white shadow-sm',
+    'text-base rounded border border-gray-300 bg-white shadow-sm',
     'leading-6 relative',
     'focus-within:border-transparent focus-within:ring-2 focus-within:ring-gray-400 focus-within:ring-offset-0',
     'dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100',
@@ -88,7 +88,8 @@ export const inputField = tv({
       class: 'readonly:bg-gray-50 dark:readonly:bg-gray-800',
     },
     {
-      class: 'disabled:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:disabled:bg-gray-800',
+      class:
+        'disabled:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:disabled:bg-gray-800',
     },
   ],
 });
@@ -99,7 +100,7 @@ export type InputFieldVariants = VariantProps<typeof inputField>;
 export const listItem = tv({
   base: [
     'flex items-center justify-between',
-    'gap-3 text-sm py-2 px-3 min-w-[120px]',
+    'gap-3 text-base py-2 px-3 min-w-[120px]',
     'cursor-pointer outline-none rounded',
     'text-gray-900 dark:text-gray-100',
     'hovered:bg-gray-100 dark:hovered:bg-gray-800',
@@ -198,7 +199,7 @@ export const checkbox = tv({
   slots: {
     root: [
       'group flex items-center gap-3',
-      'text-sm cursor-pointer',
+      'text-base cursor-pointer',
       'disabled:text-gray-400 disabled:cursor-default',
     ],
     box: [
@@ -224,7 +225,7 @@ export const switchVariant = tv({
   slots: {
     root: [
       'group flex items-center gap-3',
-      'text-sm cursor-pointer',
+      'text-base cursor-pointer',
       'disabled:opacity-50 disabled:cursor-default',
     ],
     track: [
@@ -249,12 +250,9 @@ export type SwitchVariants = VariantProps<typeof switchVariant>;
 export const tabs = tv({
   slots: {
     root: 'flex flex-col',
-    list: [
-      'flex gap-1 border-b border-gray-200',
-      'dark:border-gray-700',
-    ],
+    list: ['flex gap-1 border-b border-gray-200', 'dark:border-gray-700'],
     tab: [
-      'px-4 py-2 text-sm font-medium cursor-pointer',
+      'px-4 py-2 text-base font-medium cursor-pointer',
       'text-gray-600 dark:text-gray-400',
       'border-b-2 border-transparent -mb-px',
       'hovered:text-gray-900 dark:hovered:text-gray-100',
@@ -331,10 +329,7 @@ export type HeadingVariants = VariantProps<typeof heading>;
 
 // Alert banner variants
 export const alertBanner = tv({
-  base: [
-    'flex items-center gap-3 px-4 py-3 rounded-lg',
-    'text-sm',
-  ],
+  base: ['flex items-center gap-3 px-4 py-3 rounded-lg', 'text-base'],
   variants: {
     variant: {
       info: 'bg-blue-50 text-blue-900 dark:bg-blue-900/20 dark:text-blue-100',
@@ -355,7 +350,7 @@ export const statusLight = tv({
   base: 'inline-flex items-center gap-2',
   slots: {
     dot: 'w-2 h-2 rounded-full',
-    label: 'text-sm',
+    label: 'text-base',
   },
   variants: {
     color: {
@@ -379,7 +374,7 @@ export const toast = tv({
     'flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg',
     'bg-white dark:bg-gray-800',
     'border border-gray-200 dark:border-gray-700',
-    'text-sm',
+    'text-base',
     'entering:animate-toast-in',
     'exiting:animate-toast-out',
   ],

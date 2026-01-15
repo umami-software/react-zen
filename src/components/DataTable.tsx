@@ -1,18 +1,24 @@
-import { Children, createElement, HTMLAttributes, ReactElement, ReactNode } from 'react';
-import { TableProps } from 'react-aria-components';
+import {
+  Children,
+  createElement,
+  type HTMLAttributes,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
+import type { TableProps } from 'react-aria-components';
+import { DataCard } from '@/components/DataCard';
 import { Grid } from '@/components/Grid';
 import { mapIdProperty } from '@/lib/utils';
-import { DataCard } from '@/components/DataCard';
+import { cn } from './lib/tailwind';
 import {
   Table,
-  TableHeader,
   TableBody,
-  TableColumn,
-  TableRow,
   TableCell,
-  TableCellProps,
+  type TableCellProps,
+  TableColumn,
+  TableHeader,
+  TableRow,
 } from './Table';
-import { cn } from './lib/tailwind';
 
 export interface DataTableProps extends TableProps {
   data?: any[];
@@ -60,7 +66,7 @@ export function DataTable({
   }
 
   return (
-    <Table {...props} className={cn('relative text-sm', className)}>
+    <Table {...props} className={cn('relative text-base', className)}>
       <TableHeader style={{ gridTemplateColumns }}>
         {columns?.map(({ id, label, as, hidden, width, ...columnProps }) => {
           if (hidden) {

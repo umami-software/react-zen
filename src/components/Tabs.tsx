@@ -1,12 +1,12 @@
 import {
-  Tabs as AriaTabs,
   Tab as AriaTab,
-  TabProps,
-  TabsProps,
-  TabPanel as AriaTabPanel,
-  TabPanelProps,
   TabList as AriaTabList,
-  TabListProps,
+  TabPanel as AriaTabPanel,
+  Tabs as AriaTabs,
+  type TabListProps,
+  type TabPanelProps,
+  type TabProps,
+  type TabsProps,
 } from 'react-aria-components';
 import { cn } from './lib/tailwind';
 
@@ -38,7 +38,7 @@ function Tab({ children, className, ...props }: TabProps) {
     <AriaTab
       {...props}
       className={cn(
-        'tab flex items-center justify-center text-sm text-gray-500 dark:text-gray-400 py-2 border-b-2 border-transparent select-none -mb-[2px] cursor-pointer outline-none',
+        'tab flex items-center justify-center text-base text-gray-500 dark:text-gray-400 py-2 border-b-2 border-transparent select-none -mb-[2px] cursor-pointer outline-none',
         'data-[hovered]:text-gray-900 dark:data-[hovered]:text-gray-100',
         'data-[selected]:text-gray-900 dark:data-[selected]:text-gray-100 data-[selected]:border-b-gray-900 dark:data-[selected]:border-b-gray-100',
         'data-[disabled]:text-gray-300 dark:data-[disabled]:text-gray-600 data-[disabled]:cursor-default',

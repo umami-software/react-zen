@@ -1,16 +1,16 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
   Slider as AriaSlider,
-  SliderProps as AriaSliderProps,
+  type SliderProps as AriaSliderProps,
   SliderOutput,
   SliderThumb,
   SliderTrack,
 } from 'react-aria-components';
 import { Box } from './Box';
-import { Row } from './Row';
 import { Column } from './Column';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
 
 export interface SliderProps extends AriaSliderProps {
   label?: ReactNode;
@@ -53,12 +53,13 @@ export function Slider({ className, showValue = true, label, ...props }: SliderP
     <AriaSlider {...props} className={cn('flex flex-col gap-2 w-full', className)}>
       <Row justifyContent="space-between" alignItems="center">
         {label && <Label>{label}</Label>}
-        {showValue && <SliderOutput className="text-sm tabular-nums" />}
+        {showValue && <SliderOutput className="text-base tabular-nums" />}
       </Row>
       <SliderTrack className="relative w-full h-2 rounded-full bg-gray-200 dark:bg-gray-700">
         {({ state }) => {
           const isHorizontal = state.orientation === 'horizontal';
-          const percentage = (isHorizontal ? state.getThumbPercent(0) : 1 - state.getThumbPercent(0)) * 100;
+          const percentage =
+            (isHorizontal ? state.getThumbPercent(0) : 1 - state.getThumbPercent(0)) * 100;
           return (
             <>
               <Fill percentage={percentage} />

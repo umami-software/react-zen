@@ -1,16 +1,16 @@
 import {
-  Cell,
-  CellProps,
-  Column,
-  ColumnProps,
-  Row,
-  RowProps,
   Table as AriaTable,
-  TableProps,
   TableBody as AriaTableBody,
-  TableBodyProps,
   TableHeader as AriaTableHeader,
-  TableHeaderProps,
+  Cell,
+  type CellProps,
+  Column,
+  type ColumnProps,
+  Row,
+  type RowProps,
+  type TableBodyProps,
+  type TableHeaderProps,
+  type TableProps,
 } from 'react-aria-components';
 import { cn } from './lib/tailwind';
 
@@ -35,7 +35,7 @@ function Table({ children, className, ...props }: TableProps) {
     <AriaTable
       aria-label="Table"
       {...props}
-      className={cn('text-sm border-collapse w-full relative', className)}
+      className={cn('text-base border-collapse w-full relative', className)}
     >
       {children}
     </AriaTable>

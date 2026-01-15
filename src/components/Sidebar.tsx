@@ -23,7 +23,7 @@ export function Sidebar({ isCollapsed, muteItems, className, children, ...props 
         border="right"
         {...props}
         className={cn(
-          'text-sm',
+          'text-base',
           isCollapsed && 'w-16',
           muteItems && 'text-gray-500 dark:text-gray-400',
           className,

@@ -1,9 +1,9 @@
-import { useState, ChangeEvent, ReactNode } from 'react';
-import { AlertDialog, AlertDialogProps } from './AlertDialog';
+import { type ChangeEvent, type ReactNode, useState } from 'react';
+import { AlertDialog, type AlertDialogProps } from './AlertDialog';
 import { Box } from './Box';
-import { TextField } from './TextField';
-import { Text } from './Text';
 import { cn } from './lib/tailwind';
+import { Text } from './Text';
+import { TextField } from './TextField';
 
 interface ConfirmationDialogProps extends AlertDialogProps {
   value: string;
@@ -24,17 +24,19 @@ function ConfirmationDialog({
   };
 
   return (
-    <AlertDialog
-      {...props}
-      className={cn(className)}
-      isConfirmDisabled={!canSave}
-    >
+    <AlertDialog {...props} className={cn(className)} isConfirmDisabled={!canSave}>
       {({ close }) => {
         return (
           <>
             {typeof children === 'function' ? children({ close }) : children}
             <Text>{confirmMessage || 'Type the following value to confirm'}:</Text>
-            <Box paddingX="3" paddingY="2" marginY="2" borderRadius="md" className="font-mono text-sm bg-gray-100 dark:bg-gray-800">
+            <Box
+              paddingX="3"
+              paddingY="2"
+              marginY="2"
+              borderRadius="md"
+              className="font-mono text-base bg-gray-100 dark:bg-gray-800"
+            >
               {value}
             </Box>
             <TextField autoFocus={true} aria-label="Confirmation" onChange={handleChange} />

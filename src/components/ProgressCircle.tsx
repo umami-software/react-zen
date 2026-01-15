@@ -1,4 +1,4 @@
-import { ProgressBar, ProgressBarProps } from 'react-aria-components';
+import { ProgressBar, type ProgressBarProps } from 'react-aria-components';
 import { cn } from './lib/tailwind';
 
 export interface ProgressCircleProps extends ProgressBarProps {
@@ -7,10 +7,7 @@ export interface ProgressCircleProps extends ProgressBarProps {
 
 export function ProgressCircle({ className, showPercentage, ...props }: ProgressCircleProps) {
   return (
-    <ProgressBar
-      {...props}
-      className={cn('relative flex justify-center items-center', className)}
-    >
+    <ProgressBar {...props} className={cn('relative flex justify-center items-center', className)}>
       {({ percentage = 0, valueText }) => {
         const radius = 45;
         const circumference = radius * 2 * Math.PI;
@@ -34,7 +31,7 @@ export function ProgressCircle({ className, showPercentage, ...props }: Progress
               />
             </svg>
             {showPercentage && (
-              <label className="text-sm font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <label className="text-base font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 {valueText}
               </label>
             )}

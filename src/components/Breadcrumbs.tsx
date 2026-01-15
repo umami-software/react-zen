@@ -22,7 +22,7 @@ function Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
     <AriaBreadcrumb
       {...props}
       className={cn(
-        'flex items-center text-sm gap-3 list-none',
+        'flex items-center text-base gap-3 list-none',
         '[&_a]:text-gray-500 [&_a]:no-underline [&_a]:font-normal [&_a]:p-2',
         '[&_a:hover]:text-gray-900 dark:[&_a:hover]:text-gray-100',
         className,

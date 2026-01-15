@@ -61,7 +61,7 @@ export function TextField({
         aria-label="Text"
         {...props}
         className={cn(
-          'flex items-center px-3 gap-3 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900 shadow-sm leading-6 relative',
+          'flex items-center px-3 gap-3 text-base border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900 shadow-sm leading-6 relative',
           'focus-within:border-transparent focus-within:ring-2 focus-within:ring-gray-400',
           'data-[readonly]:bg-gray-50 dark:data-[readonly]:bg-gray-800',
           'data-[disabled]:text-gray-500 data-[disabled]:bg-gray-50 dark:data-[disabled]:bg-gray-800',

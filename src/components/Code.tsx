@@ -1,7 +1,7 @@
-import { HTMLAttributes } from 'react';
-import { FontWeight, Responsive, TextWrap } from '@/lib/types';
-import { Slot } from './Slot';
+import type { HTMLAttributes } from 'react';
+import type { FontWeight, Responsive, TextWrap } from '@/lib/types';
 import { cn } from './lib/tailwind';
+import { Slot } from './Slot';
 
 export interface CodeProps extends HTMLAttributes<HTMLElement> {
   asChild?: boolean;
@@ -16,7 +16,7 @@ export function Code({ asChild, className, children }: CodeProps) {
   return (
     <Component
       className={cn(
-        'font-mono text-sm font-medium bg-gray-100 dark:bg-gray-800 rounded p-1',
+        'font-mono text-base font-medium bg-gray-100 dark:bg-gray-800 rounded p-1',
         className,
       )}
     >

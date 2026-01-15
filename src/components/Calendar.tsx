@@ -49,17 +49,17 @@ export function Calendar({
       minValue={toCalendarDate(minValue)}
       maxValue={toCalendarDate(maxValue)}
       defaultValue={toCalendarDate(defaultValue)}
-      className={cn('w-fit max-w-full text-sm', className)}
+      className={cn('w-fit max-w-full text-base', className)}
       onChange={handleChange}
     >
       <header className="flex items-center mb-4">
-        <Button slot="previous" className="flex items-center justify-center border-0 bg-transparent" variant="quiet">
+        <Button slot="previous" variant="quiet">
           <Icon rotate={180}>
             <ChevronRight />
           </Icon>
         </Button>
-        <Heading className="flex-1 m-0 text-center text-sm font-bold" />
-        <Button slot="next" className="flex items-center justify-center border-0 bg-transparent" variant="quiet">
+        <Heading className="flex-1 m-0 text-center text-base font-bold" />
+        <Button slot="next" variant="quiet">
           <Icon>
             <ChevronRight />
           </Icon>
