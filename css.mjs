@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
+import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
 
 async function buildCSS() {
   // Process Tailwind CSS

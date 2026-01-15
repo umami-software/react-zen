@@ -1,7 +1,6 @@
-import { HTMLAttributes } from 'react';
-import { FontColor, StrokeColor, FillColor } from '@/lib/types';
-import { Slot } from './Slot';
-import { cn, mapTextColor, getCssColorValue } from './lib/tailwind';
+import { cloneElement, type HTMLAttributes, isValidElement, type ReactElement } from 'react';
+import type { FillColor, FontColor, StrokeColor } from '@/lib/types';
+import { cn, getCssColorValue, mapTextColor } from './lib/tailwind';
 
 export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'color' | 'size'> {
   color?: FontColor;
@@ -41,7 +40,7 @@ export function Icon({
     'inline-flex items-center justify-center shrink-0',
     sizeMap[size],
     mapTextColor(colorStr),
-    className
+    className,
   );
 
   // Map stroke/fill colors for SVG compatibility
@@ -56,9 +55,13 @@ export function Icon({
     ...(fillColorStr && { fill: getCssColorValue(fillColorStr) }),
   };
 
-  return (
-    <Slot {...props} className={classes} style={styleProps}>
-      {children}
-    </Slot>
-  );
+  if (!isValidElement(children)) {
+    return null;
+  }
+
+  return cloneElement(children as ReactElement<any>, {
+    ...props,
+    className: classes,
+    style: styleProps,
+  });
 }

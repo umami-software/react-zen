@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
+  Group as AriaGroup,
   SearchField as AriaSearchField,
   type SearchFieldProps as AriaSearchFieldProps,
   Input,
@@ -62,24 +63,29 @@ export function SearchField({
       <AriaSearchField
         aria-label="Search"
         {...props}
-        className={cn(
-          'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative',
-          'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring',
-          '[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:bg-transparent [&_input]:w-full [&_input]:flex-1',
-          '[&_input]:placeholder:text-content-muted',
-          className,
-        )}
+        className={cn('relative', className)}
         onChange={handleChange}
       >
-        <Icon color="muted">
-          <Search />
-        </Icon>
-        <Input placeholder={placeholder} value={search} />
-        {search && (
-          <Icon size="sm" color="muted" onClick={resetSearch}>
-            <X />
+        <AriaGroup
+          className={cn(
+            'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
+            'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring',
+          )}
+        >
+          <Icon color="muted">
+            <Search />
           </Icon>
-        )}
+          <Input
+            placeholder={placeholder}
+            value={search}
+            className="flex-1 py-2 bg-transparent border-none outline-none placeholder:text-content-muted [&::-webkit-search-cancel-button]:hidden"
+          />
+          {search && (
+            <Icon size="sm" color="muted" onClick={resetSearch}>
+              <X />
+            </Icon>
+          )}
+        </AriaGroup>
       </AriaSearchField>
     </>
   );

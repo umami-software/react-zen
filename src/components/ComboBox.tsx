@@ -3,12 +3,12 @@ import {
   Button as AriaButton,
   ComboBox as AriaComboBox,
   type ComboBoxProps as AriaComboBoxProps,
+  Group as AriaGroup,
   Input as AriaInput,
   type ListBoxRenderProps,
   type PopoverProps,
 } from 'react-aria-components';
 import { Box } from '@/components/Box';
-import { Grid } from '@/components/Grid';
 import { Icon } from '@/components/Icon';
 import { ChevronRight } from '@/components/icons';
 import { List, ListItem, type ListProps } from '@/components/List';
@@ -33,19 +33,21 @@ export function ComboBox({
 }: ComboBoxProps) {
   return (
     <AriaComboBox aria-label="ComboBox" {...props} className={cn('relative', className)}>
-      <Grid alignItems="center" columns="1fr auto" width="100%">
+      <AriaGroup
+        className={cn(
+          'flex items-center rounded border border-edge bg-surface-base',
+          'focus-within:outline-none focus-within:ring-2 focus-within:ring-focus-ring focus-within:border-transparent',
+        )}
+      >
         <AriaInput
-          className={cn(
-            'flex-1 px-3 py-2 text-base rounded-l border border-edge bg-surface-base',
-            'focus:outline-none focus:ring-2 focus:ring-focus-ring focus:border-transparent',
-          )}
+          className={cn('flex-1 px-3 py-2 text-base bg-transparent border-none outline-none')}
         />
-        <AriaButton className={cn('px-2 py-2')}>
+        <AriaButton className={cn('px-2 py-2 text-content-muted hover:text-content-primary')}>
           <Icon rotate={90} aria-hidden="true" size="sm">
             <ChevronRight />
           </Icon>
         </AriaButton>
-      </Grid>
+      </AriaGroup>
       <Popover {...popoverProps}>
         <Box padding="1">
           <List items={items} renderEmptyState={renderEmptyState} {...listProps}>

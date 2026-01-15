@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import type {
   FontColor,
   FontSize,
@@ -9,6 +9,7 @@ import type {
   TextTransform,
   TextWrap,
 } from '@/lib/types';
+import { type RenderProp, resolveRender } from './lib/render';
 import {
   cn,
   mapFontSize,
@@ -19,7 +20,6 @@ import {
   mapTextTransform,
   mapTextWrap,
 } from './lib/tailwind';
-import { Slot } from './Slot';
 
 export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   color?: FontColor;
@@ -34,7 +34,13 @@ export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   underline?: Responsive<boolean>;
   strikethrough?: Responsive<boolean>;
   as?: 'span' | 'div' | 'label' | 'p';
-  asChild?: boolean;
+  render?: RenderProp<TextRenderProps>;
+}
+
+export interface TextRenderProps {
+  className: string;
+  children?: ReactNode;
+  [key: string]: unknown;
 }
 
 export function Text({
@@ -50,12 +56,12 @@ export function Text({
   underline,
   strikethrough,
   as = 'span',
-  asChild,
+  render,
   className,
   children,
   ...props
 }: TextProps) {
-  const Component = asChild ? Slot : as;
+  const Component = as;
 
   // Convert color to string for mapping
   const colorStr = color === true ? 'true' : color;
@@ -76,9 +82,17 @@ export function Text({
     className,
   );
 
-  return (
+  const renderProps: TextRenderProps = {
+    ...props,
+    className: classes,
+    children,
+  };
+
+  const defaultElement = (
     <Component {...props} className={classes}>
       {children}
     </Component>
   );
+
+  return resolveRender(render, renderProps, defaultElement);
 }

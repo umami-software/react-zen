@@ -122,7 +122,7 @@ A text element with controls for size, color, weight and letter spacing.
       { name: 'underline', value: 'boolean' },
       { name: 'strikethrough', value: 'boolean' },
       { name: 'as', value: 'string' },
-      { name: 'asChild', value: 'boolean' },
+      { name: 'render', value: 'ReactElement | ((props) => ReactElement)' },
     ]}
   >
     <DataColumn id="name" label="Name" />

@@ -209,17 +209,16 @@ export const switchVariant = tv({
       'disabled:opacity-50 disabled:cursor-default',
     ],
     track: [
-      'relative w-10 h-6 rounded-full',
+      'flex items-center w-10 h-6 px-1 rounded-full',
       'bg-track',
       'transition-colors',
       'group-selected:bg-interactive-selected',
     ],
     thumb: [
-      'absolute top-1 left-1 w-4 h-4 rounded-full',
+      'w-4 h-4 rounded-full',
       'bg-surface-base shadow-sm',
       'transition-transform',
       'group-selected:translate-x-4',
-      'group-selected:bg-surface-inverted',
     ],
   },
 });

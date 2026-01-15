@@ -1,44 +1,44 @@
-import { HTMLAttributes, ElementType, CSSProperties } from 'react';
-import {
+import type { CSSProperties, ElementType, HTMLAttributes, ReactElement, ReactNode } from 'react';
+import type {
+  AlignSelf,
   BackgroundColor,
-  BorderColor,
   Border,
+  BorderColor,
   BorderRadius,
+  BorderWidth,
   BoxShadow,
-  Spacing,
-  Responsive,
-  Position,
   Display,
-  TextAlign,
   FlexGrow,
   FlexShrink,
-  Overflow,
-  AlignSelf,
-  JustifySelf,
   FontColor,
   FontSize,
   FontWeight,
+  JustifySelf,
+  Overflow,
   Padding,
-  BorderWidth,
+  Position,
+  Responsive,
+  Spacing,
+  TextAlign,
 } from '@/lib/types';
-import { Slot } from './Slot';
+import { type RenderProp, resolveRender } from './lib/render';
 import {
   cn,
-  mapDisplay,
-  mapPosition,
-  mapOverflow,
-  mapPadding,
-  mapMargin,
-  mapFontSize,
-  mapFontWeight,
-  mapTextColor,
+  mapAlignSelf,
   mapBackgroundColor,
-  mapBorderRadius,
-  mapShadow,
-  mapTextAlign,
   mapBorder,
   mapBorderColor,
-  mapAlignSelf,
+  mapBorderRadius,
+  mapDisplay,
+  mapFontSize,
+  mapFontWeight,
+  mapMargin,
+  mapOverflow,
+  mapPadding,
+  mapPosition,
+  mapShadow,
+  mapTextAlign,
+  mapTextColor,
 } from './lib/tailwind';
 
 export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
@@ -106,7 +106,14 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   theme?: string;
 
   as?: string;
-  asChild?: boolean;
+  render?: RenderProp<BoxRenderProps>;
+}
+
+export interface BoxRenderProps {
+  className?: string;
+  style?: CSSProperties;
+  children?: ReactNode;
+  [key: string]: unknown;
 }
 
 // Helper to convert value to string for mapping functions
@@ -168,13 +175,13 @@ export function Box({
   zIndex,
   theme,
   as = 'div',
-  asChild,
+  render,
   className,
   style,
   children,
   ...props
 }: BoxProps) {
-  const Component = asChild ? Slot : (as as ElementType);
+  const Component = as as ElementType;
 
   // Build Tailwind classes
   const classes = cn(
@@ -208,7 +215,7 @@ export function Box({
     mapOverflow(overflowY, 'y'),
     mapAlignSelf(alignSelf),
     theme && `${theme}-theme`,
-    className
+    className,
   );
 
   // Inline styles for values that can't be mapped to Tailwind utilities
@@ -237,9 +244,17 @@ export function Box({
   };
 
   // Only include style prop if there are inline styles beyond what was passed in
-  const hasInlineStyles = Object.keys(inlineStyles).length > (style ? Object.keys(style).length : 0);
+  const hasInlineStyles =
+    Object.keys(inlineStyles).length > (style ? Object.keys(style).length : 0);
 
-  return (
+  const renderProps: BoxRenderProps = {
+    ...props,
+    className: classes || undefined,
+    style: hasInlineStyles || style ? inlineStyles : undefined,
+    children,
+  };
+
+  const defaultElement = (
     <Component
       {...props}
       className={classes || undefined}
@@ -248,4 +263,6 @@ export function Box({
       {children}
     </Component>
   );
+
+  return resolveRender(render, renderProps, defaultElement);
 }

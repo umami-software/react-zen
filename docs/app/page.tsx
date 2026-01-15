@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Text, Row, Column, Button, Heading } from '@/components';
+import { Button, Column, Heading, Row, Text } from '@/components';
 
 export default function RootPage() {
   return (
@@ -7,11 +7,11 @@ export default function RootPage() {
       <Heading size="5xl">zen.</Heading>
       <Text color="muted">A modern, minimalist React component library.</Text>
       <Row gap="3">
-        <Button variant="primary" asChild>
-          <Link href="/docs">Get started</Link>
+        <Button variant="primary" render={<Link href="/docs" />}>
+          Get started
         </Button>
-        <Button asChild>
-          <Link href="https://github.com/umami-software/react-zen">View source</Link>
+        <Button render={<Link href="https://github.com/umami-software/react-zen" />}>
+          View source
         </Button>
       </Row>
     </Column>
