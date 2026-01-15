@@ -1,0 +1,110 @@
+/* Theme System - CSS Custom Properties */
+/* Using Tailwind CSS v4 OKLCH color values */
+
+:root {
+  /* === SURFACES (backgrounds) === */
+  --surface-base: #ffffff;
+  --surface-raised: oklch(0.985 0 0); /* neutral-50 */
+  --surface-sunken: oklch(0.97 0 0); /* neutral-100 */
+  --surface-overlay: #ffffff;
+  --surface-inverted: oklch(0.205 0 0); /* neutral-900 */
+  --surface-disabled: oklch(0.985 0 0); /* neutral-50 */
+
+  /* === TEXT === */
+  --text-primary: oklch(0.205 0 0); /* neutral-900 */
+  --text-secondary: oklch(0.439 0 0); /* neutral-600 */
+  --text-muted: oklch(0.556 0 0); /* neutral-500 */
+  --text-disabled: oklch(0.708 0 0); /* neutral-400 */
+  --text-inverted: oklch(0.985 0 0); /* neutral-50 */
+  --text-on-primary: #ffffff;
+
+  /* === BORDERS === */
+  --border-default: oklch(0.87 0 0); /* neutral-300 */
+  --border-muted: oklch(0.922 0 0); /* neutral-200 */
+  --border-strong: oklch(0.708 0 0); /* neutral-400 */
+  --border-inverted: oklch(0.205 0 0); /* neutral-900 */
+
+  /* === INTERACTIVE STATES === */
+  --interactive-bg: oklch(0.97 0 0); /* neutral-100 */
+  --interactive-bg-hover: oklch(0.922 0 0); /* neutral-200 */
+  --interactive-bg-pressed: oklch(0.87 0 0); /* neutral-300 */
+  --interactive-bg-selected: oklch(0.205 0 0); /* neutral-900 */
+  --interactive-text-selected: #ffffff;
+
+  /* === FOCUS === */
+  --focus-ring: oklch(0.708 0 0); /* neutral-400 */
+  --focus-ring-offset: #ffffff;
+
+  /* === TRACKS (sliders, progress) === */
+  --track-bg: oklch(0.922 0 0); /* neutral-200 */
+  --track-fill: oklch(0.205 0 0); /* neutral-900 */
+
+  /* === STATUS COLORS === */
+  --status-info: oklch(0.623 0.214 259.815); /* blue-500 */
+  --status-info-bg: oklch(0.97 0.014 254.604); /* blue-50 */
+  --status-info-text: oklch(0.379 0.146 265.522); /* blue-900 */
+
+  --status-success: oklch(0.723 0.219 149.579); /* green-500 */
+  --status-success-bg: oklch(0.982 0.018 155.826); /* green-50 */
+  --status-success-text: oklch(0.393 0.095 152.535); /* green-900 */
+
+  --status-warning: oklch(0.795 0.184 86.047); /* yellow-500 */
+  --status-warning-bg: oklch(0.987 0.026 102.212); /* yellow-50 */
+  --status-warning-text: oklch(0.421 0.095 57.708); /* yellow-900 */
+
+  --status-error: oklch(0.637 0.237 25.331); /* red-500 */
+  --status-error-bg: oklch(0.971 0.013 17.38); /* red-50 */
+  --status-error-text: oklch(0.396 0.141 25.723); /* red-900 */
+}
+
+[data-theme="dark"] {
+  /* === SURFACES === */
+  --surface-base: oklch(0.205 0 0); /* neutral-900 */
+  --surface-raised: oklch(0.269 0 0); /* neutral-800 */
+  --surface-sunken: oklch(0.269 0 0); /* neutral-800 */
+  --surface-overlay: oklch(0.205 0 0); /* neutral-900 */
+  --surface-inverted: oklch(0.97 0 0); /* neutral-100 */
+  --surface-disabled: oklch(0.269 0 0); /* neutral-800 */
+
+  /* === TEXT === */
+  --text-primary: oklch(0.97 0 0); /* neutral-100 */
+  --text-secondary: oklch(0.708 0 0); /* neutral-400 */
+  --text-muted: oklch(0.708 0 0); /* neutral-400 */
+  --text-disabled: oklch(0.556 0 0); /* neutral-500 */
+  --text-inverted: oklch(0.205 0 0); /* neutral-900 */
+  --text-on-primary: oklch(0.205 0 0); /* neutral-900 */
+
+  /* === BORDERS === */
+  --border-default: oklch(37.1% 0 0); /* neutral-600 */
+  --border-muted: oklch(55.6% 0 0); /* neutral-500 */
+  --border-strong: oklch(0.371 0 0); /* neutral-700 */
+  --border-inverted: oklch(0.97 0 0); /* neutral-100 */
+
+  /* === INTERACTIVE STATES === */
+  --interactive-bg: oklch(0.269 0 0); /* neutral-800 */
+  --interactive-bg-hover: oklch(0.371 0 0); /* neutral-700 */
+  --interactive-bg-pressed: oklch(0.439 0 0); /* neutral-600 */
+  --interactive-bg-selected: oklch(0.97 0 0); /* neutral-100 */
+  --interactive-text-selected: oklch(0.205 0 0); /* neutral-900 */
+
+  /* === FOCUS === */
+  --focus-ring: oklch(0.556 0 0); /* neutral-500 */
+  --focus-ring-offset: oklch(0.205 0 0); /* neutral-900 */
+
+  /* === TRACKS === */
+  --track-bg: oklch(0.371 0 0); /* neutral-700 */
+  --track-fill: oklch(0.97 0 0); /* neutral-100 */
+
+  /* === STATUS COLORS (dark variants) === */
+  --status-info-bg: oklch(0.623 0.214 259.815 / 0.2); /* blue-500 at 20% */
+  --status-info-text: oklch(0.932 0.032 255.585); /* blue-100 */
+
+  --status-success-bg: oklch(0.723 0.219 149.579 / 0.2); /* green-500 at 20% */
+  --status-success-text: oklch(0.962 0.044 156.743); /* green-100 */
+
+  --status-warning-bg: oklch(0.795 0.184 86.047 / 0.2); /* yellow-500 at 20% */
+  --status-warning-text: oklch(0.973 0.071 103.193); /* yellow-100 */
+
+  --status-error-bg: oklch(0.637 0.237 25.331 / 0.2); /* red-500 at 20% */
+  --status-error-text: oklch(0.936 0.032 17.717); /* red-100 */
+}

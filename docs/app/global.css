@@ -1,0 +1,30 @@
+:where(html, body) {
+  color: var(--font-color);
+  font-size: var(--font-size);
+  background-color: var(--background-color);
+}
+
+:where(a, a:active, a:visited, a:hover) {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+:where(a:hover) {
+  color: var(--primary-color);
+}
+
+:where(*) {
+  outline-color: var(--primary-color);
+}
+
+/* Override browser autofill styles to match our theme */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--surface-base) inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  caret-color: var(--text-primary);
+}

@@ -1,44 +1,39 @@
-import type { Metadata } from 'next';
-import Script from 'next/script';
 import type { ReactNode } from 'react';
-import { inter } from '@/app/fonts';
-import { App } from './App';
-import '@/styles/reset.css';
-import '@/styles/global.css';
+import { Footer, Layout, Navbar } from 'nextra-theme-docs';
+import { Head } from 'nextra/components';
+import { getPageMap } from 'nextra/page-map';
+import 'nextra-theme-docs/style.css';
 import './globals.css';
-import '@umami/shiso/styles.css';
-import 'highlight.js/styles/github-dark.css';
+import './zen-styles.css';
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+export const metadata = {
+  title: 'zen - React Component Library',
+  description: 'A modern, minimalist React component library',
+};
+
+const navbar = (
+  <Navbar
+    logo={<b>zen</b>}
+    projectLink="https://github.com/umami-software/react-zen"
+  />
+);
+
+const footer = <Footer>MIT {new Date().getFullYear()} © Umami Software.</Footer>;
+
+export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <title>zen</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        {process.env.NODE_ENV === 'production' && (
-          <Script
-            defer
-            data-website-id="b12b8a02-b6eb-413d-b9aa-af43b442487f"
-            data-domains="zen.umami.is"
-            src="/a/script.js"
-          />
-        )}
-      </head>
-      <body className={inter.className}>
-        <App>{children}</App>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
+      <Head />
+      <body>
+        <Layout
+          navbar={navbar}
+          pageMap={await getPageMap()}
+          docsRepositoryBase="https://github.com/umami-software/react-zen/tree/main/docs"
+          footer={footer}
+        >
+          {children}
+        </Layout>
       </body>
     </html>
   );
 }
-
-export const metadata: Metadata = {
-  title: 'zen',
-  description: 'A modern, minimalist React component library.',
-};
