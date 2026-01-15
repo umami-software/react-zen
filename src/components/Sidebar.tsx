@@ -25,7 +25,7 @@ export function Sidebar({ isCollapsed, muteItems, className, children, ...props 
         className={cn(
           'text-base',
           isCollapsed && 'w-16',
-          muteItems && 'text-gray-500 dark:text-gray-400',
+          muteItems && 'text-content-muted',
           className,
         )}
       >
@@ -105,8 +105,8 @@ export function SidebarItem({
           borderRadius="md"
           className={cn(
             'cursor-pointer',
-            'hover:bg-gray-100 dark:hover:bg-gray-800',
-            isSelected && 'bg-gray-100 dark:bg-gray-800 font-medium',
+            'hover:bg-interactive',
+            isSelected && 'bg-interactive font-medium',
             className,
           )}
         >

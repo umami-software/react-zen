@@ -9,6 +9,66 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        // Surface colors (backgrounds)
+        surface: {
+          base: 'var(--surface-base)',
+          raised: 'var(--surface-raised)',
+          sunken: 'var(--surface-sunken)',
+          overlay: 'var(--surface-overlay)',
+          inverted: 'var(--surface-inverted)',
+          disabled: 'var(--surface-disabled)',
+        },
+        // Text colors
+        content: {
+          primary: 'var(--text-primary)',
+          secondary: 'var(--text-secondary)',
+          muted: 'var(--text-muted)',
+          disabled: 'var(--text-disabled)',
+          inverted: 'var(--text-inverted)',
+          'on-primary': 'var(--text-on-primary)',
+        },
+        // Border colors
+        edge: {
+          DEFAULT: 'var(--border-default)',
+          muted: 'var(--border-muted)',
+          strong: 'var(--border-strong)',
+          inverted: 'var(--border-inverted)',
+        },
+        // Interactive state colors
+        interactive: {
+          DEFAULT: 'var(--interactive-bg)',
+          hover: 'var(--interactive-bg-hover)',
+          pressed: 'var(--interactive-bg-pressed)',
+          selected: 'var(--interactive-bg-selected)',
+          'text-selected': 'var(--interactive-text-selected)',
+        },
+        // Focus colors
+        focus: {
+          ring: 'var(--focus-ring)',
+          offset: 'var(--focus-ring-offset)',
+        },
+        // Track colors (sliders, progress bars)
+        track: {
+          DEFAULT: 'var(--track-bg)',
+          fill: 'var(--track-fill)',
+        },
+        // Status colors
+        status: {
+          info: 'var(--status-info)',
+          'info-bg': 'var(--status-info-bg)',
+          'info-text': 'var(--status-info-text)',
+          success: 'var(--status-success)',
+          'success-bg': 'var(--status-success-bg)',
+          'success-text': 'var(--status-success-text)',
+          warning: 'var(--status-warning)',
+          'warning-bg': 'var(--status-warning-bg)',
+          'warning-text': 'var(--status-warning-text)',
+          error: 'var(--status-error)',
+          'error-bg': 'var(--status-error-bg)',
+          'error-text': 'var(--status-error-text)',
+        },
+      },
       keyframes: {
         'modal-fade': {
           from: { opacity: '0' },

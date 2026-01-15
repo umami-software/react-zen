@@ -27,7 +27,7 @@ export function Menu({ className, children, ...props }: MenuProps) {
     <AriaMenu
       {...props}
       className={cn(
-        'min-w-[200px] p-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-lg bg-white dark:bg-gray-900 overflow-hidden outline-none',
+        'min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none',
         className,
       )}
     >
@@ -57,9 +57,9 @@ export function MenuItem({
       {...props}
       className={cn(
         'text-base flex items-center justify-between gap-3 text-base px-2 py-1.5 rounded cursor-pointer outline-none w-full',
-        'hover:bg-gray-100 dark:hover:bg-gray-800',
-        'data-[focus]:bg-gray-100 dark:data-[focus]:bg-gray-800',
-        'data-[disabled]:text-gray-400 dark:data-[disabled]:text-gray-500',
+        'hover:bg-interactive',
+        'data-[focus]:bg-interactive',
+        'data-[disabled]:text-content-disabled',
         'data-[selected]:font-semibold',
         className,
       )}
@@ -89,7 +89,7 @@ export function MenuSeparator({ className, ...props }: SeparatorProps) {
   return (
     <Separator
       {...props}
-      className={cn('border-b border-gray-200 dark:border-gray-700 my-2 -mx-2', className)}
+      className={cn('border-b border-edge-muted my-2 -mx-2', className)}
     />
   );
 }

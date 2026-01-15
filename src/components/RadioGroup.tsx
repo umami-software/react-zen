@@ -16,7 +16,7 @@ export interface RadioGroupProps extends AriaRadioGroupProps {
 
 const variantClasses = {
   circle: '',
-  box: '[&_.radio]:border [&_.radio]:rounded [&_.radio]:p-3 [&_.radio]:border-gray-300 dark:[&_.radio]:border-gray-700 [&_.radio[data-selected]]:border-gray-900 dark:[&_.radio[data-selected]]:border-gray-100',
+  box: '[&_.radio]:border [&_.radio]:rounded [&_.radio]:p-3 [&_.radio]:border-edge [&_.radio[data-selected]]:border-edge-inverted',
 };
 
 export function RadioGroup({
@@ -47,9 +47,8 @@ export function Radio({ children, className, ...props }: RadioProps) {
       {...props}
       className={cn(
         'radio group flex items-center gap-3 cursor-pointer text-base',
-        'before:content-[\'\'] before:w-4 before:h-4 before:rounded-full before:border-2 before:border-gray-400',
-        'data-[selected]:before:border-gray-900 data-[selected]:before:bg-gray-900',
-        'dark:data-[selected]:before:border-gray-100 dark:data-[selected]:before:bg-gray-100',
+        'before:content-[\'\'] before:w-4 before:h-4 before:rounded-full before:border-2 before:border-edge-strong',
+        'data-[selected]:before:border-interactive-selected data-[selected]:before:bg-interactive-selected',
         'data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
         className,
       )}

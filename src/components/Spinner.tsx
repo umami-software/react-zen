@@ -32,7 +32,7 @@ export function Spinner(props: SpinnerProps) {
       >
         {!quiet && (
           <circle
-            className="spinner-track stroke-gray-300 dark:stroke-gray-600"
+            className="spinner-track stroke-track"
             cx="50"
             cy="50"
             r="20"
@@ -42,8 +42,8 @@ export function Spinner(props: SpinnerProps) {
           className={cn(
             'spinner-fill',
             isDisabled
-              ? 'stroke-gray-400 dark:stroke-gray-500'
-              : 'stroke-gray-900 dark:stroke-gray-100',
+              ? 'stroke-content-disabled'
+              : 'stroke-track-fill',
           )}
           cx="50"
           cy="50"

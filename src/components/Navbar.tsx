@@ -65,7 +65,7 @@ export function NavbarItem({ label, children, className, color: _color, ...props
           borderRadius="md"
           className={cn(
             'cursor-pointer',
-            'hover:bg-gray-100 dark:hover:bg-gray-800',
+            'hover:bg-interactive',
             className,
           )}
         >
@@ -89,7 +89,7 @@ export function NavbarItem({ label, children, className, color: _color, ...props
       borderRadius="md"
       className={cn(
         'cursor-pointer',
-        'hover:bg-gray-100 dark:hover:bg-gray-800',
+        'hover:bg-interactive',
         className,
       )}
     >

@@ -35,7 +35,7 @@ function ConfirmationDialog({
               paddingY="2"
               marginY="2"
               borderRadius="md"
-              className="font-mono text-base bg-gray-100 dark:bg-gray-800"
+              className="font-mono text-base bg-surface-sunken"
             >
               {value}
             </Box>

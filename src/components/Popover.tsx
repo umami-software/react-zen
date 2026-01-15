@@ -16,7 +16,7 @@ export function Popover({ children, isFullscreen, className, ...props }: Popover
       className={cn(
         'popover outline-none',
         isFullscreen &&
-          'block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-white dark:bg-gray-900 [&[data-entering]]:!animate-none [&[data-exiting]]:!animate-none',
+          'block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base [&[data-entering]]:!animate-none [&[data-exiting]]:!animate-none',
         className,
       )}
     >

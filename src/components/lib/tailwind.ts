@@ -237,13 +237,13 @@ const shadowMap: Record<string, string> = {
   'true': 'shadow-md',
 };
 
-// Color mapping for text/background - Tailwind color names
+// Color mapping for text/background - using semantic tokens
 const colorMap: Record<string, { text: string; bg: string }> = {
-  'primary': { text: 'text-gray-900 dark:text-gray-100', bg: 'bg-gray-900 dark:bg-gray-100' },
-  'muted': { text: 'text-gray-500 dark:text-gray-400', bg: 'bg-gray-500' },
-  'disabled': { text: 'text-gray-400 dark:text-gray-500', bg: 'bg-gray-400' },
+  'primary': { text: 'text-content-primary', bg: 'bg-interactive-selected' },
+  'muted': { text: 'text-content-muted', bg: 'bg-surface-raised' },
+  'disabled': { text: 'text-content-disabled', bg: 'bg-surface-disabled' },
   'transparent': { text: 'text-transparent', bg: 'bg-transparent' },
-  'true': { text: 'text-gray-900 dark:text-gray-100', bg: 'bg-gray-100 dark:bg-gray-800' },
+  'true': { text: 'text-content-primary', bg: 'bg-interactive' },
   // Tailwind color palette
   'gray': { text: 'text-gray-500', bg: 'bg-gray-500' },
   'slate': { text: 'text-slate-500', bg: 'bg-slate-500' },
@@ -438,12 +438,12 @@ const borderMap: Record<string, string> = {
   'left': 'border-l',
 };
 
-// Border color mapping
+// Border color mapping - using semantic tokens
 const borderColorMap: Record<string, string> = {
-  'true': 'border-gray-300 dark:border-gray-700',
+  'true': 'border-edge',
   'transparent': 'border-transparent',
-  'primary': 'border-gray-900 dark:border-gray-100',
-  'muted': 'border-gray-400',
+  'primary': 'border-edge-inverted',
+  'muted': 'border-edge-muted',
   'gray': 'border-gray-500',
   'slate': 'border-slate-500',
   'zinc': 'border-zinc-500',
@@ -612,11 +612,11 @@ export function mapBorderColor(value: string | undefined): string {
   return borderColorMap[value] || '';
 }
 
-// CSS color values for SVG stroke/fill (not Tailwind classes)
+// CSS color values for SVG stroke/fill (using CSS variables for semantic tokens)
 const cssColorValues: Record<string, string> = {
-  'primary': '#111827',
-  'muted': '#6b7280',
-  'disabled': '#9ca3af',
+  'primary': 'var(--text-primary)',
+  'muted': 'var(--text-muted)',
+  'disabled': 'var(--text-disabled)',
   'gray': '#6b7280',
   'slate': '#64748b',
   'zinc': '#71717a',

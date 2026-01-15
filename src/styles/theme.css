@@ -1,0 +1,109 @@
+/* Theme System - CSS Custom Properties */
+
+:root {
+  /* === SURFACES (backgrounds) === */
+  --surface-base: #ffffff;
+  --surface-raised: #fafafa;        /* neutral-50 */
+  --surface-sunken: #f5f5f5;        /* neutral-100 */
+  --surface-overlay: #ffffff;
+  --surface-inverted: #171717;      /* neutral-900 */
+  --surface-disabled: #fafafa;      /* neutral-50 */
+
+  /* === TEXT === */
+  --text-primary: #171717;          /* neutral-900 */
+  --text-secondary: #525252;        /* neutral-600 */
+  --text-muted: #737373;            /* neutral-500 */
+  --text-disabled: #a3a3a3;         /* neutral-400 */
+  --text-inverted: #fafafa;         /* neutral-50 */
+  --text-on-primary: #ffffff;
+
+  /* === BORDERS === */
+  --border-default: #d4d4d4;        /* neutral-300 */
+  --border-muted: #e5e5e5;          /* neutral-200 */
+  --border-strong: #a3a3a3;         /* neutral-400 */
+  --border-inverted: #171717;       /* neutral-900 */
+
+  /* === INTERACTIVE STATES === */
+  --interactive-bg: #f5f5f5;        /* neutral-100 */
+  --interactive-bg-hover: #e5e5e5;  /* neutral-200 */
+  --interactive-bg-pressed: #d4d4d4; /* neutral-300 */
+  --interactive-bg-selected: #171717; /* neutral-900 */
+  --interactive-text-selected: #ffffff;
+
+  /* === FOCUS === */
+  --focus-ring: #a3a3a3;            /* neutral-400 */
+  --focus-ring-offset: #ffffff;
+
+  /* === TRACKS (sliders, progress) === */
+  --track-bg: #e5e5e5;              /* neutral-200 */
+  --track-fill: #171717;            /* neutral-900 */
+
+  /* === STATUS COLORS === */
+  --status-info: #3b82f6;           /* blue-500 */
+  --status-info-bg: #eff6ff;        /* blue-50 */
+  --status-info-text: #1e3a8a;      /* blue-900 */
+
+  --status-success: #22c55e;        /* green-500 */
+  --status-success-bg: #f0fdf4;     /* green-50 */
+  --status-success-text: #14532d;   /* green-900 */
+
+  --status-warning: #eab308;        /* yellow-500 */
+  --status-warning-bg: #fefce8;     /* yellow-50 */
+  --status-warning-text: #713f12;   /* yellow-900 */
+
+  --status-error: #ef4444;          /* red-500 */
+  --status-error-bg: #fef2f2;       /* red-50 */
+  --status-error-text: #7f1d1d;     /* red-900 */
+}
+
+[data-theme="dark"] {
+  /* === SURFACES === */
+  --surface-base: #171717;          /* neutral-900 */
+  --surface-raised: #262626;        /* neutral-800 */
+  --surface-sunken: #262626;        /* neutral-800 */
+  --surface-overlay: #171717;       /* neutral-900 */
+  --surface-inverted: #f5f5f5;      /* neutral-100 */
+  --surface-disabled: #262626;      /* neutral-800 */
+
+  /* === TEXT === */
+  --text-primary: #f5f5f5;          /* neutral-100 */
+  --text-secondary: #a3a3a3;        /* neutral-400 */
+  --text-muted: #a3a3a3;            /* neutral-400 */
+  --text-disabled: #737373;         /* neutral-500 */
+  --text-inverted: #171717;         /* neutral-900 */
+  --text-on-primary: #171717;       /* neutral-900 */
+
+  /* === BORDERS === */
+  --border-default: #404040;        /* neutral-700 */
+  --border-muted: #404040;          /* neutral-700 */
+  --border-strong: #525252;         /* neutral-600 */
+  --border-inverted: #f5f5f5;       /* neutral-100 */
+
+  /* === INTERACTIVE STATES === */
+  --interactive-bg: #262626;        /* neutral-800 */
+  --interactive-bg-hover: #404040;  /* neutral-700 */
+  --interactive-bg-pressed: #525252; /* neutral-600 */
+  --interactive-bg-selected: #f5f5f5; /* neutral-100 */
+  --interactive-text-selected: #171717; /* neutral-900 */
+
+  /* === FOCUS === */
+  --focus-ring: #737373;            /* neutral-500 */
+  --focus-ring-offset: #171717;     /* neutral-900 */
+
+  /* === TRACKS === */
+  --track-bg: #404040;              /* neutral-700 */
+  --track-fill: #f5f5f5;            /* neutral-100 */
+
+  /* === STATUS COLORS (dark variants) === */
+  --status-info-bg: rgba(59, 130, 246, 0.2);
+  --status-info-text: #dbeafe;      /* blue-100 */
+
+  --status-success-bg: rgba(34, 197, 94, 0.2);
+  --status-success-text: #dcfce7;   /* green-100 */
+
+  --status-warning-bg: rgba(234, 179, 8, 0.2);
+  --status-warning-text: #fef9c3;   /* yellow-100 */
+
+  --status-error-bg: rgba(239, 68, 68, 0.2);
+  --status-error-text: #fee2e2;     /* red-100 */
+}

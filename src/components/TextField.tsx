@@ -61,18 +61,18 @@ export function TextField({
         aria-label="Text"
         {...props}
         className={cn(
-          'flex items-center px-3 gap-3 text-base border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900 shadow-sm leading-6 relative',
-          'focus-within:border-transparent focus-within:ring-2 focus-within:ring-gray-400',
-          'data-[readonly]:bg-gray-50 dark:data-[readonly]:bg-gray-800',
-          'data-[disabled]:text-gray-500 data-[disabled]:bg-gray-50 dark:data-[disabled]:bg-gray-800',
-          'focus-within:data-[readonly]:border-gray-300 dark:focus-within:data-[readonly]:border-gray-700 focus-within:data-[readonly]:ring-0',
+          'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative',
+          'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring',
+          'data-[readonly]:bg-surface-raised',
+          'data-[disabled]:text-content-disabled data-[disabled]:bg-surface-disabled',
+          'focus-within:data-[readonly]:border-edge focus-within:data-[readonly]:ring-0',
           '[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:bg-transparent [&_input]:w-full [&_input]:flex-1',
           '[&_textarea]:border-0 [&_textarea]:outline-none [&_textarea]:py-2 [&_textarea]:bg-transparent [&_textarea]:w-full [&_textarea]:flex-1',
-          '[&_input]:placeholder:text-gray-400 [&_textarea]:placeholder:text-gray-400',
+          '[&_input]:placeholder:text-content-muted [&_textarea]:placeholder:text-content-muted',
           asTextArea && 'p-0 [&_textarea]:p-3',
           resize && resizeClasses[resize],
           variant === 'quiet' &&
-            'p-0 shadow-none rounded-none border-transparent bg-transparent focus-within:border-b-gray-300 dark:focus-within:border-b-gray-700 focus-within:ring-0',
+            'p-0 shadow-none rounded-none border-transparent bg-transparent focus-within:border-b-edge focus-within:ring-0',
           className,
         )}
         value={inputValue}
@@ -85,8 +85,8 @@ export function TextField({
           <CopyButton
             value={inputValue}
             className={cn(
-              'text-gray-400 cursor-pointer hover:text-gray-900 dark:hover:text-gray-100',
-              !inputValue && 'text-gray-300',
+              'text-content-muted cursor-pointer hover:text-content-primary',
+              !inputValue && 'text-content-disabled',
               asTextArea && 'absolute top-3 right-3 z-10',
             )}
           />

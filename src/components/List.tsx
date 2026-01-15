@@ -70,9 +70,9 @@ export function List({
         defaultSelectedKeys={value || defaultSelectedKeys}
         items={items}
         className={cn(
-          'grid outline-none overflow-auto gap-1 p-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-lg bg-white dark:bg-gray-900',
+          'grid outline-none overflow-auto gap-1 p-2 border border-edge rounded-md shadow-lg bg-surface-base',
           isFullscreen &&
-            'block p-3 border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-white dark:bg-gray-900',
+            'block p-3 border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base',
           className,
         )}
         onSelectionChange={handleSelectionChange}
@@ -114,9 +114,9 @@ export function ListItem({
       id={id}
       className={cn(
         'text-base flex items-center justify-between px-2 py-1.5 gap-3 min-w-[120px] cursor-pointer outline-none rounded',
-        'hover:bg-gray-100 dark:hover:bg-gray-800',
-        'data-[focus]:bg-gray-100 dark:data-[focus]:bg-gray-800',
-        'data-[disabled]:text-gray-400 dark:data-[disabled]:text-gray-500',
+        'hover:bg-interactive',
+        'data-[focus]:bg-interactive',
+        'data-[disabled]:text-content-disabled',
         'data-[selected]:font-semibold',
         className,
       )}
@@ -140,7 +140,7 @@ export function ListSeparator({ className, ...props }: SeparatorProps) {
   return (
     <Separator
       {...props}
-      className={cn('border-b border-gray-200 dark:border-gray-700', className)}
+      className={cn('border-b border-edge-muted', className)}
     />
   );
 }

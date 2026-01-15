@@ -20,7 +20,7 @@ function Fill({ percentage }: { percentage: number }) {
   return (
     <Box
       borderRadius="full"
-      className="absolute inset-y-0 left-0 bg-gray-900 dark:bg-gray-100"
+      className="absolute inset-y-0 left-0 bg-track-fill"
       style={{ width: `${percentage}%` }}
     />
   );
@@ -30,9 +30,8 @@ function Thumb() {
   return (
     <SliderThumb
       className={cn(
-        'w-5 h-5 rounded-full bg-white border-2 border-gray-900 shadow',
-        'dark:bg-gray-900 dark:border-gray-100',
-        'focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2',
+        'w-5 h-5 rounded-full bg-surface-base border-2 border-edge-inverted shadow',
+        'focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2',
         'data-[dragging]:scale-110',
         'top-1/2 -translate-y-1/2',
       )}
@@ -47,7 +46,7 @@ export function Slider({ className, showValue = true, label, ...props }: SliderP
         {label && <Label>{label}</Label>}
         {showValue && <SliderOutput className="text-base tabular-nums" />}
       </Row>
-      <SliderTrack className="relative w-full h-2 rounded-full bg-gray-200 dark:bg-gray-700">
+      <SliderTrack className="relative w-full h-2 rounded-full bg-track">
         {({ state }) => {
           const isHorizontal = state.orientation === 'horizontal';
           const percentage =

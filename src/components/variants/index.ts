@@ -10,44 +10,32 @@ export const button = tv({
   variants: {
     variant: {
       default: [
-        'bg-gray-100 text-gray-900',
-        'hover:bg-gray-200',
-        'pressed:bg-gray-300',
-        'dark:bg-gray-800 dark:text-gray-100',
-        'dark:hover:bg-gray-700',
-        'dark:pressed:bg-gray-600',
+        'bg-interactive text-content-primary',
+        'hover:bg-interactive-hover',
+        'pressed:bg-interactive-pressed',
       ],
       primary: [
-        'bg-gray-900 text-white',
-        'hover:bg-gray-800',
-        'pressed:bg-gray-700',
-        'dark:bg-gray-100 dark:text-gray-900',
-        'dark:hover:bg-gray-200',
-        'dark:pressed:bg-gray-300',
-        'disabled:bg-gray-400',
+        'bg-interactive-selected text-interactive-text-selected',
+        'hover:opacity-90',
+        'pressed:opacity-80',
+        'disabled:opacity-50',
       ],
       outline: [
-        'bg-white border-gray-300 shadow-sm text-gray-900',
-        'hover:border-gray-400',
-        'pressed:bg-gray-50',
-        'dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100',
-        'dark:hover:border-gray-600',
-        'dark:pressed:bg-gray-800',
-        'disabled:bg-gray-50',
+        'bg-surface-base border-edge shadow-sm text-content-primary',
+        'hover:border-edge-strong',
+        'pressed:bg-surface-raised',
+        'disabled:bg-surface-disabled',
       ],
       quiet: [
-        'bg-transparent text-gray-900',
-        'hover:bg-gray-100',
-        'pressed:bg-gray-200',
-        'dark:text-gray-100',
-        'dark:hover:bg-gray-800',
-        'dark:pressed:bg-gray-700',
+        'bg-transparent text-content-primary',
+        'hover:bg-interactive',
+        'pressed:bg-interactive-hover',
       ],
       danger: [
-        'bg-red-500 text-white',
-        'hover:bg-red-600',
-        'pressed:bg-red-700',
-        'disabled:bg-gray-400',
+        'bg-status-error text-white',
+        'hover:opacity-90',
+        'pressed:opacity-80',
+        'disabled:opacity-50',
       ],
       zero: ['bg-transparent border-0', 'hover:bg-transparent', 'pressed:bg-transparent'],
     },
@@ -71,25 +59,22 @@ export type ButtonVariants = VariantProps<typeof button>;
 export const inputField = tv({
   base: [
     'flex items-center px-3 gap-3',
-    'text-base rounded border border-gray-300 bg-white shadow-sm',
-    'leading-6 relative',
-    'focus-within:border-transparent focus-within:ring-2 focus-within:ring-gray-400 focus-within:ring-offset-0',
-    'dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100',
-    'dark:focus-within:ring-gray-500',
+    'text-base rounded border border-edge bg-surface-base shadow-sm',
+    'leading-6 relative text-content-primary',
+    'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring focus-within:ring-offset-0',
   ],
   variants: {
     variant: {
       default: '',
-      quiet: 'border-transparent shadow-none bg-transparent dark:bg-transparent',
+      quiet: 'border-transparent shadow-none bg-transparent',
     },
   },
   compoundVariants: [
     {
-      class: 'readonly:bg-gray-50 dark:readonly:bg-gray-800',
+      class: 'readonly:bg-surface-raised',
     },
     {
-      class:
-        'disabled:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:disabled:bg-gray-800',
+      class: 'disabled:bg-surface-disabled disabled:opacity-50 disabled:cursor-not-allowed',
     },
   ],
 });
@@ -102,11 +87,11 @@ export const listItem = tv({
     'flex items-center justify-between',
     'gap-3 text-base py-2 px-3 min-w-[120px]',
     'cursor-pointer outline-none rounded',
-    'text-gray-900 dark:text-gray-100',
-    'hovered:bg-gray-100 dark:hovered:bg-gray-800',
-    'focused:bg-gray-100 dark:focused:bg-gray-800',
-    'focus-visible:bg-gray-100 dark:focus-visible:bg-gray-800',
-    'disabled:text-gray-400 disabled:cursor-default',
+    'text-content-primary',
+    'hovered:bg-interactive',
+    'focused:bg-interactive',
+    'focus-visible:bg-interactive',
+    'disabled:text-content-disabled disabled:cursor-default',
     'selected:font-semibold',
   ],
 });
@@ -167,8 +152,7 @@ export type ModalVariants = VariantProps<typeof modal>;
 // Popover variants
 export const popover = tv({
   base: [
-    'bg-white border border-gray-200 rounded-lg shadow-lg p-4',
-    'dark:bg-gray-900 dark:border-gray-700',
+    'bg-surface-overlay border border-edge-muted rounded-lg shadow-lg p-4',
     'entering:animate-popover-in',
     'exiting:animate-popover-out',
   ],
@@ -187,8 +171,7 @@ export type PopoverVariants = VariantProps<typeof popover>;
 // Tooltip variants
 export const tooltip = tv({
   base: [
-    'bg-gray-900 text-white text-xs px-2 py-1 rounded',
-    'dark:bg-gray-100 dark:text-gray-900',
+    'bg-surface-inverted text-content-inverted text-xs px-2 py-1 rounded',
     'entering:animate-popover-in',
     'exiting:animate-popover-out',
   ],
@@ -200,19 +183,16 @@ export const checkbox = tv({
     root: [
       'group flex items-center gap-3',
       'text-base cursor-pointer',
-      'disabled:text-gray-400 disabled:cursor-default',
+      'disabled:text-content-disabled disabled:cursor-default',
     ],
     box: [
       'flex items-center justify-center',
-      'w-5 h-5 rounded border border-gray-300 bg-white',
+      'w-5 h-5 rounded border border-edge bg-surface-base',
       'shadow-sm transition-colors',
-      'dark:bg-gray-900 dark:border-gray-700',
-      'group-selected:bg-gray-900 group-selected:border-gray-900 group-selected:text-white',
-      'dark:group-selected:bg-gray-100 dark:group-selected:border-gray-100 dark:group-selected:text-gray-900',
-      'group-indeterminate:bg-white group-indeterminate:text-gray-900',
-      'dark:group-indeterminate:bg-gray-900 dark:group-indeterminate:text-gray-100',
-      'group-disabled:bg-gray-100 dark:group-disabled:bg-gray-800',
-      'group-focus-visible:ring-2 group-focus-visible:ring-gray-400 group-focus-visible:ring-offset-1',
+      'group-selected:bg-interactive-selected group-selected:border-interactive-selected group-selected:text-interactive-text-selected',
+      'group-indeterminate:bg-surface-base group-indeterminate:text-content-primary',
+      'group-disabled:bg-surface-disabled',
+      'group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1',
     ],
     icon: ['hidden', 'group-selected:block', 'group-indeterminate:block'],
   },
@@ -230,16 +210,16 @@ export const switchVariant = tv({
     ],
     track: [
       'relative w-10 h-6 rounded-full',
-      'bg-gray-200 dark:bg-gray-700',
+      'bg-track',
       'transition-colors',
-      'group-selected:bg-gray-900 dark:group-selected:bg-gray-100',
+      'group-selected:bg-interactive-selected',
     ],
     thumb: [
       'absolute top-1 left-1 w-4 h-4 rounded-full',
-      'bg-white shadow-sm',
+      'bg-surface-base shadow-sm',
       'transition-transform',
       'group-selected:translate-x-4',
-      'dark:bg-gray-900 dark:group-selected:bg-gray-900',
+      'group-selected:bg-surface-inverted',
     ],
   },
 });
@@ -250,15 +230,14 @@ export type SwitchVariants = VariantProps<typeof switchVariant>;
 export const tabs = tv({
   slots: {
     root: 'flex flex-col',
-    list: ['flex gap-1 border-b border-gray-200', 'dark:border-gray-700'],
+    list: ['flex gap-1 border-b border-edge-muted'],
     tab: [
       'px-4 py-2 text-base font-medium cursor-pointer',
-      'text-gray-600 dark:text-gray-400',
+      'text-content-secondary',
       'border-b-2 border-transparent -mb-px',
-      'hovered:text-gray-900 dark:hovered:text-gray-100',
-      'selected:text-gray-900 selected:border-gray-900',
-      'dark:selected:text-gray-100 dark:selected:border-gray-100',
-      'disabled:text-gray-300 disabled:cursor-default',
+      'hovered:text-content-primary',
+      'selected:text-content-primary selected:border-edge-inverted',
+      'disabled:text-content-disabled disabled:cursor-default',
     ],
     panel: 'py-4',
   },
@@ -268,7 +247,7 @@ export type TabsVariants = VariantProps<typeof tabs>;
 
 // Text variants
 export const text = tv({
-  base: 'text-gray-900 dark:text-gray-100',
+  base: 'text-content-primary',
   variants: {
     size: {
       xs: 'text-xs',
@@ -282,8 +261,8 @@ export const text = tv({
     },
     color: {
       default: '',
-      muted: 'text-gray-500 dark:text-gray-400',
-      disabled: 'text-gray-400 dark:text-gray-500',
+      muted: 'text-content-muted',
+      disabled: 'text-content-disabled',
     },
     weight: {
       thin: 'font-thin',
@@ -306,7 +285,7 @@ export type TextVariants = VariantProps<typeof text>;
 
 // Heading variants
 export const heading = tv({
-  base: 'font-semibold text-gray-900 dark:text-gray-100',
+  base: 'font-semibold text-content-primary',
   variants: {
     size: {
       sm: 'text-sm',
@@ -332,10 +311,10 @@ export const alertBanner = tv({
   base: ['flex items-center gap-3 px-4 py-3 rounded-lg', 'text-base'],
   variants: {
     variant: {
-      info: 'bg-blue-50 text-blue-900 dark:bg-blue-900/20 dark:text-blue-100',
-      success: 'bg-green-50 text-green-900 dark:bg-green-900/20 dark:text-green-100',
-      warning: 'bg-yellow-50 text-yellow-900 dark:bg-yellow-900/20 dark:text-yellow-100',
-      error: 'bg-red-50 text-red-900 dark:bg-red-900/20 dark:text-red-100',
+      info: 'bg-status-info-bg text-status-info-text',
+      success: 'bg-status-success-bg text-status-success-text',
+      warning: 'bg-status-warning-bg text-status-warning-text',
+      error: 'bg-status-error-bg text-status-error-text',
     },
   },
   defaultVariants: {
@@ -354,11 +333,11 @@ export const statusLight = tv({
   },
   variants: {
     color: {
-      gray: { dot: 'bg-gray-400' },
-      green: { dot: 'bg-green-500' },
-      yellow: { dot: 'bg-yellow-500' },
-      red: { dot: 'bg-red-500' },
-      blue: { dot: 'bg-blue-500' },
+      gray: { dot: 'bg-content-muted' },
+      green: { dot: 'bg-status-success' },
+      yellow: { dot: 'bg-status-warning' },
+      red: { dot: 'bg-status-error' },
+      blue: { dot: 'bg-status-info' },
     },
   },
   defaultVariants: {
@@ -372,8 +351,8 @@ export type StatusLightVariants = VariantProps<typeof statusLight>;
 export const toast = tv({
   base: [
     'flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg',
-    'bg-white dark:bg-gray-800',
-    'border border-gray-200 dark:border-gray-700',
+    'bg-surface-raised',
+    'border border-edge-muted',
     'text-base',
     'entering:animate-toast-in',
     'exiting:animate-toast-out',
@@ -381,8 +360,8 @@ export const toast = tv({
   variants: {
     variant: {
       default: '',
-      success: 'border-l-4 border-l-green-500',
-      error: 'border-l-4 border-l-red-500',
+      success: 'border-l-4 border-l-status-success',
+      error: 'border-l-4 border-l-status-error',
     },
   },
 });

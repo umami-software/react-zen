@@ -40,15 +40,14 @@ export function ComboBox({
       <Grid alignItems="center" columns="1fr auto" width="100%">
         <Input
           className={cn(
-            'flex-1 px-3 py-2 text-base rounded-l border border-gray-300 bg-white',
-            'focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent',
-            'dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100',
+            'flex-1 px-3 py-2 text-base rounded-l border border-edge bg-surface-base',
+            'focus:outline-none focus:ring-2 focus:ring-focus-ring focus:border-transparent',
           )}
         />
         <Button
           className={cn(
-            'px-2 py-2 border border-l-0 border-gray-300 rounded-r bg-gray-50',
-            'hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700',
+            'px-2 py-2 border border-l-0 border-edge rounded-r bg-surface-raised',
+            'hover:bg-interactive',
           )}
         >
           <Icon rotate={90} aria-hidden="true" size="sm">

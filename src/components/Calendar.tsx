@@ -74,11 +74,11 @@ export function Calendar({
             <CalendarCell
               className={cn(
                 'w-12 leading-[3rem] text-center rounded cursor-pointer outline-none m-0.5',
-                'hover:bg-gray-100 dark:hover:bg-gray-800',
+                'hover:bg-interactive',
                 'data-[outside-month]:hidden',
-                'data-[focus-visible]:outline-2 data-[focus-visible]:outline-gray-900 dark:data-[focus-visible]:outline-gray-100 data-[focus-visible]:outline-offset-2',
-                'data-[selected]:text-white data-[selected]:bg-gray-900 dark:data-[selected]:text-gray-900 dark:data-[selected]:bg-gray-100',
-                'data-[disabled]:text-gray-300 dark:data-[disabled]:text-gray-600',
+                'data-[focus-visible]:outline-2 data-[focus-visible]:outline-focus-ring data-[focus-visible]:outline-offset-2',
+                'data-[selected]:text-interactive-text-selected data-[selected]:bg-interactive-selected',
+                'data-[disabled]:text-content-disabled',
               )}
               date={date}
             />

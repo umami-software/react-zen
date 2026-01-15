@@ -54,7 +54,7 @@ function TableHeader({ children, className, style, ...props }: TableHeaderCompon
     <AriaTableHeader
       {...props}
       className={cn(
-        '[&>tr]:grid [&>tr]:border-b [&>tr]:border-gray-300 dark:[&>tr]:border-gray-700 [&>tr]:[grid-template-columns:var(--grid-cols)]',
+        '[&>tr]:grid [&>tr]:border-b [&>tr]:border-edge [&>tr]:[grid-template-columns:var(--grid-cols)]',
         className,
       )}
       style={{ '--grid-cols': cols } as CSSProperties}
@@ -76,7 +76,7 @@ function TableRow({ children, className, style, ...props }: RowProps<any>) {
   return (
     <Row
       {...props}
-      className={cn('grid border-b border-gray-300/50 dark:border-gray-700/50 min-h-10', className)}
+      className={cn('grid border-b border-edge-muted min-h-10', className)}
       style={{ gridTemplateColumns, ...style }}
     >
       {children}
@@ -106,8 +106,8 @@ function TableCell({ children, className, align, ...props }: TableCellProps) {
       {...props}
       className={cn(
         'flex p-2 flex-1 first:pl-0 last:pr-0',
-        '[&_a]:font-medium [&_a]:underline [&_a]:decoration-gray-300 dark:[&_a]:decoration-gray-600 [&_a]:underline-offset-4',
-        '[&_a:hover]:decoration-gray-900 dark:[&_a:hover]:decoration-gray-100',
+        '[&_a]:font-medium [&_a]:underline [&_a]:decoration-edge [&_a]:underline-offset-4',
+        '[&_a:hover]:decoration-edge-inverted',
         align && alignClasses[align],
         className,
       )}

@@ -14,7 +14,7 @@ export function Blockquote({ asChild, className, children }: BlockquoteProps) {
   const Component = asChild ? Slot : 'blockquote';
 
   return (
-    <Component className={cn('border-l-2 border-gray-900 dark:border-gray-100 pl-5', className)}>
+    <Component className={cn('border-l-2 border-edge-inverted pl-5', className)}>
       {children}
     </Component>
   );

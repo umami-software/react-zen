@@ -37,7 +37,7 @@ function ToggleGroup({
       selectionMode={selectionMode}
       onSelectionChange={handleChange}
       className={cn(
-        'text-xs bg-white dark:bg-gray-900 shadow-sm border border-gray-300 dark:border-gray-700 rounded overflow-hidden',
+        'text-xs bg-surface-base shadow-sm border border-edge rounded overflow-hidden',
         className,
       )}
     >
@@ -56,11 +56,11 @@ function ToggleGroupItem({ className, children, ...props }: ToggleGroupItemProps
     <Tag
       {...props}
       className={cn(
-        'text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 font-bold flex items-center justify-center p-2 cursor-pointer outline-none',
-        '[&:not(:first-child)]:border-l [&:not(:first-child)]:border-gray-300 dark:[&:not(:first-child)]:border-gray-700',
-        'hover:bg-gray-100 dark:hover:bg-gray-800',
-        'data-[selected]:text-gray-900 dark:data-[selected]:text-gray-100 data-[selected]:bg-gray-100 dark:data-[selected]:bg-gray-800',
-        'data-[disabled]:text-gray-300 dark:data-[disabled]:text-gray-600',
+        'text-content-muted bg-surface-base font-bold flex items-center justify-center p-2 cursor-pointer outline-none',
+        '[&:not(:first-child)]:border-l [&:not(:first-child)]:border-edge',
+        'hover:bg-interactive',
+        'data-[selected]:text-content-primary data-[selected]:bg-interactive',
+        'data-[disabled]:text-content-disabled',
         className,
       )}
     >

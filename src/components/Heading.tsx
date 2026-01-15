@@ -25,7 +25,7 @@ function Heading({
   ...props
 }: HeadingProps) {
   const classes = cn(
-    'font-semibold text-gray-900 dark:text-gray-100',
+    'font-semibold text-content-primary',
     mapHeadingSize(size),
     mapTextAlign(align),
     mapFontWeight(weight),

@@ -16,7 +16,7 @@ export function Code({ asChild, className, children }: CodeProps) {
   return (
     <Component
       className={cn(
-        'font-mono text-base font-medium bg-gray-100 dark:bg-gray-800 rounded p-1',
+        'font-mono text-base font-medium bg-surface-sunken rounded p-1',
         className,
       )}
     >

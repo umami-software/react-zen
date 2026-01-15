@@ -14,7 +14,7 @@ function Track({ children }: { children: React.ReactNode }) {
   return (
     <Box
       borderRadius="full"
-      className="relative w-full h-2 bg-gray-200 dark:bg-gray-700 overflow-hidden"
+      className="relative w-full h-2 bg-track overflow-hidden"
     >
       {children}
     </Box>
@@ -25,7 +25,7 @@ function Fill({ percentage }: { percentage: number }) {
   return (
     <Box
       borderRadius="full"
-      className="absolute inset-y-0 left-0 bg-gray-900 dark:bg-gray-100 transition-all"
+      className="absolute inset-y-0 left-0 bg-track-fill transition-all"
       style={{ width: `${percentage}%` }}
     />
   );
