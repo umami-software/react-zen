@@ -70,7 +70,7 @@ export function List({
         defaultSelectedKeys={value || defaultSelectedKeys}
         items={items}
         className={cn(
-          'grid outline-none overflow-auto gap-1',
+          'grid outline-none overflow-auto gap-1 p-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-lg bg-white dark:bg-gray-900',
           isFullscreen &&
             'block p-3 border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-white dark:bg-gray-900',
           className,
