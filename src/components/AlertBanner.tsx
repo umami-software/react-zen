@@ -1,10 +1,10 @@
-import { createElement, ReactNode } from 'react';
+import { createElement, type ReactNode } from 'react';
 import { Info, TriangleAlert, X } from '@/components/icons';
-import { Icon } from './Icon';
-import { Row } from './Row';
 import { Column } from './Column';
-import { Text } from './Text';
+import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
+import { Text } from './Text';
 import { alertBanner } from './variants';
 
 const AlertIcons = {
@@ -45,11 +45,7 @@ export function AlertBanner({
   return (
     <Row
       {...props}
-      className={cn(
-        alertBanner({ variant }),
-        align && alignClasses[align],
-        className,
-      )}
+      className={cn(alertBanner({ variant }), align && alignClasses[align], className)}
     >
       {(icon || variant) && (
         <Icon size="sm">{variant ? createElement(AlertIcons[variant]) : icon}</Icon>

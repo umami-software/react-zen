@@ -1,25 +1,25 @@
-import { HTMLAttributes } from 'react';
-import {
-  Responsive,
-  TextAlign,
+import type { HTMLAttributes } from 'react';
+import type {
+  FontColor,
+  FontSize,
   FontWeight,
   LetterSpacing,
-  FontSize,
-  TextWrap,
+  Responsive,
+  TextAlign,
   TextTransform,
-  FontColor,
+  TextWrap,
 } from '@/lib/types';
-import { Slot } from './Slot';
 import {
   cn,
   mapFontSize,
-  mapTextAlign,
-  mapTextWrap,
   mapFontWeight,
   mapLetterSpacing,
-  mapTextTransform,
+  mapTextAlign,
   mapTextColor,
+  mapTextTransform,
+  mapTextWrap,
 } from './lib/tailwind';
+import { Slot } from './Slot';
 
 export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   color?: FontColor;
@@ -39,7 +39,7 @@ export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
 
 export function Text({
   color,
-  size,
+  size = 'base',
   spacing,
   weight,
   align,
@@ -73,7 +73,7 @@ export function Text({
     italic && 'italic',
     underline && 'underline',
     strikethrough && 'line-through',
-    className
+    className,
   );
 
   return (
