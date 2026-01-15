@@ -7,7 +7,6 @@ import {
   SliderTrack,
 } from 'react-aria-components';
 import { Box } from './Box';
-import { Column } from './Column';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 import { Row } from './Row';
@@ -15,14 +14,6 @@ import { Row } from './Row';
 export interface SliderProps extends AriaSliderProps {
   label?: ReactNode;
   showValue?: boolean;
-}
-
-function Track({ children }: { children: React.ReactNode }) {
-  return (
-    <Box borderRadius="full" className="relative w-full h-2 bg-gray-200 dark:bg-gray-700">
-      {children}
-    </Box>
-  );
 }
 
 function Fill({ percentage }: { percentage: number }) {
@@ -43,6 +34,7 @@ function Thumb() {
         'dark:bg-gray-900 dark:border-gray-100',
         'focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2',
         'data-[dragging]:scale-110',
+        'top-1/2 -translate-y-1/2',
       )}
     />
   );

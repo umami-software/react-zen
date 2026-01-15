@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { ToggleButton, ToggleButtonProps } from 'react-aria-components';
+import type { ReactNode } from 'react';
+import { ToggleButton, type ToggleButtonProps } from 'react-aria-components';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 

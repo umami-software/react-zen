@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import {
   Table as AriaTable,
   TableBody as AriaTableBody,
@@ -35,19 +36,28 @@ function Table({ children, className, ...props }: TableProps) {
     <AriaTable
       aria-label="Table"
       {...props}
-      className={cn('text-base border-collapse w-full relative', className)}
+      className={cn('grid text-base w-full relative', className)}
     >
       {children}
     </AriaTable>
   );
 }
 
-function TableHeader({ children, className, style, ...props }: TableHeaderProps<any>) {
+interface TableHeaderComponentProps extends Omit<TableHeaderProps<any>, 'style'> {
+  style?: CSSProperties;
+}
+
+function TableHeader({ children, className, style, ...props }: TableHeaderComponentProps) {
+  const cols = style?.gridTemplateColumns || gridTemplateColumns;
+
   return (
     <AriaTableHeader
       {...props}
-      className={cn('grid border-b border-gray-300 dark:border-gray-700', className)}
-      style={{ gridTemplateColumns, ...style }}
+      className={cn(
+        '[&>tr]:grid [&>tr]:border-b [&>tr]:border-gray-300 dark:[&>tr]:border-gray-700 [&>tr]:[grid-template-columns:var(--grid-cols)]',
+        className,
+      )}
+      style={{ '--grid-cols': cols } as CSSProperties}
     >
       {children}
     </AriaTableHeader>
