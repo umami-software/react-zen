@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { Input, TextField, TextFieldProps } from 'react-aria-components';
-import classNames from 'classnames';
 import { Eye, EyeSlash } from '@/components/svg';
 import { Icon } from './Icon';
 import { Label } from './Label';
-import styles from './TextField.module.css';
+import { cn } from './lib/tailwind';
 
 export interface PasswordFieldProps extends TextFieldProps {
   label?: string;
@@ -19,7 +18,17 @@ export function PasswordField({ label, className, ...props }: PasswordFieldProps
   return (
     <>
       {label && <Label>{label}</Label>}
-      <TextField aria-label="Password" {...props} className={classNames(styles.field, className)}>
+      <TextField
+        aria-label="Password"
+        {...props}
+        className={cn(
+          'flex items-center px-3 gap-3 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900 shadow-sm leading-6 relative',
+          'focus-within:border-transparent focus-within:ring-2 focus-within:ring-gray-400',
+          '[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:bg-transparent [&_input]:w-full [&_input]:flex-1',
+          '[&_input]:placeholder:text-gray-400',
+          className,
+        )}
+      >
         <Input type={type} />
         <Icon onClick={handleShowPassword}>{show ? <EyeSlash /> : <Eye />}</Icon>
       </TextField>

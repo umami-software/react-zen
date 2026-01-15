@@ -1,5 +1,4 @@
 import { fromDate, getLocalTimeZone } from '@internationalized/date';
-import classNames from 'classnames';
 import {
   Calendar as AriaCalendar,
   type CalendarProps as AriaCalendarProps,
@@ -14,8 +13,8 @@ import {
 import { ChevronRight } from '@/components/icons';
 import { toCalendarDate } from '@/lib/date';
 import { Button } from './Button';
-import styles from './Calendar.module.css';
 import { Icon } from './Icon';
+import { cn } from './lib/tailwind';
 
 export interface CalendarProps
   extends Omit<
@@ -50,17 +49,17 @@ export function Calendar({
       minValue={toCalendarDate(minValue)}
       maxValue={toCalendarDate(maxValue)}
       defaultValue={toCalendarDate(defaultValue)}
-      className={classNames(styles.calendar, className)}
+      className={cn('w-fit max-w-full text-sm', className)}
       onChange={handleChange}
     >
-      <header className={styles.header}>
-        <Button slot="previous" className={styles.button} variant="quiet">
+      <header className="flex items-center mb-4">
+        <Button slot="previous" className="flex items-center justify-center border-0 bg-transparent" variant="quiet">
           <Icon rotate={180}>
             <ChevronRight />
           </Icon>
         </Button>
-        <Heading className={styles.heading} />
-        <Button slot="next" className={styles.button} variant="quiet">
+        <Heading className="flex-1 m-0 text-center text-sm font-bold" />
+        <Button slot="next" className="flex items-center justify-center border-0 bg-transparent" variant="quiet">
           <Icon>
             <ChevronRight />
           </Icon>
@@ -68,10 +67,22 @@ export function Calendar({
       </header>
       <CalendarGrid>
         <CalendarGridHeader>
-          {day => <CalendarHeaderCell className={styles.headerCell}>{day}</CalendarHeaderCell>}
+          {day => <CalendarHeaderCell className="font-bold">{day}</CalendarHeaderCell>}
         </CalendarGridHeader>
-        <CalendarGridBody className={styles.body}>
-          {date => <CalendarCell className={styles.cell} date={date} />}
+        <CalendarGridBody>
+          {date => (
+            <CalendarCell
+              className={cn(
+                'w-12 leading-[3rem] text-center rounded cursor-pointer outline-none m-0.5',
+                'hover:bg-gray-100 dark:hover:bg-gray-800',
+                'data-[outside-month]:hidden',
+                'data-[focus-visible]:outline-2 data-[focus-visible]:outline-gray-900 dark:data-[focus-visible]:outline-gray-100 data-[focus-visible]:outline-offset-2',
+                'data-[selected]:text-white data-[selected]:bg-gray-900 dark:data-[selected]:text-gray-900 dark:data-[selected]:bg-gray-100',
+                'data-[disabled]:text-gray-300 dark:data-[disabled]:text-gray-600',
+              )}
+              date={date}
+            />
+          )}
         </CalendarGridBody>
       </CalendarGrid>
     </AriaCalendar>

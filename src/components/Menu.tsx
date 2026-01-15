@@ -1,22 +1,21 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
-  Header,
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
+  type MenuItemProps as AriaMenuItemProps,
+  type MenuProps as AriaMenuProps,
   MenuSection as AriaMenuSection,
-  MenuSectionProps as AriaMenuSectionProps,
-  MenuItemProps as AriaMenuItemProps,
-  MenuProps as AriaMenuProps,
+  type MenuSectionProps as AriaMenuSectionProps,
   SubmenuTrigger as AriaSubmenuTrigger,
-  SubmenuTriggerProps as AriaSubmenuTriggerProps,
+  type SubmenuTriggerProps as AriaSubmenuTriggerProps,
+  Header,
   Separator,
-  SeparatorProps,
+  type SeparatorProps,
 } from 'react-aria-components';
-import classNames from 'classnames';
-import { Check, ChevronRight } from '@/components/icons';
 import { IconLabel } from '@/components/IconLabel';
+import { Check, ChevronRight } from '@/components/icons';
 import { Icon } from './Icon';
-import styles from './Menu.module.css';
+import { cn } from './lib/tailwind';
 
 export interface MenuProps extends AriaMenuProps<any> {
   className?: string;
@@ -25,7 +24,13 @@ export interface MenuProps extends AriaMenuProps<any> {
 
 export function Menu({ className, children, ...props }: MenuProps) {
   return (
-    <AriaMenu {...props} className={classNames(styles.menu, className)}>
+    <AriaMenu
+      {...props}
+      className={cn(
+        'min-w-[200px] p-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-lg bg-white dark:bg-gray-900 overflow-hidden outline-none',
+        className,
+      )}
+    >
       {children}
     </AriaMenu>
   );
@@ -48,26 +53,45 @@ export function MenuItem({
   ...props
 }: MenuItemProps) {
   return (
-    <AriaMenuItem {...props} className={classNames(styles.item, className)}>
-      <IconLabel icon={icon} label={label}>
-        {children as any}
-      </IconLabel>
-      {showChecked && (
-        <Icon aria-hidden="true" className={styles.checkmark}>
-          <Check />
-        </Icon>
+    <AriaMenuItem
+      {...props}
+      className={cn(
+        'text-base flex items-center justify-between gap-3 text-base px-2 py-1.5 rounded cursor-pointer outline-none w-full',
+        'hover:bg-gray-100 dark:hover:bg-gray-800',
+        'data-[focus]:bg-gray-100 dark:data-[focus]:bg-gray-800',
+        'data-[disabled]:text-gray-400 dark:data-[disabled]:text-gray-500',
+        'data-[selected]:font-semibold',
+        className,
       )}
-      {showSubMenuIcon && (
-        <Icon aria-hidden="true">
-          <ChevronRight />
-        </Icon>
+    >
+      {({ isSelected }) => (
+        <>
+          <IconLabel icon={icon} label={label}>
+            {children as any}
+          </IconLabel>
+          {showChecked && isSelected && (
+            <Icon aria-hidden="true">
+              <Check />
+            </Icon>
+          )}
+          {showSubMenuIcon && (
+            <Icon aria-hidden="true">
+              <ChevronRight />
+            </Icon>
+          )}
+        </>
       )}
     </AriaMenuItem>
   );
 }
 
 export function MenuSeparator({ className, ...props }: SeparatorProps) {
-  return <Separator {...props} className={classNames(styles.separator, className)} />;
+  return (
+    <Separator
+      {...props}
+      className={cn('border-b border-gray-200 dark:border-gray-700 my-2 -mx-2', className)}
+    />
+  );
 }
 
 export interface MenuSectionProps extends AriaMenuSectionProps<any> {
@@ -90,10 +114,10 @@ export function MenuSection({
 
   return (
     <>
-      {title && <Header className={styles.header}>{title}</Header>}
+      {title && <Header className="text-base font-bold px-2 py-1.5">{title}</Header>}
       <AriaMenuSection
         {...props}
-        className={classNames(styles.section, className)}
+        className={cn('[&:not(:last-child)]:mb-4', className)}
         style={{ ...sectionStyle, ...style }}
       >
         {children as any}

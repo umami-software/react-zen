@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import classNames from 'classnames';
 import { TooltipBubble, TooltipBubbleProps } from '@/components/Tooltip';
-import styles from './FloatingTooltip.module.css';
+import { cn } from './lib/tailwind';
 
 export interface FloatingTooltipProps extends TooltipBubbleProps {}
 
@@ -23,7 +22,7 @@ export function FloatingTooltip({ className, style, children, ...props }: Floati
   return (
     <TooltipBubble
       {...props}
-      className={classNames(styles.floating, className, 'BALLLLSSSS')}
+      className={cn('fixed pointer-events-none z-[9999] -translate-x-1/2 -translate-y-[calc(100%+10px)]', className)}
       style={{ ...style, left: position.x, top: position.y }}
     >
       {children}

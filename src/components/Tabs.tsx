@@ -8,35 +8,51 @@ import {
   TabList as AriaTabList,
   TabListProps,
 } from 'react-aria-components';
-import styles from './Tabs.module.css';
+import { cn } from './lib/tailwind';
 
-function Tabs({ children, ...props }: TabsProps) {
+function Tabs({ children, className, ...props }: TabsProps) {
   return (
-    <AriaTabs {...props} className={styles.tabs}>
+    <AriaTabs {...props} className={cn('grid relative w-full gap-6', className)}>
       {children}
     </AriaTabs>
   );
 }
 
-function TabList({ children, ...props }: TabListProps<any>) {
+function TabList({ children, className, ...props }: TabListProps<any>) {
   return (
-    <AriaTabList {...props} className={styles.list}>
+    <AriaTabList
+      {...props}
+      className={cn(
+        'flex items-center border-b border-gray-300 dark:border-gray-700 gap-6',
+        '[&_a.tab]:font-medium [&_a.tab]:no-underline',
+        className,
+      )}
+    >
       {children}
     </AriaTabList>
   );
 }
 
-function Tab({ children, ...props }: TabProps) {
+function Tab({ children, className, ...props }: TabProps) {
   return (
-    <AriaTab {...props} className={styles.tab}>
+    <AriaTab
+      {...props}
+      className={cn(
+        'tab flex items-center justify-center text-sm text-gray-500 dark:text-gray-400 py-2 border-b-2 border-transparent select-none -mb-[2px] cursor-pointer outline-none',
+        'data-[hovered]:text-gray-900 dark:data-[hovered]:text-gray-100',
+        'data-[selected]:text-gray-900 dark:data-[selected]:text-gray-100 data-[selected]:border-b-gray-900 dark:data-[selected]:border-b-gray-100',
+        'data-[disabled]:text-gray-300 dark:data-[disabled]:text-gray-600 data-[disabled]:cursor-default',
+        className,
+      )}
+    >
       {children}
     </AriaTab>
   );
 }
 
-function TabPanel({ children, ...props }: TabPanelProps) {
+function TabPanel({ children, className, ...props }: TabPanelProps) {
   return (
-    <AriaTabPanel {...props} className={styles.panel}>
+    <AriaTabPanel {...props} className={className}>
       {children}
     </AriaTabPanel>
   );

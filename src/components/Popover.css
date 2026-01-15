@@ -27,24 +27,8 @@
     transform: var(--origin);
     opacity: 0;
   }
-
   to {
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-.popover.fullscreen {
-  display: block;
-  border: 0;
-  border-radius: 0;
-  position: fixed;
-  inset: 0;
-  overflow: auto;
-  z-index: 9999;
-}
-
-.popover.fullscreen[data-entering],
-.popover.fullscreen[data-exiting] {
-  animation: none !important;
 }

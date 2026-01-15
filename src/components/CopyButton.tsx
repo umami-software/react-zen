@@ -1,8 +1,8 @@
 import { useState, ReactNode, useRef } from 'react';
-import classNames from 'classnames';
 import { Check, Copy } from '@/components/icons';
 import { Icon } from './Icon';
-import styles from './CopyButton.module.css';
+import { cn } from './lib/tailwind';
+import './CopyButton.css';
 
 const TIMEOUT = 2000;
 
@@ -30,7 +30,7 @@ function CopyButton({ value, timeout = TIMEOUT, className, children, ...props }:
   };
 
   return (
-    <Icon {...props} className={classNames(styles.icon, className)} onClick={handleCopy}>
+    <Icon {...props} className={cn('copy-button', className)} onClick={handleCopy}>
       {copied ? <Check /> : <Copy />}
     </Icon>
   );

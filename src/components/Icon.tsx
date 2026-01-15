@@ -45,12 +45,15 @@ export function Icon({
   );
 
   // Map stroke/fill colors for SVG compatibility
+  const strokeColorStr = strokeColor === true ? undefined : strokeColor;
+  const fillColorStr = fillColor === true ? undefined : fillColor;
+
   const styleProps: React.CSSProperties = {
     ...style,
     transform: rotate ? `rotate(${rotate}deg)` : undefined,
     strokeWidth: strokeWidth,
-    ...(strokeColor && { stroke: getCssColorValue(strokeColor) }),
-    ...(fillColor && { fill: getCssColorValue(fillColor) }),
+    ...(strokeColorStr && { stroke: getCssColorValue(strokeColorStr) }),
+    ...(fillColorStr && { fill: getCssColorValue(fillColorStr) }),
   };
 
   return (

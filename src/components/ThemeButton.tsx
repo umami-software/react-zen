@@ -1,11 +1,10 @@
 import { useTransition, animated } from '@react-spring/web';
-import classNames from 'classnames';
 import { PressEvent } from 'react-aria-components';
 import { Sun, Moon } from '@/components/icons';
 import { Button, ButtonProps } from './Button';
 import { Icon } from './Icon';
 import { useTheme } from './hooks/useTheme';
-import styles from './ThemeButton.module.css';
+import { cn } from './lib/tailwind';
 
 export function ThemeButton({ className, variant = 'quiet', onPress, ...props }: ButtonProps) {
   const { theme, setTheme } = useTheme();
@@ -31,7 +30,7 @@ export function ThemeButton({ className, variant = 'quiet', onPress, ...props }:
   return (
     <Button
       {...props}
-      className={classNames(styles.button, className)}
+      className={cn('w-[42px] flex justify-center items-center cursor-pointer [&>div]:flex [&>div]:justify-center [&>div]:items-center [&>div]:absolute', className)}
       variant={variant}
       onPress={handleClick}
     >

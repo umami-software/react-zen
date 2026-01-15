@@ -1,9 +1,0 @@
-.code {
-  font-family: var(--font-family-code);
-  font-size: var(--font-size-3);
-  font-weight: var(--font-weight-medium);
-  color: var(--font-color);
-  background: var(--base-color-1);
-  border-radius: var(--border-radius);
-  padding: var(--spacing-1);
-}

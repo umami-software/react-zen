@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
-import classNames from 'classnames';
 import { Label } from './Label';
 import { Box, BoxProps } from './Box';
 import { Slot } from './Slot';
-import styles from './InputField.module.css';
+import { cn } from './lib/tailwind';
 
 export interface InputFieldProps extends BoxProps {
   label?: string;
@@ -25,10 +24,15 @@ export function InputField({
       {label && <Label>{label}</Label>}
       <Slot
         {...props}
-        className={classNames(
-          styles.field,
-          isReadOnly && styles.readonly,
-          isDisabled && styles.disabled,
+        className={cn(
+          'flex items-center px-3 gap-3 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900 shadow-sm leading-6 relative',
+          'focus-within:border-transparent focus-within:ring-2 focus-within:ring-gray-400',
+          '[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:bg-transparent [&_input]:flex-1',
+          '[&_textarea]:border-0 [&_textarea]:outline-none [&_textarea]:py-2 [&_textarea]:bg-transparent [&_textarea]:flex-1',
+          '[&_input]:placeholder:text-gray-400 [&_textarea]:placeholder:text-gray-400',
+          '[&_input]:disabled:text-gray-400 [&_textarea]:disabled:text-gray-400',
+          isReadOnly && 'bg-gray-50 dark:bg-gray-800 focus-within:border-gray-300 dark:focus-within:border-gray-700 focus-within:ring-0',
+          isDisabled && 'bg-gray-50 dark:bg-gray-800',
           className,
         )}
       >

@@ -1,10 +1,9 @@
 import { ReactNode } from 'react';
-import classNames from 'classnames';
 import { Dialog, DialogProps } from './Dialog';
 import { Column } from './Column';
 import { Row } from './Row';
 import { Button } from './Button';
-import styles from './AlertDialog.module.css';
+import { cn } from './lib/tailwind';
 
 export interface AlertDialogProps extends DialogProps {
   title?: ReactNode;
@@ -41,7 +40,7 @@ export function AlertDialog({
   };
 
   return (
-    <Dialog {...props} title={title} className={classNames(styles.dialog, className)}>
+    <Dialog {...props} title={title} className={cn('grid', className)}>
       {({ close }) => {
         return (
           <Column gap="4">

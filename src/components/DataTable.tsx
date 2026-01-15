@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { Children, createElement, HTMLAttributes, ReactElement, ReactNode } from 'react';
 import { TableProps } from 'react-aria-components';
 import { Grid } from '@/components/Grid';
@@ -13,7 +12,7 @@ import {
   TableCell,
   TableCellProps,
 } from './Table';
-import styles from './DataTable.module.css';
+import { cn } from './lib/tailwind';
 
 export interface DataTableProps extends TableProps {
   data?: any[];
@@ -61,7 +60,7 @@ export function DataTable({
   }
 
   return (
-    <Table {...props} className={classNames(styles.datatable, className)}>
+    <Table {...props} className={cn('relative text-sm', className)}>
       <TableHeader style={{ gridTemplateColumns }}>
         {columns?.map(({ id, label, as, hidden, width, ...columnProps }) => {
           if (hidden) {
@@ -91,7 +90,7 @@ export function DataTable({
                   <TableCell
                     {...(cellProps as TableCellProps)}
                     key={id}
-                    className={classNames(styles.cell, className)}
+                    className={cn('items-center', className)}
                   >
                     {as ? createElement(as, {}, value) : value}
                   </TableCell>

@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 import { Dialog as AriaDialog, DialogProps as AriaDialogProps } from 'react-aria-components';
-import classNames from 'classnames';
 import { Heading } from './Heading';
 import { Column } from './Column';
-import styles from './Dialog.module.css';
+import { cn } from './lib/tailwind';
 
 interface DialogProps extends AriaDialogProps {
   title?: ReactNode;
@@ -15,7 +14,11 @@ function Dialog({ title, variant, children, className, ...props }: DialogProps) 
     <AriaDialog
       aria-label="Dialog"
       {...props}
-      className={classNames(styles.dialog, variant && styles[variant], className)}
+      className={cn(
+        'p-6 shadow-xl bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded relative outline-none overflow-auto',
+        variant === 'sheet' && 'w-full h-full p-0 border-0 rounded-none shadow-none z-[9999]',
+        className,
+      )}
     >
       {dialogProps => {
         return (

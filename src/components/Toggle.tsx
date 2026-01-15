@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 import { ToggleButton, ToggleButtonProps } from 'react-aria-components';
-import classNames from 'classnames';
 import { Label } from './Label';
-import styles from './Toggle.module.css';
+import { cn } from './lib/tailwind';
 
 export interface ToggleProps extends ToggleButtonProps {
   label?: string;
@@ -18,7 +17,13 @@ export function Toggle({ label, children, className, ...props }: ToggleProps) {
       <ToggleButton
         {...props}
         isSelected={isSelected}
-        className={classNames(styles.toggle, className)}
+        className={cn(
+          'flex items-center justify-center whitespace-nowrap gap-3 font-medium bg-transparent border border-transparent rounded p-2 relative cursor-pointer',
+          'hover:bg-gray-100 dark:hover:bg-gray-800',
+          'data-[selected]:text-white data-[selected]:bg-gray-900 dark:data-[selected]:text-gray-900 dark:data-[selected]:bg-gray-100',
+          'focus:border-transparent focus:ring-2 focus:ring-gray-400',
+          className,
+        )}
       >
         {children as ReactNode}
       </ToggleButton>

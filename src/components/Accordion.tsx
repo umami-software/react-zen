@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { type ReactElement, type ReactNode, useState } from 'react';
 import {
   Disclosure,
@@ -8,10 +7,10 @@ import {
   type DisclosureProps,
 } from 'react-aria-components';
 import { ChevronRight } from '@/components/icons';
-import styles from './Accordion.module.css';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { Text } from './Text';
+import { cn } from './lib/tailwind';
 
 export interface AccordionProps extends DisclosureGroupProps {
   type: 'single' | 'multiple';
@@ -23,7 +22,10 @@ export interface AccordionItemProps extends DisclosureProps {}
 
 export function Accordion({ className, children, ...props }: AccordionProps) {
   return (
-    <DisclosureGroup {...props} className={classNames(styles.accordion, className)}>
+    <DisclosureGroup
+      {...props}
+      className={cn('flex flex-col items-start w-full gap-2 text-sm', className)}
+    >
       {children}
     </DisclosureGroup>
   );
@@ -45,16 +47,27 @@ export function AccordionItem({
   return (
     <Disclosure
       {...props}
-      className={classNames(styles.item, className)}
+      className={cn('w-full cursor-pointer', className)}
       onExpandedChange={handleExpandedChange}
     >
-      <Button slot="trigger" className={styles.button}>
+      <Button
+        slot="trigger"
+        className="w-full flex items-center justify-between font-bold bg-transparent hover:bg-transparent py-2 px-0"
+      >
         <Text>{trigger}</Text>
-        <Icon className={styles.icon} size="sm">
+        <Icon
+          className="transition-transform duration-200 [[data-expanded]_&]:rotate-90"
+          size="sm"
+        >
           <ChevronRight />
         </Icon>
       </Button>
-      <DisclosurePanel className={classNames(styles.panel, expanded && styles.expanded)}>
+      <DisclosurePanel
+        className={cn(
+          'overflow-hidden max-h-0 transition-[max-height] duration-500 ease-out',
+          expanded && 'max-h-[500px]',
+        )}
+      >
         {panel}
       </DisclosurePanel>
     </Disclosure>

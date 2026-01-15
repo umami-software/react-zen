@@ -49,7 +49,6 @@
     "@types/react-dom": "^19.2.3",
     "@umami/esbuild-plugin-css-modules": "0.4.0",
     "autoprefixer": "^10.4.23",
-    "classnames": "^2.5.1",
     "dts-bundle": "^0.7.3",
     "esbuild": "^0.27.0",
     "esbuild-css-modules-plugin": "^3.1.5",

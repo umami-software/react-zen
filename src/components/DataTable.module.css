@@ -1,9 +1,0 @@
-.datatable {
-  position: relative;
-  font-size: var(--font-size);
-  color: var(--font-color);
-}
-
-.cell {
-  align-items: center;
-}

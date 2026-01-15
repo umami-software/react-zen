@@ -1,6 +1,5 @@
-import classNames from 'classnames';
 import { Box, BoxProps } from './Box';
-import styles from './Container.module.css';
+import { cn } from './lib/tailwind';
 
 export interface ContainerProps extends BoxProps {
   isFluid?: boolean;
@@ -17,11 +16,12 @@ export function Container({
   return (
     <Box
       {...props}
-      className={classNames(
-        styles.container,
+      className={cn(
+        'w-full px-4',
+        'sm:max-w-[500px] md:max-w-[740px] lg:max-w-[1000px] xl:max-w-[1240px] 2xl:max-w-[1600px]',
+        isCentered && 'mx-auto',
+        isFluid && 'max-w-full p-0',
         className,
-        isCentered && styles.centered,
-        isFluid && styles.fluid,
       )}
     >
       {children}

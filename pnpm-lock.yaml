@@ -57,9 +57,6 @@ importers:
       autoprefixer:
         specifier: ^10.4.23
         version: 10.4.23(postcss@8.5.6)
-      classnames:
-        specifier: ^2.5.1
-        version: 2.5.1
       dts-bundle:
         specifier: ^0.7.3
         version: 0.7.3

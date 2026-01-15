@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import {
   TextField as AriaTextField,
@@ -8,7 +7,7 @@ import {
 } from 'react-aria-components';
 import { CopyButton } from './CopyButton';
 import { Label } from './Label';
-import styles from './TextField.module.css';
+import { cn } from './lib/tailwind';
 
 export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
@@ -19,6 +18,13 @@ export interface TextFieldProps extends AriaTextFieldProps {
   variant?: 'quiet' | 'none';
   onChange?: (e: any) => void;
 }
+
+const resizeClasses = {
+  vertical: '[&_textarea]:resize-y',
+  horizontal: '[&_textarea]:resize-x',
+  both: '[&_textarea]:resize',
+  none: '[&_textarea]:resize-none',
+};
 
 export function TextField({
   value,
@@ -54,13 +60,19 @@ export function TextField({
       <AriaTextField
         aria-label="Text"
         {...props}
-        className={classNames(
-          styles.field,
-          asTextArea && styles.textarea,
-          allowCopy && styles.copy,
-          !inputValue && styles.novalue,
-          resize && styles[`resize-${resize}`],
-          variant && styles[`variant-${variant}`],
+        className={cn(
+          'flex items-center px-3 gap-3 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900 shadow-sm leading-6 relative',
+          'focus-within:border-transparent focus-within:ring-2 focus-within:ring-gray-400',
+          'data-[readonly]:bg-gray-50 dark:data-[readonly]:bg-gray-800',
+          'data-[disabled]:text-gray-500 data-[disabled]:bg-gray-50 dark:data-[disabled]:bg-gray-800',
+          'focus-within:data-[readonly]:border-gray-300 dark:focus-within:data-[readonly]:border-gray-700 focus-within:data-[readonly]:ring-0',
+          '[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:bg-transparent [&_input]:w-full [&_input]:flex-1',
+          '[&_textarea]:border-0 [&_textarea]:outline-none [&_textarea]:py-2 [&_textarea]:bg-transparent [&_textarea]:w-full [&_textarea]:flex-1',
+          '[&_input]:placeholder:text-gray-400 [&_textarea]:placeholder:text-gray-400',
+          asTextArea && 'p-0 [&_textarea]:p-3',
+          resize && resizeClasses[resize],
+          variant === 'quiet' &&
+            'p-0 shadow-none rounded-none border-transparent bg-transparent focus-within:border-b-gray-300 dark:focus-within:border-b-gray-700 focus-within:ring-0',
           className,
         )}
         value={inputValue}
@@ -69,7 +81,16 @@ export function TextField({
         onChange={handleChange}
       >
         <Component placeholder={placeholder} />
-        {allowCopy && <CopyButton value={inputValue} className={styles.icon} />}
+        {allowCopy && (
+          <CopyButton
+            value={inputValue}
+            className={cn(
+              'text-gray-400 cursor-pointer hover:text-gray-900 dark:hover:text-gray-100',
+              !inputValue && 'text-gray-300',
+              asTextArea && 'absolute top-3 right-3 z-10',
+            )}
+          />
+        )}
       </AriaTextField>
     </>
   );

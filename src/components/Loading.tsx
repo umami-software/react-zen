@@ -1,8 +1,7 @@
-import classNames from 'classnames';
 import { Box, type BoxProps } from './Box';
 import { Dots } from './Dots';
 import { Spinner } from './Spinner';
-import styles from './Loading.module.css';
+import { cn } from './lib/tailwind';
 
 export interface LoadingProps extends BoxProps {
   size?: 'sm' | 'md' | 'lg';
@@ -10,6 +9,12 @@ export interface LoadingProps extends BoxProps {
   placement?: 'absolute' | 'center' | 'inline';
   className?: string;
 }
+
+const placementClasses = {
+  absolute: 'absolute inset-0 m-auto',
+  center: 'm-auto',
+  inline: 'inline-flex',
+};
 
 export function Loading({
   size,
@@ -19,7 +24,14 @@ export function Loading({
   ...props
 }: LoadingProps) {
   return (
-    <Box {...props} className={classNames(styles.loading, className, styles[placement])}>
+    <Box
+      {...props}
+      className={cn(
+        'relative flex justify-center items-center flex-1 pointer-events-none',
+        placementClasses[placement],
+        className,
+      )}
+    >
       {icon === 'dots' && <Dots size={size} />}
       {icon === 'spinner' && <Spinner size={size} />}
     </Box>

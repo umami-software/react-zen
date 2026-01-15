@@ -1,8 +1,7 @@
 import { useEffect, HTMLAttributes, ReactNode } from 'react';
 import { useForm, UseFormProps, SubmitHandler, FormProvider, UseFormReturn } from 'react-hook-form';
-import classNames from 'classnames';
 import { AlertBanner } from '@/components/AlertBanner';
-import styles from './Form.module.css';
+import { cn } from '../lib/tailwind';
 
 interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 'children'> {
   autoComplete?: string;
@@ -84,7 +83,7 @@ function Form({
       <form
         {...props}
         autoComplete={autoComplete}
-        className={classNames(styles.form, className)}
+        className={cn('flex flex-col relative text-sm gap-3', className)}
         onSubmit={onSubmit ? handleSubmit(onSubmit) : undefined}
         onKeyDown={onKeyDown}
       >
