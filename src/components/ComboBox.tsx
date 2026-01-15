@@ -5,7 +5,6 @@ import {
   Button,
   Input,
   type ListBoxRenderProps,
-  Popover,
   type PopoverProps,
 } from 'react-aria-components';
 import { Box } from '@/components/Box';
@@ -13,6 +12,7 @@ import { Grid } from '@/components/Grid';
 import { Icon } from '@/components/Icon';
 import { ChevronRight } from '@/components/icons';
 import { List, ListItem, type ListProps } from '@/components/List';
+import { Popover } from '@/components/Popover';
 import { cn } from './lib/tailwind';
 
 export interface ComboBoxProps extends AriaComboBoxProps<any> {
