@@ -252,8 +252,6 @@ html[data-theme='dark'], .dark-theme {
   --inactive-font-color: var(--base-color-12);
 }
 
-@import './theme.css';
-
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
