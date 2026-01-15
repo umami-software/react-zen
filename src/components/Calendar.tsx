@@ -14,6 +14,7 @@ import { ChevronRight } from '@/components/icons';
 import { toCalendarDate } from '@/lib/date';
 import { Button } from './Button';
 import { Icon } from './Icon';
+import { Row } from './Row';
 import { cn } from './lib/tailwind';
 
 export interface CalendarProps
@@ -52,7 +53,7 @@ export function Calendar({
       className={cn('w-fit max-w-full text-base', className)}
       onChange={handleChange}
     >
-      <header className="flex items-center mb-4">
+      <Row as="header" alignItems="center" marginBottom="4">
         <Button slot="previous" variant="quiet">
           <Icon rotate={180}>
             <ChevronRight />
@@ -64,7 +65,7 @@ export function Calendar({
             <ChevronRight />
           </Icon>
         </Button>
-      </header>
+      </Row>
       <CalendarGrid>
         <CalendarGridHeader>
           {day => <CalendarHeaderCell className="font-bold">{day}</CalendarHeaderCell>}

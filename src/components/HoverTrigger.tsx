@@ -73,9 +73,9 @@ export function HoverTrigger({
 
   return (
     <>
-      <span ref={triggerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <Box as="span" ref={triggerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {triggerElement}
-      </span>
+      </Box>
       <Popover isOpen={open} isNonModal triggerRef={triggerRef}>
         <Box onMouseEnter={handleMenuEnter} onMouseLeave={handleMenuLeave}>
           {popupElement}
