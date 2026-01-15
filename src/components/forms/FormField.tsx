@@ -1,11 +1,16 @@
-import { cloneElement, HTMLAttributes, Children } from 'react';
-import { useFormContext, RegisterOptions, UseFormReturn, FieldValues } from 'react-hook-form';
+import { Children, cloneElement, type HTMLAttributes } from 'react';
+import {
+  type FieldValues,
+  type RegisterOptions,
+  type UseFormReturn,
+  useFormContext,
+} from 'react-hook-form';
 import { useFieldId } from '@/components/hooks/useFieldId';
-import { FormController } from './FormController';
 import { Column } from '../Column';
 import { Label } from '../Label';
-import { Text } from '../Text';
 import { cn } from '../lib/tailwind';
+import { Text } from '../Text';
+import { FormController } from './FormController';
 
 export interface FormFieldProps extends HTMLAttributes<HTMLDivElement>, Partial<UseFormReturn> {
   name: string;
@@ -47,8 +52,8 @@ export function FormField({
           );
         }}
       </FormController>
-      {description && <Text size="sm" color="muted">{description}</Text>}
-      {invalid && <Text size="sm" className="text-red-500">{error?.message}</Text>}
+      {description && <Text color="muted">{description}</Text>}
+      {invalid && <Text className="text-red-500">{error?.message}</Text>}
     </Column>
   );
 }

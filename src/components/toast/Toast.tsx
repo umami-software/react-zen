@@ -1,11 +1,11 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import { Button } from '@/components/Button';
+import { Column } from '@/components/Column';
 import { Icon } from '@/components/Icon';
 import { X } from '@/components/icons';
-import { Row } from '@/components/Row';
-import { Column } from '@/components/Column';
-import { Text } from '@/components/Text';
 import { cn } from '@/components/lib/tailwind';
+import { Row } from '@/components/Row';
+import { Text } from '@/components/Text';
 import { toast as toastVariant } from '@/components/variants';
 
 const TOAST_CLOSE_ACTION = 'close';
@@ -44,12 +44,7 @@ function Toast({
       {hasActions &&
         actions.map(action => {
           return (
-            <Button
-              key={action}
-              variant="outline"
-              size="sm"
-              onPress={() => onClose?.(action)}
-            >
+            <Button key={action} variant="outline" onPress={() => onClose?.(action)}>
               {action}
             </Button>
           );

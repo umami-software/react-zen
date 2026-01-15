@@ -1,11 +1,10 @@
 import {
   ProgressBar as AriaProgressBar,
-  ProgressBarProps as AriaProgressBarProps,
+  type ProgressBarProps as AriaProgressBarProps,
 } from 'react-aria-components';
 import { Box } from './Box';
-import { Row } from './Row';
-import { Text } from './Text';
 import { cn } from './lib/tailwind';
+import { Text } from './Text';
 
 export interface ProgressBarProps extends AriaProgressBarProps {
   showPercentage?: boolean;
@@ -13,7 +12,10 @@ export interface ProgressBarProps extends AriaProgressBarProps {
 
 function Track({ children }: { children: React.ReactNode }) {
   return (
-    <Box borderRadius="full" className="relative w-full h-2 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+    <Box
+      borderRadius="full"
+      className="relative w-full h-2 bg-gray-200 dark:bg-gray-700 overflow-hidden"
+    >
       {children}
     </Box>
   );
@@ -38,7 +40,7 @@ function ProgressBar({ className, showPercentage, ...props }: ProgressBarProps) 
             <Track>
               <Fill percentage={percentage} />
             </Track>
-            {showPercentage && <Text size="sm" className="tabular-nums">{valueText}</Text>}
+            {showPercentage && <Text className="tabular-nums">{valueText}</Text>}
           </>
         );
       }}
