@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 import {
+  Button as AriaButton,
   ComboBox as AriaComboBox,
   type ComboBoxProps as AriaComboBoxProps,
-  Button,
-  Input,
+  Input as AriaInput,
   type ListBoxRenderProps,
   type PopoverProps,
 } from 'react-aria-components';
@@ -32,28 +32,19 @@ export function ComboBox({
   ...props
 }: ComboBoxProps) {
   return (
-    <AriaComboBox
-      aria-label="ComboBox"
-      {...props}
-      className={cn('relative', className)}
-    >
+    <AriaComboBox aria-label="ComboBox" {...props} className={cn('relative', className)}>
       <Grid alignItems="center" columns="1fr auto" width="100%">
-        <Input
+        <AriaInput
           className={cn(
             'flex-1 px-3 py-2 text-base rounded-l border border-edge bg-surface-base',
             'focus:outline-none focus:ring-2 focus:ring-focus-ring focus:border-transparent',
           )}
         />
-        <Button
-          className={cn(
-            'px-2 py-2 border border-l-0 border-edge rounded-r bg-surface-raised',
-            'hover:bg-interactive',
-          )}
-        >
+        <AriaButton className={cn('px-2 py-2')}>
           <Icon rotate={90} aria-hidden="true" size="sm">
             <ChevronRight />
           </Icon>
-        </Button>
+        </AriaButton>
       </Grid>
       <Popover {...popoverProps}>
         <Box padding="1">

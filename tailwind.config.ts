@@ -51,6 +51,10 @@ const config: Config = {
           '50%': { strokeDasharray: '89, 200', strokeDashoffset: '-35' },
           '100%': { strokeDasharray: '89, 200', strokeDashoffset: '-124' },
         },
+        'icon-pop': {
+          from: { transform: 'scale(0.5)', opacity: '0' },
+          to: { transform: 'scale(1)', opacity: '1' },
+        },
       },
       animation: {
         'modal-fade-in': 'modal-fade 200ms ease-out',
@@ -71,6 +75,7 @@ const config: Config = {
         spin: 'spin 1s linear infinite',
         'spinner-rotate': 'spinner-rotate 1.6s linear infinite',
         'spinner-dash': 'spinner-dash 1.2s ease-in-out infinite',
+        'icon-pop': 'icon-pop 200ms ease-out',
       },
       colors: {
         // Surface colors (backgrounds)

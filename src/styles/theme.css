@@ -1,109 +1,110 @@
 /* Theme System - CSS Custom Properties */
+/* Using Tailwind CSS v4 OKLCH color values */
 
 :root {
   /* === SURFACES (backgrounds) === */
   --surface-base: #ffffff;
-  --surface-raised: #fafafa;        /* neutral-50 */
-  --surface-sunken: #f5f5f5;        /* neutral-100 */
+  --surface-raised: oklch(0.985 0 0); /* neutral-50 */
+  --surface-sunken: oklch(0.97 0 0); /* neutral-100 */
   --surface-overlay: #ffffff;
-  --surface-inverted: #171717;      /* neutral-900 */
-  --surface-disabled: #fafafa;      /* neutral-50 */
+  --surface-inverted: oklch(0.205 0 0); /* neutral-900 */
+  --surface-disabled: oklch(0.985 0 0); /* neutral-50 */
 
   /* === TEXT === */
-  --text-primary: #171717;          /* neutral-900 */
-  --text-secondary: #525252;        /* neutral-600 */
-  --text-muted: #737373;            /* neutral-500 */
-  --text-disabled: #a3a3a3;         /* neutral-400 */
-  --text-inverted: #fafafa;         /* neutral-50 */
+  --text-primary: oklch(0.205 0 0); /* neutral-900 */
+  --text-secondary: oklch(0.439 0 0); /* neutral-600 */
+  --text-muted: oklch(0.556 0 0); /* neutral-500 */
+  --text-disabled: oklch(0.708 0 0); /* neutral-400 */
+  --text-inverted: oklch(0.985 0 0); /* neutral-50 */
   --text-on-primary: #ffffff;
 
   /* === BORDERS === */
-  --border-default: #d4d4d4;        /* neutral-300 */
-  --border-muted: #e5e5e5;          /* neutral-200 */
-  --border-strong: #a3a3a3;         /* neutral-400 */
-  --border-inverted: #171717;       /* neutral-900 */
+  --border-default: oklch(0.87 0 0); /* neutral-300 */
+  --border-muted: oklch(0.922 0 0); /* neutral-200 */
+  --border-strong: oklch(0.708 0 0); /* neutral-400 */
+  --border-inverted: oklch(0.205 0 0); /* neutral-900 */
 
   /* === INTERACTIVE STATES === */
-  --interactive-bg: #f5f5f5;        /* neutral-100 */
-  --interactive-bg-hover: #e5e5e5;  /* neutral-200 */
-  --interactive-bg-pressed: #d4d4d4; /* neutral-300 */
-  --interactive-bg-selected: #171717; /* neutral-900 */
+  --interactive-bg: oklch(0.97 0 0); /* neutral-100 */
+  --interactive-bg-hover: oklch(0.922 0 0); /* neutral-200 */
+  --interactive-bg-pressed: oklch(0.87 0 0); /* neutral-300 */
+  --interactive-bg-selected: oklch(0.205 0 0); /* neutral-900 */
   --interactive-text-selected: #ffffff;
 
   /* === FOCUS === */
-  --focus-ring: #a3a3a3;            /* neutral-400 */
+  --focus-ring: oklch(0.708 0 0); /* neutral-400 */
   --focus-ring-offset: #ffffff;
 
   /* === TRACKS (sliders, progress) === */
-  --track-bg: #e5e5e5;              /* neutral-200 */
-  --track-fill: #171717;            /* neutral-900 */
+  --track-bg: oklch(0.922 0 0); /* neutral-200 */
+  --track-fill: oklch(0.205 0 0); /* neutral-900 */
 
   /* === STATUS COLORS === */
-  --status-info: #3b82f6;           /* blue-500 */
-  --status-info-bg: #eff6ff;        /* blue-50 */
-  --status-info-text: #1e3a8a;      /* blue-900 */
+  --status-info: oklch(0.623 0.214 259.815); /* blue-500 */
+  --status-info-bg: oklch(0.97 0.014 254.604); /* blue-50 */
+  --status-info-text: oklch(0.379 0.146 265.522); /* blue-900 */
 
-  --status-success: #22c55e;        /* green-500 */
-  --status-success-bg: #f0fdf4;     /* green-50 */
-  --status-success-text: #14532d;   /* green-900 */
+  --status-success: oklch(0.723 0.219 149.579); /* green-500 */
+  --status-success-bg: oklch(0.982 0.018 155.826); /* green-50 */
+  --status-success-text: oklch(0.393 0.095 152.535); /* green-900 */
 
-  --status-warning: #eab308;        /* yellow-500 */
-  --status-warning-bg: #fefce8;     /* yellow-50 */
-  --status-warning-text: #713f12;   /* yellow-900 */
+  --status-warning: oklch(0.795 0.184 86.047); /* yellow-500 */
+  --status-warning-bg: oklch(0.987 0.026 102.212); /* yellow-50 */
+  --status-warning-text: oklch(0.421 0.095 57.708); /* yellow-900 */
 
-  --status-error: #ef4444;          /* red-500 */
-  --status-error-bg: #fef2f2;       /* red-50 */
-  --status-error-text: #7f1d1d;     /* red-900 */
+  --status-error: oklch(0.637 0.237 25.331); /* red-500 */
+  --status-error-bg: oklch(0.971 0.013 17.38); /* red-50 */
+  --status-error-text: oklch(0.396 0.141 25.723); /* red-900 */
 }
 
 [data-theme="dark"] {
   /* === SURFACES === */
-  --surface-base: #171717;          /* neutral-900 */
-  --surface-raised: #262626;        /* neutral-800 */
-  --surface-sunken: #262626;        /* neutral-800 */
-  --surface-overlay: #171717;       /* neutral-900 */
-  --surface-inverted: #f5f5f5;      /* neutral-100 */
-  --surface-disabled: #262626;      /* neutral-800 */
+  --surface-base: oklch(0.205 0 0); /* neutral-900 */
+  --surface-raised: oklch(0.269 0 0); /* neutral-800 */
+  --surface-sunken: oklch(0.269 0 0); /* neutral-800 */
+  --surface-overlay: oklch(0.205 0 0); /* neutral-900 */
+  --surface-inverted: oklch(0.97 0 0); /* neutral-100 */
+  --surface-disabled: oklch(0.269 0 0); /* neutral-800 */
 
   /* === TEXT === */
-  --text-primary: #f5f5f5;          /* neutral-100 */
-  --text-secondary: #a3a3a3;        /* neutral-400 */
-  --text-muted: #a3a3a3;            /* neutral-400 */
-  --text-disabled: #737373;         /* neutral-500 */
-  --text-inverted: #171717;         /* neutral-900 */
-  --text-on-primary: #171717;       /* neutral-900 */
+  --text-primary: oklch(0.97 0 0); /* neutral-100 */
+  --text-secondary: oklch(0.708 0 0); /* neutral-400 */
+  --text-muted: oklch(0.708 0 0); /* neutral-400 */
+  --text-disabled: oklch(0.556 0 0); /* neutral-500 */
+  --text-inverted: oklch(0.205 0 0); /* neutral-900 */
+  --text-on-primary: oklch(0.205 0 0); /* neutral-900 */
 
   /* === BORDERS === */
-  --border-default: #404040;        /* neutral-700 */
-  --border-muted: #404040;          /* neutral-700 */
-  --border-strong: #525252;         /* neutral-600 */
-  --border-inverted: #f5f5f5;       /* neutral-100 */
+  --border-default: oklch(37.1% 0 0); /* neutral-600 */
+  --border-muted: oklch(55.6% 0 0); /* neutral-500 */
+  --border-strong: oklch(0.371 0 0); /* neutral-700 */
+  --border-inverted: oklch(0.97 0 0); /* neutral-100 */
 
   /* === INTERACTIVE STATES === */
-  --interactive-bg: #262626;        /* neutral-800 */
-  --interactive-bg-hover: #404040;  /* neutral-700 */
-  --interactive-bg-pressed: #525252; /* neutral-600 */
-  --interactive-bg-selected: #f5f5f5; /* neutral-100 */
-  --interactive-text-selected: #171717; /* neutral-900 */
+  --interactive-bg: oklch(0.269 0 0); /* neutral-800 */
+  --interactive-bg-hover: oklch(0.371 0 0); /* neutral-700 */
+  --interactive-bg-pressed: oklch(0.439 0 0); /* neutral-600 */
+  --interactive-bg-selected: oklch(0.97 0 0); /* neutral-100 */
+  --interactive-text-selected: oklch(0.205 0 0); /* neutral-900 */
 
   /* === FOCUS === */
-  --focus-ring: #737373;            /* neutral-500 */
-  --focus-ring-offset: #171717;     /* neutral-900 */
+  --focus-ring: oklch(0.556 0 0); /* neutral-500 */
+  --focus-ring-offset: oklch(0.205 0 0); /* neutral-900 */
 
   /* === TRACKS === */
-  --track-bg: #404040;              /* neutral-700 */
-  --track-fill: #f5f5f5;            /* neutral-100 */
+  --track-bg: oklch(0.371 0 0); /* neutral-700 */
+  --track-fill: oklch(0.97 0 0); /* neutral-100 */
 
   /* === STATUS COLORS (dark variants) === */
-  --status-info-bg: rgba(59, 130, 246, 0.2);
-  --status-info-text: #dbeafe;      /* blue-100 */
+  --status-info-bg: oklch(0.623 0.214 259.815 / 0.2); /* blue-500 at 20% */
+  --status-info-text: oklch(0.932 0.032 255.585); /* blue-100 */
 
-  --status-success-bg: rgba(34, 197, 94, 0.2);
-  --status-success-text: #dcfce7;   /* green-100 */
+  --status-success-bg: oklch(0.723 0.219 149.579 / 0.2); /* green-500 at 20% */
+  --status-success-text: oklch(0.962 0.044 156.743); /* green-100 */
 
-  --status-warning-bg: rgba(234, 179, 8, 0.2);
-  --status-warning-text: #fef9c3;   /* yellow-100 */
+  --status-warning-bg: oklch(0.795 0.184 86.047 / 0.2); /* yellow-500 at 20% */
+  --status-warning-text: oklch(0.973 0.071 103.193); /* yellow-100 */
 
-  --status-error-bg: rgba(239, 68, 68, 0.2);
-  --status-error-text: #fee2e2;     /* red-100 */
+  --status-error-bg: oklch(0.637 0.237 25.331 / 0.2); /* red-500 at 20% */
+  --status-error-text: oklch(0.936 0.032 17.717); /* red-100 */
 }
