@@ -2,24 +2,20 @@ import { HTMLAttributes } from 'react';
 import { Row } from './Row';
 import { Box } from './Box';
 import { cn } from './lib/tailwind';
+import './Dots.css';
 
 export interface DotsProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | 'lg';
 }
 
 const sizeMap = {
-  sm: 'w-1 h-1',
-  md: 'w-1.5 h-1.5',
-  lg: 'w-2 h-2',
+  sm: 'w-1.5 h-1.5',
+  md: 'w-2 h-2',
+  lg: 'w-3 h-3',
 };
 
 function Dot({ size }: { size: 'sm' | 'md' | 'lg' }) {
-  return (
-    <Box
-      borderRadius="full"
-      className={cn(sizeMap[size], 'bg-current animate-pulse')}
-    />
-  );
+  return <Box className={cn('dot', sizeMap[size])} />;
 }
 
 const gapMap = {

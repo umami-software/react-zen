@@ -1,0 +1,41 @@
+.spinner-svg {
+  fill: none;
+  stroke-width: 0.15em;
+  animation: spinner-rotate 1.6s linear infinite;
+}
+
+.spinner-track {
+  fill: none;
+}
+
+.spinner-fill {
+  fill: none;
+  stroke-linecap: square;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: spinner-dash 1.2s ease-in-out infinite;
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}

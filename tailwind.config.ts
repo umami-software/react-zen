@@ -42,6 +42,15 @@ const config: Config = {
         spin: {
           to: { transform: 'rotate(360deg)' },
         },
+        'spinner-rotate': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'spinner-dash': {
+          '0%': { strokeDasharray: '1, 200', strokeDashoffset: '0' },
+          '50%': { strokeDasharray: '89, 200', strokeDashoffset: '-35' },
+          '100%': { strokeDasharray: '89, 200', strokeDashoffset: '-124' },
+        },
       },
       animation: {
         'modal-fade-in': 'modal-fade 200ms ease-out',
@@ -60,6 +69,8 @@ const config: Config = {
         'toast-in': 'toast-slide-in 200ms ease-out',
         'toast-out': 'toast-slide-in 200ms ease-in reverse',
         spin: 'spin 1s linear infinite',
+        'spinner-rotate': 'spinner-rotate 1.6s linear infinite',
+        'spinner-dash': 'spinner-dash 1.2s ease-in-out infinite',
       },
     },
   },
