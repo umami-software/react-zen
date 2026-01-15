@@ -1,10 +1,9 @@
-import type { ReactNode } from 'react';
-import { Footer, Layout, Navbar } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
+import { Footer, Layout, Navbar } from 'nextra-theme-docs';
+import type { ReactNode } from 'react';
 import 'nextra-theme-docs/style.css';
 import './globals.css';
-import './zen-styles.css';
 
 export const metadata = {
   title: 'zen - React Component Library',
@@ -12,10 +11,7 @@ export const metadata = {
 };
 
 const navbar = (
-  <Navbar
-    logo={<b>zen</b>}
-    projectLink="https://github.com/umami-software/react-zen"
-  />
+  <Navbar logo={<b>zen</b>} projectLink="https://github.com/umami-software/react-zen" />
 );
 
 const footer = <Footer>MIT {new Date().getFullYear()} © Umami Software.</Footer>;

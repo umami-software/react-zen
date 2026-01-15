@@ -1,1 +1,8 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
+@import "../../src/styles/theme.css";
+@import "../../dist/index.css";
+
+@source "../../node_modules/nextra/dist";
+@source "../../node_modules/nextra-theme-docs/dist";
+@source "../../src/components";

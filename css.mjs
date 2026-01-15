@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
-import tailwindcss from 'tailwindcss';
+import tailwindcss from '@tailwindcss/postcss';
 
 async function buildCSS() {
   // Process Tailwind CSS
@@ -10,13 +10,7 @@ async function buildCSS() {
     from: './src/styles/tailwind.css',
   });
 
-  // For now, keep zen.css for components not yet migrated
-  const zenCSS = await fs.readFile('./src/styles/zen.css', 'utf-8');
-
-  // Combine: zen.css variables + Tailwind output
-  const output = zenCSS + '\n' + result.css;
-
-  await fs.writeFile('./styles.css', output, 'utf-8');
+  await fs.writeFile('./styles.css', result.css, 'utf-8');
   console.log('CSS build complete: styles.css');
 }
 

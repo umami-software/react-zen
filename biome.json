@@ -21,7 +21,8 @@
       "recommended": true,
       "a11y": "off",
       "correctness": {
-        "useExhaustiveDependencies": "off"
+        "useExhaustiveDependencies": "off",
+        "noInvalidPositionAtImportRule": "off"
       },
       "style": {
         "noDescendingSpecificity": "off"
@@ -42,6 +43,9 @@
     }
   },
   "css": {
+    "parser": {
+      "tailwindDirectives": true
+    },
     "formatter": {
       "enabled": true,
       "indentStyle": "space",
