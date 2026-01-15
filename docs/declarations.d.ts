@@ -1,1 +1,2 @@
-declare module 'nextra';
+declare module 'nextra/components';
+declare module 'nextra/page-map';

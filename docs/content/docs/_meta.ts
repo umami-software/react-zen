@@ -9,8 +9,8 @@ export default {
   '---': {
     type: 'separator',
   },
-  components: 'Components',
+  design: 'Design',
   layout: 'Layout',
   typography: 'Typography',
-  design: 'Design',
+  components: 'Components',
 };

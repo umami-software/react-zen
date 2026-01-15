@@ -12,10 +12,7 @@ export interface ProgressBarProps extends AriaProgressBarProps {
 
 function Track({ children }: { children: React.ReactNode }) {
   return (
-    <Box
-      borderRadius="full"
-      className="relative w-full h-2 bg-track overflow-hidden"
-    >
+    <Box borderRadius="full" className="relative w-full h-2 bg-track overflow-hidden">
       {children}
     </Box>
   );
@@ -33,7 +30,7 @@ function Fill({ percentage }: { percentage: number }) {
 
 function ProgressBar({ className, showPercentage, ...props }: ProgressBarProps) {
   return (
-    <AriaProgressBar {...props} className={cn('flex items-center gap-3', className)}>
+    <AriaProgressBar {...props} className={cn('flex items-center gap-3 w-full', className)}>
       {({ percentage = 0, valueText }) => {
         return (
           <>
