@@ -39,7 +39,6 @@ export function Calendar({
   ...props
 }: CalendarProps) {
   const handleChange = (date: DateValue) => {
-    console.log({ raw: date });
     onChange?.(date.toDate(getLocalTimeZone()));
   };
 
