@@ -1,23 +1,22 @@
 import { Fragment } from 'react';
 import {
-  ListBox,
-  ListBoxProps,
-  Separator,
-  SeparatorProps,
-  ListBoxSection,
-  ListBoxSectionProps,
   Header,
-  ListBoxItemProps,
+  ListBox,
   ListBoxItem,
-  Selection,
+  type ListBoxItemProps,
+  type ListBoxProps,
+  ListBoxSection,
+  type ListBoxSectionProps,
+  type Selection,
+  Separator,
+  type SeparatorProps,
 } from 'react-aria-components';
-import classNames from 'classnames';
-import { Icon } from '@/components/Icon';
-import { Label } from '@/components/Label';
-import { Check } from '@/components/icons';
 import { useFieldId } from '@/components/hooks/useFieldId';
+import { Icon } from '@/components/Icon';
+import { Check } from '@/components/icons';
+import { Label } from '@/components/Label';
 import { getHighlightColor } from '@/lib/styles';
-import styles from './List.module.css';
+import { cn } from './lib/tailwind';
 
 export interface ListProps extends ListBoxProps<any> {
   items?: any[];
@@ -70,11 +69,11 @@ export function List({
         selectedKeys={value || selectedKeys}
         defaultSelectedKeys={value || defaultSelectedKeys}
         items={items}
-        className={classNames(
-          styles.list,
+        className={cn(
+          'grid outline-none overflow-auto gap-1',
+          isFullscreen &&
+            'block p-3 border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-white dark:bg-gray-900',
           className,
-          !showCheckmark && styles.hideCheckmark,
-          isFullscreen && styles.fullscreen,
         )}
         onSelectionChange={handleSelectionChange}
         style={{ ...style, ...getHighlightColor(highlightColor) }}
@@ -86,8 +85,8 @@ export function List({
 
             return (
               <Fragment key={id}>
-                {item[separatorProperty] && <Separator className={styles.separator} />}
-                <ListItem id={id} className={styles.item}>
+                {item[separatorProperty] && <ListSeparator />}
+                <ListItem id={id} showCheckmark={showCheckmark}>
                   {label}
                 </ListItem>
               </Fragment>
@@ -113,21 +112,37 @@ export function ListItem({
     <ListBoxItem
       {...props}
       id={id}
-      className={classNames(styles.item, className)}
+      className={cn(
+        'text-base flex items-center justify-between px-2 py-1.5 gap-3 min-w-[120px] cursor-pointer outline-none rounded',
+        'hover:bg-gray-100 dark:hover:bg-gray-800',
+        'data-[focus]:bg-gray-100 dark:data-[focus]:bg-gray-800',
+        'data-[disabled]:text-gray-400 dark:data-[disabled]:text-gray-500',
+        'data-[selected]:font-semibold',
+        className,
+      )}
       textValue={typeof children === 'string' ? children : id?.toString()}
     >
-      {children as any}
-      {showCheckmark && (
-        <Icon aria-hidden="true" className={styles.checkmark}>
-          <Check />
-        </Icon>
+      {({ isSelected }) => (
+        <>
+          {children}
+          {showCheckmark && isSelected && (
+            <Icon aria-hidden="true">
+              <Check />
+            </Icon>
+          )}
+        </>
       )}
     </ListBoxItem>
   );
 }
 
 export function ListSeparator({ className, ...props }: SeparatorProps) {
-  return <Separator {...props} className={classNames(styles.separator, className)} />;
+  return (
+    <Separator
+      {...props}
+      className={cn('border-b border-gray-200 dark:border-gray-700', className)}
+    />
+  );
 }
 
 export interface ListSectionProps extends ListBoxSectionProps<any> {
@@ -136,8 +151,8 @@ export interface ListSectionProps extends ListBoxSectionProps<any> {
 
 export function ListSection({ title, className, children, ...props }: ListSectionProps) {
   return (
-    <ListBoxSection {...props} className={classNames(styles.section, className)}>
-      {title && <Header className={styles.header}>{title}</Header>}
+    <ListBoxSection {...props} className={cn('[&:not(:last-child)]:mb-4', className)}>
+      {title && <Header className="text-base font-bold px-2 py-1.5">{title}</Header>}
       {children as any}
     </ListBoxSection>
   );

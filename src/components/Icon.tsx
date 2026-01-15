@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import { FontColor, StrokeColor, FillColor } from '@/lib/types';
 import { Slot } from './Slot';
-import { cn, mapTextColor } from './lib/tailwind';
+import { cn, mapTextColor, getCssColorValue } from './lib/tailwind';
 
 export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'color' | 'size'> {
   color?: FontColor;
@@ -44,13 +44,13 @@ export function Icon({
     className
   );
 
-  // Map stroke/fill colors to CSS variables for SVG compatibility
+  // Map stroke/fill colors for SVG compatibility
   const styleProps: React.CSSProperties = {
     ...style,
     transform: rotate ? `rotate(${rotate}deg)` : undefined,
     strokeWidth: strokeWidth,
-    ...(strokeColor && { stroke: `var(--base-color-${strokeColor})` }),
-    ...(fillColor && { fill: `var(--base-color-${fillColor})` }),
+    ...(strokeColor && { stroke: getCssColorValue(strokeColor) }),
+    ...(fillColor && { fill: getCssColorValue(fillColor) }),
   };
 
   return (

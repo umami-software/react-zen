@@ -233,7 +233,7 @@ export function Box({
     ...(order !== undefined && { order }),
     ...(zIndex !== undefined && { zIndex }),
     ...(justifySelf && { justifySelf: justifySelf as CSSProperties['justifySelf'] }),
-    ...(borderWidth && { borderWidth: `var(--border-width-${borderWidth})` }),
+    ...(borderWidth && { borderWidth: `${borderWidth}px` }),
   };
 
   // Only include style prop if there are inline styles beyond what was passed in
