@@ -1,35 +1,19 @@
-import type { HTMLAttributes, ReactNode } from 'react';
-import type { FontWeight, Responsive, TextWrap } from '@/lib/types';
-import { type RenderProp, resolveRender } from './lib/render';
 import { cn } from './lib/tailwind';
+import { Text, type TextProps } from './Text';
 
-export interface BlockquoteProps extends HTMLAttributes<HTMLElement> {
-  render?: RenderProp<BlockquoteRenderProps>;
-  weight?: Responsive<FontWeight>;
-  wrap?: Responsive<TextWrap>;
-  className?: string;
-}
+interface BlockquoteProps extends Omit<TextProps, 'as'> {}
 
-export interface BlockquoteRenderProps {
-  className: string;
-  children?: ReactNode;
-  [key: string]: unknown;
-}
-
-export function Blockquote({ render, className, children, ...props }: BlockquoteProps) {
-  const classes = cn('border-l-2 border-edge-inverted pl-5', className);
-
-  const renderProps: BlockquoteRenderProps = {
-    ...props,
-    className: classes,
-    children,
-  };
-
-  const defaultElement = (
-    <blockquote {...props} className={classes}>
+function Blockquote({ className, children, ...props }: BlockquoteProps) {
+  return (
+    <Text
+      {...props}
+      as="blockquote"
+      className={cn('border-l-2 border-edge-inverted pl-5', className)}
+    >
       {children}
-    </blockquote>
+    </Text>
   );
-
-  return resolveRender(render, renderProps, defaultElement);
 }
+
+export { Blockquote };
+export type { BlockquoteProps };

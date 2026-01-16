@@ -33,7 +33,19 @@ export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   italic?: Responsive<boolean>;
   underline?: Responsive<boolean>;
   strikethrough?: Responsive<boolean>;
-  as?: 'span' | 'div' | 'label' | 'p';
+  as?:
+    | 'span'
+    | 'div'
+    | 'label'
+    | 'p'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'code'
+    | 'blockquote';
   render?: RenderProp<TextRenderProps>;
 }
 

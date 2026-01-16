@@ -2,6 +2,14 @@
 /* Using Tailwind CSS v4 OKLCH color values */
 
 :root {
+  /* === FONTS === */
+  --font-family:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-family-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+
   /* === SURFACES (backgrounds) === */
   --surface-base: #ffffff;
   --surface-raised: oklch(0.985 0 0); /* neutral-50 */

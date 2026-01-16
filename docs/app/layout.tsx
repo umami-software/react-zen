@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { Footer, Layout, Navbar } from 'nextra-theme-docs';
@@ -7,7 +7,8 @@ import { ZenProvider } from '@/components';
 import 'nextra-theme-docs/style.css';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono' });
 
 export const metadata = {
   title: 'zen - React Component Library',
@@ -24,7 +25,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <Head />
-      <body className={inter.className}>
+      <body className={`${inter.className} ${inter.variable} ${jetbrainsMono.variable}`}>
         <ZenProvider>
           <Layout
             navbar={navbar}

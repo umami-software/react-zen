@@ -190,7 +190,12 @@ export const checkbox = tv({
       'group-disabled:bg-surface-disabled',
       'group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1',
     ],
-    icon: ['hidden', 'group-selected:block', 'group-indeterminate:block'],
+    icon: [
+      'hidden',
+      'group-selected:flex',
+      'group-indeterminate:flex',
+      'items-center justify-center',
+    ],
   },
 });
 

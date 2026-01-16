@@ -112,6 +112,10 @@ const config: Config = {
         'spinner-dash': 'spinner-dash 1.2s ease-in-out infinite',
         'icon-pop': 'icon-pop 200ms ease-out',
       },
+      fontFamily: {
+        sans: 'var(--font-family)',
+        mono: 'var(--font-family-mono)',
+      },
       colors: {
         // Surface colors (backgrounds)
         surface: {

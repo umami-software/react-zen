@@ -1,36 +1,32 @@
-import type { FontWeight, HeadingSize, LetterSpacing, Responsive, TextAlign } from '@/lib/types';
-import { Box, type BoxProps } from './Box';
-import { cn, mapFontWeight, mapHeadingSize, mapLetterSpacing, mapTextAlign } from './lib/tailwind';
+import type { HeadingSize, Responsive } from '@/lib/types';
+import { cn, mapHeadingSize } from './lib/tailwind';
+import { Text, type TextProps } from './Text';
 
-interface HeadingProps extends BoxProps {
+type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+interface HeadingProps extends Omit<TextProps, 'as' | 'size'> {
   size?: Responsive<HeadingSize>;
-  weight?: Responsive<FontWeight>;
-  spacing?: Responsive<LetterSpacing>;
-  align?: Responsive<TextAlign>;
+  as?: HeadingElement;
 }
 
 function Heading({
   size = '2xl',
-  weight,
-  align,
   spacing = 'tight',
+  as = 'h2',
   className,
   children,
   ...props
 }: HeadingProps) {
-  const classes = cn(
-    'font-semibold text-foreground-primary',
-    mapHeadingSize(size),
-    mapTextAlign(align),
-    mapFontWeight(weight),
-    mapLetterSpacing(spacing),
-    className,
-  );
-
   return (
-    <Box {...props} className={classes}>
+    <Text
+      {...props}
+      as={as}
+      spacing={spacing}
+      weight="semibold"
+      className={cn(mapHeadingSize(size), className)}
+    >
       {children}
-    </Box>
+    </Text>
   );
 }
 

@@ -1,35 +1,21 @@
-import type { HTMLAttributes, ReactNode } from 'react';
-import type { FontWeight, Responsive, TextWrap } from '@/lib/types';
-import { type RenderProp, resolveRender } from './lib/render';
 import { cn } from './lib/tailwind';
+import { Text, type TextProps } from './Text';
 
-export interface CodeProps extends HTMLAttributes<HTMLElement> {
-  render?: RenderProp<CodeRenderProps>;
-  weight?: Responsive<FontWeight>;
-  wrap?: Responsive<TextWrap>;
-  className?: string;
-}
+interface CodeProps extends Omit<TextProps, 'as'> {}
 
-export interface CodeRenderProps {
-  className: string;
-  children?: ReactNode;
-  [key: string]: unknown;
-}
-
-export function Code({ render, className, children, ...props }: CodeProps) {
-  const classes = cn('font-mono text-base font-medium bg-surface-sunken rounded p-1', className);
-
-  const renderProps: CodeRenderProps = {
-    ...props,
-    className: classes,
-    children,
-  };
-
-  const defaultElement = (
-    <code {...props} className={classes}>
+function Code({ className, children, ...props }: CodeProps) {
+  return (
+    <Text
+      {...props}
+      as="code"
+      size="base"
+      weight="medium"
+      className={cn('font-mono bg-surface-sunken rounded p-1', className)}
+    >
       {children}
-    </code>
+    </Text>
   );
-
-  return resolveRender(render, renderProps, defaultElement);
 }
+
+export { Code };
+export type { CodeProps };
