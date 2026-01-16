@@ -1,8 +1,8 @@
 export type Primitive = string | number | boolean | bigint | symbol | null | undefined;
 
 // Tailwind 4 default breakpoints (mobile-first)
-// '' = base (all sizes), sm = 640px+, md = 768px+, lg = 1024px+, xl = 1280px+, 2xl = 1536px+
-export const Breakpoints = ['', 'sm', 'md', 'lg', 'xl', '2xl'] as const;
+// base = all sizes, sm = 640px+, md = 768px+, lg = 1024px+, xl = 1280px+, 2xl = 1536px+
+export const Breakpoints = ['base', 'sm', 'md', 'lg', 'xl', '2xl'] as const;
 export type Breakpoint = (typeof Breakpoints)[number];
 export type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 

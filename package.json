@@ -1,11 +1,11 @@
 {
   "name": "@umami/react-zen",
-  "version": "0.216.0",
+  "version": "0.218.0",
   "description": "Modern, minimalist React component library",
   "homepage": "https://zen.umami.is",
   "repository": {
     "type": "git",
-    "url": "https://github.com/umami-software/react-zen.git"
+    "url": "git+https://github.com/umami-software/react-zen.git"
   },
   "license": "MIT",
   "author": "Umami <hello@umami.is>",

@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Breakpoint prefixes - aligned with Tailwind 4 defaults
-type Breakpoint = '' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+type Breakpoint = 'base' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 
 // Padding maps - explicit class names for Tailwind JIT detection
@@ -1029,8 +1029,8 @@ function mapResponsive<T extends string | number | boolean>(
       if (val === undefined) continue;
       const mapped = mapper(val as T);
       if (mapped) {
-        // Empty string means base (mobile-first) styles, no prefix
-        if (breakpoint === '') {
+        // 'base' means mobile-first styles, no prefix needed
+        if (breakpoint === 'base') {
           classes.push(mapped);
         } else {
           classes.push(`${breakpoint}:${mapped}`);

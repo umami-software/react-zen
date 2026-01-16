@@ -11,7 +11,7 @@ from the smallest screen up, and breakpoints specify the **minimum width** at wh
 <Example>
   <DataTable
     data={[
-      { name: '(base)', device: 'All devices', width: '0px' },
+      { name: 'base', device: 'All devices', width: '0px' },
       { name: 'sm', device: 'Small devices', width: '640px' },
       { name: 'md', device: 'Medium devices', width: '768px' },
       { name: 'lg', device: 'Large devices', width: '1024px' },
@@ -28,7 +28,7 @@ from the smallest screen up, and breakpoints specify the **minimum width** at wh
 ## Usage
 
 Certain properties of layout components accept a `Responsive` object, which specifies what value
-to apply at a given breakpoint. Use an empty string `''` for the base (mobile-first) value.
+to apply at a given breakpoint. Use `'base'` for the mobile-first value that applies to all screen sizes.
 
 For example, the [Heading](/docs/typography/heading) component takes a `size` prop. If we pass in a
 `Responsive` object, we can specify which sizes to display at different breakpoints.
@@ -36,7 +36,7 @@ For example, the [Heading](/docs/typography/heading) component takes a `size` pr
 <Example>
   <Heading
     size={{
-      '': 'lg',
+      base: 'lg',
       sm: 'xl',
       md: '2xl',
       lg: '3xl',
@@ -50,7 +50,7 @@ For example, the [Heading](/docs/typography/heading) component takes a `size` pr
 ```jsx
 <Heading
   size={{
-    '': 'lg',      // Base size for all screens
+    base: 'lg',    // Base size for all screens
     sm: 'xl',      // 640px and up
     md: '2xl',     // 768px and up
     lg: '3xl',     // 1024px and up
