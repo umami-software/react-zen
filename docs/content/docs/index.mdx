@@ -4,76 +4,93 @@ title: Introduction
 
 # Introduction
 
-**Zen** is a modern, minimalist React component library created by the team at [Umami](https://umami.is).
+**Zen** is a props-driven React component library built for speed. Created by the team at [Umami](https://umami.is),
+it lets you build polished interfaces without writing HTML, CSS, or even thinking about Tailwind classes.
 
-The components are built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/), providing
-out-of-the-box accessibility handling, and styled using our custom design system that leverages CSS variables.
+The components are built on [React Aria](https://react-spectrum.adobe.com/react-aria/) for accessibility and
+[Tailwind CSS](https://tailwindcss.com/) for styling, but you never have to touch either directly.
+Just compose components and pass props.
 
 Source code is available on [GitHub](https://github.com/umami-software/react-zen).
 
 ## Why Zen?
 
-Zen is built with a strong focus on the **developer experience**. We want to make UI development faster, more predictable, and less error-prone.
-Zen components allow you to apply design and layout changes completely through props.
+Building UI is slow. You have to think about markup structure, CSS organization, responsive breakpoints,
+accessibility, and design consistency, all before you can ship a feature.
 
-Here is an example:
+Zen eliminates that friction. Instead of assembling Tailwind classes or writing custom CSS, you work with
+**primitive components** that handle everything through props:
 
 ```jsx
 <Box padding="6" border borderRadius="lg" shadow="lg">
-  <Flexbox direction="column" alignItems="center" gap="6">
+  <Column alignItems="center" gap="6">
     <Heading size="3xl">Welcome</Heading>
     <Text color="muted" weight="medium">
       This is the zen way.
     </Text>
     <Button variant="primary">Enter</Button>
-  </Flexbox>
+  </Column>
 </Box>
 ```
 
 <Example>
   <Box padding="6" border borderRadius="lg" shadow="lg">
-    <Flexbox direction="column" alignItems="center" gap="6">
+    <Column alignItems="center" gap="6">
       <Heading size="3xl">Welcome</Heading>
       <Text color="muted" weight="medium">{`This is the zen way.`}</Text>
       <Button variant="primary">Enter</Button>
-    </Flexbox>
+    </Column>
   </Box>
 </Example>
 
-In this example we have:
+No `className`. No CSS files. No memorizing utility classes. Just components and props.
 
-- A [Box](/docs/layout/box) component that provides a styled container.
-- A [Flexbox](/docs/layout/flexbox) component that aligns the content and provides spacing.
-- A [Text](/docs/typography/text) component that provides styled text.
-- A [Button](/docs/components/button) component for interactivity.
+## Design out of the box
 
-Our goal is to provide a foundation for building consistent, maintainable, and accessible user interfaces with minimal effort.
-
-## Opinionated design
-
-Out of the box, Zen provides predefined styles that cover
+Stop bikeshedding over colors, spacing, and shadows. Zen ships with a complete design system covering
 [colors](/docs/design/colors),
 [fonts](/docs/design/fonts),
 [spacing](/docs/design/spacing),
 [shadows](/docs/design/shadows),
-and [borders](/docs/design/borders),
-as well as components that deal specifically with [typography](/docs/typography/text) and [layout](/docs/layout/box).
+and [borders](/docs/design/borders).
 
-At the same time, Zen remains flexible. You can override styles using CSS variables or extend the design system through the provided utility props.
+Everything works together. The spacing scale is consistent. The colors have proper contrast.
+Dark mode just works. You get a professional-looking UI without making design decisions.
 
-## No CSS required
+Need to customize? Override the CSS variables and the entire system adapts.
 
-Writing custom CSS shouldn’t be a requirement for building beautiful and functional interfaces. Zen’s components are designed to work out of the box, leveraging CSS variables that you can tweak to match your design preferences.
+## Primitive components
 
-For layout composition, Zen includes utility components like [Flexbox](/docs/layout/flexbox) and [Grid](/docs/layout/grid), which let you structure your UI without diving into CSS files.
-[Breakpoints](/docs/design/breakpoints) are handled natively, so you can create responsive layouts without having to write custom media queries.
+Zen provides building blocks, not pre-built widgets. Components like [Box](/docs/layout/box),
+[Row](/docs/layout/row), [Column](/docs/layout/column), and [Grid](/docs/layout/grid)
+let you compose any layout through props:
 
-However, if you ever need full control, you can still style components using the standard `className` and `style` props.
+- **Spacing**: `padding`, `margin`, `gap`
+- **Layout**: `alignItems`, `justifyContent`, `direction`
+- **Responsive**: `{{ '': 'column', md: 'row' }}`
+- **Visual**: `border`, `borderRadius`, `shadow`
 
-## Comprehensive components
+This is faster than writing Tailwind because you're working at a higher level of abstraction.
+You don't assemble classes; you describe what you want.
 
-Zen takes care of the design, layout, and accessibility for you. Components automatically adjust to their context and support built-in accessibility features powered by [React Aria](https://react-spectrum.adobe.com/react-aria/). This means you get fully keyboard-navigable, screen reader-friendly UI elements without any extra work.
+## Accessibility included
 
-Instead of worrying about CSS rules or low-level behavior, you simply compose tags and pass props. Every component is designed to be self-contained, reducing complexity and making UI development more intuitive.
+Every interactive component is keyboard-navigable and screen reader-friendly, powered by
+[React Aria](https://react-spectrum.adobe.com/react-aria/). Focus management, ARIA attributes,
+and interaction patterns are handled automatically.
 
-By using Zen, you can spend less time on styling and accessibility concerns and more time focusing on building great user experiences.
+You don't configure accessibility. You just use the components.
+
+## Props over classes
+
+Zen inverts the typical workflow. Instead of starting with markup and adding styles,
+you compose semantic components that already know how to render themselves:
+
+| Traditional approach | Zen approach |
+|---------------------|--------------|
+| Write HTML structure | Compose components |
+| Add Tailwind classes | Pass props |
+| Handle responsive manually | Use responsive objects |
+| Configure accessibility | Already done |
+
+The result: less code, fewer decisions, faster shipping.

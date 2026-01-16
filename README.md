@@ -1,11 +1,13 @@
 # zen
 
-**zen** is a modern, minimalist React component library.
+**zen** is a props-driven React component library built for speed. Build polished interfaces without writing HTML, CSS, or thinking about Tailwind classes.
 
-- Beautifully-designed components
-- Built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) primitives.
+- **Props over classes** - Style through component props, not utility classes
+- **Design included** - Complete design system out of the box with dark mode
+- **Accessible** - Built on [React Aria](https://react-spectrum.adobe.com/react-aria/) primitives
+- **Powered by Tailwind** - Uses [Tailwind CSS](https://tailwindcss.com/) under the hood, but you never touch it
 
-[Learn more](https://zen.umami.is/)
+[Documentation](https://zen.umami.is/)
 
 ## Installation
 
@@ -21,15 +23,38 @@ npm install @umami/react-zen
 import '@umami/react-zen/styles.css';
 ```
 
-### Import components
+### Build with components
 
-```javascript
-import { Button } from '@umami/react-zen';
+```jsx
+import { Box, Column, Heading, Text, Button } from '@umami/react-zen';
 
-export default function () {
-  return <Button>Button</Button>;
+export default function Welcome() {
+  return (
+    <Box padding="6" border borderRadius="lg" shadow="lg">
+      <Column alignItems="center" gap="6">
+        <Heading size="3xl">Welcome</Heading>
+        <Text color="muted">This is the zen way.</Text>
+        <Button variant="primary">Enter</Button>
+      </Column>
+    </Box>
+  );
 }
 ```
+
+No `className`. No CSS files. Just components and props.
+
+## Why zen?
+
+Building UI is slow. You have to think about markup, CSS organization, responsive breakpoints, accessibility, and design consistency.
+
+zen eliminates that friction:
+
+| Traditional approach | zen approach |
+|---------------------|--------------|
+| Write HTML structure | Compose components |
+| Add Tailwind classes | Pass props |
+| Handle responsive manually | Use responsive objects |
+| Configure accessibility | Already done |
 
 ## License
 
