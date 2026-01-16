@@ -5,7 +5,7 @@ export const button = tv({
   base: [
     'inline-flex items-center justify-center gap-3 whitespace-nowrap',
     'font-medium rounded border border-transparent cursor-pointer',
-    'transition-colors leading-normal relative',
+    'transition-colors leading-normal relative no-underline',
   ],
   variants: {
     variant: {

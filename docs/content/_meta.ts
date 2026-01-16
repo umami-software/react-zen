@@ -1,4 +1,9 @@
 export default {
+  '*': {
+    theme: {
+      timestamp: false,
+    },
+  },
   index: {
     title: 'Home',
     type: 'page',
@@ -7,6 +12,7 @@ export default {
       breadcrumb: false,
       sidebar: false,
       toc: false,
+      timestamp: false,
     },
   },
   docs: {

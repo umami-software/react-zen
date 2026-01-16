@@ -1,5 +1,113 @@
-# zen.
+---
+title: zen
+---
 
-A modern, minimalist React component library.
+<Box marginY="16">
+  <Column alignItems="center" gap="6">
+    <Heading size="5xl" weight="bold" align="center">
+      The fastest way to build React UI
+    </Heading>
+    <Text size="lg" color="muted" align="center" style={{ maxWidth: '600px' }}>
+      Layout, style, and compose entirely through props. No CSS files, no class names, no configuration. Just install and start building.
+    </Text>
+    <Row gap="3" marginTop="4">
+      <Button variant="primary" render={<a href="/docs" />}>Get Started</Button>
+      <Button variant="outline" render={<a href="https://github.com/umami-software/react-zen" />}>View source</Button>
+    </Row>
+  </Column>
+</Box>
 
-[Get Started](/docs) | [View on GitHub](https://github.com/umami-software/react-zen)
+<Box marginY="16">
+  <Box padding="8" border borderRadius="xl" shadow="lg" backgroundColor="surface-base">
+    <Column gap="6">
+      <Row justifyContent="space-between" alignItems="center">
+        <Heading size="xl">Dashboard</Heading>
+        <Row gap="2">
+          <ThemeButton variant="outline" />
+          <Button variant="outline" size="sm">Settings</Button>
+        </Row>
+      </Row>
+      <Grid columns={{ '': 1, md: 3 }} gap="6">
+        <Box padding="6" border borderRadius="lg">
+          <Column gap="2">
+            <Text color="muted" size="sm">Total Users</Text>
+            <Heading size="3xl">12,486</Heading>
+            <Text color="green" size="sm">+12% from last month</Text>
+          </Column>
+        </Box>
+        <Box padding="6" border borderRadius="lg">
+          <Column gap="2">
+            <Text color="muted" size="sm">Revenue</Text>
+            <Heading size="3xl">$48,290</Heading>
+            <Text color="green" size="sm">+8% from last month</Text>
+          </Column>
+        </Box>
+        <Box padding="6" border borderRadius="lg">
+          <Column gap="2">
+            <Text color="muted" size="sm">Active Now</Text>
+            <Heading size="3xl">324</Heading>
+            <Row gap="2" alignItems="center">
+              <StatusLight color="green" />
+              <Text size="sm">Live</Text>
+            </Row>
+          </Column>
+        </Box>
+      </Grid>
+      <Grid columns={{ '': 1, md: 2 }} gap="6">
+        <Box padding="6" border borderRadius="lg">
+          <Column gap="4">
+            <Heading size="lg">Recent Activity</Heading>
+            <Column gap="3">
+              <Row justifyContent="space-between">
+                <Text>New signup</Text>
+                <Text color="muted" size="sm">2 min ago</Text>
+              </Row>
+              <Row justifyContent="space-between">
+                <Text>Payment received</Text>
+                <Text color="muted" size="sm">15 min ago</Text>
+              </Row>
+              <Row justifyContent="space-between">
+                <Text>User upgraded plan</Text>
+                <Text color="muted" size="sm">1 hour ago</Text>
+              </Row>
+            </Column>
+          </Column>
+        </Box>
+        <Box padding="6" border borderRadius="lg">
+          <Column gap="4">
+            <Heading size="lg">Quick Actions</Heading>
+            <Column gap="3">
+              <TextField placeholder="Search users..." />
+              <Row gap="2">
+                <Button variant="primary" style={{ flex: 1 }}>Add User</Button>
+                <Button variant="outline" style={{ flex: 1 }}>Export</Button>
+              </Row>
+            </Column>
+          </Column>
+        </Box>
+      </Grid>
+    </Column>
+  </Box>
+</Box>
+
+<Grid columns={{ '': 1, md: 3 }} gap="8" marginY="16">
+  <Column gap="3">
+    <Heading size="lg">Props-driven</Heading>
+    <Text color="muted">
+      No CSS files. No class names. Build layouts and style components entirely through props.
+    </Text>
+  </Column>
+  <Column gap="3">
+    <Heading size="lg">Accessible</Heading>
+    <Text color="muted">
+      Built on React Aria. Keyboard navigation, focus management, and ARIA attributes included.
+    </Text>
+  </Column>
+  <Column gap="3">
+    <Heading size="lg">Themeable</Heading>
+    <Text color="muted">
+      Light and dark modes out of the box. Customize everything with CSS variables.
+    </Text>
+  </Column>
+</Grid>
+

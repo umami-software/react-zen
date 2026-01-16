@@ -1,5 +1,5 @@
 import { createElement, type ReactNode } from 'react';
-import { Info, TriangleAlert, X } from '@/components/icons';
+import { CircleAlert, CircleCheck, Info, TriangleAlert, X } from '@/components/icons';
 import { Column } from './Column';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
@@ -8,15 +8,17 @@ import { Text } from './Text';
 import { alertBanner } from './variants';
 
 const AlertIcons = {
-  error: TriangleAlert,
   info: Info,
+  success: CircleCheck,
+  warning: CircleAlert,
+  error: TriangleAlert,
 };
 
 export interface AlertBannerProps {
   title?: ReactNode;
   description?: ReactNode;
   icon?: ReactNode;
-  variant?: 'error' | 'info';
+  variant?: 'info' | 'success' | 'warning' | 'error';
   align?: 'start' | 'center' | 'end';
   allowClose?: boolean;
   onClose?: () => void;
