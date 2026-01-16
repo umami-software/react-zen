@@ -70,9 +70,9 @@ export function List({
         defaultSelectedKeys={value || defaultSelectedKeys}
         items={items}
         className={cn(
-          'grid outline-none overflow-auto gap-1 p-2 border border-edge rounded-md shadow-lg bg-surface-base',
+          'grid outline-none overflow-auto gap-1 p-2',
           isFullscreen &&
-            'block p-3 border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base',
+            'block p-3 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base',
           className,
         )}
         onSelectionChange={handleSelectionChange}
