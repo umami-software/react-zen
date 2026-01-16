@@ -154,7 +154,19 @@ export type FontSize =
   | '7xl'
   | '8xl'
   | '9xl';
-export type HeadingSize = 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
+export type HeadingSize =
+  | 'sm'
+  | 'base'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | '6xl'
+  | '7xl'
+  | '8xl'
+  | '9xl';
 export type FontWeight =
   | 'thin'
   | 'extralight'
