@@ -1,6 +1,5 @@
-import { useRef, useState, ReactElement, useEffect } from 'react';
+import { type ReactElement, useEffect, useRef, useState } from 'react';
 import { Popover } from '@/components/index';
-import { Box } from './Box';
 
 const CLOSE_DELAY = 500;
 
@@ -73,13 +72,13 @@ export function HoverTrigger({
 
   return (
     <>
-      <Box as="span" ref={triggerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <span ref={triggerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {triggerElement}
-      </Box>
+      </span>
       <Popover isOpen={open} isNonModal triggerRef={triggerRef}>
-        <Box onMouseEnter={handleMenuEnter} onMouseLeave={handleMenuLeave}>
+        <div onMouseEnter={handleMenuEnter} onMouseLeave={handleMenuLeave}>
           {popupElement}
-        </Box>
+        </div>
       </Popover>
     </>
   );
