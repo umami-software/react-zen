@@ -10,11 +10,20 @@ A button that toggles the page theme between light and dark.
   <ThemeButton variant="outline" />
 </Example>
 
+## Local target
+
+Use the `target` prop to scope theme changes to a specific container instead of globally.
+
+<Example backgroundColor="transparent">
+  <ThemeButtonExample />
+</Example>
+
 ## Component props
 
 <Example>
   <DataTable
     data={[
+      { name: 'target', value: 'RefObject | HTMLElement', description: 'Element to apply theme to (default: global)' },
       { name: 'variant', value: 'ButtonVariant', description: '"default" | "primary" | "outline" | "quiet" (default: "quiet")' },
       { name: 'size', value: 'ButtonSize', description: '"xs" | "sm" | "md" | "lg" | "xl"' },
       { name: 'onPress', value: '(e: PressEvent) => void', description: 'Called when button is pressed' },

@@ -22,15 +22,17 @@ export function PasswordField({ label, className, ...props }: PasswordFieldProps
         aria-label="Password"
         {...props}
         className={cn(
-          'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative',
+          'flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative',
           'focus-within:border-edge-strong',
-          '[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:bg-transparent [&_input]:w-full [&_input]:flex-1',
+          '[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:px-3 [&_input]:bg-transparent [&_input]:w-full [&_input]:flex-1',
           '[&_input]:placeholder:text-foreground-muted',
           className,
         )}
       >
         <Input type={type} />
-        <Icon onClick={handleShowPassword}>{show ? <EyeSlash /> : <Eye />}</Icon>
+        <Icon className="mr-3" onClick={handleShowPassword}>
+          {show ? <EyeSlash /> : <Eye />}
+        </Icon>
       </TextField>
     </>
   );

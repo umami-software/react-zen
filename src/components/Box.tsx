@@ -1,4 +1,12 @@
-import type { CSSProperties, ElementType, HTMLAttributes, ReactElement, ReactNode } from 'react';
+import {
+  type CSSProperties,
+  type ElementType,
+  forwardRef,
+  type HTMLAttributes,
+  type ReactElement,
+  type ReactNode,
+  type Ref,
+} from 'react';
 import type {
   AlignSelf,
   BackgroundColor,
@@ -134,67 +142,70 @@ function toStringValue(value: string | number | boolean | undefined): string | u
   return String(value);
 }
 
-export function Box({
-  display,
-  color,
-  backgroundColor,
-  fontSize,
-  fontWeight,
-  border,
-  borderWidth,
-  borderColor,
-  borderRadius,
-  shadow,
-  padding,
-  paddingX,
-  paddingY,
-  paddingTop,
-  paddingRight,
-  paddingBottom,
-  paddingLeft,
-  margin,
-  marginX,
-  marginY,
-  marginTop,
-  marginRight,
-  marginBottom,
-  marginLeft,
-  width,
-  minWidth,
-  maxWidth,
-  height,
-  minHeight,
-  maxHeight,
-  position,
-  textAlign,
-  top,
-  right,
-  bottom,
-  left,
-  overflow,
-  overflowX,
-  overflowY,
-  cursor,
-  opacity,
-  pointerEvents,
-  alignSelf,
-  justifySelf,
-  flexBasis,
-  flexGrow,
-  flexShrink,
-  gridArea,
-  gridRow,
-  gridColumn,
-  order,
-  zIndex,
-  theme,
-  as = 'div',
-  render,
-  className,
-  style,
-  children,
-  ...props
-}: BoxProps) {
+export const Box = forwardRef(function Box(
+  {
+    display,
+    color,
+    backgroundColor,
+    fontSize,
+    fontWeight,
+    border,
+    borderWidth,
+    borderColor,
+    borderRadius,
+    shadow,
+    padding,
+    paddingX,
+    paddingY,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+    margin,
+    marginX,
+    marginY,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    width,
+    minWidth,
+    maxWidth,
+    height,
+    minHeight,
+    maxHeight,
+    position,
+    textAlign,
+    top,
+    right,
+    bottom,
+    left,
+    overflow,
+    overflowX,
+    overflowY,
+    cursor,
+    opacity,
+    pointerEvents,
+    alignSelf,
+    justifySelf,
+    flexBasis,
+    flexGrow,
+    flexShrink,
+    gridArea,
+    gridRow,
+    gridColumn,
+    order,
+    zIndex,
+    theme,
+    as = 'div',
+    render,
+    className,
+    style,
+    children,
+    ...props
+  }: BoxProps,
+  ref: Ref<HTMLElement>,
+) {
   const Component = as as ElementType;
 
   // Build Tailwind classes
@@ -273,6 +284,7 @@ export function Box({
 
   const defaultElement = (
     <Component
+      ref={ref}
       {...props}
       className={classes || undefined}
       style={hasInlineStyles || style ? inlineStyles : undefined}
@@ -282,4 +294,4 @@ export function Box({
   );
 
   return resolveRender(render, renderProps, defaultElement);
-}
+});

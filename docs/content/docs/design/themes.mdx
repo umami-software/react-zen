@@ -1,0 +1,124 @@
+---
+title: Themes
+---
+
+# Themes
+
+Zen supports light and dark themes out of the box. Themes are applied using CSS custom properties that automatically adjust colors, backgrounds, and borders based on the active theme.
+
+## Setup
+
+Wrap your application with `ZenProvider` to enable theme support.
+
+```jsx
+import { ZenProvider } from '@umami/react-zen';
+
+function App() {
+  return (
+    <ZenProvider>
+      <YourApp />
+    </ZenProvider>
+  );
+}
+```
+
+## Theme options
+
+You can configure the initial theme using the `theme` or `colorScheme` props.
+
+```jsx
+// Force a specific theme
+<ZenProvider theme="dark">
+
+// Use system preference
+<ZenProvider colorScheme="system">
+
+// Default to light, but respect system preference
+<ZenProvider colorScheme="light">
+```
+
+## ThemeButton
+
+Use the `ThemeButton` component to let users toggle between light and dark themes.
+
+<Example>
+  <ThemeButton variant="outline" />
+</Example>
+
+```jsx
+<ThemeButton variant="outline" />
+```
+
+## Local themes
+
+You can scope theme changes to a specific container using the `target` prop. This allows parts of your UI to have a different theme than the rest of the page.
+
+<Example backgroundColor="transparent">
+  <ThemeButtonExample />
+</Example>
+
+```jsx
+function LocalThemeExample() {
+  const containerRef = useRef(null);
+
+  return (
+    <Box ref={containerRef} padding="6" backgroundColor="surface-base">
+      <Row alignItems="center" justifyContent="space-between">
+        <Text>This container has its own theme</Text>
+        <ThemeButton target={containerRef} />
+      </Row>
+    </Box>
+  );
+}
+```
+
+## useTheme hook
+
+Access and control the current theme programmatically with the `useTheme` hook.
+
+```jsx
+import { useTheme } from '@umami/react-zen';
+
+function MyComponent() {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <Button onPress={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+      Current theme: {theme}
+    </Button>
+  );
+}
+```
+
+## CSS variables
+
+Themes work by redefining CSS custom properties. The following variables change based on the active theme:
+
+<Example>
+  <DataTable
+    data={[
+      { name: '--surface-base', description: 'Primary background color' },
+      { name: '--surface-raised', description: 'Elevated surface background' },
+      { name: '--surface-sunken', description: 'Recessed surface background' },
+      { name: '--surface-overlay', description: 'Overlay/modal background' },
+      { name: '--text-primary', description: 'Primary text color' },
+      { name: '--text-secondary', description: 'Secondary text color' },
+      { name: '--text-muted', description: 'Muted/subtle text color' },
+      { name: '--border-default', description: 'Default border color' },
+      { name: '--border-strong', description: 'Emphasized border color' },
+      { name: '--interactive-bg', description: 'Interactive element background' },
+      { name: '--interactive-bg-selected', description: 'Selected state background' },
+    ]}
+  >
+    <DataColumn id="name" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+## Theme persistence
+
+Theme preference is automatically saved to `localStorage` under the key `zen.theme`. When the page loads, the stored preference is restored.
+
+## Dark mode classes
+
+Zen applies both `data-theme="dark"` attribute and the `.dark` class to the root element for maximum compatibility with Tailwind CSS and other frameworks.

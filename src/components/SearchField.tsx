@@ -68,20 +68,20 @@ export function SearchField({
       >
         <AriaGroup
           className={cn(
-            'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
+            'flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
             'focus-within:border-edge-strong',
           )}
         >
-          <Icon color="muted">
+          <Icon className="ml-3" color="muted">
             <Search />
           </Icon>
           <Input
             placeholder={placeholder}
             value={search}
-            className="flex-1 py-2 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden"
+            className="flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden"
           />
           {search && (
-            <Icon size="sm" color="muted" onClick={resetSearch}>
+            <Icon className="mr-3" size="sm" color="muted" onClick={resetSearch}>
               <X />
             </Icon>
           )}

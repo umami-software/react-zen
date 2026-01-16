@@ -5,4 +5,5 @@ export default {
   borders: 'Borders',
   shadows: 'Shadows',
   breakpoints: 'Breakpoints',
+  themes: 'Themes',
 };

@@ -56,7 +56,7 @@ export function TextField({
   }, [value]);
 
   const inputClasses = cn(
-    'flex-1 min-w-0 py-2 bg-transparent border-none outline-none placeholder:text-foreground-muted',
+    'flex-1 min-w-0 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted',
     asTextArea && 'p-3 w-full',
     resize && resizeClasses[resize],
   );
@@ -75,7 +75,7 @@ export function TextField({
       >
         <AriaGroup
           className={cn(
-            'flex items-center w-full px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
+            'flex items-center w-full text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
             'focus-within:border-edge-strong',
             'data-[readonly]:bg-surface-raised',
             'data-[disabled]:text-foreground-disabled data-[disabled]:bg-surface-disabled',
@@ -91,9 +91,9 @@ export function TextField({
             <CopyButton
               value={inputValue}
               className={cn(
-                'text-foreground-muted cursor-pointer hover:text-foreground-primary',
+                'mr-3 text-foreground-muted cursor-pointer hover:text-foreground-primary',
                 !inputValue && 'text-foreground-disabled',
-                asTextArea && 'absolute top-3 right-3 z-10',
+                asTextArea && 'absolute top-3 right-3 z-10 mr-0',
               )}
             />
           )}

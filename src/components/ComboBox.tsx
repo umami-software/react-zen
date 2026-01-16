@@ -35,17 +35,19 @@ export function ComboBox({
     <AriaComboBox aria-label="ComboBox" {...props} className={cn('relative', className)}>
       <AriaGroup
         className={cn(
-          'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
+          'flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
           'focus-within:border-edge-strong',
         )}
       >
         <AriaInput
           className={cn(
-            'flex-1 py-2 bg-transparent border-none outline-none placeholder:text-foreground-muted',
+            'flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted',
           )}
         />
         <AriaButton
-          className={cn('flex items-center text-foreground-muted hover:text-foreground-primary')}
+          className={cn(
+            'flex items-center mr-3 text-foreground-muted hover:text-foreground-primary',
+          )}
         >
           <Icon rotate={90} aria-hidden="true" size="sm">
             <ChevronRight />

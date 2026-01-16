@@ -1,5 +1,5 @@
-import { create } from 'zustand';
 import { useLayoutEffect } from 'react';
+import { create } from 'zustand';
 
 export type Theme = 'light' | 'dark';
 
@@ -29,6 +29,12 @@ export const useTheme = create<ThemeState>((set, get) => ({
     if (typeof window !== 'undefined') {
       localStorage.setItem('zen.theme', theme);
       document.documentElement.setAttribute('data-theme', theme);
+      // Also toggle .dark class for compatibility with Nextra/Tailwind dark mode
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
   },
   initTheme: (preferred?: Theme, colorScheme?: 'light' | 'dark' | 'system') => {
@@ -39,6 +45,12 @@ export const useTheme = create<ThemeState>((set, get) => ({
 
     set({ theme: initial });
     document.documentElement.setAttribute('data-theme', initial);
+    // Also toggle .dark class for compatibility with Nextra/Tailwind dark mode
+    if (initial === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   },
 }));
 

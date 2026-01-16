@@ -1,13 +1,37 @@
-import { useTransition, animated } from '@react-spring/web';
-import { PressEvent } from 'react-aria-components';
-import { Sun, Moon } from '@/components/icons';
-import { Button, ButtonProps } from './Button';
+import { animated, useTransition } from '@react-spring/web';
+import { type RefObject, useState } from 'react';
+import type { PressEvent } from 'react-aria-components';
+import { Moon, Sun } from '@/components/icons';
+import { Button, type ButtonProps } from './Button';
+import { type Theme, useTheme } from './hooks/useTheme';
 import { Icon } from './Icon';
-import { useTheme } from './hooks/useTheme';
 import { cn } from './lib/tailwind';
 
-export function ThemeButton({ className, variant = 'quiet', onPress, ...props }: ButtonProps) {
-  const { theme, setTheme } = useTheme();
+export interface ThemeButtonProps extends ButtonProps {
+  target?: RefObject<HTMLElement | null> | HTMLElement;
+}
+
+function applyTheme(element: HTMLElement, theme: Theme) {
+  element.setAttribute('data-theme', theme);
+  if (theme === 'dark') {
+    element.classList.add('dark');
+  } else {
+    element.classList.remove('dark');
+  }
+}
+
+export function ThemeButton({
+  className,
+  variant = 'quiet',
+  target,
+  onPress,
+  ...props
+}: ThemeButtonProps) {
+  const globalTheme = useTheme();
+  const [localTheme, setLocalTheme] = useState<Theme>('light');
+
+  const isLocal = !!target;
+  const theme = isLocal ? localTheme : globalTheme.theme;
 
   const transitions = useTransition(theme, {
     initial: { opacity: 1 },
@@ -23,19 +47,33 @@ export function ThemeButton({ className, variant = 'quiet', onPress, ...props }:
   });
 
   function handleClick(e: PressEvent) {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+
+    if (isLocal) {
+      const element = 'current' in target ? target.current : target;
+      if (element) {
+        applyTheme(element, newTheme);
+        setLocalTheme(newTheme);
+      }
+    } else {
+      globalTheme.setTheme(newTheme);
+    }
+
     onPress?.(e);
   }
 
   return (
     <Button
       {...props}
-      className={cn('w-[42px] flex justify-center items-center cursor-pointer [&>div]:flex [&>div]:justify-center [&>div]:items-center [&>div]:absolute', className)}
+      className={cn(
+        'w-[42px] flex justify-center items-center cursor-pointer [&>div]:flex [&>div]:justify-center [&>div]:items-center [&>div]:absolute',
+        className,
+      )}
       variant={variant}
       onPress={handleClick}
     >
       {transitions((style, item) => (
-        // @ts-ignore
+        // @ts-expect-error
         <animated.div key={item} style={style}>
           <Icon size="sm">{item === 'light' ? <Sun /> : <Moon />}</Icon>
         </animated.div>
