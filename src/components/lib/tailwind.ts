@@ -6,8 +6,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// Breakpoint prefixes
-type Breakpoint = '' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+// Breakpoint prefixes - aligned with Tailwind 4 defaults
+type Breakpoint = '' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 
 // Padding maps - explicit class names for Tailwind JIT detection
@@ -962,7 +962,8 @@ function mapResponsive<T extends string | number | boolean>(
       if (val === undefined) continue;
       const mapped = mapper(val as T);
       if (mapped) {
-        if (breakpoint === '' || breakpoint === 'xs') {
+        // Empty string means base (mobile-first) styles, no prefix
+        if (breakpoint === '') {
           classes.push(mapped);
         } else {
           classes.push(`${breakpoint}:${mapped}`);

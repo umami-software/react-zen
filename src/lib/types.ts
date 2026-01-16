@@ -1,6 +1,8 @@
 export type Primitive = string | number | boolean | bigint | symbol | null | undefined;
 
-export const Breakpoints = ['', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
+// Tailwind 4 default breakpoints (mobile-first)
+// '' = base (all sizes), sm = 640px+, md = 768px+, lg = 1024px+, xl = 1280px+, 2xl = 1536px+
+export const Breakpoints = ['', 'sm', 'md', 'lg', 'xl', '2xl'] as const;
 export type Breakpoint = (typeof Breakpoints)[number];
 export type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 
@@ -114,7 +116,20 @@ export type BorderRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 
 
 export type BoxShadow = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'inner' | true;
 
-export type FontSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl';
+export type FontSize =
+  | 'xs'
+  | 'sm'
+  | 'base'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | '6xl'
+  | '7xl'
+  | '8xl'
+  | '9xl';
 export type HeadingSize = 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
 export type FontWeight =
   | 'thin'

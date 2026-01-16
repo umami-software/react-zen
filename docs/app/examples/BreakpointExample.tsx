@@ -1,0 +1,21 @@
+'use client';
+
+import { Column, Text, useBreakpoint } from '@/components';
+
+export function BreakpointExample() {
+  const breakpoint = useBreakpoint();
+
+  return (
+    <Column gap="2">
+      <Text>
+        Current breakpoint:{' '}
+        <Text as="span" fontWeight="bold">
+          {breakpoint || 'loading...'}
+        </Text>
+      </Text>
+      <Text size="sm" color="muted">
+        Resize the window to see it change.
+      </Text>
+    </Column>
+  );
+}

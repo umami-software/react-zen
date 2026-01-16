@@ -5,30 +5,30 @@ title: Breakpoints
 # Breakpoints
 
 Breakpoints allow you to build responsive layouts by reacting to screen size changes.
-There are 6 predefined breakpoint values, `xs`, `sm`, `md`, `lg`, `xl` and `default`.
-Breakpoints are triggered once the screen width is greater than the specified width value.
+zen uses Tailwind's default breakpoints with a **mobile-first** approach. Styles are applied
+from the smallest screen up, and breakpoints specify the **minimum width** at which styles take effect.
 
 <Example>
   <DataTable
     data={[
-      { name: 'default', device: 'Phones (portrait)', width: '0px' },
-      { name: 'xs', device: 'Phones (landscape)', width: '520px' },
-      { name: 'sm', device: 'Tablets (portrait)', width: '728px' },
-      { name: 'md', device: 'Tablets (landscape)', width: '1024px' },
-      { name: 'lg', device: 'Laptops', width: '1280px' },
-      { name: 'xl', device: 'Desktops', width: '1640px' },
+      { name: '(base)', device: 'All devices', width: '0px' },
+      { name: 'sm', device: 'Small devices', width: '640px' },
+      { name: 'md', device: 'Medium devices', width: '768px' },
+      { name: 'lg', device: 'Large devices', width: '1024px' },
+      { name: 'xl', device: 'Extra large devices', width: '1280px' },
+      { name: '2xl', device: 'Extra extra large devices', width: '1536px' },
     ]}
   >
-    <DataColumn id="name" label="Size" />
+    <DataColumn id="name" label="Breakpoint" />
     <DataColumn id="device" label="Device" />
-    <DataColumn id="width" label="Width" />
+    <DataColumn id="width" label="Min Width" />
   </DataTable>
 </Example>
 
 ## Usage
 
 Certain properties of layout components accept a `Responsive` object, which specifies what value
-to apply at a given breakpoint.
+to apply at a given breakpoint. Use an empty string `''` for the base (mobile-first) value.
 
 For example, the [Heading](/docs/typography/heading) component takes a `size` prop. If we pass in a
 `Responsive` object, we can specify which sizes to display at different breakpoints.
@@ -36,7 +36,7 @@ For example, the [Heading](/docs/typography/heading) component takes a `size` pr
 <Example>
   <Heading
     size={{
-      xs: 'lg',
+      '': 'lg',
       sm: 'xl',
       md: '2xl',
       lg: '3xl',
@@ -50,13 +50,32 @@ For example, the [Heading](/docs/typography/heading) component takes a `size` pr
 ```jsx
 <Heading
   size={{
-    xs: 'lg',
-    sm: 'xl',
-    md: '2xl',
-    lg: '3xl',
-    xl: '4xl',
+    '': 'lg',      // Base size for all screens
+    sm: 'xl',      // 640px and up
+    md: '2xl',     // 768px and up
+    lg: '3xl',     // 1024px and up
+    xl: '4xl',     // 1280px and up
   }}
 >
-  {`This text will shrink/grow as the screen resizes.`}
+  This text will shrink/grow as the screen resizes.
 </Heading>
 ```
+
+## useBreakpoint Hook
+
+The `useBreakpoint` hook returns the current breakpoint based on screen width.
+
+```jsx
+import { useBreakpoint } from '@umami/react-zen';
+
+function MyComponent() {
+  const breakpoint = useBreakpoint();
+
+  // breakpoint will be: 'base' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  return <Text>Current breakpoint: {breakpoint}</Text>;
+}
+```
+
+<Example>
+  <BreakpointExample />
+</Example>

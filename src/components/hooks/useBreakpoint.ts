@@ -1,15 +1,16 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { debounce } from '@/lib/utils';
 
+// Tailwind 4 default breakpoints (min-width values)
 const breakpoints = {
-  xs: [0, 576],
-  sm: [576, 768],
-  md: [768, 992],
-  lg: [992, 1200],
-  xl: [1200, Infinity],
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  '2xl': 1536,
 };
 
-export type BreakpointKey = keyof typeof breakpoints;
+export type BreakpointKey = 'base' | keyof typeof breakpoints;
 
 const DEBOUNCE_DELAY_MS = 150;
 
@@ -23,13 +24,15 @@ export function useBreakpoint() {
 
     const width = window.innerWidth;
 
-    const currentBreakpointKey =
-      (Object.keys(breakpoints).find(key => {
-        const [min, max] = breakpoints[key as BreakpointKey];
-        return width >= min && width < max;
-      }) as BreakpointKey | undefined) || 'xs';
+    // Find the largest breakpoint that the current width satisfies (mobile-first)
+    let currentBreakpoint: BreakpointKey = 'base';
+    for (const [key, minWidth] of Object.entries(breakpoints)) {
+      if (width >= minWidth) {
+        currentBreakpoint = key as BreakpointKey;
+      }
+    }
 
-    setBreakpoint(currentBreakpointKey);
+    setBreakpoint(currentBreakpoint);
   }, []);
 
   useEffect(() => {
