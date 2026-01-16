@@ -153,7 +153,7 @@ export type Cursor =
   | 'grabbing';
 
 export type Border = true | 'top' | 'right' | 'bottom' | 'left' | 'none';
-export type BorderWidth = '0' | '2' | '4' | '8';
+export type BorderWidth = 'sm' | 'md' | 'lg' | 'xl';
 export type BorderRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full' | true;
 
 export type BoxShadow = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'inner' | true;

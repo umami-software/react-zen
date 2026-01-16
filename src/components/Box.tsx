@@ -32,6 +32,7 @@ import {
   mapBorder,
   mapBorderColor,
   mapBorderRadius,
+  mapBorderWidth,
   mapCursor,
   mapDisplay,
   mapFontSize,
@@ -204,6 +205,7 @@ export function Box({
     mapFontSize(fontSize),
     mapFontWeight(fontWeight),
     mapBorder(border),
+    mapBorderWidth(borderWidth as Responsive<string>),
     mapBorderColor(toStringValue(borderColor)),
     mapBorderRadius(borderRadius as Responsive<string>),
     mapShadow(shadow as Responsive<string>),
@@ -256,7 +258,6 @@ export function Box({
     ...(order !== undefined && { order }),
     ...(zIndex !== undefined && { zIndex }),
     ...(justifySelf && { justifySelf: justifySelf as CSSProperties['justifySelf'] }),
-    ...(borderWidth && { borderWidth: `${borderWidth}px` }),
   };
 
   // Only include style prop if there are inline styles beyond what was passed in

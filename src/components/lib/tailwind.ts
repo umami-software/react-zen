@@ -709,6 +709,14 @@ const borderRadiusMap: Record<string, string> = {
   true: 'rounded-md',
 };
 
+// Border width mapping - sm=1, md=2, lg=4, xl=8
+const borderWidthMap: Record<string, string> = {
+  sm: 'border',
+  md: 'border-2',
+  lg: 'border-4',
+  xl: 'border-8',
+};
+
 // Box shadow mapping - Tailwind native names
 const shadowMap: Record<string, string> = {
   none: 'shadow-none',
@@ -1142,6 +1150,10 @@ export function mapBackgroundColor(value: string | undefined): string {
 
 export function mapBorderRadius(value: Responsive<string> | undefined): string {
   return mapResponsive(value, v => borderRadiusMap[String(v)]);
+}
+
+export function mapBorderWidth(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => borderWidthMap[v]);
 }
 
 export function mapShadow(value: Responsive<string> | undefined): string {
