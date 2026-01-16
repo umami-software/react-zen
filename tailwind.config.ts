@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
-  darkMode: ['selector', '[data-theme="dark"]'],
+  darkMode: ['selector', '[data-theme="dark"], .dark'],
   content: ['./src/components/**/*.{ts,tsx}'],
   theme: {
     extend: {
