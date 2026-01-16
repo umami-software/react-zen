@@ -6,11 +6,13 @@ import type { ReactNode } from 'react';
 import { ZenProvider } from '@/components';
 import 'nextra-theme-docs/style.css';
 import './globals.css';
+import type { Metadata } from 'next';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono' });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'zen - React Component Library',
   description: 'A modern, minimalist React component library',
 };
@@ -36,6 +38,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             {children}
           </Layout>
         </ZenProvider>
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            defer
+            data-website-id="b2cbcc3e-7a67-4232-9619-4e2b4d3b87e4"
+            data-domains="zen.umami.is"
+            src="/z.js"
+          />
+        )}
       </body>
     </html>
   );

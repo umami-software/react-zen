@@ -9,7 +9,7 @@ export function BreakpointExample() {
     <Column gap="2">
       <Text>
         Current breakpoint:{' '}
-        <Text as="span" fontWeight="bold">
+        <Text as="span" weight="bold">
           {breakpoint || 'loading...'}
         </Text>
       </Text>

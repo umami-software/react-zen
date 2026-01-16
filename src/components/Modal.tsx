@@ -33,8 +33,7 @@ function Modal({
   ...props
 }: ModalProps) {
   if (offset) {
-    // @ts-expect-error
-    style[`--modal-offset`] = offset;
+    style[`--modal-offset` as keyof typeof style] = offset as never;
   }
 
   return (

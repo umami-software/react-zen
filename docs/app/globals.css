@@ -26,4 +26,10 @@ html {
 
 body {
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  color: var(--text-primary);
+}
+
+/* Ensure dark mode works properly */
+.dark {
+  color-scheme: dark;
 }
