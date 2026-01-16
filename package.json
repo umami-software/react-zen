@@ -15,6 +15,7 @@
   "files": [
     "dist",
     "styles.css",
+    "styles.full.css",
     "tailwind.preset.ts"
   ],
   "exports": {
@@ -24,6 +25,7 @@
       "require": "./dist/index.js"
     },
     "./styles.css": "./styles.css",
+    "./styles.full.css": "./styles.full.css",
     "./tailwind-preset": "./tailwind.preset.ts"
   },
   "scripts": {
@@ -53,6 +55,8 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@svgr/cli": "^8.1.0",
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/postcss": "^4.1.18",
     "@types/mdx": "^2.0.11",
     "@types/node": "^22.19.1",
     "@types/react": "^19.2.7",
@@ -82,7 +86,6 @@
     "rollup-plugin-postcss": "^4.0.2",
     "tailwind-merge": "^3.4.0",
     "tailwind-variants": "^3.2.2",
-    "@tailwindcss/postcss": "^4.1.18",
     "tailwindcss": "^4.1.18",
     "thenby": "^1.3.4",
     "tsup": "^8.5.1",

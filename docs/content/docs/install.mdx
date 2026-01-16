@@ -12,9 +12,15 @@ pnpm install @umami/react-zen
 
 ## Setup
 
-### 1. Configure Tailwind
+Zen offers two setup options depending on whether your project uses Tailwind CSS.
 
-Zen uses Tailwind CSS v4. Add the preset to your `tailwind.config.ts` and include the package in your content paths:
+### Option A: With Tailwind CSS (Recommended)
+
+If your project uses Tailwind CSS v4, use the preset for the best experience with smaller bundle sizes.
+
+#### 1. Configure Tailwind
+
+Add the preset to your `tailwind.config.ts` and include the package in your content paths:
 
 ```ts
 import zenPreset from '@umami/react-zen/tailwind-preset';
@@ -28,15 +34,25 @@ export default {
 };
 ```
 
-### 2. Import styles
+#### 2. Import styles
 
-Import the stylesheet in your app's entry point. This includes theme CSS variables and component animations.
+Import the minimal stylesheet which includes theme CSS variables and component animations:
 
 ```js
 import '@umami/react-zen/styles.css';
 ```
 
-### 3. Add ZenProvider
+### Option B: Without Tailwind CSS
+
+If your project doesn't use Tailwind, import the full stylesheet which includes all necessary utility classes:
+
+```js
+import '@umami/react-zen/styles.full.css';
+```
+
+This is a self-contained CSS file with no additional configuration needed.
+
+## Add ZenProvider
 
 Wrap your application with `ZenProvider` to enable theming and toast notifications.
 
@@ -59,7 +75,7 @@ export default function App({ children }) {
 | `colorScheme` | `'light' \| 'dark' \| 'system'` | `'system'` | Initial color scheme |
 | `toast` | `ToasterProps` | `{ duration: 3000 }` | Toast notification settings |
 
-### 4. Use components
+## Use components
 
 ```jsx
 import { Button } from '@umami/react-zen';
