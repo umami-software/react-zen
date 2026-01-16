@@ -42,14 +42,44 @@ Accent colors provide additional meaning to UI elements and are used in buttons,
   <Text color="red">Colored text</Text>
 </Example>
 
+## Color shades
+
+You can use any Tailwind color with a specific shade (50-950). If no shade is specified, 500 is used by default.
+
+<Example direction="row" gap="4">
+  <Text color="blue-300">blue-300</Text>
+  <Text color="blue-500">blue-500</Text>
+  <Text color="blue-700">blue-700</Text>
+  <Text color="blue-900">blue-900</Text>
+</Example>
+
+<Example direction="row" gap="2" wrap="wrap">
+  <Box backgroundColor="red-100" padding="2" borderRadius><Text size="xs">red-100</Text></Box>
+  <Box backgroundColor="red-300" padding="2" borderRadius><Text size="xs">red-300</Text></Box>
+  <Box backgroundColor="red-500" padding="2" borderRadius><Text size="xs" color="primary">red-500</Text></Box>
+  <Box backgroundColor="red-700" padding="2" borderRadius><Text size="xs" color="primary">red-700</Text></Box>
+  <Box backgroundColor="red-900" padding="2" borderRadius><Text size="xs" color="primary">red-900</Text></Box>
+</Example>
+
+## Icon colors
+
+Icons support the same color props including shades.
+
+<Example direction="row" gap="4">
+  <Icon color="green-400" size="lg"><ExampleIcons.Wifi /></Icon>
+  <Icon color="blue-500" size="lg"><ExampleIcons.Wifi /></Icon>
+  <Icon color="purple-600" size="lg"><ExampleIcons.Wifi /></Icon>
+  <Icon color="red-700" size="lg"><ExampleIcons.Wifi /></Icon>
+</Example>
+
 ## Component props
 
 <Example>
   <DataTable
     data={[
-      { name: 'color', value: '"primary" | "muted" | "disabled" | AccentColor' },
-      { name: 'backgroundColor', value: '"primary" | "transparent" | AccentColor | true' },
-      { name: 'borderColor', value: '"primary" | "muted" | "disabled" | "transparent" | AccentColor | true' },
+      { name: 'color', value: '"primary" | "muted" | "disabled" | ColorName | TailwindColor' },
+      { name: 'backgroundColor', value: '"primary" | "transparent" | ColorName | TailwindColor | true' },
+      { name: 'borderColor', value: '"primary" | "muted" | "disabled" | "transparent" | ColorName | TailwindColor | true' },
     ]}
   >
     <DataColumn id="name" label="Name" />
@@ -57,12 +87,16 @@ Accent colors provide additional meaning to UI elements and are used in buttons,
   </DataTable>
 </Example>
 
-## Available accent colors
+Where `ColorName` is a base Tailwind color (e.g., `blue`, `red`) and `TailwindColor` is a color with shade (e.g., `blue-500`, `red-300`).
 
-The following Tailwind colors are available as accent colors:
+## Available colors
+
+The following Tailwind colors are available:
 
 - `gray`, `slate`, `zinc`, `neutral`, `stone`
 - `red`, `orange`, `amber`, `yellow`, `lime`
 - `green`, `emerald`, `teal`, `cyan`, `sky`
 - `blue`, `indigo`, `violet`, `purple`, `fuchsia`
 - `pink`, `rose`
+
+Each color supports shades: `50`, `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`, `950`
