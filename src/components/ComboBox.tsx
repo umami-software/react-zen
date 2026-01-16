@@ -42,7 +42,7 @@ export function ComboBox({
         <AriaInput
           className={cn('flex-1 px-3 py-2 text-base bg-transparent border-none outline-none')}
         />
-        <AriaButton className={cn('px-2 py-2 text-content-muted hover:text-content-primary')}>
+        <AriaButton className={cn('px-2 py-2 text-foreground-muted hover:text-foreground-primary')}>
           <Icon rotate={90} aria-hidden="true" size="sm">
             <ChevronRight />
           </Icon>

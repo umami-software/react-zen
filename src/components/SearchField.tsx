@@ -78,7 +78,7 @@ export function SearchField({
           <Input
             placeholder={placeholder}
             value={search}
-            className="flex-1 py-2 bg-transparent border-none outline-none placeholder:text-content-muted [&::-webkit-search-cancel-button]:hidden"
+            className="flex-1 py-2 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden"
           />
           {search && (
             <Icon size="sm" color="muted" onClick={resetSearch}>

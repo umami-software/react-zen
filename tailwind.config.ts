@@ -88,7 +88,8 @@ const config: Config = {
           disabled: 'var(--surface-disabled)',
         },
         // Text colors
-        content: {
+        foreground: {
+          DEFAULT: 'var(--text-primary)',
           primary: 'var(--text-primary)',
           secondary: 'var(--text-secondary)',
           muted: 'var(--text-muted)',

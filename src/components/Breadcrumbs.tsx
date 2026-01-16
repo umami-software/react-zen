@@ -23,13 +23,13 @@ function Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
       {...props}
       className={cn(
         'flex items-center text-base gap-3 list-none',
-        '[&_a]:text-content-muted [&_a]:no-underline [&_a]:font-normal [&_a]:p-2',
-        '[&_a:hover]:text-content-primary',
+        '[&_a]:text-foreground-muted [&_a]:no-underline [&_a]:font-normal [&_a]:p-2',
+        '[&_a:hover]:text-foreground-primary',
         className,
       )}
     >
       {children as ReactNode}
-      <Icon className="text-content-muted last:hidden" size="xs">
+      <Icon className="text-foreground-muted last:hidden" size="xs">
         <ChevronRight />
       </Icon>
     </AriaBreadcrumb>

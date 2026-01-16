@@ -67,7 +67,7 @@ export function Text({
   const colorStr = color === true ? 'true' : color;
 
   const classes = cn(
-    'text-content-primary',
+    'text-foreground-primary',
     mapFontSize(size),
     mapTextAlign(align),
     mapTextWrap(wrap),

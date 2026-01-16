@@ -59,7 +59,7 @@ export function MenuItem({
         'text-base flex items-center justify-between gap-3 text-base px-2 py-1.5 rounded cursor-pointer outline-none w-full',
         'hover:bg-interactive',
         'data-[focus]:bg-interactive',
-        'data-[disabled]:text-content-disabled',
+        'data-[disabled]:text-foreground-disabled',
         'data-[selected]:font-semibold',
         className,
       )}
@@ -87,10 +87,7 @@ export function MenuItem({
 
 export function MenuSeparator({ className, ...props }: SeparatorProps) {
   return (
-    <Separator
-      {...props}
-      className={cn('border-b border-edge-muted my-2 -mx-2', className)}
-    />
+    <Separator {...props} className={cn('border-b border-edge-muted my-2 -mx-2', className)} />
   );
 }
 

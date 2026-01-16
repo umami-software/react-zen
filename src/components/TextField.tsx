@@ -56,7 +56,7 @@ export function TextField({
   }, [value]);
 
   const inputClasses = cn(
-    'flex-1 py-2 bg-transparent border-none outline-none placeholder:text-content-muted',
+    'flex-1 py-2 bg-transparent border-none outline-none placeholder:text-foreground-muted',
     asTextArea && 'p-3 w-full',
     resize && resizeClasses[resize],
   );
@@ -78,7 +78,7 @@ export function TextField({
             'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
             'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring',
             'data-[readonly]:bg-surface-raised',
-            'data-[disabled]:text-content-disabled data-[disabled]:bg-surface-disabled',
+            'data-[disabled]:text-foreground-disabled data-[disabled]:bg-surface-disabled',
             'focus-within:data-[readonly]:border-edge focus-within:data-[readonly]:ring-0',
             asTextArea && 'p-0',
             variant === 'quiet' &&
@@ -90,8 +90,8 @@ export function TextField({
             <CopyButton
               value={inputValue}
               className={cn(
-                'text-content-muted cursor-pointer hover:text-content-primary',
-                !inputValue && 'text-content-disabled',
+                'text-foreground-muted cursor-pointer hover:text-foreground-primary',
+                !inputValue && 'text-foreground-disabled',
                 asTextArea && 'absolute top-3 right-3 z-10',
               )}
             />

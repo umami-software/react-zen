@@ -720,11 +720,11 @@ const shadowMap: Record<string, string> = {
 
 // Color mapping for text/background - using semantic tokens
 const colorMap: Record<string, { text: string; bg: string }> = {
-  primary: { text: 'text-content-primary', bg: 'bg-interactive-selected' },
-  muted: { text: 'text-content-muted', bg: 'bg-surface-raised' },
-  disabled: { text: 'text-content-disabled', bg: 'bg-surface-disabled' },
+  primary: { text: 'text-foreground-primary', bg: 'bg-interactive-selected' },
+  muted: { text: 'text-foreground-muted', bg: 'bg-surface-raised' },
+  disabled: { text: 'text-foreground-disabled', bg: 'bg-surface-disabled' },
   transparent: { text: 'text-transparent', bg: 'bg-transparent' },
-  true: { text: 'text-content-primary', bg: 'bg-interactive' },
+  true: { text: 'text-foreground-primary', bg: 'bg-interactive' },
   // Tailwind color palette
   gray: { text: 'text-gray-500', bg: 'bg-gray-500' },
   slate: { text: 'text-slate-500', bg: 'bg-slate-500' },

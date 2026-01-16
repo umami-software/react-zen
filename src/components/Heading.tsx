@@ -1,12 +1,6 @@
-import type { Responsive, HeadingSize, FontWeight, LetterSpacing, TextAlign } from '@/lib/types';
-import { Box, BoxProps } from './Box';
-import {
-  cn,
-  mapHeadingSize,
-  mapTextAlign,
-  mapFontWeight,
-  mapLetterSpacing,
-} from './lib/tailwind';
+import type { FontWeight, HeadingSize, LetterSpacing, Responsive, TextAlign } from '@/lib/types';
+import { Box, type BoxProps } from './Box';
+import { cn, mapFontWeight, mapHeadingSize, mapLetterSpacing, mapTextAlign } from './lib/tailwind';
 
 interface HeadingProps extends BoxProps {
   size?: Responsive<HeadingSize>;
@@ -25,12 +19,12 @@ function Heading({
   ...props
 }: HeadingProps) {
   const classes = cn(
-    'font-semibold text-content-primary',
+    'font-semibold text-foreground-primary',
     mapHeadingSize(size),
     mapTextAlign(align),
     mapFontWeight(weight),
     mapLetterSpacing(spacing),
-    className
+    className,
   );
 
   return (

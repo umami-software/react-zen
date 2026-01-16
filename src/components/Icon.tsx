@@ -55,13 +55,9 @@ export function Icon({
     ...(fillColorStr && { fill: getCssColorValue(fillColorStr) }),
   };
 
-  if (!isValidElement(children)) {
-    return null;
-  }
-
-  return cloneElement(children as ReactElement<any>, {
-    ...props,
-    className: classes,
-    style: styleProps,
-  });
+  return (
+    <span {...props} className={classes} style={styleProps}>
+      {children}
+    </span>
+  );
 }

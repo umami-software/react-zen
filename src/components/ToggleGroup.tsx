@@ -1,4 +1,11 @@
-import { TagGroup, TagGroupProps, TagList, Tag, TagProps, Selection } from 'react-aria-components';
+import {
+  type Selection,
+  Tag,
+  TagGroup,
+  type TagGroupProps,
+  TagList,
+  type TagProps,
+} from 'react-aria-components';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 
@@ -42,9 +49,7 @@ function ToggleGroup({
       )}
     >
       {label && <Label>{label}</Label>}
-      <TagList className="flex flex-row items-center">
-        {children}
-      </TagList>
+      <TagList className="flex flex-row items-center">{children}</TagList>
     </TagGroup>
   );
 }
@@ -56,11 +61,11 @@ function ToggleGroupItem({ className, children, ...props }: ToggleGroupItemProps
     <Tag
       {...props}
       className={cn(
-        'text-content-muted bg-surface-base font-bold flex items-center justify-center p-2 cursor-pointer outline-none',
+        'text-foreground-muted bg-surface-base font-bold flex items-center justify-center p-2 cursor-pointer outline-none',
         '[&:not(:first-child)]:border-l [&:not(:first-child)]:border-edge',
         'hover:bg-interactive',
-        'data-[selected]:text-content-primary data-[selected]:bg-interactive',
-        'data-[disabled]:text-content-disabled',
+        'data-[selected]:text-foreground-primary data-[selected]:bg-interactive',
+        'data-[disabled]:text-foreground-disabled',
         className,
       )}
     >

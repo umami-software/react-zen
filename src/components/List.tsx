@@ -116,7 +116,7 @@ export function ListItem({
         'text-base flex items-center justify-between px-2 py-1.5 gap-3 min-w-[120px] cursor-pointer outline-none rounded',
         'hover:bg-interactive',
         'data-[focus]:bg-interactive',
-        'data-[disabled]:text-content-disabled',
+        'data-[disabled]:text-foreground-disabled',
         'data-[selected]:font-semibold',
         className,
       )}
@@ -137,12 +137,7 @@ export function ListItem({
 }
 
 export function ListSeparator({ className, ...props }: SeparatorProps) {
-  return (
-    <Separator
-      {...props}
-      className={cn('border-b border-edge-muted', className)}
-    />
-  );
+  return <Separator {...props} className={cn('border-b border-edge-muted', className)} />;
 }
 
 export interface ListSectionProps extends ListBoxSectionProps<any> {

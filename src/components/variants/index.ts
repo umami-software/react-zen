@@ -10,7 +10,7 @@ export const button = tv({
   variants: {
     variant: {
       default: [
-        'bg-interactive text-content-primary',
+        'bg-interactive text-foreground-primary',
         'hover:bg-interactive-hover',
         'pressed:bg-interactive-pressed',
       ],
@@ -21,16 +21,12 @@ export const button = tv({
         'disabled:opacity-50',
       ],
       outline: [
-        'bg-surface-base border-edge shadow-sm text-content-primary',
+        'bg-surface-base border-edge shadow-sm text-foreground-primary',
         'hover:border-edge-strong',
         'pressed:bg-surface-raised',
         'disabled:bg-surface-disabled',
       ],
-      quiet: [
-        'bg-transparent text-content-primary',
-        'hover:bg-interactive',
-        'pressed:bg-interactive-hover',
-      ],
+      quiet: ['bg-transparent', 'hover:bg-interactive', 'pressed:bg-interactive-hover'],
       danger: [
         'bg-status-error text-white',
         'hover:opacity-90',
@@ -60,7 +56,7 @@ export const inputField = tv({
   base: [
     'flex items-center px-3 gap-3',
     'text-base rounded border border-edge bg-surface-base shadow-sm',
-    'leading-6 relative text-content-primary',
+    'leading-6 relative text-foreground-primary',
     'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring focus-within:ring-offset-0',
   ],
   variants: {
@@ -87,11 +83,11 @@ export const listItem = tv({
     'flex items-center justify-between',
     'gap-3 text-base py-2 px-3 min-w-[120px]',
     'cursor-pointer outline-none rounded',
-    'text-content-primary',
+    'text-foreground-primary',
     'hovered:bg-interactive',
     'focused:bg-interactive',
     'focus-visible:bg-interactive',
-    'disabled:text-content-disabled disabled:cursor-default',
+    'disabled:text-foreground-disabled disabled:cursor-default',
     'selected:font-semibold',
   ],
 });
@@ -171,7 +167,7 @@ export type PopoverVariants = VariantProps<typeof popover>;
 // Tooltip variants
 export const tooltip = tv({
   base: [
-    'bg-surface-inverted text-content-inverted text-xs px-2 py-1 rounded',
+    'bg-surface-inverted text-foreground-inverted text-xs px-2 py-1 rounded',
     'entering:animate-popover-in',
     'exiting:animate-popover-out',
   ],
@@ -183,14 +179,14 @@ export const checkbox = tv({
     root: [
       'group flex items-center gap-3',
       'text-base cursor-pointer',
-      'disabled:text-content-disabled disabled:cursor-default',
+      'disabled:text-foreground-disabled disabled:cursor-default',
     ],
     box: [
       'flex items-center justify-center',
       'w-5 h-5 rounded border border-edge bg-surface-base',
       'shadow-sm transition-colors',
       'group-selected:bg-interactive-selected group-selected:border-interactive-selected group-selected:text-interactive-text-selected',
-      'group-indeterminate:bg-surface-base group-indeterminate:text-content-primary',
+      'group-indeterminate:bg-surface-base group-indeterminate:text-foreground-primary',
       'group-disabled:bg-surface-disabled',
       'group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1',
     ],
@@ -232,11 +228,11 @@ export const tabs = tv({
     list: ['flex gap-1 border-b border-edge-muted'],
     tab: [
       'px-4 py-2 text-base font-medium cursor-pointer',
-      'text-content-secondary',
+      'text-foreground-secondary',
       'border-b-2 border-transparent -mb-px',
-      'hovered:text-content-primary',
-      'selected:text-content-primary selected:border-edge-inverted',
-      'disabled:text-content-disabled disabled:cursor-default',
+      'hovered:text-foreground-primary',
+      'selected:text-foreground-primary selected:border-edge-inverted',
+      'disabled:text-foreground-disabled disabled:cursor-default',
     ],
     panel: 'py-4',
   },
@@ -246,7 +242,7 @@ export type TabsVariants = VariantProps<typeof tabs>;
 
 // Text variants
 export const text = tv({
-  base: 'text-content-primary',
+  base: 'text-foreground-primary',
   variants: {
     size: {
       xs: 'text-xs',
@@ -260,8 +256,8 @@ export const text = tv({
     },
     color: {
       default: '',
-      muted: 'text-content-muted',
-      disabled: 'text-content-disabled',
+      muted: 'text-foreground-muted',
+      disabled: 'text-foreground-disabled',
     },
     weight: {
       thin: 'font-thin',
@@ -284,7 +280,7 @@ export type TextVariants = VariantProps<typeof text>;
 
 // Heading variants
 export const heading = tv({
-  base: 'font-semibold text-content-primary',
+  base: 'font-semibold text-foreground-primary',
   variants: {
     size: {
       sm: 'text-sm',

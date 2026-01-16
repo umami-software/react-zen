@@ -14,8 +14,8 @@ import { ChevronRight } from '@/components/icons';
 import { toCalendarDate } from '@/lib/date';
 import { Button } from './Button';
 import { Icon } from './Icon';
-import { Row } from './Row';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
 
 export interface CalendarProps
   extends Omit<
@@ -78,7 +78,7 @@ export function Calendar({
                 'data-[outside-month]:hidden',
                 'data-[focus-visible]:outline-2 data-[focus-visible]:outline-focus-ring data-[focus-visible]:outline-offset-2',
                 'data-[selected]:text-interactive-text-selected data-[selected]:bg-interactive-selected',
-                'data-[disabled]:text-content-disabled',
+                'data-[disabled]:text-foreground-disabled',
               )}
               date={date}
             />

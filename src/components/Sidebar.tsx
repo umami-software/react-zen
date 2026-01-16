@@ -25,7 +25,7 @@ export function Sidebar({ isCollapsed, muteItems, className, children, ...props 
         className={cn(
           'text-base',
           isCollapsed && 'w-16',
-          muteItems && 'text-content-muted',
+          muteItems && 'text-foreground-muted',
           className,
         )}
       >
