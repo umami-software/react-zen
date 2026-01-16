@@ -10,39 +10,39 @@ Borders are always solid with a default border color. You can control the `posit
 
 <Example gap="5">
   <Label>Default</Label>
-  <ExampleBox border backgroundColor={true} rounded="none" />
-  <Label>Border top</Label>
-  <ExampleBox border="top" backgroundColor={true} rounded="none" />
-  <Label>Border right</Label>
-  <ExampleBox border="right" backgroundColor={true} rounded="none" />
-  <Label>Border bottom</Label>
-  <ExampleBox border="bottom" backgroundColor={true} rounded="none" />
-  <Label>Border left</Label>
-  <ExampleBox border="left" backgroundColor={true} rounded="none" />
+  <ExampleBox border backgroundColor={true} borderRadius="none" />
+  <Label>Top</Label>
+  <ExampleBox border="top" backgroundColor={true} borderRadius="none" />
+  <Label>Right</Label>
+  <ExampleBox border="right" backgroundColor={true} borderRadius="none" />
+  <Label>Bottom</Label>
+  <ExampleBox border="bottom" backgroundColor={true} borderRadius="none" />
+  <Label>Left</Label>
+  <ExampleBox border="left" backgroundColor={true} borderRadius="none" />
 </Example>
 
 ## Border radius
 
 <Example gap="5">
-  <Label>Radius sm</Label>
-  <ExampleBox rounded="sm" />
-  <Label>Radius md</Label>
-  <ExampleBox rounded="md" />
-  <Label>Radius lg</Label>
-  <ExampleBox rounded="lg" />
-  <Label>Radius xl</Label>
-  <ExampleBox rounded="xl" />
-  <Label>Radius 2xl</Label>
-  <ExampleBox rounded="2xl" />
-  <Label>Radius full</Label>
-  <ExampleBox rounded="full" />
+  <Label>sm</Label>
+  <ExampleBox borderRadius="sm" />
+  <Label>md</Label>
+  <ExampleBox borderRadius="md" />
+  <Label>lg</Label>
+  <ExampleBox borderRadius="lg" />
+  <Label>xl</Label>
+  <ExampleBox borderRadius="xl" />
+  <Label>2xl</Label>
+  <ExampleBox borderRadius="2xl" />
+  <Label>full</Label>
+  <ExampleBox borderRadius="full" />
 </Example>
 
 ## Border width
 
 <Example gap="5">
-  <Label>Width 0</Label>
-  <ExampleBox borderWidth="0" />
+  <Label>Width 1</Label>
+  <ExampleBox borderWidth="1" />
   <Label>Width 2</Label>
   <ExampleBox borderWidth="2" />
   <Label>Width 4</Label>
@@ -68,7 +68,7 @@ Borders are always solid with a default border color. You can control the `posit
     data={[
       { name: 'border', value: 'Responsive<Border>', description: 'true | "top" | "right" | "bottom" | "left" | "none"' },
       { name: 'borderWidth', value: 'Responsive<BorderWidth>', description: '"0" | "2" | "4" | "8"' },
-      { name: 'rounded', value: 'Responsive<BorderRadius>', description: 'true | "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full"' },
+      { name: 'borderRadius', value: 'Responsive<BorderRadius>', description: 'true | "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full"' },
       { name: 'borderColor', value: 'BorderColor', description: 'SemanticColor | ColorName | TailwindColor' },
     ]}
   >

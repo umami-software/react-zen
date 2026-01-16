@@ -93,7 +93,14 @@ export function Select({
         </Row>
       </Button>
       <Popover {...popoverProps} onOpenChange={handleOpenChange} isFullscreen={isFullscreen}>
-        <Column gap="2" padding="2" border rounded="md" shadow="lg" className="bg-surface-overlay">
+        <Column
+          gap="2"
+          padding="2"
+          border
+          borderRadius="md"
+          shadow="lg"
+          className="bg-surface-overlay"
+        >
           {allowSearch && (
             <SearchField
               className="mb-2"

@@ -12,7 +12,7 @@ export function ExampleBox({
   width,
   height,
   border = true,
-  rounded = true,
+  borderRadius = true,
   color,
   ...props
 }: { size?: keyof typeof SIZES } & BoxProps) {
@@ -21,7 +21,7 @@ export function ExampleBox({
       {...props}
       width={width || SIZES[size]}
       height={height || SIZES[size]}
-      rounded={rounded}
+      borderRadius={borderRadius}
       border={border}
     />
   );

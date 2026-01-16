@@ -7,7 +7,7 @@ export interface ImageProps extends HTMLAttributes<HTMLImageElement> {
   alt?: string;
   objectFit?: ObjectFit;
   isCentered?: boolean;
-  rounded?: Responsive<BorderRadius>;
+  borderRadius?: Responsive<BorderRadius>;
   shadow?: Responsive<BoxShadow>;
 }
 
@@ -24,14 +24,14 @@ export function Image({
   alt,
   objectFit,
   isCentered,
-  rounded,
+  borderRadius,
   shadow,
   className,
   ...props
 }: ImageProps) {
   const classes = cn(
     'block max-w-full',
-    mapBorderRadius(rounded as Responsive<string>),
+    mapBorderRadius(borderRadius as Responsive<string>),
     mapShadow(shadow as Responsive<string>),
     objectFit && objectFitMap[objectFit],
     objectFit && 'w-full h-full',

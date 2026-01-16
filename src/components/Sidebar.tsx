@@ -102,7 +102,7 @@ export function SidebarItem({
           gap="3"
           alignItems="center"
           justifyContent={isCollapsed ? 'center' : undefined}
-          rounded="md"
+          borderRadius="md"
           className={cn(
             'cursor-pointer',
             'hover:bg-interactive',

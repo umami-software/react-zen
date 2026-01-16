@@ -23,7 +23,7 @@ function StatusDot({ color, variant }: { color?: string; variant: string }) {
   return (
     <Row alignItems="center" justifyContent="center" className="relative w-3 h-3">
       <Box
-        rounded="full"
+        borderRadius="full"
         className={cn('w-2 h-2', variantColors[variant as keyof typeof variantColors])}
         style={color ? { backgroundColor: color } : undefined}
       />

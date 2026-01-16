@@ -56,7 +56,7 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   border?: Responsive<Border>;
   borderWidth?: Responsive<BorderWidth>;
   borderColor?: BorderColor;
-  rounded?: Responsive<BorderRadius>;
+  borderRadius?: Responsive<BorderRadius>;
   shadow?: Responsive<BoxShadow>;
 
   padding?: Responsive<Padding>;
@@ -142,7 +142,7 @@ export function Box({
   border,
   borderWidth,
   borderColor,
-  rounded,
+  borderRadius,
   shadow,
   padding,
   paddingX,
@@ -205,7 +205,7 @@ export function Box({
     mapFontWeight(fontWeight),
     mapBorder(border),
     mapBorderColor(toStringValue(borderColor)),
-    mapBorderRadius(rounded as Responsive<string>),
+    mapBorderRadius(borderRadius as Responsive<string>),
     mapShadow(shadow as Responsive<string>),
     mapPadding(padding as Responsive<string>),
     mapPadding(paddingX as Responsive<string>, 'x'),

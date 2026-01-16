@@ -13,7 +13,14 @@ export function DataCard({ data = [], labelWidth = 'auto', ...props }: DataCardP
   const rows = mapIdProperty(data);
 
   return (
-    <Grid width="100%" columns={`${labelWidth} 1fr`} border rounded="lg" padding="6" {...props}>
+    <Grid
+      width="100%"
+      columns={`${labelWidth} 1fr`}
+      border
+      borderRadius="lg"
+      padding="6"
+      {...props}
+    >
       {rows.map((row, index) => {
         return (
           <Fragment key={index}>

@@ -34,7 +34,7 @@ function ConfirmationDialog({
               paddingX="3"
               paddingY="2"
               marginY="2"
-              rounded="md"
+              borderRadius="md"
               className="font-mono text-base bg-surface-sunken"
             >
               {value}

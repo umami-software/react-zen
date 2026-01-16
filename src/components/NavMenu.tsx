@@ -87,7 +87,7 @@ export function NavMenuItem({ isSelected, className, children, ...props }: NavMe
       {...props}
       paddingY="2"
       paddingX="3"
-      rounded="md"
+      borderRadius="md"
       onClick={onItemClick}
       className={cn(
         'cursor-pointer',

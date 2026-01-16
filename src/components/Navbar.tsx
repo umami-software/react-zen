@@ -74,7 +74,7 @@ export function NavbarItem({
           gap="1"
           paddingX="3"
           paddingY="2"
-          rounded="md"
+          borderRadius="md"
           className={cn('cursor-pointer', 'hover:bg-interactive', className)}
         >
           <Text>{label}</Text>
@@ -94,7 +94,7 @@ export function NavbarItem({
       gap="1"
       paddingX="3"
       paddingY="2"
-      rounded="md"
+      borderRadius="md"
       className={cn('cursor-pointer', 'hover:bg-interactive', className)}
     >
       {children}
