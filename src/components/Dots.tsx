@@ -1,7 +1,7 @@
-import { HTMLAttributes } from 'react';
-import { Row } from './Row';
+import type { HTMLAttributes } from 'react';
 import { Box } from './Box';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
 import './Dots.css';
 
 export interface DotsProps extends HTMLAttributes<HTMLDivElement> {
@@ -15,7 +15,7 @@ const sizeMap = {
 };
 
 function Dot({ size }: { size: 'sm' | 'md' | 'lg' }) {
-  return <Box className={cn('dot', sizeMap[size])} />;
+  return <Box className={cn('zen-dot', sizeMap[size])} />;
 }
 
 const gapMap = {

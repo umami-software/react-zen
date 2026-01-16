@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
   Modal as AriaModal,
   ModalOverlay as AriaModalOverlay,
-  ModalOverlayProps as AriaModalOverlayProps,
-  ModalRenderProps,
+  type ModalOverlayProps as AriaModalOverlayProps,
+  type ModalRenderProps,
 } from 'react-aria-components';
 import { cn } from './lib/tailwind';
 import './Modal.css';
@@ -15,12 +15,13 @@ interface ModalProps extends AriaModalOverlayProps {
 }
 
 const placementClasses = {
-  center: 'modal-center',
-  left: 'modal-left absolute inset-y-0 left-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]',
-  right: 'modal-right absolute inset-y-0 right-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]',
-  top: 'modal-top absolute inset-x-0 top-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]',
-  bottom: 'modal-bottom absolute inset-x-0 bottom-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]',
-  fullscreen: 'modal-fullscreen w-dvw h-dvh rounded-none',
+  center: 'zen-modal-center',
+  left: 'zen-modal-left absolute inset-y-0 left-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]',
+  right: 'zen-modal-right absolute inset-y-0 right-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]',
+  top: 'zen-modal-top absolute inset-x-0 top-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]',
+  bottom:
+    'zen-modal-bottom absolute inset-x-0 bottom-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]',
+  fullscreen: 'zen-modal-fullscreen w-dvw h-dvh rounded-none',
 };
 
 function Modal({
@@ -32,14 +33,14 @@ function Modal({
   ...props
 }: ModalProps) {
   if (offset) {
-    // @ts-ignore
+    // @ts-expect-error
     style[`--modal-offset`] = offset;
   }
 
   return (
     <AriaModalOverlay
       {...props}
-      className="modal-overlay fixed inset-0 bg-black/80 flex items-center justify-center z-[9999]"
+      className="zen-modal-overlay fixed inset-0 bg-black/80 flex items-center justify-center z-[9999]"
       style={style}
       isDismissable
     >

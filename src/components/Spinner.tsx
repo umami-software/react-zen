@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import { Box } from './Box';
 import { cn } from './lib/tailwind';
 import './Spinner.css';
@@ -20,30 +20,14 @@ export function Spinner(props: SpinnerProps) {
   return (
     <Box
       {...domProps}
-      className={cn(
-        'relative inline-flex justify-center items-center',
-        sizeMap[size],
-        className,
-      )}
+      className={cn('relative inline-flex justify-center items-center', sizeMap[size], className)}
     >
-      <svg
-        viewBox="25 25 50 50"
-        className="spinner-svg w-full h-full"
-      >
-        {!quiet && (
-          <circle
-            className="spinner-track stroke-track"
-            cx="50"
-            cy="50"
-            r="20"
-          />
-        )}
+      <svg viewBox="25 25 50 50" className="zen-spinner-svg w-full h-full">
+        {!quiet && <circle className="zen-spinner-track stroke-track" cx="50" cy="50" r="20" />}
         <circle
           className={cn(
-            'spinner-fill',
-            isDisabled
-              ? 'stroke-content-disabled'
-              : 'stroke-track-fill',
+            'zen-spinner-fill',
+            isDisabled ? 'stroke-content-disabled' : 'stroke-track-fill',
           )}
           cx="50"
           cy="50"

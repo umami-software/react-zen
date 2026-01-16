@@ -4,7 +4,7 @@ title: Installation
 
 # Installation
 
-Install with your favorite package manager. This project uses `pnpm`.
+Install with your favorite package manager.
 
 ```shell
 pnpm install @umami/react-zen
@@ -12,15 +12,31 @@ pnpm install @umami/react-zen
 
 ## Setup
 
-### 1. Import styles
+### 1. Configure Tailwind
 
-Import the stylesheet in your app's entry point.
+Zen uses Tailwind CSS v4. Add the preset to your `tailwind.config.ts` and include the package in your content paths:
+
+```ts
+import zenPreset from '@umami/react-zen/tailwind-preset';
+
+export default {
+  presets: [zenPreset],
+  content: [
+    './src/**/*.{ts,tsx}',
+    './node_modules/@umami/react-zen/dist/**/*.{js,mjs}',
+  ],
+};
+```
+
+### 2. Import styles
+
+Import the stylesheet in your app's entry point. This includes theme CSS variables and component animations.
 
 ```js
 import '@umami/react-zen/styles.css';
 ```
 
-### 2. Add ZenProvider
+### 3. Add ZenProvider
 
 Wrap your application with `ZenProvider` to enable theming and toast notifications.
 
@@ -43,7 +59,7 @@ export default function App({ children }) {
 | `colorScheme` | `'light' \| 'dark' \| 'system'` | `'system'` | Initial color scheme |
 | `toast` | `ToasterProps` | `{ duration: 3000 }` | Toast notification settings |
 
-### 3. Use components
+### 4. Use components
 
 ```jsx
 import { Button } from '@umami/react-zen';

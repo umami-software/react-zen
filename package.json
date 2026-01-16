@@ -14,8 +14,18 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "styles.css"
+    "styles.css",
+    "tailwind.preset.ts"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./styles.css",
+    "./tailwind-preset": "./tailwind.preset.ts"
+  },
   "scripts": {
     "dev": "pnpm --filter=react-zen-docs dev",
     "build": "pnpm run bundle && pnpm --filter=react-zen-docs build",

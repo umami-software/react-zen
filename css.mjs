@@ -1,16 +1,24 @@
 import fs from 'node:fs/promises';
-import autoprefixer from 'autoprefixer';
-import postcss from 'postcss';
-import tailwindcss from '@tailwindcss/postcss';
+
+// CSS files to concatenate (theme + component animations)
+const cssFiles = [
+  './src/styles/theme.css',
+  './src/components/Dots.css',
+  './src/components/Modal.css',
+  './src/components/Popover.css',
+  './src/components/Spinner.css',
+];
 
 async function buildCSS() {
-  // Process Tailwind CSS
-  const tailwindInput = await fs.readFile('./src/styles/tailwind.css', 'utf-8');
-  const result = await postcss([tailwindcss, autoprefixer]).process(tailwindInput, {
-    from: './src/styles/tailwind.css',
-  });
+  const contents = await Promise.all(
+    cssFiles.map(async file => {
+      const content = await fs.readFile(file, 'utf-8');
+      return `/* ${file} */\n${content}`;
+    })
+  );
 
-  await fs.writeFile('./styles.css', result.css, 'utf-8');
+  const output = contents.join('\n\n');
+  await fs.writeFile('./styles.css', output, 'utf-8');
   console.log('CSS build complete: styles.css');
 }
 

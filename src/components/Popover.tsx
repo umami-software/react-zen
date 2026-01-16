@@ -14,7 +14,7 @@ export function Popover({ children, isFullscreen, className, ...props }: Popover
     <AriaPopover
       {...props}
       className={cn(
-        'popover outline-none',
+        'zen-popover outline-none',
         isFullscreen &&
           'block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base [&[data-entering]]:!animate-none [&[data-exiting]]:!animate-none',
         className,
