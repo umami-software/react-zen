@@ -10,17 +10,42 @@ Install with your favorite package manager. This project uses `pnpm`.
 pnpm install @umami/react-zen
 ```
 
-## Usage
+## Setup
 
 ### 1. Import styles
+
+Import the stylesheet in your app's entry point.
 
 ```js
 import '@umami/react-zen/styles.css';
 ```
 
-### 2. Import components
+### 2. Add ZenProvider
 
-```js
+Wrap your application with `ZenProvider` to enable theming and toast notifications.
+
+```jsx
+import { ZenProvider } from '@umami/react-zen';
+
+export default function App({ children }) {
+  return (
+    <ZenProvider>
+      {children}
+    </ZenProvider>
+  );
+}
+```
+
+`ZenProvider` accepts the following props:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `colorScheme` | `'light' \| 'dark' \| 'system'` | `'system'` | Initial color scheme |
+| `toast` | `ToasterProps` | `{ duration: 3000 }` | Toast notification settings |
+
+### 3. Use components
+
+```jsx
 import { Button } from '@umami/react-zen';
 
 export function Component() {

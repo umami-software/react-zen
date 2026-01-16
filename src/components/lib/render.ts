@@ -33,9 +33,12 @@ function resolveRender<P extends Record<string, unknown>>(
   if (isValidElement(render)) {
     const renderProps = render.props as Record<string, unknown>;
     // Merge props onto the element, with element's own props taking precedence for explicit overrides
+    // Use children from render element if provided, otherwise use children from props
+    const children = renderProps.children !== undefined ? renderProps.children : props.children;
     return cloneElement(render, {
       ...props,
       ...renderProps,
+      children,
       // Merge classNames if both exist
       className: renderProps.className
         ? `${(props.className as string) || ''} ${renderProps.className}`.trim()
