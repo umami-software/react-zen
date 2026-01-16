@@ -1,7 +1,10 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 @import "../../src/styles/theme.css";
-@import "../../dist/index.css";
+@import "../../src/components/Dots.css";
+@import "../../src/components/Modal.css";
+@import "../../src/components/Popover.css";
+@import "../../src/components/Spinner.css";
 
 @source "../../node_modules/nextra/dist";
 @source "../../node_modules/nextra-theme-docs/dist";

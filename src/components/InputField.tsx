@@ -20,12 +20,12 @@ export function InputField({
 }: InputFieldProps) {
   const classes = cn(
     'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative',
-    'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring',
+    'focus-within:border-edge-strong',
     '[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:bg-transparent [&_input]:flex-1',
     '[&_textarea]:border-0 [&_textarea]:outline-none [&_textarea]:py-2 [&_textarea]:bg-transparent [&_textarea]:flex-1',
     '[&_input]:placeholder:text-foreground-muted [&_textarea]:placeholder:text-foreground-muted',
     '[&_input]:disabled:text-foreground-disabled [&_textarea]:disabled:text-foreground-disabled',
-    isReadOnly && 'bg-surface-raised focus-within:border-edge focus-within:ring-0',
+    isReadOnly && 'bg-surface-raised focus-within:border-edge',
     isDisabled && 'bg-surface-disabled',
     className,
   );

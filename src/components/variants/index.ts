@@ -57,12 +57,13 @@ export const inputField = tv({
     'flex items-center px-3 gap-3',
     'text-base rounded border border-edge bg-surface-base shadow-sm',
     'leading-6 relative text-foreground-primary',
-    'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring focus-within:ring-offset-0',
+    'focus-within:border-edge-strong',
   ],
   variants: {
     variant: {
       default: '',
-      quiet: 'border-transparent shadow-none bg-transparent',
+      quiet:
+        'border-transparent shadow-none bg-transparent focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent',
     },
   },
   compoundVariants: [

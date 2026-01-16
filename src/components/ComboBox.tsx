@@ -36,7 +36,7 @@ export function ComboBox({
       <AriaGroup
         className={cn(
           'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
-          'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring',
+          'focus-within:border-edge-strong',
         )}
       >
         <AriaInput
