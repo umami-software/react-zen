@@ -16,7 +16,6 @@ export default {
   icon: 'Icon',
   'icon-label': 'Icon Label',
   image: 'Image',
-  'inline-edit-field': 'Inline Edit Field',
   list: 'List',
   loading: 'Loading',
   'loading-button': 'Loading Button',

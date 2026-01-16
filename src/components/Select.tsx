@@ -13,10 +13,10 @@ import { Icon } from './Icon';
 import { Label } from './Label';
 import { List, type ListProps } from './List';
 import { Loading } from './Loading';
+import { cn } from './lib/tailwind';
 import { Popover } from './Popover';
 import { Row } from './Row';
 import { SearchField } from './SearchField';
-import { cn } from './lib/tailwind';
 
 export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   items?: any[];
@@ -84,11 +84,7 @@ export function Select({
       onChange={handleChange}
     >
       {label && <Label>{label}</Label>}
-      <Button
-        variant="outline"
-        {...buttonProps}
-        className={cn('w-full', buttonProps?.className)}
-      >
+      <Button variant="outline" {...buttonProps} className={cn('w-full', buttonProps?.className)}>
         <Row flexGrow={1} alignItems="center" justifyContent="space-between">
           <SelectValue>{renderValue}</SelectValue>
           <Icon rotate={90} aria-hidden="true" size="sm">
@@ -97,7 +93,7 @@ export function Select({
         </Row>
       </Button>
       <Popover {...popoverProps} onOpenChange={handleOpenChange} isFullscreen={isFullscreen}>
-        <Column gap="2">
+        <Column gap="2" className="border border-edge rounded-md shadow-lg bg-surface-overlay p-2">
           {allowSearch && (
             <SearchField
               className="mb-2"

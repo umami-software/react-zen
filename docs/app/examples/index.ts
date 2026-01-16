@@ -12,7 +12,6 @@ export { FormExample } from './FormExample';
 export { FormFieldArrayExample } from './FormFieldArrayExample';
 export { FormInputsExample } from './FormInputsExample';
 export { FormValidationExample } from './FormValidationExample';
-export { InlineEditExample } from './InlineEditExample';
 export { SearchDelayExample } from './SearchDelayExample';
 export { SelectSearchExample } from './SelectSearchExample';
 export { SelectValueExample } from './SelectValueExample';

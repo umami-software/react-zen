@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { Row, type RowProps } from '@/components/Row';
+import type { ReactNode } from 'react';
 import { Icon, type IconProps } from '@/components/Icon';
+import { Row, type RowProps } from '@/components/Row';
 import { Text, type TextProps } from '@/components/Text';
 
 export interface IconLabelProps extends RowProps {
@@ -21,8 +21,8 @@ export function IconLabel({
   ...props
 }: IconLabelProps) {
   return (
-    <Row alignItems="center" gap width="100%" {...props}>
-      <Icon {...iconProps}>{icon}</Icon>
+    <Row alignItems="center" gap {...props}>
+      {icon && <Icon {...iconProps}>{icon}</Icon>}
       {showLabel && label && <Text {...labelProps}>{label}</Text>}
       {showLabel && children}
     </Row>

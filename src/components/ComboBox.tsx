@@ -49,7 +49,7 @@ export function ComboBox({
         </AriaButton>
       </AriaGroup>
       <Popover {...popoverProps}>
-        <Box padding="1">
+        <Box padding="2" className="border border-edge rounded-md shadow-lg bg-surface-overlay">
           <List items={items} renderEmptyState={renderEmptyState} {...listProps}>
             {children ||
               items?.map(item => (

@@ -48,7 +48,6 @@ export * from './hooks/useToast';
 export * from './Icon';
 export * from './IconLabel';
 export * from './Image';
-export * from './InlineEditField';
 export * from './Label';
 export * from './List';
 export * from './Loading';
