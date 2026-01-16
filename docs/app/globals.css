@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@config "../tailwind.config.ts";
+@config "../../tailwind.config.ts";
 @import "../../src/styles/theme.css";
 @import "../../dist/index.css";
 
@@ -9,4 +9,11 @@
 
 html {
   font-size: 14px;
+}
+
+/* Override Nextra text size variables to use 14px base */
+:root {
+  --x-text-xs: 0.875rem;
+  --x-text-sm: 1rem;
+  --x-text-base: 1rem;
 }
