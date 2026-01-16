@@ -7,7 +7,7 @@ export type Breakpoint = (typeof Breakpoints)[number];
 export type Responsive<T> = T | Partial<Record<Breakpoint, T>>;
 
 // Colors - semantic and Tailwind color names
-export type AccentColor =
+export type ColorName =
   | 'gray'
   | 'slate'
   | 'zinc'
@@ -31,9 +31,33 @@ export type AccentColor =
   | 'pink'
   | 'rose';
 
-export type FontColor = AccentColor | 'primary' | 'muted' | 'disabled' | true;
-export type BackgroundColor = AccentColor | 'primary' | 'transparent' | true;
-export type BorderColor = AccentColor | 'primary' | 'muted' | 'disabled' | 'transparent' | true;
+export type ColorShade =
+  | '50'
+  | '100'
+  | '200'
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '900'
+  | '950';
+
+// Tailwind color with shade (e.g., 'blue-500', 'red-300')
+export type TailwindColor = `${ColorName}-${ColorShade}`;
+
+// All supported colors: semantic + base colors + color-shade combinations
+export type FontColor = ColorName | TailwindColor | 'primary' | 'muted' | 'disabled' | true;
+export type BackgroundColor = ColorName | TailwindColor | 'primary' | 'transparent' | true;
+export type BorderColor =
+  | ColorName
+  | TailwindColor
+  | 'primary'
+  | 'muted'
+  | 'disabled'
+  | 'transparent'
+  | true;
 export type HoverColor = FontColor;
 export type StrokeColor = FontColor;
 export type FillColor = FontColor;
