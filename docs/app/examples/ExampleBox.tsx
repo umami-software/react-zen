@@ -1,5 +1,5 @@
 import { Box } from '@/components';
-import { BoxProps } from '@/components/Box';
+import type { BoxProps } from '@/components/Box';
 
 const SIZES = {
   sm: '25px',
@@ -12,7 +12,7 @@ export function ExampleBox({
   width,
   height,
   border = true,
-  borderRadius = true,
+  rounded = true,
   color,
   ...props
 }: { size?: keyof typeof SIZES } & BoxProps) {
@@ -21,7 +21,7 @@ export function ExampleBox({
       {...props}
       width={width || SIZES[size]}
       height={height || SIZES[size]}
-      borderRadius={borderRadius}
+      rounded={rounded}
       border={border}
     />
   );

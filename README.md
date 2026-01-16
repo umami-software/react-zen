@@ -30,7 +30,7 @@ import { Box, Column, Heading, Text, Button } from '@umami/react-zen';
 
 export default function Welcome() {
   return (
-    <Box padding="6" border borderRadius="lg" shadow="lg">
+    <Box padding="6" border rounded="lg" shadow="lg">
       <Column alignItems="center" gap="6">
         <Heading size="3xl">Welcome</Heading>
         <Text color="muted">This is the zen way.</Text>

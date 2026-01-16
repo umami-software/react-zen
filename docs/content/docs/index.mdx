@@ -22,7 +22,7 @@ Zen eliminates that friction. Instead of assembling Tailwind classes or writing 
 **primitive components** that handle everything through props:
 
 ```jsx
-<Box padding="6" border borderRadius="lg" shadow="lg">
+<Box padding="6" border rounded="lg" shadow="lg">
   <Column alignItems="center" gap="6">
     <Heading size="3xl">Welcome</Heading>
     <Text color="muted" weight="medium">
@@ -34,7 +34,7 @@ Zen eliminates that friction. Instead of assembling Tailwind classes or writing 
 ```
 
 <Example>
-  <Box padding="6" border borderRadius="lg" shadow="lg">
+  <Box padding="6" border rounded="lg" shadow="lg">
     <Column alignItems="center" gap="6">
       <Heading size="3xl">Welcome</Heading>
       <Text color="muted" weight="medium">{`This is the zen way.`}</Text>
@@ -68,7 +68,7 @@ let you compose any layout through props:
 - **Spacing**: `padding`, `margin`, `gap`
 - **Layout**: `alignItems`, `justifyContent`, `direction`
 - **Responsive**: `{{ '': 'column', md: 'row' }}`
-- **Visual**: `border`, `borderRadius`, `shadow`
+- **Visual**: `border`, `rounded`, `shadow`
 
 This is faster than writing Tailwind because you're working at a higher level of abstraction.
 You don't assemble classes; you describe what you want.

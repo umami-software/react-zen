@@ -1,4 +1,4 @@
-import { Flexbox, FlexboxProps } from '@/components';
+import { Flexbox, type FlexboxProps } from '@/components';
 
 export function Example({
   direction = 'column',
@@ -8,7 +8,7 @@ export function Example({
   padding = '8',
   marginY = '6',
   border = true,
-  borderRadius = 'lg',
+  rounded = 'lg',
   minHeight = '300px',
   wrap = 'wrap',
   position = 'relative',
@@ -26,7 +26,7 @@ export function Example({
         gap,
         padding,
         border,
-        borderRadius,
+        rounded,
         marginY,
         minHeight,
         wrap,
