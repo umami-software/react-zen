@@ -11,3 +11,25 @@ A combo box combines a text input with a listbox, allowing users to filter a lis
     items={['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']}
   />
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'items', value: 'any[]', description: 'Array of items to display' },
+      { name: 'inputValue', value: 'string', description: 'Controlled input value' },
+      { name: 'defaultInputValue', value: 'string', description: 'Default input value' },
+      { name: 'selectedKey', value: 'string', description: 'Controlled selected key' },
+      { name: 'defaultSelectedKey', value: 'string', description: 'Default selected key' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the combobox' },
+      { name: 'onInputChange', value: '(value: string) => void', description: 'Called when input changes' },
+      { name: 'onSelectionChange', value: '(key: string) => void', description: 'Called when selection changes' },
+      { name: 'renderEmptyState', value: 'Function', description: 'Render function for empty state' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

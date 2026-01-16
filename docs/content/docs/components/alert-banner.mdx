@@ -34,3 +34,23 @@ They're meant to be noticed and prompt users to take action.
     allowClose={true}
   />
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'title', value: 'ReactNode', description: 'Banner title' },
+      { name: 'description', value: 'ReactNode', description: 'Banner description text' },
+      { name: 'icon', value: 'ReactNode', description: 'Custom icon (overrides variant icon)' },
+      { name: 'variant', value: 'AlertVariant', description: '"error" | "info" (default: "info")' },
+      { name: 'align', value: 'Alignment', description: '"start" | "center" | "end"' },
+      { name: 'allowClose', value: 'boolean', description: 'Shows a close button' },
+      { name: 'onClose', value: '() => void', description: 'Called when close button is clicked' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

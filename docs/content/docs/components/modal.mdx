@@ -68,3 +68,20 @@ A modal is an overlay element which blocks interaction with elements outside it.
     </Modal>
   </DialogTrigger>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'placement', value: 'ModalPlacement', description: '"center" | "top" | "bottom" | "left" | "right" | "fullscreen"' },
+      { name: 'offset', value: 'string', description: 'CSS offset value for edge placements' },
+      { name: 'isDismissable', value: 'boolean', description: 'Can be dismissed by clicking outside (default: true)' },
+      { name: 'isKeyboardDismissDisabled', value: 'boolean', description: 'Disables Escape key dismissal' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

@@ -18,3 +18,21 @@ A switch allows a user to turn a setting on or off.
     Disabled on
   </Switch>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'label', value: 'string', description: 'Label text displayed above the switch' },
+      { name: 'isSelected', value: 'boolean', description: 'Controlled selected state' },
+      { name: 'defaultSelected', value: 'boolean', description: 'Default selected state' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the switch' },
+      { name: 'onChange', value: '(isSelected: boolean) => void', description: 'Called when state changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

@@ -9,3 +9,19 @@ A button that toggles the page theme between light and dark.
 <Example>
   <ThemeButton variant="outline" />
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'variant', value: 'ButtonVariant', description: '"default" | "primary" | "outline" | "quiet" (default: "quiet")' },
+      { name: 'size', value: 'ButtonSize', description: '"xs" | "sm" | "md" | "lg" | "xl"' },
+      { name: 'onPress', value: '(e: PressEvent) => void', description: 'Called when button is pressed' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

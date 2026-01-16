@@ -40,3 +40,19 @@ An element that indicates content is loading.
     </Column>
   </Row>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'size', value: 'LoadingSize', description: '"sm" | "md" | "lg"' },
+      { name: 'icon', value: 'LoadingIcon', description: '"dots" | "spinner" (default: "spinner")' },
+      { name: 'placement', value: 'LoadingPlacement', description: '"absolute" | "center" | "inline" (default: "inline")' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

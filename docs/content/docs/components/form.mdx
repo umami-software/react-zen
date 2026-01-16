@@ -35,3 +35,40 @@ An input form.
     <FormFieldArrayExample />
   </Box>
 </Example>
+
+## Component props
+
+### Form
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'defaultValues', value: 'object', description: 'Default form values' },
+      { name: 'values', value: 'object', description: 'Controlled form values' },
+      { name: 'error', value: 'ReactNode | Error', description: 'Error to display above form' },
+      { name: 'preventSubmit', value: 'boolean', description: 'Prevents form submission on Enter' },
+      { name: 'onSubmit', value: '(data: object) => void', description: 'Called when form is submitted' },
+      { name: 'resolver', value: 'Resolver', description: 'Validation resolver (e.g., yup, zod)' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### FormField
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'name', value: 'string', description: 'Field name (required)' },
+      { name: 'label', value: 'string', description: 'Field label' },
+      { name: 'rules', value: 'object', description: 'Validation rules' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

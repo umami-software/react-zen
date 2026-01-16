@@ -9,3 +9,23 @@ A calendar displays one or more date grids and allows users to select a single d
 <Example>
   <CalendarExample />
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'value', value: 'Date', description: 'Controlled selected date' },
+      { name: 'defaultValue', value: 'Date', description: 'Default selected date' },
+      { name: 'minValue', value: 'Date', description: 'Minimum selectable date' },
+      { name: 'maxValue', value: 'Date', description: 'Maximum selectable date' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the calendar' },
+      { name: 'isReadOnly', value: 'boolean', description: 'Makes the calendar read-only' },
+      { name: 'onChange', value: '(date: Date) => void', description: 'Called when date changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

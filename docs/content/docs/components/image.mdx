@@ -38,3 +38,22 @@ An image.
     </Box>
   </Column>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'src', value: 'string', description: 'Image source URL (required)' },
+      { name: 'alt', value: 'string', description: 'Alternative text' },
+      { name: 'objectFit', value: 'ObjectFit', description: '"fill" | "contain" | "cover" | "none" | "scale-down"' },
+      { name: 'isCentered', value: 'boolean', description: 'Centers the image horizontally' },
+      { name: 'borderRadius', value: 'BorderRadius', description: 'Border radius value' },
+      { name: 'shadow', value: 'BoxShadow', description: 'Box shadow value' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

@@ -17,3 +17,37 @@ A collapsible sidebar component.
 <Example>
   <SidebarExample name="mute items" muteItems={true} />
 </Example>
+
+## Component props
+
+### Sidebar
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'isCollapsed', value: 'boolean', description: 'Collapses sidebar to icon-only mode' },
+      { name: 'muteItems', value: 'boolean', description: 'Applies muted color to items' },
+      { name: 'border', value: 'Border', description: 'Border style' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### SidebarItem
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'label', value: 'string', description: 'Item label' },
+      { name: 'icon', value: 'ReactNode', description: 'Item icon' },
+      { name: 'isSelected', value: 'boolean', description: 'Shows item as selected' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

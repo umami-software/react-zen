@@ -34,3 +34,33 @@ A collection of links for navigating websites.
 
   </Navbar>
 </Example>
+
+## Component props
+
+### Navbar
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'showArrow', value: 'boolean', description: 'Shows dropdown arrow on items (default: true)' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### NavbarItem
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'label', value: 'string', description: 'Item label (enables hover dropdown)' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

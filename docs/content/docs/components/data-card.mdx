@@ -15,3 +15,18 @@ Displays data in rows.
     ]}
   />
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'data', value: 'object[]', description: 'Array of { label, value } objects' },
+      { name: 'labelWidth', value: 'string', description: 'Width of label column (default: "auto")' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

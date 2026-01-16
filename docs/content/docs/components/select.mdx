@@ -76,3 +76,29 @@ Displays a list of options for the user to pick from—triggered by a button.
     <Select items={Array.from(Array(42).keys())} placeholder="Please select an option" />
   </Box>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'items', value: 'any[]', description: 'Array of items to display' },
+      { name: 'value', value: 'string | number', description: 'Controlled selected value' },
+      { name: 'defaultValue', value: 'string | number', description: 'Default selected value' },
+      { name: 'label', value: 'string', description: 'Label text displayed above the select' },
+      { name: 'placeholder', value: 'string', description: 'Placeholder text when no selection' },
+      { name: 'isLoading', value: 'boolean', description: 'Shows loading indicator' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the select' },
+      { name: 'isFullscreen', value: 'boolean', description: 'Opens options in fullscreen mode' },
+      { name: 'allowSearch', value: 'boolean', description: 'Enables search within options' },
+      { name: 'searchDelay', value: 'number', description: 'Debounce delay for search' },
+      { name: 'onChange', value: '(value: any) => void', description: 'Called when selection changes' },
+      { name: 'onSearch', value: '(value: string) => void', description: 'Called when search value changes' },
+      { name: 'renderValue', value: 'ReactNode | Function', description: 'Custom render for selected value' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

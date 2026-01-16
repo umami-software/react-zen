@@ -104,3 +104,41 @@ A menu displays a list of actions or options that a user can choose.
     </SubMenuTrigger>
   </Menu>
 </Example>
+
+## Component props
+
+### Menu
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'selectionMode', value: 'SelectionMode', description: '"none" | "single" | "multiple"' },
+      { name: 'selectedKeys', value: 'string[]', description: 'Controlled selected keys' },
+      { name: 'defaultSelectedKeys', value: 'string[]', description: 'Default selected keys' },
+      { name: 'onSelectionChange', value: '(keys: Selection) => void', description: 'Called when selection changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### MenuItem
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'id', value: 'string', description: 'Unique item identifier' },
+      { name: 'icon', value: 'ReactNode', description: 'Icon displayed before label' },
+      { name: 'label', value: 'string', description: 'Item label text' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the item' },
+      { name: 'showChecked', value: 'boolean', description: 'Shows check mark when selected (default: true)' },
+      { name: 'showSubMenuIcon', value: 'boolean', description: 'Shows submenu arrow icon' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

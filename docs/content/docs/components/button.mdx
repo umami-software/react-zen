@@ -95,3 +95,20 @@ A button allows a user to perform an action, with mouse, touch, and keyboard int
     Button as a link
   </Button>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'variant', value: 'ButtonVariant', description: '"default" | "primary" | "outline" | "quiet" | "danger" | "zero"' },
+      { name: 'size', value: 'ButtonSize', description: '"xs" | "sm" | "md" | "lg" | "xl" (default: "md")' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the button' },
+      { name: 'render', value: 'RenderProp', description: 'Render prop for polymorphism (e.g., render as link)' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

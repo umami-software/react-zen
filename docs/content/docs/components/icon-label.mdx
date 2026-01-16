@@ -11,3 +11,21 @@ An element that displays an icon next to a label.
     <IconLabel icon={<ExampleIcons.Settings />}>Settings</IconLabel>
   </Row>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'icon', value: 'ReactNode', description: 'Icon element to display' },
+      { name: 'label', value: 'ReactNode', description: 'Label text' },
+      { name: 'showLabel', value: 'boolean', description: 'Shows/hides the label (default: true)' },
+      { name: 'iconProps', value: 'IconProps', description: 'Props passed to Icon component' },
+      { name: 'labelProps', value: 'TextProps', description: 'Props passed to Text component' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

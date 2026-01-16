@@ -36,3 +36,38 @@ A radio group allows a user to select a single item from a list of mutually excl
   </RadioGroup>
 </Example>
 
+## Component props
+
+### RadioGroup
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'label', value: 'string', description: 'Label text displayed above the group' },
+      { name: 'value', value: 'string', description: 'Controlled selected value' },
+      { name: 'defaultValue', value: 'string', description: 'Default selected value' },
+      { name: 'orientation', value: 'Orientation', description: '"horizontal" | "vertical"' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables all radios in the group' },
+      { name: 'onChange', value: '(value: string) => void', description: 'Called when selection changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Radio
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'value', value: 'string', description: 'Value of this radio option (required)' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables this radio option' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

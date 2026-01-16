@@ -18,3 +18,20 @@ Displays a popover element when a user hovers over a trigger element.
     </Dialog>
   </HoverTrigger>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'isOpen', value: 'boolean', description: 'Controlled open state' },
+      { name: 'closeDelay', value: 'number', description: 'Delay before closing in ms (default: 500)' },
+      { name: 'onHoverStart', value: '() => void', description: 'Called when hover starts' },
+      { name: 'onHoverEnd', value: '() => void', description: 'Called when hover ends' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

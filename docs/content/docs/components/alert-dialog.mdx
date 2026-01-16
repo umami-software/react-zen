@@ -10,3 +10,24 @@ to acknowledge.
 <Example>
   <AlertDialogExample />
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'title', value: 'ReactNode', description: 'Dialog title' },
+      { name: 'description', value: 'ReactNode', description: 'Dialog description' },
+      { name: 'isDanger', value: 'boolean', description: 'Shows confirm button as danger variant' },
+      { name: 'isConfirmDisabled', value: 'boolean', description: 'Disables the confirm button' },
+      { name: 'confirmLabel', value: 'ReactNode', description: 'Confirm button text (default: "Confirm")' },
+      { name: 'cancelLabel', value: 'ReactNode', description: 'Cancel button text (default: "Cancel")' },
+      { name: 'onConfirm', value: '() => void', description: 'Called when confirm is clicked' },
+      { name: 'onCancel', value: '() => void', description: 'Called when cancel is clicked' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

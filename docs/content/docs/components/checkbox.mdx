@@ -21,3 +21,22 @@ A checkbox allows a user to select multiple items from a list of individual item
 <Example>
   <Checkbox isDisabled={true}>Accept terms and conditions.</Checkbox>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'label', value: 'string', description: 'Label text (alternative to children)' },
+      { name: 'isSelected', value: 'boolean', description: 'Controlled selected state' },
+      { name: 'defaultSelected', value: 'boolean', description: 'Default selected state' },
+      { name: 'isIndeterminate', value: 'boolean', description: 'Shows indeterminate state' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the checkbox' },
+      { name: 'onChange', value: '(isSelected: boolean) => void', description: 'Called when state changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

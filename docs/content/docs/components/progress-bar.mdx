@@ -15,3 +15,20 @@ A progress bar element.
 <Example>
   <ProgressBar value={25} showValue />
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'value', value: 'number', description: 'Current progress value' },
+      { name: 'minValue', value: 'number', description: 'Minimum value (default: 0)' },
+      { name: 'maxValue', value: 'number', description: 'Maximum value (default: 100)' },
+      { name: 'showPercentage', value: 'boolean', description: 'Shows percentage text' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

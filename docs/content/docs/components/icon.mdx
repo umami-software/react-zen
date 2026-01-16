@@ -48,3 +48,22 @@ A wrapper around SVG elements to help control size, color and rotation.
     <ExampleIcons.Wifi />
   </Icon>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'size', value: 'IconSize', description: '"xs" | "sm" | "md" | "lg" | "xl" (default: "sm")' },
+      { name: 'color', value: 'FontColor', description: 'Icon color' },
+      { name: 'rotate', value: 'number', description: 'Rotation in degrees' },
+      { name: 'strokeWidth', value: 'string', description: 'SVG stroke width' },
+      { name: 'strokeColor', value: 'StrokeColor', description: 'SVG stroke color' },
+      { name: 'fillColor', value: 'FillColor', description: 'SVG fill color' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

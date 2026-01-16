@@ -54,3 +54,50 @@ A collection of navigation links.
     </NavMenu>
   </Box>
 </Example>
+
+## Component props
+
+### NavMenu
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'muteItems', value: 'boolean', description: 'Applies muted color to items' },
+      { name: 'onItemClick', value: '() => void', description: 'Called when any item is clicked' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### NavMenuGroup
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'title', value: 'string', description: 'Group title' },
+      { name: 'allowMinimize', value: 'boolean', description: 'Allows collapsing the group (default: true)' },
+      { name: 'isMinimized', value: 'boolean', description: 'Initial minimized state' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### NavMenuItem
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'isSelected', value: 'boolean', description: 'Shows item as selected' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
