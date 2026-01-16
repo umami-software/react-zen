@@ -47,9 +47,24 @@ export type ColorShade =
 // Tailwind color with shade (e.g., 'blue-500', 'red-300')
 export type TailwindColor = `${ColorName}-${ColorShade}`;
 
+// Surface color variants
+export type SurfaceColor =
+  | 'surface-base'
+  | 'surface-raised'
+  | 'surface-sunken'
+  | 'surface-overlay'
+  | 'surface-inverted'
+  | 'surface-disabled';
+
 // All supported colors: semantic + base colors + color-shade combinations
 export type FontColor = ColorName | TailwindColor | 'primary' | 'muted' | 'disabled' | true;
-export type BackgroundColor = ColorName | TailwindColor | 'primary' | 'transparent' | true;
+export type BackgroundColor =
+  | ColorName
+  | TailwindColor
+  | SurfaceColor
+  | 'primary'
+  | 'transparent'
+  | true;
 export type BorderColor =
   | ColorName
   | TailwindColor

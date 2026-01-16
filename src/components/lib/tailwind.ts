@@ -728,6 +728,13 @@ const semanticColorMap: Record<string, { text: string; bg: string }> = {
   disabled: { text: 'text-foreground-disabled', bg: 'bg-surface-disabled' },
   transparent: { text: 'text-transparent', bg: 'bg-transparent' },
   true: { text: 'text-foreground-primary', bg: 'bg-interactive' },
+  // Surface colors
+  'surface-base': { text: '', bg: 'bg-surface-base' },
+  'surface-raised': { text: '', bg: 'bg-surface-raised' },
+  'surface-sunken': { text: '', bg: 'bg-surface-sunken' },
+  'surface-overlay': { text: '', bg: 'bg-surface-overlay' },
+  'surface-inverted': { text: '', bg: 'bg-surface-inverted' },
+  'surface-disabled': { text: '', bg: 'bg-surface-disabled' },
 };
 
 // Tailwind color names for pattern matching
