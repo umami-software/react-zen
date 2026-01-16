@@ -24,12 +24,11 @@ Shadows are a set of `box-shadow` values that give the element a sense of depth.
 <Example>
   <DataTable
     data={[
-      { name: 'shadow', value: 'Responsive<"none" | "sm" | "md" | "lg" | "xl" | "2xl" | "inner">' },
+      { name: 'shadow', value: 'Responsive<BoxShadow>', description: 'true | "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "inner"' },
     ]}
->
-
+  >
     <DataColumn id="name" label="Name" />
-    <DataColumn id="value" label="Value" />
-
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Values" />
   </DataTable>
 </Example>

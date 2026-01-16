@@ -115,19 +115,23 @@ A text element with controls for size, color, weight and letter spacing.
 <Example>
   <DataTable
     data={[
-      { name: 'color', value: '"muted" | "disabled" | AccentColor' },
-      { name: 'size', value: 'Responsive<"xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl">' },
-      { name: 'weight', value: 'Responsive<"thin" | "extralight" | "light" | "normal" | "medium" | "semibold" | "bold" | "extrabold" | "black">' },
-      { name: 'align', value: 'Responsive<"left" | "center" | "right">' },
-      { name: 'spacing', value: 'Responsive<"tighter" | "tight" | "normal" | "wide" | "wider" | "widest">' },
-      { name: 'italic', value: 'boolean' },
-      { name: 'underline', value: 'boolean' },
-      { name: 'strikethrough', value: 'boolean' },
-      { name: 'as', value: 'string' },
-      { name: 'render', value: 'ReactElement | ((props) => ReactElement)' },
+      { name: 'color', value: 'FontColor', description: '"primary" | "muted" | "disabled" | TailwindColor' },
+      { name: 'size', value: 'Responsive<FontSize>', description: '"xs" | "sm" | "base" | "lg" | "xl" | ... | "9xl"' },
+      { name: 'weight', value: 'Responsive<FontWeight>', description: '"thin" | "light" | "normal" | "medium" | "semibold" | "bold" | ...' },
+      { name: 'align', value: 'Responsive<TextAlign>', description: '"left" | "center" | "right"' },
+      { name: 'spacing', value: 'Responsive<LetterSpacing>', description: '"tighter" | "tight" | "normal" | "wide" | "wider" | "widest"' },
+      { name: 'wrap', value: 'Responsive<TextWrap>', description: '"wrap" | "nowrap" | "balance" | "pretty"' },
+      { name: 'transform', value: 'Responsive<TextTransform>', description: '"capitalize" | "uppercase" | "lowercase" | "none"' },
+      { name: 'truncate', value: 'Responsive<boolean>', description: 'Truncate text with ellipsis' },
+      { name: 'italic', value: 'Responsive<boolean>', description: 'Italic text style' },
+      { name: 'underline', value: 'Responsive<boolean>', description: 'Underline text decoration' },
+      { name: 'strikethrough', value: 'Responsive<boolean>', description: 'Line-through text decoration' },
+      { name: 'as', value: 'TextElement', description: '"span" | "div" | "label" | "p" | "h1" | ... | "code" | "blockquote"' },
+      { name: 'render', value: 'RenderProp', description: 'Render prop for polymorphism' },
     ]}
   >
     <DataColumn id="name" label="Name" />
     <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Values" />
   </DataTable>
 </Example>

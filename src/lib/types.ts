@@ -134,6 +134,19 @@ export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 
 export type Display = 'none' | 'inline' | 'inline-block' | 'block';
 
+export type Cursor =
+  | 'auto'
+  | 'default'
+  | 'pointer'
+  | 'wait'
+  | 'text'
+  | 'move'
+  | 'help'
+  | 'not-allowed'
+  | 'none'
+  | 'grab'
+  | 'grabbing';
+
 export type Border = true | 'top' | 'right' | 'bottom' | 'left' | 'none';
 export type BorderWidth = '0' | '2' | '4' | '8';
 export type BorderRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full' | true;
@@ -268,3 +281,28 @@ export type AlignSelf =
   | 'stretch';
 
 export type ObjectFit = 'fill' | 'contain' | 'cover' | 'scale-down' | 'none';
+
+export type Opacity =
+  | '0'
+  | '5'
+  | '10'
+  | '15'
+  | '20'
+  | '25'
+  | '30'
+  | '35'
+  | '40'
+  | '45'
+  | '50'
+  | '55'
+  | '60'
+  | '65'
+  | '70'
+  | '75'
+  | '80'
+  | '85'
+  | '90'
+  | '95'
+  | '100';
+
+export type PointerEvents = 'none' | 'auto';

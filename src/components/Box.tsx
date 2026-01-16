@@ -7,6 +7,7 @@ import type {
   BorderRadius,
   BorderWidth,
   BoxShadow,
+  Cursor,
   Display,
   FlexGrow,
   FlexShrink,
@@ -14,8 +15,10 @@ import type {
   FontSize,
   FontWeight,
   JustifySelf,
+  Opacity,
   Overflow,
   Padding,
+  PointerEvents,
   Position,
   Responsive,
   Spacing,
@@ -29,12 +32,15 @@ import {
   mapBorder,
   mapBorderColor,
   mapBorderRadius,
+  mapCursor,
   mapDisplay,
   mapFontSize,
   mapFontWeight,
   mapMargin,
+  mapOpacity,
   mapOverflow,
   mapPadding,
+  mapPointerEvents,
   mapPosition,
   mapShadow,
   mapTextAlign,
@@ -88,6 +94,10 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   overflow?: Responsive<Overflow>;
   overflowX?: Responsive<Overflow>;
   overflowY?: Responsive<Overflow>;
+
+  cursor?: Responsive<Cursor>;
+  opacity?: Responsive<Opacity>;
+  pointerEvents?: Responsive<PointerEvents>;
 
   alignSelf?: Responsive<AlignSelf>;
   justifySelf?: Responsive<JustifySelf>;
@@ -163,6 +173,9 @@ export function Box({
   overflow,
   overflowX,
   overflowY,
+  cursor,
+  opacity,
+  pointerEvents,
   alignSelf,
   justifySelf,
   flexBasis,
@@ -213,6 +226,9 @@ export function Box({
     mapOverflow(overflow),
     mapOverflow(overflowX, 'x'),
     mapOverflow(overflowY, 'y'),
+    mapCursor(cursor),
+    mapOpacity(opacity),
+    mapPointerEvents(pointerEvents),
     mapAlignSelf(alignSelf),
     theme && `${theme}-theme`,
     className,

@@ -821,6 +821,52 @@ const overflowYMap: Record<string, string> = {
   auto: 'overflow-y-auto',
 };
 
+// Cursor mapping
+const cursorMap: Record<string, string> = {
+  auto: 'cursor-auto',
+  default: 'cursor-default',
+  pointer: 'cursor-pointer',
+  wait: 'cursor-wait',
+  text: 'cursor-text',
+  move: 'cursor-move',
+  help: 'cursor-help',
+  'not-allowed': 'cursor-not-allowed',
+  none: 'cursor-none',
+  grab: 'cursor-grab',
+  grabbing: 'cursor-grabbing',
+};
+
+// Opacity mapping
+const opacityMap: Record<string, string> = {
+  '0': 'opacity-0',
+  '5': 'opacity-5',
+  '10': 'opacity-10',
+  '15': 'opacity-15',
+  '20': 'opacity-20',
+  '25': 'opacity-25',
+  '30': 'opacity-30',
+  '35': 'opacity-35',
+  '40': 'opacity-40',
+  '45': 'opacity-45',
+  '50': 'opacity-50',
+  '55': 'opacity-55',
+  '60': 'opacity-60',
+  '65': 'opacity-65',
+  '70': 'opacity-70',
+  '75': 'opacity-75',
+  '80': 'opacity-80',
+  '85': 'opacity-85',
+  '90': 'opacity-90',
+  '95': 'opacity-95',
+  '100': 'opacity-100',
+};
+
+// Pointer events mapping
+const pointerEventsMap: Record<string, string> = {
+  none: 'pointer-events-none',
+  auto: 'pointer-events-auto',
+};
+
 // Flex direction mapping
 const flexDirectionMap: Record<string, string> = {
   row: 'flex-row',
@@ -994,6 +1040,18 @@ export function mapPosition(value: Responsive<string> | undefined): string {
 export function mapOverflow(value: Responsive<string> | undefined, axis?: 'x' | 'y'): string {
   const map = axis === 'x' ? overflowXMap : axis === 'y' ? overflowYMap : overflowMap;
   return mapResponsive(value, v => map[v]);
+}
+
+export function mapCursor(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => cursorMap[v]);
+}
+
+export function mapOpacity(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => opacityMap[v]);
+}
+
+export function mapPointerEvents(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => pointerEventsMap[v]);
 }
 
 export function mapPadding(value: Responsive<string> | undefined, side?: string): string {

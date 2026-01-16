@@ -77,13 +77,14 @@ Icons support the same color props including shades.
 <Example>
   <DataTable
     data={[
-      { name: 'color', value: '"primary" | "muted" | "disabled" | ColorName | TailwindColor' },
-      { name: 'backgroundColor', value: '"primary" | "transparent" | ColorName | TailwindColor | true' },
-      { name: 'borderColor', value: '"primary" | "muted" | "disabled" | "transparent" | ColorName | TailwindColor | true' },
+      { name: 'color', value: 'FontColor', description: '"primary" | "muted" | "disabled" | ColorName | TailwindColor' },
+      { name: 'backgroundColor', value: 'BackgroundColor', description: '"primary" | "transparent" | ColorName | TailwindColor | true' },
+      { name: 'borderColor', value: 'BorderColor', description: '"primary" | "muted" | "disabled" | "transparent" | ColorName | TailwindColor | true' },
     ]}
   >
     <DataColumn id="name" label="Name" />
     <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Values" />
   </DataTable>
 </Example>
 
