@@ -5,7 +5,7 @@ export function AccentColorsExample() {
   return ACCENT_COLORS.map(color => (
     <Column key={color} gap="2">
       <Box backgroundColor={color} width="50px" height="50px" borderRadius="md" />
-      <Text>{color}</Text>
+      <Text align="center">{color}</Text>
     </Column>
   ));
 }

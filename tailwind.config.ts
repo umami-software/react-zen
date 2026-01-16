@@ -1,44 +1,9 @@
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
 
-// Generate safelist for all Tailwind color classes
-const colors = [
-  'gray',
-  'slate',
-  'zinc',
-  'neutral',
-  'stone',
-  'red',
-  'orange',
-  'amber',
-  'yellow',
-  'lime',
-  'green',
-  'emerald',
-  'teal',
-  'cyan',
-  'sky',
-  'blue',
-  'indigo',
-  'violet',
-  'purple',
-  'fuchsia',
-  'pink',
-  'rose',
-];
-const shades = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'];
-const colorSafelist = colors.flatMap(color =>
-  shades.flatMap(shade => [
-    `text-${color}-${shade}`,
-    `bg-${color}-${shade}`,
-    `border-${color}-${shade}`,
-  ]),
-);
-
 const config: Config = {
   darkMode: ['selector', '[data-theme="dark"], .dark'],
   content: ['./src/components/**/*.{ts,tsx}'],
-  safelist: colorSafelist,
   theme: {
     extend: {
       keyframes: {

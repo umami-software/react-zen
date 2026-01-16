@@ -13,6 +13,7 @@ export function Example({
   wrap = 'wrap',
   position = 'relative',
   overflow = 'hidden',
+  backgroundColor = 'surface-base',
   children,
   ...props
 }: FlexboxProps) {
@@ -32,6 +33,7 @@ export function Example({
         wrap,
         position,
         overflow,
+        backgroundColor,
       }}
     >
       {children}

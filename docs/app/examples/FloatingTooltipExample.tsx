@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { Text, TooltipBubble } from '@/components';
 import { Box } from '@/components/Box';
-import { TooltipBubble, Text } from '@/components';
 import { FloatingTooltip } from '@/components/FloatingTooltip';
 
 export function FloatingTooltipExample() {
@@ -20,7 +20,7 @@ export function FloatingTooltipExample() {
       />
       {show && (
         <FloatingTooltip>
-          <Text size="xs">Hello</Text>
+          <Text>Hello</Text>
         </FloatingTooltip>
       )}
     </>

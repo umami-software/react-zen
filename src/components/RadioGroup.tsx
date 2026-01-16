@@ -35,8 +35,9 @@ export function Radio({ children, className, ...props }: RadioProps) {
       {...props}
       className={cn(
         'radio group flex items-center gap-3 cursor-pointer text-base',
-        "before:content-[''] before:w-5 before:h-5 before:rounded-full before:border before:border-edge-strong",
-        'data-[selected]:before:border-interactive-selected data-[selected]:before:bg-surface-base data-[selected]:before:shadow-[inset_0_0_0_5px_var(--interactive-bg-selected)]',
+        "before:content-[''] before:block before:w-5 before:h-5 before:box-border before:rounded-full",
+        'before:border before:border-edge-strong before:bg-surface-base before:transition-all before:duration-200',
+        'data-[selected]:before:border-[6px] data-[selected]:before:border-interactive-selected',
         'data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
         className,
       )}

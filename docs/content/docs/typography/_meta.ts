@@ -1,6 +1,6 @@
 export default {
-  heading: 'Heading',
   text: 'Text',
+  heading: 'Heading',
   code: 'Code',
   blockquote: 'Blockquote',
 };
