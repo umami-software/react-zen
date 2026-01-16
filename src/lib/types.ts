@@ -47,6 +47,9 @@ export type ColorShade =
 // Tailwind color with shade (e.g., 'blue-500', 'red-300')
 export type TailwindColor = `${ColorName}-${ColorShade}`;
 
+// Semantic color values
+export type SemanticColor = 'primary' | 'muted' | 'disabled' | 'transparent';
+
 // Surface color variants
 export type SurfaceColor =
   | 'surface-base'
@@ -57,22 +60,9 @@ export type SurfaceColor =
   | 'surface-disabled';
 
 // All supported colors: semantic + base colors + color-shade combinations
-export type FontColor = ColorName | TailwindColor | 'primary' | 'muted' | 'disabled' | true;
-export type BackgroundColor =
-  | ColorName
-  | TailwindColor
-  | SurfaceColor
-  | 'primary'
-  | 'transparent'
-  | true;
-export type BorderColor =
-  | ColorName
-  | TailwindColor
-  | 'primary'
-  | 'muted'
-  | 'disabled'
-  | 'transparent'
-  | true;
+export type FontColor = SemanticColor | ColorName | TailwindColor | true;
+export type BackgroundColor = SemanticColor | SurfaceColor | ColorName | TailwindColor | true;
+export type BorderColor = SemanticColor | ColorName | TailwindColor | true;
 export type HoverColor = FontColor;
 export type StrokeColor = FontColor;
 export type FillColor = FontColor;
