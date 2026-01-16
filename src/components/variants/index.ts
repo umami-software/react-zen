@@ -351,7 +351,7 @@ export type StatusLightVariants = VariantProps<typeof statusLight>;
 export const toast = tv({
   base: [
     'flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg',
-    'bg-surface-raised',
+    'bg-surface-overlay',
     'border border-edge-muted',
     'text-base',
     'entering:animate-toast-in',

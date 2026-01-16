@@ -35,21 +35,25 @@ export function ComboBox({
     <AriaComboBox aria-label="ComboBox" {...props} className={cn('relative', className)}>
       <AriaGroup
         className={cn(
-          'flex items-center rounded border border-edge bg-surface-base',
-          'focus-within:outline-none focus-within:ring-2 focus-within:ring-focus-ring focus-within:border-transparent',
+          'flex items-center px-3 gap-3 text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
+          'focus-within:border-transparent focus-within:ring-2 focus-within:ring-focus-ring',
         )}
       >
         <AriaInput
-          className={cn('flex-1 px-3 py-2 text-base bg-transparent border-none outline-none')}
+          className={cn(
+            'flex-1 py-2 bg-transparent border-none outline-none placeholder:text-foreground-muted',
+          )}
         />
-        <AriaButton className={cn('px-2 py-2 text-foreground-muted hover:text-foreground-primary')}>
+        <AriaButton
+          className={cn('flex items-center text-foreground-muted hover:text-foreground-primary')}
+        >
           <Icon rotate={90} aria-hidden="true" size="sm">
             <ChevronRight />
           </Icon>
         </AriaButton>
       </AriaGroup>
       <Popover {...popoverProps}>
-        <Box padding="2" className="border border-edge rounded-md shadow-lg bg-surface-overlay">
+        <Box padding="2" border rounded="md" shadow="lg" className="bg-surface-overlay">
           <List items={items} renderEmptyState={renderEmptyState} {...listProps}>
             {children ||
               items?.map(item => (

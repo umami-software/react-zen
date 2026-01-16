@@ -13,21 +13,10 @@ export interface NavMenuProps extends ColumnProps {
 
 const NavMenuContext = createContext(null as any);
 
-export function NavMenu({
-  muteItems,
-  onItemClick,
-  className,
-  children,
-  ...props
-}: NavMenuProps) {
+export function NavMenu({ muteItems, onItemClick, className, children, ...props }: NavMenuProps) {
   return (
     <NavMenuContext.Provider value={{ onItemClick }}>
-      <Column
-        {...props}
-        fontSize="sm"
-        color={muteItems ? 'muted' : undefined}
-        className={className}
-      >
+      <Column {...props} color={muteItems ? 'muted' : undefined} className={className}>
         {children}
       </Column>
     </NavMenuContext.Provider>
@@ -58,7 +47,6 @@ export function NavMenuGroup({
 
   return (
     <Column
-      gap="3"
       {...props}
       className={cn(
         className,
@@ -73,7 +61,7 @@ export function NavMenuGroup({
         justifyContent="space-between"
         onClick={handleClick}
       >
-        <Text size="xs" weight="semibold" color="muted" className="uppercase">
+        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
           {title}
         </Text>
         {allowMinimize && (
@@ -99,7 +87,7 @@ export function NavMenuItem({ isSelected, className, children, ...props }: NavMe
       {...props}
       paddingY="2"
       paddingX="3"
-      borderRadius="md"
+      rounded="md"
       onClick={onItemClick}
       className={cn(
         'cursor-pointer',

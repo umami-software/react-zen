@@ -44,7 +44,7 @@ function ToggleGroup({
       selectionMode={selectionMode}
       onSelectionChange={handleChange}
       className={cn(
-        'text-xs bg-surface-base shadow-sm border border-edge rounded overflow-hidden',
+        'bg-surface-base shadow-sm border border-edge rounded overflow-hidden',
         className,
       )}
     >

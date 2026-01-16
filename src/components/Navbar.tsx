@@ -10,9 +10,9 @@ import {
 import { ChevronRight } from '@/components/icons';
 import { HoverTrigger } from './HoverTrigger';
 import { Icon } from './Icon';
+import { cn } from './lib/tailwind';
 import { Row } from './Row';
 import { Text } from './Text';
-import { cn } from './lib/tailwind';
 
 export type NavigationContext = {
   activeMenu: string;
@@ -33,7 +33,13 @@ export const useNavigationContext = () => {
   return context;
 };
 
-export function Navbar({ showArrow = true, className, children, color: _color, ...props }: NavbarProps) {
+export function Navbar({
+  showArrow = true,
+  className,
+  children,
+  color: _color,
+  ...props
+}: NavbarProps) {
   const [activeMenu, setActiveMenu] = useState<string>('');
 
   return (
@@ -50,7 +56,13 @@ export interface NavbarItemProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
 }
 
-export function NavbarItem({ label, children, className, color: _color, ...props }: NavbarItemProps) {
+export function NavbarItem({
+  label,
+  children,
+  className,
+  color: _color,
+  ...props
+}: NavbarItemProps) {
   const { activeMenu, setActiveMenu } = useNavigationContext();
 
   if (label) {
@@ -62,12 +74,8 @@ export function NavbarItem({ label, children, className, color: _color, ...props
           gap="1"
           paddingX="3"
           paddingY="2"
-          borderRadius="md"
-          className={cn(
-            'cursor-pointer',
-            'hover:bg-interactive',
-            className,
-          )}
+          rounded="md"
+          className={cn('cursor-pointer', 'hover:bg-interactive', className)}
         >
           <Text>{label}</Text>
           <Icon rotate={90} size="sm" color="muted">
@@ -86,12 +94,8 @@ export function NavbarItem({ label, children, className, color: _color, ...props
       gap="1"
       paddingX="3"
       paddingY="2"
-      borderRadius="md"
-      className={cn(
-        'cursor-pointer',
-        'hover:bg-interactive',
-        className,
-      )}
+      rounded="md"
+      className={cn('cursor-pointer', 'hover:bg-interactive', className)}
     >
       {children}
     </Row>

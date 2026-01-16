@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
-import { Row } from './Row';
+import type { ReactNode } from 'react';
 import { Box } from './Box';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
 
 interface StatusLightProps {
   color?: string;
@@ -23,7 +23,7 @@ function StatusDot({ color, variant }: { color?: string; variant: string }) {
   return (
     <Row alignItems="center" justifyContent="center" className="relative w-3 h-3">
       <Box
-        borderRadius="full"
+        rounded="full"
         className={cn('w-2 h-2', variantColors[variant as keyof typeof variantColors])}
         style={color ? { backgroundColor: color } : undefined}
       />
