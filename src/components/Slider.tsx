@@ -6,7 +6,6 @@ import {
   SliderThumb,
   SliderTrack,
 } from 'react-aria-components';
-import { Box } from './Box';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 import { Row } from './Row';
@@ -17,24 +16,21 @@ export interface SliderProps extends AriaSliderProps {
 }
 
 function Fill({ percentage }: { percentage: number }) {
-  return (
-    <Box
-      borderRadius="full"
-      className="absolute inset-y-0 left-0 bg-track-fill"
-      style={{ width: `${percentage}%` }}
-    />
-  );
+  // Fill to thumb center: at 0% = 10px, at 100% = calc(100% - 10px)
+  const width = `calc(10px + ${percentage}% - ${percentage * 0.2}px)`;
+  return <div className="absolute inset-y-0 left-0 rounded-full bg-track-fill" style={{ width }} />;
 }
 
-function Thumb() {
+function Thumb({ percentage }: { percentage: number }) {
+  // Position by left edge: at 0% = 0, at 100% = calc(100% - 20px)
+  const left = `calc(${percentage}% - ${percentage * 0.2}px)`;
   return (
     <SliderThumb
       className={cn(
-        'w-5 h-5 rounded-full bg-surface-base border-2 border-edge-inverted shadow',
+        'absolute w-5 h-5 rounded-full bg-surface-base border-2 border-edge-inverted shadow',
         'focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2',
-        'data-[dragging]:scale-110',
-        'top-1/2 -translate-y-1/2',
       )}
+      style={{ top: '50%', left, transform: 'translateY(-50%)' }}
     />
   );
 }
@@ -46,15 +42,16 @@ export function Slider({ className, showValue = true, label, ...props }: SliderP
         {label && <Label>{label}</Label>}
         {showValue && <SliderOutput className="text-base tabular-nums" />}
       </Row>
-      <SliderTrack className="relative w-full h-2 rounded-full bg-track">
+      <SliderTrack className="relative h-5 w-full">
         {({ state }) => {
-          const isHorizontal = state.orientation === 'horizontal';
-          const percentage =
-            (isHorizontal ? state.getThumbPercent(0) : 1 - state.getThumbPercent(0)) * 100;
+          const percentage = state.getThumbPercent(0) * 100;
           return (
             <>
-              <Fill percentage={percentage} />
-              <Thumb />
+              {/* Visual track - full width */}
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 rounded-full bg-track overflow-hidden">
+                <Fill percentage={percentage} />
+              </div>
+              <Thumb percentage={percentage} />
             </>
           );
         }}
