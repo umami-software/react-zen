@@ -41,3 +41,20 @@ The container at each breakpoint has a `max-width`.
     <DataColumn id="maxWidth" label="Max width" />
   </DataTable>
 </Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'isCentered', value: 'boolean', description: 'Centers the container horizontally (default: true)' },
+      { name: 'isFluid', value: 'boolean', description: 'Makes the container full width with no max-width constraint' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+Container also extends all [Box](/docs/layout/box) props.
