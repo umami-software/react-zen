@@ -26,7 +26,16 @@ const footer = <Footer>MIT {new Date().getFullYear()} © Umami Software.</Footer
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
-      <Head />
+      <Head>
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            defer
+            data-website-id="b2cbcc3e-7a67-4232-9619-4e2b4d3b87e4"
+            data-domains="zen.umami.is"
+            src="/z.js"
+          />
+        )}
+      </Head>
       <body className={`${inter.className} ${inter.variable} ${jetbrainsMono.variable}`}>
         <ZenProvider>
           <Layout
@@ -38,14 +47,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             {children}
           </Layout>
         </ZenProvider>
-        {process.env.NODE_ENV === 'production' && (
-          <Script
-            defer
-            data-website-id="b2cbcc3e-7a67-4232-9619-4e2b4d3b87e4"
-            data-domains="zen.umami.is"
-            src="/z.js"
-          />
-        )}
       </body>
     </html>
   );

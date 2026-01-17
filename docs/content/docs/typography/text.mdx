@@ -4,7 +4,7 @@ title: Text
 
 # Text
 
-A text element with controls for size, color, weight and letter spacing.
+A text element with comprehensive typography controls including size, color, weight, spacing, and text decorations.
 
 <Example>
   <Text>Here is some text.</Text>
@@ -70,11 +70,50 @@ A text element with controls for size, color, weight and letter spacing.
 ## Letter spacing
 
 <Example>
-  <Text spacing="tighter">Letter spacing tighter</Text>
-  <Text spacing="tight">Letter spacing tight</Text>
-  <Text spacing="normal">Letter spacing normal</Text>
-  <Text spacing="wide">Letter spacing wide</Text>
-  <Text spacing="wider">Letter spacing wider</Text>
+  <Column gap="2">
+    <Row gap="4" alignItems="center"><Label className="w-16">tighter</Label><Text spacing="tighter">The quick brown fox jumps over the lazy dog.</Text></Row>
+    <Row gap="4" alignItems="center"><Label className="w-16">tight</Label><Text spacing="tight">The quick brown fox jumps over the lazy dog.</Text></Row>
+    <Row gap="4" alignItems="center"><Label className="w-16">normal</Label><Text spacing="normal">The quick brown fox jumps over the lazy dog.</Text></Row>
+    <Row gap="4" alignItems="center"><Label className="w-16">wide</Label><Text spacing="wide">The quick brown fox jumps over the lazy dog.</Text></Row>
+    <Row gap="4" alignItems="center"><Label className="w-16">wider</Label><Text spacing="wider">The quick brown fox jumps over the lazy dog.</Text></Row>
+  </Column>
+</Example>
+
+## Line height
+
+<Example>
+  <Column gap="4">
+    <Column gap="1">
+      <Label>none</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text lineHeight="none" as="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>tight</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text lineHeight="tight" as="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>normal</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text lineHeight="normal" as="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>relaxed</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text lineHeight="relaxed" as="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>loose</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text lineHeight="loose" as="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</Text>
+      </Box>
+    </Column>
+  </Column>
 </Example>
 
 ## Formatting
@@ -83,6 +122,27 @@ A text element with controls for size, color, weight and letter spacing.
   <Text italic>Italic</Text>
   <Text underline>Underline</Text>
   <Text strikethrough>Strikethrough</Text>
+</Example>
+
+## Decoration style
+
+Customize the style of underline or strikethrough decorations.
+
+<Example>
+  <Text underline decorationStyle="solid">Solid underline</Text>
+  <Text underline decorationStyle="double">Double underline</Text>
+  <Text underline decorationStyle="dotted">Dotted underline</Text>
+  <Text underline decorationStyle="dashed">Dashed underline</Text>
+  <Text underline decorationStyle="wavy">Wavy underline</Text>
+</Example>
+
+## Decoration color
+
+<Example>
+  <Text underline decorationColor="red-500">Red underline</Text>
+  <Text underline decorationColor="blue-500">Blue underline</Text>
+  <Text underline decorationColor="green-500">Green underline</Text>
+  <Text strikethrough decorationColor="orange-500">Orange strikethrough</Text>
 </Example>
 
 ## Transform
@@ -110,6 +170,137 @@ A text element with controls for size, color, weight and letter spacing.
   </Box>
 </Example>
 
+## Whitespace
+
+Control how whitespace is handled within text.
+
+<Example>
+  <Column gap="4">
+    <Column gap="1">
+      <Label>normal</Label>
+      <Box border padding="2" borderRadius="md" style={{ width: '300px' }}>
+        <Text whitespace="normal" as="div">Multiple   spaces   collapse    and text wraps normally.</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>nowrap</Label>
+      <Box border padding="2" borderRadius="md" style={{ width: '300px' }}>
+        <Text whitespace="nowrap" as="div">This text will not wrap to the next line.</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>pre</Label>
+      <Box border padding="2" borderRadius="md" style={{ width: '300px' }}>
+        <Text whitespace="pre" as="div">{'Preserves   spaces\nand newlines.'}</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>pre-wrap</Label>
+      <Box border padding="2" borderRadius="md" style={{ width: '300px' }}>
+        <Text whitespace="pre-wrap" as="div">{'Preserves   spaces\nand wraps text.'}</Text>
+      </Box>
+    </Column>
+  </Column>
+</Example>
+
+## Word break
+
+Control how words break when reaching the end of a line.
+
+<Example>
+  <Column gap="4">
+    <Column gap="1">
+      <Label>normal</Label>
+      <Box border padding="2" borderRadius="md" style={{ width: '150px' }}>
+        <Text wordBreak="normal" as="div">Supercalifragilisticexpialidocious</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>words</Label>
+      <Box border padding="2" borderRadius="md" style={{ width: '150px' }}>
+        <Text wordBreak="words" as="div">Supercalifragilisticexpialidocious</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>all</Label>
+      <Box border padding="2" borderRadius="md" style={{ width: '150px' }}>
+        <Text wordBreak="all" as="div">Supercalifragilisticexpialidocious</Text>
+      </Box>
+    </Column>
+  </Column>
+</Example>
+
+## Vertical align
+
+Control vertical alignment of inline elements. Useful for superscript, subscript, and aligning text with icons.
+
+<Example>
+  <Column gap="4">
+    <Column gap="1">
+      <Label>Superscript</Label>
+      <Text size="lg">E = mc<Text verticalAlign="super" size="xs">2</Text></Text>
+    </Column>
+    <Column gap="1">
+      <Label>Subscript</Label>
+      <Text size="lg">H<Text verticalAlign="sub" size="xs">2</Text>O</Text>
+    </Column>
+    <Column gap="1">
+      <Label>Top</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text>
+          <Box as="span" className="inline-block w-6 h-6 bg-blue-500 rounded mr-2" />
+          <Text verticalAlign="top">aligned to top</Text>
+        </Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>Middle</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text>
+          <Box as="span" className="inline-block w-6 h-6 bg-green-500 rounded mr-2" />
+          <Text verticalAlign="middle">aligned to middle</Text>
+        </Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>Bottom</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text>
+          <Box as="span" className="inline-block w-6 h-6 bg-orange-500 rounded mr-2" />
+          <Text verticalAlign="bottom">aligned to bottom</Text>
+        </Text>
+      </Box>
+    </Column>
+  </Column>
+</Example>
+
+## Text indent
+
+Indent the first line of text.
+
+<Example>
+  <Column gap="4">
+    <Column gap="1">
+      <Label>indent 4</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text indent="4" as="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>indent 8</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text indent="8" as="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+      </Box>
+    </Column>
+    <Column gap="1">
+      <Label>indent 12</Label>
+      <Box border padding="2" borderRadius="md">
+        <Text indent="12" as="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+      </Box>
+    </Column>
+  </Column>
+</Example>
+
 ## Component props
 
 <Example>
@@ -120,12 +311,19 @@ A text element with controls for size, color, weight and letter spacing.
       { name: 'weight', value: 'Responsive<FontWeight>', description: '"thin" | "light" | "normal" | "medium" | "semibold" | "bold" | ...' },
       { name: 'align', value: 'Responsive<TextAlign>', description: '"left" | "center" | "right"' },
       { name: 'spacing', value: 'Responsive<LetterSpacing>', description: '"tighter" | "tight" | "normal" | "wide" | "wider" | "widest"' },
+      { name: 'lineHeight', value: 'Responsive<LineHeight>', description: '"none" | "tight" | "snug" | "normal" | "relaxed" | "loose" | "3"-"10"' },
       { name: 'wrap', value: 'Responsive<TextWrap>', description: '"wrap" | "nowrap" | "balance" | "pretty"' },
+      { name: 'whitespace', value: 'Responsive<Whitespace>', description: '"normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap" | "break-spaces"' },
+      { name: 'wordBreak', value: 'Responsive<WordBreak>', description: '"normal" | "words" | "all" | "keep"' },
       { name: 'transform', value: 'Responsive<TextTransform>', description: '"capitalize" | "uppercase" | "lowercase" | "none"' },
+      { name: 'indent', value: 'Responsive<TextIndent>', description: '"0" | "px" | "0.5" | "1" | ... | "24"' },
+      { name: 'verticalAlign', value: 'Responsive<VerticalAlign>', description: '"baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom" | "sub" | "super"' },
       { name: 'truncate', value: 'Responsive<boolean>', description: 'Truncate text with ellipsis' },
       { name: 'italic', value: 'Responsive<boolean>', description: 'Italic text style' },
       { name: 'underline', value: 'Responsive<boolean>', description: 'Underline text decoration' },
       { name: 'strikethrough', value: 'Responsive<boolean>', description: 'Line-through text decoration' },
+      { name: 'decorationStyle', value: 'Responsive<TextDecorationStyle>', description: '"solid" | "double" | "dotted" | "dashed" | "wavy"' },
+      { name: 'decorationColor', value: 'FontColor', description: 'SemanticColor | ColorName | TailwindColor' },
       { name: 'as', value: 'TextElement', description: '"span" | "div" | "label" | "p" | "h1" | ... | "code" | "blockquote"' },
       { name: 'render', value: 'RenderProp', description: 'Render prop for polymorphism' },
     ]}

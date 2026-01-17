@@ -202,6 +202,62 @@ export type TextTransform = 'capitalize' | 'uppercase' | 'lowercase' | 'none';
 
 export type LetterSpacing = 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest';
 
+export type LineHeight =
+  | 'none'
+  | 'tight'
+  | 'snug'
+  | 'normal'
+  | 'relaxed'
+  | 'loose'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10';
+
+export type Whitespace = 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
+
+export type WordBreak = 'normal' | 'words' | 'all' | 'keep';
+
+export type VerticalAlign =
+  | 'baseline'
+  | 'top'
+  | 'middle'
+  | 'bottom'
+  | 'text-top'
+  | 'text-bottom'
+  | 'sub'
+  | 'super';
+
+export type TextDecorationStyle = 'solid' | 'double' | 'dotted' | 'dashed' | 'wavy';
+
+export type TextIndent =
+  | '0'
+  | 'px'
+  | '0.5'
+  | '1'
+  | '1.5'
+  | '2'
+  | '2.5'
+  | '3'
+  | '3.5'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '14'
+  | '16'
+  | '20'
+  | '24';
+
 export type FlexDisplay = 'none' | 'flex' | 'inline-flex';
 export type FlexDirection = 'column' | 'row' | 'row-reverse' | 'column-reverse';
 export type FlexWrap = 'wrap' | 'nowrap' | 'wrap-reverse';

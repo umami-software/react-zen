@@ -4,10 +4,16 @@ import type {
   FontSize,
   FontWeight,
   LetterSpacing,
+  LineHeight,
   Responsive,
   TextAlign,
+  TextDecorationStyle,
+  TextIndent,
   TextTransform,
   TextWrap,
+  VerticalAlign,
+  Whitespace,
+  WordBreak,
 } from '@/lib/types';
 import { type RenderProp, resolveRender } from './lib/render';
 import {
@@ -15,24 +21,37 @@ import {
   mapFontSize,
   mapFontWeight,
   mapLetterSpacing,
+  mapLineHeight,
   mapTextAlign,
   mapTextColor,
+  mapTextDecorationStyle,
+  mapTextIndent,
   mapTextTransform,
   mapTextWrap,
+  mapVerticalAlign,
+  mapWhitespace,
+  mapWordBreak,
 } from './lib/tailwind';
 
 export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   color?: FontColor;
   size?: Responsive<FontSize>;
-  spacing?: Responsive<LetterSpacing>;
   weight?: Responsive<FontWeight>;
   align?: Responsive<TextAlign>;
+  spacing?: Responsive<LetterSpacing>;
+  lineHeight?: Responsive<LineHeight>;
   wrap?: Responsive<TextWrap>;
+  whitespace?: Responsive<Whitespace>;
+  wordBreak?: Responsive<WordBreak>;
   transform?: Responsive<TextTransform>;
+  indent?: Responsive<TextIndent>;
+  verticalAlign?: Responsive<VerticalAlign>;
   truncate?: Responsive<boolean>;
   italic?: Responsive<boolean>;
   underline?: Responsive<boolean>;
   strikethrough?: Responsive<boolean>;
+  decorationStyle?: Responsive<TextDecorationStyle>;
+  decorationColor?: FontColor;
   as?:
     | 'span'
     | 'div'
@@ -58,15 +77,22 @@ export interface TextRenderProps {
 export function Text({
   color,
   size = 'base',
-  spacing,
   weight,
   align,
+  spacing,
+  lineHeight,
   wrap,
+  whitespace,
+  wordBreak,
   transform,
+  indent,
+  verticalAlign,
   truncate,
   italic,
   underline,
   strikethrough,
+  decorationStyle,
+  decorationColor,
   as = 'span',
   render,
   className,
@@ -77,20 +103,28 @@ export function Text({
 
   // Convert color to string for mapping
   const colorStr = color === true ? 'true' : color;
+  const decorationColorStr = decorationColor === true ? 'true' : decorationColor;
 
   const classes = cn(
     'text-foreground-primary',
     mapFontSize(size),
-    mapTextAlign(align),
-    mapTextWrap(wrap),
     mapFontWeight(weight),
+    mapTextAlign(align),
     mapLetterSpacing(spacing),
+    mapLineHeight(lineHeight),
+    mapTextWrap(wrap),
+    mapWhitespace(whitespace),
+    mapWordBreak(wordBreak),
     mapTextTransform(transform),
+    mapTextIndent(indent),
+    mapVerticalAlign(verticalAlign),
     mapTextColor(colorStr),
     truncate && 'truncate',
     italic && 'italic',
     underline && 'underline',
     strikethrough && 'line-through',
+    mapTextDecorationStyle(decorationStyle),
+    decorationColorStr && `decoration-${decorationColorStr}`,
     className,
   );
 

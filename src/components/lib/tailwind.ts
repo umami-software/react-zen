@@ -988,6 +988,89 @@ const letterSpacingMap: Record<string, string> = {
   widest: 'tracking-widest',
 };
 
+// Line height mapping
+const lineHeightMap: Record<string, string> = {
+  none: 'leading-none',
+  tight: 'leading-tight',
+  snug: 'leading-snug',
+  normal: 'leading-normal',
+  relaxed: 'leading-relaxed',
+  loose: 'leading-loose',
+  '3': 'leading-3',
+  '4': 'leading-4',
+  '5': 'leading-5',
+  '6': 'leading-6',
+  '7': 'leading-7',
+  '8': 'leading-8',
+  '9': 'leading-9',
+  '10': 'leading-10',
+};
+
+// Whitespace mapping
+const whitespaceMap: Record<string, string> = {
+  normal: 'whitespace-normal',
+  nowrap: 'whitespace-nowrap',
+  pre: 'whitespace-pre',
+  'pre-line': 'whitespace-pre-line',
+  'pre-wrap': 'whitespace-pre-wrap',
+  'break-spaces': 'whitespace-break-spaces',
+};
+
+// Word break mapping
+const wordBreakMap: Record<string, string> = {
+  normal: 'break-normal',
+  words: 'break-words',
+  all: 'break-all',
+  keep: 'break-keep',
+};
+
+// Vertical align mapping
+const verticalAlignMap: Record<string, string> = {
+  baseline: 'align-baseline',
+  top: 'align-top',
+  middle: 'align-middle',
+  bottom: 'align-bottom',
+  'text-top': 'align-text-top',
+  'text-bottom': 'align-text-bottom',
+  sub: 'align-sub',
+  super: 'align-super',
+};
+
+// Text decoration style mapping
+const textDecorationStyleMap: Record<string, string> = {
+  solid: 'decoration-solid',
+  double: 'decoration-double',
+  dotted: 'decoration-dotted',
+  dashed: 'decoration-dashed',
+  wavy: 'decoration-wavy',
+};
+
+// Text indent mapping
+const textIndentMap: Record<string, string> = {
+  '0': 'indent-0',
+  px: 'indent-px',
+  '0.5': 'indent-0.5',
+  '1': 'indent-1',
+  '1.5': 'indent-1.5',
+  '2': 'indent-2',
+  '2.5': 'indent-2.5',
+  '3': 'indent-3',
+  '3.5': 'indent-3.5',
+  '4': 'indent-4',
+  '5': 'indent-5',
+  '6': 'indent-6',
+  '7': 'indent-7',
+  '8': 'indent-8',
+  '9': 'indent-9',
+  '10': 'indent-10',
+  '11': 'indent-11',
+  '12': 'indent-12',
+  '14': 'indent-14',
+  '16': 'indent-16',
+  '20': 'indent-20',
+  '24': 'indent-24',
+};
+
 // Grid auto flow mapping
 const gridAutoFlowMap: Record<string, string> = {
   row: 'grid-flow-row',
@@ -1202,6 +1285,30 @@ export function mapTextTransform(value: Responsive<string> | undefined): string 
 
 export function mapLetterSpacing(value: Responsive<string> | undefined): string {
   return mapResponsive(value, v => letterSpacingMap[v]);
+}
+
+export function mapLineHeight(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => lineHeightMap[v]);
+}
+
+export function mapWhitespace(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => whitespaceMap[v]);
+}
+
+export function mapWordBreak(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => wordBreakMap[v]);
+}
+
+export function mapVerticalAlign(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => verticalAlignMap[v]);
+}
+
+export function mapTextDecorationStyle(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => textDecorationStyleMap[v]);
+}
+
+export function mapTextIndent(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => textIndentMap[v]);
 }
 
 export function mapGridAutoFlow(value: Responsive<string> | undefined): string {
