@@ -2,15 +2,15 @@
 title: zen
 ---
 
-<Box marginY="16">
-  <Column alignItems="center" gap="12">
-    <Heading size="5xl" weight="bold" align="center">
+<Box marginY={{ base: '8', md: '16' }}>
+  <Column alignItems="center" gap={{ base: '6', md: '12' }}>
+    <Heading size={{ base: '2xl', sm: '3xl', md: '5xl' }} weight="bold" align="center">
       The fastest way to build React UI
     </Heading>
-    <Text size="lg" color="muted" align="center" style={{ maxWidth: '400px' }}>
+    <Text size={{ base: 'base', sm: 'lg' }} color="muted" align="center" style={{ maxWidth: '400px' }}>
       Build beautiful, accessible user interfaces with ease. Built on top of React Aria and Tailwind CSS.
     </Text>
-    <Row gap="3" marginTop="4">
+    <Row gap="3" marginTop="4" wrap justifyContent="center">
       <Button variant="primary" render={<a href="/docs">Get Started</a>} />
       <Button variant="outline" render={<a href="https://github.com/umami-software/react-zen">View source</a>} />
     </Row>
@@ -22,7 +22,7 @@ title: zen
   <ThemeButton variant="outline" />
 </Row>
 
-<Box style={{ columnCount: 3, columnGap: '1.5rem' }}>
+<Box className="columns-1 sm:columns-2 lg:columns-3 gap-6">
   {/* Buttons */}
   <Box padding="5" border borderRadius="lg" marginBottom="6" backgroundColor="surface-base" style={{ breakInside: 'avoid' }}>
     <Column gap="4">
@@ -260,7 +260,7 @@ title: zen
   </Box>
 </Box>
 
-<Grid columns={{ '': 1, md: 3 }} gap="8" marginY="16" style={{ maxWidth: '500px', margin: '4rem auto' }}>
+<Grid columns={{ base: 1, md: 3 }} gap="8" marginY="16" style={{ maxWidth: '500px', margin: '4rem auto' }}>
   <Column gap="3">
     <Heading size="lg">Props-driven</Heading>
     <Text color="muted">
