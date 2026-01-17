@@ -27,38 +27,15 @@ A semantic heading component for titles and section headers. Supports multiple s
   <Heading size="9xl">Heading 9xl</Heading>
 </Example>
 
-## Alignment
-
-<Example>
-  <Box width="100%">
-    <Heading align="left">Left</Heading>
-    <Heading align="center">Center</Heading>
-    <Heading align="right">Right</Heading>
-  </Box>
-</Example>
-
-## Letter spacing
-
-<Example>
-  <Heading spacing="tighter">Letter spacing tighter</Heading>
-  <Heading spacing="tight">Letter spacing tight</Heading>
-  <Heading spacing="normal">Letter spacing normal</Heading>
-  <Heading spacing="wide">Letter spacing wide</Heading>
-  <Heading spacing="wider">Letter spacing wider</Heading>
-</Example>
-
 ## Component props
 
-Heading extends [Text](/docs/typography/text) and accepts all Text props.
+Heading extends [Text](/docs/typography/text) and accepts all Text props. Default values are `size="2xl"`, `weight="semibold"`, and `spacing="tight"`.
 
 <Example>
   <DataTable
     data={[
       { name: 'size', value: 'Responsive<HeadingSize>', description: '"sm" | "base" | "lg" | "xl" | "2xl" | ... | "9xl"' },
-      { name: 'align', value: 'Responsive<TextAlign>', description: '"left" | "center" | "right"' },
-      { name: 'spacing', value: 'Responsive<LetterSpacing>', description: '"tighter" | "tight" | "normal" | "wide" | "wider" | "widest"' },
-      { name: 'as', value: 'HeadingElement', description: '"h1" | "h2" | "h3" | "h4" | "h5" | "h6"' },
-      { name: 'render', value: 'RenderProp', description: 'Render prop for polymorphism' },
+      { name: 'as', value: 'HeadingElement', description: '"h1" | "h2" | "h3" | "h4" | "h5" | "h6" (default: "h2")' },
     ]}
   >
     <DataColumn id="name" label="Name" />

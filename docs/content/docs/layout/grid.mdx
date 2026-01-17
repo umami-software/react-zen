@@ -7,10 +7,42 @@ title: Grid
 A CSS Grid layout component for creating two-dimensional layouts with rows and columns. Ideal for building responsive page layouts, card grids, dashboards, and any design requiring precise control over both horizontal and vertical alignment.
 
 <Example>
-  <Grid gap="3" columns="repeat(3, 1fr)">
+  <Grid gap="3" columns="3">
     <ExampleBox />
     <ExampleBox />
     <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+  </Grid>
+</Example>
+
+## Responsive columns
+
+Use responsive objects to change the grid layout at different breakpoints.
+
+<Example>
+  <Grid gap="3" columns={{ base: '1', sm: '2', lg: '4' }}>
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+    <ExampleBox />
+  </Grid>
+</Example>
+
+## Custom templates
+
+For complex layouts, pass a custom CSS grid-template string.
+
+<Example>
+  <Grid gap="3" columns="200px 1fr 1fr">
     <ExampleBox />
     <ExampleBox />
     <ExampleBox />
@@ -23,7 +55,7 @@ A CSS Grid layout component for creating two-dimensional layouts with rows and c
 ## Grid item placement
 
 <Example>
-  <Grid gap="3" columns="repeat(3, 1fr)" rows="repeat(3, 1fr)">
+  <Grid gap="3" columns="3" rows="3">
     <ExampleBox width="auto" gridRow="1 / 2" gridColumn="1 / 3" />
     <ExampleBox width="auto" height="auto" gridRow="2 / 4" gridColumn="1 / 3" />
     <ExampleBox height="auto" gridRow="1 / 4" gridColumn="3 / 4" />
@@ -32,14 +64,14 @@ A CSS Grid layout component for creating two-dimensional layouts with rows and c
 
 ## Component props
 
-A Grid renders a [Box](/docs/layout/box) as a child, so it also accepts all Box props.
+Grid extends [Box](/docs/layout/box) and accepts all Box props.
 
 <Example>
   <DataTable
     data={[
       { name: 'display', value: 'Responsive<GridDisplay>', description: '"grid" | "inline-grid" | "none"' },
-      { name: 'columns', value: 'Responsive<string>', description: 'CSS grid-template-columns value' },
-      { name: 'rows', value: 'Responsive<string>', description: 'CSS grid-template-rows value' },
+      { name: 'columns', value: 'Responsive<GridColumns> | string', description: '"1"-"12" | "none" | "subgrid" | custom CSS template' },
+      { name: 'rows', value: 'Responsive<GridRows> | string', description: '"1"-"12" | "none" | "subgrid" | custom CSS template' },
       { name: 'autoFlow', value: 'Responsive<GridAutoFlow>', description: '"row" | "column" | "dense" | "row-dense" | "column-dense"' },
       { name: 'justifyContent', value: 'Responsive<JustifyContent>', description: '"center" | "start" | "end" | "space-between" | "space-around" | ...' },
       { name: 'justifyItems', value: 'Responsive<JustifyItems>', description: '"center" | "start" | "end" | "stretch" | "baseline" | ...' },
@@ -48,8 +80,6 @@ A Grid renders a [Box](/docs/layout/box) as a child, so it also accepts all Box 
       { name: 'gap', value: 'Responsive<Gap>', description: 'true | Spacing scale' },
       { name: 'gapX', value: 'Responsive<Gap>', description: 'true | Spacing scale' },
       { name: 'gapY', value: 'Responsive<Gap>', description: 'true | Spacing scale' },
-      { name: 'as', value: 'string', description: 'HTML element to render' },
-      { name: 'render', value: 'RenderProp', description: 'Render prop for polymorphism' },
     ]}
   >
     <DataColumn id="name" label="Name" />

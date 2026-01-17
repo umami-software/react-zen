@@ -266,6 +266,39 @@ export type FlexShrink = string | number;
 
 export type GridDisplay = 'none' | 'grid' | 'inline-grid';
 export type GridAutoFlow = 'row' | 'column' | 'dense' | 'row-dense' | 'column-dense';
+// Grid column/row counts that map to Tailwind classes (1-12, none, subgrid)
+export type GridColumns =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | 'none'
+  | 'subgrid';
+export type GridRows =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | 'none'
+  | 'subgrid';
+
+// Legacy string types for custom templates (non-responsive, uses inline styles)
 export type GridTemplateRows = string;
 export type GridTemplateColumns = string;
 export type GridTemplateAreas = string;

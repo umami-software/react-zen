@@ -30,7 +30,7 @@ function Tooltip({ children, className, showArrow, ...props }: TooltipProps) {
           </svg>
         </OverlayArrow>
       )}
-      {children as ReactNode}
+      {children as ReactNode}for
     </AriaTooltip>
   );
 }

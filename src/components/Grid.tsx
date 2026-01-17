@@ -1,27 +1,29 @@
 import type { CSSProperties } from 'react';
 import type {
-  GridDisplay,
-  GridAutoFlow,
-  Responsive,
-  GridTemplateRows,
-  GridTemplateColumns,
-  GridTemplateAreas,
   AlignContent,
   AlignItems,
+  Gap,
+  GridAutoFlow,
+  GridColumns,
+  GridDisplay,
+  GridRows,
+  GridTemplateAreas,
   JustifyContent,
   JustifyItems,
-  Gap,
+  Responsive,
 } from '@/lib/types';
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 import {
   cn,
-  mapDisplay,
-  mapJustifyContent,
-  mapJustifyItems,
   mapAlignContent,
   mapAlignItems,
+  mapDisplay,
   mapGap,
   mapGridAutoFlow,
+  mapGridColumns,
+  mapGridRows,
+  mapJustifyContent,
+  mapJustifyItems,
 } from './lib/tailwind';
 
 export interface GridProps extends Omit<BoxProps, 'display'> {
@@ -34,8 +36,8 @@ export interface GridProps extends Omit<BoxProps, 'display'> {
   gapX?: Responsive<Gap>;
   gapY?: Responsive<Gap>;
   autoFlow?: Responsive<GridAutoFlow>;
-  rows?: GridTemplateRows;
-  columns?: GridTemplateColumns;
+  rows?: Responsive<GridRows> | string;
+  columns?: Responsive<GridColumns> | string;
   areas?: GridTemplateAreas;
 }
 
@@ -57,6 +59,18 @@ export function Grid({
   children,
   ...props
 }: GridProps) {
+  // Check if columns/rows are custom strings (not preset values)
+  const isCustomColumns =
+    typeof columns === 'string' &&
+    !['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'none', 'subgrid'].includes(
+      columns,
+    );
+  const isCustomRows =
+    typeof rows === 'string' &&
+    !['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'none', 'subgrid'].includes(
+      rows,
+    );
+
   const classes = cn(
     mapDisplay(display),
     mapJustifyContent(justifyContent),
@@ -67,21 +81,24 @@ export function Grid({
     mapGap(gapX as Responsive<string>, 'x'),
     mapGap(gapY as Responsive<string>, 'y'),
     mapGridAutoFlow(autoFlow),
-    className
+    !isCustomColumns && mapGridColumns(columns as Responsive<string>),
+    !isCustomRows && mapGridRows(rows as Responsive<string>),
+    className,
   );
 
-  // Grid template values need inline styles since they're dynamic
+  // Custom template values and areas need inline styles
   const inlineStyles: CSSProperties = {
     ...style,
-    ...(rows && { gridTemplateRows: rows }),
-    ...(columns && { gridTemplateColumns: columns }),
+    ...(isCustomColumns && { gridTemplateColumns: columns as string }),
+    ...(isCustomRows && { gridTemplateRows: rows as string }),
     ...(areas && { gridTemplateAreas: areas }),
   };
 
-  const hasInlineStyles = Object.keys(inlineStyles).length > (style ? Object.keys(style).length : 0);
+  const hasInlineStyles =
+    isCustomColumns || isCustomRows || areas || (style && Object.keys(style).length > 0);
 
   return (
-    <Box {...props} className={classes} style={hasInlineStyles || style ? inlineStyles : undefined}>
+    <Box {...props} className={classes} style={hasInlineStyles ? inlineStyles : undefined}>
       {children}
     </Box>
   );
