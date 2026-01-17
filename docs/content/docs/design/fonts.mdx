@@ -27,6 +27,29 @@ Font sizes use Tailwind's naming convention.
     <Text size="9xl">9xl</Text>
 </Example>
 
+<Example>
+  <DataTable
+    data={[
+      { name: 'xs', value: '12px' },
+      { name: 'sm', value: '14px' },
+      { name: 'base', value: '16px' },
+      { name: 'lg', value: '18px' },
+      { name: 'xl', value: '20px' },
+      { name: '2xl', value: '24px' },
+      { name: '3xl', value: '30px' },
+      { name: '4xl', value: '36px' },
+      { name: '5xl', value: '48px' },
+      { name: '6xl', value: '60px' },
+      { name: '7xl', value: '72px' },
+      { name: '8xl', value: '96px' },
+      { name: '9xl', value: '128px' },
+    ]}
+  >
+    <DataColumn id="name" label="Value" />
+    <DataColumn id="value" label="Size" />
+  </DataTable>
+</Example>
+
 ## Font weights
 
 <Example>
@@ -40,6 +63,34 @@ Font sizes use Tailwind's naming convention.
     <Text weight="extrabold">Extra Bold (800)</Text>
     <Text weight="black">Black (900)</Text>
 </Example>
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'thin', value: '100' },
+      { name: 'extralight', value: '200' },
+      { name: 'light', value: '300' },
+      { name: 'normal', value: '400' },
+      { name: 'medium', value: '500' },
+      { name: 'semibold', value: '600' },
+      { name: 'bold', value: '700' },
+      { name: 'extrabold', value: '800' },
+      { name: 'black', value: '900' },
+    ]}
+  >
+    <DataColumn id="name" label="Value" />
+    <DataColumn id="value" label="Weight" />
+  </DataTable>
+</Example>
+
+## Usage in typography components
+
+Font properties are used by typography components to control text appearance. [Text](/docs/typography/text) is the primary component for rendering text and accepts all font-related props. [Heading](/docs/typography/heading) uses a subset of larger sizes appropriate for headings.
+
+- **size** - Controls the font size. Text defaults to `base`, while Heading sizes map to appropriate heading levels.
+- **weight** - Controls the font weight. Text defaults to `normal`, Heading defaults to `semibold`.
+
+All font props accept responsive values for adapting typography across breakpoints.
 
 ## Component props
 
