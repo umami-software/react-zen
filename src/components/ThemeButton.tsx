@@ -1,5 +1,5 @@
 import { animated, useTransition } from '@react-spring/web';
-import { type RefObject, useState } from 'react';
+import { type RefObject, useEffect, useRef, useState } from 'react';
 import type { PressEvent } from 'react-aria-components';
 import { Moon, Sun } from '@/components/icons';
 import { Button, type ButtonProps } from './Button';
@@ -9,6 +9,10 @@ import { cn } from './lib/tailwind';
 
 export interface ThemeButtonProps extends ButtonProps {
   target?: RefObject<HTMLElement | null> | HTMLElement;
+}
+
+function getElement(target: RefObject<HTMLElement | null> | HTMLElement): HTMLElement | null {
+  return 'current' in target ? target.current : target;
 }
 
 function applyTheme(element: HTMLElement, theme: Theme) {
@@ -28,10 +32,24 @@ export function ThemeButton({
   ...props
 }: ThemeButtonProps) {
   const globalTheme = useTheme();
-  const [localTheme, setLocalTheme] = useState<Theme>('light');
+  const [localTheme, setLocalTheme] = useState<Theme | null>(null);
+  const initializedRef = useRef(false);
 
   const isLocal = !!target;
-  const theme = isLocal ? localTheme : globalTheme.theme;
+
+  // Initialize local theme from global theme on mount and apply to target element
+  useEffect(() => {
+    if (isLocal && target && !initializedRef.current) {
+      const element = getElement(target);
+      if (element) {
+        initializedRef.current = true;
+        setLocalTheme(globalTheme.theme);
+        applyTheme(element, globalTheme.theme);
+      }
+    }
+  }, [isLocal, target, globalTheme.theme]);
+
+  const theme = isLocal ? (localTheme ?? globalTheme.theme) : globalTheme.theme;
 
   const transitions = useTransition(theme, {
     initial: { opacity: 1 },
@@ -49,8 +67,8 @@ export function ThemeButton({
   function handleClick(e: PressEvent) {
     const newTheme = theme === 'light' ? 'dark' : 'light';
 
-    if (isLocal) {
-      const element = 'current' in target ? target.current : target;
+    if (isLocal && target) {
+      const element = getElement(target);
       if (element) {
         applyTheme(element, newTheme);
         setLocalTheme(newTheme);
