@@ -52,6 +52,17 @@ For complex layouts, pass a custom CSS grid-template string.
   </Grid>
 </Example>
 
+## Responsive custom templates
+
+Custom CSS templates can also be responsive by passing an object with breakpoint keys.
+
+<Example>
+  <Grid gap="3" columns={{ base: '1fr', lg: 'auto 1fr' }}>
+    <ExampleBox />
+    <ExampleBox />
+  </Grid>
+</Example>
+
 ## Grid item placement
 
 <Example>
@@ -70,8 +81,8 @@ Grid extends [Box](/docs/layout/box) and accepts all Box props.
   <DataTable
     data={[
       { name: 'display', value: 'Responsive<GridDisplay>', description: '"grid" | "inline-grid" | "none"' },
-      { name: 'columns', value: 'Responsive<GridColumns> | string', description: '"1"-"12" | "none" | "subgrid" | custom CSS template' },
-      { name: 'rows', value: 'Responsive<GridRows> | string', description: '"1"-"12" | "none" | "subgrid" | custom CSS template' },
+      { name: 'columns', value: 'Responsive<GridColumns | string>', description: '"1"-"12" | "none" | "subgrid" | custom CSS template' },
+      { name: 'rows', value: 'Responsive<GridRows | string>', description: '"1"-"12" | "none" | "subgrid" | custom CSS template' },
       { name: 'autoFlow', value: 'Responsive<GridAutoFlow>', description: '"row" | "column" | "dense" | "row-dense" | "column-dense"' },
       { name: 'justifyContent', value: 'Responsive<JustifyContent>', description: '"center" | "start" | "end" | "space-between" | "space-around" | ...' },
       { name: 'justifyItems', value: 'Responsive<JustifyItems>', description: '"center" | "start" | "end" | "stretch" | "baseline" | ...' },
