@@ -38,8 +38,8 @@ function TooltipBubble({
           className={cn(
             'fill-surface-inverted',
             'data-[placement=bottom]:rotate-180',
-            'data-[placement=left]:rotate-90',
-            'data-[placement=right]:-rotate-90',
+            'data-[placement=left]:-rotate-90',
+            'data-[placement=right]:rotate-90',
           )}
         >
           <svg width={8} height={8} viewBox="0 0 8 8">
