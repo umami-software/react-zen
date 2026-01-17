@@ -6,6 +6,7 @@ export default {
     },
   },
   install: 'Installation',
+  usage: 'Usage Guide',
   '---': {
     type: 'separator',
   },

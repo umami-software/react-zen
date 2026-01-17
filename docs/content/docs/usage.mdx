@@ -1,0 +1,427 @@
+---
+title: Usage Guide
+---
+
+# Usage Guide
+
+This guide covers the core patterns and best practices for building UIs with zen.
+Understanding these concepts will help you write cleaner, more maintainable code.
+
+## Component Categories
+
+zen components fall into two categories, each with a distinct purpose:
+
+### Layout Components
+
+Layout components handle **positioning, spacing, and structure**. They accept a full set of styling props.
+
+| Component | Purpose |
+|-----------|---------|
+| [Box](/docs/layout/box) | General-purpose container with all styling props |
+| [Row](/docs/layout/row) | Horizontal flex layout |
+| [Column](/docs/layout/column) | Vertical flex layout |
+| [Grid](/docs/layout/grid) | CSS grid layout |
+| [Container](/docs/layout/container) | Centered, max-width container |
+
+```jsx
+<Column gap="4" padding="6">
+  <Row justifyContent="space-between" alignItems="center">
+    <Heading>Title</Heading>
+    <Button>Action</Button>
+  </Row>
+  <Text>Content goes here</Text>
+</Column>
+```
+
+### Interactive Components
+
+Interactive components handle **user interaction and display**. They focus on their core functionality
+and delegate layout concerns to their parent.
+
+Examples: `Button`, `TextField`, `Select`, `Checkbox`, `Tabs`, etc.
+
+## The Composition Pattern
+
+A key principle in zen is **separation of concerns**: interactive components handle behavior,
+layout components handle positioning.
+
+### Positioning with Box
+
+When you need to position or add spacing to an interactive component, wrap it in a layout component:
+
+```jsx
+// Align a button to the end of its container
+<Box alignSelf="end">
+  <Button>Submit</Button>
+</Box>
+
+// Add margin to a text field
+<Box marginBottom="4">
+  <TextField label="Email" />
+</Box>
+
+// Position a checkbox absolutely
+<Box position="absolute" top="4" right="4">
+  <Checkbox>Select</Checkbox>
+</Box>
+```
+
+<Example>
+  <Row justifyContent="space-between" alignItems="start" gap="4" padding="4" border borderRadius="lg">
+    <Column gap="2">
+      <Text weight="medium">Form Section</Text>
+      <Text size="sm" color="muted">Fill out the details below</Text>
+    </Column>
+    <Box alignSelf="end">
+      <Button variant="primary" size="sm">Save</Button>
+    </Box>
+  </Row>
+</Example>
+
+### Why This Pattern?
+
+1. **Focused APIs** - Button handles button concerns, Box handles layout concerns
+2. **Flexibility** - Any component can be positioned any way without special props
+3. **Predictability** - Layout is always handled by layout components
+4. **Smaller bundle** - Interactive components don't carry unused layout prop logic
+
+## Building Layouts
+
+### Use Semantic Layout Components
+
+Prefer `Row` and `Column` over `Box` with flex direction:
+
+```jsx
+// Preferred
+<Row gap="4" alignItems="center">
+  <Avatar />
+  <Text>Username</Text>
+</Row>
+
+// Avoid
+<Box display="flex" direction="row" gap="4" alignItems="center">
+  <Avatar />
+  <Text>Username</Text>
+</Box>
+```
+
+### Spacing with Gap
+
+Use `gap` for consistent spacing between children instead of individual margins:
+
+```jsx
+// Preferred - consistent spacing
+<Column gap="4">
+  <TextField label="Name" />
+  <TextField label="Email" />
+  <TextField label="Message" />
+</Column>
+
+// Avoid - manual margins
+<Column>
+  <Box marginBottom="4"><TextField label="Name" /></Box>
+  <Box marginBottom="4"><TextField label="Email" /></Box>
+  <TextField label="Message" />
+</Column>
+```
+
+### Container for Page Content
+
+Use `Container` to center and constrain page content:
+
+```jsx
+<Container maxWidth="lg" padding="6">
+  <Column gap="8">
+    <Heading>Page Title</Heading>
+    <Text>Page content...</Text>
+  </Column>
+</Container>
+```
+
+## Responsive Design
+
+### Responsive Props
+
+Most style props accept responsive objects. Use `base` for mobile-first styles:
+
+```jsx
+<Heading size={{ base: 'xl', md: '3xl', lg: '5xl' }}>
+  Responsive Heading
+</Heading>
+
+<Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" gap="4">
+  <Card>Item 1</Card>
+  <Card>Item 2</Card>
+  <Card>Item 3</Card>
+</Grid>
+
+<Row
+  direction={{ base: 'column', md: 'row' }}
+  gap={{ base: '4', md: '8' }}
+>
+  <Box>Sidebar</Box>
+  <Box>Main content</Box>
+</Row>
+```
+
+<Example>
+  <Grid className="grid-cols-1 sm:grid-cols-2" gap="4">
+    <Box padding="4" backgroundColor="surface-raised" borderRadius="md">
+      <Text size="sm" color="muted">Resize to see layout change</Text>
+    </Box>
+    <Box padding="4" backgroundColor="surface-raised" borderRadius="md">
+      <Text size="sm" color="muted">Stacks on mobile</Text>
+    </Box>
+  </Grid>
+</Example>
+
+### Breakpoints
+
+| Name | Min Width | Typical Device |
+|------|-----------|----------------|
+| `base` | 0px | All devices (mobile-first) |
+| `sm` | 640px | Large phones, small tablets |
+| `md` | 768px | Tablets |
+| `lg` | 1024px | Laptops |
+| `xl` | 1280px | Desktops |
+| `2xl` | 1536px | Large desktops |
+
+## Styling Props
+
+### Common Props by Category
+
+**Spacing:**
+```jsx
+<Box padding="4" paddingX="6" margin="2" marginTop="8" />
+```
+
+**Layout:**
+```jsx
+<Box display="flex" alignItems="center" justifyContent="space-between" gap="4" />
+```
+
+**Visual:**
+```jsx
+<Box border borderRadius="lg" shadow="md" backgroundColor="surface-raised" />
+```
+
+**Position:**
+```jsx
+<Box position="absolute" top="0" right="0" />
+```
+
+### Using className
+
+For styles not covered by props, use `className` with Tailwind utilities:
+
+```jsx
+<Box
+  padding="4"
+  border
+  className="hover:shadow-lg transition-shadow"
+>
+  Hover me
+</Box>
+```
+
+## Forms
+
+### Basic Form Layout
+
+Use `Column` with consistent `gap` for form fields:
+
+```jsx
+<Column gap="4">
+  <TextField label="Name" placeholder="Enter your name" />
+  <TextField label="Email" type="email" placeholder="you@example.com" />
+  <TextArea label="Message" placeholder="Your message..." />
+  <Row justifyContent="end" gap="2">
+    <Button variant="outline">Cancel</Button>
+    <Button variant="primary">Submit</Button>
+  </Row>
+</Column>
+```
+
+<Example>
+  <Box padding="6" border borderRadius="lg" style={{ maxWidth: '400px' }}>
+    <Column gap="4">
+      <TextField label="Name" placeholder="Enter your name" />
+      <TextField label="Email" type="email" placeholder="you@example.com" />
+      <Row justifyContent="end" gap="2">
+        <Button variant="outline">Cancel</Button>
+        <Button variant="primary">Submit</Button>
+      </Row>
+    </Column>
+  </Box>
+</Example>
+
+### Form with react-hook-form
+
+zen provides form integration components:
+
+```jsx
+import { Form, FormField, FormSubmitButton } from '@umami/react-zen';
+import { useForm } from 'react-hook-form';
+
+function MyForm() {
+  const form = useForm({ defaultValues: { email: '' } });
+
+  return (
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <Column gap="4">
+        <FormField name="email" label="Email" rules={{ required: 'Required' }}>
+          <TextField placeholder="you@example.com" />
+        </FormField>
+        <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+      </Column>
+    </Form>
+  );
+}
+```
+
+## Theming
+
+### Light and Dark Mode
+
+zen supports light and dark modes out of the box. Use `ZenProvider` to initialize:
+
+```jsx
+<ZenProvider colorScheme="system">
+  <App />
+</ZenProvider>
+```
+
+Toggle programmatically with the `useTheme` hook:
+
+```jsx
+import { useTheme } from '@umami/react-zen';
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <Button onPress={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+      Toggle Theme
+    </Button>
+  );
+}
+```
+
+### Semantic Colors
+
+Use semantic color tokens that adapt to the theme:
+
+```jsx
+// These automatically adjust for light/dark mode
+<Box backgroundColor="surface-raised" />
+<Text color="muted" />
+<Box borderColor="edge-muted" />
+```
+
+| Token | Purpose |
+|-------|---------|
+| `surface-base` | Page background |
+| `surface-raised` | Cards, elevated elements |
+| `surface-sunken` | Inset areas |
+| `primary` | Primary text |
+| `muted` | Secondary text |
+| `disabled` | Disabled state |
+
+## Component Patterns
+
+### Cards
+
+```jsx
+<Box padding="6" border borderRadius="lg" shadow="sm" backgroundColor="surface-base">
+  <Column gap="4">
+    <Heading size="lg">Card Title</Heading>
+    <Text color="muted">Card description or content goes here.</Text>
+    <Row gap="2">
+      <Button variant="primary" size="sm">Action</Button>
+      <Button variant="outline" size="sm">Cancel</Button>
+    </Row>
+  </Column>
+</Box>
+```
+
+<Example>
+  <Box padding="6" border borderRadius="lg" shadow="sm" backgroundColor="surface-base" style={{ maxWidth: '300px' }}>
+    <Column gap="4">
+      <Heading size="lg">Card Title</Heading>
+      <Text color="muted">Card description or content goes here.</Text>
+      <Row gap="2">
+        <Button variant="primary" size="sm">Action</Button>
+        <Button variant="outline" size="sm">Cancel</Button>
+      </Row>
+    </Column>
+  </Box>
+</Example>
+
+### Page Header
+
+```jsx
+<Row justifyContent="space-between" alignItems="center" marginBottom="8">
+  <Column gap="1">
+    <Heading size="2xl">Dashboard</Heading>
+    <Text color="muted">Welcome back, here's what's happening.</Text>
+  </Column>
+  <Row gap="2">
+    <Button variant="outline">Export</Button>
+    <Button variant="primary">Create New</Button>
+  </Row>
+</Row>
+```
+
+<Example>
+  <Row justifyContent="space-between" alignItems="center" gap="4" padding="4" border borderRadius="lg">
+    <Column gap="1">
+      <Heading size="2xl">Dashboard</Heading>
+      <Text color="muted">Welcome back, here's what's happening.</Text>
+    </Column>
+    <Row gap="2">
+      <Button variant="outline">Export</Button>
+      <Button variant="primary">Create New</Button>
+    </Row>
+  </Row>
+</Example>
+
+### Empty State
+
+```jsx
+<Column alignItems="center" gap="4" padding="12">
+  <Box className="text-foreground-muted">
+    <ExampleIcons.Inbox size={48} />
+  </Box>
+  <Column alignItems="center" gap="2">
+    <Heading size="lg">No items yet</Heading>
+    <Text color="muted" align="center">
+      Get started by creating your first item.
+    </Text>
+  </Column>
+  <Button variant="primary">Create Item</Button>
+</Column>
+```
+
+<Example>
+  <Column alignItems="center" gap="4" padding="12" border borderRadius="lg">
+    <Box className="text-foreground-muted">
+      <ExampleIcons.Inbox size={48} />
+    </Box>
+    <Column alignItems="center" gap="2">
+      <Heading size="lg">No items yet</Heading>
+      <Text color="muted" align="center">
+        Get started by creating your first item.
+      </Text>
+    </Column>
+    <Button variant="primary">Create Item</Button>
+  </Column>
+</Example>
+
+## Tips
+
+1. **Start with layout** - Build the structure with Row/Column/Grid first, then add content
+2. **Use gap over margin** - Cleaner and more maintainable for spacing between siblings
+3. **Wrap for positioning** - Use Box to position interactive components
+4. **Think responsive** - Use responsive objects for props that should adapt
+5. **Leverage semantics** - Use semantic colors and tokens for theme compatibility
+6. **Keep it simple** - Compose simple components rather than configuring complex ones
