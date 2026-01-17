@@ -1694,3 +1694,396 @@ export function getCssColorValue(value: string | undefined): string | undefined 
 
   return undefined;
 }
+
+// Width mapping - spacing scale + fractions + special values
+const widthMap: Record<string, string> = {
+  // Spacing scale
+  '0': 'w-0',
+  px: 'w-px',
+  '0.5': 'w-0.5',
+  '1': 'w-1',
+  '1.5': 'w-1.5',
+  '2': 'w-2',
+  '2.5': 'w-2.5',
+  '3': 'w-3',
+  '3.5': 'w-3.5',
+  '4': 'w-4',
+  '5': 'w-5',
+  '6': 'w-6',
+  '7': 'w-7',
+  '8': 'w-8',
+  '9': 'w-9',
+  '10': 'w-10',
+  '11': 'w-11',
+  '12': 'w-12',
+  '14': 'w-14',
+  '16': 'w-16',
+  '20': 'w-20',
+  '24': 'w-24',
+  '28': 'w-28',
+  '32': 'w-32',
+  '36': 'w-36',
+  '40': 'w-40',
+  '44': 'w-44',
+  '48': 'w-48',
+  '52': 'w-52',
+  '56': 'w-56',
+  '60': 'w-60',
+  '64': 'w-64',
+  '72': 'w-72',
+  '80': 'w-80',
+  '96': 'w-96',
+  // Fractions
+  '1/2': 'w-1/2',
+  '1/3': 'w-1/3',
+  '2/3': 'w-2/3',
+  '1/4': 'w-1/4',
+  '2/4': 'w-2/4',
+  '3/4': 'w-3/4',
+  '1/5': 'w-1/5',
+  '2/5': 'w-2/5',
+  '3/5': 'w-3/5',
+  '4/5': 'w-4/5',
+  '1/6': 'w-1/6',
+  '2/6': 'w-2/6',
+  '3/6': 'w-3/6',
+  '4/6': 'w-4/6',
+  '5/6': 'w-5/6',
+  '1/12': 'w-1/12',
+  '2/12': 'w-2/12',
+  '3/12': 'w-3/12',
+  '4/12': 'w-4/12',
+  '5/12': 'w-5/12',
+  '6/12': 'w-6/12',
+  '7/12': 'w-7/12',
+  '8/12': 'w-8/12',
+  '9/12': 'w-9/12',
+  '10/12': 'w-10/12',
+  '11/12': 'w-11/12',
+  // Special values
+  auto: 'w-auto',
+  full: 'w-full',
+  screen: 'w-screen',
+  svw: 'w-svw',
+  lvw: 'w-lvw',
+  dvw: 'w-dvw',
+  min: 'w-min',
+  max: 'w-max',
+  fit: 'w-fit',
+};
+
+// Height mapping - spacing scale + fractions + special values
+const heightMap: Record<string, string> = {
+  // Spacing scale
+  '0': 'h-0',
+  px: 'h-px',
+  '0.5': 'h-0.5',
+  '1': 'h-1',
+  '1.5': 'h-1.5',
+  '2': 'h-2',
+  '2.5': 'h-2.5',
+  '3': 'h-3',
+  '3.5': 'h-3.5',
+  '4': 'h-4',
+  '5': 'h-5',
+  '6': 'h-6',
+  '7': 'h-7',
+  '8': 'h-8',
+  '9': 'h-9',
+  '10': 'h-10',
+  '11': 'h-11',
+  '12': 'h-12',
+  '14': 'h-14',
+  '16': 'h-16',
+  '20': 'h-20',
+  '24': 'h-24',
+  '28': 'h-28',
+  '32': 'h-32',
+  '36': 'h-36',
+  '40': 'h-40',
+  '44': 'h-44',
+  '48': 'h-48',
+  '52': 'h-52',
+  '56': 'h-56',
+  '60': 'h-60',
+  '64': 'h-64',
+  '72': 'h-72',
+  '80': 'h-80',
+  '96': 'h-96',
+  // Fractions
+  '1/2': 'h-1/2',
+  '1/3': 'h-1/3',
+  '2/3': 'h-2/3',
+  '1/4': 'h-1/4',
+  '2/4': 'h-2/4',
+  '3/4': 'h-3/4',
+  '1/5': 'h-1/5',
+  '2/5': 'h-2/5',
+  '3/5': 'h-3/5',
+  '4/5': 'h-4/5',
+  '1/6': 'h-1/6',
+  '2/6': 'h-2/6',
+  '3/6': 'h-3/6',
+  '4/6': 'h-4/6',
+  '5/6': 'h-5/6',
+  // Special values
+  auto: 'h-auto',
+  full: 'h-full',
+  screen: 'h-screen',
+  svh: 'h-svh',
+  lvh: 'h-lvh',
+  dvh: 'h-dvh',
+  min: 'h-min',
+  max: 'h-max',
+  fit: 'h-fit',
+};
+
+// Min-width mapping
+const minWidthMap: Record<string, string> = {
+  '0': 'min-w-0',
+  px: 'min-w-px',
+  '0.5': 'min-w-0.5',
+  '1': 'min-w-1',
+  '1.5': 'min-w-1.5',
+  '2': 'min-w-2',
+  '2.5': 'min-w-2.5',
+  '3': 'min-w-3',
+  '3.5': 'min-w-3.5',
+  '4': 'min-w-4',
+  '5': 'min-w-5',
+  '6': 'min-w-6',
+  '7': 'min-w-7',
+  '8': 'min-w-8',
+  '9': 'min-w-9',
+  '10': 'min-w-10',
+  '11': 'min-w-11',
+  '12': 'min-w-12',
+  '14': 'min-w-14',
+  '16': 'min-w-16',
+  '20': 'min-w-20',
+  '24': 'min-w-24',
+  '28': 'min-w-28',
+  '32': 'min-w-32',
+  '36': 'min-w-36',
+  '40': 'min-w-40',
+  '44': 'min-w-44',
+  '48': 'min-w-48',
+  '52': 'min-w-52',
+  '56': 'min-w-56',
+  '60': 'min-w-60',
+  '64': 'min-w-64',
+  '72': 'min-w-72',
+  '80': 'min-w-80',
+  '96': 'min-w-96',
+  full: 'min-w-full',
+  min: 'min-w-min',
+  max: 'min-w-max',
+  fit: 'min-w-fit',
+};
+
+// Max-width mapping (includes container sizes)
+const maxWidthMap: Record<string, string> = {
+  '0': 'max-w-0',
+  px: 'max-w-px',
+  '0.5': 'max-w-0.5',
+  '1': 'max-w-1',
+  '1.5': 'max-w-1.5',
+  '2': 'max-w-2',
+  '2.5': 'max-w-2.5',
+  '3': 'max-w-3',
+  '3.5': 'max-w-3.5',
+  '4': 'max-w-4',
+  '5': 'max-w-5',
+  '6': 'max-w-6',
+  '7': 'max-w-7',
+  '8': 'max-w-8',
+  '9': 'max-w-9',
+  '10': 'max-w-10',
+  '11': 'max-w-11',
+  '12': 'max-w-12',
+  '14': 'max-w-14',
+  '16': 'max-w-16',
+  '20': 'max-w-20',
+  '24': 'max-w-24',
+  '28': 'max-w-28',
+  '32': 'max-w-32',
+  '36': 'max-w-36',
+  '40': 'max-w-40',
+  '44': 'max-w-44',
+  '48': 'max-w-48',
+  '52': 'max-w-52',
+  '56': 'max-w-56',
+  '60': 'max-w-60',
+  '64': 'max-w-64',
+  '72': 'max-w-72',
+  '80': 'max-w-80',
+  '96': 'max-w-96',
+  // Container sizes
+  none: 'max-w-none',
+  xs: 'max-w-xs',
+  sm: 'max-w-sm',
+  md: 'max-w-md',
+  lg: 'max-w-lg',
+  xl: 'max-w-xl',
+  '2xl': 'max-w-2xl',
+  '3xl': 'max-w-3xl',
+  '4xl': 'max-w-4xl',
+  '5xl': 'max-w-5xl',
+  '6xl': 'max-w-6xl',
+  '7xl': 'max-w-7xl',
+  full: 'max-w-full',
+  min: 'max-w-min',
+  max: 'max-w-max',
+  fit: 'max-w-fit',
+  prose: 'max-w-prose',
+  'screen-sm': 'max-w-screen-sm',
+  'screen-md': 'max-w-screen-md',
+  'screen-lg': 'max-w-screen-lg',
+  'screen-xl': 'max-w-screen-xl',
+  'screen-2xl': 'max-w-screen-2xl',
+};
+
+// Min-height mapping
+const minHeightMap: Record<string, string> = {
+  '0': 'min-h-0',
+  px: 'min-h-px',
+  '0.5': 'min-h-0.5',
+  '1': 'min-h-1',
+  '1.5': 'min-h-1.5',
+  '2': 'min-h-2',
+  '2.5': 'min-h-2.5',
+  '3': 'min-h-3',
+  '3.5': 'min-h-3.5',
+  '4': 'min-h-4',
+  '5': 'min-h-5',
+  '6': 'min-h-6',
+  '7': 'min-h-7',
+  '8': 'min-h-8',
+  '9': 'min-h-9',
+  '10': 'min-h-10',
+  '11': 'min-h-11',
+  '12': 'min-h-12',
+  '14': 'min-h-14',
+  '16': 'min-h-16',
+  '20': 'min-h-20',
+  '24': 'min-h-24',
+  '28': 'min-h-28',
+  '32': 'min-h-32',
+  '36': 'min-h-36',
+  '40': 'min-h-40',
+  '44': 'min-h-44',
+  '48': 'min-h-48',
+  '52': 'min-h-52',
+  '56': 'min-h-56',
+  '60': 'min-h-60',
+  '64': 'min-h-64',
+  '72': 'min-h-72',
+  '80': 'min-h-80',
+  '96': 'min-h-96',
+  full: 'min-h-full',
+  screen: 'min-h-screen',
+  svh: 'min-h-svh',
+  lvh: 'min-h-lvh',
+  dvh: 'min-h-dvh',
+  min: 'min-h-min',
+  max: 'min-h-max',
+  fit: 'min-h-fit',
+};
+
+// Max-height mapping
+const maxHeightMap: Record<string, string> = {
+  '0': 'max-h-0',
+  px: 'max-h-px',
+  '0.5': 'max-h-0.5',
+  '1': 'max-h-1',
+  '1.5': 'max-h-1.5',
+  '2': 'max-h-2',
+  '2.5': 'max-h-2.5',
+  '3': 'max-h-3',
+  '3.5': 'max-h-3.5',
+  '4': 'max-h-4',
+  '5': 'max-h-5',
+  '6': 'max-h-6',
+  '7': 'max-h-7',
+  '8': 'max-h-8',
+  '9': 'max-h-9',
+  '10': 'max-h-10',
+  '11': 'max-h-11',
+  '12': 'max-h-12',
+  '14': 'max-h-14',
+  '16': 'max-h-16',
+  '20': 'max-h-20',
+  '24': 'max-h-24',
+  '28': 'max-h-28',
+  '32': 'max-h-32',
+  '36': 'max-h-36',
+  '40': 'max-h-40',
+  '44': 'max-h-44',
+  '48': 'max-h-48',
+  '52': 'max-h-52',
+  '56': 'max-h-56',
+  '60': 'max-h-60',
+  '64': 'max-h-64',
+  '72': 'max-h-72',
+  '80': 'max-h-80',
+  '96': 'max-h-96',
+  none: 'max-h-none',
+  full: 'max-h-full',
+  screen: 'max-h-screen',
+  svh: 'max-h-svh',
+  lvh: 'max-h-lvh',
+  dvh: 'max-h-dvh',
+  min: 'max-h-min',
+  max: 'max-h-max',
+  fit: 'max-h-fit',
+};
+
+// Sizing mapper functions
+export function mapWidth(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => widthMap[v]);
+}
+
+export function mapHeight(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => heightMap[v]);
+}
+
+export function mapMinWidth(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => minWidthMap[v]);
+}
+
+export function mapMaxWidth(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => maxWidthMap[v]);
+}
+
+export function mapMinHeight(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => minHeightMap[v]);
+}
+
+export function mapMaxHeight(value: Responsive<string> | undefined): string {
+  return mapResponsive(value, v => maxHeightMap[v]);
+}
+
+// Check if a value is a known preset (returns true if it should use Tailwind class)
+export function isWidthPreset(value: string): boolean {
+  return value in widthMap;
+}
+
+export function isHeightPreset(value: string): boolean {
+  return value in heightMap;
+}
+
+export function isMinWidthPreset(value: string): boolean {
+  return value in minWidthMap;
+}
+
+export function isMaxWidthPreset(value: string): boolean {
+  return value in maxWidthMap;
+}
+
+export function isMinHeightPreset(value: string): boolean {
+  return value in minHeightMap;
+}
+
+export function isMaxHeightPreset(value: string): boolean {
+  return value in maxHeightMap;
+}

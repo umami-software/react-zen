@@ -22,7 +22,12 @@ import type {
   FontColor,
   FontSize,
   FontWeight,
+  Height,
   JustifySelf,
+  MaxHeight,
+  MaxWidth,
+  MinHeight,
+  MinWidth,
   Opacity,
   Overflow,
   Padding,
@@ -31,10 +36,17 @@ import type {
   Responsive,
   Spacing,
   TextAlign,
+  Width,
 } from '@/lib/types';
 import { type RenderProp, resolveRender } from './lib/render';
 import {
   cn,
+  isHeightPreset,
+  isMaxHeightPreset,
+  isMaxWidthPreset,
+  isMinHeightPreset,
+  isMinWidthPreset,
+  isWidthPreset,
   mapAlignSelf,
   mapBackgroundColor,
   mapBorder,
@@ -45,7 +57,12 @@ import {
   mapDisplay,
   mapFontSize,
   mapFontWeight,
+  mapHeight,
   mapMargin,
+  mapMaxHeight,
+  mapMaxWidth,
+  mapMinHeight,
+  mapMinWidth,
   mapOpacity,
   mapOverflow,
   mapPadding,
@@ -54,6 +71,7 @@ import {
   mapShadow,
   mapTextAlign,
   mapTextColor,
+  mapWidth,
 } from './lib/tailwind';
 
 export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
@@ -84,13 +102,13 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   marginBottom?: Responsive<Spacing>;
   marginLeft?: Responsive<Spacing>;
 
-  width?: string;
-  minWidth?: string;
-  maxWidth?: string;
+  width?: Responsive<Width | string>;
+  minWidth?: Responsive<MinWidth | string>;
+  maxWidth?: Responsive<MaxWidth | string>;
 
-  height?: string;
-  minHeight?: string;
-  maxHeight?: string;
+  height?: Responsive<Height | string>;
+  minHeight?: Responsive<MinHeight | string>;
+  maxHeight?: Responsive<MaxHeight | string>;
 
   position?: Responsive<Position>;
   textAlign?: Responsive<TextAlign>;
@@ -208,6 +226,16 @@ export const Box = forwardRef(function Box(
 ) {
   const Component = as as ElementType;
 
+  // Helper to get inline style value for sizing props (only for non-preset strings)
+  const getSizingStyle = (
+    value: Responsive<string> | undefined,
+    isPreset: (v: string) => boolean,
+  ): string | undefined => {
+    if (!value) return undefined;
+    if (typeof value === 'string' && !isPreset(value)) return value;
+    return undefined;
+  };
+
   // Build Tailwind classes
   const classes = cn(
     mapDisplay(display),
@@ -234,6 +262,12 @@ export const Box = forwardRef(function Box(
     mapMargin(marginRight, 'r'),
     mapMargin(marginBottom, 'b'),
     mapMargin(marginLeft, 'l'),
+    mapWidth(width as Responsive<string>),
+    mapMinWidth(minWidth as Responsive<string>),
+    mapMaxWidth(maxWidth as Responsive<string>),
+    mapHeight(height as Responsive<string>),
+    mapMinHeight(minHeight as Responsive<string>),
+    mapMaxHeight(maxHeight as Responsive<string>),
     mapPosition(position),
     mapTextAlign(textAlign),
     mapOverflow(overflow),
@@ -247,15 +281,23 @@ export const Box = forwardRef(function Box(
     className,
   );
 
+  // Get inline style values for non-preset sizing
+  const widthStyle = getSizingStyle(width as Responsive<string>, isWidthPreset);
+  const minWidthStyle = getSizingStyle(minWidth as Responsive<string>, isMinWidthPreset);
+  const maxWidthStyle = getSizingStyle(maxWidth as Responsive<string>, isMaxWidthPreset);
+  const heightStyle = getSizingStyle(height as Responsive<string>, isHeightPreset);
+  const minHeightStyle = getSizingStyle(minHeight as Responsive<string>, isMinHeightPreset);
+  const maxHeightStyle = getSizingStyle(maxHeight as Responsive<string>, isMaxHeightPreset);
+
   // Inline styles for values that can't be mapped to Tailwind utilities
   const inlineStyles: CSSProperties = {
     ...style,
-    ...(width && { width }),
-    ...(minWidth && { minWidth }),
-    ...(maxWidth && { maxWidth }),
-    ...(height && { height }),
-    ...(minHeight && { minHeight }),
-    ...(maxHeight && { maxHeight }),
+    ...(widthStyle && { width: widthStyle }),
+    ...(minWidthStyle && { minWidth: minWidthStyle }),
+    ...(maxWidthStyle && { maxWidth: maxWidthStyle }),
+    ...(heightStyle && { height: heightStyle }),
+    ...(minHeightStyle && { minHeight: minHeightStyle }),
+    ...(maxHeightStyle && { maxHeight: maxHeightStyle }),
     ...(top && { top }),
     ...(right && { right }),
     ...(bottom && { bottom }),

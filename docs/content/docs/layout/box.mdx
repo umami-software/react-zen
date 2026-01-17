@@ -18,6 +18,16 @@ A versatile layout primitive that serves as the foundation for building UI. Box 
   </Box>
 </Example>
 
+## Responsive sizing
+
+Use Tailwind preset values for width and height with responsive breakpoints.
+
+<Example>
+  <Box width={{ base: 'full', md: '1/2', lg: '1/3' }} padding="4" backgroundColor="blue-100">
+    Responsive width
+  </Box>
+</Example>
+
 ## Component props
 
 <Example>
@@ -49,12 +59,12 @@ A versatile layout primitive that serves as the foundation for building UI. Box 
       { name: 'marginRight', value: 'Responsive<Spacing>', description: 'Spacing' },
       { name: 'marginBottom', value: 'Responsive<Spacing>', description: 'Spacing' },
       { name: 'marginLeft', value: 'Responsive<Spacing>', description: 'Spacing' },
-      { name: 'width', value: 'string', description: 'CSS value (inline style)' },
-      { name: 'minWidth', value: 'string', description: 'CSS value (inline style)' },
-      { name: 'maxWidth', value: 'string', description: 'CSS value (inline style)' },
-      { name: 'height', value: 'string', description: 'CSS value (inline style)' },
-      { name: 'minHeight', value: 'string', description: 'CSS value (inline style)' },
-      { name: 'maxHeight', value: 'string', description: 'CSS value (inline style)' },
+      { name: 'width', value: 'Responsive<Width | string>', description: 'Spacing | Fraction | "auto" | "full" | "screen" | "min" | "max" | "fit" | custom CSS' },
+      { name: 'minWidth', value: 'Responsive<MinWidth | string>', description: 'Spacing | "full" | "min" | "max" | "fit" | custom CSS' },
+      { name: 'maxWidth', value: 'Responsive<MaxWidth | string>', description: 'Spacing | "none" | "xs"-"7xl" | "full" | "prose" | "screen-*" | custom CSS' },
+      { name: 'height', value: 'Responsive<Height | string>', description: 'Spacing | Fraction | "auto" | "full" | "screen" | "min" | "max" | "fit" | custom CSS' },
+      { name: 'minHeight', value: 'Responsive<MinHeight | string>', description: 'Spacing | "full" | "screen" | "min" | "max" | "fit" | custom CSS' },
+      { name: 'maxHeight', value: 'Responsive<MaxHeight | string>', description: 'Spacing | "none" | "full" | "screen" | "min" | "max" | "fit" | custom CSS' },
       { name: 'top', value: 'string', description: 'CSS value (inline style)' },
       { name: 'right', value: 'string', description: 'CSS value (inline style)' },
       { name: 'bottom', value: 'string', description: 'CSS value (inline style)' },
