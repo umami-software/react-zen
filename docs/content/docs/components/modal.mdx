@@ -70,10 +70,62 @@ A modal is an overlay element which blocks interaction with elements outside it.
 
   ```jsx
   <DialogTrigger>
-    <Button>Open Modal</Button>
-    <Modal placement="center">
+    <Button>Center</Button>
+    <Modal>
       <Dialog>
-        <Heading>Hello.</Heading>
+        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
+          <Heading>Hello.</Heading>
+        </Flexbox>
+      </Dialog>
+    </Modal>
+  </DialogTrigger>
+  <DialogTrigger>
+    <Button>Top</Button>
+    <Modal placement="top">
+      <Dialog variant="sheet">
+        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
+          <Heading>Hello.</Heading>
+        </Flexbox>
+      </Dialog>
+    </Modal>
+  </DialogTrigger>
+  <DialogTrigger>
+    <Button>Left</Button>
+    <Modal placement="left">
+      <Dialog variant="sheet">
+        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
+          <Heading>Hello.</Heading>
+        </Flexbox>
+      </Dialog>
+    </Modal>
+  </DialogTrigger>
+  <DialogTrigger>
+    <Button>Right</Button>
+    <Modal placement="right">
+      <Dialog variant="sheet">
+        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
+          <Heading>Hello.</Heading>
+        </Flexbox>
+      </Dialog>
+    </Modal>
+  </DialogTrigger>
+  <DialogTrigger>
+    <Button>Bottom</Button>
+    <Modal placement="bottom">
+      <Dialog variant="sheet">
+        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
+          <Heading>Hello.</Heading>
+        </Flexbox>
+      </Dialog>
+    </Modal>
+  </DialogTrigger>
+  <DialogTrigger>
+    <Button>Fullscreen</Button>
+    <Modal placement="fullscreen">
+      <Dialog variant="sheet">
+        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
+          <Heading>Hello.</Heading>
+        </Flexbox>
       </Dialog>
     </Modal>
   </DialogTrigger>
