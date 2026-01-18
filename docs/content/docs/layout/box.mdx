@@ -8,6 +8,10 @@ A versatile layout primitive that serves as the foundation for building UI. Box 
 
 <Example>
   <Box>I am a box.</Box>
+
+  ```jsx
+  <Box>I am a box.</Box>
+  ```
 </Example>
 
 ## With properties
@@ -16,16 +20,28 @@ A versatile layout primitive that serves as the foundation for building UI. Box 
   <Box padding="5" shadow="lg" borderRadius="lg" border>
     I am a box.
   </Box>
+
+  ```jsx
+  <Box padding="5" shadow="lg" borderRadius="lg" border>
+    I am a box.
+  </Box>
+  ```
 </Example>
 
 ## Responsive sizing
 
 Use Tailwind preset values for width and height with responsive breakpoints.
 
-<Example>
+<Example alignItems="stretch">
   <Box width={{ base: 'full', md: '1/2', lg: '1/3' }} padding="4" backgroundColor="blue-100">
     Responsive width
   </Box>
+
+  ```jsx
+  <Box width={{ base: 'full', md: '1/2', lg: '1/3' }} padding="4" backgroundColor="blue-100">
+    Responsive width
+  </Box>
+  ```
 </Example>
 
 ## Component props
