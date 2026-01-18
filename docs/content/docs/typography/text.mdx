@@ -48,9 +48,19 @@ A text element with comprehensive typography controls including size, color, wei
   <Text size="9xl">9xl</Text>
 
   ```jsx
-  <Text size="sm">Small</Text>
-  <Text size="lg">Large</Text>
-  <Text size="2xl">Extra large</Text>
+  <Text size="xs">xs</Text>
+  <Text size="sm">sm</Text>
+  <Text size="base">base</Text>
+  <Text size="lg">lg</Text>
+  <Text size="xl">xl</Text>
+  <Text size="2xl">2xl</Text>
+  <Text size="3xl">3xl</Text>
+  <Text size="4xl">4xl</Text>
+  <Text size="5xl">5xl</Text>
+  <Text size="6xl">6xl</Text>
+  <Text size="7xl">7xl</Text>
+  <Text size="8xl">8xl</Text>
+  <Text size="9xl">9xl</Text>
   ```
 </Example>
 
@@ -106,6 +116,14 @@ A text element with comprehensive typography controls including size, color, wei
     <Row gap="4" alignItems="center"><Label className="w-16">wide</Label><Text spacing="wide">The quick brown fox jumps over the lazy dog.</Text></Row>
     <Row gap="4" alignItems="center"><Label className="w-16">wider</Label><Text spacing="wider">The quick brown fox jumps over the lazy dog.</Text></Row>
   </Column>
+
+  ```jsx
+  <Text spacing="tighter">The quick brown fox jumps over the lazy dog.</Text>
+  <Text spacing="tight">The quick brown fox jumps over the lazy dog.</Text>
+  <Text spacing="normal">The quick brown fox jumps over the lazy dog.</Text>
+  <Text spacing="wide">The quick brown fox jumps over the lazy dog.</Text>
+  <Text spacing="wider">The quick brown fox jumps over the lazy dog.</Text>
+  ```
 </Example>
 
 ## Line height
@@ -143,6 +161,14 @@ A text element with comprehensive typography controls including size, color, wei
       </Box>
     </Column>
   </Column>
+
+  ```jsx
+  <Text lineHeight="none" as="div">Lorem ipsum dolor sit amet...</Text>
+  <Text lineHeight="tight" as="div">Lorem ipsum dolor sit amet...</Text>
+  <Text lineHeight="normal" as="div">Lorem ipsum dolor sit amet...</Text>
+  <Text lineHeight="relaxed" as="div">Lorem ipsum dolor sit amet...</Text>
+  <Text lineHeight="loose" as="div">Lorem ipsum dolor sit amet...</Text>
+  ```
 </Example>
 
 ## Formatting
@@ -169,6 +195,14 @@ Customize the style of underline or strikethrough decorations.
   <Text underline decorationStyle="dotted">Dotted underline</Text>
   <Text underline decorationStyle="dashed">Dashed underline</Text>
   <Text underline decorationStyle="wavy">Wavy underline</Text>
+
+  ```jsx
+  <Text underline decorationStyle="solid">Solid underline</Text>
+  <Text underline decorationStyle="double">Double underline</Text>
+  <Text underline decorationStyle="dotted">Dotted underline</Text>
+  <Text underline decorationStyle="dashed">Dashed underline</Text>
+  <Text underline decorationStyle="wavy">Wavy underline</Text>
+  ```
 </Example>
 
 ## Decoration color
@@ -178,6 +212,13 @@ Customize the style of underline or strikethrough decorations.
   <Text underline decorationColor="blue-500">Blue underline</Text>
   <Text underline decorationColor="green-500">Green underline</Text>
   <Text strikethrough decorationColor="orange-500">Orange strikethrough</Text>
+
+  ```jsx
+  <Text underline decorationColor="red-500">Red underline</Text>
+  <Text underline decorationColor="blue-500">Blue underline</Text>
+  <Text underline decorationColor="green-500">Green underline</Text>
+  <Text strikethrough decorationColor="orange-500">Orange strikethrough</Text>
+  ```
 </Example>
 
 ## Transform
@@ -209,6 +250,21 @@ Customize the style of underline or strikethrough decorations.
   <Box width="100px">
     <Text truncate as="div">This is some really long text that should truncate.</Text>
   </Box>
+
+  ```jsx
+  <Box width="300px">
+    <Text truncate as="div">This is some really long text that should truncate.</Text>
+  </Box>
+  <Box width="200px">
+    <Text truncate as="div">This is some really long text that should truncate.</Text>
+  </Box>
+  <Box width="150px">
+    <Text truncate as="div">This is some really long text that should truncate.</Text>
+  </Box>
+  <Box width="100px">
+    <Text truncate as="div">This is some really long text that should truncate.</Text>
+  </Box>
+  ```
 </Example>
 
 ## Whitespace
@@ -242,6 +298,13 @@ Control how whitespace is handled within text.
       </Box>
     </Column>
   </Column>
+
+  ```jsx
+  <Text whitespace="normal" as="div">Multiple   spaces   collapse    and text wraps normally.</Text>
+  <Text whitespace="nowrap" as="div">This text will not wrap to the next line.</Text>
+  <Text whitespace="pre" as="div">{'Preserves   spaces\nand newlines.'}</Text>
+  <Text whitespace="pre-wrap" as="div">{'Preserves   spaces\nand wraps text.'}</Text>
+  ```
 </Example>
 
 ## Word break
@@ -269,6 +332,12 @@ Control how words break when reaching the end of a line.
       </Box>
     </Column>
   </Column>
+
+  ```jsx
+  <Text wordBreak="normal" as="div">Supercalifragilisticexpialidocious</Text>
+  <Text wordBreak="words" as="div">Supercalifragilisticexpialidocious</Text>
+  <Text wordBreak="all" as="div">Supercalifragilisticexpialidocious</Text>
+  ```
 </Example>
 
 ## Vertical align
@@ -313,6 +382,14 @@ Control vertical alignment of inline elements. Useful for superscript, subscript
       </Box>
     </Column>
   </Column>
+
+  ```jsx
+  <Text size="lg">E = mc<Text verticalAlign="super" size="xs">2</Text></Text>
+  <Text size="lg">H<Text verticalAlign="sub" size="xs">2</Text>O</Text>
+  <Text verticalAlign="top">aligned to top</Text>
+  <Text verticalAlign="middle">aligned to middle</Text>
+  <Text verticalAlign="bottom">aligned to bottom</Text>
+  ```
 </Example>
 
 ## Text indent
@@ -340,6 +417,12 @@ Indent the first line of text.
       </Box>
     </Column>
   </Column>
+
+  ```jsx
+  <Text indent="4" as="div">Lorem ipsum dolor sit amet...</Text>
+  <Text indent="8" as="div">Lorem ipsum dolor sit amet...</Text>
+  <Text indent="12" as="div">Lorem ipsum dolor sit amet...</Text>
+  ```
 </Example>
 
 ## Component props
