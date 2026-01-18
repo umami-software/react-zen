@@ -12,6 +12,9 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "sideEffects": [
+    "*.css"
+  ],
   "files": [
     "dist",
     "styles.css",
@@ -34,11 +37,10 @@
     "start": "pnpm --filter=react-zen-docs start",
     "lint": "biome check ./src",
     "icons": "svgr ./src/assets --out-dir src/components/svg --typescript",
-    "esbuild": "node esbuild.mjs",
     "rollup": "rollup -c",
     "css": "node css.mjs",
-    "types": "tsup",
-    "bundle": "npm-run-all types esbuild css"
+    "tsup": "tsup",
+    "bundle": "npm-run-all tsup css"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json,css}": [
