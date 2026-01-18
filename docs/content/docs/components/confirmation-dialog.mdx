@@ -11,14 +11,17 @@ A high-friction dialog for destructive or irreversible actions. Requires users t
 
   ```jsx
   <DialogTrigger>
-    <Button variant="danger">Delete Repository</Button>
-    <ConfirmationDialog
-      title="Delete repository?"
-      value="my-repo"
-      confirmMessage="Type 'my-repo' to confirm deletion."
-      isDanger
-      onConfirm={() => handleDelete()}
-    />
+    <Button variant="danger">Delete account</Button>
+    <Modal>
+      <ConfirmationDialog
+        title="Delete account"
+        value={'abc123'}
+        confirmLabel="Delete"
+        isDanger={true}
+      >
+        <Text>This cannot be undone. All your data will be permananently deleted.</Text>
+      </ConfirmationDialog>
+    </Modal>
   </DialogTrigger>
   ```
 </Example>

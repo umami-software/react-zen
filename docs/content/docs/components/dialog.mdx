@@ -11,10 +11,27 @@ A dialog is an overlay shown above other content in an application.
 
   ```jsx
   <DialogTrigger>
-    <Button>Open Dialog</Button>
+    <Button variant="primary">Click me</Button>
     <Modal>
-      <Dialog title="Dialog Title">
-        <Text>Dialog content goes here.</Text>
+      <Dialog title="Sign up for newsletter">
+        {({ close }) => {
+          return (
+            <Form>
+              <FormField name="name" label="Name">
+                <TextField />
+              </FormField>
+              <FormField name="email" label="Email">
+                <TextField />
+              </FormField>
+              <FormButtons>
+                <Button onPress={close}>Cancel</Button>
+                <Button variant="primary" onPress={close}>
+                  Sign up
+                </Button>
+              </FormButtons>
+            </Form>
+          );
+        }}
       </Dialog>
     </Modal>
   </DialogTrigger>

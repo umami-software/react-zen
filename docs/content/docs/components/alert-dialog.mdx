@@ -12,14 +12,12 @@ to acknowledge.
 
   ```jsx
   <DialogTrigger>
-    <Button>Delete Account</Button>
-    <AlertDialog
-      title="Delete account?"
-      description="This action cannot be undone."
-      isDanger
-      confirmLabel="Delete"
-      onConfirm={() => handleDelete()}
-    />
+    <Button variant="primary">Delete account</Button>
+    <Modal>
+      <AlertDialog title="Are you sure you want to delete your account?">
+        <Text>This cannot be undone. All your data will be permanantly deleted.</Text>
+      </AlertDialog>
+    </Modal>
   </DialogTrigger>
   ```
 </Example>

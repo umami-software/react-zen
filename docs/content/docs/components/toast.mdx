@@ -10,12 +10,7 @@ A succinct message that is displayed temporarily.
   <ToastExample />
 
   ```jsx
-  import { useToast } from '@umami/react-zen';
-
-  function MyComponent() {
-    const { toast } = useToast();
-    return <Button onPress={() => toast('Message sent!')}>Show Toast</Button>;
-  }
+  <Button onPress={() => toast('Your message has been sent.')}>Show toast</Button>
   ```
 </Example>
 
@@ -25,7 +20,13 @@ A succinct message that is displayed temporarily.
   <ToastTitleExample />
 
   ```jsx
-  toast({ title: 'Success', message: 'Your changes have been saved.' });
+  <Button
+    onPress={() =>
+      toast('The application encountered an error.', { title: 'Oops! Something went wrong.' })
+    }
+  >
+    Show toast
+  </Button>
   ```
 </Example>
 
@@ -35,11 +36,16 @@ A succinct message that is displayed temporarily.
   <ToastActionExample />
 
   ```jsx
-  toast({
-    message: 'Email archived',
-    action: <Button variant="quiet" size="sm">Undo</Button>,
-    onAction: () => console.log('Undo clicked'),
-  });
+  <Button
+    onPress={() =>
+      toast('The task was deleted successfully.', {
+        title: 'Task deleted',
+        actions: ['Undo'],
+      })
+    }
+  >
+    Show toast
+  </Button>
   ```
 </Example>
 
@@ -49,9 +55,14 @@ A succinct message that is displayed temporarily.
   <ToastVariantsExample />
 
   ```jsx
-  toast({ message: 'Default message' });
-  toast({ message: 'Success!', variant: 'success' });
-  toast({ message: 'Error occurred', variant: 'error' });
+  <>
+    <Button onPress={() => toast('Your message was sent.', { variant: 'success' })}>
+      Success toast
+    </Button>
+    <Button onPress={() => toast('Something went wrong.', { variant: 'error' })}>
+      Error toast
+    </Button>
+  </>
   ```
 </Example>
 

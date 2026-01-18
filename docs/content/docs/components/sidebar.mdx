@@ -10,11 +10,27 @@ A collapsible navigation panel typically used for app-level navigation. Supports
   <SidebarExample />
 
   ```jsx
-  <Sidebar>
-    <SidebarItem icon={<HomeIcon />} label="Home" isSelected />
-    <SidebarItem icon={<SettingsIcon />} label="Settings" />
-    <SidebarItem icon={<UserIcon />} label="Profile" />
-  </Sidebar>
+  <Box style={{ position: 'absolute', top: 0, left: 0, bottom: 0 }}>
+    <Sidebar isCollapsed={isCollapsed}>
+      <SidebarSection>
+        <SidebarHeader icon={<BoxIcon />} label="MyApp" />
+      </SidebarSection>
+      <SidebarSection>
+        <SidebarItem icon={<LayoutGrid />} label="Dashboard" isSelected={true} />
+        <SidebarItem icon={<User />} label="Accounts" />
+        <SidebarItem icon={<Settings />} label="Settings" />
+      </SidebarSection>
+      <SidebarSection>
+        <Row>
+          <Button variant="quiet" onPress={() => setCollapsed(!isCollapsed)}>
+            <Icon>
+              <PanelLeft />
+            </Icon>
+          </Button>
+        </Row>
+      </SidebarSection>
+    </Sidebar>
+  </Box>
   ```
 </Example>
 
@@ -22,9 +38,28 @@ A collapsible navigation panel typically used for app-level navigation. Supports
   <SidebarExample name="no border" border="none" />
 
   ```jsx
-  <Sidebar border="none">
-    <SidebarItem icon={<HomeIcon />} label="Home" />
-  </Sidebar>
+  <Heading>no border</Heading>
+  <Box style={{ position: 'absolute', top: 0, left: 0, bottom: 0 }}>
+    <Sidebar border="none" isCollapsed={isCollapsed}>
+      <SidebarSection>
+        <SidebarHeader icon={<BoxIcon />} label="MyApp" />
+      </SidebarSection>
+      <SidebarSection>
+        <SidebarItem icon={<LayoutGrid />} label="Dashboard" isSelected={true} />
+        <SidebarItem icon={<User />} label="Accounts" />
+        <SidebarItem icon={<Settings />} label="Settings" />
+      </SidebarSection>
+      <SidebarSection>
+        <Row>
+          <Button variant="quiet" onPress={() => setCollapsed(!isCollapsed)}>
+            <Icon>
+              <PanelLeft />
+            </Icon>
+          </Button>
+        </Row>
+      </SidebarSection>
+    </Sidebar>
+  </Box>
   ```
 </Example>
 
@@ -32,9 +67,28 @@ A collapsible navigation panel typically used for app-level navigation. Supports
   <SidebarExample name="mute items" muteItems={true} />
 
   ```jsx
-  <Sidebar muteItems>
-    <SidebarItem icon={<HomeIcon />} label="Home" />
-  </Sidebar>
+  <Heading>mute items</Heading>
+  <Box style={{ position: 'absolute', top: 0, left: 0, bottom: 0 }}>
+    <Sidebar muteItems={true} isCollapsed={isCollapsed}>
+      <SidebarSection>
+        <SidebarHeader icon={<BoxIcon />} label="MyApp" />
+      </SidebarSection>
+      <SidebarSection>
+        <SidebarItem icon={<LayoutGrid />} label="Dashboard" isSelected={true} />
+        <SidebarItem icon={<User />} label="Accounts" />
+        <SidebarItem icon={<Settings />} label="Settings" />
+      </SidebarSection>
+      <SidebarSection>
+        <Row>
+          <Button variant="quiet" onPress={() => setCollapsed(!isCollapsed)}>
+            <Icon>
+              <PanelLeft />
+            </Icon>
+          </Button>
+        </Row>
+      </SidebarSection>
+    </Sidebar>
+  </Box>
   ```
 </Example>
 

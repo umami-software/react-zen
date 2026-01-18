@@ -25,17 +25,22 @@ A flexible layout component using CSS Flexbox for one-dimensional arrangements. 
   </Column>
 
   ```jsx
-  <Flexbox direction="row" gap="3">
-    <Box>Item 1</Box>
-    <Box>Item 2</Box>
-    <Box>Item 3</Box>
-  </Flexbox>
-
-  <Flexbox direction="column" gap="3">
-    <Box>Item 1</Box>
-    <Box>Item 2</Box>
-    <Box>Item 3</Box>
-  </Flexbox>
+  <Column alignItems="center">
+    <Label>Row</Label>
+    <Flexbox direction="row" gap="3">
+      <ExampleBox />
+      <ExampleBox />
+      <ExampleBox />
+    </Flexbox>
+  </Column>
+  <Column>
+    <Label>Column</Label>
+    <Flexbox direction="column" gap="3">
+      <ExampleBox />
+      <ExampleBox />
+      <ExampleBox />
+    </Flexbox>
+  </Column>
   ```
 </Example>
 

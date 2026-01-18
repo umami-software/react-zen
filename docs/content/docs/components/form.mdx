@@ -12,12 +12,23 @@ A form wrapper built on react-hook-form that provides validation, error handling
   </Box>
 
   ```jsx
-  <Form onSubmit={(data) => console.log(data)}>
-    <FormField name="email" label="Email" rules={{ required: true }}>
-      <TextField />
-    </FormField>
-    <FormSubmitButton>Submit</FormSubmitButton>
-  </Form>
+  <Box width="300px">
+    <Form defaultValues={{ username: '', password: '', remember_password: false }} onSubmit={handleSubmit}>
+      <FormField label="Username" name="username" rules={{ required: 'Username is required' }}>
+        <TextField autoComplete="off" />
+      </FormField>
+      <FormField label="Password" name="password" rules={{ required: 'Password is required' }}>
+        <PasswordField autoComplete="off" />
+      </FormField>
+      <FormField name="remember_password">
+        <Checkbox>Remember me</Checkbox>
+      </FormField>
+      <FormButtons>
+        <FormResetButton>Reset</FormResetButton>
+        <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+      </FormButtons>
+    </Form>
+  </Box>
   ```
 </Example>
 
@@ -37,14 +48,24 @@ A form wrapper built on react-hook-form that provides validation, error handling
   </Box>
 
   ```jsx
-  <Form onSubmit={handleSubmit}>
-    <FormField name="email" rules={{ required: 'Email is required' }}>
-      <TextField />
-    </FormField>
-    <FormField name="age" rules={{ min: { value: 18, message: 'Must be 18+' } }}>
-      <TextField type="number" />
-    </FormField>
-  </Form>
+  <Box width="300px">
+    <Form onSubmit={values => console.log(values)}>
+      <FormField name="name" label="Name" rules={{ required: 'Name is required' }}>
+        <TextField />
+      </FormField>
+      <FormField
+        name="age"
+        label="Age"
+        rules={{ required: 'Age is required', validate: validateAge }}
+      >
+        <TextField />
+      </FormField>
+      <FormButtons>
+        <FormResetButton>Reset</FormResetButton>
+        <FormSubmitButton isDisabled={false}>Submit</FormSubmitButton>
+      </FormButtons>
+    </Form>
+  </Box>
   ```
 </Example>
 
@@ -56,20 +77,41 @@ A form wrapper built on react-hook-form that provides validation, error handling
   </Box>
 
   ```jsx
-  <Form defaultValues={{ items: ['Item 1'] }}>
-    <FormFieldArray name="items">
-      {({ fields, append, remove }) => (
-        <>
-          {fields.map((field, index) => (
-            <FormField key={field.id} name={`items.${index}`}>
-              <TextField />
-            </FormField>
-          ))}
-          <Button onPress={() => append('')}>Add Item</Button>
-        </>
-      )}
-    </FormFieldArray>
-  </Form>
+  <Box width="300px">
+    <Form defaultValues={{ items: [{ name: 'Item 1' }] }} onSubmit={handleSubmit}>
+      <FormFieldArray name="items" label="Items">
+        {({ fields, append, remove, control }) => {
+          return (
+            <Column gap>
+              {fields.map((field: any, index: number) => {
+                return (
+                  <Row key={field.id} gap>
+                    <FormController control={control} name={`items.${index}.name`}>
+                      {({ field }) => {
+                        return (
+                          <TextField
+                            name={`items.${index}.name`}
+                            value={field.value}
+                            onChange={field.onChange}
+                          />
+                        );
+                      }}
+                    </FormController>
+                    <Button onPress={() => remove(index)}>Remove</Button>
+                  </Row>
+                );
+              })}
+              <Button onPress={() => append({ name: `Item ${fields.length + 1}` })}>Add</Button>
+            </Column>
+          );
+        }}
+      </FormFieldArray>
+      <FormButtons>
+        <FormResetButton>Reset</FormResetButton>
+        <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+      </FormButtons>
+    </Form>
+  </Box>
   ```
 </Example>
 
