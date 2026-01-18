@@ -4,12 +4,12 @@ title: Usage Guide
 
 # Usage Guide
 
-This guide covers the core patterns and best practices for building UIs with zen.
+This guide covers the core patterns and best practices for building UIs with Zen.
 Understanding these concepts will help you write cleaner, more maintainable code.
 
 ## Component Categories
 
-zen components fall into two categories, each with a distinct purpose:
+Zen components fall into two categories, each with a distinct purpose:
 
 ### Layout Components
 
@@ -42,7 +42,7 @@ Examples: `Button`, `TextField`, `Select`, `Checkbox`, `Tabs`, etc.
 
 ## The Composition Pattern
 
-A key principle in zen is **separation of concerns**: interactive components handle behavior,
+A key principle in Zen is **separation of concerns**: interactive components handle behavior,
 layout components handle positioning.
 
 ### Positioning with Box
@@ -257,7 +257,7 @@ Use `Column` with consistent `gap` for form fields:
 
 ### Form with react-hook-form
 
-zen provides form integration components:
+Zen provides form integration components:
 
 ```jsx
 import { Form, FormField, FormSubmitButton } from '@umami/react-zen';
@@ -283,7 +283,7 @@ function MyForm() {
 
 ### Light and Dark Mode
 
-zen supports light and dark modes out of the box. Use `ZenProvider` to initialize:
+Zen supports light and dark modes out of the box. Use `ZenProvider` to initialize:
 
 ```jsx
 <ZenProvider colorScheme="system">
