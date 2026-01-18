@@ -88,6 +88,34 @@ A wrapper around SVG elements to help control size, color and rotation.
   ```
 </Example>
 
+## Tailwind SVG classes
+
+The Icon component supports all Tailwind SVG utilities including `fill-*`, `stroke-*`, and `stroke-{width}` classes.
+
+<Example direction="row" gap="4">
+  <Icon size="lg" className="fill-blue-500">
+    <Lucide.Heart />
+  </Icon>
+  <Icon size="lg" className="stroke-red-500 stroke-2">
+    <Lucide.Heart />
+  </Icon>
+  <Icon size="lg" className="fill-green-500 stroke-green-700 stroke-1">
+    <Lucide.Heart />
+  </Icon>
+
+  ```jsx
+  <Icon size="lg" className="fill-blue-500">
+    <Lucide.Heart />
+  </Icon>
+  <Icon size="lg" className="stroke-red-500 stroke-2">
+    <Lucide.Heart />
+  </Icon>
+  <Icon size="lg" className="fill-green-500 stroke-green-700 stroke-1">
+    <Lucide.Heart />
+  </Icon>
+  ```
+</Example>
+
 ## Component props
 
 <Example>
@@ -99,6 +127,7 @@ A wrapper around SVG elements to help control size, color and rotation.
       { name: 'strokeWidth', value: 'string', description: 'SVG stroke width' },
       { name: 'strokeColor', value: 'StrokeColor', description: 'SVG stroke color' },
       { name: 'fillColor', value: 'FillColor', description: 'SVG fill color' },
+      { name: 'className', value: 'string', description: 'Supports Tailwind SVG classes (fill-*, stroke-*, stroke-{width})' },
     ]}
   >
     <DataColumn id="name" label="Name" />

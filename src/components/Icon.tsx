@@ -36,28 +36,40 @@ export function Icon({
   // Convert color to string for mapping
   const colorStr = color === true ? 'true' : color;
 
-  const classes = cn(
-    'inline-flex items-center justify-center shrink-0',
-    sizeMap[size],
-    mapTextColor(colorStr),
-    className,
-  );
+  // Wrapper classes for positioning and rotation
+  const wrapperClasses = cn('inline-flex items-center justify-center shrink-0');
 
   // Map stroke/fill colors for SVG compatibility
   const strokeColorStr = strokeColor === true ? undefined : strokeColor;
   const fillColorStr = fillColor === true ? undefined : fillColor;
 
-  const styleProps: React.CSSProperties = {
+  const wrapperStyle: React.CSSProperties = {
     ...style,
     transform: rotate ? `rotate(${rotate}deg)` : undefined,
-    strokeWidth: strokeWidth,
-    ...(strokeColorStr && { stroke: getCssColorValue(strokeColorStr) }),
-    ...(fillColorStr && { fill: getCssColorValue(fillColorStr) }),
   };
 
+  // SVG-specific props to pass to the child
+  const svgProps: Record<string, any> = {
+    className: cn(sizeMap[size], mapTextColor(colorStr), className),
+  };
+
+  if (strokeWidth) {
+    svgProps.strokeWidth = strokeWidth;
+  }
+  if (strokeColorStr) {
+    svgProps.stroke = getCssColorValue(strokeColorStr);
+  }
+  if (fillColorStr) {
+    svgProps.fill = getCssColorValue(fillColorStr);
+  }
+
+  // Clone the child element to pass SVG props
+  const clonedChild =
+    isValidElement(children) ? cloneElement(children as ReactElement, svgProps) : children;
+
   return (
-    <span {...props} className={classes} style={styleProps}>
-      {children}
+    <span {...props} className={wrapperClasses} style={wrapperStyle}>
+      {clonedChild}
     </span>
   );
 }
