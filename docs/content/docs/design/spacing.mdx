@@ -7,25 +7,55 @@ title: Spacing
 Spacing defines values that are used in `margin`, `padding` and `gap` properties. The spacing scale uses Tailwind's native values.
 
 <Example>
-  <SpacingExample />
+  <Column gap="6">
+    <Column gap="2">
+      <Label>Padding</Label>
+      <Box border padding="4" borderRadius>
+        <Text>Box with padding="4"</Text>
+      </Box>
+    </Column>
+    <Column gap="2">
+      <Label>Margin</Label>
+      <Box border borderRadius>
+        <Box backgroundColor="primary" padding="2" margin="4">
+          <Text color="primary">Box with margin="4"</Text>
+        </Box>
+      </Box>
+    </Column>
+    <Column gap="2">
+      <Label>Gap</Label>
+      <Row gap="4">
+        <ExampleBox />
+        <ExampleBox />
+        <ExampleBox />
+      </Row>
+    </Column>
+  </Column>
 
   ```jsx
-  // Padding
-  <Box padding="4">Content with padding</Box>
-  <Box paddingX="6" paddingY="2">Asymmetric padding</Box>
-
-  // Margin
-  <Box margin="4">Content with margin</Box>
-  <Box marginTop="8">Top margin only</Box>
-
-  // Gap (for flex/grid containers)
-  <Row gap="3">
-    <div>Item 1</div>
-    <div>Item 2</div>
-  </Row>
   <Column gap="6">
-    <div>Item 1</div>
-    <div>Item 2</div>
+    <Column gap="2">
+      <Label>Padding</Label>
+      <Box border padding="4" borderRadius>
+        <Text>Box with padding="4"</Text>
+      </Box>
+    </Column>
+    <Column gap="2">
+      <Label>Margin</Label>
+      <Box border borderRadius>
+        <Box backgroundColor="primary" padding="2" margin="4">
+          <Text color="primary">Box with margin="4"</Text>
+        </Box>
+      </Box>
+    </Column>
+    <Column gap="2">
+      <Label>Gap</Label>
+      <Row gap="4">
+        <ExampleBox />
+        <ExampleBox />
+        <ExampleBox />
+      </Row>
+    </Column>
   </Column>
   ```
 </Example>

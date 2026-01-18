@@ -16,7 +16,6 @@ export { SearchDelayExample } from './SearchDelayExample';
 export { SelectSearchExample } from './SelectSearchExample';
 export { SelectValueExample } from './SelectValueExample';
 export { SidebarExample } from './SidebarExample';
-export { SpacingExample } from './SpacingExample';
 export { ThemeButtonExample } from './ThemeButtonExample';
 export {
   ToastActionExample,
