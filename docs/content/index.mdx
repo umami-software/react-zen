@@ -3,12 +3,13 @@ title: zen
 ---
 
 <Box marginY={{ base: '8', md: '16' }}>
-  <Column alignItems="center" gap={{ base: '6', md: '12' }}>
+  <Column alignItems="center" gap={{ base: '6', md: '12' }} paddingTop="16">
     <Heading size={{ base: '2xl', sm: '3xl', md: '5xl' }} weight="bold" align="center">
       The fastest way to build React UI
     </Heading>
-    <Text size={{ base: 'base', sm: 'lg' }} color="muted" align="center" style={{ maxWidth: '400px' }}>
-      Build beautiful, accessible user interfaces with ease. Built on top of React Aria and Tailwind CSS.
+    <Text size={{ base: 'base', sm: 'lg' }} color="muted" align="center">
+      Zen lets you build beautiful, accessible user interfaces with ease.<br/>
+      Built on top of React Aria and Tailwind CSS.
     </Text>
     <Row gap="3" marginTop="4" wrap justifyContent="center">
       <Button variant="primary" render={<a href="/docs">Get Started</a>} />
@@ -33,7 +34,7 @@ title: zen
         <Button variant="quiet">Quiet</Button>
         <Button variant="danger">Danger</Button>
       </Row>
-      <Row gap="2" wrap>
+      <Row gap="2" alignItems="center" wrap>
         <Button size="xs">XS</Button>
         <Button size="sm">SM</Button>
         <Button size="md">MD</Button>
@@ -260,24 +261,33 @@ title: zen
   </Box>
 </Box>
 
-<Grid columns={{ base: 1, md: 3 }} gap="8" marginY="16" style={{ maxWidth: '500px', margin: '4rem auto' }}>
-  <Column gap="3">
-    <Heading size="lg">Props-driven</Heading>
-    <Text color="muted">
-      No CSS files. No class names. Build layouts and style components entirely through props.
-    </Text>
-  </Column>
-  <Column gap="3">
-    <Heading size="lg">Accessible</Heading>
-    <Text color="muted">
-      Built on React Aria. Keyboard navigation, focus management, and ARIA attributes included.
-    </Text>
-  </Column>
-  <Column gap="3">
-    <Heading size="lg">Themeable</Heading>
-    <Text color="muted">
-      Light and dark modes out of the box. Customize everything with CSS variables.
-    </Text>
-  </Column>
-</Grid>
+<Row gap="6" marginY="16" wrap="wrap">
+  <Box padding="6" border borderRadius="lg" backgroundColor="surface-base" flexGrow="1" flexBasis="0" minWidth="250px">
+    <Column gap="3">
+      <Icon size="xl" color="muted"><Lucide.Sliders /></Icon>
+      <Heading size="lg">Props-driven</Heading>
+      <Text color="muted">
+        No CSS files. No class names. Build layouts and style components entirely through props.
+      </Text>
+    </Column>
+  </Box>
+  <Box padding="6" border borderRadius="lg" backgroundColor="surface-base" flexGrow="1" flexBasis="0" minWidth="250px">
+    <Column gap="3">
+      <Icon size="xl" color="muted"><Lucide.Accessibility /></Icon>
+      <Heading size="lg">Accessible</Heading>
+      <Text color="muted">
+        Built on React Aria. Keyboard navigation, focus management, and ARIA attributes included.
+      </Text>
+    </Column>
+  </Box>
+  <Box padding="6" border borderRadius="lg" backgroundColor="surface-base" flexGrow="1" flexBasis="0" minWidth="250px">
+    <Column gap="3">
+      <Icon size="xl" color="muted"><Lucide.Palette /></Icon>
+      <Heading size="lg">Themeable</Heading>
+      <Text color="muted">
+        Light and dark modes out of the box. Customize everything with CSS variables.
+      </Text>
+    </Column>
+  </Box>
+</Row>
 
