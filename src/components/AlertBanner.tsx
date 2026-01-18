@@ -54,7 +54,7 @@ export function AlertBanner({
           {variant ? createElement(AlertIcons[variant]) : icon}
         </Icon>
       )}
-      <Column flexGrow={1} gap="1">
+      <Column flexGrow={1}>
         {title && <Text weight="semibold">{title}</Text>}
         {description && <Text>{description}</Text>}
       </Column>
