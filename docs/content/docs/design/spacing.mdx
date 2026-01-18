@@ -10,7 +10,23 @@ Spacing defines values that are used in `margin`, `padding` and `gap` properties
   <SpacingExample />
 
   ```jsx
-  <SpacingExample />
+  // Padding
+  <Box padding="4">Content with padding</Box>
+  <Box paddingX="6" paddingY="2">Asymmetric padding</Box>
+
+  // Margin
+  <Box margin="4">Content with margin</Box>
+  <Box marginTop="8">Top margin only</Box>
+
+  // Gap (for flex/grid containers)
+  <Row gap="3">
+    <div>Item 1</div>
+    <div>Item 2</div>
+  </Row>
+  <Column gap="6">
+    <div>Item 1</div>
+    <div>Item 2</div>
+  </Column>
   ```
 </Example>
 
