@@ -8,7 +8,6 @@ import {
 import { useFieldId } from '@/components/hooks/useFieldId';
 import { Column } from '../Column';
 import { Label } from '../Label';
-import { cn } from '../lib/tailwind';
 import { Text } from '../Text';
 import { FormController } from './FormController';
 
