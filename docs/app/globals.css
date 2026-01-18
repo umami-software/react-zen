@@ -19,16 +19,23 @@ html {
 }
 
 /* Override Nextra text size variables to use 14px base */
-/* Override theme font variables with Inter and JetBrains Mono */
 :root {
   --x-text-xs: 0.875rem;
   --x-text-sm: 1rem;
   --x-text-base: 1rem;
-  --font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-family-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
+/* Font variables must be on body where Next.js font classes are applied */
 body {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-family: var(--font-family);
   color: var(--text-primary);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-family-mono);
 }
