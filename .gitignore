@@ -18,6 +18,7 @@ node_modules
 /build
 /types
 /styles.css
+/styles.full.css
 
 # misc
 .DS_Store
