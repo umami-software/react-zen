@@ -38,6 +38,54 @@ A form wrapper built on react-hook-form that provides validation, error handling
   <Box width="300px">
     <FormInputsExample />
   </Box>
+
+  ```jsx
+  <Form defaultValues={defaultValues} onSubmit={handleSubmit}>
+    <FormField name="name" label="Name">
+      <TextField />
+    </FormField>
+    <FormField name="bio" label="Bio">
+      <TextField asTextArea />
+    </FormField>
+    <FormField name="password" label="Password">
+      <PasswordField />
+    </FormField>
+    <FormField name="search" label="Search">
+      <SearchField />
+    </FormField>
+    <FormField name="select" label="Select">
+      <Select items={['One', 'Two', 'Three']} />
+    </FormField>
+    <FormField name="checkbox" label="Checkbox">
+      <Checkbox>Checkbox</Checkbox>
+    </FormField>
+    <FormField name="radio" label="Radio">
+      <RadioGroup>
+        <Radio value="one">Option one</Radio>
+        <Radio value="two">Option two</Radio>
+      </RadioGroup>
+    </FormField>
+    <FormField name="toggle" label="Toggle">
+      <Toggle>B</Toggle>
+    </FormField>
+    <FormField name="switch" label="Switch">
+      <Switch />
+    </FormField>
+    <FormField name="slider" label="Slider">
+      <Slider />
+    </FormField>
+    <FormField name="list" label="List">
+      <List selectionMode="multiple">
+        <ListItem id="one">One</ListItem>
+        <ListItem id="two">Two</ListItem>
+      </List>
+    </FormField>
+    <FormButtons>
+      <FormResetButton>Reset</FormResetButton>
+      <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+    </FormButtons>
+  </Form>
+  ```
 </Example>
 
 ## Validations
