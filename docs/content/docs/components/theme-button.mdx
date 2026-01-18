@@ -8,6 +8,10 @@ A button that toggles the page theme between light and dark.
 
 <Example>
   <ThemeButton variant="outline" />
+
+  ```jsx
+  <ThemeButton variant="outline" />
+  ```
 </Example>
 
 ## Local target
@@ -16,6 +20,14 @@ Use the `target` prop to scope theme changes to a specific container instead of 
 
 <Example backgroundColor="transparent">
   <ThemeButtonExample />
+
+  ```jsx
+  const ref = useRef(null);
+
+  <Box ref={ref}>
+    <ThemeButton target={ref} />
+  </Box>
+  ```
 </Example>
 
 ## Component props

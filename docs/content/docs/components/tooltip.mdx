@@ -11,62 +11,81 @@ A tooltip displays a description of an element on hover or focus.
     <Button variant="secondary">Hover me</Button>
     <Tooltip>Hello</Tooltip>
   </TooltipTrigger>
+
+  ```jsx
+  <TooltipTrigger>
+    <Button>Hover me</Button>
+    <Tooltip>Hello</Tooltip>
+  </TooltipTrigger>
+  ```
 </Example>
 
 ## Placement
 
 <Example>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">{`Top`}</Button>
-    <Tooltip placement="top">{`Hello`}</Tooltip>
+    <Button variant="secondary">Top</Button>
+    <Tooltip placement="top">Hello</Tooltip>
   </TooltipTrigger>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">{`Left`}</Button>
-    <Tooltip placement="left">{`Hello`}</Tooltip>
+    <Button variant="secondary">Left</Button>
+    <Tooltip placement="left">Hello</Tooltip>
   </TooltipTrigger>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">{`Right`}</Button>
-    <Tooltip placement="right">{`Hello`}</Tooltip>
+    <Button variant="secondary">Right</Button>
+    <Tooltip placement="right">Hello</Tooltip>
   </TooltipTrigger>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">{`Bottom`}</Button>
-    <Tooltip placement="bottom">{`Hello`}</Tooltip>
+    <Button variant="secondary">Bottom</Button>
+    <Tooltip placement="bottom">Hello</Tooltip>
   </TooltipTrigger>
+
+  ```jsx
+  <TooltipTrigger>
+    <Button>Top</Button>
+    <Tooltip placement="top">Hello</Tooltip>
+  </TooltipTrigger>
+  ```
 </Example>
 
 ## With arrow
 
 <Example>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">{`Top`}</Button>
-    <Tooltip placement="top" showArrow={true}>
-      {`Hello`}
-    </Tooltip>
+    <Button variant="secondary">Top</Button>
+    <Tooltip placement="top" showArrow>Hello</Tooltip>
   </TooltipTrigger>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">{`Left`}</Button>
-    <Tooltip placement="left" showArrow={true}>
-      {`Hello`}
-    </Tooltip>
+    <Button variant="secondary">Left</Button>
+    <Tooltip placement="left" showArrow>Hello</Tooltip>
   </TooltipTrigger>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">{`Right`}</Button>
-    <Tooltip placement="right" showArrow={true}>
-      {`Hello`}
-    </Tooltip>
+    <Button variant="secondary">Right</Button>
+    <Tooltip placement="right" showArrow>Hello</Tooltip>
   </TooltipTrigger>
   <TooltipTrigger delay={0}>
-    <Button variant="secondary">{`Bottom`}</Button>
-    <Tooltip placement="bottom" showArrow={true}>
-      {`Hello`}
-    </Tooltip>
+    <Button variant="secondary">Bottom</Button>
+    <Tooltip placement="bottom" showArrow>Hello</Tooltip>
   </TooltipTrigger>
+
+  ```jsx
+  <TooltipTrigger>
+    <Button>Hover me</Button>
+    <Tooltip placement="top" showArrow>Hello</Tooltip>
+  </TooltipTrigger>
+  ```
 </Example>
 
 ## Floating
 
 <Example>
   <FloatingTooltipExample />
+
+  ```jsx
+  <FloatingTooltip label="Floating tooltip">
+    <Button>Hover me</Button>
+  </FloatingTooltip>
+  ```
 </Example>
 
 ## Component props

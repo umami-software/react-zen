@@ -14,6 +14,14 @@ A menu displays a list of actions or options that a user can choose.
     <MenuItem>Four</MenuItem>
     <MenuItem>Five</MenuItem>
   </Menu>
+
+  ```jsx
+  <Menu>
+    <MenuItem>One</MenuItem>
+    <MenuItem>Two</MenuItem>
+    <MenuItem>Three</MenuItem>
+  </Menu>
+  ```
 </Example>
 
 ## Separators
@@ -28,6 +36,15 @@ A menu displays a list of actions or options that a user can choose.
     <MenuSeparator />
     <MenuItem>Five</MenuItem>
   </Menu>
+
+  ```jsx
+  <Menu>
+    <MenuItem>One</MenuItem>
+    <MenuItem>Two</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Three</MenuItem>
+  </Menu>
+  ```
 </Example>
 
 ## Sections
@@ -44,6 +61,18 @@ A menu displays a list of actions or options that a user can choose.
       <MenuItem>Five</MenuItem>
     </MenuSection>
   </Menu>
+
+  ```jsx
+  <Menu>
+    <MenuSection title="Introduction">
+      <MenuItem>One</MenuItem>
+      <MenuItem>Two</MenuItem>
+    </MenuSection>
+    <MenuSection title="Summary">
+      <MenuItem>Three</MenuItem>
+    </MenuSection>
+  </Menu>
+  ```
 </Example>
 
 ## Single select
@@ -56,6 +85,14 @@ A menu displays a list of actions or options that a user can choose.
     <MenuItem>Four</MenuItem>
     <MenuItem>Five</MenuItem>
   </Menu>
+
+  ```jsx
+  <Menu selectionMode="single">
+    <MenuItem>One</MenuItem>
+    <MenuItem>Two</MenuItem>
+    <MenuItem>Three</MenuItem>
+  </Menu>
+  ```
 </Example>
 
 ## Multiple select
@@ -68,6 +105,14 @@ A menu displays a list of actions or options that a user can choose.
     <MenuItem>Four</MenuItem>
     <MenuItem>Five</MenuItem>
   </Menu>
+
+  ```jsx
+  <Menu selectionMode="multiple">
+    <MenuItem>One</MenuItem>
+    <MenuItem>Two</MenuItem>
+    <MenuItem>Three</MenuItem>
+  </Menu>
+  ```
 </Example>
 
 ## Preselected
@@ -80,6 +125,14 @@ A menu displays a list of actions or options that a user can choose.
     <MenuItem id="four">Four</MenuItem>
     <MenuItem id="five">Five</MenuItem>
   </Menu>
+
+  ```jsx
+  <Menu selectionMode="multiple" defaultSelectedKeys={['three', 'five']}>
+    <MenuItem id="one">One</MenuItem>
+    <MenuItem id="two">Two</MenuItem>
+    <MenuItem id="three">Three</MenuItem>
+  </Menu>
+  ```
 </Example>
 
 ## Submenu
@@ -91,9 +144,7 @@ A menu displays a list of actions or options that a user can choose.
     <MenuItem id="three">Three</MenuItem>
     <MenuItem id="four">Four</MenuItem>
     <SubMenuTrigger>
-      <MenuItem id="five" showSubMenuIcon>
-        {'Five'}
-      </MenuItem>
+      <MenuItem id="five" showSubMenuIcon>Five</MenuItem>
       <Popover>
         <Menu>
           <MenuItem id="six">Six</MenuItem>
@@ -103,6 +154,21 @@ A menu displays a list of actions or options that a user can choose.
       </Popover>
     </SubMenuTrigger>
   </Menu>
+
+  ```jsx
+  <Menu>
+    <MenuItem>One</MenuItem>
+    <SubMenuTrigger>
+      <MenuItem showSubMenuIcon>More</MenuItem>
+      <Popover>
+        <Menu>
+          <MenuItem>Sub item 1</MenuItem>
+          <MenuItem>Sub item 2</MenuItem>
+        </Menu>
+      </Popover>
+    </SubMenuTrigger>
+  </Menu>
+  ```
 </Example>
 
 ## Component props

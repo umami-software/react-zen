@@ -10,6 +10,15 @@ A form wrapper built on react-hook-form that provides validation, error handling
   <Box width="300px">
     <FormExample />
   </Box>
+
+  ```jsx
+  <Form onSubmit={(data) => console.log(data)}>
+    <FormField name="email" label="Email" rules={{ required: true }}>
+      <TextField />
+    </FormField>
+    <FormSubmitButton>Submit</FormSubmitButton>
+  </Form>
+  ```
 </Example>
 
 ## All form inputs
@@ -26,6 +35,17 @@ A form wrapper built on react-hook-form that provides validation, error handling
   <Box width="300px">
     <FormValidationExample />
   </Box>
+
+  ```jsx
+  <Form onSubmit={handleSubmit}>
+    <FormField name="email" rules={{ required: 'Email is required' }}>
+      <TextField />
+    </FormField>
+    <FormField name="age" rules={{ min: { value: 18, message: 'Must be 18+' } }}>
+      <TextField type="number" />
+    </FormField>
+  </Form>
+  ```
 </Example>
 
 ## Array fields
@@ -34,6 +54,23 @@ A form wrapper built on react-hook-form that provides validation, error handling
   <Box width="300px">
     <FormFieldArrayExample />
   </Box>
+
+  ```jsx
+  <Form defaultValues={{ items: ['Item 1'] }}>
+    <FormFieldArray name="items">
+      {({ fields, append, remove }) => (
+        <>
+          {fields.map((field, index) => (
+            <FormField key={field.id} name={`items.${index}`}>
+              <TextField />
+            </FormField>
+          ))}
+          <Button onPress={() => append('')}>Add Item</Button>
+        </>
+      )}
+    </FormFieldArray>
+  </Form>
+  ```
 </Example>
 
 ## Component props

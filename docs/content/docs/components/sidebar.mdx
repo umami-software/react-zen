@@ -8,14 +8,34 @@ A collapsible navigation panel typically used for app-level navigation. Supports
 
 <Example>
   <SidebarExample />
+
+  ```jsx
+  <Sidebar>
+    <SidebarItem icon={<HomeIcon />} label="Home" isSelected />
+    <SidebarItem icon={<SettingsIcon />} label="Settings" />
+    <SidebarItem icon={<UserIcon />} label="Profile" />
+  </Sidebar>
+  ```
 </Example>
 
 <Example>
   <SidebarExample name="no border" border="none" />
+
+  ```jsx
+  <Sidebar border="none">
+    <SidebarItem icon={<HomeIcon />} label="Home" />
+  </Sidebar>
+  ```
 </Example>
 
 <Example>
   <SidebarExample name="mute items" muteItems={true} />
+
+  ```jsx
+  <Sidebar muteItems>
+    <SidebarItem icon={<HomeIcon />} label="Home" />
+  </Sidebar>
+  ```
 </Example>
 
 ## Component props

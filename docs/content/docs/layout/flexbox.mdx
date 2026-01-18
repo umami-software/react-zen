@@ -23,6 +23,20 @@ A flexible layout component using CSS Flexbox for one-dimensional arrangements. 
       <ExampleBox />
     </Flexbox>
   </Column>
+
+  ```jsx
+  <Flexbox direction="row" gap="3">
+    <Box>Item 1</Box>
+    <Box>Item 2</Box>
+    <Box>Item 3</Box>
+  </Flexbox>
+
+  <Flexbox direction="column" gap="3">
+    <Box>Item 1</Box>
+    <Box>Item 2</Box>
+    <Box>Item 3</Box>
+  </Flexbox>
+  ```
 </Example>
 
 There are convenience components `Row` and `Column` which render a `Flexbox` with the direction pre-selected. You should opt to use them

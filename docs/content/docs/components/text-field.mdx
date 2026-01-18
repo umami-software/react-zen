@@ -8,30 +8,50 @@ A text field allows a user to enter a plain text value with a keyboard.
 
 <Example>
   <TextField />
+
+  ```jsx
+  <TextField />
+  ```
 </Example>
 
 ## Placeholder text
 
 <Example>
   <TextField placeholder="Enter some text" />
+
+  ```jsx
+  <TextField placeholder="Enter some text" />
+  ```
 </Example>
 
 ## Disabled
 
 <Example>
   <TextField defaultValue="Disabled" isDisabled />
+
+  ```jsx
+  <TextField defaultValue="Disabled" isDisabled />
+  ```
 </Example>
 
 ## Read only
 
 <Example>
   <TextField defaultValue="Read only" isReadOnly />
+
+  ```jsx
+  <TextField defaultValue="Read only" isReadOnly />
+  ```
 </Example>
 
 ## As textarea
 
 <Example>
   <TextField placeholder="Enter some text." asTextArea />
+
+  ```jsx
+  <TextField placeholder="Enter some text." asTextArea />
+  ```
 </Example>
 
 ## Copy button
@@ -45,6 +65,11 @@ A text field allows a user to enter a plain text value with a keyboard.
     asTextArea
     allowCopy
   />
+
+  ```jsx
+  <TextField value="Text" allowCopy />
+  <TextField value="Text" asTextArea allowCopy />
+  ```
 </Example>
 
 ## Quiet
@@ -54,6 +79,10 @@ A text field allows a user to enter a plain text value with a keyboard.
   <TextField placeholder="Enter some text." variant="quiet" style={{ fontSize: '2rem' }} />
   <TextField placeholder="Enter some text." variant="quiet" />
   </Column>
+
+  ```jsx
+  <TextField placeholder="Enter some text." variant="quiet" />
+  ```
 </Example>
 
 ## Component props

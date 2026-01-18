@@ -9,6 +9,19 @@ to acknowledge.
 
 <Example>
   <AlertDialogExample />
+
+  ```jsx
+  <DialogTrigger>
+    <Button>Delete Account</Button>
+    <AlertDialog
+      title="Delete account?"
+      description="This action cannot be undone."
+      isDanger
+      confirmLabel="Delete"
+      onConfirm={() => handleDelete()}
+    />
+  </DialogTrigger>
+  ```
 </Example>
 
 ## Component props

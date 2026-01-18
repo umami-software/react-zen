@@ -8,6 +8,10 @@ A button allows a user to perform an action, with mouse, touch, and keyboard int
 
 <Example>
   <Button variant="primary">Button</Button>
+
+  ```jsx
+  <Button variant="primary">Button</Button>
+  ```
 </Example>
 
 ## Variants
@@ -19,6 +23,15 @@ A button allows a user to perform an action, with mouse, touch, and keyboard int
   <Button variant="quiet">Quiet</Button>
   <Button variant="danger">Danger</Button>
   <Button variant="zero">Zero</Button>
+
+  ```jsx
+  <Button variant="primary">Primary</Button>
+  <Button>Default</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="quiet">Quiet</Button>
+  <Button variant="danger">Danger</Button>
+  <Button variant="zero">Zero</Button>
+  ```
 </Example>
 
 ## Sizes
@@ -28,29 +41,33 @@ A button allows a user to perform an action, with mouse, touch, and keyboard int
   <Button size="md">Medium</Button>
   <Button size="lg">Large</Button>
   <Button size="xl">X-Large</Button>
+
+  ```jsx
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+  <Button size="xl">X-Large</Button>
+  ```
 </Example>
 
 ## Disabled
 
 <Example direction="row">
-  <Button isDisabled variant="primary">
-    {'Primary'}
-  </Button>
-  <Button isDisabled>
-    {'Default'}
-  </Button>
-  <Button isDisabled variant="outline">
-    {'Outline'}
-  </Button>
-  <Button isDisabled variant="quiet">
-    {'Quiet'}
-  </Button>
-  <Button isDisabled variant="danger">
-    {'Danger'}
-  </Button>
-  <Button isDisabled variant="zero">
-    {'Zero'}
-  </Button>
+  <Button isDisabled variant="primary">Primary</Button>
+  <Button isDisabled>Default</Button>
+  <Button isDisabled variant="outline">Outline</Button>
+  <Button isDisabled variant="quiet">Quiet</Button>
+  <Button isDisabled variant="danger">Danger</Button>
+  <Button isDisabled variant="zero">Zero</Button>
+
+  ```jsx
+  <Button isDisabled variant="primary">Primary</Button>
+  <Button isDisabled>Default</Button>
+  <Button isDisabled variant="outline">Outline</Button>
+  <Button isDisabled variant="quiet">Quiet</Button>
+  <Button isDisabled variant="danger">Danger</Button>
+  <Button isDisabled variant="zero">Zero</Button>
+  ```
 </Example>
 
 ## Icon
@@ -86,6 +103,14 @@ A button allows a user to perform an action, with mouse, touch, and keyboard int
       <ExampleIcons.File />
     </Icon>
   </Button>
+
+  ```jsx
+  <Button variant="primary">
+    <Icon size="sm">
+      <FileIcon />
+    </Icon>
+  </Button>
+  ```
 </Example>
 
 ## Render as link
@@ -94,6 +119,12 @@ A button allows a user to perform an action, with mouse, touch, and keyboard int
   <Button render={<a href="#" />}>
     Button as a link
   </Button>
+
+  ```jsx
+  <Button render={<a href="#" />}>
+    Button as a link
+  </Button>
+  ```
 </Example>
 
 ## Component props

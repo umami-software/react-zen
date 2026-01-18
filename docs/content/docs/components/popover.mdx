@@ -19,6 +19,21 @@ A popover is an overlay element positioned relative to a trigger.
       </Dialog>
     </Popover>
   </DialogTrigger>
+
+  ```jsx
+  <DialogTrigger>
+    <Button variant="outline">Settings</Button>
+    <Popover>
+      <Dialog>
+        <Column gap="3">
+          <Switch defaultSelected>Wi-Fi</Switch>
+          <Switch defaultSelected>Bluetooth</Switch>
+          <Switch>Mute</Switch>
+        </Column>
+      </Dialog>
+    </Popover>
+  </DialogTrigger>
+  ```
 </Example>
 
 ## Component props

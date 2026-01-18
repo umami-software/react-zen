@@ -37,6 +37,23 @@ directional navigation keys, and optionally supports row selection and sorting.
       </TableRow>
     </TableBody>
   </Table>
+
+  ```jsx
+  <Table>
+    <TableHeader>
+      <TableColumn>Name</TableColumn>
+      <TableColumn>Email</TableColumn>
+      <TableColumn>Date created</TableColumn>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Bob</TableCell>
+        <TableCell>bob@aol.com</TableCell>
+        <TableCell>5/5/2020</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+  ```
 </Example>
 
 ## Selection
@@ -86,11 +103,26 @@ directional navigation keys, and optionally supports row selection and sorting.
       </TableRow>
     </TableBody>
   </Table>
+
+  ```jsx
+  <Table selectionMode="multiple">
+    <TableHeader>
+      <TableColumn><Checkbox slot="selection" /></TableColumn>
+      <TableColumn>Name</TableColumn>
+      <TableColumn>Email</TableColumn>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell><Checkbox slot="selection" /></TableCell>
+        <TableCell>Bob</TableCell>
+        <TableCell>bob@aol.com</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+  ```
 </Example>
 
 ## Alignment
-
-{
 
 <Example>
   <Table>
@@ -112,8 +144,24 @@ directional navigation keys, and optionally supports row selection and sorting.
       </TableRow>
     </TableBody>
   </Table>
+
+  ```jsx
+  <Table>
+    <TableHeader>
+      <TableColumn align="start">Name</TableColumn>
+      <TableColumn align="center">Type</TableColumn>
+      <TableColumn align="end">Date</TableColumn>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell align="start">Games</TableCell>
+        <TableCell align="center">Folder</TableCell>
+        <TableCell align="end">6/7/2020</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+  ```
 </Example>
-}
 
 ## Component props
 

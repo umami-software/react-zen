@@ -8,24 +8,51 @@ A succinct message that is displayed temporarily.
 
 <Example>
   <ToastExample />
+
+  ```jsx
+  import { useToast } from '@umami/react-zen';
+
+  function MyComponent() {
+    const { toast } = useToast();
+    return <Button onPress={() => toast('Message sent!')}>Show Toast</Button>;
+  }
+  ```
 </Example>
 
 ## With title
 
 <Example>
   <ToastTitleExample />
+
+  ```jsx
+  toast({ title: 'Success', message: 'Your changes have been saved.' });
+  ```
 </Example>
 
 ## With action
 
 <Example>
   <ToastActionExample />
+
+  ```jsx
+  toast({
+    message: 'Email archived',
+    action: <Button variant="quiet" size="sm">Undo</Button>,
+    onAction: () => console.log('Undo clicked'),
+  });
+  ```
 </Example>
 
 ## Variants
 
 <Example>
   <ToastVariantsExample />
+
+  ```jsx
+  toast({ message: 'Default message' });
+  toast({ message: 'Success!', variant: 'success' });
+  toast({ message: 'Error occurred', variant: 'error' });
+  ```
 </Example>
 
 ## Component props

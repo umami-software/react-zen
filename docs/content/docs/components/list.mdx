@@ -14,6 +14,14 @@ A list displays a collection of items and allows a user to select one or more of
     <ListItem>Four</ListItem>
     <ListItem>Five</ListItem>
   </List>
+
+  ```jsx
+  <List>
+    <ListItem>One</ListItem>
+    <ListItem>Two</ListItem>
+    <ListItem>Three</ListItem>
+  </List>
+  ```
 </Example>
 
 ## Separators
@@ -28,6 +36,15 @@ A list displays a collection of items and allows a user to select one or more of
     <ListSeparator />
     <ListItem>Five</ListItem>
   </List>
+
+  ```jsx
+  <List>
+    <ListItem>One</ListItem>
+    <ListItem>Two</ListItem>
+    <ListSeparator />
+    <ListItem>Three</ListItem>
+  </List>
+  ```
 </Example>
 
 ## Sections
@@ -44,6 +61,18 @@ A list displays a collection of items and allows a user to select one or more of
       <ListItem>Five</ListItem>
     </ListSection>
   </List>
+
+  ```jsx
+  <List>
+    <ListSection title="Introduction">
+      <ListItem>One</ListItem>
+      <ListItem>Two</ListItem>
+    </ListSection>
+    <ListSection title="Summary">
+      <ListItem>Three</ListItem>
+    </ListSection>
+  </List>
+  ```
 </Example>
 
 ## Single select
@@ -56,6 +85,14 @@ A list displays a collection of items and allows a user to select one or more of
     <ListItem>Four</ListItem>
     <ListItem>Five</ListItem>
   </List>
+
+  ```jsx
+  <List selectionMode="single">
+    <ListItem>One</ListItem>
+    <ListItem>Two</ListItem>
+    <ListItem>Three</ListItem>
+  </List>
+  ```
 </Example>
 
 ## Multiple select
@@ -68,6 +105,14 @@ A list displays a collection of items and allows a user to select one or more of
     <ListItem>Four</ListItem>
     <ListItem>Five</ListItem>
   </List>
+
+  ```jsx
+  <List selectionMode="multiple">
+    <ListItem>One</ListItem>
+    <ListItem>Two</ListItem>
+    <ListItem>Three</ListItem>
+  </List>
+  ```
 </Example>
 
 ## Preselected
@@ -80,6 +125,14 @@ A list displays a collection of items and allows a user to select one or more of
     <ListItem id="four">Four</ListItem>
     <ListItem id="five">Five</ListItem>
   </List>
+
+  ```jsx
+  <List selectionMode="multiple" defaultSelectedKeys={['three', 'five']}>
+    <ListItem id="one">One</ListItem>
+    <ListItem id="two">Two</ListItem>
+    <ListItem id="three">Three</ListItem>
+  </List>
+  ```
 </Example>
 
 ## Component props

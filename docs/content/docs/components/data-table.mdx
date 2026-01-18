@@ -32,6 +32,14 @@ A declarative table component for displaying structured data with minimal config
       </MenuTrigger>
     </DataColumn>
   </DataTable>
+
+  ```jsx
+  <DataTable data={[{ id: 1, name: 'Bob', title: 'CEO' }]}>
+    <DataColumn id="id" label="ID" />
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="title" label="Title" />
+  </DataTable>
+  ```
 </Example>
 
 ## Column widths
@@ -62,6 +70,14 @@ A declarative table component for displaying structured data with minimal config
       </MenuTrigger>
     </DataColumn>
   </DataTable>
+
+  ```jsx
+  <DataTable data={data}>
+    <DataColumn id="id" label="ID" width="50px" />
+    <DataColumn id="name" label="Name" width="2fr" />
+    <DataColumn id="title" label="Title" />
+  </DataTable>
+  ```
 </Example>
 
 ## As cards
@@ -80,6 +96,14 @@ A declarative table component for displaying structured data with minimal config
     <DataColumn id="title" label="Title" />
     <DataColumn id="email" label="Email" />
   </DataTable>
+
+  ```jsx
+  <DataTable data={data} displayMode="cards">
+    <DataColumn id="id" label="ID" />
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="title" label="Title" />
+  </DataTable>
+  ```
 </Example>
 
 ## Component props
