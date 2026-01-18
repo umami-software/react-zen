@@ -50,7 +50,9 @@ export function AlertBanner({
       className={cn(alertBanner({ variant }), align && alignClasses[align], className)}
     >
       {(icon || variant) && (
-        <Icon size="sm">{variant ? createElement(AlertIcons[variant]) : icon}</Icon>
+        <Icon size="sm" className="h-6">
+          {variant ? createElement(AlertIcons[variant]) : icon}
+        </Icon>
       )}
       <Column flexGrow={1} gap="1">
         {title && <Text weight="semibold">{title}</Text>}
@@ -58,7 +60,7 @@ export function AlertBanner({
       </Column>
       {children}
       {allowClose && (
-        <Icon className="cursor-pointer opacity-60 hover:opacity-100" onClick={onClose}>
+        <Icon className="cursor-pointer opacity-60 hover:opacity-100 h-6" onClick={onClose}>
           <X />
         </Icon>
       )}

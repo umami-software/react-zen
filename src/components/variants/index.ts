@@ -309,7 +309,7 @@ export type HeadingVariants = VariantProps<typeof heading>;
 
 // Alert banner variants
 export const alertBanner = tv({
-  base: ['flex items-center gap-3 px-4 py-3 rounded-lg', 'text-base'],
+  base: ['w-full flex items-start gap-3 px-4 py-3 rounded-lg', 'text-base'],
   variants: {
     variant: {
       info: 'bg-status-info-bg text-status-info-text',
@@ -361,8 +361,8 @@ export const toast = tv({
   variants: {
     variant: {
       default: '',
-      success: 'border-l-4 border-l-status-success',
-      error: 'border-l-4 border-l-status-error',
+      success: 'bg-status-success-bg text-status-success-text',
+      error: 'bg-status-error-bg text-status-error-text',
     },
   },
 });

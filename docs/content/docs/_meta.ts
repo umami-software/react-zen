@@ -13,5 +13,6 @@ export default {
   design: 'Design',
   layout: 'Layout',
   typography: 'Typography',
+  forms: 'Forms',
   components: 'Components',
 };

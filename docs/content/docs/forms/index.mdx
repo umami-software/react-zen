@@ -1,0 +1,460 @@
+---
+title: Forms
+---
+
+# Forms
+
+Zen provides a complete form system built on [react-hook-form](https://react-hook-form.com/). The `Form` and `FormField` components handle validation, error display, and field state management with minimal boilerplate.
+
+## How it works
+
+The form system consists of several components that work together:
+
+- **Form** - Wraps your form and provides react-hook-form context
+- **FormField** - Connects any input component to the form with automatic value binding and validation
+- **FormButtons** - Container for form action buttons
+- **FormSubmitButton** - Submit button with automatic loading and disabled states
+- **FormResetButton** - Reset button that clears the form to default values
+
+## Basic usage
+
+Wrap your inputs with `FormField` components inside a `Form`. Each `FormField` needs a `name` that corresponds to a key in your form data.
+
+<Example>
+  <Box width="300px">
+    <FormExample />
+  </Box>
+
+  ```jsx
+  import { Form, FormField, FormButtons, FormSubmitButton, FormResetButton } from '@umami/react-zen';
+
+  function LoginForm() {
+    const handleSubmit = (data) => {
+      console.log(data); // { username: '...', password: '...' }
+    };
+
+    return (
+      <Form
+        defaultValues={{ username: '', password: '' }}
+        onSubmit={handleSubmit}
+      >
+        <FormField name="username" label="Username">
+          <TextField />
+        </FormField>
+        <FormField name="password" label="Password">
+          <PasswordField />
+        </FormField>
+        <FormButtons>
+          <FormResetButton>Reset</FormResetButton>
+          <FormSubmitButton variant="primary">Login</FormSubmitButton>
+        </FormButtons>
+      </Form>
+    );
+  }
+  ```
+</Example>
+
+## Validation
+
+Add validation rules to `FormField` using the `rules` prop. This uses react-hook-form's validation API.
+
+<Example>
+  <Box width="300px">
+    <FormValidationExample />
+  </Box>
+
+  ```jsx
+  <Form onSubmit={handleSubmit}>
+    <FormField
+      name="email"
+      label="Email"
+      rules={{
+        required: 'Email is required',
+        pattern: {
+          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          message: 'Invalid email address',
+        },
+      }}
+    >
+      <TextField />
+    </FormField>
+    <FormField
+      name="age"
+      label="Age"
+      rules={{
+        required: 'Age is required',
+        validate: (value) => {
+          const num = parseInt(value, 10);
+          if (isNaN(num)) return 'Must be a number';
+          if (num < 18) return 'Must be 18 or older';
+          return true;
+        },
+      }}
+    >
+      <TextField />
+    </FormField>
+    <FormButtons>
+      <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+    </FormButtons>
+  </Form>
+  ```
+</Example>
+
+### Common validation rules
+
+| Rule | Description |
+|------|-------------|
+| `required` | Field must have a value |
+| `min` | Minimum value for numbers |
+| `max` | Maximum value for numbers |
+| `minLength` | Minimum string length |
+| `maxLength` | Maximum string length |
+| `pattern` | Regex pattern to match |
+| `validate` | Custom validation function |
+
+## Loading states
+
+`FormSubmitButton` automatically shows a loading spinner and disables itself while the form is submitting. This happens when your `onSubmit` handler returns a Promise.
+
+<Example>
+  <Box width="300px">
+    <FormLoadingExample />
+  </Box>
+
+  ```jsx
+  <Form
+    defaultValues={{ name: '' }}
+    onSubmit={async (data) => {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      console.log('Submitted:', data);
+    }}
+  >
+    <FormField name="name" label="Name" rules={{ required: 'Name is required' }}>
+      <TextField />
+    </FormField>
+    <FormButtons>
+      <FormSubmitButton variant="primary">Save</FormSubmitButton>
+    </FormButtons>
+  </Form>
+  ```
+</Example>
+
+The submit button is automatically disabled when:
+- The form has not been modified (`isDirty` is false)
+- The form has validation errors (`isValid` is false)
+- The form is currently submitting (`isSubmitting` is true)
+
+You can override this behavior with the `isDisabled` prop.
+
+## Error handling
+
+Pass an `error` prop to `Form` to display an error banner above the form. This is useful for showing server-side validation errors or API failures.
+
+<Example>
+  <Box width="300px">
+    <FormErrorExample />
+  </Box>
+
+  ```jsx
+  function MyForm() {
+    const [error, setError] = useState(null);
+
+    const handleSubmit = async (data) => {
+      try {
+        await api.submit(data);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+
+    return (
+      <Form
+        defaultValues={{ email: '' }}
+        error={error}
+        onSubmit={handleSubmit}
+      >
+        <FormField name="email" label="Email">
+          <TextField />
+        </FormField>
+        <FormButtons>
+          <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+        </FormButtons>
+      </Form>
+    );
+  }
+  ```
+</Example>
+
+## All form inputs
+
+`FormField` works with all Zen input components. The field automatically binds the `value` and `onChange` props.
+
+<Example>
+  <Box width="300px">
+    <FormInputsExample />
+  </Box>
+
+  ```jsx
+  <Form defaultValues={defaultValues} onSubmit={handleSubmit}>
+    <FormField name="name" label="Name">
+      <TextField />
+    </FormField>
+    <FormField name="bio" label="Bio">
+      <TextField asTextArea />
+    </FormField>
+    <FormField name="password" label="Password">
+      <PasswordField />
+    </FormField>
+    <FormField name="search" label="Search">
+      <SearchField />
+    </FormField>
+    <FormField name="country" label="Country">
+      <Select items={['USA', 'Canada', 'Mexico']} />
+    </FormField>
+    <FormField name="newsletter">
+      <Checkbox>Subscribe to newsletter</Checkbox>
+    </FormField>
+    <FormField name="plan" label="Plan">
+      <RadioGroup>
+        <Radio value="free">Free</Radio>
+        <Radio value="pro">Pro</Radio>
+      </RadioGroup>
+    </FormField>
+    <FormField name="notifications">
+      <Switch>Enable notifications</Switch>
+    </FormField>
+    <FormField name="volume" label="Volume">
+      <Slider />
+    </FormField>
+    <FormButtons>
+      <FormResetButton>Reset</FormResetButton>
+      <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+    </FormButtons>
+  </Form>
+  ```
+</Example>
+
+## Dynamic fields with FormFieldArray
+
+Use `FormFieldArray` when you need to manage a list of fields that can be added or removed dynamically.
+
+<Example>
+  <Box width="300px">
+    <FormFieldArrayExample />
+  </Box>
+
+  ```jsx
+  <Form
+    defaultValues={{ items: [{ name: 'Item 1' }] }}
+    onSubmit={handleSubmit}
+  >
+    <FormFieldArray name="items" label="Items">
+      {({ fields, append, remove, control }) => (
+        <Column gap>
+          {fields.map((field, index) => (
+            <Row key={field.id} gap>
+              <FormController control={control} name={`items.${index}.name`}>
+                {({ field }) => (
+                  <TextField
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              </FormController>
+              <Button onPress={() => remove(index)}>Remove</Button>
+            </Row>
+          ))}
+          <Button onPress={() => append({ name: `Item ${fields.length + 1}` })}>
+            Add Item
+          </Button>
+        </Column>
+      )}
+    </FormFieldArray>
+    <FormButtons>
+      <FormResetButton>Reset</FormResetButton>
+      <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+    </FormButtons>
+  </Form>
+  ```
+</Example>
+
+## Accessing form state
+
+The `Form` component accepts a render function as children, giving you access to the full react-hook-form API.
+
+```jsx
+<Form defaultValues={{ name: '' }} onSubmit={handleSubmit}>
+  {({ watch, formState }) => (
+    <>
+      <FormField name="name" label="Name">
+        <TextField />
+      </FormField>
+      <Text>Current value: {watch('name')}</Text>
+      <Text>Form is dirty: {formState.isDirty ? 'Yes' : 'No'}</Text>
+      <FormButtons>
+        <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+      </FormButtons>
+    </>
+  )}
+</Form>
+```
+
+## Schema validation
+
+Use the `resolver` prop to integrate with schema validation libraries like Zod or Yup.
+
+```jsx
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
+const schema = z.object({
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+});
+
+function MyForm() {
+  return (
+    <Form
+      resolver={zodResolver(schema)}
+      onSubmit={handleSubmit}
+    >
+      <FormField name="email" label="Email">
+        <TextField />
+      </FormField>
+      <FormField name="password" label="Password">
+        <PasswordField />
+      </FormField>
+      <FormButtons>
+        <FormSubmitButton variant="primary">Submit</FormSubmitButton>
+      </FormButtons>
+    </Form>
+  );
+}
+```
+
+## Controlled forms
+
+Use the `values` prop instead of `defaultValues` when you need to control form values externally. The form will reset when the values change.
+
+```jsx
+function EditUserForm({ user }) {
+  return (
+    <Form
+      values={{ name: user.name, email: user.email }}
+      onSubmit={handleSubmit}
+    >
+      <FormField name="name" label="Name">
+        <TextField />
+      </FormField>
+      <FormField name="email" label="Email">
+        <TextField />
+      </FormField>
+      <FormButtons>
+        <FormSubmitButton variant="primary">Save</FormSubmitButton>
+      </FormButtons>
+    </Form>
+  );
+}
+```
+
+## Preventing enter key submission
+
+Use `preventSubmit` to stop the form from submitting when the user presses Enter. Useful for forms where you want explicit button clicks only.
+
+```jsx
+<Form preventSubmit onSubmit={handleSubmit}>
+  <FormField name="search" label="Search">
+    <TextField />
+  </FormField>
+  <FormButtons>
+    <FormSubmitButton variant="primary">Search</FormSubmitButton>
+  </FormButtons>
+</Form>
+```
+
+## Component props
+
+### Form
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'defaultValues', value: 'object', description: 'Initial form values (uncontrolled)' },
+      { name: 'values', value: 'object', description: 'Current form values (controlled)' },
+      { name: 'onSubmit', value: '(data) => void | Promise', description: 'Called when form is submitted with valid data' },
+      { name: 'error', value: 'ReactNode | Error', description: 'Error message to display above the form' },
+      { name: 'preventSubmit', value: 'boolean', description: 'Prevents form submission on Enter key' },
+      { name: 'resolver', value: 'Resolver', description: 'Validation resolver for schema validation (Zod, Yup, etc.)' },
+      { name: 'mode', value: 'string', description: 'Validation mode: "onSubmit" | "onBlur" | "onChange" | "onTouched" | "all"' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### FormField
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'name', value: 'string', description: 'Field name (required). Must match a key in form values.' },
+      { name: 'label', value: 'string', description: 'Label displayed above the input' },
+      { name: 'description', value: 'string', description: 'Help text displayed below the input' },
+      { name: 'rules', value: 'RegisterOptions', description: 'Validation rules (required, min, max, pattern, validate, etc.)' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### FormFieldArray
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'name', value: 'string', description: 'Field array name (required)' },
+      { name: 'label', value: 'string', description: 'Label displayed above the field array' },
+      { name: 'description', value: 'string', description: 'Help text displayed below the label' },
+      { name: 'children', value: '(props) => ReactNode', description: 'Render function receiving fields, append, remove, and control' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### FormSubmitButton
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'variant', value: 'ButtonVariant', description: 'Button style variant (default: "primary")' },
+      { name: 'isDisabled', value: 'boolean', description: 'Override automatic disabled state' },
+      { name: 'isLoading', value: 'boolean', description: 'Override automatic loading state' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### FormResetButton
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'values', value: 'object', description: 'Values to reset the form to (default: original defaultValues)' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

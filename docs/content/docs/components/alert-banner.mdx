@@ -33,21 +33,52 @@ They're meant to be noticed and prompt users to take action.
 
 <Example direction="column">
   <AlertBanner
-    variant="error"
-    title="Error"
-    description="The application encountered an error."
-    allowClose={true}
-  />
-  <AlertBanner
     variant="info"
     title="Info"
     description="Your free trial will expire in 3 days."
-    allowClose={true}
+  />
+  <AlertBanner
+    variant="success"
+    title="Success"
+    description="Your changes have been saved."
+  />
+  <AlertBanner
+    variant="warning"
+    title="Warning"
+    description="Your session is about to expire."
+  />
+  <AlertBanner
+    variant="error"
+    title="Error"
+    description="The application encountered an error."
   />
 
   ```jsx
-  <AlertBanner variant="error" title="Error" description="An error occurred." allowClose />
-  <AlertBanner variant="info" title="Info" description="Your trial expires in 3 days." allowClose />
+  <AlertBanner variant="info" title="Info" description="Your free trial will expire in 3 days." />
+  <AlertBanner variant="success" title="Success" description="Your changes have been saved." />
+  <AlertBanner variant="warning" title="Warning" description="Your session is about to expire." />
+  <AlertBanner variant="error" title="Error" description="The application encountered an error." />
+  ```
+</Example>
+
+## With close button
+
+<Example direction="column">
+  <AlertBanner
+    variant="info"
+    title="Dismissible alert"
+    description="Click the X to close this alert."
+    allowClose
+  />
+
+  ```jsx
+  <AlertBanner
+    variant="info"
+    title="Dismissible alert"
+    description="Click the X to close this alert."
+    allowClose
+    onClose={() => setVisible(false)}
+  />
   ```
 </Example>
 
@@ -59,10 +90,11 @@ They're meant to be noticed and prompt users to take action.
       { name: 'title', value: 'ReactNode', description: 'Banner title' },
       { name: 'description', value: 'ReactNode', description: 'Banner description text' },
       { name: 'icon', value: 'ReactNode', description: 'Custom icon (overrides variant icon)' },
-      { name: 'variant', value: 'AlertVariant', description: '"error" | "info" (default: "info")' },
+      { name: 'variant', value: 'AlertVariant', description: '"info" | "success" | "warning" | "error" (default: "info")' },
       { name: 'align', value: 'Alignment', description: '"start" | "center" | "end"' },
       { name: 'allowClose', value: 'boolean', description: 'Shows a close button' },
       { name: 'onClose', value: '() => void', description: 'Called when close button is clicked' },
+      { name: 'children', value: 'ReactNode', description: 'Action buttons or other content' },
     ]}
   >
     <DataColumn id="name" label="Name" />

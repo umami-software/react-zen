@@ -11,7 +11,6 @@ export default {
   'data-card': 'Data Card',
   'data-table': 'Data Table',
   dialog: 'Dialog',
-  form: 'Form',
   'hover-trigger': 'Hover Trigger',
   icon: 'Icon',
   'icon-label': 'Icon Label',
