@@ -83,7 +83,7 @@ export function Example({
         {preview}
         {code && (
           <Box position="absolute" className="bottom-2 right-2">
-            <Button variant="quiet" size="xs" onPress={() => setShowCode(!showCode)}>
+            <Button size="xs" onPress={() => setShowCode(!showCode)}>
               {showCode ? 'Hide code' : 'Show code'}
             </Button>
           </Box>
@@ -93,7 +93,7 @@ export function Example({
         <Box
           backgroundColor="surface-sunken"
           overflow="auto"
-          className="border-t border-edge [&_*]:border-0 [&_*]:ring-0 [&_pre]:m-0 [&_pre]:p-4 [&_pre]:bg-transparent [&_pre]:rounded-none [&_pre]:text-sm [&_figure]:m-0 [&_figure]:p-0 [&_figure]:bg-transparent [&_code]:font-[family-name:var(--font-family-mono)]"
+          className="bg-surface-base border-t border-edge [&_*]:border-0 [&_*]:ring-0 [&_pre]:m-0 [&_pre]:p-4 [&_pre]:bg-transparent [&_pre]:rounded-none [&_pre]:text-sm [&_figure]:m-0 [&_figure]:p-0 [&_figure]:bg-transparent [&_code]:font-[family-name:var(--font-family-mono)]"
         >
           {code}
         </Box>

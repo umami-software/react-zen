@@ -149,7 +149,7 @@ Most style props accept responsive objects. Use `base` for mobile-first styles:
   Responsive Heading
 </Heading>
 
-<Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" gap="4">
+<Grid columns={{ base: 1, sm: 2, lg: 3 }} gap="4">
   <Card>Item 1</Card>
   <Card>Item 2</Card>
   <Card>Item 3</Card>
@@ -165,7 +165,7 @@ Most style props accept responsive objects. Use `base` for mobile-first styles:
 ```
 
 <Example>
-  <Grid className="grid-cols-1 sm:grid-cols-2" gap="4">
+  <Grid columns={{ base: 1, sm: 2 }} gap="4">
     <Box padding="4" backgroundColor="surface-raised" borderRadius="md">
       <Text size="sm" color="muted">Resize to see layout change</Text>
     </Box>
