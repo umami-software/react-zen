@@ -88,29 +88,29 @@ A wrapper around SVG elements to help control size, color and rotation.
   ```
 </Example>
 
-## Tailwind SVG classes
+## Fill and stroke colors
 
-The Icon component supports all Tailwind SVG utilities including `fill-*`, `stroke-*`, and `stroke-{width}` classes.
+Control SVG fill and stroke colors using the `fillColor` and `strokeColor` props.
 
 <Example direction="row" gap="4">
-  <Icon size="lg" className="fill-blue-500">
+  <Icon size="lg" fillColor="blue-500">
     <Lucide.Heart />
   </Icon>
-  <Icon size="lg" className="stroke-red-500 stroke-2">
+  <Icon size="lg" strokeColor="red-500" strokeWidth="2">
     <Lucide.Heart />
   </Icon>
-  <Icon size="lg" className="fill-green-500 stroke-green-700 stroke-1">
+  <Icon size="lg" fillColor="green-500" strokeColor="green-700" strokeWidth="1">
     <Lucide.Heart />
   </Icon>
 
   ```jsx
-  <Icon size="lg" className="fill-blue-500">
+  <Icon size="lg" fillColor="blue-500">
     <Lucide.Heart />
   </Icon>
-  <Icon size="lg" className="stroke-red-500 stroke-2">
+  <Icon size="lg" strokeColor="red-500" strokeWidth="2">
     <Lucide.Heart />
   </Icon>
-  <Icon size="lg" className="fill-green-500 stroke-green-700 stroke-1">
+  <Icon size="lg" fillColor="green-500" strokeColor="green-700" strokeWidth="1">
     <Lucide.Heart />
   </Icon>
   ```
@@ -124,10 +124,9 @@ The Icon component supports all Tailwind SVG utilities including `fill-*`, `stro
       { name: 'size', value: 'IconSize', description: '"xs" | "sm" | "md" | "lg" | "xl" (default: "sm")' },
       { name: 'color', value: 'FontColor', description: 'Icon color' },
       { name: 'rotate', value: 'number', description: 'Rotation in degrees' },
-      { name: 'strokeWidth', value: 'string', description: 'SVG stroke width' },
-      { name: 'strokeColor', value: 'StrokeColor', description: 'SVG stroke color' },
-      { name: 'fillColor', value: 'FillColor', description: 'SVG fill color' },
-      { name: 'className', value: 'string', description: 'Supports Tailwind SVG classes (fill-*, stroke-*, stroke-{width})' },
+      { name: 'strokeWidth', value: 'StrokeWidth', description: '"0.5" | "1" | "1.5" | "2" | "3" | "4"' },
+      { name: 'strokeColor', value: 'StrokeColor', description: 'SVG stroke color (semantic, Tailwind color, or color-shade)' },
+      { name: 'fillColor', value: 'FillColor', description: 'SVG fill color (semantic, Tailwind color, or color-shade)' },
     ]}
   >
     <DataColumn id="name" label="Name" />

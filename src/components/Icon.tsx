@@ -2,12 +2,14 @@ import { cloneElement, type HTMLAttributes, isValidElement, type ReactElement } 
 import type { FillColor, FontColor, StrokeColor } from '@/lib/types';
 import { cn, getCssColorValue, mapTextColor } from './lib/tailwind';
 
+export type StrokeWidth = '0.5' | '1' | '1.5' | '2' | '3' | '4';
+
 export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'color' | 'size'> {
   color?: FontColor;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'input';
   rotate?: number;
-  strokeWidth?: string;
+  strokeWidth?: StrokeWidth;
   strokeColor?: StrokeColor;
   fillColor?: FillColor;
 }
@@ -18,6 +20,15 @@ const sizeMap = {
   md: 'w-5 h-5',
   lg: 'w-6 h-6',
   xl: 'w-8 h-8',
+};
+
+const strokeWidthMap: Record<StrokeWidth, string> = {
+  '0.5': 'stroke-[0.5]',
+  '1': 'stroke-1',
+  '1.5': 'stroke-[1.5]',
+  '2': 'stroke-2',
+  '3': 'stroke-[3]',
+  '4': 'stroke-[4]',
 };
 
 export function Icon({
@@ -48,14 +59,19 @@ export function Icon({
     transform: rotate ? `rotate(${rotate}deg)` : undefined,
   };
 
+  // Build SVG classes
+  const svgClasses = cn(
+    sizeMap[size],
+    mapTextColor(colorStr),
+    strokeWidth && strokeWidthMap[strokeWidth],
+    className,
+  );
+
   // SVG-specific props to pass to the child
   const svgProps: Record<string, any> = {
-    className: cn(sizeMap[size], mapTextColor(colorStr), className),
+    className: svgClasses,
   };
 
-  if (strokeWidth) {
-    svgProps.strokeWidth = strokeWidth;
-  }
   if (strokeColorStr) {
     svgProps.stroke = getCssColorValue(strokeColorStr);
   }
