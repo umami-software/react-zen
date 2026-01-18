@@ -93,7 +93,7 @@ export function Example({
         <Box
           backgroundColor="surface-sunken"
           overflow="auto"
-          className="border-t border-edge [&_*]:border-0 [&_*]:ring-0 [&_pre]:m-0 [&_pre]:p-4 [&_pre]:bg-transparent [&_pre]:rounded-none [&_pre]:text-sm [&_figure]:m-0 [&_figure]:p-0 [&_figure]:bg-transparent"
+          className="border-t border-edge [&_*]:border-0 [&_*]:ring-0 [&_pre]:m-0 [&_pre]:p-4 [&_pre]:bg-transparent [&_pre]:rounded-none [&_pre]:text-sm [&_figure]:m-0 [&_figure]:p-0 [&_figure]:bg-transparent [&_code]:font-[family-name:var(--font-family-mono)]"
         >
           {code}
         </Box>
