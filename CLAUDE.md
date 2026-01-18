@@ -78,3 +78,7 @@ Uses Biome with:
 - 2-space indentation, LF line endings
 - 100 character line width
 - Arrow parens only when needed
+
+## Git Workflow
+
+**IMPORTANT**: Always ask for permission before running `git commit` or `git push`. Never commit or push without explicit user authorization.
