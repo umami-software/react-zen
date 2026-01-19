@@ -47,7 +47,7 @@ const paddingMap: Record<string, string> = {
   '72': 'p-72',
   '80': 'p-80',
   '96': 'p-96',
-  true: 'p-[var(--spacing-default)]',
+  true: 'px-[var(--padding-x-default)] py-[var(--padding-y-default)]',
 };
 const pxMap: Record<string, string> = {
   '0': 'px-0',
@@ -85,7 +85,7 @@ const pxMap: Record<string, string> = {
   '72': 'px-72',
   '80': 'px-80',
   '96': 'px-96',
-  true: 'px-[var(--spacing-default)]',
+  true: 'px-[var(--padding-x-default)]',
 };
 const pyMap: Record<string, string> = {
   '0': 'py-0',
@@ -123,7 +123,7 @@ const pyMap: Record<string, string> = {
   '72': 'py-72',
   '80': 'py-80',
   '96': 'py-96',
-  true: 'py-[var(--spacing-default)]',
+  true: 'py-[var(--padding-y-default)]',
 };
 const ptMap: Record<string, string> = {
   '0': 'pt-0',

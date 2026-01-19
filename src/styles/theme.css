@@ -6,7 +6,8 @@
   --radius-default: 0.375rem; /* 6px - matches rounded-md */
   --shadow-default:
     0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
-  --spacing-default: 0.75rem; /* 12px - matches spacing-3 */
+  --padding-x-default: 0.75rem; /* 12px - matches px-3 */
+  --padding-y-default: 0.75rem; /* 12px - matches py-3 */
   --gap-default: 0.75rem; /* 12px - matches gap-3 */
 
   /* === FONTS === */

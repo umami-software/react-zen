@@ -5,17 +5,18 @@ import { Row } from './Row';
 
 interface StatusLightProps {
   color?: string;
-  variant?: 'success' | 'warning' | 'error' | 'active' | 'inactive' | 'none';
+  variant?: 'info' | 'success' | 'warning' | 'error' | 'active' | 'inactive' | 'none';
   className?: string;
   children?: ReactNode;
 }
 
 const variantColors = {
-  success: 'bg-green-500',
-  warning: 'bg-yellow-500',
-  error: 'bg-red-500',
-  active: 'bg-green-500',
-  inactive: 'bg-gray-400',
+  info: 'bg-status-info',
+  success: 'bg-status-success',
+  warning: 'bg-status-warning',
+  error: 'bg-status-error',
+  active: 'bg-status-success',
+  inactive: 'bg-neutral-400',
   none: 'bg-transparent',
 };
 

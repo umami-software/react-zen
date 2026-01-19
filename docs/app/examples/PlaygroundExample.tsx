@@ -195,8 +195,15 @@ const defaultsVariables: CSSVariable[] = [
     options: shadowOptions,
   },
   {
-    name: '--spacing-default',
-    label: 'Padding',
+    name: '--padding-x-default',
+    label: 'Padding X',
+    defaultValue: '0.75rem',
+    type: 'select',
+    options: spacingOptions,
+  },
+  {
+    name: '--padding-y-default',
+    label: 'Padding Y',
     defaultValue: '0.75rem',
     type: 'select',
     options: spacingOptions,
@@ -410,7 +417,7 @@ const trackVariables: CSSVariable[] = [
 ];
 
 // Status variables - affects alerts, status lights
-const statusInfoVariables: CSSVariable[] = [
+const statusVariables: CSSVariable[] = [
   {
     name: '--status-info',
     label: 'Info',
@@ -432,9 +439,6 @@ const statusInfoVariables: CSSVariable[] = [
     type: 'color',
     options: tailwindColors,
   },
-];
-
-const statusSuccessVariables: CSSVariable[] = [
   {
     name: '--status-success',
     label: 'Success',
@@ -456,9 +460,6 @@ const statusSuccessVariables: CSSVariable[] = [
     type: 'color',
     options: tailwindColors,
   },
-];
-
-const statusWarningVariables: CSSVariable[] = [
   {
     name: '--status-warning',
     label: 'Warning',
@@ -480,9 +481,6 @@ const statusWarningVariables: CSSVariable[] = [
     type: 'color',
     options: tailwindColors,
   },
-];
-
-const statusErrorVariables: CSSVariable[] = [
   {
     name: '--status-error',
     label: 'Error',
@@ -514,10 +512,7 @@ const allVariables = [
   ...interactiveVariables,
   ...focusVariables,
   ...trackVariables,
-  ...statusInfoVariables,
-  ...statusSuccessVariables,
-  ...statusWarningVariables,
-  ...statusErrorVariables,
+  ...statusVariables,
 ];
 
 function VariableInput({
@@ -537,7 +532,7 @@ function VariableInput({
         <Select
           selectedKey={value}
           onSelectionChange={key => onChange(variable.name, key as string)}
-          placeholder={selectedOption?.label || 'Select...'}
+          renderValue={selectedOption?.label || 'Select...'}
         >
           {variable.options.map(opt => (
             <ListItem key={opt.value} id={opt.value}>
@@ -557,7 +552,19 @@ function VariableInput({
         <Select
           selectedKey={value}
           onSelectionChange={key => onChange(variable.name, key as string)}
-          placeholder={selectedOption?.label || 'Select...'}
+          renderValue={
+            selectedOption ? (
+              <Row gap="2" alignItems="center">
+                <Box
+                  className="w-4 h-4 rounded border border-[var(--border-default)]"
+                  style={{ backgroundColor: selectedOption.value }}
+                />
+                <Text size="sm">{selectedOption.label}</Text>
+              </Row>
+            ) : (
+              'Select...'
+            )
+          }
         >
           {variable.options.map(opt => (
             <ListItem key={opt.value} id={opt.value}>
@@ -733,26 +740,8 @@ export function PlaygroundExample() {
                 onChange={handleChange}
               />
               <VariableSection
-                title="Status Info"
-                variables={statusInfoVariables}
-                values={values}
-                onChange={handleChange}
-              />
-              <VariableSection
-                title="Status Success"
-                variables={statusSuccessVariables}
-                values={values}
-                onChange={handleChange}
-              />
-              <VariableSection
-                title="Status Warning"
-                variables={statusWarningVariables}
-                values={values}
-                onChange={handleChange}
-              />
-              <VariableSection
-                title="Status Error"
-                variables={statusErrorVariables}
+                title="Status"
+                variables={statusVariables}
                 values={values}
                 onChange={handleChange}
               />
@@ -770,12 +759,12 @@ export function PlaygroundExample() {
               </Text>
               <Row gap="3" wrap="wrap">
                 <Box border borderRadius padding shadow>
-                  <Text size="sm">borderRadius, padding, shadow</Text>
+                  <Text>borderRadius, padding, shadow</Text>
                 </Box>
                 <Row gap border borderRadius padding>
-                  <Text size="sm">Item 1</Text>
-                  <Text size="sm">Item 2</Text>
-                  <Text size="sm">Item 3</Text>
+                  <Text>Item 1</Text>
+                  <Text>Item 2</Text>
+                  <Text>Item 3</Text>
                 </Row>
               </Row>
             </Column>
@@ -797,7 +786,7 @@ export function PlaygroundExample() {
                     <Text size="xs" color="muted">
                       Base
                     </Text>
-                    <Text size="sm">Primary text</Text>
+                    <Text>Primary text</Text>
                   </Column>
                 </Box>
                 <Box
@@ -811,9 +800,7 @@ export function PlaygroundExample() {
                     <Text size="xs" color="muted">
                       Raised
                     </Text>
-                    <Text size="sm" color="secondary">
-                      Secondary
-                    </Text>
+                    <Text color="secondary">Secondary</Text>
                   </Column>
                 </Box>
                 <Box
@@ -827,9 +814,7 @@ export function PlaygroundExample() {
                     <Text size="xs" color="muted">
                       Sunken
                     </Text>
-                    <Text size="sm" color="muted">
-                      Muted text
-                    </Text>
+                    <Text color="muted">Muted text</Text>
                   </Column>
                 </Box>
                 <Box
@@ -843,9 +828,7 @@ export function PlaygroundExample() {
                     <Text size="xs" color="inverted">
                       Inverted
                     </Text>
-                    <Text size="sm" color="inverted">
-                      Inverted text
-                    </Text>
+                    <Text color="inverted">Inverted text</Text>
                   </Column>
                 </Box>
               </Row>
@@ -858,13 +841,13 @@ export function PlaygroundExample() {
               </Text>
               <Row gap="3" wrap="wrap">
                 <Box border borderRadius padding="3">
-                  <Text size="sm">Default border</Text>
+                  <Text>Default border</Text>
                 </Box>
                 <Box borderColor="muted" border borderRadius padding="3">
-                  <Text size="sm">Muted border</Text>
+                  <Text>Muted border</Text>
                 </Box>
                 <Box borderColor="strong" border borderRadius padding="3">
-                  <Text size="sm">Strong border</Text>
+                  <Text>Strong border</Text>
                 </Box>
               </Row>
             </Column>
