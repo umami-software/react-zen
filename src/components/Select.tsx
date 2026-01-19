@@ -19,6 +19,7 @@ import { Row } from './Row';
 import { SearchField } from './SearchField';
 
 export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
+  children?: ReactNode;
   items?: any[];
   value?: string | number;
   defaultValue?: string | number;
