@@ -18,10 +18,10 @@ export function Toggle({ label, children, className, ...props }: ToggleProps) {
         {...props}
         isSelected={isSelected}
         className={cn(
-          'flex items-center justify-center whitespace-nowrap gap-3 font-medium bg-transparent border border-transparent rounded p-2 relative cursor-pointer',
-          'hover:bg-interactive',
+          'flex items-center justify-center whitespace-nowrap gap-3 font-medium bg-interactive border border-transparent rounded p-2 relative cursor-pointer',
+          'hover:bg-interactive-hover',
+          'pressed:bg-interactive-pressed',
           'data-[selected]:text-interactive-text-selected data-[selected]:bg-interactive-selected',
-          'focus:border-transparent focus:ring-2 focus:ring-focus-ring',
           className,
         )}
       >

@@ -1,4 +1,4 @@
-import { type ReactElement, type ReactNode, useState } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import {
   Disclosure,
   DisclosureGroup,
@@ -13,7 +13,7 @@ import { cn } from './lib/tailwind';
 import { Text } from './Text';
 
 export interface AccordionProps extends DisclosureGroupProps {
-  type: 'single' | 'multiple';
+  type?: 'single' | 'multiple';
   className?: string;
   children?: ReactNode;
 }
@@ -31,43 +31,36 @@ export function Accordion({ className, children, ...props }: AccordionProps) {
   );
 }
 
-export function AccordionItem({
-  defaultExpanded,
-  className,
-  children,
-  ...props
-}: AccordionItemProps) {
+export function AccordionItem({ className, children, ...props }: AccordionItemProps) {
   const [trigger, panel] = children as ReactElement[];
-  const [expanded, setExpanded] = useState(defaultExpanded);
-
-  const handleExpandedChange = (isExpanded: boolean) => {
-    requestAnimationFrame(() => setExpanded(isExpanded));
-  };
 
   return (
-    <Disclosure
-      {...props}
-      className={cn('w-full cursor-pointer', className)}
-      onExpandedChange={handleExpandedChange}
-    >
-      <Button
-        slot="trigger"
-        variant="zero"
-        className="w-full justify-between font-bold py-2 px-0"
-      >
-        <Text>{trigger}</Text>
-        <Icon className="transition-transform duration-200 [[data-expanded]_&]:rotate-90" size="sm">
-          <ChevronRight />
-        </Icon>
-      </Button>
-      <DisclosurePanel
-        className={cn(
-          'overflow-hidden max-h-0 transition-[max-height] duration-500 ease-out',
-          expanded && 'max-h-[500px]',
-        )}
-      >
-        {panel}
-      </DisclosurePanel>
+    <Disclosure {...props} className={cn('w-full cursor-pointer group', className)}>
+      {({ isExpanded }) => (
+        <>
+          <Button
+            slot="trigger"
+            variant="zero"
+            className="w-full justify-between font-bold py-2 px-0"
+          >
+            <Text>{trigger}</Text>
+            <Icon
+              className={cn('transition-transform duration-200', isExpanded && 'rotate-90')}
+              size="sm"
+            >
+              <ChevronRight />
+            </Icon>
+          </Button>
+          <DisclosurePanel
+            className={cn(
+              'overflow-hidden transition-all duration-300 ease-out',
+              isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0',
+            )}
+          >
+            {panel}
+          </DisclosurePanel>
+        </>
+      )}
     </Disclosure>
   );
 }

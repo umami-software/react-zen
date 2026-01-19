@@ -47,7 +47,7 @@ const paddingMap: Record<string, string> = {
   '72': 'p-72',
   '80': 'p-80',
   '96': 'p-96',
-  true: 'p-3',
+  true: 'p-[var(--spacing-default)]',
 };
 const pxMap: Record<string, string> = {
   '0': 'px-0',
@@ -85,7 +85,7 @@ const pxMap: Record<string, string> = {
   '72': 'px-72',
   '80': 'px-80',
   '96': 'px-96',
-  true: 'px-3',
+  true: 'px-[var(--spacing-default)]',
 };
 const pyMap: Record<string, string> = {
   '0': 'py-0',
@@ -123,7 +123,7 @@ const pyMap: Record<string, string> = {
   '72': 'py-72',
   '80': 'py-80',
   '96': 'py-96',
-  true: 'py-3',
+  true: 'py-[var(--spacing-default)]',
 };
 const ptMap: Record<string, string> = {
   '0': 'pt-0',
@@ -593,7 +593,7 @@ const gapMap: Record<string, string> = {
   '72': 'gap-72',
   '80': 'gap-80',
   '96': 'gap-96',
-  true: 'gap-3',
+  true: 'gap-[var(--gap-default)]',
 };
 const gapXMap: Record<string, string> = {
   '0': 'gap-x-0',
@@ -620,7 +620,7 @@ const gapXMap: Record<string, string> = {
   '24': 'gap-x-24',
   '28': 'gap-x-28',
   '32': 'gap-x-32',
-  true: 'gap-x-3',
+  true: 'gap-x-[var(--gap-default)]',
 };
 const gapYMap: Record<string, string> = {
   '0': 'gap-y-0',
@@ -647,7 +647,7 @@ const gapYMap: Record<string, string> = {
   '24': 'gap-y-24',
   '28': 'gap-y-28',
   '32': 'gap-y-32',
-  true: 'gap-y-3',
+  true: 'gap-y-[var(--gap-default)]',
 };
 
 // Font size mapping - Tailwind native names
@@ -706,7 +706,7 @@ const borderRadiusMap: Record<string, string> = {
   '2xl': 'rounded-2xl',
   '3xl': 'rounded-3xl',
   full: 'rounded-full',
-  true: 'rounded-md',
+  true: 'rounded-[var(--radius-default)]',
 };
 
 // Border width mapping - sm=1, md=2, lg=4, xl=8
@@ -726,13 +726,15 @@ const shadowMap: Record<string, string> = {
   xl: 'shadow-xl',
   '2xl': 'shadow-2xl',
   inner: 'shadow-inner',
-  true: 'shadow-md',
+  true: 'shadow-[var(--shadow-default)]',
 };
 
 // Semantic color mapping
 const semanticColorMap: Record<string, { text: string; bg: string }> = {
   primary: { text: 'text-foreground-primary', bg: 'bg-interactive-selected' },
+  secondary: { text: 'text-foreground-secondary', bg: 'bg-surface-raised' },
   muted: { text: 'text-foreground-muted', bg: 'bg-surface-raised' },
+  inverted: { text: 'text-foreground-inverted', bg: 'bg-surface-inverted' },
   disabled: { text: 'text-foreground-disabled', bg: 'bg-surface-disabled' },
   transparent: { text: 'text-transparent', bg: 'bg-transparent' },
   true: { text: 'text-foreground-primary', bg: 'bg-interactive' },
@@ -1131,7 +1133,9 @@ const semanticBorderColorMap: Record<string, string> = {
   true: 'border-edge',
   transparent: 'border-transparent',
   primary: 'border-edge-inverted',
+  inverted: 'border-edge-inverted',
   muted: 'border-edge-muted',
+  strong: 'border-edge-strong',
   disabled: 'border-edge-muted',
 };
 

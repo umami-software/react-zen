@@ -7,12 +7,16 @@ import { PlaygroundExample } from '../app/examples/PlaygroundExample';
 <Box paddingY="8">
   <Column gap="6">
     <Column gap="2">
-      <Heading size="2xl">Playground</Heading>
+      <Heading size="4xl">Playground</Heading>
       <Text color="muted">
         Experiment with CSS variables to customize the look and feel of Zen components.
         Changes are applied in real-time to the preview panel.
       </Text>
     </Column>
+    <Row justifyContent="flex-end" alignItems="center" gap="2">
+      <Text size="sm" color="muted">Toggle theme</Text>
+      <ThemeButton variant="outline" />
+    </Row>
     <PlaygroundExample />
   </Column>
 </Box>

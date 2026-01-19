@@ -121,6 +121,7 @@ export function Select({
               shouldFocusOnHover: false,
               autoFocus: 'first',
             })}
+            className={cn('max-h-60 overflow-auto', listProps?.className)}
             style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
           >
             {children}

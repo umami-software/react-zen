@@ -57,8 +57,9 @@ export function AlertBanner({
       <Column flexGrow={1}>
         {title && <Text weight="semibold">{title}</Text>}
         {description && <Text>{description}</Text>}
+        {!title && !description && children}
       </Column>
-      {children}
+      {(title || description) && children}
       {allowClose && (
         <Icon className="cursor-pointer opacity-60 hover:opacity-100 h-6" onClick={onClose}>
           <X />
