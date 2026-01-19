@@ -1,0 +1,236 @@
+---
+title: Customization
+---
+
+# Customization
+
+Zen uses CSS custom properties (variables) for all design tokens, making it easy to customize the look and feel of your application. You can override these variables to match your brand or create entirely custom themes.
+
+## Overriding variables
+
+To customize Zen, override the CSS variables in your stylesheet. Variables defined on `:root` apply globally, while scoped selectors can target specific themes.
+
+```css
+:root {
+  /* Override for both light and dark themes */
+  --font-family: 'Inter', sans-serif;
+}
+
+/* Override only in light mode */
+[data-theme="light"] {
+  --surface-base: #fafafa;
+  --text-primary: #1a1a1a;
+}
+
+/* Override only in dark mode */
+[data-theme="dark"] {
+  --surface-base: #0a0a0a;
+  --text-primary: #fafafa;
+}
+```
+
+## Creating a branded theme
+
+Here's an example of creating a custom branded theme with a blue accent:
+
+```css
+:root {
+  /* Brand colors */
+  --brand-primary: oklch(0.55 0.2 250);
+  --brand-primary-light: oklch(0.7 0.15 250);
+  --brand-primary-dark: oklch(0.4 0.2 250);
+}
+
+[data-theme="light"] {
+  --interactive-bg-selected: var(--brand-primary);
+  --track-fill: var(--brand-primary);
+  --focus-ring: var(--brand-primary-light);
+}
+
+[data-theme="dark"] {
+  --interactive-bg-selected: var(--brand-primary-light);
+  --track-fill: var(--brand-primary-light);
+  --focus-ring: var(--brand-primary);
+}
+```
+
+## CSS variable reference
+
+### Surfaces
+
+Background colors for different elevation levels.
+
+<Example>
+  <DataTable
+    data={[
+      { variable: '--surface-base', description: 'Primary background (page level)' },
+      { variable: '--surface-raised', description: 'Elevated surfaces (cards, modals)' },
+      { variable: '--surface-sunken', description: 'Recessed areas (inputs, wells)' },
+      { variable: '--surface-overlay', description: 'Overlays (dropdowns, popovers)' },
+      { variable: '--surface-inverted', description: 'Inverted background (tooltips)' },
+      { variable: '--surface-disabled', description: 'Disabled element background' },
+    ]}
+  >
+    <DataColumn id="variable" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Text
+
+Text colors for different emphasis levels.
+
+<Example>
+  <DataTable
+    data={[
+      { variable: '--text-primary', description: 'Primary text (headings, body)' },
+      { variable: '--text-secondary', description: 'Secondary text (labels, captions)' },
+      { variable: '--text-muted', description: 'Muted text (placeholders, hints)' },
+      { variable: '--text-disabled', description: 'Disabled text' },
+      { variable: '--text-inverted', description: 'Text on inverted backgrounds' },
+      { variable: '--text-on-primary', description: 'Text on primary/selected backgrounds' },
+    ]}
+  >
+    <DataColumn id="variable" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Borders
+
+Border colors for different emphasis levels.
+
+<Example>
+  <DataTable
+    data={[
+      { variable: '--border-default', description: 'Default border (inputs, cards)' },
+      { variable: '--border-muted', description: 'Subtle borders (dividers)' },
+      { variable: '--border-strong', description: 'Emphasized borders (focus, active)' },
+      { variable: '--border-inverted', description: 'Borders on inverted backgrounds' },
+    ]}
+  >
+    <DataColumn id="variable" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Interactive states
+
+Colors for interactive elements like buttons, checkboxes, and list items.
+
+<Example>
+  <DataTable
+    data={[
+      { variable: '--interactive-bg', description: 'Default interactive background' },
+      { variable: '--interactive-bg-hover', description: 'Hover state background' },
+      { variable: '--interactive-bg-pressed', description: 'Pressed/active state background' },
+      { variable: '--interactive-bg-selected', description: 'Selected state background' },
+      { variable: '--interactive-text-selected', description: 'Text on selected background' },
+    ]}
+  >
+    <DataColumn id="variable" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Focus
+
+Focus ring styles for accessibility.
+
+<Example>
+  <DataTable
+    data={[
+      { variable: '--focus-ring', description: 'Focus ring color' },
+      { variable: '--focus-ring-offset', description: 'Focus ring offset color (gap)' },
+    ]}
+  >
+    <DataColumn id="variable" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Tracks
+
+Colors for sliders, progress bars, and similar components.
+
+<Example>
+  <DataTable
+    data={[
+      { variable: '--track-bg', description: 'Track background (unfilled)' },
+      { variable: '--track-fill', description: 'Track fill (progress, value)' },
+    ]}
+  >
+    <DataColumn id="variable" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Status colors
+
+Colors for feedback states (info, success, warning, error).
+
+<Example>
+  <DataTable
+    data={[
+      { variable: '--status-info', description: 'Info accent color' },
+      { variable: '--status-info-bg', description: 'Info background' },
+      { variable: '--status-info-text', description: 'Info text color' },
+      { variable: '--status-success', description: 'Success accent color' },
+      { variable: '--status-success-bg', description: 'Success background' },
+      { variable: '--status-success-text', description: 'Success text color' },
+      { variable: '--status-warning', description: 'Warning accent color' },
+      { variable: '--status-warning-bg', description: 'Warning background' },
+      { variable: '--status-warning-text', description: 'Warning text color' },
+      { variable: '--status-error', description: 'Error accent color' },
+      { variable: '--status-error-bg', description: 'Error background' },
+      { variable: '--status-error-text', description: 'Error text color' },
+    ]}
+  >
+    <DataColumn id="variable" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Typography
+
+Font family variables.
+
+<Example>
+  <DataTable
+    data={[
+      { variable: '--font-family', description: 'Default font stack' },
+      { variable: '--font-family-mono', description: 'Monospace font stack' },
+    ]}
+  >
+    <DataColumn id="variable" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+## Using OKLCH colors
+
+Zen uses OKLCH color values for better color manipulation and perceptual uniformity. OKLCH colors are defined as `oklch(lightness chroma hue)`:
+
+- **Lightness**: 0 (black) to 1 (white)
+- **Chroma**: 0 (gray) to ~0.4 (vivid)
+- **Hue**: 0-360 degrees (color wheel)
+
+```css
+:root {
+  /* A vibrant blue */
+  --brand-color: oklch(0.6 0.2 250);
+
+  /* A muted green */
+  --subtle-green: oklch(0.7 0.1 150);
+
+  /* With transparency */
+  --overlay-bg: oklch(0.2 0 0 / 0.5);
+}
+```
+
+## Tips
+
+- Always provide both light and dark theme overrides for a consistent experience
+- Use OKLCH for colors to maintain perceptual consistency across themes
+- Test your customizations in both themes to ensure adequate contrast
+- Use browser DevTools to inspect and experiment with CSS variables in real-time

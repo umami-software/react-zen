@@ -6,4 +6,5 @@ export default {
   shadows: 'Shadows',
   breakpoints: 'Breakpoints',
   themes: 'Themes',
+  customization: 'Customization',
 };
