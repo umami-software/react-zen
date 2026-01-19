@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { Button } from '@/components/Button';
 import { Column } from '@/components/Column';
 import { Icon } from '@/components/Icon';
@@ -11,6 +11,7 @@ import { toast as toastVariant } from '@/components/variants';
 const TOAST_CLOSE_ACTION = 'close';
 
 interface ToastProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode;
   id: string;
   message: string;
   title?: string;

@@ -4,6 +4,7 @@ import { Row, type RowProps } from '@/components/Row';
 import { Text, type TextProps } from '@/components/Text';
 
 export interface IconLabelProps extends RowProps {
+  children?: ReactNode;
   icon: ReactNode;
   label?: ReactNode;
   iconProps?: IconProps;

@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react';
 import { Row, RowProps } from '../Row';
 
 export interface FormButtonsProps extends RowProps {
+  children?: ReactNode;
   fill?: boolean;
 }
 

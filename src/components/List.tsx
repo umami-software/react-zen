@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import {
   Header,
   ListBox,
@@ -19,6 +19,7 @@ import { getHighlightColor } from '@/lib/styles';
 import { cn } from './lib/tailwind';
 
 export interface ListProps extends ListBoxProps<any> {
+  children?: ReactNode;
   items?: any[];
   idProperty?: string;
   labelProperty?: string;
@@ -98,6 +99,7 @@ export function List({
 }
 
 export interface ListItemProps extends ListBoxItemProps<any> {
+  children?: ReactNode;
   showCheckmark?: boolean;
 }
 
@@ -141,6 +143,7 @@ export function ListSeparator({ className, ...props }: SeparatorProps) {
 }
 
 export interface ListSectionProps extends ListBoxSectionProps<any> {
+  children?: ReactNode;
   title?: string;
 }
 

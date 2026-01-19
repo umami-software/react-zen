@@ -37,6 +37,7 @@ function Tooltip({ children, className, showArrow, ...props }: TooltipProps) {
 }
 
 interface TooltipBubbleProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode;
   showArrow?: boolean;
 }
 
