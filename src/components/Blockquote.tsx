@@ -1,7 +1,10 @@
+import type { ReactNode } from 'react';
 import { cn } from './lib/tailwind';
 import { Text, type TextProps } from './Text';
 
-interface BlockquoteProps extends Omit<TextProps, 'as'> {}
+interface BlockquoteProps extends Omit<TextProps, 'as'> {
+  children?: ReactNode;
+}
 
 function Blockquote({ className, children, ...props }: BlockquoteProps) {
   return (

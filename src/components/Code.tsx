@@ -1,7 +1,10 @@
+import type { ReactNode } from 'react';
 import { cn } from './lib/tailwind';
 import { Text, type TextProps } from './Text';
 
-interface CodeProps extends Omit<TextProps, 'as'> {}
+interface CodeProps extends Omit<TextProps, 'as'> {
+  children?: ReactNode;
+}
 
 function Code({ className, children, ...props }: CodeProps) {
   return (

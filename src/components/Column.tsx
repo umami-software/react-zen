@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react';
 import { Flexbox, FlexboxProps } from './Flexbox';
 
 interface ColumnProps extends FlexboxProps {
+  children?: ReactNode;
   reverse?: boolean;
 }
 
