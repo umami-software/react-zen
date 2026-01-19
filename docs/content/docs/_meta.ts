@@ -21,7 +21,4 @@ export default {
   'actions-navigation': 'Actions & Navigation',
   'feedback-status': 'Feedback & Status',
   'data-display': 'Data Display',
-  components: {
-    display: 'hidden',
-  },
 };
