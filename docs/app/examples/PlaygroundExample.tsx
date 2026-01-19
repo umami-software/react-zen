@@ -594,7 +594,10 @@ function VariableInput({
             selectedOption ? (
               <Row gap="2" alignItems="center">
                 <Box
-                  className="w-4 h-4 rounded border border-[var(--border-default)]"
+                  width="4"
+                  height="4"
+                  borderRadius="sm"
+                  border
                   style={{ backgroundColor: selectedOption.value }}
                 />
                 <Text size="sm">{selectedOption.label}</Text>
@@ -608,7 +611,10 @@ function VariableInput({
             <ListItem key={opt.value} id={opt.value}>
               <Row gap="2" alignItems="center">
                 <Box
-                  className="w-4 h-4 rounded border border-[var(--border-default)]"
+                  width="4"
+                  height="4"
+                  borderRadius="sm"
+                  border
                   style={{ backgroundColor: opt.value }}
                 />
                 <Text size="sm">{opt.label}</Text>
@@ -623,7 +629,7 @@ function VariableInput({
   return (
     <Column gap="1">
       <Label>{variable.label}</Label>
-      <Text size="sm" color="muted" className="font-mono">
+      <Text size="sm" color="muted" style={{ fontFamily: 'var(--font-family-mono)' }}>
         {value}
       </Text>
     </Column>
@@ -735,7 +741,7 @@ export function PlaygroundExample() {
       backgroundColor="surface-base"
       borderRadius="lg"
       border
-      className="overflow-hidden"
+      overflow="hidden"
       style={{
         fontFamily: 'var(--font-family)',
       }}
@@ -746,7 +752,8 @@ export function PlaygroundExample() {
           backgroundColor="surface-raised"
           padding="6"
           width="300px"
-          className="border-r border-[var(--border-default)] shrink-0"
+          border="right"
+          flexShrink="0"
         >
           <Column gap="3">
             <Row justifyContent="space-between" alignItems="center">
@@ -829,7 +836,7 @@ export function PlaygroundExample() {
                   The quick brown fox jumps over the lazy dog
                 </Text>
                 <Text>Regular text using font-family variable</Text>
-                <Text className="font-[family-name:var(--font-family-mono)]" size="sm">
+                <Text size="sm" style={{ fontFamily: 'var(--font-family-mono)' }}>
                   const monospace = "using font-family-mono variable";
                 </Text>
               </Column>
@@ -963,7 +970,9 @@ export function PlaygroundExample() {
                 FOCUS (click to focus)
               </Text>
               <Row gap="3" wrap="wrap">
-                <TextField placeholder="Focus me..." className="max-w-48" />
+                <Box maxWidth="48">
+                  <TextField placeholder="Focus me..." />
+                </Box>
                 <Button variant="outline">Focus me</Button>
               </Row>
             </Column>
@@ -973,7 +982,7 @@ export function PlaygroundExample() {
               <Text size="xs" weight="semibold" color="muted">
                 TRACKS
               </Text>
-              <Column gap="3" className="max-w-xs">
+              <Column gap="3" maxWidth="xs">
                 <Slider
                   value={sliderValue}
                   onChange={v => setSliderValue(v as number)}
