@@ -23,22 +23,36 @@ export default defineConfig({
     'tailwind-merge',
     'tailwind-variants',
     'lucide-react',
-    /\.css$/,
   ],
   esbuildPlugins: [
     {
       name: 'ignore-css',
       setup(build) {
-        build.onResolve({ filter: /\.css$/ }, () => ({
-          path: 'noop.css',
-          namespace: 'ignore-css',
-        }));
-        build.onLoad({ filter: /.*/, namespace: 'ignore-css' }, () => ({
-          contents: '',
+        // Mark CSS imports as external with empty content to strip them from bundle
+        build.onResolve({ filter: /\.css$/ }, args => ({
+          path: args.path,
+          external: true,
+          sideEffects: false,
         }));
       },
     },
   ],
+  // Ignore CSS import warnings since we handle CSS separately via styles.css
+  onSuccess: async () => {
+    const fs = await import('node:fs/promises');
+    // Remove CSS imports from the built files
+    const files = ['dist/index.js', 'dist/index.mjs'];
+    for (const file of files) {
+      try {
+        let content = await fs.readFile(file, 'utf-8');
+        content = content.replace(/^import\s+['"]\.\/[^'"]+\.css['"];?\s*$/gm, '');
+        content = content.replace(/^require\(['"]\.\/[^'"]+\.css['"]\);?\s*$/gm, '');
+        await fs.writeFile(file, content);
+      } catch (e) {
+        // File might not exist yet
+      }
+    }
+  },
   esbuildOptions(options) {
     options.sourceRoot = '/';
     options.sourcesContent = false;
