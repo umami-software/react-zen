@@ -19,4 +19,15 @@ export default {
     title: 'Documentation',
     type: 'page',
   },
+  playground: {
+    title: 'Playground',
+    type: 'page',
+    theme: {
+      layout: 'full',
+      breadcrumb: false,
+      sidebar: false,
+      toc: false,
+      timestamp: false,
+    },
+  },
 };
