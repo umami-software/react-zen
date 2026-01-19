@@ -10,6 +10,7 @@ import {
   Checkbox,
   Column,
   Heading,
+  Label,
   ListItem,
   ProgressBar,
   Row,
@@ -565,10 +566,10 @@ function VariableInput({
     const selectedOption = variable.options.find(opt => opt.value === value);
     return (
       <Column gap="1">
-        <Text size="xs">{variable.label}</Text>
+        <Label>{variable.label}</Label>
         <Select
-          selectedKey={value}
-          onSelectionChange={key => onChange(variable.name, key as string)}
+          value={value}
+          onChange={key => onChange(variable.name, key as string)}
           renderValue={selectedOption?.label || 'Select...'}
         >
           {variable.options.map(opt => (
@@ -585,10 +586,10 @@ function VariableInput({
     const selectedOption = variable.options.find(opt => opt.value === value);
     return (
       <Column gap="1">
-        <Text size="xs">{variable.label}</Text>
+        <Label>{variable.label}</Label>
         <Select
-          selectedKey={value}
-          onSelectionChange={key => onChange(variable.name, key as string)}
+          value={value}
+          onChange={key => onChange(variable.name, key as string)}
           renderValue={
             selectedOption ? (
               <Row gap="2" alignItems="center">
@@ -621,8 +622,8 @@ function VariableInput({
 
   return (
     <Column gap="1">
-      <Text size="xs">{variable.label}</Text>
-      <Text size="xs" color="muted" className="font-mono">
+      <Label>{variable.label}</Label>
+      <Text size="sm" color="muted" className="font-mono">
         {value}
       </Text>
     </Column>
@@ -643,7 +644,7 @@ function VariableSection({
   return (
     <AccordionItem id={title}>
       <Text>{title}</Text>
-      <Box paddingY="2">
+      <Box paddingY="2" paddingX="2">
         <Column gap="2">
           {variables.map(variable => (
             <VariableInput
@@ -734,7 +735,7 @@ export function PlaygroundExample() {
       backgroundColor="surface-base"
       borderRadius="lg"
       border
-      className="overflow-hidden [&_*]:outline-none"
+      className="overflow-hidden"
       style={{
         fontFamily: 'var(--font-family)',
       }}
@@ -743,8 +744,8 @@ export function PlaygroundExample() {
         {/* Controls Sidebar */}
         <Box
           backgroundColor="surface-raised"
-          padding="4"
-          width="280px"
+          padding="6"
+          width="300px"
           className="border-r border-[var(--border-default)] shrink-0"
         >
           <Column gap="3">

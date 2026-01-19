@@ -6,6 +6,7 @@ export const button = tv({
     'inline-flex items-center justify-center gap-3 whitespace-nowrap',
     'font-medium rounded border border-transparent cursor-pointer',
     'transition-colors leading-normal relative no-underline',
+    'outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface-base',
   ],
   variants: {
     variant: {
@@ -58,6 +59,7 @@ export const inputField = tv({
     'text-base rounded border border-edge bg-surface-base shadow-sm',
     'leading-6 relative text-foreground-primary',
     'focus-within:border-edge-strong',
+    'focus-within:ring-2 focus-within:ring-focus-ring focus-within:ring-offset-1 focus-within:ring-offset-surface-base',
   ],
   variants: {
     variant: {
@@ -215,6 +217,7 @@ export const switchVariant = tv({
       'bg-track',
       'transition-colors',
       'group-selected:bg-interactive-selected',
+      'group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1',
     ],
     thumb: [
       'w-4 h-4 rounded-full',
@@ -234,11 +237,12 @@ export const tabs = tv({
     list: ['flex gap-1 border-b border-edge-muted'],
     tab: [
       'px-4 py-2 text-base font-medium cursor-pointer',
-      'text-foreground-secondary',
+      'text-foreground-secondary outline-none',
       'border-b-2 border-transparent -mb-px',
       'hovered:text-foreground-primary',
       'selected:text-foreground-primary selected:border-edge-inverted',
       'disabled:text-foreground-disabled disabled:cursor-default',
+      'focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2',
     ],
     panel: 'py-4',
   },

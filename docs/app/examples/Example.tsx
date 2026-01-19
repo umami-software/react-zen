@@ -22,10 +22,9 @@ function isCodeBlock(child: ReactNode): boolean {
   if (type === 'figure') return true;
 
   // Check className for code-related classes
-  const className = child.props?.className || '';
-  if (className.includes('code') || className.includes('highlight')) return true;
+  const className = (child.props as { className?: string })?.className || '';
 
-  return false;
+  return className.includes('code') || className.includes('highlight');
 }
 
 function separateChildren(children: ReactNode): { preview: ReactNode[]; code: ReactNode | null } {

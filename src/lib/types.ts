@@ -48,7 +48,14 @@ export type ColorShade =
 export type TailwindColor = `${ColorName}-${ColorShade}`;
 
 // Semantic color values
-export type SemanticColor = 'primary' | 'muted' | 'disabled' | 'transparent';
+export type SemanticColor =
+  | 'primary'
+  | 'secondary'
+  | 'muted'
+  | 'strong'
+  | 'inverted'
+  | 'disabled'
+  | 'transparent';
 
 // Surface color variants
 export type SurfaceColor =

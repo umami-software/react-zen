@@ -1,14 +1,19 @@
-import type { ReactNode } from 'react';
-import { Label as AriaLabel, type LabelProps as AriaLabelProps } from 'react-aria-components';
-import { cn } from './lib/tailwind';
+import { Label as AriaLabel } from 'react-aria-components';
+import { Text, type TextProps } from './Text';
 
-interface LabelProps extends AriaLabelProps {
-  children?: ReactNode;
-  className?: string;
+interface LabelProps extends Omit<TextProps, 'as' | 'render'> {
+  htmlFor?: string;
 }
 
-function Label({ className, ...props }: LabelProps) {
-  return <AriaLabel {...props} className={cn('text-base font-bold leading-10', className)} />;
+function Label({ size = 'sm', weight = 'medium', ...props }: LabelProps) {
+  return (
+    <Text
+      {...props}
+      size={size}
+      weight={weight}
+      render={renderProps => <AriaLabel {...renderProps} />}
+    />
+  );
 }
 
 export { Label };
