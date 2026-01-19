@@ -14,5 +14,14 @@ export default {
   layout: 'Layout',
   typography: 'Typography',
   forms: 'Forms',
-  components: 'Components',
+  '----': {
+    type: 'separator',
+  },
+  'form-inputs': 'Form Inputs',
+  'actions-navigation': 'Actions & Navigation',
+  'feedback-status': 'Feedback & Status',
+  'data-display': 'Data Display',
+  components: {
+    display: 'hidden',
+  },
 };

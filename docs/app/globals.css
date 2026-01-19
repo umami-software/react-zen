@@ -39,3 +39,9 @@ samp,
 pre {
   font-family: var(--font-family-mono);
 }
+
+/* Make top-level nav group headers bold (folders with children, not standalone pages) */
+.nextra-scrollbar > div > ul > li:has(> div) > :is(a, button),
+.nextra-scrollbar > ul > li:has(> div) > :is(a, button) {
+  font-weight: 600 !important;
+}
