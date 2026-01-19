@@ -9,6 +9,7 @@ import { cn } from './lib/tailwind';
 import { tooltip } from './variants';
 
 interface TooltipProps extends AriaTooltipProps {
+  children?: ReactNode;
   showArrow?: boolean;
 }
 
@@ -30,7 +31,7 @@ function Tooltip({ children, className, showArrow, ...props }: TooltipProps) {
           </svg>
         </OverlayArrow>
       )}
-      {children as ReactNode}for
+      {children as ReactNode}
     </AriaTooltip>
   );
 }

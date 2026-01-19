@@ -165,6 +165,29 @@ const spacingOptions = [
   { label: '12', value: '3rem' },
 ];
 
+const fontOptions = [
+  { label: 'System', value: 'system-ui, sans-serif' },
+  { label: 'Inter', value: "'Inter', sans-serif" },
+  { label: 'Roboto', value: "'Roboto', sans-serif" },
+  { label: 'Open Sans', value: "'Open Sans', sans-serif" },
+  { label: 'Lato', value: "'Lato', sans-serif" },
+  { label: 'Montserrat', value: "'Montserrat', sans-serif" },
+  { label: 'Poppins', value: "'Poppins', sans-serif" },
+  { label: 'Nunito', value: "'Nunito', sans-serif" },
+  { label: 'PT Sans', value: "'PT Sans', sans-serif" },
+];
+
+const fontMonoOptions = [
+  { label: 'System Mono', value: 'ui-monospace, monospace' },
+  { label: 'JetBrains Mono', value: "'JetBrains Mono', monospace" },
+  { label: 'Fira Code', value: "'Fira Code', monospace" },
+  { label: 'Source Code Pro', value: "'Source Code Pro', monospace" },
+  { label: 'IBM Plex Mono', value: "'IBM Plex Mono', monospace" },
+  { label: 'Roboto Mono', value: "'Roboto Mono', monospace" },
+  { label: 'Inconsolata', value: "'Inconsolata', monospace" },
+  { label: 'Space Mono', value: "'Space Mono', monospace" },
+];
+
 interface SelectOption {
   label: string;
   value: string;
@@ -214,6 +237,20 @@ const defaultsVariables: CSSVariable[] = [
     defaultValue: '0.75rem',
     type: 'select',
     options: spacingOptions,
+  },
+  {
+    name: '--font-family',
+    label: 'Font Family',
+    defaultValue: 'system-ui, sans-serif',
+    type: 'select',
+    options: fontOptions,
+  },
+  {
+    name: '--font-family-mono',
+    label: 'Font Mono',
+    defaultValue: 'ui-monospace, monospace',
+    type: 'select',
+    options: fontMonoOptions,
   },
 ];
 
@@ -622,6 +659,26 @@ function VariableSection({
   );
 }
 
+// Load Google Font dynamically
+const loadGoogleFont = (fontFamily: string) => {
+  // Extract font name from value like "'Inter', sans-serif"
+  const match = fontFamily.match(/'([^']+)'/);
+  if (!match) return; // Skip system fonts
+
+  const fontName = match[1];
+  const fontId = `google-font-${fontName.replace(/\s+/g, '-').toLowerCase()}`;
+
+  // Check if already loaded
+  if (document.getElementById(fontId)) return;
+
+  // Create and append link element
+  const link = document.createElement('link');
+  link.id = fontId;
+  link.rel = 'stylesheet';
+  link.href = `https://fonts.googleapis.com/css2?family=${fontName.replace(/\s+/g, '+')}:wght@300;400;500;600;700&display=swap`;
+  document.head.appendChild(link);
+};
+
 export function PlaygroundExample() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
@@ -639,6 +696,12 @@ export function PlaygroundExample() {
 
   const handleChange = (name: string, value: string) => {
     setValues(prev => ({ ...prev, [name]: value }));
+
+    // Load Google Font if it's a font-family change
+    if (name === '--font-family' || name === '--font-family-mono') {
+      loadGoogleFont(value);
+    }
+
     if (containerRef.current) {
       containerRef.current.style.setProperty(name, value);
     }
@@ -671,7 +734,10 @@ export function PlaygroundExample() {
       backgroundColor="surface-base"
       borderRadius="lg"
       border
-      className="overflow-hidden"
+      className="overflow-hidden [&_*]:outline-none"
+      style={{
+        fontFamily: 'var(--font-family)',
+      }}
     >
       <Row alignItems="stretch">
         {/* Controls Sidebar */}
@@ -752,6 +818,22 @@ export function PlaygroundExample() {
         {/* Preview Content */}
         <Box padding="8" flexGrow="1">
           <Column gap="12">
+            {/* Typography */}
+            <Column gap="3">
+              <Text size="xs" weight="semibold" color="muted">
+                TYPOGRAPHY
+              </Text>
+              <Column gap="2">
+                <Text size="lg" weight="semibold">
+                  The quick brown fox jumps over the lazy dog
+                </Text>
+                <Text>Regular text using font-family variable</Text>
+                <Text className="font-[family-name:var(--font-family-mono)]" size="sm">
+                  const monospace = "using font-family-mono variable";
+                </Text>
+              </Column>
+            </Column>
+
             {/* Defaults */}
             <Column gap="3">
               <Text size="xs" weight="semibold" color="muted">
