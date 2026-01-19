@@ -9,9 +9,10 @@ import { cn } from './lib/tailwind';
 import './Modal.css';
 
 interface ModalProps extends AriaModalOverlayProps {
+  children?: ReactNode | ((values: ModalRenderProps & { defaultChildren: ReactNode }) => ReactNode);
+  isOpen?: boolean;
   placement?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'fullscreen';
   offset?: string;
-  children?: ReactNode | ((values: ModalRenderProps & { defaultChildren: ReactNode }) => ReactNode);
 }
 
 const placementClasses = {
