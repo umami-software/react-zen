@@ -24,6 +24,7 @@ export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   value?: string | number;
   defaultValue?: string | number;
   label?: string;
+  placeholder?: string;
   isLoading?: boolean;
   allowSearch?: boolean;
   searchValue?: string;

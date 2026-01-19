@@ -100,6 +100,7 @@ export function List({
 
 export interface ListItemProps extends ListBoxItemProps<any> {
   children?: ReactNode;
+  id?: string | number;
   showCheckmark?: boolean;
 }
 
