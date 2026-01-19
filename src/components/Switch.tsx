@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Switch as AriaSwitch, SwitchProps as AriaSwitchProps } from 'react-aria-components';
 import { Box } from './Box';
 import { Label } from './Label';
@@ -6,6 +7,7 @@ import { cn } from './lib/tailwind';
 import { switchVariant } from './variants';
 
 export interface SwitchProps extends AriaSwitchProps {
+  children?: ReactNode;
   label?: string;
 }
 

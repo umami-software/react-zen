@@ -1,10 +1,15 @@
 import { ReactNode } from 'react';
-import { Dialog as AriaDialog, DialogProps as AriaDialogProps } from 'react-aria-components';
+import {
+  Dialog as AriaDialog,
+  DialogProps as AriaDialogProps,
+  type DialogRenderProps,
+} from 'react-aria-components';
 import { Heading } from './Heading';
 import { Column } from './Column';
 import { cn } from './lib/tailwind';
 
 interface DialogProps extends AriaDialogProps {
+  children?: ReactNode | ((props: DialogRenderProps) => ReactNode);
   title?: ReactNode;
   variant?: 'sheet';
 }

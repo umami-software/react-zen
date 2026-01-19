@@ -37,6 +37,7 @@ export function Menu({ className, children, ...props }: MenuProps) {
 }
 
 export interface MenuItemProps extends AriaMenuItemProps {
+  children?: ReactNode;
   icon?: ReactNode;
   label?: string;
   showChecked?: boolean;
@@ -92,6 +93,7 @@ export function MenuSeparator({ className, ...props }: SeparatorProps) {
 }
 
 export interface MenuSectionProps extends AriaMenuSectionProps<any> {
+  children?: ReactNode;
   title?: string;
   maxHeight?: number;
 }

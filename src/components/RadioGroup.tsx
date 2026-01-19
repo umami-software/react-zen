@@ -10,6 +10,7 @@ import { Label } from './Label';
 import { cn } from './lib/tailwind';
 
 export interface RadioGroupProps extends AriaRadioGroupProps {
+  children?: ReactNode;
   label?: string;
 }
 

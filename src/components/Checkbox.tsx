@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import {
   Checkbox as AriaCheckbox,
   CheckboxProps as AriaCheckboxProps,
@@ -9,6 +10,7 @@ import { cn } from './lib/tailwind';
 import { checkbox } from './variants';
 
 export interface CheckboxProps extends AriaCheckboxProps {
+  children?: ReactNode;
   label?: string;
 }
 

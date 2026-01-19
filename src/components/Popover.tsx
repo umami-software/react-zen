@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import {
   Popover as AriaPopover,
   type PopoverProps as AriaPopoverProps,
@@ -6,6 +7,7 @@ import { cn } from './lib/tailwind';
 import './Popover.css';
 
 export interface PopoverProps extends AriaPopoverProps {
+  children?: ReactNode;
   isFullscreen?: boolean;
 }
 
