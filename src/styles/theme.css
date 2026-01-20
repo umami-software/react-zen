@@ -72,8 +72,8 @@
   color-scheme: dark;
 
   /* === PRIMARY (accent/brand color) === */
-  --primary: oklch(0.205 0 0); /* neutral-900 - same as light */
-  --primary-foreground: #ffffff; /* white - same as light */
+  --primary: oklch(0.97 0 0); /* neutral-100 - inverted for dark */
+  --primary-foreground: oklch(0.205 0 0); /* neutral-900 - inverted for dark */
 
   /* === SURFACES === */
   --surface-base: oklch(0.205 0 0); /* neutral-900 */
