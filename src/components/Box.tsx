@@ -20,8 +20,6 @@ import type {
   FlexGrow,
   FlexShrink,
   FontColor,
-  FontSize,
-  FontWeight,
   Height,
   JustifySelf,
   MaxHeight,
@@ -56,8 +54,6 @@ import {
   mapBorderWidth,
   mapCursor,
   mapDisplay,
-  mapFontSize,
-  mapFontWeight,
   mapHeight,
   mapMargin,
   mapMaxHeight,
@@ -80,8 +76,6 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   display?: Responsive<Display>;
   color?: FontColor;
   backgroundColor?: BackgroundColor;
-  fontSize?: Responsive<FontSize>;
-  fontWeight?: Responsive<FontWeight>;
   border?: Responsive<Border>;
   borderWidth?: Responsive<BorderWidth>;
   borderColor?: BorderColor;
@@ -172,8 +166,6 @@ export const Box = forwardRef(function Box(
     display,
     color,
     backgroundColor,
-    fontSize,
-    fontWeight,
     border,
     borderWidth,
     borderColor,
@@ -251,8 +243,6 @@ export const Box = forwardRef(function Box(
     mapDisplay(display),
     mapTextColor(toStringValue(color)),
     mapBackgroundColor(toStringValue(backgroundColor)),
-    mapFontSize(fontSize),
-    mapFontWeight(fontWeight),
     mapBorder(border),
     mapBorderWidth(borderWidth as Responsive<string>),
     mapBorderColor(toStringValue(borderColor)),
