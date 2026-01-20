@@ -19,23 +19,38 @@ import plugin from 'tailwindcss/plugin';
  */
 const preset: Config = {
   darkMode: ['selector', '[data-theme="dark"], .dark'],
-  // Safelist hover/focus/active variants of semantic colors
+  // Safelist hover/focus/active variants of colors
   // These are dynamically composed in mapStateStyles and need to be explicitly included
   safelist: [
-    // Surface backgrounds
+    // Semantic surface backgrounds
     { pattern: /^(hover|focus|active):bg-surface-(base|raised|sunken|overlay|inverted|disabled)$/ },
-    // Interactive backgrounds
+    // Semantic interactive backgrounds
     { pattern: /^(hover|focus|active):bg-interactive(-hover|-pressed|-selected)?$/ },
-    // Text colors
+    // Semantic text colors
     {
       pattern: /^(hover|focus|active):text-foreground-(primary|secondary|muted|disabled|inverted)$/,
     },
-    // Border colors
+    // Semantic border colors
     { pattern: /^(hover|focus|active):border-edge(-muted|-strong|-inverted)?$/ },
     // Opacity
     {
       pattern:
         /^(hover|focus|active):opacity-(0|5|10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95|100)$/,
+    },
+    // Tailwind color palette for backgrounds
+    {
+      pattern:
+        /^(hover|focus|active):bg-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(50|100|200|300|400|500|600|700|800|900|950)$/,
+    },
+    // Tailwind color palette for text
+    {
+      pattern:
+        /^(hover|focus|active):text-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(50|100|200|300|400|500|600|700|800|900|950)$/,
+    },
+    // Tailwind color palette for borders
+    {
+      pattern:
+        /^(hover|focus|active):border-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(50|100|200|300|400|500|600|700|800|900|950)$/,
     },
   ],
   theme: {
