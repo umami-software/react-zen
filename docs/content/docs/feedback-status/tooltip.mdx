@@ -13,8 +13,8 @@ A tooltip displays a description of an element on hover or focus.
   </TooltipTrigger>
 
   ```jsx
-  <TooltipTrigger>
-    <Button>Hover me</Button>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Hover me</Button>
     <Tooltip>Hello</Tooltip>
   </TooltipTrigger>
   ```
@@ -41,9 +41,21 @@ A tooltip displays a description of an element on hover or focus.
   </TooltipTrigger>
 
   ```jsx
-  <TooltipTrigger>
-    <Button>Top</Button>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Top</Button>
     <Tooltip placement="top">Hello</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Left</Button>
+    <Tooltip placement="left">Hello</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Right</Button>
+    <Tooltip placement="right">Hello</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Bottom</Button>
+    <Tooltip placement="bottom">Hello</Tooltip>
   </TooltipTrigger>
   ```
 </Example>
@@ -69,9 +81,21 @@ A tooltip displays a description of an element on hover or focus.
   </TooltipTrigger>
 
   ```jsx
-  <TooltipTrigger>
-    <Button>Hover me</Button>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Top</Button>
     <Tooltip placement="top" showArrow>Hello</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Left</Button>
+    <Tooltip placement="left" showArrow>Hello</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Right</Button>
+    <Tooltip placement="right" showArrow>Hello</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary">Bottom</Button>
+    <Tooltip placement="bottom" showArrow>Hello</Tooltip>
   </TooltipTrigger>
   ```
 </Example>

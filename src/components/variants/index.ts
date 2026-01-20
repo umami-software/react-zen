@@ -170,7 +170,7 @@ export type PopoverVariants = VariantProps<typeof popover>;
 // Tooltip variants
 export const tooltip = tv({
   base: [
-    'bg-surface-inverted text-foreground-inverted text-xs px-2 py-1 rounded',
+    'bg-surface-inverted text-foreground-inverted text-sm px-2 py-1 rounded',
     'entering:animate-popover-in',
     'exiting:animate-popover-out',
   ],
