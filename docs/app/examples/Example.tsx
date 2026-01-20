@@ -27,19 +27,31 @@ function isCodeBlock(child: ReactNode): boolean {
   return className.includes('code') || className.includes('highlight');
 }
 
-function separateChildren(children: ReactNode): { preview: ReactNode[]; code: ReactNode | null } {
+interface SeparatedChildren {
+  preview: ReactNode[];
+  code: ReactNode | null;
+  codeFirst: boolean;
+}
+
+function separateChildren(children: ReactNode): SeparatedChildren {
   const preview: ReactNode[] = [];
   let code: ReactNode | null = null;
+  let codeFirst = false;
+  let foundFirst = false;
 
   Children.forEach(children, child => {
     if (isCodeBlock(child)) {
       code = child;
+      if (!foundFirst) {
+        codeFirst = true;
+      }
     } else {
       preview.push(child);
     }
+    foundFirst = true;
   });
 
-  return { preview, code };
+  return { preview, code, codeFirst };
 }
 
 export function Example({
@@ -59,44 +71,71 @@ export function Example({
   children,
   ...props
 }: FlexboxProps) {
-  const [showCode, setShowCode] = useState(false);
-  const { preview, code } = separateChildren(children);
+  const { preview, code, codeFirst } = separateChildren(children);
+  // If code comes first, show preview by default (expanded); otherwise hide code by default
+  const [showSecondary, setShowSecondary] = useState(codeFirst);
 
+  const toggleButton = (
+    <Box position="absolute" className="bottom-2 right-2">
+      <Button size="xs" onPress={() => setShowSecondary(!showSecondary)}>
+        {codeFirst
+          ? showSecondary
+            ? 'Hide preview'
+            : 'Show preview'
+          : showSecondary
+            ? 'Hide code'
+            : 'Show code'}
+      </Button>
+    </Box>
+  );
+
+  const codeBlock = (
+    <Box
+      position={codeFirst ? 'relative' : undefined}
+      overflow="auto"
+      className="example-code [&_*]:border-0 [&_*]:ring-0 [&_pre]:m-0 [&_pre]:p-4 [&_pre]:text-sm [&_figure]:m-0 [&_figure]:p-0 [&_code]:font-[family-name:var(--font-family-mono)]"
+    >
+      {code}
+      {codeFirst && toggleButton}
+    </Box>
+  );
+
+  const previewBlock = (
+    <Flexbox
+      {...props}
+      {...{
+        direction,
+        alignItems,
+        justifyContent,
+        gap,
+        padding,
+        minHeight,
+        wrap,
+        position,
+        overflow,
+        backgroundColor,
+      }}
+    >
+      {preview}
+      {!codeFirst && code && toggleButton}
+    </Flexbox>
+  );
+
+  if (codeFirst) {
+    // Code first: show code always, toggle preview
+    return (
+      <Box marginY="6" border borderRadius={borderRadius} overflow="hidden">
+        {codeBlock}
+        {showSecondary && <Box border="top">{previewBlock}</Box>}
+      </Box>
+    );
+  }
+
+  // Preview first (default): show preview always, toggle code
   return (
     <Box marginY="6" border borderRadius={borderRadius} overflow="hidden">
-      <Flexbox
-        {...props}
-        {...{
-          direction,
-          alignItems,
-          justifyContent,
-          gap,
-          padding,
-          minHeight,
-          wrap,
-          position,
-          overflow,
-          backgroundColor,
-        }}
-      >
-        {preview}
-        {code && (
-          <Box position="absolute" className="bottom-2 right-2">
-            <Button size="xs" onPress={() => setShowCode(!showCode)}>
-              {showCode ? 'Hide code' : 'Show code'}
-            </Button>
-          </Box>
-        )}
-      </Flexbox>
-      {showCode && code && (
-        <Box
-          backgroundColor="surface-sunken"
-          overflow="auto"
-          className="bg-surface-base border-t border-edge [&_*]:border-0 [&_*]:ring-0 [&_pre]:m-0 [&_pre]:p-4 [&_pre]:bg-transparent [&_pre]:rounded-none [&_pre]:text-sm [&_figure]:m-0 [&_figure]:p-0 [&_figure]:bg-transparent [&_code]:font-[family-name:var(--font-family-mono)]"
-        >
-          {code}
-        </Box>
-      )}
+      {previewBlock}
+      {showSecondary && code && <Box border="bottom">{codeBlock}</Box>}
     </Box>
   );
 }
