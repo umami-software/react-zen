@@ -1,9 +1,26 @@
 import { useState } from 'react';
 import { Select } from '@/components';
 
-const valuesPredefined = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+const valuesPredefined = [
+  'One',
+  'Two',
+  'Three',
+  'Four',
+  'Five',
+  'Six',
+  'Seven',
+  'Eight',
+  'Nine',
+  'Ten',
+];
 
-export function SelectSearchExample({ isLoading, values }: { isLoading?: boolean, values?: string[] }) {
+export function SelectSearchExample({
+  isLoading,
+  values,
+}: {
+  isLoading?: boolean;
+  values?: string[];
+}) {
   const [items, setItems] = useState<string[]>(values || valuesPredefined);
   const [search, setSearch] = useState<string>('');
 
@@ -26,6 +43,7 @@ export function SelectSearchExample({ isLoading, values }: { isLoading?: boolean
       items={items}
       label="Select"
       placeholder="Please select an option"
+      maxHeight="300px"
       allowSearch
       searchValue={search}
       onSearch={handleSearch}

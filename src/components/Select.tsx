@@ -30,6 +30,7 @@ export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   searchValue?: string;
   searchDelay?: number;
   isFullscreen?: boolean;
+  maxHeight?: string | number;
   onSearch?: (value: string) => void;
   onChange?: (e: any) => void;
   buttonProps?: ButtonProps;
@@ -50,6 +51,7 @@ export function Select({
   searchValue,
   searchDelay,
   isFullscreen,
+  maxHeight,
   onSearch,
   onChange,
   buttonProps,
@@ -123,8 +125,8 @@ export function Select({
               shouldFocusOnHover: false,
               autoFocus: 'first',
             })}
-            className={cn('max-h-60 overflow-auto', listProps?.className)}
-            style={{ ...listProps?.style, display: isLoading ? 'none' : undefined }}
+            className={cn('overflow-auto', listProps?.className)}
+            style={{ ...listProps?.style, maxHeight, display: isLoading ? 'none' : undefined }}
           >
             {children}
           </List>

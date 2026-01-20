@@ -566,7 +566,9 @@ function VariableInput({
     const selectedOption = variable.options.find(opt => opt.value === value);
     return (
       <Column marginBottom="2">
-        <Label size="sm">{variable.label}</Label>
+        <Label size="sm" weight="medium">
+          {variable.label}
+        </Label>
         <Select
           value={value}
           onChange={key => onChange(variable.name, key as string)}
@@ -586,7 +588,9 @@ function VariableInput({
     const selectedOption = variable.options.find(opt => opt.value === value);
     return (
       <Column marginBottom="2">
-        <Label size="sm">{variable.label}</Label>
+        <Label size="sm" weight="medium">
+          {variable.label}
+        </Label>
         <Select
           value={value}
           onChange={key => onChange(variable.name, key as string)}
