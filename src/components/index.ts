@@ -75,6 +75,7 @@ export * from './Tabs';
 export * from './Text';
 export * from './TextField';
 export * from './ThemeButton';
+export * from './ThemeSwitcher';
 export * from './Toggle';
 export * from './ToggleGroup';
 export * from './Tooltip';

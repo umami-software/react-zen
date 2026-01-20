@@ -9,4 +9,5 @@ export default {
   sidebar: 'Sidebar',
   tabs: 'Tabs',
   'theme-button': 'Theme Button',
+  'theme-switcher': 'Theme Switcher',
 };
