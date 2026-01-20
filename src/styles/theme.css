@@ -46,16 +46,10 @@
   --interactive-bg: oklch(0.97 0 0); /* neutral-100 */
   --interactive-bg-hover: oklch(0.922 0 0); /* neutral-200 */
   --interactive-bg-pressed: oklch(0.87 0 0); /* neutral-300 */
-  --interactive-bg-selected: oklch(0.205 0 0); /* neutral-900 */
-  --interactive-text-selected: #ffffff;
 
   /* === FOCUS === */
   --focus-ring: oklch(0.708 0 0); /* neutral-400 */
   --focus-ring-offset: #ffffff;
-
-  /* === TRACKS (sliders, progress) === */
-  --track-bg: oklch(0.922 0 0); /* neutral-200 */
-  --track-fill: oklch(0.205 0 0); /* neutral-900 */
 
   /* === STATUS COLORS === */
   --status-info: oklch(0.623 0.214 259.815); /* blue-500 */
@@ -107,16 +101,10 @@
   --interactive-bg: oklch(0.269 0 0); /* neutral-800 */
   --interactive-bg-hover: oklch(0.371 0 0); /* neutral-700 */
   --interactive-bg-pressed: oklch(0.439 0 0); /* neutral-600 */
-  --interactive-bg-selected: oklch(0.97 0 0); /* neutral-100 */
-  --interactive-text-selected: oklch(0.205 0 0); /* neutral-900 */
 
   /* === FOCUS === */
   --focus-ring: oklch(0.556 0 0); /* neutral-500 */
   --focus-ring-offset: oklch(0.205 0 0); /* neutral-900 */
-
-  /* === TRACKS === */
-  --track-bg: oklch(0.371 0 0); /* neutral-700 */
-  --track-fill: oklch(0.97 0 0); /* neutral-100 */
 
   /* === STATUS COLORS (dark variants) === */
   --status-info-bg: oklch(0.623 0.214 259.815 / 0.2); /* blue-500 at 20% */
@@ -164,16 +152,10 @@
   --interactive-bg: oklch(0.97 0 0); /* neutral-100 */
   --interactive-bg-hover: oklch(0.922 0 0); /* neutral-200 */
   --interactive-bg-pressed: oklch(0.87 0 0); /* neutral-300 */
-  --interactive-bg-selected: oklch(0.205 0 0); /* neutral-900 */
-  --interactive-text-selected: #ffffff;
 
   /* === FOCUS === */
   --focus-ring: oklch(0.708 0 0); /* neutral-400 */
   --focus-ring-offset: #ffffff;
-
-  /* === TRACKS (sliders, progress) === */
-  --track-bg: oklch(0.922 0 0); /* neutral-200 */
-  --track-fill: oklch(0.205 0 0); /* neutral-900 */
 
   /* === STATUS COLORS === */
   --status-info: oklch(0.623 0.214 259.815); /* blue-500 */

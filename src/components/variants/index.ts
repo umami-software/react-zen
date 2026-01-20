@@ -188,7 +188,7 @@ export const checkbox = tv({
       'flex items-center justify-center',
       'w-5 h-5 rounded border border-edge bg-surface-base',
       'shadow-sm transition-colors',
-      'group-selected:bg-interactive-selected group-selected:border-interactive-selected group-selected:text-interactive-text-selected',
+      'group-selected:bg-primary group-selected:border-primary group-selected:text-primary-foreground',
       'group-indeterminate:bg-surface-base group-indeterminate:text-foreground-primary',
       'group-disabled:bg-surface-disabled',
       'group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1',
@@ -214,9 +214,9 @@ export const switchVariant = tv({
     ],
     track: [
       'flex items-center w-10 h-6 px-1 rounded-full',
-      'bg-track',
+      'bg-interactive',
       'transition-colors',
-      'group-selected:bg-interactive-selected',
+      'group-selected:bg-primary',
       'group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1',
     ],
     thumb: [

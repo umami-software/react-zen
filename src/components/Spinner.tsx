@@ -23,11 +23,13 @@ export function Spinner(props: SpinnerProps) {
       className={cn('relative inline-flex justify-center items-center', sizeMap[size], className)}
     >
       <svg viewBox="25 25 50 50" className="zen-spinner-svg w-full h-full">
-        {!quiet && <circle className="zen-spinner-track stroke-track" cx="50" cy="50" r="20" />}
+        {!quiet && (
+          <circle className="zen-spinner-track stroke-interactive" cx="50" cy="50" r="20" />
+        )}
         <circle
           className={cn(
             'zen-spinner-fill',
-            isDisabled ? 'stroke-content-disabled' : 'stroke-track-fill',
+            isDisabled ? 'stroke-content-disabled' : 'stroke-primary',
           )}
           cx="50"
           cy="50"

@@ -19,43 +19,6 @@ import plugin from 'tailwindcss/plugin';
  */
 const preset: Config = {
   darkMode: ['selector', '[data-theme="dark"], .dark'],
-  // Safelist hover/focus/active variants of colors
-  // These are dynamically composed in mapStateStyles and need to be explicitly included
-  safelist: [
-    // Primary accent/brand color
-    { pattern: /^(hover|focus|active):bg-primary$/ },
-    { pattern: /^(hover|focus|active):text-primary(-foreground)?$/ },
-    // Semantic surface backgrounds
-    { pattern: /^(hover|focus|active):bg-surface-(base|raised|sunken|overlay|inverted|disabled)$/ },
-    // Semantic interactive backgrounds
-    { pattern: /^(hover|focus|active):bg-interactive(-hover|-pressed|-selected)?$/ },
-    // Semantic text colors
-    {
-      pattern: /^(hover|focus|active):text-foreground-(primary|muted|disabled|inverted)$/,
-    },
-    // Semantic border colors
-    { pattern: /^(hover|focus|active):border-edge(-muted|-strong|-inverted)?$/ },
-    // Opacity
-    {
-      pattern:
-        /^(hover|focus|active):opacity-(0|5|10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95|100)$/,
-    },
-    // Tailwind color palette for backgrounds
-    {
-      pattern:
-        /^(hover|focus|active):bg-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(50|100|200|300|400|500|600|700|800|900|950)$/,
-    },
-    // Tailwind color palette for text
-    {
-      pattern:
-        /^(hover|focus|active):text-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(50|100|200|300|400|500|600|700|800|900|950)$/,
-    },
-    // Tailwind color palette for borders
-    {
-      pattern:
-        /^(hover|focus|active):border-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(50|100|200|300|400|500|600|700|800|900|950)$/,
-    },
-  ],
   theme: {
     extend: {
       fontFamily: {
@@ -97,18 +60,11 @@ const preset: Config = {
           DEFAULT: 'var(--interactive-bg)',
           hover: 'var(--interactive-bg-hover)',
           pressed: 'var(--interactive-bg-pressed)',
-          selected: 'var(--interactive-bg-selected)',
-          'text-selected': 'var(--interactive-text-selected)',
         },
         // Focus colors
         focus: {
           ring: 'var(--focus-ring)',
           offset: 'var(--focus-ring-offset)',
-        },
-        // Track colors (sliders, progress bars)
-        track: {
-          DEFAULT: 'var(--track-bg)',
-          fill: 'var(--track-fill)',
         },
         // Status colors
         status: {

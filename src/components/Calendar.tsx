@@ -77,7 +77,7 @@ export function Calendar({
                 'hover:bg-interactive',
                 'data-[outside-month]:hidden',
                 'data-[focus-visible]:outline-2 data-[focus-visible]:outline-focus-ring data-[focus-visible]:outline-offset-2',
-                'data-[selected]:text-interactive-text-selected data-[selected]:bg-interactive-selected',
+                'data-[selected]:text-primary-foreground data-[selected]:bg-primary',
                 'data-[disabled]:text-foreground-disabled',
               )}
               date={date}

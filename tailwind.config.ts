@@ -116,18 +116,11 @@ const config: Config = {
           DEFAULT: 'var(--interactive-bg)',
           hover: 'var(--interactive-bg-hover)',
           pressed: 'var(--interactive-bg-pressed)',
-          selected: 'var(--interactive-bg-selected)',
-          'text-selected': 'var(--interactive-text-selected)',
         },
         // Focus colors
         focus: {
           ring: 'var(--focus-ring)',
           offset: 'var(--focus-ring-offset)',
-        },
-        // Track colors (sliders, progress bars)
-        track: {
-          DEFAULT: 'var(--track-bg)',
-          fill: 'var(--track-fill)',
         },
         // Status colors
         status: {

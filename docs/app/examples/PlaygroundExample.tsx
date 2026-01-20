@@ -406,20 +406,6 @@ const interactiveVariables: CSSVariable[] = [
     type: 'color',
     options: tailwindColors,
   },
-  {
-    name: '--interactive-bg-selected',
-    label: 'Selected',
-    defaultValue: '#171717',
-    type: 'color',
-    options: tailwindColors,
-  },
-  {
-    name: '--interactive-text-selected',
-    label: 'Selected Text',
-    defaultValue: '#ffffff',
-    type: 'color',
-    options: tailwindColors,
-  },
 ];
 
 // Focus variables - affects focus rings
@@ -435,24 +421,6 @@ const focusVariables: CSSVariable[] = [
     name: '--focus-ring-offset',
     label: 'Offset',
     defaultValue: '#ffffff',
-    type: 'color',
-    options: tailwindColors,
-  },
-];
-
-// Track variables - affects sliders, progress bars
-const trackVariables: CSSVariable[] = [
-  {
-    name: '--track-bg',
-    label: 'Background',
-    defaultValue: '#e5e5e5',
-    type: 'color',
-    options: tailwindColors,
-  },
-  {
-    name: '--track-fill',
-    label: 'Fill',
-    defaultValue: '#171717',
     type: 'color',
     options: tailwindColors,
   },
@@ -554,7 +522,6 @@ const allVariables = [
   ...borderVariables,
   ...interactiveVariables,
   ...focusVariables,
-  ...trackVariables,
   ...statusVariables,
 ];
 
@@ -763,7 +730,7 @@ export function PlaygroundExample() {
           width="300px"
           border="left"
           flexShrink="0"
-          order="2"
+          order={2}
         >
           <Column gap="3">
             <Row justifyContent="space-between" alignItems="center">
@@ -820,12 +787,6 @@ export function PlaygroundExample() {
               <VariableSection
                 title="Focus"
                 variables={focusVariables}
-                values={values}
-                onChange={handleChange}
-              />
-              <VariableSection
-                title="Tracks"
-                variables={trackVariables}
                 values={values}
                 onChange={handleChange}
               />
@@ -1015,10 +976,10 @@ export function PlaygroundExample() {
               </Row>
             </Column>
 
-            {/* Tracks */}
+            {/* Progress */}
             <Column gap="3">
               <Text size="xs" weight="semibold" color="muted">
-                TRACKS
+                PROGRESS
               </Text>
               <Column gap="3" maxWidth="xs">
                 <Slider

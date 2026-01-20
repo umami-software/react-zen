@@ -38,9 +38,6 @@ Here's an example of creating a custom branded theme with a blue accent:
   /* Primary button and accent color */
   --primary: oklch(0.55 0.2 250);
   --primary-foreground: #ffffff;
-
-  /* Match other interactive elements */
-  --track-fill: var(--primary);
   --focus-ring: oklch(0.7 0.15 250);
 }
 
@@ -48,8 +45,6 @@ Here's an example of creating a custom branded theme with a blue accent:
   /* Lighter primary for dark mode */
   --primary: oklch(0.7 0.15 250);
   --primary-foreground: oklch(0.2 0 0);
-
-  --track-fill: var(--primary);
   --focus-ring: var(--primary);
 }
 ```
@@ -138,8 +133,6 @@ Colors for interactive elements like buttons, checkboxes, and list items.
       { variable: '--interactive-bg', description: 'Default interactive background' },
       { variable: '--interactive-bg-hover', description: 'Hover state background' },
       { variable: '--interactive-bg-pressed', description: 'Pressed/active state background' },
-      { variable: '--interactive-bg-selected', description: 'Selected state background' },
-      { variable: '--interactive-text-selected', description: 'Text on selected background' },
     ]}
   >
     <DataColumn id="variable" label="Variable" />
@@ -156,22 +149,6 @@ Focus ring styles for accessibility.
     data={[
       { variable: '--focus-ring', description: 'Focus ring color' },
       { variable: '--focus-ring-offset', description: 'Focus ring offset color (gap)' },
-    ]}
-  >
-    <DataColumn id="variable" label="Variable" />
-    <DataColumn id="description" label="Description" />
-  </DataTable>
-</Example>
-
-### Tracks
-
-Colors for sliders, progress bars, and similar components.
-
-<Example>
-  <DataTable
-    data={[
-      { variable: '--track-bg', description: 'Track background (unfilled)' },
-      { variable: '--track-fill', description: 'Track fill (progress, value)' },
     ]}
   >
     <DataColumn id="variable" label="Variable" />

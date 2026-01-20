@@ -18,7 +18,7 @@ export interface SliderProps extends AriaSliderProps {
 function Fill({ percentage }: { percentage: number }) {
   // Fill to thumb center: at 0% = 10px, at 100% = calc(100% - 10px)
   const width = `calc(10px + ${percentage}% - ${percentage * 0.2}px)`;
-  return <div className="absolute inset-y-0 left-0 rounded-full bg-track-fill" style={{ width }} />;
+  return <div className="absolute inset-y-0 left-0 rounded-full bg-primary" style={{ width }} />;
 }
 
 function Thumb({ percentage }: { percentage: number }) {
@@ -48,7 +48,7 @@ export function Slider({ className, showValue = true, label, ...props }: SliderP
           return (
             <>
               {/* Visual track - full width */}
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 rounded-full bg-track overflow-hidden">
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 rounded-full bg-interactive overflow-hidden">
                 <Fill percentage={percentage} />
               </div>
               <Thumb percentage={percentage} />

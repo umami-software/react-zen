@@ -20,9 +20,9 @@ export function ProgressCircle({ className, showPercentage, ...props }: Progress
               xmlns="http://www.w3.org/2000/svg"
               className="fill-none stroke-[8px] -rotate-90 w-24 h-24"
             >
-              <circle className="stroke-track" cx="50" cy="50" r="45" />
+              <circle className="stroke-interactive" cx="50" cy="50" r="45" />
               <circle
-                className="stroke-track-fill"
+                className="stroke-primary"
                 cx="50"
                 cy="50"
                 r="45"
