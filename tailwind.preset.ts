@@ -19,6 +19,25 @@ import plugin from 'tailwindcss/plugin';
  */
 const preset: Config = {
   darkMode: ['selector', '[data-theme="dark"], .dark'],
+  // Safelist hover/focus/active variants of semantic colors
+  // These are dynamically composed in mapStateStyles and need to be explicitly included
+  safelist: [
+    // Surface backgrounds
+    { pattern: /^(hover|focus|active):bg-surface-(base|raised|sunken|overlay|inverted|disabled)$/ },
+    // Interactive backgrounds
+    { pattern: /^(hover|focus|active):bg-interactive(-hover|-pressed|-selected)?$/ },
+    // Text colors
+    {
+      pattern: /^(hover|focus|active):text-foreground-(primary|secondary|muted|disabled|inverted)$/,
+    },
+    // Border colors
+    { pattern: /^(hover|focus|active):border-edge(-muted|-strong|-inverted)?$/ },
+    // Opacity
+    {
+      pattern:
+        /^(hover|focus|active):opacity-(0|5|10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95|100)$/,
+    },
+  ],
   theme: {
     extend: {
       fontFamily: {
