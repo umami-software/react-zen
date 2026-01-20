@@ -40,7 +40,7 @@ function Tab({ children, className, ...props }: TabProps) {
       className={cn(
         'tab flex items-center justify-center text-base text-foreground-muted py-2 border-b-2 border-transparent select-none -mb-[2px] cursor-pointer outline-none',
         'data-[hovered]:text-foreground-primary',
-        'data-[selected]:text-foreground-primary data-[selected]:border-b-edge-inverted',
+        'data-[selected]:text-foreground-primary data-[selected]:border-b-primary',
         'data-[disabled]:text-foreground-disabled data-[disabled]:cursor-default',
         className,
       )}

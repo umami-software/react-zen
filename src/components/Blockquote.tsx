@@ -8,11 +8,7 @@ interface BlockquoteProps extends Omit<TextProps, 'as'> {
 
 function Blockquote({ className, children, ...props }: BlockquoteProps) {
   return (
-    <Text
-      {...props}
-      as="blockquote"
-      className={cn('border-l-2 border-edge-inverted pl-5', className)}
-    >
+    <Text {...props} as="blockquote" className={cn('border-l-2 border-primary pl-5', className)}>
       {children}
     </Text>
   );

@@ -325,13 +325,6 @@ const textVariables: CSSVariable[] = [
     type: 'color',
     options: tailwindColors,
   },
-  {
-    name: '--text-inverted',
-    label: 'Inverted',
-    defaultValue: '#fafafa',
-    type: 'color',
-    options: tailwindColors,
-  },
 ];
 
 // Primary variables - accent/brand color for buttons, links, etc.
@@ -372,13 +365,6 @@ const borderVariables: CSSVariable[] = [
     name: '--border-strong',
     label: 'Strong',
     defaultValue: '#a3a3a3',
-    type: 'color',
-    options: tailwindColors,
-  },
-  {
-    name: '--border-inverted',
-    label: 'Inverted',
-    defaultValue: '#171717',
     type: 'color',
     options: tailwindColors,
   },
@@ -886,20 +872,6 @@ export function PlaygroundExample() {
                     <Text color="muted">Muted text</Text>
                   </Column>
                 </Box>
-                <Box
-                  backgroundColor="surface-inverted"
-                  border
-                  borderRadius
-                  padding="3"
-                  minWidth="100px"
-                >
-                  <Column gap="1">
-                    <Text size="xs" color="inverted">
-                      Inverted
-                    </Text>
-                    <Text color="inverted">Inverted text</Text>
-                  </Column>
-                </Box>
               </Row>
             </Column>
 
@@ -917,15 +889,6 @@ export function PlaygroundExample() {
                 </Box>
                 <Box borderColor="strong" border borderRadius padding="3">
                   <Text>Strong border</Text>
-                </Box>
-                <Box
-                  backgroundColor="surface-inverted"
-                  borderColor="inverted"
-                  border
-                  borderRadius
-                  padding="3"
-                >
-                  <Text color="inverted">Inverted border</Text>
                 </Box>
               </Row>
             </Column>

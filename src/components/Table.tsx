@@ -107,7 +107,7 @@ function TableCell({ children, className, align, ...props }: TableCellProps) {
       className={cn(
         'flex p-2 flex-1 first:pl-0 last:pr-0',
         '[&_a]:font-medium [&_a]:underline [&_a]:decoration-edge [&_a]:underline-offset-4',
-        '[&_a:hover]:decoration-edge-inverted',
+        '[&_a:hover]:decoration-primary',
         align && alignClasses[align],
         className,
       )}

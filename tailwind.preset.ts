@@ -46,14 +46,12 @@ const preset: Config = {
           primary: 'var(--text-primary)',
           muted: 'var(--text-muted)',
           disabled: 'var(--text-disabled)',
-          inverted: 'var(--text-inverted)',
         },
         // Border colors
         edge: {
           DEFAULT: 'var(--border-default)',
           muted: 'var(--border-muted)',
           strong: 'var(--border-strong)',
-          inverted: 'var(--border-inverted)',
         },
         // Interactive state colors
         interactive: {

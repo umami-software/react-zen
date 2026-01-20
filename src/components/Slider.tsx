@@ -27,7 +27,7 @@ function Thumb({ percentage }: { percentage: number }) {
   return (
     <SliderThumb
       className={cn(
-        'absolute w-5 h-5 rounded-full bg-surface-base border-2 border-edge-inverted shadow',
+        'absolute w-5 h-5 rounded-full bg-surface-base border-2 border-primary shadow',
         'focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2',
       )}
       style={{ top: '50%', left, transform: 'translateY(-50%)' }}

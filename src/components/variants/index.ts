@@ -170,7 +170,7 @@ export type PopoverVariants = VariantProps<typeof popover>;
 // Tooltip variants
 export const tooltip = tv({
   base: [
-    'bg-surface-inverted text-foreground-inverted text-base px-2 py-1 rounded',
+    'bg-surface-inverted text-primary-foreground text-base px-2 py-1 rounded',
     'entering:animate-popover-in',
     'exiting:animate-popover-out',
   ],
@@ -240,7 +240,7 @@ export const tabs = tv({
       'text-foreground-muted outline-none',
       'border-b-2 border-transparent -mb-px',
       'hovered:text-foreground-primary',
-      'selected:text-foreground-primary selected:border-edge-inverted',
+      'selected:text-foreground-primary selected:border-primary',
       'disabled:text-foreground-disabled disabled:cursor-default',
       'focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2',
     ],
