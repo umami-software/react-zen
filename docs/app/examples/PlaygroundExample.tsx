@@ -722,8 +722,8 @@ export function PlaygroundExample() {
         >
           <Column gap="3">
             <Row justifyContent="space-between" alignItems="center">
-              <Text size="sm" weight="semibold">
-                CSS Variables
+              <Text size="sm" weight="semibold" color="muted">
+                CSS VARIABLES
               </Text>
               <Row gap="2">
                 <Button variant="outline" size="xs" onPress={handleExport}>
