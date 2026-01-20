@@ -1,6 +1,6 @@
 # zen
 
-**zen** is a props-driven React component library built for speed. Build polished interfaces without writing HTML, CSS, or thinking about Tailwind classes.
+**Zen** is a props-driven React component library built for speed. Build polished interfaces without writing HTML, CSS, or thinking about Tailwind classes.
 
 - **Props over classes** - Style through component props, not utility classes
 - **Design included** - Complete design system out of the box with dark mode
@@ -43,11 +43,11 @@ export default function Welcome() {
 
 No `className`. No CSS files. Just components and props.
 
-## Why zen?
+## Why Zen?
 
 Building UI is slow. You have to think about markup, CSS organization, responsive breakpoints, accessibility, and design consistency.
 
-zen eliminates that friction:
+Zen eliminates that friction:
 
 | Traditional approach | zen approach |
 |---------------------|--------------|
