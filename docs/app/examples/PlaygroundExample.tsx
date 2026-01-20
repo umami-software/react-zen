@@ -311,13 +311,6 @@ const textVariables: CSSVariable[] = [
     options: tailwindColors,
   },
   {
-    name: '--text-secondary',
-    label: 'Secondary',
-    defaultValue: '#525252',
-    type: 'color',
-    options: tailwindColors,
-  },
-  {
     name: '--text-muted',
     label: 'Muted',
     defaultValue: '#737373',
@@ -338,9 +331,20 @@ const textVariables: CSSVariable[] = [
     type: 'color',
     options: tailwindColors,
   },
+];
+
+// Primary variables - accent/brand color for buttons, links, etc.
+const primaryVariables: CSSVariable[] = [
   {
-    name: '--text-on-primary',
-    label: 'On Primary',
+    name: '--primary',
+    label: 'Primary',
+    defaultValue: '#171717',
+    type: 'color',
+    options: tailwindColors,
+  },
+  {
+    name: '--primary-foreground',
+    label: 'Foreground',
     defaultValue: '#ffffff',
     type: 'color',
     options: tailwindColors,
@@ -544,6 +548,7 @@ const statusVariables: CSSVariable[] = [
 
 const allVariables = [
   ...defaultsVariables,
+  ...primaryVariables,
   ...surfaceVariables,
   ...textVariables,
   ...borderVariables,
@@ -756,8 +761,9 @@ export function PlaygroundExample() {
           backgroundColor="surface-raised"
           padding="6"
           width="300px"
-          border="right"
+          border="left"
           flexShrink="0"
+          order="2"
         >
           <Column gap="3">
             <Row justifyContent="space-between" alignItems="center">
@@ -774,10 +780,16 @@ export function PlaygroundExample() {
               </Row>
             </Row>
 
-            <Accordion allowsMultipleExpanded defaultExpandedKeys={['Defaults', 'Surfaces']}>
+            <Accordion allowsMultipleExpanded defaultExpandedKeys={['Defaults', 'Primary']}>
               <VariableSection
                 title="Defaults"
                 variables={defaultsVariables}
+                values={values}
+                onChange={handleChange}
+              />
+              <VariableSection
+                title="Primary"
+                variables={primaryVariables}
                 values={values}
                 onChange={handleChange}
               />
@@ -863,6 +875,19 @@ export function PlaygroundExample() {
               </Row>
             </Column>
 
+            {/* Primary */}
+            <Column gap="3">
+              <Text size="xs" weight="semibold" color="muted">
+                PRIMARY
+              </Text>
+              <Row gap="3" wrap="wrap" alignItems="center">
+                <Button variant="primary">Primary Button</Button>
+                <Box borderRadius padding="3" className="bg-primary text-primary-foreground">
+                  <span>Primary background</span>
+                </Box>
+              </Row>
+            </Column>
+
             {/* Surfaces & Text */}
             <Column gap="3">
               <Text size="xs" weight="semibold" color="muted">
@@ -894,7 +919,7 @@ export function PlaygroundExample() {
                     <Text size="xs" color="muted">
                       Raised
                     </Text>
-                    <Text color="secondary">Secondary</Text>
+                    <Text>Primary text</Text>
                   </Column>
                 </Box>
                 <Box
@@ -942,6 +967,15 @@ export function PlaygroundExample() {
                 </Box>
                 <Box borderColor="strong" border borderRadius padding="3">
                   <Text>Strong border</Text>
+                </Box>
+                <Box
+                  backgroundColor="surface-inverted"
+                  borderColor="inverted"
+                  border
+                  borderRadius
+                  padding="3"
+                >
+                  <Text color="inverted">Inverted border</Text>
                 </Box>
               </Row>
             </Column>

@@ -732,7 +732,6 @@ const shadowMap: Record<string, string> = {
 // Semantic color mapping
 const semanticColorMap: Record<string, { text: string; bg: string }> = {
   primary: { text: 'text-foreground-primary', bg: 'bg-interactive-selected' },
-  secondary: { text: 'text-foreground-secondary', bg: 'bg-surface-raised' },
   muted: { text: 'text-foreground-muted', bg: 'bg-surface-raised' },
   inverted: { text: 'text-foreground-inverted', bg: 'bg-surface-inverted' },
   disabled: { text: 'text-foreground-disabled', bg: 'bg-surface-disabled' },

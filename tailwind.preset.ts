@@ -22,13 +22,16 @@ const preset: Config = {
   // Safelist hover/focus/active variants of colors
   // These are dynamically composed in mapStateStyles and need to be explicitly included
   safelist: [
+    // Primary accent/brand color
+    { pattern: /^(hover|focus|active):bg-primary$/ },
+    { pattern: /^(hover|focus|active):text-primary(-foreground)?$/ },
     // Semantic surface backgrounds
     { pattern: /^(hover|focus|active):bg-surface-(base|raised|sunken|overlay|inverted|disabled)$/ },
     // Semantic interactive backgrounds
     { pattern: /^(hover|focus|active):bg-interactive(-hover|-pressed|-selected)?$/ },
     // Semantic text colors
     {
-      pattern: /^(hover|focus|active):text-foreground-(primary|secondary|muted|disabled|inverted)$/,
+      pattern: /^(hover|focus|active):text-foreground-(primary|muted|disabled|inverted)$/,
     },
     // Semantic border colors
     { pattern: /^(hover|focus|active):border-edge(-muted|-strong|-inverted)?$/ },
@@ -60,6 +63,11 @@ const preset: Config = {
         mono: 'var(--font-family-mono)',
       },
       colors: {
+        // Primary accent/brand color
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)',
+        },
         // Surface colors (backgrounds)
         surface: {
           base: 'var(--surface-base)',
@@ -73,11 +81,9 @@ const preset: Config = {
         foreground: {
           DEFAULT: 'var(--text-primary)',
           primary: 'var(--text-primary)',
-          secondary: 'var(--text-secondary)',
           muted: 'var(--text-muted)',
           disabled: 'var(--text-disabled)',
           inverted: 'var(--text-inverted)',
-          'on-primary': 'var(--text-on-primary)',
         },
         // Border colors
         edge: {

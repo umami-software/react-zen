@@ -34,27 +34,43 @@ To customize Zen, override the CSS variables in your stylesheet. Variables defin
 Here's an example of creating a custom branded theme with a blue accent:
 
 ```css
-:root {
-  /* Brand colors */
-  --brand-primary: oklch(0.55 0.2 250);
-  --brand-primary-light: oklch(0.7 0.15 250);
-  --brand-primary-dark: oklch(0.4 0.2 250);
-}
-
 [data-theme="light"] {
-  --interactive-bg-selected: var(--brand-primary);
-  --track-fill: var(--brand-primary);
-  --focus-ring: var(--brand-primary-light);
+  /* Primary button and accent color */
+  --primary: oklch(0.55 0.2 250);
+  --primary-foreground: #ffffff;
+
+  /* Match other interactive elements */
+  --track-fill: var(--primary);
+  --focus-ring: oklch(0.7 0.15 250);
 }
 
 [data-theme="dark"] {
-  --interactive-bg-selected: var(--brand-primary-light);
-  --track-fill: var(--brand-primary-light);
-  --focus-ring: var(--brand-primary);
+  /* Lighter primary for dark mode */
+  --primary: oklch(0.7 0.15 250);
+  --primary-foreground: oklch(0.2 0 0);
+
+  --track-fill: var(--primary);
+  --focus-ring: var(--primary);
 }
 ```
 
 ## CSS variable reference
+
+### Primary
+
+The primary accent color used for primary buttons and branded elements.
+
+<Example>
+  <DataTable
+    data={[
+      { variable: '--primary', description: 'Primary/brand accent color (button backgrounds)' },
+      { variable: '--primary-foreground', description: 'Text color on primary backgrounds' },
+    ]}
+  >
+    <DataColumn id="variable" label="Variable" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
 
 ### Surfaces
 
@@ -84,11 +100,9 @@ Text colors for different emphasis levels.
   <DataTable
     data={[
       { variable: '--text-primary', description: 'Primary text (headings, body)' },
-      { variable: '--text-secondary', description: 'Secondary text (labels, captions)' },
-      { variable: '--text-muted', description: 'Muted text (placeholders, hints)' },
+      { variable: '--text-muted', description: 'Muted text (labels, placeholders, hints)' },
       { variable: '--text-disabled', description: 'Disabled text' },
       { variable: '--text-inverted', description: 'Text on inverted backgrounds' },
-      { variable: '--text-on-primary', description: 'Text on primary/selected backgrounds' },
     ]}
   >
     <DataColumn id="variable" label="Variable" />

@@ -3,15 +3,14 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-when 
+
 **zen** (`@umami/react-zen`) is a modern, minimalist React component library built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) primitives. This is a pnpm workspace monorepo containing the component library and a Next.js documentation site.
 
-## Commands
+## Development
 
-### Development
-```bash
-pnpm dev           # Start docs site dev server on port 9001
-```
+**IMPORTANT**: Assume a dev server is always running on port 9001. Do not start the dev server - it's already running. After making changes to the library, run `pnpm bundle` to rebuild and the dev server will pick up changes automatically via hot reload.
+
+## Commands
 
 ### Build
 ```bash

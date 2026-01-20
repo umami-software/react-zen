@@ -82,6 +82,11 @@ const config: Config = {
         mono: 'var(--font-family-mono)',
       },
       colors: {
+        // Primary accent/brand color
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)',
+        },
         // Surface colors (backgrounds)
         surface: {
           base: 'var(--surface-base)',
@@ -95,11 +100,9 @@ const config: Config = {
         foreground: {
           DEFAULT: 'var(--text-primary)',
           primary: 'var(--text-primary)',
-          secondary: 'var(--text-secondary)',
           muted: 'var(--text-muted)',
           disabled: 'var(--text-disabled)',
           inverted: 'var(--text-inverted)',
-          'on-primary': 'var(--text-on-primary)',
         },
         // Border colors
         edge: {

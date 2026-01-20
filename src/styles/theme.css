@@ -18,6 +18,10 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
 
+  /* === PRIMARY (accent/brand color) === */
+  --primary: oklch(0.205 0 0); /* neutral-900 */
+  --primary-foreground: #ffffff;
+
   /* === SURFACES (backgrounds) === */
   --surface-base: #ffffff;
   --surface-raised: oklch(0.985 0 0); /* neutral-50 */
@@ -28,11 +32,9 @@
 
   /* === TEXT === */
   --text-primary: oklch(0.205 0 0); /* neutral-900 */
-  --text-secondary: oklch(0.439 0 0); /* neutral-600 */
   --text-muted: oklch(0.556 0 0); /* neutral-500 */
   --text-disabled: oklch(0.708 0 0); /* neutral-400 */
   --text-inverted: oklch(0.985 0 0); /* neutral-50 */
-  --text-on-primary: #ffffff;
 
   /* === BORDERS === */
   --border-default: oklch(0.87 0 0); /* neutral-300 */
@@ -77,6 +79,10 @@
 .dark {
   color-scheme: dark;
 
+  /* === PRIMARY (accent/brand color) === */
+  --primary: oklch(0.97 0 0); /* neutral-100 */
+  --primary-foreground: oklch(0.205 0 0); /* neutral-900 */
+
   /* === SURFACES === */
   --surface-base: oklch(0.205 0 0); /* neutral-900 */
   --surface-raised: oklch(0.269 0 0); /* neutral-800 */
@@ -87,11 +93,9 @@
 
   /* === TEXT === */
   --text-primary: oklch(0.97 0 0); /* neutral-100 */
-  --text-secondary: oklch(0.708 0 0); /* neutral-400 */
   --text-muted: oklch(0.708 0 0); /* neutral-400 */
   --text-disabled: oklch(0.556 0 0); /* neutral-500 */
   --text-inverted: oklch(0.205 0 0); /* neutral-900 */
-  --text-on-primary: oklch(0.205 0 0); /* neutral-900 */
 
   /* === BORDERS === */
   --border-default: oklch(0.371 0 0); /* neutral-700 */
@@ -132,6 +136,10 @@
 [data-theme="light"] {
   color-scheme: light;
 
+  /* === PRIMARY (accent/brand color) === */
+  --primary: oklch(0.205 0 0); /* neutral-900 */
+  --primary-foreground: #ffffff;
+
   /* === SURFACES (backgrounds) === */
   --surface-base: #ffffff;
   --surface-raised: oklch(0.985 0 0); /* neutral-50 */
@@ -142,11 +150,9 @@
 
   /* === TEXT === */
   --text-primary: oklch(0.205 0 0); /* neutral-900 */
-  --text-secondary: oklch(0.439 0 0); /* neutral-600 */
   --text-muted: oklch(0.556 0 0); /* neutral-500 */
   --text-disabled: oklch(0.708 0 0); /* neutral-400 */
   --text-inverted: oklch(0.985 0 0); /* neutral-50 */
-  --text-on-primary: #ffffff;
 
   /* === BORDERS === */
   --border-default: oklch(0.87 0 0); /* neutral-300 */

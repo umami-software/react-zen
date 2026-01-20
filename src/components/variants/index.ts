@@ -16,7 +16,7 @@ export const button = tv({
         'pressed:bg-interactive-pressed',
       ],
       primary: [
-        'bg-interactive-selected text-interactive-text-selected',
+        'bg-primary text-primary-foreground',
         'hover:opacity-90',
         'pressed:opacity-80',
         'disabled:opacity-50',
@@ -237,7 +237,7 @@ export const tabs = tv({
     list: ['flex gap-1 border-b border-edge-muted'],
     tab: [
       'px-4 py-2 text-base font-medium cursor-pointer',
-      'text-foreground-secondary outline-none',
+      'text-foreground-muted outline-none',
       'border-b-2 border-transparent -mb-px',
       'hovered:text-foreground-primary',
       'selected:text-foreground-primary selected:border-edge-inverted',
