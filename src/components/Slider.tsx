@@ -48,7 +48,7 @@ export function Slider({ className, showValue = true, label, ...props }: SliderP
           return (
             <>
               {/* Visual track - full width */}
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 rounded-full bg-interactive overflow-hidden">
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-2 rounded-full bg-interactive overflow-hidden">
                 <Fill percentage={percentage} />
               </div>
               <Thumb percentage={percentage} />

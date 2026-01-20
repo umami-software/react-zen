@@ -13,6 +13,7 @@ import {
   Label,
   ListItem,
   ProgressBar,
+  ProgressCircle,
   Row,
   Select,
   Slider,
@@ -566,6 +567,7 @@ function VariableInput({
         <Select
           value={value}
           onChange={key => onChange(variable.name, key as string)}
+          maxHeight={300}
           renderValue={
             selectedOption ? (
               <Row gap="2" alignItems="center">
@@ -836,19 +838,6 @@ export function PlaygroundExample() {
               </Row>
             </Column>
 
-            {/* Primary */}
-            <Column gap="3">
-              <Text size="xs" weight="semibold" color="muted">
-                PRIMARY
-              </Text>
-              <Row gap="3" wrap="wrap" alignItems="center">
-                <Button variant="primary">Primary Button</Button>
-                <Box borderRadius padding="3" className="bg-primary text-primary-foreground">
-                  <span>Primary background</span>
-                </Box>
-              </Row>
-            </Column>
-
             {/* Surfaces & Text */}
             <Column gap="3">
               <Text size="xs" weight="semibold" color="muted">
@@ -981,15 +970,18 @@ export function PlaygroundExample() {
               <Text size="xs" weight="semibold" color="muted">
                 PROGRESS
               </Text>
-              <Column gap="3" maxWidth="xs">
-                <Slider
-                  value={sliderValue}
-                  onChange={v => setSliderValue(v as number)}
-                  minValue={0}
-                  maxValue={100}
-                />
-                <ProgressBar value={sliderValue} />
-              </Column>
+              <Row gap="6" alignItems="center">
+                <Column gap="3" maxWidth="xs" flexGrow="1">
+                  <Slider
+                    value={sliderValue}
+                    onChange={v => setSliderValue(v as number)}
+                    minValue={0}
+                    maxValue={100}
+                  />
+                  <ProgressBar value={sliderValue} />
+                </Column>
+                <ProgressCircle value={sliderValue} />
+              </Row>
             </Column>
 
             {/* Status */}
