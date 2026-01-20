@@ -565,8 +565,8 @@ function VariableInput({
   if (variable.type === 'select' && variable.options) {
     const selectedOption = variable.options.find(opt => opt.value === value);
     return (
-      <Column gap="1">
-        <Label>{variable.label}</Label>
+      <Column marginBottom="2">
+        <Label size="sm">{variable.label}</Label>
         <Select
           value={value}
           onChange={key => onChange(variable.name, key as string)}
@@ -585,8 +585,8 @@ function VariableInput({
   if (variable.type === 'color' && variable.options) {
     const selectedOption = variable.options.find(opt => opt.value === value);
     return (
-      <Column gap="1">
-        <Label>{variable.label}</Label>
+      <Column marginBottom="2">
+        <Label size="sm">{variable.label}</Label>
         <Select
           value={value}
           onChange={key => onChange(variable.name, key as string)}

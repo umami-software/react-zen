@@ -5,12 +5,13 @@ interface LabelProps extends Omit<TextProps, 'as' | 'render'> {
   htmlFor?: string;
 }
 
-function Label({ size = 'sm', weight = 'medium', ...props }: LabelProps) {
+function Label({ size = 'base', weight = 'semibold', lineHeight = 'loose', ...props }: LabelProps) {
   return (
     <Text
       {...props}
       size={size}
       weight={weight}
+      lineHeight={lineHeight}
       render={renderProps => <AriaLabel {...renderProps} />}
     />
   );
