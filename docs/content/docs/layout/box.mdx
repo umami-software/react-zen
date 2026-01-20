@@ -44,6 +44,68 @@ Use Tailwind preset values for width and height with responsive breakpoints. Res
   ```
 </Example>
 
+## State styles
+
+Apply styles for hover, focus, and active states using object props. Each state accepts `color`, `backgroundColor`, `borderColor`, and `opacity`.
+
+<Example>
+  <Box
+    padding="4"
+    backgroundColor="surface-raised"
+    border
+    borderRadius
+    cursor="pointer"
+    hover={{ backgroundColor: "surface-sunken", borderColor: "strong" }}
+  >
+    Hover over me
+  </Box>
+
+  ```jsx
+  <Box
+    padding="4"
+    backgroundColor="surface-raised"
+    border
+    borderRadius
+    cursor="pointer"
+    hover={{ backgroundColor: "surface-sunken", borderColor: "strong" }}
+  >
+    Hover over me
+  </Box>
+  ```
+</Example>
+
+### Multiple states
+
+<Example>
+  <Box
+    padding="4"
+    backgroundColor="surface-base"
+    border
+    borderRadius
+    cursor="pointer"
+    hover={{ backgroundColor: "surface-raised" }}
+    focus={{ borderColor: "strong" }}
+    active={{ backgroundColor: "surface-sunken", opacity: "80" }}
+  >
+    Interactive box (hover, focus, active)
+  </Box>
+
+  ```jsx
+  <Box
+    padding="4"
+    backgroundColor="surface-base"
+    border
+    borderRadius
+    cursor="pointer"
+    hover={{ backgroundColor: "surface-raised" }}
+    focus={{ borderColor: "strong" }}
+    active={{ backgroundColor: "surface-sunken", opacity: "80" }}
+  >
+    Interactive box (hover, focus, active)
+  </Box>
+  ```
+</Example>
+
 ## Component props
 
 <Example>
@@ -101,6 +163,9 @@ Use Tailwind preset values for width and height with responsive breakpoints. Res
       { name: 'gridColumn', value: 'string', description: 'CSS value (inline style)' },
       { name: 'order', value: 'number', description: 'Inline style' },
       { name: 'zIndex', value: 'number', description: 'Inline style' },
+      { name: 'hover', value: 'StateStyles', description: '{ color?, backgroundColor?, borderColor?, opacity? }' },
+      { name: 'focus', value: 'StateStyles', description: '{ color?, backgroundColor?, borderColor?, opacity? }' },
+      { name: 'active', value: 'StateStyles', description: '{ color?, backgroundColor?, borderColor?, opacity? }' },
       { name: 'as', value: 'string', description: 'HTML element to render' },
       { name: 'render', value: 'RenderProp', description: 'Render prop for polymorphism' },
     ]}

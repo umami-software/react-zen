@@ -35,6 +35,7 @@ import type {
   Position,
   Responsive,
   Spacing,
+  StateStyles,
   TextAlign,
   Width,
 } from '@/lib/types';
@@ -69,6 +70,7 @@ import {
   mapPointerEvents,
   mapPosition,
   mapShadow,
+  mapStateStyles,
   mapTextAlign,
   mapTextColor,
   mapWidth,
@@ -141,6 +143,11 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   zIndex?: number;
 
   theme?: string;
+
+  // State styles
+  hover?: StateStyles;
+  focus?: StateStyles;
+  active?: StateStyles;
 
   as?: string;
   render?: RenderProp<BoxRenderProps>;
@@ -215,6 +222,9 @@ export const Box = forwardRef(function Box(
     order,
     zIndex,
     theme,
+    hover,
+    focus,
+    active,
     as = 'div',
     render,
     className,
@@ -278,6 +288,9 @@ export const Box = forwardRef(function Box(
     mapPointerEvents(pointerEvents),
     mapAlignSelf(alignSelf),
     theme && `${theme}-theme`,
+    mapStateStyles('hover', hover),
+    mapStateStyles('focus', focus),
+    mapStateStyles('active', active),
     className,
   );
 

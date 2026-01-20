@@ -2091,3 +2091,57 @@ export function isMinHeightPreset(value: string): boolean {
 export function isMaxHeightPreset(value: string): boolean {
   return value in maxHeightMap;
 }
+
+// State styles mapping (hover, focus, active)
+type StatePrefix = 'hover' | 'focus' | 'active';
+
+interface StateStylesInput {
+  color?: string | boolean;
+  backgroundColor?: string | boolean;
+  borderColor?: string | boolean;
+  opacity?: string;
+}
+
+function addStatePrefix(prefix: StatePrefix, className: string): string {
+  if (!className) return '';
+  // Handle multiple classes
+  return className
+    .split(' ')
+    .filter(Boolean)
+    .map(cls => `${prefix}:${cls}`)
+    .join(' ');
+}
+
+export function mapStateStyles(prefix: StatePrefix, styles: StateStylesInput | undefined): string {
+  if (!styles) return '';
+
+  const classes: string[] = [];
+
+  if (styles.color !== undefined) {
+    const colorClass = mapTextColor(
+      typeof styles.color === 'boolean' ? 'true' : String(styles.color),
+    );
+    if (colorClass) classes.push(addStatePrefix(prefix, colorClass));
+  }
+
+  if (styles.backgroundColor !== undefined) {
+    const bgClass = mapBackgroundColor(
+      typeof styles.backgroundColor === 'boolean' ? 'true' : String(styles.backgroundColor),
+    );
+    if (bgClass) classes.push(addStatePrefix(prefix, bgClass));
+  }
+
+  if (styles.borderColor !== undefined) {
+    const borderClass = mapBorderColor(
+      typeof styles.borderColor === 'boolean' ? 'true' : String(styles.borderColor),
+    );
+    if (borderClass) classes.push(addStatePrefix(prefix, borderClass));
+  }
+
+  if (styles.opacity !== undefined) {
+    const opacityClass = mapOpacity(styles.opacity);
+    if (opacityClass) classes.push(addStatePrefix(prefix, opacityClass));
+  }
+
+  return classes.join(' ');
+}

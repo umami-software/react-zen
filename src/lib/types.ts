@@ -472,3 +472,11 @@ export type MinWidth = Spacing | Fraction | SizingSpecial | WidthViewport;
 export type MaxWidth = Spacing | Fraction | MaxWidthSpecial | WidthViewport;
 export type MinHeight = Spacing | Fraction | SizingSpecial | HeightViewport;
 export type MaxHeight = Spacing | Fraction | SizingSpecial | HeightViewport;
+
+// State styles for hover, focus, active states
+export interface StateStyles {
+  color?: FontColor;
+  backgroundColor?: BackgroundColor;
+  borderColor?: BorderColor;
+  opacity?: Opacity;
+}
