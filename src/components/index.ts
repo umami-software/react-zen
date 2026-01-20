@@ -53,6 +53,7 @@ export * from './List';
 export * from './Loading';
 export * from './LoadingButton';
 export * from './lib/render';
+export * from './lib/tailwind';
 export * from './Menu';
 export * from './Modal';
 export * from './Navbar';

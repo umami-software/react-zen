@@ -229,7 +229,7 @@ const defaultsVariables: CSSVariable[] = [
   {
     name: '--padding-y-default',
     label: 'Padding Y',
-    defaultValue: '0.75rem',
+    defaultValue: '0.5rem',
     type: 'select',
     options: spacingOptions,
   },

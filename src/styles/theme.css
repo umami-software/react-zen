@@ -7,7 +7,7 @@
   --shadow-default:
     0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
   --padding-x-default: 0.75rem; /* 12px - matches px-3 */
-  --padding-y-default: 0.75rem; /* 12px - matches py-3 */
+  --padding-y-default: 0.5rem; /* 8px - matches py-2 */
   --gap-default: 0.75rem; /* 12px - matches gap-3 */
 
   /* === FONTS === */
