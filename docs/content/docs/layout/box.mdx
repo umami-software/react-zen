@@ -51,11 +51,10 @@ Apply styles for hover, focus, and active states using object props. Each state 
 <Example>
   <Box
     padding="4"
-    backgroundColor="blue-100"
     border
     borderRadius
     cursor="pointer"
-    hover={{ backgroundColor: "red-100", borderColor: "strong" }}
+    hover={{ color: 'red-600', backgroundColor: "red-100", borderColor: "red-500" }}
   >
     Hover over me
   </Box>
@@ -63,12 +62,14 @@ Apply styles for hover, focus, and active states using object props. Each state 
   ```jsx
   <Box
     padding="4"
-    backgroundColor="surface-raised"
     border
     borderRadius
     cursor="pointer"
-    hover={{ backgroundColor: "surface-sunken", borderColor: "strong" }}
-  >
+    hover={{
+      color: 'red-600',
+      backgroundColor: "red-100",
+      borderColor: "red-500"
+    }}>
     Hover over me
   </Box>
   ```
@@ -76,30 +77,34 @@ Apply styles for hover, focus, and active states using object props. Each state 
 
 ### Multiple states
 
+Click to focus, then hover and click to see all states.
+
 <Example>
   <Box
+    tabIndex={0}
     padding="4"
     backgroundColor="surface-base"
     border
     borderRadius
     cursor="pointer"
-    hover={{ backgroundColor: "surface-raised" }}
-    focus={{ borderColor: "strong" }}
-    active={{ backgroundColor: "surface-sunken", opacity: "80" }}
+    hover={{ backgroundColor: "blue-50" }}
+    focus={{ borderColor: "blue-500" }}
+    active={{ backgroundColor: "blue-100", opacity: "50" }}
   >
     Interactive box (hover, focus, active)
   </Box>
 
   ```jsx
   <Box
+    tabIndex={0}
     padding="4"
     backgroundColor="surface-base"
     border
     borderRadius
     cursor="pointer"
-    hover={{ backgroundColor: "surface-raised" }}
-    focus={{ borderColor: "strong" }}
-    active={{ backgroundColor: "surface-sunken", opacity: "80" }}
+    hover={{ backgroundColor: "blue-50" }}
+    focus={{ borderColor: "blue-500" }}
+    active={{ backgroundColor: "blue-100", opacity: "50" }}
   >
     Interactive box (hover, focus, active)
   </Box>
