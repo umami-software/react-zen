@@ -17,10 +17,11 @@ export function Pre({ children, ...props }: ComponentProps<'pre'>) {
       borderRadius="lg"
       backgroundColor="surface-base"
       className="group overflow-x-auto"
+      marginY="6"
     >
       <Box
         position="absolute"
-        className="top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+        className="top-4 right-4 opacity-20 group-hover:opacity-100 transition-opacity z-10"
       >
         <CopyButton value={getCodeText} className="bg-surface-overlay/80 backdrop-blur-sm" />
       </Box>

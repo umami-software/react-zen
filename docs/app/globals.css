@@ -58,7 +58,6 @@ pre {
 figure[data-rehype-pretty-code-figure],
 pre:has(> code) {
   border-radius: 0.5rem; /* rounded-lg */
-  overflow: hidden;
 }
 
 /* Remove border radius from code blocks inside Example */
