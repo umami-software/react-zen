@@ -58,6 +58,7 @@ export * from './Menu';
 export * from './Modal';
 export * from './Navbar';
 export * from './NavMenu';
+export * from './PaletteSwitcher';
 export * from './PasswordField';
 export * from './Popover';
 export * from './ProgressBar';

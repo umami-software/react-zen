@@ -116,8 +116,60 @@ Themes work by redefining CSS custom properties. The following variables change 
 
 ## Theme persistence
 
-Theme preference is automatically saved to `localStorage` under the key `zen.theme`. When the page loads, the stored preference is restored.
+Theme preference is automatically saved to `localStorage` under the key `theme`. When the page loads, the stored preference is restored.
 
 ## Dark mode classes
 
 Zen applies both `data-theme="dark"` attribute and the `.dark` class to the root element for maximum compatibility with Tailwind CSS and other frameworks.
+
+## Color palettes
+
+Zen supports multiple gray-scale palettes inspired by Tailwind CSS. Each palette has a different color temperature and character.
+
+<Example>
+  <PaletteSwatchesExample />
+</Example>
+
+### Available palettes
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'neutral', description: 'Pure gray with no color tint (default)' },
+      { name: 'slate', description: 'Cool blue-gray tones' },
+      { name: 'gray', description: 'Slight blue tint' },
+      { name: 'zinc', description: 'Subtle blue undertones' },
+      { name: 'stone', description: 'Warm tan/brown tones' },
+    ]}
+  >
+    <DataColumn id="name" label="Palette" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Setting the palette
+
+You can set the palette via `ZenProvider` or programmatically with `useTheme`.
+
+```jsx
+// Via provider
+<ZenProvider palette="slate">
+  <YourApp />
+</ZenProvider>
+
+// Programmatically
+const { palette, setPalette } = useTheme();
+setPalette('zinc');
+```
+
+### PaletteSwitcher
+
+Use the `PaletteSwitcher` component to let users switch between palettes.
+
+```jsx
+<PaletteSwitcher />
+```
+
+### Palette persistence
+
+Palette preference is automatically saved to `localStorage` under the key `zen.palette`. The `data-palette` attribute is applied to the root element.

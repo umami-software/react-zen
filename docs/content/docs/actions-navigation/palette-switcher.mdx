@@ -1,0 +1,87 @@
+---
+title: Palette Switcher
+---
+
+# Palette Switcher
+
+A segmented control that allows users to choose between different color palettes (neutral, slate, gray, zinc, stone).
+
+<Example>
+  <PaletteSwitcher />
+
+  ```jsx
+  <PaletteSwitcher />
+  ```
+</Example>
+
+## Features
+
+- Shows all five palette options at once
+- Highlights the currently selected palette
+- Persists the palette preference to `localStorage` under `zen.palette`
+- Changes apply instantly via CSS custom properties
+
+## Available palettes
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'neutral', description: 'Pure gray with no color tint (default)' },
+      { name: 'slate', description: 'Cool blue-gray tones' },
+      { name: 'gray', description: 'Slight blue tint' },
+      { name: 'zinc', description: 'Subtle blue undertones' },
+      { name: 'stone', description: 'Warm tan/brown tones' },
+    ]}
+  >
+    <DataColumn id="name" label="Palette" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+## Programmatic usage
+
+Use the `useTheme` hook to control the palette programmatically.
+
+```jsx
+import { useTheme } from '@umami/react-zen';
+
+function MyComponent() {
+  const { palette, setPalette } = useTheme();
+
+  return (
+    <Button onPress={() => setPalette('slate')}>
+      Current palette: {palette}
+    </Button>
+  );
+}
+```
+
+## With ZenProvider
+
+Set the default palette for your application.
+
+```jsx
+import { ZenProvider } from '@umami/react-zen';
+
+function App() {
+  return (
+    <ZenProvider palette="slate">
+      <YourApp />
+    </ZenProvider>
+  );
+}
+```
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'className', value: 'string', description: 'Additional CSS classes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

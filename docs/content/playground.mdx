@@ -13,9 +13,15 @@ import { PlaygroundExample } from '../app/examples/PlaygroundExample';
         Changes are applied in real-time to the preview panel.
       </Text>
     </Column>
-    <Row justifyContent="flex-end" alignItems="center" gap="2">
-      <Text size="sm" color="muted">Toggle theme</Text>
-      <ThemeButton variant="outline" />
+    <Row justifyContent="flex-end" alignItems="center" gap="4">
+      <Row alignItems="center" gap="2">
+        <Text size="sm" color="muted">Palette</Text>
+        <PaletteSwitcher />
+      </Row>
+      <Row alignItems="center" gap="2">
+        <Text size="sm" color="muted">Theme</Text>
+        <ThemeButton variant="outline" />
+      </Row>
     </Row>
     <PlaygroundExample />
   </Column>

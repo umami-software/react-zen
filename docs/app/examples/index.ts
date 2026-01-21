@@ -14,6 +14,8 @@ export { FormFieldArrayExample } from './FormFieldArrayExample';
 export { FormInputsExample } from './FormInputsExample';
 export { FormLoadingExample } from './FormLoadingExample';
 export { FormValidationExample } from './FormValidationExample';
+export { PaletteSwatchesExample } from './PaletteSwatchesExample';
+export { PlaygroundExample } from './PlaygroundExample';
 export { SearchDelayExample } from './SearchDelayExample';
 export { SelectSearchExample } from './SelectSearchExample';
 export { SelectValueExample } from './SelectValueExample';

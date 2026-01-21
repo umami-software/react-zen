@@ -6,6 +6,7 @@ export default {
   menu: 'Menu',
   'nav-menu': 'Nav Menu',
   navbar: 'Navbar',
+  'palette-switcher': 'Palette Switcher',
   sidebar: 'Sidebar',
   tabs: 'Tabs',
   'theme-button': 'Theme Button',
