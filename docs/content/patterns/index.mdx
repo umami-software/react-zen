@@ -1,0 +1,43 @@
+---
+title: Patterns
+---
+
+# Patterns
+
+Patterns are reusable compositions of core components that solve common UI problems. Unlike built-in components, patterns are meant to be copied and customized for your specific needs.
+
+## Why patterns?
+
+Zen focuses on providing a minimal set of foundational components. Instead of shipping every possible UI pattern as a component, we provide examples showing how to compose our primitives to build common interfaces.
+
+This approach gives you:
+
+- **Full control** - Copy the code and modify it to fit your exact requirements
+- **No bloat** - Your bundle only includes what you actually use
+- **Learning** - Understand how components work together
+- **Flexibility** - Adapt patterns to your design system
+
+## How to use
+
+Each pattern page includes:
+
+1. A live preview of the pattern
+2. Complete, copy-paste ready code with imports
+3. Explanations of key concepts
+
+Simply copy the code into your project and customize as needed.
+
+## Available patterns
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'Icon Label', description: 'Icon and text paired together' },
+      { name: 'Nav Menu', description: 'Collapsible navigation menu with groups' },
+      { name: 'Sidebar', description: 'Collapsible sidebar for application navigation' },
+    ]}
+  >
+    <DataColumn id="name" label="Pattern" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

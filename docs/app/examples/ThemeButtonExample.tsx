@@ -14,6 +14,7 @@ export function ThemeButtonExample() {
       borderRadius="lg"
       backgroundColor="surface-base"
       width="100%"
+      data-theme="dark"
     >
       <Row alignItems="center" justifyContent="space-between" gap="6">
         <Text color="primary">This container has its own theme</Text>

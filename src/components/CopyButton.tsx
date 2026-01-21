@@ -1,4 +1,4 @@
-import { useState, ReactNode, useRef } from 'react';
+import { type ReactNode, useRef, useState } from 'react';
 import { Check, Copy } from '@/components/icons';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
@@ -6,7 +6,7 @@ import { cn } from './lib/tailwind';
 const TIMEOUT = 2000;
 
 interface CopyButtonProps {
-  value?: string;
+  value?: string | (() => string);
   timeout?: number;
   className?: string;
   children?: ReactNode;
@@ -17,8 +17,9 @@ function CopyButton({ value, timeout = TIMEOUT, className, children, ...props }:
   const ref = useRef(timeout);
 
   const handleCopy = async () => {
-    if (value) {
-      await navigator.clipboard.writeText(value);
+    const text = typeof value === 'function' ? value() : value;
+    if (text) {
+      await navigator.clipboard.writeText(text);
 
       setCopied(true);
 

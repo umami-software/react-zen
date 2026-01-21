@@ -12,10 +12,11 @@ import {
   Separator,
   type SeparatorProps,
 } from 'react-aria-components';
-import { IconLabel } from '@/components/IconLabel';
 import { Check, ChevronRight } from '@/components/icons';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
+import { Text } from './Text';
 
 export interface MenuProps extends AriaMenuProps<any> {
   className?: string;
@@ -67,9 +68,11 @@ export function MenuItem({
     >
       {({ isSelected }) => (
         <>
-          <IconLabel icon={icon} label={label}>
-            {children as any}
-          </IconLabel>
+          <Row alignItems="center" gap>
+            {icon && <Icon>{icon}</Icon>}
+            {label && <Text>{label}</Text>}
+            {children}
+          </Row>
           {showChecked && isSelected && (
             <Icon aria-hidden="true">
               <Check />

@@ -1,0 +1,344 @@
+---
+title: Sidebar
+---
+
+# Sidebar
+
+A collapsible sidebar layout commonly used for application navigation. Built using `Box`, `Column`, `Row`, `Icon`, `Text`, and `Button` components.
+
+<Example backgroundColor="transparent">
+  <Box height="96" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
+    <Row height="100%">
+      <Box width="56" borderColor="muted" border="right" backgroundColor="surface-raised">
+        <Column height="100%" justifyContent="space-between">
+          <Column>
+            <Row padding="4" gap="2" alignItems="center" borderColor="muted" border="bottom">
+              <Box width="8" height="8" borderRadius="md" backgroundColor="primary" />
+              <Text weight="semibold">Acme Inc</Text>
+            </Row>
+            <Column padding="2" gap="1">
+              <Row paddingY="2" paddingX="3" borderRadius="md" backgroundColor="interactive" className="cursor-pointer" gap="3" alignItems="center">
+                <Icon size="sm"><Lucide.Home /></Icon>
+                <Text size="sm">Dashboard</Text>
+              </Row>
+              <Row paddingY="2" paddingX="3" borderRadius="md" className="cursor-pointer hover:bg-interactive" gap="3" alignItems="center">
+                <Icon size="sm" color="muted"><Lucide.Users /></Icon>
+                <Text size="sm" color="muted">Users</Text>
+              </Row>
+              <Row paddingY="2" paddingX="3" borderRadius="md" className="cursor-pointer hover:bg-interactive" gap="3" alignItems="center">
+                <Icon size="sm" color="muted"><Lucide.FileText /></Icon>
+                <Text size="sm" color="muted">Documents</Text>
+              </Row>
+              <Row paddingY="2" paddingX="3" borderRadius="md" className="cursor-pointer hover:bg-interactive" gap="3" alignItems="center">
+                <Icon size="sm" color="muted"><Lucide.Settings /></Icon>
+                <Text size="sm" color="muted">Settings</Text>
+              </Row>
+            </Column>
+          </Column>
+          <Row padding="4" gap="3" alignItems="center" borderColor="muted" border="top">
+            <Box width="8" height="8" borderRadius="full" backgroundColor="blue-500" />
+            <Column gap="0">
+              <Text size="sm" weight="medium">John Doe</Text>
+              <Text size="xs" color="muted">Admin</Text>
+            </Column>
+          </Row>
+        </Column>
+      </Box>
+      <Box padding="6" flexGrow="1">
+        <Text color="muted">Main content area</Text>
+      </Box>
+    </Row>
+  </Box>
+</Example>
+
+## Full implementation
+
+Copy this code into your project for a fully functional collapsible sidebar:
+
+```tsx
+'use client';
+
+import { createContext, useContext, useState, type ReactNode } from 'react';
+import { Box, Column, Row, Icon, Text, Button, type BoxProps } from '@umami/react-zen';
+import { PanelLeft } from 'lucide-react';
+
+// Context for sidebar state
+interface SidebarContextValue {
+  isCollapsed: boolean;
+  setCollapsed: (collapsed: boolean) => void;
+}
+
+const SidebarContext = createContext<SidebarContextValue>({
+  isCollapsed: false,
+  setCollapsed: () => {},
+});
+
+export function useSidebar() {
+  return useContext(SidebarContext);
+}
+
+// Main sidebar container
+interface SidebarProps extends BoxProps {
+  defaultCollapsed?: boolean;
+  collapsedWidth?: string;
+  expandedWidth?: string;
+  children: ReactNode;
+}
+
+export function Sidebar({
+  defaultCollapsed = false,
+  collapsedWidth = '4rem',
+  expandedWidth = '14rem',
+  children,
+  ...props
+}: SidebarProps) {
+  const [isCollapsed, setCollapsed] = useState(defaultCollapsed);
+
+  return (
+    <SidebarContext.Provider value={{ isCollapsed, setCollapsed }}>
+      <Box
+        height="100%"
+        backgroundColor="surface-raised"
+        borderColor="muted"
+        border="right"
+        style={{
+          width: isCollapsed ? collapsedWidth : expandedWidth,
+          transition: 'width 0.2s ease-in-out',
+        }}
+        {...props}
+      >
+        <Column height="100%" justifyContent="space-between">
+          {children}
+        </Column>
+      </Box>
+    </SidebarContext.Provider>
+  );
+}
+
+// Header section with logo/brand
+interface SidebarHeaderProps {
+  icon?: ReactNode;
+  title?: string;
+}
+
+export function SidebarHeader({ icon, title }: SidebarHeaderProps) {
+  const { isCollapsed } = useSidebar();
+
+  return (
+    <Row
+      padding="4"
+      gap="3"
+      alignItems="center"
+      borderColor="muted"
+      border="bottom"
+      justifyContent={isCollapsed ? 'center' : 'flex-start'}
+    >
+      {icon && (
+        <Box width="8" height="8" borderRadius="md" backgroundColor="primary" flexShrink="0">
+          {icon}
+        </Box>
+      )}
+      {!isCollapsed && title && <Text weight="semibold">{title}</Text>}
+    </Row>
+  );
+}
+
+// Navigation section
+interface SidebarNavProps {
+  children: ReactNode;
+}
+
+export function SidebarNav({ children }: SidebarNavProps) {
+  return (
+    <Column padding="2" gap="1" flexGrow="1">
+      {children}
+    </Column>
+  );
+}
+
+// Navigation item
+interface SidebarItemProps {
+  icon: ReactNode;
+  label: string;
+  isSelected?: boolean;
+  onClick?: () => void;
+}
+
+export function SidebarItem({ icon, label, isSelected, onClick }: SidebarItemProps) {
+  const { isCollapsed } = useSidebar();
+
+  return (
+    <Row
+      paddingY="2"
+      paddingX="3"
+      borderRadius="md"
+      gap="3"
+      alignItems="center"
+      justifyContent={isCollapsed ? 'center' : 'flex-start'}
+      backgroundColor={isSelected ? 'interactive' : undefined}
+      className={`cursor-pointer ${!isSelected ? 'hover:bg-interactive' : ''}`}
+      onClick={onClick}
+    >
+      <Icon size="sm" color={isSelected ? undefined : 'muted'}>
+        {icon}
+      </Icon>
+      {!isCollapsed && (
+        <Text size="sm" color={isSelected ? undefined : 'muted'}>
+          {label}
+        </Text>
+      )}
+    </Row>
+  );
+}
+
+// Footer section
+interface SidebarFooterProps {
+  children: ReactNode;
+}
+
+export function SidebarFooter({ children }: SidebarFooterProps) {
+  return (
+    <Box padding="4" borderColor="muted" border="top">
+      {children}
+    </Box>
+  );
+}
+
+// Collapse toggle button
+export function SidebarToggle() {
+  const { isCollapsed, setCollapsed } = useSidebar();
+
+  return (
+    <Button variant="quiet" onPress={() => setCollapsed(!isCollapsed)}>
+      <Icon style={{ transform: isCollapsed ? 'scaleX(-1)' : undefined }}>
+        <PanelLeft />
+      </Icon>
+    </Button>
+  );
+}
+```
+
+## Usage example
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+import { Box, Row, Column, Text } from '@umami/react-zen';
+import { Home, Users, FileText, Settings } from 'lucide-react';
+import {
+  Sidebar,
+  SidebarHeader,
+  SidebarNav,
+  SidebarItem,
+  SidebarFooter,
+  SidebarToggle,
+} from './Sidebar';
+
+export function AppLayout({ children }: { children: React.ReactNode }) {
+  const [selected, setSelected] = useState('dashboard');
+
+  return (
+    <Row height="100vh">
+      <Sidebar>
+        <Column>
+          <SidebarHeader title="Acme Inc" />
+          <SidebarNav>
+            <SidebarItem
+              icon={<Home />}
+              label="Dashboard"
+              isSelected={selected === 'dashboard'}
+              onClick={() => setSelected('dashboard')}
+            />
+            <SidebarItem
+              icon={<Users />}
+              label="Users"
+              isSelected={selected === 'users'}
+              onClick={() => setSelected('users')}
+            />
+            <SidebarItem
+              icon={<FileText />}
+              label="Documents"
+              isSelected={selected === 'documents'}
+              onClick={() => setSelected('documents')}
+            />
+            <SidebarItem
+              icon={<Settings />}
+              label="Settings"
+              isSelected={selected === 'settings'}
+              onClick={() => setSelected('settings')}
+            />
+          </SidebarNav>
+        </Column>
+        <SidebarFooter>
+          <Row justifyContent="space-between" alignItems="center">
+            <SidebarToggle />
+          </Row>
+        </SidebarFooter>
+      </Sidebar>
+      <Box flexGrow="1" padding="6">
+        {children}
+      </Box>
+    </Row>
+  );
+}
+```
+
+## Variations
+
+### With user profile in footer
+
+```tsx
+<SidebarFooter>
+  <Row gap="3" alignItems="center">
+    <Box width="8" height="8" borderRadius="full" backgroundColor="blue-500" flexShrink="0" />
+    {!isCollapsed && (
+      <Column gap="0">
+        <Text size="sm" weight="medium">John Doe</Text>
+        <Text size="xs" color="muted">Admin</Text>
+      </Column>
+    )}
+  </Row>
+</SidebarFooter>
+```
+
+### With section dividers
+
+```tsx
+<SidebarNav>
+  <Text size="xs" color="muted" weight="semibold" paddingX="3" paddingY="2">
+    MAIN
+  </Text>
+  <SidebarItem icon={<Home />} label="Dashboard" isSelected />
+  <SidebarItem icon={<Users />} label="Users" />
+
+  <Text size="xs" color="muted" weight="semibold" paddingX="3" paddingY="2" marginTop="4">
+    SETTINGS
+  </Text>
+  <SidebarItem icon={<Settings />} label="General" />
+  <SidebarItem icon={<Shield />} label="Security" />
+</SidebarNav>
+```
+
+### Always collapsed (icon-only)
+
+```tsx
+<Sidebar defaultCollapsed collapsedWidth="4rem" expandedWidth="4rem">
+  {/* Icons only, no expand functionality */}
+</Sidebar>
+```
+
+### With badges
+
+```tsx
+<SidebarItem icon={<Mail />} label="Messages">
+  <Box
+    backgroundColor="red-500"
+    paddingX="2"
+    borderRadius="full"
+    marginLeft="auto"
+  >
+    <Text size="xs" color="white">3</Text>
+  </Box>
+</SidebarItem>
+```
