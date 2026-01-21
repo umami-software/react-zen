@@ -7,52 +7,28 @@ title: Icon Label
 A simple pattern for pairing an icon with text. This is one of the most common UI patterns and is easily composed using the `Row`, `Icon`, and `Text` components.
 
 <Example>
-  <Row alignItems="center" gap="2">
-    <Icon><Lucide.Settings /></Icon>
-    <Text>Settings</Text>
-  </Row>
+  <IconLabel icon={<Lucide.Settings />} label="Settings" />
+
+```jsx
+<IconLabel icon={<Settings />} label="Settings" />
+```
 </Example>
 
-## Basic implementation
+## Source
 
-Copy this code into your project:
-
-```tsx
+```jsx
 'use client';
 
 import { Icon, Row, Text } from '@umami/react-zen';
-import { Settings } from 'lucide-react';
 
-export function IconLabel() {
-  return (
-    <Row alignItems="center" gap="2">
-      <Icon>
-        <Settings />
-      </Icon>
-      <Text>Settings</Text>
-    </Row>
-  );
-}
-```
-
-## Reusable component
-
-For a reusable version with props:
-
-```tsx
-'use client';
-
-import type { ReactNode } from 'react';
-import { Icon, Row, Text, type RowProps, type IconProps, type TextProps } from '@umami/react-zen';
-
-interface IconLabelProps extends RowProps {
-  icon: ReactNode;
-  label?: ReactNode;
-  iconProps?: Partial<IconProps>;
-  labelProps?: Partial<TextProps>;
-}
-
-export function IconLabel({ icon, label, iconProps, labelProps, children, ...props }: IconLabelProps) {
+export function IconLabel({
+  icon,
+  label,
+  iconProps,
+  labelProps,
+  children,
+  ...props
+}) {
   return (
     <Row alignItems="center" gap="2" {...props}>
       <Icon {...iconProps}>{icon}</Icon>
@@ -63,77 +39,64 @@ export function IconLabel({ icon, label, iconProps, labelProps, children, ...pro
 }
 ```
 
-Usage:
-
-```tsx
-import { IconLabel } from './IconLabel';
-import { Settings, User, Mail } from 'lucide-react';
-
-// Basic usage
-<IconLabel icon={<Settings />} label="Settings" />
-
-// With custom styling
-<IconLabel
-  icon={<User />}
-  label="Profile"
-  iconProps={{ color: 'blue' }}
-  labelProps={{ weight: 'bold' }}
-/>
-
-// With children instead of label
-<IconLabel icon={<Mail />}>
-  <Text>Messages</Text>
-  <Text color="muted" size="sm">(3 unread)</Text>
-</IconLabel>
-```
-
 ## Variations
 
 ### Different sizes
 
 <Example direction="column" gap="4">
-  <Row alignItems="center" gap="1">
-    <Icon size="xs"><Lucide.Star /></Icon>
-    <Text size="xs">Extra small</Text>
-  </Row>
-  <Row alignItems="center" gap="1">
-    <Icon size="sm"><Lucide.Star /></Icon>
-    <Text size="sm">Small</Text>
-  </Row>
-  <Row alignItems="center" gap="2">
-    <Icon size="md"><Lucide.Star /></Icon>
-    <Text size="md">Medium</Text>
-  </Row>
-  <Row alignItems="center" gap="2">
-    <Icon size="lg"><Lucide.Star /></Icon>
-    <Text size="lg">Large</Text>
-  </Row>
+  <IconLabel icon={<Lucide.Star />} label="Extra small" iconProps={{ size: 'xs' }} labelProps={{ size: 'xs' }} gap="1" />
+  <IconLabel icon={<Lucide.Star />} label="Small" iconProps={{ size: 'sm' }} labelProps={{ size: 'sm' }} gap="1" />
+  <IconLabel icon={<Lucide.Star />} label="Medium" iconProps={{ size: 'md' }} labelProps={{ size: 'md' }} />
+  <IconLabel icon={<Lucide.Star />} label="Large" iconProps={{ size: 'lg' }} labelProps={{ size: 'lg' }} />
+
+```jsx
+<IconLabel icon={<Star />} label="Extra small" iconProps={{ size: 'xs' }} labelProps={{ size: 'xs' }} gap="1" />
+<IconLabel icon={<Star />} label="Small" iconProps={{ size: 'sm' }} labelProps={{ size: 'sm' }} gap="1" />
+<IconLabel icon={<Star />} label="Medium" iconProps={{ size: 'md' }} labelProps={{ size: 'md' }} />
+<IconLabel icon={<Star />} label="Large" iconProps={{ size: 'lg' }} labelProps={{ size: 'lg' }} />
+```
 </Example>
 
 ### With colors
 
 <Example direction="row" gap="6">
-  <Row alignItems="center" gap="2">
-    <Icon color="green"><Lucide.CheckCircle /></Icon>
-    <Text color="green">Success</Text>
-  </Row>
-  <Row alignItems="center" gap="2">
-    <Icon color="red"><Lucide.XCircle /></Icon>
-    <Text color="red">Error</Text>
-  </Row>
-  <Row alignItems="center" gap="2">
-    <Icon color="yellow"><Lucide.AlertTriangle /></Icon>
-    <Text color="yellow-600">Warning</Text>
-  </Row>
+  <IconLabel icon={<Lucide.CheckCircle />} label="Success" iconProps={{ color: 'green' }} labelProps={{ color: 'green' }} />
+  <IconLabel icon={<Lucide.XCircle />} label="Error" iconProps={{ color: 'red' }} labelProps={{ color: 'red' }} />
+  <IconLabel icon={<Lucide.AlertTriangle />} label="Warning" iconProps={{ color: 'yellow' }} labelProps={{ color: 'yellow-600' }} />
+
+```jsx
+<IconLabel icon={<CheckCircle />} label="Success" iconProps={{ color: 'green' }} labelProps={{ color: 'green' }} />
+<IconLabel icon={<XCircle />} label="Error" iconProps={{ color: 'red' }} labelProps={{ color: 'red' }} />
+<IconLabel icon={<AlertTriangle />} label="Warning" iconProps={{ color: 'yellow' }} labelProps={{ color: 'yellow-600' }} />
+```
 </Example>
 
 ### As a button
 
 <Example>
   <Button variant="outline">
-    <Row alignItems="center" gap="2">
-      <Icon size="sm"><Lucide.Download /></Icon>
-      <Text>Download</Text>
-    </Row>
+    <IconLabel icon={<Lucide.Download />} label="Download" iconProps={{ size: 'sm' }} />
   </Button>
+
+```jsx
+<Button variant="outline">
+  <IconLabel icon={<Download />} label="Download" iconProps={{ size: 'sm' }} />
+</Button>
+```
+</Example>
+
+### With children instead of label
+
+<Example>
+  <IconLabel icon={<Lucide.Mail />}>
+    <Text>Messages</Text>
+    <Text color="muted" size="sm">(3 unread)</Text>
+  </IconLabel>
+
+```jsx
+<IconLabel icon={<Mail />}>
+  <Text>Messages</Text>
+  <Text color="muted" size="sm">(3 unread)</Text>
+</IconLabel>
+```
 </Example>

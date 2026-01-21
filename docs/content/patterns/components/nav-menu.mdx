@@ -7,162 +7,20 @@ title: Nav Menu
 A vertical navigation menu with collapsible groups, commonly used in sidebars and dashboards. Built using `Column`, `Row`, `Text`, and `Icon` components.
 
 <Example>
-  <Box width="64" border borderRadius="lg" padding="2">
-    <Column gap="1">
-      <Row paddingY="2" paddingX="3" alignItems="center" justifyContent="space-between">
-        <Text size="xs" weight="semibold" color="muted" transform="uppercase">Dashboard</Text>
-      </Row>
-      <Row paddingY="2" paddingX="3" borderRadius="md" backgroundColor="interactive" className="cursor-pointer">
-        <Row alignItems="center" gap="2">
-          <Icon size="sm" color="muted"><Lucide.Home /></Icon>
-          <Text>Home</Text>
-        </Row>
-      </Row>
-      <Row paddingY="2" paddingX="3" borderRadius="md" className="cursor-pointer hover:bg-interactive">
-        <Row alignItems="center" gap="2">
-          <Icon size="sm" color="muted"><Lucide.BarChart /></Icon>
-          <Text color="muted">Analytics</Text>
-        </Row>
-      </Row>
-      <Row paddingY="2" paddingX="3" borderRadius="md" className="cursor-pointer hover:bg-interactive">
-        <Row alignItems="center" gap="2">
-          <Icon size="sm" color="muted"><Lucide.Users /></Icon>
-          <Text color="muted">Users</Text>
-        </Row>
-      </Row>
-      <Row paddingY="2" paddingX="3" alignItems="center" justifyContent="space-between">
-        <Text size="xs" weight="semibold" color="muted" transform="uppercase">Settings</Text>
-      </Row>
-      <Row paddingY="2" paddingX="3" borderRadius="md" className="cursor-pointer hover:bg-interactive">
-        <Row alignItems="center" gap="2">
-          <Icon size="sm" color="muted"><Lucide.Settings /></Icon>
-          <Text color="muted">General</Text>
-        </Row>
-      </Row>
-      <Row paddingY="2" paddingX="3" borderRadius="md" className="cursor-pointer hover:bg-interactive">
-        <Row alignItems="center" gap="2">
-          <Icon size="sm" color="muted"><Lucide.Shield /></Icon>
-          <Text color="muted">Security</Text>
-        </Row>
-      </Row>
-    </Column>
-  </Box>
-</Example>
+  <NavMenuExample />
 
-## Full implementation
-
-Copy this code into your project for a fully functional nav menu with collapsible groups:
-
-```tsx
-'use client';
-
-import { createContext, useContext, useState, type ReactNode } from 'react';
-import { Column, Row, Text, Icon, type ColumnProps, type RowProps } from '@umami/react-zen';
-import { ChevronRight } from 'lucide-react';
-
-// Context for sharing state
-interface NavMenuContextValue {
-  onItemClick?: () => void;
-}
-
-const NavMenuContext = createContext<NavMenuContextValue>({});
-
-// Main NavMenu container
-interface NavMenuProps extends ColumnProps {
-  onItemClick?: () => void;
-}
-
-export function NavMenu({ onItemClick, children, ...props }: NavMenuProps) {
-  return (
-    <NavMenuContext.Provider value={{ onItemClick }}>
-      <Column gap="1" {...props}>
-        {children}
-      </Column>
-    </NavMenuContext.Provider>
-  );
-}
-
-// Collapsible group
-interface NavMenuGroupProps extends ColumnProps {
-  title: string;
-  defaultOpen?: boolean;
-}
-
-export function NavMenuGroup({ title, defaultOpen = true, children, ...props }: NavMenuGroupProps) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-
-  return (
-    <Column {...props}>
-      <Row
-        paddingY="2"
-        paddingX="3"
-        alignItems="center"
-        justifyContent="space-between"
-        className="cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
-          {title}
-        </Text>
-        <Icon size="sm" color="muted" rotate={isOpen ? 90 : 0}>
-          <ChevronRight />
-        </Icon>
-      </Row>
-      {isOpen && <Column>{children}</Column>}
-    </Column>
-  );
-}
-
-// Individual menu item
-interface NavMenuItemProps extends RowProps {
-  icon?: ReactNode;
-  isSelected?: boolean;
-}
-
-export function NavMenuItem({ icon, isSelected, children, ...props }: NavMenuItemProps) {
-  const { onItemClick } = useContext(NavMenuContext);
-
-  return (
-    <Row
-      paddingY="2"
-      paddingX="3"
-      borderRadius="md"
-      alignItems="center"
-      gap="2"
-      onClick={onItemClick}
-      backgroundColor={isSelected ? 'interactive' : undefined}
-      className={`cursor-pointer ${!isSelected ? 'hover:bg-interactive' : ''}`}
-      {...props}
-    >
-      {icon && (
-        <Icon size="sm" color="muted">
-          {icon}
-        </Icon>
-      )}
-      <Text color={isSelected ? undefined : 'muted'} weight={isSelected ? 'medium' : undefined}>
-        {children}
-      </Text>
-    </Row>
-  );
-}
-```
-
-## Usage example
-
-```tsx
-'use client';
-
+```jsx
 import { useState } from 'react';
 import { Box } from '@umami/react-zen';
 import { Home, BarChart, Users, Settings, Shield } from 'lucide-react';
 import { NavMenu, NavMenuGroup, NavMenuItem } from './NavMenu';
 
-export function Sidebar() {
+export function NavMenuExample() {
   const [selected, setSelected] = useState('home');
 
   return (
     <Box width="64" border borderRadius="lg" padding="2">
-      <NavMenu onItemClick={() => console.log('Item clicked')}>
+      <NavMenu>
         <NavMenuGroup title="Dashboard">
           <NavMenuItem
             icon={<Home />}
@@ -208,12 +66,101 @@ export function Sidebar() {
   );
 }
 ```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { createContext, useContext, useState } from 'react';
+import { Column, Row, Text, Icon } from '@umami/react-zen';
+import { ChevronRight } from 'lucide-react';
+
+const NavMenuContext = createContext({});
+
+export function NavMenu({ onItemClick, children, ...props }) {
+  return (
+    <NavMenuContext.Provider value={{ onItemClick }}>
+      <Column gap="1" {...props}>
+        {children}
+      </Column>
+    </NavMenuContext.Provider>
+  );
+}
+
+export function NavMenuGroup({ title, defaultOpen = true, children, ...props }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <Column {...props}>
+      <Row
+        paddingY="2"
+        paddingX="3"
+        alignItems="center"
+        justifyContent="space-between"
+        className="cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
+          {title}
+        </Text>
+        <Icon size="sm" color="muted" rotate={isOpen ? 90 : 0}>
+          <ChevronRight />
+        </Icon>
+      </Row>
+      {isOpen && <Column>{children}</Column>}
+    </Column>
+  );
+}
+
+export function NavMenuItem({ icon, isSelected, children, ...props }) {
+  const { onItemClick } = useContext(NavMenuContext);
+
+  return (
+    <Row
+      paddingY="2"
+      paddingX="3"
+      borderRadius="md"
+      alignItems="center"
+      gap="2"
+      onClick={onItemClick}
+      backgroundColor={isSelected ? 'interactive' : undefined}
+      className={`cursor-pointer ${!isSelected ? 'hover:bg-interactive' : ''}`}
+      {...props}
+    >
+      {icon && (
+        <Icon size="sm" color="muted">
+          {icon}
+        </Icon>
+      )}
+      <Text
+        color={isSelected ? undefined : 'muted'}
+        weight={isSelected ? 'medium' : undefined}
+      >
+        {children}
+      </Text>
+    </Row>
+  );
+}
+```
 
 ## Variations
 
 ### Without icons
 
-```tsx
+<Example>
+  <Box width="64" border borderRadius="lg" padding="2">
+    <NavMenu>
+      <NavMenuGroup title="Pages">
+        <NavMenuItem isSelected>Dashboard</NavMenuItem>
+        <NavMenuItem>Reports</NavMenuItem>
+        <NavMenuItem>Settings</NavMenuItem>
+      </NavMenuGroup>
+    </NavMenu>
+  </Box>
+
+```jsx
 <NavMenu>
   <NavMenuGroup title="Pages">
     <NavMenuItem isSelected>Dashboard</NavMenuItem>
@@ -222,12 +169,24 @@ export function Sidebar() {
   </NavMenuGroup>
 </NavMenu>
 ```
+</Example>
 
 ### Non-collapsible groups
 
-Simply don't use `NavMenuGroup` and use a static header:
+<Example>
+  <Box width="64" border borderRadius="lg" padding="2">
+    <NavMenu>
+      <Row paddingY="2" paddingX="3">
+        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
+          Navigation
+        </Text>
+      </Row>
+      <NavMenuItem icon={<Lucide.Home />} isSelected>Home</NavMenuItem>
+      <NavMenuItem icon={<Lucide.Settings />}>Settings</NavMenuItem>
+    </NavMenu>
+  </Box>
 
-```tsx
+```jsx
 <NavMenu>
   <Row paddingY="2" paddingX="3">
     <Text size="xs" weight="semibold" color="muted" transform="uppercase">
@@ -238,21 +197,4 @@ Simply don't use `NavMenuGroup` and use a static header:
   <NavMenuItem icon={<Settings />}>Settings</NavMenuItem>
 </NavMenu>
 ```
-
-### With badges
-
-```tsx
-<NavMenuItem icon={<Mail />}>
-  <Row alignItems="center" justifyContent="space-between" width="100%">
-    <Text>Messages</Text>
-    <Box
-      backgroundColor="red-500"
-      paddingX="2"
-      paddingY="0.5"
-      borderRadius="full"
-    >
-      <Text size="xs" color="white">3</Text>
-    </Box>
-  </Row>
-</NavMenuItem>
-```
+</Example>

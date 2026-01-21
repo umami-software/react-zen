@@ -1,7 +1,8 @@
 'use client';
 
-import { Children, isValidElement, type ReactNode, useRef, useState } from 'react';
-import { Box, Button, Column, CopyButton, Flexbox, type FlexboxProps } from '@/components';
+import { Children, isValidElement, type ReactNode, useState } from 'react';
+import { Box, Button, Flexbox, type FlexboxProps } from '@/components';
+import { ExampleCode } from '../components/ExampleCode';
 
 function isCodeBlock(child: ReactNode): boolean {
   if (!isValidElement(child)) return false;
@@ -89,27 +90,9 @@ export function Example({
     </Box>
   );
 
-  const codeRef = useRef<HTMLDivElement>(null);
-
-  const getCodeText = () => {
-    const codeElement = codeRef.current?.querySelector('code');
-    return codeElement?.textContent || '';
-  };
-
   const codeBlock = (
-    <Box
-      ref={codeRef}
-      position="relative"
-      overflow="auto"
-      className="group example-code [&_*]:border-0 [&_*]:ring-0 [&_pre]:m-0 [&_pre]:p-4 [&_pre]:text-sm [&_figure]:m-0 [&_figure]:p-0 [&_code]:font-[family-name:var(--font-family-mono)]"
-    >
-      <Box
-        position="absolute"
-        className="top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-10"
-      >
-        <CopyButton value={getCodeText} className="bg-surface-overlay/80 backdrop-blur-sm" />
-      </Box>
-      {code}
+    <Box position="relative">
+      <ExampleCode>{code}</ExampleCode>
       {codeFirst && toggleButton}
     </Box>
   );
