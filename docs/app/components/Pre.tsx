@@ -16,7 +16,8 @@ export function Pre({ children, ...props }: ComponentProps<'pre'>) {
       border
       borderRadius="lg"
       overflow="hidden"
-      backgroundColor="surface-raised"
+      backgroundColor="surface-base"
+      padding="4"
       className="group"
     >
       <Box
@@ -25,7 +26,11 @@ export function Pre({ children, ...props }: ComponentProps<'pre'>) {
       >
         <CopyButton value={getCodeText} className="bg-surface-overlay/80 backdrop-blur-sm" />
       </Box>
-      <pre ref={preRef} {...props} className={`${props.className || ''} !border-0 !rounded-none`}>
+      <pre
+        ref={preRef}
+        {...props}
+        className={`${props.className || ''} !border-0 !rounded-none !m-0 !p-0`}
+      >
         {children}
       </pre>
     </Box>
