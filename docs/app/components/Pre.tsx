@@ -15,9 +15,8 @@ export function Pre({ children, ...props }: ComponentProps<'pre'>) {
       position="relative"
       border
       borderRadius="lg"
-      overflow="hidden"
       backgroundColor="surface-base"
-      className="group"
+      className="group overflow-x-auto"
     >
       <Box
         position="absolute"
@@ -28,7 +27,7 @@ export function Pre({ children, ...props }: ComponentProps<'pre'>) {
       <pre
         ref={preRef}
         {...props}
-        className={`${props.className || ''} !border-0 !rounded-none !m-0 p-4 overflow-x-auto`}
+        className={`${props.className || ''} !border-0 !rounded-none !m-0 p-4 overflow-x-auto max-w-full`}
       >
         {children}
       </pre>
