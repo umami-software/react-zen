@@ -31,6 +31,12 @@ function getPaletteFromDOM(): Palette {
   return palette && PALETTES.includes(palette) ? palette : 'neutral';
 }
 
+function getStoredPalette(): Palette {
+  if (typeof window === 'undefined') return 'neutral';
+  const stored = localStorage.getItem(PALETTE_STORAGE_KEY) as Palette | null;
+  return stored && PALETTES.includes(stored) ? stored : 'neutral';
+}
+
 function resolveTheme(preferred?: Theme, colorScheme?: 'light' | 'dark' | 'system'): Theme {
   if (preferred) {
     return preferred;
