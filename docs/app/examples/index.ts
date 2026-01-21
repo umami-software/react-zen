@@ -3,6 +3,7 @@ export { AccentColorsExample } from './AccentColorsExample';
 export { AlertDialogExample } from './AlertDialogExample';
 export { BreakpointExample } from './BreakpointExample';
 export { CalendarExample } from './CalendarExample';
+export { ColorSwatchesExample } from './ColorSwatchesExample';
 export { ConfirmationDialogExample } from './ConfirmationDialogExample';
 export { DialogExample } from './DialogExample';
 export { Example } from './Example';
