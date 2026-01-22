@@ -12,13 +12,10 @@ export {
 } from './AppShell';
 export { AppShellExample } from './AppShellExample';
 // Navigation patterns
-export { BreadcrumbsPattern } from './BreadcrumbsPattern';
 export { CommandPalette, useCommandPalette } from './CommandPalette';
 export { CommandPaletteExample } from './CommandPaletteExample';
 export { CommandPaletteInline } from './CommandPaletteInline';
-export { ConfirmationDialogExample } from './ConfirmationDialogExample';
-// Feedback patterns
-export { ConfirmationDialogPattern, DeleteConfirmation } from './ConfirmationDialogPattern';
+// Layout patterns
 export {
   DashboardCard,
   DashboardCardFull,
@@ -44,7 +41,6 @@ export { LoginForm } from './LoginForm';
 export { NavMenu, NavMenuGroup, NavMenuItem } from './NavMenu';
 export { NavMenuExample } from './NavMenuExample';
 export { PageHeader, PageHeaderActions, PageHeaderTitle } from './PageHeader';
-export { SearchBar } from './SearchBar';
 export {
   SettingsForm,
   SettingsInput,
@@ -83,4 +79,3 @@ export { SplitViewExample } from './SplitViewExample';
 export { StatCard, StatCardCompact, StatCardGroup } from './StatCard';
 export { Step, StepContent, Stepper, StepperHeader, useStepper } from './Stepper';
 export { StepperExample } from './StepperExample';
-export { Tab, TabContent, TabsList, TabsPanel, useTabsPanel } from './TabsPanel';
