@@ -65,7 +65,7 @@ export function ErrorPage({
       justifyContent="center"
       padding="8"
       gap="6"
-      style={{ minHeight: '50vh' }}
+      minHeight="50vh"
       {...props}
     >
       <Column alignItems="center" gap="4">

@@ -93,7 +93,7 @@ export function CommandPalette({
       <Box
         position="relative"
         width="100%"
-        style={{ maxWidth: '32rem' }}
+        maxWidth="32rem"
         backgroundColor="surface-raised"
         borderRadius="lg"
         border
@@ -113,7 +113,7 @@ export function CommandPalette({
             style={{ border: 'none', background: 'transparent', outline: 'none', flex: 1 }}
           />
         </Row>
-        <Column style={{ maxHeight: '20rem' }} overflow="auto">
+        <Column maxHeight="20rem" overflow="auto">
           {filteredGroups.length === 0 ? (
             <Box padding="4">
               <Text color="muted" align="center">

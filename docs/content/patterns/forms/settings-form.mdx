@@ -24,7 +24,7 @@ export function SettingsFormExample() {
   const [displayName, setDisplayName] = useState('John Doe');
 
   return (
-    <SettingsForm style={{ maxWidth: '32rem' }}>
+    <SettingsForm maxWidth="32rem">
       <SettingsSection
         title="Notifications"
         description="Manage how you receive notifications"
@@ -99,7 +99,7 @@ export function SettingsRow({ label, description, children }) {
       borderColor="muted"
       border="bottom"
     >
-      <Column gap="0" flexGrow="1" style={{ maxWidth: '70%' }}>
+      <Column gap="0" flexGrow="1" maxWidth="70%">
         <Text size="sm" weight="medium">{label}</Text>
         {description && <Text size="xs" color="muted">{description}</Text>}
       </Column>
@@ -124,7 +124,7 @@ export function SettingsInput({ label, description, value, onChange, placeholder
         onChange={onChange}
         placeholder={placeholder}
         type={type}
-        style={{ width: '12rem' }}
+        width="12rem"
       />
     </SettingsRow>
   );
@@ -136,7 +136,7 @@ export function SettingsInput({ label, description, value, onChange, placeholder
 ### Multiple sections
 
 <Example>
-  <SettingsForm style={{ maxWidth: '32rem' }}>
+  <SettingsForm maxWidth="32rem">
     <SettingsSection title="Account" description="Manage your account settings">
       <SettingsRow label="Two-factor authentication" description="Add an extra layer of security">
         <Switch isSelected />
@@ -172,7 +172,7 @@ export function SettingsInput({ label, description, value, onChange, placeholder
 ### With custom controls
 
 <Example>
-  <SettingsForm style={{ maxWidth: '32rem' }}>
+  <SettingsForm maxWidth="32rem">
     <SettingsSection title="Appearance">
       <SettingsRow label="Theme" description="Choose your preferred theme">
         <Row gap="1">

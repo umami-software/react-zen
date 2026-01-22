@@ -45,22 +45,23 @@ export function EmptyState({
   return (
     <Column alignItems="center" justifyContent="center" padding="8" gap="4" {...props}>
       {icon && (
-        <Box
+        <Row
           width="16"
           height="16"
           borderRadius="full"
           backgroundColor="surface-raised"
-          display="flex"
           alignItems="center"
           justifyContent="center"
         >
           <Icon size="lg" color="muted">{icon}</Icon>
-        </Box>
+        </Row>
       )}
       <Column alignItems="center" gap="2">
         <Text size="lg" weight="semibold">{title}</Text>
         {description && (
-          <Text color="muted" align="center" style={{ maxWidth: '20rem' }}>{description}</Text>
+          <Box maxWidth="20rem">
+            <Text color="muted" align="center">{description}</Text>
+          </Box>
         )}
       </Column>
       {(action || secondaryAction) && (
@@ -136,12 +137,12 @@ export function EmptyStateError(props) {
 
 <Example>
   <Column alignItems="center" justifyContent="center" padding="8" gap="4">
-    <Box width="16" height="16" borderRadius="full" backgroundColor="surface-raised" display="flex" alignItems="center" justifyContent="center">
+    <Row width="16" height="16" borderRadius="full" backgroundColor="surface-raised" alignItems="center" justifyContent="center">
       <Icon size="lg" color="muted"><Lucide.FileX /></Icon>
-    </Box>
+    </Row>
     <Column alignItems="center" gap="2">
       <Text size="lg" weight="semibold">Something went wrong</Text>
-      <Text color="muted" align="center" style={{ maxWidth: '20rem' }}>We couldn't load this content. Please try again.</Text>
+      <Box maxWidth="20rem"><Text color="muted" align="center">We couldn't load this content. Please try again.</Text></Box>
     </Column>
     <Column gap="2" alignItems="center">
       <Button variant="primary">Try Again</Button>
@@ -161,12 +162,12 @@ export function EmptyStateError(props) {
 
 <Example>
   <Column alignItems="center" justifyContent="center" padding="8" gap="4">
-    <Box width="16" height="16" borderRadius="full" backgroundColor="surface-raised" display="flex" alignItems="center" justifyContent="center">
+    <Row width="16" height="16" borderRadius="full" backgroundColor="surface-raised" alignItems="center" justifyContent="center">
       <Icon size="lg" color="muted"><Lucide.FolderOpen /></Icon>
-    </Box>
+    </Row>
     <Column alignItems="center" gap="2">
       <Text size="lg" weight="semibold">No projects</Text>
-      <Text color="muted" align="center" style={{ maxWidth: '20rem' }}>Create a new project to get started building something amazing.</Text>
+      <Box maxWidth="20rem"><Text color="muted" align="center">Create a new project to get started building something amazing.</Text></Box>
     </Column>
     <Column gap="2" alignItems="center">
       <Button variant="primary">New Project</Button>

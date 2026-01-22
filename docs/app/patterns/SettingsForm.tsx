@@ -50,7 +50,7 @@ export function SettingsRow({ label, description, children }: SettingsRowProps) 
       borderColor="muted"
       border="bottom"
     >
-      <Column gap="0" flexGrow="1" style={{ maxWidth: '70%' }}>
+      <Column gap="0" flexGrow="1" maxWidth="70%">
         <Text weight="medium">{label}</Text>
         {description && <Text color="muted">{description}</Text>}
       </Column>
@@ -98,7 +98,7 @@ export function SettingsInput({
         onChange={onChange}
         placeholder={placeholder}
         type={type}
-        style={{ width: '12rem' }}
+        width="12rem"
       />
     </SettingsRow>
   );

@@ -39,7 +39,7 @@ export function LoginForm({
       border
       borderColor="muted"
       width="100%"
-      style={{ maxWidth: '24rem' }}
+      maxWidth="24rem"
     >
       <Column gap="6">
         <Column gap="2" alignItems="center">

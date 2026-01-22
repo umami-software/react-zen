@@ -37,9 +37,9 @@ Add this CSS to your stylesheet:
 .skeleton {
   background: linear-gradient(
     90deg,
-    var(--gray-200) 0%,
-    var(--gray-100) 50%,
-    var(--gray-200) 100%
+    var(--gray-300) 0%,
+    var(--gray-200) 50%,
+    var(--gray-300) 100%
   );
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.5s ease-in-out infinite;
@@ -49,9 +49,9 @@ Add this CSS to your stylesheet:
 .dark .skeleton {
   background: linear-gradient(
     90deg,
-    var(--gray-700) 0%,
-    var(--gray-600) 50%,
-    var(--gray-700) 100%
+    var(--gray-600) 0%,
+    var(--gray-500) 50%,
+    var(--gray-600) 100%
   );
   background-size: 200% 100%;
 }
@@ -93,20 +93,6 @@ export function SkeletonAvatar({ size = 'md' }) {
   return <Skeleton width={sizeMap[size]} height={sizeMap[size]} borderRadius="full" />;
 }
 
-export function SkeletonCard() {
-  return (
-    <Box padding="4" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted">
-      <Column gap="4">
-        <Skeleton height="8rem" borderRadius="md" />
-        <Column gap="2">
-          <Skeleton height="1.25rem" width="70%" />
-          <SkeletonText lines={2} />
-        </Column>
-      </Column>
-    </Box>
-  );
-}
-
 export function SkeletonListItem() {
   return (
     <Row padding="3" alignItems="center" gap="3" borderColor="muted" border="bottom">
@@ -139,17 +125,6 @@ export function SkeletonTable({ rows = 5, columns = 4 }) {
   );
 }
 
-export function SkeletonStatCard() {
-  return (
-    <Box padding="4" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted">
-      <Column gap="3">
-        <Skeleton height="0.875rem" width="40%" />
-        <Skeleton height="2rem" width="60%" />
-        <Skeleton height="0.75rem" width="30%" />
-      </Column>
-    </Box>
-  );
-}
 ```
 
 ## Variations
@@ -165,18 +140,6 @@ export function SkeletonStatCard() {
 <SkeletonAvatar size="sm" />
 <SkeletonAvatar size="md" />
 <SkeletonAvatar size="lg" />
-```
-</Example>
-
-### Card skeleton
-
-<Example>
-  <Box style={{ maxWidth: '20rem' }}>
-    <SkeletonCard />
-  </Box>
-
-```jsx
-<SkeletonCard />
 ```
 </Example>
 
@@ -207,22 +170,6 @@ export function SkeletonStatCard() {
 
 ```jsx
 <SkeletonTable rows={3} columns={4} />
-```
-</Example>
-
-### Stat card skeleton
-
-<Example direction="row" gap="4">
-  <SkeletonStatCard />
-  <SkeletonStatCard />
-  <SkeletonStatCard />
-
-```jsx
-<Row gap="4">
-  <SkeletonStatCard />
-  <SkeletonStatCard />
-  <SkeletonStatCard />
-</Row>
 ```
 </Example>
 

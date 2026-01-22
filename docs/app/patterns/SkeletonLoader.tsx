@@ -47,20 +47,6 @@ export function SkeletonAvatar({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) {
   return <Skeleton width={sizeMap[size]} height={sizeMap[size]} borderRadius="full" />;
 }
 
-export function SkeletonCard() {
-  return (
-    <Box padding="4" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted">
-      <Column gap="4">
-        <Skeleton height="8rem" borderRadius="md" />
-        <Column gap="2">
-          <Skeleton height="1.25rem" width="70%" />
-          <SkeletonText lines={2} />
-        </Column>
-      </Column>
-    </Box>
-  );
-}
-
 export function SkeletonListItem() {
   return (
     <Row padding="3" alignItems="center" gap="3" borderColor="muted" border="bottom">
@@ -96,17 +82,5 @@ export function SkeletonTable({ rows = 5, columns = 4 }: { rows?: number; column
         );
       })}
     </Column>
-  );
-}
-
-export function SkeletonStatCard() {
-  return (
-    <Box padding="4" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted">
-      <Column gap="3">
-        <Skeleton height="0.875rem" width="40%" />
-        <Skeleton height="2rem" width="60%" />
-        <Skeleton height="0.75rem" width="30%" />
-      </Column>
-    </Box>
   );
 }

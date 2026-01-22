@@ -62,9 +62,7 @@ export { SidebarExample } from './SidebarExample';
 export {
   Skeleton,
   SkeletonAvatar,
-  SkeletonCard,
   SkeletonListItem,
-  SkeletonStatCard,
   SkeletonTable,
   SkeletonText,
 } from './SkeletonLoader';

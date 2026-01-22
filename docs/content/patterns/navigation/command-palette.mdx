@@ -114,14 +114,14 @@ export function CommandPalette({
   let itemIndex = -1;
 
   return (
-    <Box position="fixed" style={{ inset: 0, zIndex: 50 }} display="flex" alignItems="flex-start" justifyContent="center" paddingTop="20">
+    <Column position="fixed" style={{ inset: 0, zIndex: 50 }} alignItems="center" paddingTop="20">
       <Box position="absolute" style={{ inset: 0 }} backgroundColor="overlay" onClick={onClose} />
-      <Box position="relative" width="100%" style={{ maxWidth: '32rem' }} backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted" overflow="hidden">
+      <Box position="relative" width="100%" maxWidth="32rem" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted" overflow="hidden">
         <Row padding="3" gap="3" alignItems="center" borderColor="muted" border="bottom">
           <Icon color="muted"><Search /></Icon>
           <TextField value={search} onChange={setSearch} placeholder={placeholder} autoFocus style={{ border: 'none', background: 'transparent', outline: 'none', flex: 1 }} />
         </Row>
-        <Column style={{ maxHeight: '20rem' }} overflow="auto">
+        <Column maxHeight="20rem" overflow="auto">
           {filteredGroups.length === 0 ? (
             <Box padding="4"><Text color="muted" align="center">No results found</Text></Box>
           ) : (
@@ -157,7 +157,7 @@ export function CommandPalette({
           )}
         </Column>
       </Box>
-    </Box>
+    </Column>
   );
 }
 

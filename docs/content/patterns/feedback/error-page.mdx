@@ -61,17 +61,17 @@ export function ErrorPage({
   const displayDescription = description || defaults?.description || 'An unexpected error occurred.';
 
   return (
-    <Column alignItems="center" justifyContent="center" padding="8" gap="6" style={{ minHeight: '50vh' }} {...props}>
+    <Column alignItems="center" justifyContent="center" padding="8" gap="6" minHeight="50vh" {...props}>
       <Column alignItems="center" gap="4">
         {statusCode && <Text size="6xl" weight="bold" color="muted">{statusCode}</Text>}
         {!statusCode && (
-          <Box width="16" height="16" borderRadius="full" backgroundColor="red-100" display="flex" alignItems="center" justifyContent="center">
+          <Row width="16" height="16" borderRadius="full" backgroundColor="red-100" alignItems="center" justifyContent="center">
             <Icon size="lg" color="red"><AlertCircle /></Icon>
-          </Box>
+          </Row>
         )}
         <Column alignItems="center" gap="2">
           <Text size="xl" weight="semibold">{displayTitle}</Text>
-          <Text color="muted" align="center" style={{ maxWidth: '24rem' }}>{displayDescription}</Text>
+          <Box maxWidth="24rem"><Text color="muted" align="center">{displayDescription}</Text></Box>
         </Column>
       </Column>
 

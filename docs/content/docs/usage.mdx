@@ -197,7 +197,7 @@ Most style props accept responsive objects. Use `base` for mobile-first styles:
 
 **Layout:**
 ```jsx
-<Box display="flex" alignItems="center" justifyContent="space-between" gap="4" />
+<Row alignItems="center" justifyContent="space-between" gap="4" />
 ```
 
 **Visual:**
@@ -243,7 +243,7 @@ Use `Column` with consistent `gap` for form fields:
 ```
 
 <Example>
-  <Box padding="6" border borderRadius="lg" style={{ maxWidth: '400px' }}>
+  <Box padding="6" border borderRadius="lg" maxWidth="400px">
     <Column gap="4">
       <TextField label="Name" placeholder="Enter your name" />
       <TextField label="Email" type="email" placeholder="you@example.com" />
@@ -345,7 +345,7 @@ Use semantic color tokens that adapt to the theme:
 ```
 
 <Example>
-  <Box padding="6" border borderRadius="lg" shadow="sm" backgroundColor="surface-base" style={{ maxWidth: '300px' }}>
+  <Box padding="6" border borderRadius="lg" shadow="sm" backgroundColor="surface-base" maxWidth="300px">
     <Column gap="4">
       <Heading size="lg">Card Title</Heading>
       <Text color="muted">Card description or content goes here.</Text>
