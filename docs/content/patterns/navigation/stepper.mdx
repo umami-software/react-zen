@@ -1,0 +1,221 @@
+---
+title: Stepper
+---
+
+# Stepper
+
+A multi-step progress indicator for wizards and multi-part forms. Built using `Box`, `Row`, `Column`, `Icon`, and `Text` components.
+
+<Example>
+  <StepperExample />
+
+```jsx
+import { Button, Row } from '@umami/react-zen';
+import { Stepper, StepperHeader, Step, StepContent, useStepper } from './Stepper';
+
+function StepperNavigation() {
+  const { currentStep, totalSteps, nextStep, prevStep } = useStepper();
+
+  return (
+    <Row gap="2" marginTop="4">
+      <Button variant="outline" onPress={prevStep} isDisabled={currentStep === 0}>
+        Previous
+      </Button>
+      <Button variant="primary" onPress={nextStep} isDisabled={currentStep === totalSteps - 1}>
+        {currentStep === totalSteps - 1 ? 'Complete' : 'Next'}
+      </Button>
+    </Row>
+  );
+}
+
+export function StepperExample() {
+  return (
+    <Stepper totalSteps={3}>
+      <StepperHeader>
+        <Step step={0} title="Account" description="Create your account" />
+        <Step step={1} title="Profile" description="Set up your profile" />
+        <Step step={2} title="Complete" description="Review and finish" />
+      </StepperHeader>
+
+      <StepContent step={0}>
+        <Text>Step 1: Enter your account details</Text>
+        <StepperNavigation />
+      </StepContent>
+      <StepContent step={1}>
+        <Text>Step 2: Set up your profile</Text>
+        <StepperNavigation />
+      </StepContent>
+      <StepContent step={2}>
+        <Text>Step 3: Review and complete</Text>
+        <StepperNavigation />
+      </StepContent>
+    </Stepper>
+  );
+}
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { Check } from 'lucide-react';
+import { createContext, useContext, useState } from 'react';
+import { Box, Column, Icon, Row, Text } from '@umami/react-zen';
+
+const StepperContext = createContext({
+  currentStep: 0,
+  totalSteps: 0,
+  goToStep: () => {},
+  nextStep: () => {},
+  prevStep: () => {},
+});
+
+export function useStepper() {
+  return useContext(StepperContext);
+}
+
+export function Stepper({ defaultStep = 0, totalSteps, children, ...props }) {
+  const [currentStep, setCurrentStep] = useState(defaultStep);
+
+  const goToStep = (step) => {
+    if (step >= 0 && step < totalSteps) {
+      setCurrentStep(step);
+    }
+  };
+
+  const nextStep = () => goToStep(currentStep + 1);
+  const prevStep = () => goToStep(currentStep - 1);
+
+  return (
+    <StepperContext.Provider value={{ currentStep, totalSteps, goToStep, nextStep, prevStep }}>
+      <Box {...props}>{children}</Box>
+    </StepperContext.Provider>
+  );
+}
+
+export function StepperHeader({ children }) {
+  return (
+    <Row alignItems="center" justifyContent="space-between" marginBottom="6">
+      {children}
+    </Row>
+  );
+}
+
+export function Step({ step, title, description }) {
+  const { currentStep, totalSteps } = useStepper();
+  const isCompleted = currentStep > step;
+  const isActive = currentStep === step;
+  const isLast = step === totalSteps - 1;
+
+  return (
+    <Row alignItems="center" flexGrow={isLast ? '0' : '1'}>
+      <Row alignItems="center" gap="3">
+        <Box
+          width="8"
+          height="8"
+          borderRadius="full"
+          backgroundColor={isCompleted || isActive ? 'primary' : 'surface-raised'}
+          border={!isCompleted && !isActive}
+          borderColor="muted"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          {isCompleted ? (
+            <Icon size="sm" color="on-primary">
+              <Check />
+            </Icon>
+          ) : (
+            <Text size="sm" weight="medium" color={isActive ? 'on-primary' : 'muted'}>
+              {step + 1}
+            </Text>
+          )}
+        </Box>
+        <Column gap="0">
+          <Text size="sm" weight={isActive ? 'medium' : undefined}>
+            {title}
+          </Text>
+          {description && (
+            <Text size="xs" color="muted">
+              {description}
+            </Text>
+          )}
+        </Column>
+      </Row>
+      {!isLast && (
+        <Box
+          flexGrow="1"
+          height="1px"
+          marginX="4"
+          backgroundColor={isCompleted ? 'primary' : 'muted'}
+        />
+      )}
+    </Row>
+  );
+}
+
+export function StepContent({ step, children, ...props }) {
+  const { currentStep } = useStepper();
+
+  if (currentStep !== step) return null;
+
+  return <Box {...props}>{children}</Box>;
+}
+```
+
+## Variations
+
+### Simple (no descriptions)
+
+<Example>
+  <Stepper totalSteps={4} defaultStep={1}>
+    <StepperHeader>
+      <Step step={0} title="Cart" />
+      <Step step={1} title="Shipping" />
+      <Step step={2} title="Payment" />
+      <Step step={3} title="Confirm" />
+    </StepperHeader>
+  </Stepper>
+
+```jsx
+<Stepper totalSteps={4} defaultStep={1}>
+  <StepperHeader>
+    <Step step={0} title="Cart" />
+    <Step step={1} title="Shipping" />
+    <Step step={2} title="Payment" />
+    <Step step={3} title="Confirm" />
+  </StepperHeader>
+</Stepper>
+```
+</Example>
+
+### Completed state
+
+<Example>
+  <Stepper totalSteps={3} defaultStep={2}>
+    <StepperHeader>
+      <Step step={0} title="Details" description="Personal information" />
+      <Step step={1} title="Address" description="Shipping address" />
+      <Step step={2} title="Review" description="Confirm order" />
+    </StepperHeader>
+    <Box padding="4" backgroundColor="green-100" borderRadius="md">
+      <Row gap="2" alignItems="center">
+        <Icon color="green"><Lucide.CheckCircle /></Icon>
+        <Text color="green">Previous steps completed!</Text>
+      </Row>
+    </Box>
+  </Stepper>
+
+```jsx
+<Stepper totalSteps={3} defaultStep={2}>
+  <StepperHeader>
+    <Step step={0} title="Details" description="Personal information" />
+    <Step step={1} title="Address" description="Shipping address" />
+    <Step step={2} title="Review" description="Confirm order" />
+  </StepperHeader>
+  {/* Content */}
+</Stepper>
+```
+</Example>

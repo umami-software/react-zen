@@ -24,17 +24,96 @@ Each pattern page includes:
 1. A live preview of the pattern
 2. Complete, copy-paste ready code with imports
 3. Explanations of key concepts
+4. Variations for common use cases
 
 Simply copy the code into your project and customize as needed.
 
 ## Available patterns
 
+### Layout
+
+Build application layouts and page structures.
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'Sidebar', description: 'Collapsible sidebar for application navigation' },
+      { name: 'App Shell', description: 'Full-page layout with header, sidebar, and content area' },
+      { name: 'Page Header', description: 'Title, breadcrumbs, and action buttons composition' },
+      { name: 'Split View', description: 'Resizable two-panel layout (list/detail)' },
+      { name: 'Dashboard Grid', description: 'Responsive card grid for metrics/widgets' },
+    ]}
+  >
+    <DataColumn id="name" label="Pattern" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Navigation
+
+Help users navigate through your application.
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'Nav Menu', description: 'Collapsible navigation menu with groups' },
+      { name: 'Breadcrumbs', description: 'Hierarchical navigation trail' },
+      { name: 'Tabs Panel', description: 'Tab navigation with content panels' },
+      { name: 'Stepper', description: 'Multi-step form or process flow' },
+      { name: 'Command Palette', description: 'Keyboard-driven command search (⌘K style)' },
+    ]}
+  >
+    <DataColumn id="name" label="Pattern" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Forms
+
+Collect user input and handle form interactions.
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'Login Form', description: 'Email/password with validation and social auth buttons' },
+      { name: 'Search Bar', description: 'Input with icon, clear button, and suggestions' },
+      { name: 'Filter Panel', description: 'Collapsible filters with chips for active filters' },
+      { name: 'Settings Form', description: 'Grouped settings with sections and descriptions' },
+    ]}
+  >
+    <DataColumn id="name" label="Pattern" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Data Display
+
+Present information and content to users.
+
 <Example>
   <DataTable
     data={[
       { name: 'Icon Label', description: 'Icon and text paired together' },
-      { name: 'Nav Menu', description: 'Collapsible navigation menu with groups' },
-      { name: 'Sidebar', description: 'Collapsible sidebar for application navigation' },
+      { name: 'Stat Card', description: 'Metric display with label, value, and trend indicator' },
+      { name: 'List Item', description: 'Configurable list row with avatar, title, meta, actions' },
+      { name: 'Empty State', description: 'Placeholder with icon, message, and CTA' },
+    ]}
+  >
+    <DataColumn id="name" label="Pattern" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Feedback
+
+Communicate status and gather confirmation from users.
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'Confirmation Dialog', description: '"Are you sure?" modal with destructive action styling' },
+      { name: 'Error Page', description: '404/500 error display with navigation options' },
+      { name: 'Skeleton Loader', description: 'Content placeholder during loading' },
     ]}
   >
     <DataColumn id="name" label="Pattern" />

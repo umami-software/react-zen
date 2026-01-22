@@ -1,4 +1,8 @@
 export default {
   index: 'Introduction',
-  components: 'Components',
+  layout: 'Layout',
+  navigation: 'Navigation',
+  forms: 'Forms',
+  'data-display': 'Data Display',
+  feedback: 'Feedback',
 };

@@ -1,0 +1,266 @@
+---
+title: Dashboard Grid
+---
+
+# Dashboard Grid
+
+A responsive grid layout for dashboard cards and widgets. Built using `Grid` and `Box` components with auto-fit columns.
+
+<Example>
+  <DashboardGrid>
+    <DashboardCard>
+      <Column gap="2">
+        <Text size="sm" color="muted">Total Users</Text>
+        <Text size="2xl" weight="semibold">12,345</Text>
+      </Column>
+    </DashboardCard>
+    <DashboardCard>
+      <Column gap="2">
+        <Text size="sm" color="muted">Revenue</Text>
+        <Text size="2xl" weight="semibold">$54,321</Text>
+      </Column>
+    </DashboardCard>
+    <DashboardCard>
+      <Column gap="2">
+        <Text size="sm" color="muted">Active Sessions</Text>
+        <Text size="2xl" weight="semibold">1,234</Text>
+      </Column>
+    </DashboardCard>
+    <DashboardCard>
+      <Column gap="2">
+        <Text size="sm" color="muted">Conversion Rate</Text>
+        <Text size="2xl" weight="semibold">3.2%</Text>
+      </Column>
+    </DashboardCard>
+  </DashboardGrid>
+
+```jsx
+import { Text, Column } from '@umami/react-zen';
+import { DashboardGrid, DashboardCard } from './DashboardGrid';
+
+<DashboardGrid>
+  <DashboardCard>
+    <Column gap="2">
+      <Text size="sm" color="muted">Total Users</Text>
+      <Text size="2xl" weight="semibold">12,345</Text>
+    </Column>
+  </DashboardCard>
+  <DashboardCard>
+    <Column gap="2">
+      <Text size="sm" color="muted">Revenue</Text>
+      <Text size="2xl" weight="semibold">$54,321</Text>
+    </Column>
+  </DashboardCard>
+  {/* More cards */}
+</DashboardGrid>
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { Box, Grid } from '@umami/react-zen';
+
+export function DashboardGrid({ children, ...props }) {
+  return (
+    <Grid columns="repeat(auto-fit, minmax(280px, 1fr))" gap="4" {...props}>
+      {children}
+    </Grid>
+  );
+}
+
+export function DashboardCard({ children, ...props }) {
+  return (
+    <Box
+      padding="4"
+      backgroundColor="surface-raised"
+      borderRadius="lg"
+      border
+      borderColor="muted"
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+}
+
+export function DashboardCardWide({ children, ...props }) {
+  return (
+    <Box
+      padding="4"
+      backgroundColor="surface-raised"
+      borderRadius="lg"
+      border
+      borderColor="muted"
+      style={{ gridColumn: 'span 2' }}
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+}
+
+export function DashboardCardFull({ children, ...props }) {
+  return (
+    <Box
+      padding="4"
+      backgroundColor="surface-raised"
+      borderRadius="lg"
+      border
+      borderColor="muted"
+      style={{ gridColumn: '1 / -1' }}
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+}
+```
+
+## Variations
+
+### With wide card
+
+<Example>
+  <DashboardGrid>
+    <DashboardCard>
+      <Column gap="2">
+        <Text size="sm" color="muted">Users</Text>
+        <Text size="2xl" weight="semibold">12,345</Text>
+      </Column>
+    </DashboardCard>
+    <DashboardCard>
+      <Column gap="2">
+        <Text size="sm" color="muted">Revenue</Text>
+        <Text size="2xl" weight="semibold">$54,321</Text>
+      </Column>
+    </DashboardCard>
+    <DashboardCardWide>
+      <Column gap="2">
+        <Text size="sm" color="muted">Activity Chart</Text>
+        <Box height="24" backgroundColor="muted" borderRadius="md" style={{ opacity: 0.3 }} />
+      </Column>
+    </DashboardCardWide>
+  </DashboardGrid>
+
+```jsx
+<DashboardGrid>
+  <DashboardCard>
+    <Column gap="2">
+      <Text size="sm" color="muted">Users</Text>
+      <Text size="2xl" weight="semibold">12,345</Text>
+    </Column>
+  </DashboardCard>
+  <DashboardCard>
+    <Column gap="2">
+      <Text size="sm" color="muted">Revenue</Text>
+      <Text size="2xl" weight="semibold">$54,321</Text>
+    </Column>
+  </DashboardCard>
+  <DashboardCardWide>
+    <Column gap="2">
+      <Text size="sm" color="muted">Activity Chart</Text>
+      {/* Chart component */}
+    </Column>
+  </DashboardCardWide>
+</DashboardGrid>
+```
+</Example>
+
+### With full-width card
+
+<Example>
+  <DashboardGrid>
+    <DashboardCard>
+      <Column gap="2">
+        <Text size="sm" color="muted">Metric 1</Text>
+        <Text size="xl" weight="semibold">1,234</Text>
+      </Column>
+    </DashboardCard>
+    <DashboardCard>
+      <Column gap="2">
+        <Text size="sm" color="muted">Metric 2</Text>
+        <Text size="xl" weight="semibold">5,678</Text>
+      </Column>
+    </DashboardCard>
+    <DashboardCard>
+      <Column gap="2">
+        <Text size="sm" color="muted">Metric 3</Text>
+        <Text size="xl" weight="semibold">9,012</Text>
+      </Column>
+    </DashboardCard>
+    <DashboardCardFull>
+      <Column gap="2">
+        <Text size="sm" color="muted">Recent Activity</Text>
+        <Box height="32" backgroundColor="muted" borderRadius="md" style={{ opacity: 0.3 }} />
+      </Column>
+    </DashboardCardFull>
+  </DashboardGrid>
+
+```jsx
+<DashboardGrid>
+  <DashboardCard>{/* Metric */}</DashboardCard>
+  <DashboardCard>{/* Metric */}</DashboardCard>
+  <DashboardCard>{/* Metric */}</DashboardCard>
+  <DashboardCardFull>
+    <Column gap="2">
+      <Text size="sm" color="muted">Recent Activity</Text>
+      {/* Table or list */}
+    </Column>
+  </DashboardCardFull>
+</DashboardGrid>
+```
+</Example>
+
+### With icons
+
+<Example>
+  <DashboardGrid>
+    <DashboardCard>
+      <Row alignItems="flex-start" justifyContent="space-between">
+        <Column gap="2">
+          <Text size="sm" color="muted">Total Users</Text>
+          <Text size="2xl" weight="semibold">12,345</Text>
+          <Row alignItems="center" gap="1">
+            <Icon size="xs" color="green"><Lucide.ArrowUp /></Icon>
+            <Text size="sm" color="green">+12%</Text>
+          </Row>
+        </Column>
+        <Icon color="muted"><Lucide.Users /></Icon>
+      </Row>
+    </DashboardCard>
+    <DashboardCard>
+      <Row alignItems="flex-start" justifyContent="space-between">
+        <Column gap="2">
+          <Text size="sm" color="muted">Revenue</Text>
+          <Text size="2xl" weight="semibold">$54,321</Text>
+          <Row alignItems="center" gap="1">
+            <Icon size="xs" color="green"><Lucide.ArrowUp /></Icon>
+            <Text size="sm" color="green">+8%</Text>
+          </Row>
+        </Column>
+        <Icon color="muted"><Lucide.DollarSign /></Icon>
+      </Row>
+    </DashboardCard>
+  </DashboardGrid>
+
+```jsx
+<DashboardGrid>
+  <DashboardCard>
+    <Row alignItems="flex-start" justifyContent="space-between">
+      <Column gap="2">
+        <Text size="sm" color="muted">Total Users</Text>
+        <Text size="2xl" weight="semibold">12,345</Text>
+        <Row alignItems="center" gap="1">
+          <Icon size="xs" color="green"><ArrowUp /></Icon>
+          <Text size="sm" color="green">+12%</Text>
+        </Row>
+      </Column>
+      <Icon color="muted"><Users /></Icon>
+    </Row>
+  </DashboardCard>
+</DashboardGrid>
+```
+</Example>

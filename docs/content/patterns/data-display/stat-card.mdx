@@ -1,0 +1,159 @@
+---
+title: Stat Card
+---
+
+# Stat Card
+
+A card for displaying metrics with label, value, and optional trend indicator. Built using `Box`, `Column`, `Row`, `Icon`, and `Text` components.
+
+<Example direction="row" gap="4">
+  <StatCard label="Total Users" value="12,345" change={{ value: 12, label: "vs last month" }} trend="up" icon={<Lucide.Users />} />
+  <StatCard label="Revenue" value="$54,321" change={{ value: -3.2, label: "vs last month" }} trend="down" icon={<Lucide.DollarSign />} />
+  <StatCard label="Active Now" value="1,234" trend="neutral" icon={<Lucide.Activity />} />
+
+```jsx
+import { Users, DollarSign, Activity } from 'lucide-react';
+import { StatCard } from './StatCard';
+
+<StatCard
+  label="Total Users"
+  value="12,345"
+  change={{ value: 12, label: "vs last month" }}
+  trend="up"
+  icon={<Users />}
+/>
+
+<StatCard
+  label="Revenue"
+  value="$54,321"
+  change={{ value: -3.2, label: "vs last month" }}
+  trend="down"
+  icon={<DollarSign />}
+/>
+
+<StatCard
+  label="Active Now"
+  value="1,234"
+  trend="neutral"
+  icon={<Activity />}
+/>
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { ArrowDown, ArrowUp, Minus } from 'lucide-react';
+import { Box, Column, Icon, Row, Text } from '@umami/react-zen';
+
+export function StatCard({ label, value, change, icon, trend, ...props }) {
+  const trendColor = trend === 'up' ? 'green' : trend === 'down' ? 'red' : 'muted';
+  const TrendIcon = trend === 'up' ? ArrowUp : trend === 'down' ? ArrowDown : Minus;
+
+  return (
+    <Box
+      padding="4"
+      backgroundColor="surface-raised"
+      borderRadius="lg"
+      border
+      borderColor="muted"
+      {...props}
+    >
+      <Column gap="3">
+        <Row alignItems="center" justifyContent="space-between">
+          <Text size="sm" color="muted">{label}</Text>
+          {icon && <Icon size="sm" color="muted">{icon}</Icon>}
+        </Row>
+        <Text size="2xl" weight="semibold">{value}</Text>
+        {change && (
+          <Row alignItems="center" gap="1">
+            <Icon size="xs" color={trendColor}><TrendIcon /></Icon>
+            <Text size="sm" color={trendColor}>
+              {change.value > 0 ? '+' : ''}{change.value}%
+            </Text>
+            {change.label && <Text size="sm" color="muted">{change.label}</Text>}
+          </Row>
+        )}
+      </Column>
+    </Box>
+  );
+}
+
+export function StatCardGroup({ children, ...props }) {
+  return (
+    <Row gap="4" flexWrap="wrap" {...props}>
+      {children}
+    </Row>
+  );
+}
+
+export function StatCardCompact({ label, value, subValue }) {
+  return (
+    <Column gap="1">
+      <Text size="xs" color="muted" transform="uppercase">{label}</Text>
+      <Row alignItems="baseline" gap="1">
+        <Text size="xl" weight="semibold">{value}</Text>
+        {subValue && <Text size="sm" color="muted">{subValue}</Text>}
+      </Row>
+    </Column>
+  );
+}
+```
+
+## Variations
+
+### Compact inline stats
+
+<Example>
+  <Row gap="8">
+    <StatCardCompact label="Users" value="12.3k" subValue="+12%" />
+    <StatCardCompact label="Revenue" value="$54k" subValue="-3%" />
+    <StatCardCompact label="Orders" value="1,234" />
+  </Row>
+
+```jsx
+<Row gap="8">
+  <StatCardCompact label="Users" value="12.3k" subValue="+12%" />
+  <StatCardCompact label="Revenue" value="$54k" subValue="-3%" />
+  <StatCardCompact label="Orders" value="1,234" />
+</Row>
+```
+</Example>
+
+### Without icon
+
+<Example direction="row" gap="4">
+  <StatCard label="Page Views" value="45,678" change={{ value: 8.5 }} trend="up" />
+  <StatCard label="Bounce Rate" value="32.1%" change={{ value: -2.3 }} trend="up" />
+
+```jsx
+<StatCard
+  label="Page Views"
+  value="45,678"
+  change={{ value: 8.5 }}
+  trend="up"
+/>
+```
+</Example>
+
+### In a group
+
+<Example>
+  <StatCardGroup>
+    <StatCard label="Total Sales" value="$123,456" trend="up" change={{ value: 15 }} style={{ flex: 1 }} />
+    <StatCard label="Orders" value="1,234" trend="up" change={{ value: 8 }} style={{ flex: 1 }} />
+    <StatCard label="Customers" value="567" trend="neutral" style={{ flex: 1 }} />
+    <StatCard label="Avg. Order" value="$100" trend="down" change={{ value: -2 }} style={{ flex: 1 }} />
+  </StatCardGroup>
+
+```jsx
+<StatCardGroup>
+  <StatCard label="Total Sales" value="$123,456" ... />
+  <StatCard label="Orders" value="1,234" ... />
+  <StatCard label="Customers" value="567" ... />
+  <StatCard label="Avg. Order" value="$100" ... />
+</StatCardGroup>
+```
+</Example>

@@ -1,0 +1,190 @@
+---
+title: Empty State
+---
+
+# Empty State
+
+A placeholder display for when there's no content to show, with icon, message, and optional call-to-action. Built using `Box`, `Column`, `Icon`, `Text`, and `Button` components.
+
+<Example>
+  <EmptyState
+    icon={<Lucide.Inbox />}
+    title="No messages"
+    description="You don't have any messages yet. Start a conversation to see them here."
+    action={{ label: "Compose Message", onClick: () => console.log('Compose') }}
+  />
+
+```jsx
+import { Inbox } from 'lucide-react';
+import { EmptyState } from './EmptyState';
+
+<EmptyState
+  icon={<Inbox />}
+  title="No messages"
+  description="You don't have any messages yet. Start a conversation to see them here."
+  action={{ label: "Compose Message", onClick: () => console.log('Compose') }}
+/>
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { FileX, Inbox, Search } from 'lucide-react';
+import { Box, Button, Column, Icon, Text } from '@umami/react-zen';
+
+export function EmptyState({
+  icon,
+  title,
+  description,
+  action,
+  secondaryAction,
+  ...props
+}) {
+  return (
+    <Column alignItems="center" justifyContent="center" padding="8" gap="4" {...props}>
+      {icon && (
+        <Box
+          width="16"
+          height="16"
+          borderRadius="full"
+          backgroundColor="surface-raised"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Icon size="lg" color="muted">{icon}</Icon>
+        </Box>
+      )}
+      <Column alignItems="center" gap="2">
+        <Text size="lg" weight="semibold">{title}</Text>
+        {description && (
+          <Text color="muted" align="center" style={{ maxWidth: '20rem' }}>{description}</Text>
+        )}
+      </Column>
+      {(action || secondaryAction) && (
+        <Column gap="2" alignItems="center">
+          {action && <Button variant="primary" onPress={action.onClick}>{action.label}</Button>}
+          {secondaryAction && <Button variant="quiet" onPress={secondaryAction.onClick}>{secondaryAction.label}</Button>}
+        </Column>
+      )}
+    </Column>
+  );
+}
+
+export function EmptyStateNoResults(props) {
+  return (
+    <EmptyState
+      icon={<Search />}
+      title="No results found"
+      description="Try adjusting your search or filter to find what you're looking for."
+      {...props}
+    />
+  );
+}
+
+export function EmptyStateNoData(props) {
+  return (
+    <EmptyState
+      icon={<Inbox />}
+      title="No data yet"
+      description="Get started by creating your first item."
+      {...props}
+    />
+  );
+}
+
+export function EmptyStateError(props) {
+  return (
+    <EmptyState
+      icon={<FileX />}
+      title="Something went wrong"
+      description="We couldn't load this content. Please try again."
+      action={{ label: 'Try again', onClick: () => window.location.reload() }}
+      {...props}
+    />
+  );
+}
+```
+
+## Variations
+
+### No search results
+
+<Example>
+  <EmptyStateNoResults />
+
+```jsx
+<EmptyStateNoResults />
+```
+</Example>
+
+### No data
+
+<Example>
+  <EmptyStateNoData
+    action={{ label: "Create First Item", onClick: () => {} }}
+  />
+
+```jsx
+<EmptyStateNoData
+  action={{ label: "Create First Item", onClick: () => {} }}
+/>
+```
+</Example>
+
+### Error state
+
+<Example>
+  <EmptyStateError
+    action={{ label: "Try Again", onClick: () => window.location.reload() }}
+    secondaryAction={{ label: "Contact Support", onClick: () => {} }}
+  />
+
+```jsx
+<EmptyStateError
+  action={{ label: "Try Again", onClick: () => window.location.reload() }}
+  secondaryAction={{ label: "Contact Support", onClick: () => {} }}
+/>
+```
+</Example>
+
+### Custom empty state
+
+<Example>
+  <EmptyState
+    icon={<Lucide.FolderOpen />}
+    title="No projects"
+    description="Create a new project to get started building something amazing."
+    action={{ label: "New Project", onClick: () => {} }}
+    secondaryAction={{ label: "Import Existing", onClick: () => {} }}
+  />
+
+```jsx
+<EmptyState
+  icon={<FolderOpen />}
+  title="No projects"
+  description="Create a new project to get started building something amazing."
+  action={{ label: "New Project", onClick: () => {} }}
+  secondaryAction={{ label: "Import Existing", onClick: () => {} }}
+/>
+```
+</Example>
+
+### Minimal (no icon)
+
+<Example>
+  <EmptyState
+    title="Nothing here yet"
+    description="This section is empty."
+  />
+
+```jsx
+<EmptyState
+  title="Nothing here yet"
+  description="This section is empty."
+/>
+```
+</Example>

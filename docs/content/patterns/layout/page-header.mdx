@@ -1,0 +1,171 @@
+---
+title: Page Header
+---
+
+# Page Header
+
+A page header with title, description, breadcrumb, and action buttons. Built using `Row`, `Column`, and `Text` components.
+
+<Example>
+  <PageHeader>
+    <PageHeaderTitle
+      title="Users"
+      description="Manage your team members and their permissions"
+    />
+    <PageHeaderActions>
+      <Button variant="outline">Export</Button>
+      <Button variant="primary">Add User</Button>
+    </PageHeaderActions>
+  </PageHeader>
+
+```jsx
+import { Button } from '@umami/react-zen';
+import { PageHeader, PageHeaderTitle, PageHeaderActions } from './PageHeader';
+
+<PageHeader>
+  <PageHeaderTitle
+    title="Users"
+    description="Manage your team members and their permissions"
+  />
+  <PageHeaderActions>
+    <Button variant="outline">Export</Button>
+    <Button variant="primary">Add User</Button>
+  </PageHeaderActions>
+</PageHeader>
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { Box, Column, Row, Text } from '@umami/react-zen';
+
+export function PageHeader({ children, ...props }) {
+  return (
+    <Row
+      paddingX="6"
+      paddingY="4"
+      alignItems="center"
+      justifyContent="space-between"
+      borderColor="muted"
+      border="bottom"
+      gap="4"
+      {...props}
+    >
+      {children}
+    </Row>
+  );
+}
+
+export function PageHeaderTitle({ title, description, breadcrumb }) {
+  return (
+    <Column gap="1">
+      {breadcrumb}
+      <Text size="xl" weight="semibold">
+        {title}
+      </Text>
+      {description && (
+        <Text size="sm" color="muted">
+          {description}
+        </Text>
+      )}
+    </Column>
+  );
+}
+
+export function PageHeaderActions({ children }) {
+  return (
+    <Row gap="2" alignItems="center">
+      {children}
+    </Row>
+  );
+}
+```
+
+## Variations
+
+### With breadcrumb
+
+<Example>
+  <PageHeader>
+    <PageHeaderTitle
+      breadcrumb={
+        <Row alignItems="center" gap="1">
+          <Text size="sm" color="muted">Settings</Text>
+          <Icon size="xs" color="muted"><Lucide.ChevronRight /></Icon>
+          <Text size="sm" color="muted">Team</Text>
+        </Row>
+      }
+      title="Team Members"
+      description="Invite and manage team members"
+    />
+    <PageHeaderActions>
+      <Button variant="primary">Invite Member</Button>
+    </PageHeaderActions>
+  </PageHeader>
+
+```jsx
+<PageHeader>
+  <PageHeaderTitle
+    breadcrumb={
+      <Row alignItems="center" gap="1">
+        <Text size="sm" color="muted">Settings</Text>
+        <Icon size="xs" color="muted"><ChevronRight /></Icon>
+        <Text size="sm" color="muted">Team</Text>
+      </Row>
+    }
+    title="Team Members"
+    description="Invite and manage team members"
+  />
+  <PageHeaderActions>
+    <Button variant="primary">Invite Member</Button>
+  </PageHeaderActions>
+</PageHeader>
+```
+</Example>
+
+### Title only
+
+<Example>
+  <PageHeader>
+    <PageHeaderTitle title="Dashboard" />
+  </PageHeader>
+
+```jsx
+<PageHeader>
+  <PageHeaderTitle title="Dashboard" />
+</PageHeader>
+```
+</Example>
+
+### With multiple actions
+
+<Example>
+  <PageHeader>
+    <PageHeaderTitle
+      title="Products"
+      description="Manage your product catalog"
+    />
+    <PageHeaderActions>
+      <Button variant="quiet"><Icon size="sm"><Lucide.Filter /></Icon></Button>
+      <Button variant="quiet"><Icon size="sm"><Lucide.Download /></Icon></Button>
+      <Button variant="primary">Add Product</Button>
+    </PageHeaderActions>
+  </PageHeader>
+
+```jsx
+<PageHeader>
+  <PageHeaderTitle
+    title="Products"
+    description="Manage your product catalog"
+  />
+  <PageHeaderActions>
+    <Button variant="quiet"><Filter /></Button>
+    <Button variant="quiet"><Download /></Button>
+    <Button variant="primary">Add Product</Button>
+  </PageHeaderActions>
+</PageHeader>
+```
+</Example>

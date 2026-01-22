@@ -1,0 +1,260 @@
+---
+title: Split View
+---
+
+# Split View
+
+A two-panel layout commonly used for list/detail views like email clients or file browsers. Built using `Box`, `Row`, and context for selection state.
+
+<Example backgroundColor="transparent">
+  <SplitViewExample />
+
+```jsx
+import { useState } from 'react';
+import { Box, Column, Text } from '@umami/react-zen';
+import {
+  SplitView,
+  SplitViewList,
+  SplitViewItem,
+  SplitViewDetail,
+} from './SplitView';
+
+const items = [
+  { id: '1', title: 'Welcome to the app', preview: 'Thanks for signing up...' },
+  { id: '2', title: 'Your weekly report', preview: 'Here is your summary...' },
+  { id: '3', title: 'New features available', preview: 'Check out what is new...' },
+];
+
+export function SplitViewExample() {
+  return (
+    <Box height="72" border borderRadius="lg" overflow="hidden">
+      <SplitView defaultSelectedId="1">
+        <SplitViewList>
+          {items.map((item) => (
+            <SplitViewItem key={item.id} id={item.id}>
+              <Column gap="1">
+                <Text weight="medium">{item.title}</Text>
+                <Text size="sm" color="muted">{item.preview}</Text>
+              </Column>
+            </SplitViewItem>
+          ))}
+        </SplitViewList>
+        <SplitViewDetail
+          emptyState={
+            <Box padding="6">
+              <Text color="muted">Select an item to view details</Text>
+            </Box>
+          }
+        >
+          <Box padding="6">
+            <Text>Detail content for selected item</Text>
+          </Box>
+        </SplitViewDetail>
+      </SplitView>
+    </Box>
+  );
+}
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { createContext, useContext, useState } from 'react';
+import { Box, Row } from '@umami/react-zen';
+
+const SplitViewContext = createContext({
+  selectedId: null,
+  setSelectedId: () => {},
+});
+
+export function useSplitView() {
+  return useContext(SplitViewContext);
+}
+
+export function SplitView({ defaultSelectedId = null, children, ...props }) {
+  const [selectedId, setSelectedId] = useState(defaultSelectedId);
+
+  return (
+    <SplitViewContext.Provider value={{ selectedId, setSelectedId }}>
+      <Row height="100%" {...props}>
+        {children}
+      </Row>
+    </SplitViewContext.Provider>
+  );
+}
+
+export function SplitViewList({ width = '20rem', children, ...props }) {
+  return (
+    <Box
+      width={width}
+      height="100%"
+      borderColor="muted"
+      border="right"
+      overflow="auto"
+      flexShrink="0"
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+}
+
+export function SplitViewItem({ id, children, ...props }) {
+  const { selectedId, setSelectedId } = useSplitView();
+  const isSelected = selectedId === id;
+
+  return (
+    <Box
+      padding="3"
+      borderColor="muted"
+      border="bottom"
+      backgroundColor={isSelected ? 'interactive' : undefined}
+      className={`cursor-pointer ${!isSelected ? 'hover:bg-interactive' : ''}`}
+      onClick={() => setSelectedId(id)}
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+}
+
+export function SplitViewDetail({ children, emptyState, ...props }) {
+  const { selectedId } = useSplitView();
+
+  return (
+    <Box flexGrow="1" height="100%" overflow="auto" {...props}>
+      {selectedId ? children : emptyState}
+    </Box>
+  );
+}
+```
+
+## Variations
+
+### Email-style layout
+
+<Example backgroundColor="transparent">
+  <Box height="80" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
+    <SplitView defaultSelectedId="1">
+      <SplitViewList width="18rem">
+        <SplitViewItem id="1">
+          <Column gap="1">
+            <Row justifyContent="space-between" alignItems="center">
+              <Text size="sm" weight="medium">John Doe</Text>
+              <Text size="xs" color="muted">2m ago</Text>
+            </Row>
+            <Text size="sm">Project Update</Text>
+            <Text size="xs" color="muted" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Hey team, I wanted to share the latest updates on our project...</Text>
+          </Column>
+        </SplitViewItem>
+        <SplitViewItem id="2">
+          <Column gap="1">
+            <Row justifyContent="space-between" alignItems="center">
+              <Text size="sm" weight="medium">Jane Smith</Text>
+              <Text size="xs" color="muted">1h ago</Text>
+            </Row>
+            <Text size="sm">Meeting Notes</Text>
+            <Text size="xs" color="muted" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Here are the notes from our meeting yesterday...</Text>
+          </Column>
+        </SplitViewItem>
+        <SplitViewItem id="3">
+          <Column gap="1">
+            <Row justifyContent="space-between" alignItems="center">
+              <Text size="sm" weight="medium">System</Text>
+              <Text size="xs" color="muted">1d ago</Text>
+            </Row>
+            <Text size="sm">Welcome!</Text>
+            <Text size="xs" color="muted" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Thanks for joining. Here's how to get started...</Text>
+          </Column>
+        </SplitViewItem>
+      </SplitViewList>
+      <SplitViewDetail emptyState={<Box padding="6"><Text color="muted" align="center">Select a message</Text></Box>}>
+        <Column padding="6" gap="4">
+          <Column gap="1">
+            <Text size="lg" weight="semibold">Project Update</Text>
+            <Text size="sm" color="muted">From John Doe • 2 minutes ago</Text>
+          </Column>
+          <Text>Hey team, I wanted to share the latest updates on our project. We've made great progress this week and are on track to meet our deadline.</Text>
+        </Column>
+      </SplitViewDetail>
+    </SplitView>
+  </Box>
+
+```jsx
+<SplitView defaultSelectedId="1">
+  <SplitViewList width="18rem">
+    <SplitViewItem id="1">
+      <Column gap="1">
+        <Row justifyContent="space-between">
+          <Text size="sm" weight="medium">John Doe</Text>
+          <Text size="xs" color="muted">2m ago</Text>
+        </Row>
+        <Text size="sm">Project Update</Text>
+        <Text size="xs" color="muted">Preview text...</Text>
+      </Column>
+    </SplitViewItem>
+    {/* More items */}
+  </SplitViewList>
+  <SplitViewDetail>
+    {/* Detail content */}
+  </SplitViewDetail>
+</SplitView>
+```
+</Example>
+
+### File browser style
+
+<Example backgroundColor="transparent">
+  <Box height="64" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
+    <SplitView defaultSelectedId="docs">
+      <SplitViewList width="14rem">
+        <SplitViewItem id="docs">
+          <Row gap="2" alignItems="center">
+            <Icon size="sm" color="muted"><Lucide.Folder /></Icon>
+            <Text size="sm">Documents</Text>
+          </Row>
+        </SplitViewItem>
+        <SplitViewItem id="images">
+          <Row gap="2" alignItems="center">
+            <Icon size="sm" color="muted"><Lucide.Folder /></Icon>
+            <Text size="sm">Images</Text>
+          </Row>
+        </SplitViewItem>
+        <SplitViewItem id="readme">
+          <Row gap="2" alignItems="center">
+            <Icon size="sm" color="muted"><Lucide.FileText /></Icon>
+            <Text size="sm">README.md</Text>
+          </Row>
+        </SplitViewItem>
+      </SplitViewList>
+      <SplitViewDetail emptyState={<Box padding="6"><Text color="muted">Select a file or folder</Text></Box>}>
+        <Box padding="6">
+          <Column gap="2">
+            <Text weight="medium">Documents</Text>
+            <Text size="sm" color="muted">3 items • Modified 2 days ago</Text>
+          </Column>
+        </Box>
+      </SplitViewDetail>
+    </SplitView>
+  </Box>
+
+```jsx
+<SplitView defaultSelectedId="docs">
+  <SplitViewList width="14rem">
+    <SplitViewItem id="docs">
+      <Row gap="2" alignItems="center">
+        <Icon><Folder /></Icon>
+        <Text size="sm">Documents</Text>
+      </Row>
+    </SplitViewItem>
+    {/* More items */}
+  </SplitViewList>
+  <SplitViewDetail>
+    {/* File/folder details */}
+  </SplitViewDetail>
+</SplitView>
+```
+</Example>

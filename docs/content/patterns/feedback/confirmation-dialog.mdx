@@ -1,0 +1,242 @@
+---
+title: Confirmation Dialog
+---
+
+# Confirmation Dialog
+
+A modal dialog for confirming user actions, especially destructive ones. Built using `Box`, `Column`, `Row`, `Icon`, `Text`, and `Button` components.
+
+<Example>
+  <ConfirmationDialogExample />
+
+```jsx
+import { useState } from 'react';
+import { Button } from '@umami/react-zen';
+import { ConfirmationDialogPattern, DeleteConfirmation } from './ConfirmationDialogPattern';
+
+export function ConfirmationDialogExample() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <Button variant="danger" onPress={() => setIsOpen(true)}>
+        Delete Item
+      </Button>
+      <DeleteConfirmation
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        onConfirm={() => console.log('Deleted!')}
+        itemName="this document"
+      />
+    </>
+  );
+}
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { AlertTriangle, Info, Trash2 } from 'lucide-react';
+import { Box, Button, Column, Icon, Row, Text } from '@umami/react-zen';
+
+export function ConfirmationDialogPattern({
+  isOpen,
+  onClose,
+  onConfirm,
+  title,
+  description,
+  confirmLabel = 'Confirm',
+  cancelLabel = 'Cancel',
+  variant = 'default',
+  icon,
+}) {
+  if (!isOpen) return null;
+
+  const variantStyles = {
+    default: { iconColor: 'primary', buttonVariant: 'primary', DefaultIcon: Info },
+    danger: { iconColor: 'red', buttonVariant: 'danger', DefaultIcon: Trash2 },
+    warning: { iconColor: 'yellow', buttonVariant: 'primary', DefaultIcon: AlertTriangle },
+  };
+
+  const { iconColor, buttonVariant, DefaultIcon } = variantStyles[variant];
+
+  return (
+    <Box position="fixed" style={{ inset: 0, zIndex: 50 }} display="flex" alignItems="center" justifyContent="center">
+      <Box position="absolute" style={{ inset: 0 }} backgroundColor="overlay" onClick={onClose} />
+      <Box
+        position="relative"
+        width="100%"
+        style={{ maxWidth: '28rem' }}
+        margin="4"
+        padding="6"
+        backgroundColor="surface-raised"
+        borderRadius="lg"
+        border
+        borderColor="muted"
+      >
+        <Column gap="4">
+          <Row gap="4" alignItems="flex-start">
+            <Box
+              width="10"
+              height="10"
+              borderRadius="full"
+              backgroundColor={`${iconColor}-100`}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              flexShrink="0"
+            >
+              <Icon color={iconColor}>{icon || <DefaultIcon />}</Icon>
+            </Box>
+            <Column gap="2">
+              <Text size="lg" weight="semibold">{title}</Text>
+              {description && <Text color="muted">{description}</Text>}
+            </Column>
+          </Row>
+          <Row gap="3" justifyContent="flex-end">
+            <Button variant="outline" onPress={onClose}>{cancelLabel}</Button>
+            <Button variant={buttonVariant} onPress={() => { onConfirm(); onClose(); }}>
+              {confirmLabel}
+            </Button>
+          </Row>
+        </Column>
+      </Box>
+    </Box>
+  );
+}
+
+export function DeleteConfirmation({ isOpen, onClose, onConfirm, itemName }) {
+  return (
+    <ConfirmationDialogPattern
+      isOpen={isOpen}
+      onClose={onClose}
+      onConfirm={onConfirm}
+      title={`Delete ${itemName || 'item'}?`}
+      description="This action cannot be undone. This will permanently delete the item and all associated data."
+      confirmLabel="Delete"
+      cancelLabel="Cancel"
+      variant="danger"
+    />
+  );
+}
+```
+
+## Variations
+
+### Default confirmation
+
+<Example>
+  <Box position="relative" height="64" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
+    <Box position="absolute" style={{ inset: 0 }} display="flex" alignItems="center" justifyContent="center">
+      <Box width="100%" style={{ maxWidth: '28rem' }} margin="4" padding="6" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted">
+        <Column gap="4">
+          <Row gap="4" alignItems="flex-start">
+            <Box width="10" height="10" borderRadius="full" backgroundColor="primary-100" display="flex" alignItems="center" justifyContent="center" flexShrink="0">
+              <Icon color="primary"><Lucide.Info /></Icon>
+            </Box>
+            <Column gap="2">
+              <Text size="lg" weight="semibold">Publish changes?</Text>
+              <Text color="muted">Your changes will be visible to all users immediately.</Text>
+            </Column>
+          </Row>
+          <Row gap="3" justifyContent="flex-end">
+            <Button variant="outline">Cancel</Button>
+            <Button variant="primary">Publish</Button>
+          </Row>
+        </Column>
+      </Box>
+    </Box>
+  </Box>
+
+```jsx
+<ConfirmationDialogPattern
+  isOpen={isOpen}
+  onClose={onClose}
+  onConfirm={onConfirm}
+  title="Publish changes?"
+  description="Your changes will be visible to all users immediately."
+  confirmLabel="Publish"
+  variant="default"
+/>
+```
+</Example>
+
+### Warning confirmation
+
+<Example>
+  <Box position="relative" height="64" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
+    <Box position="absolute" style={{ inset: 0 }} display="flex" alignItems="center" justifyContent="center">
+      <Box width="100%" style={{ maxWidth: '28rem' }} margin="4" padding="6" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted">
+        <Column gap="4">
+          <Row gap="4" alignItems="flex-start">
+            <Box width="10" height="10" borderRadius="full" backgroundColor="yellow-100" display="flex" alignItems="center" justifyContent="center" flexShrink="0">
+              <Icon color="yellow"><Lucide.AlertTriangle /></Icon>
+            </Box>
+            <Column gap="2">
+              <Text size="lg" weight="semibold">Unsaved changes</Text>
+              <Text color="muted">You have unsaved changes that will be lost if you leave this page.</Text>
+            </Column>
+          </Row>
+          <Row gap="3" justifyContent="flex-end">
+            <Button variant="outline">Stay</Button>
+            <Button variant="primary">Leave Anyway</Button>
+          </Row>
+        </Column>
+      </Box>
+    </Box>
+  </Box>
+
+```jsx
+<ConfirmationDialogPattern
+  isOpen={isOpen}
+  onClose={onClose}
+  onConfirm={onConfirm}
+  title="Unsaved changes"
+  description="You have unsaved changes that will be lost if you leave this page."
+  confirmLabel="Leave Anyway"
+  cancelLabel="Stay"
+  variant="warning"
+/>
+```
+</Example>
+
+### Danger confirmation
+
+<Example>
+  <Box position="relative" height="64" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
+    <Box position="absolute" style={{ inset: 0 }} display="flex" alignItems="center" justifyContent="center">
+      <Box width="100%" style={{ maxWidth: '28rem' }} margin="4" padding="6" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted">
+        <Column gap="4">
+          <Row gap="4" alignItems="flex-start">
+            <Box width="10" height="10" borderRadius="full" backgroundColor="red-100" display="flex" alignItems="center" justifyContent="center" flexShrink="0">
+              <Icon color="red"><Lucide.Trash2 /></Icon>
+            </Box>
+            <Column gap="2">
+              <Text size="lg" weight="semibold">Delete account?</Text>
+              <Text color="muted">This action cannot be undone. All your data will be permanently deleted.</Text>
+            </Column>
+          </Row>
+          <Row gap="3" justifyContent="flex-end">
+            <Button variant="outline">Cancel</Button>
+            <Button variant="danger">Delete Account</Button>
+          </Row>
+        </Column>
+      </Box>
+    </Box>
+  </Box>
+
+```jsx
+<ConfirmationDialogPattern
+  isOpen={isOpen}
+  onClose={onClose}
+  onConfirm={onConfirm}
+  title="Delete account?"
+  description="This action cannot be undone. All your data will be permanently deleted."
+  confirmLabel="Delete Account"
+  variant="danger"
+/>
+```
+</Example>

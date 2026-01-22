@@ -1,0 +1,240 @@
+---
+title: List Item
+---
+
+# List Item
+
+A configurable list row with avatar, title, description, meta, and actions. Built using `Box`, `Row`, `Column`, `Icon`, `Text`, and `Button` components.
+
+<Example>
+  <Box border borderRadius="lg" overflow="hidden">
+    <ListItem onClick={() => console.log('Clicked')}>
+      <ListItemAvatar fallback="JD" />
+      <ListItemContent title="John Doe" description="john@example.com" meta="Admin" />
+      <ListItemBadge variant="success">Active</ListItemBadge>
+      <ListItemActions>
+        <ListItemMenu />
+      </ListItemActions>
+    </ListItem>
+    <ListItem onClick={() => console.log('Clicked')}>
+      <ListItemAvatar fallback="JS" />
+      <ListItemContent title="Jane Smith" description="jane@example.com" meta="User" />
+      <ListItemBadge>Pending</ListItemBadge>
+      <ListItemActions>
+        <ListItemMenu />
+      </ListItemActions>
+    </ListItem>
+    <ListItem onClick={() => console.log('Clicked')}>
+      <ListItemAvatar fallback="BW" />
+      <ListItemContent title="Bob Wilson" description="bob@example.com" meta="User" />
+      <ListItemBadge variant="error">Inactive</ListItemBadge>
+      <ListItemActions>
+        <ListItemMenu />
+      </ListItemActions>
+    </ListItem>
+  </Box>
+
+```jsx
+import {
+  ListItem,
+  ListItemAvatar,
+  ListItemContent,
+  ListItemBadge,
+  ListItemActions,
+  ListItemMenu,
+} from './ListItem';
+
+<ListItem onClick={() => console.log('Clicked')}>
+  <ListItemAvatar fallback="JD" />
+  <ListItemContent
+    title="John Doe"
+    description="john@example.com"
+    meta="Admin"
+  />
+  <ListItemBadge variant="success">Active</ListItemBadge>
+  <ListItemActions>
+    <ListItemMenu />
+  </ListItemActions>
+</ListItem>
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { ChevronRight, MoreHorizontal } from 'lucide-react';
+import { Box, Button, Column, Icon, Row, Text } from '@umami/react-zen';
+
+export function ListItem({ children, onClick, isSelected, showChevron, ...props }) {
+  return (
+    <Row
+      padding="3"
+      alignItems="center"
+      gap="3"
+      borderColor="muted"
+      border="bottom"
+      backgroundColor={isSelected ? 'interactive' : undefined}
+      className={onClick ? `cursor-pointer ${!isSelected ? 'hover:bg-interactive' : ''}` : ''}
+      onClick={onClick}
+      {...props}
+    >
+      {children}
+      {showChevron && <Icon size="sm" color="muted"><ChevronRight /></Icon>}
+    </Row>
+  );
+}
+
+export function ListItemAvatar({ src, fallback, size = 'md' }) {
+  const sizeMap = { sm: '8', md: '10', lg: '12' };
+
+  return (
+    <Box
+      width={sizeMap[size]}
+      height={sizeMap[size]}
+      borderRadius="full"
+      backgroundColor="primary"
+      flexShrink="0"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      overflow="hidden"
+    >
+      {src ? (
+        <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      ) : (
+        <Text size="sm" color="on-primary" weight="medium">{fallback}</Text>
+      )}
+    </Box>
+  );
+}
+
+export function ListItemContent({ title, description, meta }) {
+  return (
+    <Column gap="0" flexGrow="1" overflow="hidden">
+      <Row alignItems="center" gap="2">
+        <Text weight="medium" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          {title}
+        </Text>
+        {meta && <Text size="xs" color="muted">{meta}</Text>}
+      </Row>
+      {description && (
+        <Text size="sm" color="muted" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          {description}
+        </Text>
+      )}
+    </Column>
+  );
+}
+
+export function ListItemActions({ children }) {
+  return (
+    <Row gap="1" alignItems="center" onClick={(e) => e.stopPropagation()}>
+      {children}
+    </Row>
+  );
+}
+
+export function ListItemMenu({ onPress }) {
+  return (
+    <Button variant="quiet" size="sm" onPress={onPress}>
+      <Icon size="sm"><MoreHorizontal /></Icon>
+    </Button>
+  );
+}
+
+export function ListItemBadge({ children, variant = 'default' }) {
+  const colorMap = {
+    default: 'muted',
+    success: 'green',
+    warning: 'yellow',
+    error: 'red',
+  };
+
+  return (
+    <Box paddingX="2" paddingY="1" backgroundColor={colorMap[variant]} borderRadius="full">
+      <Text size="xs" color={variant === 'default' ? undefined : 'on-primary'}>{children}</Text>
+    </Box>
+  );
+}
+```
+
+## Variations
+
+### With chevron (navigation)
+
+<Example>
+  <Box border borderRadius="lg" overflow="hidden">
+    <ListItem showChevron onClick={() => {}}>
+      <Icon color="muted"><Lucide.Settings /></Icon>
+      <ListItemContent title="Account Settings" description="Manage your account preferences" />
+    </ListItem>
+    <ListItem showChevron onClick={() => {}}>
+      <Icon color="muted"><Lucide.Bell /></Icon>
+      <ListItemContent title="Notifications" description="Configure notification settings" />
+    </ListItem>
+    <ListItem showChevron onClick={() => {}}>
+      <Icon color="muted"><Lucide.Shield /></Icon>
+      <ListItemContent title="Security" description="Password and authentication" />
+    </ListItem>
+  </Box>
+
+```jsx
+<ListItem showChevron onClick={() => {}}>
+  <Icon color="muted"><Settings /></Icon>
+  <ListItemContent
+    title="Account Settings"
+    description="Manage your account preferences"
+  />
+</ListItem>
+```
+</Example>
+
+### Simple list
+
+<Example>
+  <Box border borderRadius="lg" overflow="hidden">
+    <ListItem>
+      <ListItemContent title="item-1.txt" description="Modified 2 hours ago" />
+      <Text size="sm" color="muted">2.3 KB</Text>
+    </ListItem>
+    <ListItem>
+      <ListItemContent title="document.pdf" description="Modified yesterday" />
+      <Text size="sm" color="muted">1.2 MB</Text>
+    </ListItem>
+    <ListItem>
+      <ListItemContent title="image.png" description="Modified 3 days ago" />
+      <Text size="sm" color="muted">456 KB</Text>
+    </ListItem>
+  </Box>
+
+```jsx
+<ListItem>
+  <ListItemContent title="item-1.txt" description="Modified 2 hours ago" />
+  <Text size="sm" color="muted">2.3 KB</Text>
+</ListItem>
+```
+</Example>
+
+### With selection
+
+<Example>
+  <Box border borderRadius="lg" overflow="hidden">
+    <ListItem isSelected>
+      <ListItemAvatar fallback="A" />
+      <ListItemContent title="Selected Item" description="This item is selected" />
+    </ListItem>
+    <ListItem>
+      <ListItemAvatar fallback="B" />
+      <ListItemContent title="Other Item" description="Click to select" />
+    </ListItem>
+  </Box>
+
+```jsx
+<ListItem isSelected>
+  <ListItemAvatar fallback="A" />
+  <ListItemContent title="Selected Item" ... />
+</ListItem>
+```
+</Example>

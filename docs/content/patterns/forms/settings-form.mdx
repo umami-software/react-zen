@@ -1,0 +1,195 @@
+---
+title: Settings Form
+---
+
+# Settings Form
+
+A grouped settings form with sections, toggles, and input fields. Built using `Column`, `Row`, `Text`, `Switch`, and `TextField` components.
+
+<Example>
+  <SettingsFormExample />
+
+```jsx
+import { useState } from 'react';
+import {
+  SettingsForm,
+  SettingsSection,
+  SettingsToggle,
+  SettingsInput,
+} from './SettingsForm';
+
+export function SettingsFormExample() {
+  const [emailNotifications, setEmailNotifications] = useState(true);
+  const [pushNotifications, setPushNotifications] = useState(false);
+  const [displayName, setDisplayName] = useState('John Doe');
+
+  return (
+    <SettingsForm style={{ maxWidth: '32rem' }}>
+      <SettingsSection
+        title="Notifications"
+        description="Manage how you receive notifications"
+      >
+        <SettingsToggle
+          label="Email notifications"
+          description="Receive email updates about your account"
+          isSelected={emailNotifications}
+          onChange={setEmailNotifications}
+        />
+        <SettingsToggle
+          label="Push notifications"
+          description="Receive push notifications on your device"
+          isSelected={pushNotifications}
+          onChange={setPushNotifications}
+        />
+      </SettingsSection>
+
+      <SettingsSection
+        title="Profile"
+        description="Update your personal information"
+      >
+        <SettingsInput
+          label="Display name"
+          description="This is how others will see you"
+          value={displayName}
+          onChange={setDisplayName}
+          placeholder="Enter your name"
+        />
+      </SettingsSection>
+    </SettingsForm>
+  );
+}
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { Box, Column, Row, Switch, Text, TextField } from '@umami/react-zen';
+
+export function SettingsForm({ children, ...props }) {
+  return (
+    <Column gap="6" {...props}>
+      {children}
+    </Column>
+  );
+}
+
+export function SettingsSection({ title, description, children }) {
+  return (
+    <Column gap="4">
+      <Column gap="1">
+        <Text weight="semibold">{title}</Text>
+        {description && <Text size="sm" color="muted">{description}</Text>}
+      </Column>
+      <Column gap="4" paddingLeft="0">
+        {children}
+      </Column>
+    </Column>
+  );
+}
+
+export function SettingsRow({ label, description, children }) {
+  return (
+    <Row
+      alignItems="center"
+      justifyContent="space-between"
+      paddingY="3"
+      borderColor="muted"
+      border="bottom"
+    >
+      <Column gap="0" flexGrow="1" style={{ maxWidth: '70%' }}>
+        <Text size="sm" weight="medium">{label}</Text>
+        {description && <Text size="xs" color="muted">{description}</Text>}
+      </Column>
+      <Box>{children}</Box>
+    </Row>
+  );
+}
+
+export function SettingsToggle({ label, description, isSelected, onChange }) {
+  return (
+    <SettingsRow label={label} description={description}>
+      <Switch isSelected={isSelected} onChange={onChange} />
+    </SettingsRow>
+  );
+}
+
+export function SettingsInput({ label, description, value, onChange, placeholder, type = 'text' }) {
+  return (
+    <SettingsRow label={label} description={description}>
+      <TextField
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        type={type}
+        style={{ width: '12rem' }}
+      />
+    </SettingsRow>
+  );
+}
+```
+
+## Variations
+
+### Multiple sections
+
+<Example>
+  <SettingsForm style={{ maxWidth: '32rem' }}>
+    <SettingsSection title="Account" description="Manage your account settings">
+      <SettingsToggle label="Two-factor authentication" description="Add an extra layer of security" isSelected={true} onChange={() => {}} />
+      <SettingsToggle label="Session timeout" description="Automatically log out after inactivity" isSelected={false} onChange={() => {}} />
+    </SettingsSection>
+    <SettingsSection title="Privacy" description="Control your privacy settings">
+      <SettingsToggle label="Profile visibility" description="Allow others to see your profile" isSelected={true} onChange={() => {}} />
+      <SettingsToggle label="Activity status" description="Show when you're online" isSelected={true} onChange={() => {}} />
+    </SettingsSection>
+  </SettingsForm>
+
+```jsx
+<SettingsForm>
+  <SettingsSection title="Account" description="Manage your account settings">
+    <SettingsToggle label="Two-factor authentication" ... />
+    <SettingsToggle label="Session timeout" ... />
+  </SettingsSection>
+  <SettingsSection title="Privacy" description="Control your privacy settings">
+    <SettingsToggle label="Profile visibility" ... />
+    <SettingsToggle label="Activity status" ... />
+  </SettingsSection>
+</SettingsForm>
+```
+</Example>
+
+### With custom controls
+
+<Example>
+  <SettingsForm style={{ maxWidth: '32rem' }}>
+    <SettingsSection title="Appearance">
+      <SettingsRow label="Theme" description="Choose your preferred theme">
+        <Row gap="1">
+          <Button variant="outline" size="sm">Light</Button>
+          <Button variant="primary" size="sm">Dark</Button>
+          <Button variant="outline" size="sm">System</Button>
+        </Row>
+      </SettingsRow>
+      <SettingsRow label="Language" description="Select your language">
+        <Text size="sm">English (US) ▾</Text>
+      </SettingsRow>
+    </SettingsSection>
+  </SettingsForm>
+
+```jsx
+<SettingsForm>
+  <SettingsSection title="Appearance">
+    <SettingsRow label="Theme" description="Choose your preferred theme">
+      <Row gap="1">
+        <Button variant="outline" size="sm">Light</Button>
+        <Button variant="primary" size="sm">Dark</Button>
+        <Button variant="outline" size="sm">System</Button>
+      </Row>
+    </SettingsRow>
+  </SettingsSection>
+</SettingsForm>
+```
+</Example>

@@ -1,0 +1,260 @@
+---
+title: App Shell
+---
+
+# App Shell
+
+A full-page application layout with header, collapsible sidebar, and content area. Built using `Box`, `Column`, `Row`, and `Button` components.
+
+<Example backgroundColor="transparent">
+  <AppShellExample />
+
+```jsx
+import { useState } from 'react';
+import { Box, Row, Text, Button } from '@umami/react-zen';
+import { Home, Users, Settings, Bell } from 'lucide-react';
+import {
+  AppShell,
+  AppShellHeader,
+  AppShellBody,
+  AppShellSidebar,
+  AppShellContent,
+  AppShellSidebarToggle,
+} from './AppShell';
+
+export function AppShellExample() {
+  return (
+    <Box height="80" border borderRadius="lg" overflow="hidden">
+      <AppShell>
+        <AppShellHeader>
+          <Row gap="3" alignItems="center">
+            <AppShellSidebarToggle />
+            <Text weight="semibold">My Application</Text>
+          </Row>
+          <Row gap="2">
+            <Button variant="quiet">
+              <Bell size={18} />
+            </Button>
+          </Row>
+        </AppShellHeader>
+        <AppShellBody>
+          <AppShellSidebar>
+            <Box padding="4">
+              <Text size="sm" color="muted">Navigation here</Text>
+            </Box>
+          </AppShellSidebar>
+          <AppShellContent padding="6">
+            <Text>Main content area</Text>
+          </AppShellContent>
+        </AppShellBody>
+      </AppShell>
+    </Box>
+  );
+}
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { createContext, useContext, useState } from 'react';
+import { Box, Button, Column, Icon, Row } from '@umami/react-zen';
+import { PanelLeft } from 'lucide-react';
+
+const AppShellContext = createContext({
+  isSidebarOpen: true,
+  setSidebarOpen: () => {},
+});
+
+export function useAppShell() {
+  return useContext(AppShellContext);
+}
+
+export function AppShell({ defaultSidebarOpen = true, children, ...props }) {
+  const [isSidebarOpen, setSidebarOpen] = useState(defaultSidebarOpen);
+
+  return (
+    <AppShellContext.Provider value={{ isSidebarOpen, setSidebarOpen }}>
+      <Box height="100%" {...props}>
+        <Column height="100%">{children}</Column>
+      </Box>
+    </AppShellContext.Provider>
+  );
+}
+
+export function AppShellHeader({ children }) {
+  return (
+    <Row
+      paddingX="4"
+      paddingY="3"
+      alignItems="center"
+      justifyContent="space-between"
+      backgroundColor="surface-raised"
+      borderColor="muted"
+      border="bottom"
+    >
+      {children}
+    </Row>
+  );
+}
+
+export function AppShellBody({ children }) {
+  return (
+    <Row flexGrow="1" overflow="hidden">
+      {children}
+    </Row>
+  );
+}
+
+export function AppShellSidebar({ width = '14rem', children, ...props }) {
+  const { isSidebarOpen } = useAppShell();
+
+  if (!isSidebarOpen) return null;
+
+  return (
+    <Box
+      width={width}
+      height="100%"
+      backgroundColor="surface-raised"
+      borderColor="muted"
+      border="right"
+      flexShrink="0"
+      overflow="auto"
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+}
+
+export function AppShellContent({ children, ...props }) {
+  return (
+    <Box flexGrow="1" overflow="auto" {...props}>
+      {children}
+    </Box>
+  );
+}
+
+export function AppShellSidebarToggle() {
+  const { isSidebarOpen, setSidebarOpen } = useAppShell();
+
+  return (
+    <Button variant="quiet" onPress={() => setSidebarOpen(!isSidebarOpen)}>
+      <Icon style={{ transform: isSidebarOpen ? undefined : 'scaleX(-1)' }}>
+        <PanelLeft />
+      </Icon>
+    </Button>
+  );
+}
+```
+
+## Variations
+
+### With navigation
+
+<Example backgroundColor="transparent">
+  <Box height="80" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
+    <AppShell>
+      <AppShellHeader>
+        <Row gap="3" alignItems="center">
+          <AppShellSidebarToggle />
+          <Text weight="semibold">Dashboard</Text>
+        </Row>
+        <Row gap="2">
+          <Button variant="quiet"><Lucide.Bell size={18} /></Button>
+          <Button variant="quiet"><Lucide.User size={18} /></Button>
+        </Row>
+      </AppShellHeader>
+      <AppShellBody>
+        <AppShellSidebar>
+          <Column padding="2" gap="1">
+            <Row paddingX="3" paddingY="2" borderRadius="md" backgroundColor="interactive" alignItems="center" gap="2">
+              <Icon size="sm"><Lucide.Home /></Icon>
+              <Text size="sm">Dashboard</Text>
+            </Row>
+            <Row paddingX="3" paddingY="2" borderRadius="md" alignItems="center" gap="2" className="cursor-pointer hover:bg-interactive">
+              <Icon size="sm" color="muted"><Lucide.Users /></Icon>
+              <Text size="sm" color="muted">Users</Text>
+            </Row>
+            <Row paddingX="3" paddingY="2" borderRadius="md" alignItems="center" gap="2" className="cursor-pointer hover:bg-interactive">
+              <Icon size="sm" color="muted"><Lucide.Settings /></Icon>
+              <Text size="sm" color="muted">Settings</Text>
+            </Row>
+          </Column>
+        </AppShellSidebar>
+        <AppShellContent padding="6">
+          <Text color="muted">Main content area</Text>
+        </AppShellContent>
+      </AppShellBody>
+    </AppShell>
+  </Box>
+
+```jsx
+<AppShell>
+  <AppShellHeader>
+    <Row gap="3" alignItems="center">
+      <AppShellSidebarToggle />
+      <Text weight="semibold">Dashboard</Text>
+    </Row>
+    <Row gap="2">
+      <Button variant="quiet"><Bell size={18} /></Button>
+      <Button variant="quiet"><User size={18} /></Button>
+    </Row>
+  </AppShellHeader>
+  <AppShellBody>
+    <AppShellSidebar>
+      {/* Navigation items */}
+    </AppShellSidebar>
+    <AppShellContent padding="6">
+      {/* Content */}
+    </AppShellContent>
+  </AppShellBody>
+</AppShell>
+```
+</Example>
+
+### Sidebar closed by default
+
+<Example backgroundColor="transparent">
+  <Box height="64" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
+    <AppShell defaultSidebarOpen={false}>
+      <AppShellHeader>
+        <Row gap="3" alignItems="center">
+          <AppShellSidebarToggle />
+          <Text weight="semibold">Compact View</Text>
+        </Row>
+      </AppShellHeader>
+      <AppShellBody>
+        <AppShellSidebar>
+          <Box padding="4">
+            <Text size="sm" color="muted">Sidebar content</Text>
+          </Box>
+        </AppShellSidebar>
+        <AppShellContent padding="6">
+          <Text color="muted">Click the toggle to show sidebar</Text>
+        </AppShellContent>
+      </AppShellBody>
+    </AppShell>
+  </Box>
+
+```jsx
+<AppShell defaultSidebarOpen={false}>
+  <AppShellHeader>
+    <Row gap="3" alignItems="center">
+      <AppShellSidebarToggle />
+      <Text weight="semibold">Compact View</Text>
+    </Row>
+  </AppShellHeader>
+  <AppShellBody>
+    <AppShellSidebar>
+      <Box padding="4">Sidebar content</Box>
+    </AppShellSidebar>
+    <AppShellContent padding="6">
+      Click the toggle to show sidebar
+    </AppShellContent>
+  </AppShellBody>
+</AppShell>
+```
+</Example>

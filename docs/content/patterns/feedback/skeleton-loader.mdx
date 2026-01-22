@@ -1,0 +1,214 @@
+---
+title: Skeleton Loader
+---
+
+# Skeleton Loader
+
+Placeholder loading animations for various UI elements. Built using `Box`, `Column`, and `Row` components with CSS animations.
+
+<Example direction="column" gap="4">
+  <Column gap="2">
+    <Text size="sm" weight="medium">Text skeleton</Text>
+    <SkeletonText lines={3} />
+  </Column>
+
+```jsx
+import { Skeleton, SkeletonText, SkeletonAvatar } from './SkeletonLoader';
+
+<SkeletonText lines={3} />
+```
+</Example>
+
+## Source
+
+```jsx
+'use client';
+
+import { Box, Column, Row } from '@umami/react-zen';
+
+export function Skeleton({ width = '100%', height = '1rem', borderRadius = 'md', ...props }) {
+  return (
+    <Box
+      width={width}
+      height={height}
+      borderRadius={borderRadius}
+      backgroundColor="muted"
+      className="animate-pulse"
+      {...props}
+    />
+  );
+}
+
+export function SkeletonText({ lines = 3, lastLineWidth = '60%' }) {
+  return (
+    <Column gap="2">
+      {Array.from({ length: lines }).map((_, i) => (
+        <Skeleton
+          key={i}
+          height="0.875rem"
+          width={i === lines - 1 ? lastLineWidth : '100%'}
+        />
+      ))}
+    </Column>
+  );
+}
+
+export function SkeletonAvatar({ size = 'md' }) {
+  const sizeMap = { sm: '2rem', md: '2.5rem', lg: '3rem' };
+  return <Skeleton width={sizeMap[size]} height={sizeMap[size]} borderRadius="full" />;
+}
+
+export function SkeletonCard() {
+  return (
+    <Box padding="4" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted">
+      <Column gap="4">
+        <Skeleton height="8rem" borderRadius="md" />
+        <Column gap="2">
+          <Skeleton height="1.25rem" width="70%" />
+          <SkeletonText lines={2} />
+        </Column>
+      </Column>
+    </Box>
+  );
+}
+
+export function SkeletonListItem() {
+  return (
+    <Row padding="3" alignItems="center" gap="3" borderColor="muted" border="bottom">
+      <SkeletonAvatar />
+      <Column gap="2" flexGrow="1">
+        <Skeleton height="1rem" width="40%" />
+        <Skeleton height="0.75rem" width="60%" />
+      </Column>
+      <Skeleton width="4rem" height="1.5rem" borderRadius="full" />
+    </Row>
+  );
+}
+
+export function SkeletonTable({ rows = 5, columns = 4 }) {
+  return (
+    <Column>
+      <Row padding="3" gap="4" borderColor="muted" border="bottom">
+        {Array.from({ length: columns }).map((_, i) => (
+          <Skeleton key={i} height="0.75rem" width="6rem" />
+        ))}
+      </Row>
+      {Array.from({ length: rows }).map((_, rowIndex) => (
+        <Row key={rowIndex} padding="3" gap="4" borderColor="muted" border="bottom">
+          {Array.from({ length: columns }).map((_, colIndex) => (
+            <Skeleton key={colIndex} height="1rem" width={colIndex === 0 ? '8rem' : '6rem'} />
+          ))}
+        </Row>
+      ))}
+    </Column>
+  );
+}
+
+export function SkeletonStatCard() {
+  return (
+    <Box padding="4" backgroundColor="surface-raised" borderRadius="lg" border borderColor="muted">
+      <Column gap="3">
+        <Skeleton height="0.875rem" width="40%" />
+        <Skeleton height="2rem" width="60%" />
+        <Skeleton height="0.75rem" width="30%" />
+      </Column>
+    </Box>
+  );
+}
+```
+
+## Variations
+
+### Avatar skeleton
+
+<Example direction="row" gap="4">
+  <SkeletonAvatar size="sm" />
+  <SkeletonAvatar size="md" />
+  <SkeletonAvatar size="lg" />
+
+```jsx
+<SkeletonAvatar size="sm" />
+<SkeletonAvatar size="md" />
+<SkeletonAvatar size="lg" />
+```
+</Example>
+
+### Card skeleton
+
+<Example>
+  <Box style={{ maxWidth: '20rem' }}>
+    <SkeletonCard />
+  </Box>
+
+```jsx
+<SkeletonCard />
+```
+</Example>
+
+### List item skeleton
+
+<Example>
+  <Box border borderRadius="lg" overflow="hidden">
+    <SkeletonListItem />
+    <SkeletonListItem />
+    <SkeletonListItem />
+  </Box>
+
+```jsx
+<Box border borderRadius="lg" overflow="hidden">
+  <SkeletonListItem />
+  <SkeletonListItem />
+  <SkeletonListItem />
+</Box>
+```
+</Example>
+
+### Table skeleton
+
+<Example>
+  <Box border borderRadius="lg" overflow="hidden">
+    <SkeletonTable rows={3} columns={4} />
+  </Box>
+
+```jsx
+<SkeletonTable rows={3} columns={4} />
+```
+</Example>
+
+### Stat card skeleton
+
+<Example direction="row" gap="4">
+  <SkeletonStatCard />
+  <SkeletonStatCard />
+  <SkeletonStatCard />
+
+```jsx
+<Row gap="4">
+  <SkeletonStatCard />
+  <SkeletonStatCard />
+  <SkeletonStatCard />
+</Row>
+```
+</Example>
+
+### Custom skeleton
+
+<Example>
+  <Row gap="4" alignItems="center">
+    <Skeleton width="4rem" height="4rem" borderRadius="lg" />
+    <Column gap="2" flexGrow="1">
+      <Skeleton height="1.5rem" width="50%" />
+      <Skeleton height="1rem" width="80%" />
+    </Column>
+  </Row>
+
+```jsx
+<Row gap="4" alignItems="center">
+  <Skeleton width="4rem" height="4rem" borderRadius="lg" />
+  <Column gap="2" flexGrow="1">
+    <Skeleton height="1.5rem" width="50%" />
+    <Skeleton height="1rem" width="80%" />
+  </Column>
+</Row>
+```
+</Example>
