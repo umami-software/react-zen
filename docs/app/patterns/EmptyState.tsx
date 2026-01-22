@@ -2,7 +2,7 @@
 
 import { FileX, Inbox, Search } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { Box, type BoxProps, Button, Column, Icon, Text } from '@/components';
+import { Box, type BoxProps, Button, Column, Icon, Row, Text } from '@/components';
 
 interface EmptyStateProps extends BoxProps {
   icon?: ReactNode;
@@ -29,28 +29,29 @@ export function EmptyState({
   return (
     <Column alignItems="center" justifyContent="center" padding="8" gap="4" {...props}>
       {icon && (
-        <Box
+        <Row
           width="16"
           height="16"
           borderRadius="full"
           backgroundColor="surface-raised"
-          display="flex"
           alignItems="center"
           justifyContent="center"
         >
           <Icon size="lg" color="muted">
             {icon}
           </Icon>
-        </Box>
+        </Row>
       )}
       <Column alignItems="center" gap="2">
         <Text size="lg" weight="semibold">
           {title}
         </Text>
         {description && (
-          <Text color="muted" align="center" style={{ maxWidth: '20rem' }}>
-            {description}
-          </Text>
+          <Box maxWidth="20rem">
+            <Text color="muted" align="center">
+              {description}
+            </Text>
+          </Box>
         )}
       </Column>
       {(action || secondaryAction) && (

@@ -55,20 +55,16 @@ export function LoginForm({
           <>
             <Column gap="2">
               <Button variant="outline" onPress={() => onSocialLogin?.('google')}>
-                <Row gap="2" alignItems="center" justifyContent="center">
-                  <Icon size="sm">
-                    <Mail />
-                  </Icon>
-                  <Text>Continue with Google</Text>
-                </Row>
+                <Icon size="sm">
+                  <Mail />
+                </Icon>
+                Continue with Google
               </Button>
               <Button variant="outline" onPress={() => onSocialLogin?.('github')}>
-                <Row gap="2" alignItems="center" justifyContent="center">
-                  <Icon size="sm">
-                    <Github />
-                  </Icon>
-                  <Text>Continue with GitHub</Text>
-                </Row>
+                <Icon size="sm">
+                  <Github />
+                </Icon>
+                Continue with GitHub
               </Button>
             </Column>
 

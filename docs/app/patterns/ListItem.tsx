@@ -44,13 +44,12 @@ export function ListItemAvatar({ src, fallback, size = 'md' }: ListItemAvatarPro
   const sizeMap = { sm: '8', md: '10', lg: '12' } as const;
 
   return (
-    <Box
+    <Row
       width={sizeMap[size]}
       height={sizeMap[size]}
       borderRadius="full"
       backgroundColor="primary"
       flexShrink="0"
-      display="flex"
       alignItems="center"
       justifyContent="center"
       overflow="hidden"
@@ -62,7 +61,7 @@ export function ListItemAvatar({ src, fallback, size = 'md' }: ListItemAvatarPro
           {fallback}
         </Text>
       )}
-    </Box>
+    </Row>
   );
 }
 
@@ -76,12 +75,11 @@ export function ListItemContent({ title, description, meta }: ListItemContentPro
   return (
     <Column gap="0" flexGrow="1" overflow="hidden">
       <Row alignItems="center" gap="2">
-        <Text
-          weight="medium"
-          style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-        >
-          {title}
-        </Text>
+        <Box overflow="hidden" flexGrow="1">
+          <Text weight="medium" truncate>
+            {title}
+          </Text>
+        </Box>
         {meta && (
           <Text size="xs" color="muted">
             {meta}
@@ -89,13 +87,11 @@ export function ListItemContent({ title, description, meta }: ListItemContentPro
         )}
       </Row>
       {description && (
-        <Text
-          size="sm"
-          color="muted"
-          style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-        >
-          {description}
-        </Text>
+        <Box overflow="hidden">
+          <Text size="sm" color="muted" truncate>
+            {description}
+          </Text>
+        </Box>
       )}
     </Column>
   );

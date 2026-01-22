@@ -75,49 +75,46 @@ export function ErrorPage({
           </Text>
         )}
         {!statusCode && (
-          <Box
+          <Row
             width="16"
             height="16"
             borderRadius="full"
             backgroundColor="red-100"
-            display="flex"
             alignItems="center"
             justifyContent="center"
           >
             <Icon size="lg" color="red">
               <AlertCircle />
             </Icon>
-          </Box>
+          </Row>
         )}
         <Column alignItems="center" gap="2">
           <Text size="xl" weight="semibold">
             {displayTitle}
           </Text>
-          <Text color="muted" align="center" style={{ maxWidth: '24rem' }}>
-            {displayDescription}
-          </Text>
+          <Box maxWidth="24rem">
+            <Text color="muted" align="center">
+              {displayDescription}
+            </Text>
+          </Box>
         </Column>
       </Column>
 
       <Row gap="3">
         {showBackButton && (
           <Button variant="outline" onPress={onBack || (() => window.history.back())}>
-            <Row gap="2" alignItems="center">
-              <Icon size="sm">
-                <ArrowLeft />
-              </Icon>
-              <Text>Go back</Text>
-            </Row>
+            <Icon size="sm">
+              <ArrowLeft />
+            </Icon>
+            Go back
           </Button>
         )}
         {showRetryButton && (
           <Button variant="outline" onPress={onRetry}>
-            <Row gap="2" alignItems="center">
-              <Icon size="sm">
-                <RefreshCw />
-              </Icon>
-              <Text>Try again</Text>
-            </Row>
+            <Icon size="sm">
+              <RefreshCw />
+            </Icon>
+            Try again
           </Button>
         )}
         {showHomeButton && (
@@ -130,12 +127,10 @@ export function ErrorPage({
               })
             }
           >
-            <Row gap="2" alignItems="center">
-              <Icon size="sm">
-                <Home />
-              </Icon>
-              <Text>Go home</Text>
-            </Row>
+            <Icon size="sm">
+              <Home />
+            </Icon>
+            Go home
           </Button>
         )}
       </Row>
