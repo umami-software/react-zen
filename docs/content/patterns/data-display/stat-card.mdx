@@ -9,7 +9,6 @@ A card for displaying metrics with label, value, and optional trend indicator. B
 <Example direction="row" gap="4">
   <StatCard label="Total Users" value="12,345" change={{ value: 12, label: "vs last month" }} trend="up" icon={<Lucide.Users />} />
   <StatCard label="Revenue" value="$54,321" change={{ value: -3.2, label: "vs last month" }} trend="down" icon={<Lucide.DollarSign />} />
-  <StatCard label="Active Now" value="1,234" trend="neutral" icon={<Lucide.Activity />} />
 
 ```jsx
 import { Users, DollarSign, Activity } from 'lucide-react';
@@ -29,13 +28,6 @@ import { StatCard } from './StatCard';
   change={{ value: -3.2, label: "vs last month" }}
   trend="down"
   icon={<DollarSign />}
-/>
-
-<StatCard
-  label="Active Now"
-  value="1,234"
-  trend="neutral"
-  icon={<Activity />}
 />
 ```
 </Example>
@@ -135,6 +127,12 @@ export function StatCardCompact({ label, value, subValue }) {
   change={{ value: 8.5 }}
   trend="up"
 />
+<StatCard
+  label="Bounce Rate"
+  value="32.1%"
+  change={{ value: -2.3 }}
+  trend="up"
+/>
 ```
 </Example>
 
@@ -142,18 +140,33 @@ export function StatCardCompact({ label, value, subValue }) {
 
 <Example>
   <StatCardGroup>
-    <StatCard label="Total Sales" value="$123,456" trend="up" change={{ value: 15 }} style={{ flex: 1 }} />
-    <StatCard label="Orders" value="1,234" trend="up" change={{ value: 8 }} style={{ flex: 1 }} />
-    <StatCard label="Customers" value="567" trend="neutral" style={{ flex: 1 }} />
-    <StatCard label="Avg. Order" value="$100" trend="down" change={{ value: -2 }} style={{ flex: 1 }} />
+    <StatCard label="Total Sales" value="$123,456" trend="up" change={{ value: 15 }} fill />
+    <StatCard label="Orders" value="1,234" trend="up" change={{ value: 8 }} fill />
+    <StatCard label="Customers" value="567" trend="neutral" fill />
   </StatCardGroup>
 
 ```jsx
 <StatCardGroup>
-  <StatCard label="Total Sales" value="$123,456" ... />
-  <StatCard label="Orders" value="1,234" ... />
-  <StatCard label="Customers" value="567" ... />
-  <StatCard label="Avg. Order" value="$100" ... />
+  <StatCard
+    label="Total Sales"
+    value="$123,456"
+    trend="up"
+    change={{ value: 15 }}
+    fill
+  />
+  <StatCard
+    label="Orders"
+    value="1,234"
+    trend="up"
+    change={{ value: 8 }}
+    fill
+  />
+  <StatCard
+    label="Customers"
+    value="567"
+    trend="neutral"
+    fill
+  />
 </StatCardGroup>
 ```
 </Example>

@@ -8,18 +8,54 @@ Placeholder loading animations for various UI elements. Built using `Box`, `Colu
 
 <Example direction="column" gap="4">
   <Column gap="2">
-    <Text size="sm" weight="medium">Text skeleton</Text>
+    <Text weight="medium">Text skeleton</Text>
     <SkeletonText lines={3} />
   </Column>
 
 ```jsx
-import { Skeleton, SkeletonText, SkeletonAvatar } from './SkeletonLoader';
-
-<SkeletonText lines={3} />
+<Column gap="2">
+  <Text weight="medium">Text skeleton</Text>
+  <SkeletonText lines={3} />
+</Column>
 ```
 </Example>
 
 ## Source
+
+Add this CSS to your stylesheet:
+
+```css
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--gray-200) 0%,
+    var(--gray-100) 50%,
+    var(--gray-200) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+[data-theme="dark"] .skeleton,
+.dark .skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--gray-700) 0%,
+    var(--gray-600) 50%,
+    var(--gray-700) 100%
+  );
+  background-size: 200% 100%;
+}
+```
 
 ```jsx
 'use client';
@@ -32,8 +68,7 @@ export function Skeleton({ width = '100%', height = '1rem', borderRadius = 'md',
       width={width}
       height={height}
       borderRadius={borderRadius}
-      backgroundColor="muted"
-      className="animate-pulse"
+      className="skeleton"
       {...props}
     />
   );

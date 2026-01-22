@@ -19,8 +19,7 @@ export function Skeleton({
       width={width}
       height={height}
       borderRadius={borderRadius}
-      backgroundColor="muted"
-      className="animate-pulse"
+      className="skeleton"
       {...props}
     />
   );

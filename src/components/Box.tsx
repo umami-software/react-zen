@@ -128,6 +128,7 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   flexBasis?: string;
   flexGrow?: FlexGrow;
   flexShrink?: FlexShrink;
+  fill?: boolean;
 
   gridArea?: string;
   gridRow?: string;
@@ -208,6 +209,7 @@ export const Box = forwardRef(function Box(
     flexBasis,
     flexGrow,
     flexShrink,
+    fill,
     gridArea,
     gridRow,
     gridColumn,
@@ -308,6 +310,7 @@ export const Box = forwardRef(function Box(
     ...(flexBasis && { flexBasis }),
     ...(flexGrow !== undefined && { flexGrow }),
     ...(flexShrink !== undefined && { flexShrink }),
+    ...(fill && { flex: 1 }),
     ...(gridArea && { gridArea }),
     ...(gridRow && { gridRow }),
     ...(gridColumn && { gridColumn }),
