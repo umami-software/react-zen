@@ -185,14 +185,20 @@ export function ActiveFilters({ groups, selectedFilters, onRemove }) {
 
 <Example>
   <Column gap="4">
-    <ActiveFilters
-      groups={[
-        { id: 'category', label: 'Category', options: [{ id: 'electronics', label: 'Electronics' }, { id: 'clothing', label: 'Clothing' }] },
-        { id: 'brand', label: 'Brand', options: [{ id: 'apple', label: 'Apple' }] },
-      ]}
-      selectedFilters={{ category: ['electronics', 'clothing'], brand: ['apple'] }}
-      onRemove={(groupId, optionId) => console.log('Remove:', groupId, optionId)}
-    />
+    <Row gap="2" flexWrap="wrap">
+      <Row alignItems="center" gap="1" paddingX="2" paddingY="1" backgroundColor="interactive" borderRadius="full">
+        <Text size="xs">Electronics</Text>
+        <Icon size="xs"><Lucide.X /></Icon>
+      </Row>
+      <Row alignItems="center" gap="1" paddingX="2" paddingY="1" backgroundColor="interactive" borderRadius="full">
+        <Text size="xs">Clothing</Text>
+        <Icon size="xs"><Lucide.X /></Icon>
+      </Row>
+      <Row alignItems="center" gap="1" paddingX="2" paddingY="1" backgroundColor="interactive" borderRadius="full">
+        <Text size="xs">Apple</Text>
+        <Icon size="xs"><Lucide.X /></Icon>
+      </Row>
+    </Row>
   </Column>
 
 ```jsx

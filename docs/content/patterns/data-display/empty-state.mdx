@@ -11,7 +11,6 @@ A placeholder display for when there's no content to show, with icon, message, a
     icon={<Lucide.Inbox />}
     title="No messages"
     description="You don't have any messages yet. Start a conversation to see them here."
-    action={{ label: "Compose Message", onClick: () => console.log('Compose') }}
   />
 
 ```jsx
@@ -124,9 +123,7 @@ export function EmptyStateError(props) {
 ### No data
 
 <Example>
-  <EmptyStateNoData
-    action={{ label: "Create First Item", onClick: () => {} }}
-  />
+  <EmptyStateNoData />
 
 ```jsx
 <EmptyStateNoData
@@ -138,10 +135,19 @@ export function EmptyStateError(props) {
 ### Error state
 
 <Example>
-  <EmptyStateError
-    action={{ label: "Try Again", onClick: () => window.location.reload() }}
-    secondaryAction={{ label: "Contact Support", onClick: () => {} }}
-  />
+  <Column alignItems="center" justifyContent="center" padding="8" gap="4">
+    <Box width="16" height="16" borderRadius="full" backgroundColor="surface-raised" display="flex" alignItems="center" justifyContent="center">
+      <Icon size="lg" color="muted"><Lucide.FileX /></Icon>
+    </Box>
+    <Column alignItems="center" gap="2">
+      <Text size="lg" weight="semibold">Something went wrong</Text>
+      <Text color="muted" align="center" style={{ maxWidth: '20rem' }}>We couldn't load this content. Please try again.</Text>
+    </Column>
+    <Column gap="2" alignItems="center">
+      <Button variant="primary">Try Again</Button>
+      <Button variant="quiet">Contact Support</Button>
+    </Column>
+  </Column>
 
 ```jsx
 <EmptyStateError
@@ -154,13 +160,19 @@ export function EmptyStateError(props) {
 ### Custom empty state
 
 <Example>
-  <EmptyState
-    icon={<Lucide.FolderOpen />}
-    title="No projects"
-    description="Create a new project to get started building something amazing."
-    action={{ label: "New Project", onClick: () => {} }}
-    secondaryAction={{ label: "Import Existing", onClick: () => {} }}
-  />
+  <Column alignItems="center" justifyContent="center" padding="8" gap="4">
+    <Box width="16" height="16" borderRadius="full" backgroundColor="surface-raised" display="flex" alignItems="center" justifyContent="center">
+      <Icon size="lg" color="muted"><Lucide.FolderOpen /></Icon>
+    </Box>
+    <Column alignItems="center" gap="2">
+      <Text size="lg" weight="semibold">No projects</Text>
+      <Text color="muted" align="center" style={{ maxWidth: '20rem' }}>Create a new project to get started building something amazing.</Text>
+    </Column>
+    <Column gap="2" alignItems="center">
+      <Button variant="primary">New Project</Button>
+      <Button variant="quiet">Import Existing</Button>
+    </Column>
+  </Column>
 
 ```jsx
 <EmptyState

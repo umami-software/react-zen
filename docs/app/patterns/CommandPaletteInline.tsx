@@ -11,7 +11,7 @@ interface CommandItem {
   description?: string;
   icon?: ReactNode;
   shortcut?: string;
-  onSelect: () => void;
+  onSelect?: () => void;
 }
 
 interface CommandGroup {
@@ -93,7 +93,7 @@ export function CommandPaletteInline({
                     alignItems="center"
                     backgroundColor={isSelected ? 'interactive' : undefined}
                     className="cursor-pointer"
-                    onClick={() => item.onSelect()}
+                    onClick={() => item.onSelect?.()}
                   >
                     {item.icon && (
                       <Icon size="sm" color="muted">

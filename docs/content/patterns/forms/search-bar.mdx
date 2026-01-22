@@ -14,8 +14,6 @@ A search input with icon, clear button, and optional suggestions dropdown. Built
       { id: '2', label: 'iPhone 15', description: 'Phone' },
       { id: '3', label: 'AirPods Pro', description: 'Audio' },
     ]}
-    onSearch={(query) => console.log('Search:', query)}
-    onSelect={(item) => console.log('Selected:', item)}
   />
 
 ```jsx
@@ -149,7 +147,6 @@ export function SearchBar({
       { id: '2', label: 'README.md', description: 'Markdown file', icon: <Lucide.FileText /> },
       { id: '3', label: 'config.json', description: 'JSON file', icon: <Lucide.FileJson /> },
     ]}
-    onSelect={(item) => console.log('Selected:', item)}
   />
 
 ```jsx
@@ -171,7 +168,6 @@ export function SearchBar({
   <SearchBar
     placeholder="Search..."
     showSuggestions={false}
-    onSearch={(query) => console.log('Search:', query)}
   />
 
 ```jsx

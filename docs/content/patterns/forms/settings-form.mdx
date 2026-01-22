@@ -138,12 +138,20 @@ export function SettingsInput({ label, description, value, onChange, placeholder
 <Example>
   <SettingsForm style={{ maxWidth: '32rem' }}>
     <SettingsSection title="Account" description="Manage your account settings">
-      <SettingsToggle label="Two-factor authentication" description="Add an extra layer of security" isSelected={true} onChange={() => {}} />
-      <SettingsToggle label="Session timeout" description="Automatically log out after inactivity" isSelected={false} onChange={() => {}} />
+      <SettingsRow label="Two-factor authentication" description="Add an extra layer of security">
+        <Switch isSelected />
+      </SettingsRow>
+      <SettingsRow label="Session timeout" description="Automatically log out after inactivity">
+        <Switch />
+      </SettingsRow>
     </SettingsSection>
     <SettingsSection title="Privacy" description="Control your privacy settings">
-      <SettingsToggle label="Profile visibility" description="Allow others to see your profile" isSelected={true} onChange={() => {}} />
-      <SettingsToggle label="Activity status" description="Show when you're online" isSelected={true} onChange={() => {}} />
+      <SettingsRow label="Profile visibility" description="Allow others to see your profile">
+        <Switch isSelected />
+      </SettingsRow>
+      <SettingsRow label="Activity status" description="Show when you're online">
+        <Switch isSelected />
+      </SettingsRow>
     </SettingsSection>
   </SettingsForm>
 

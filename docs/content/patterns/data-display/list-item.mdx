@@ -8,7 +8,7 @@ A configurable list row with avatar, title, description, meta, and actions. Buil
 
 <Example>
   <Box border borderRadius="lg" overflow="hidden">
-    <ListItem onClick={() => console.log('Clicked')}>
+    <ListItem>
       <ListItemAvatar fallback="JD" />
       <ListItemContent title="John Doe" description="john@example.com" meta="Admin" />
       <ListItemBadge variant="success">Active</ListItemBadge>
@@ -16,7 +16,7 @@ A configurable list row with avatar, title, description, meta, and actions. Buil
         <ListItemMenu />
       </ListItemActions>
     </ListItem>
-    <ListItem onClick={() => console.log('Clicked')}>
+    <ListItem>
       <ListItemAvatar fallback="JS" />
       <ListItemContent title="Jane Smith" description="jane@example.com" meta="User" />
       <ListItemBadge>Pending</ListItemBadge>
@@ -24,7 +24,7 @@ A configurable list row with avatar, title, description, meta, and actions. Buil
         <ListItemMenu />
       </ListItemActions>
     </ListItem>
-    <ListItem onClick={() => console.log('Clicked')}>
+    <ListItem>
       <ListItemAvatar fallback="BW" />
       <ListItemContent title="Bob Wilson" description="bob@example.com" meta="User" />
       <ListItemBadge variant="error">Inactive</ListItemBadge>
@@ -166,15 +166,15 @@ export function ListItemBadge({ children, variant = 'default' }) {
 
 <Example>
   <Box border borderRadius="lg" overflow="hidden">
-    <ListItem showChevron onClick={() => {}}>
+    <ListItem showChevron>
       <Icon color="muted"><Lucide.Settings /></Icon>
       <ListItemContent title="Account Settings" description="Manage your account preferences" />
     </ListItem>
-    <ListItem showChevron onClick={() => {}}>
+    <ListItem showChevron>
       <Icon color="muted"><Lucide.Bell /></Icon>
       <ListItemContent title="Notifications" description="Configure notification settings" />
     </ListItem>
-    <ListItem showChevron onClick={() => {}}>
+    <ListItem showChevron>
       <Icon color="muted"><Lucide.Shield /></Icon>
       <ListItemContent title="Security" description="Password and authentication" />
     </ListItem>

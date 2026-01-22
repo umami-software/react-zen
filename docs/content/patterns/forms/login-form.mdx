@@ -7,11 +7,7 @@ title: Login Form
 A complete login form with email/password fields, social login options, and forgot password link. Built using `Box`, `Column`, `Row`, `Button`, `TextField`, and `PasswordField` components.
 
 <Example>
-  <LoginForm
-    onSubmit={(data) => console.log('Login:', data)}
-    onSocialLogin={(provider) => console.log('Social login:', provider)}
-    onForgotPassword={() => console.log('Forgot password')}
-  />
+  <LoginForm />
 
 ```jsx
 import { LoginForm } from './LoginForm';
@@ -123,10 +119,7 @@ export function LoginForm({
 ### Without social login
 
 <Example>
-  <LoginForm
-    showSocialLogin={false}
-    onSubmit={(data) => console.log('Login:', data)}
-  />
+  <LoginForm showSocialLogin={false} />
 
 ```jsx
 <LoginForm
@@ -144,7 +137,6 @@ export function LoginForm({
     subtitle="Enter your credentials below"
     showSocialLogin={false}
     showForgotPassword={false}
-    onSubmit={(data) => console.log('Login:', data)}
   />
 
 ```jsx
