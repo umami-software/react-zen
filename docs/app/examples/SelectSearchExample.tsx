@@ -16,12 +16,12 @@ const valuesPredefined = [
 
 export function SelectSearchExample({
   isLoading,
-  values,
+  values = valuesPredefined,
 }: {
   isLoading?: boolean;
   values?: string[];
 }) {
-  const [items, setItems] = useState<string[]>(values || valuesPredefined);
+  const [items, setItems] = useState<string[]>(values);
   const [search, setSearch] = useState<string>('');
 
   const handleSearch = (search: string) => {

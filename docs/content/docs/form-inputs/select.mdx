@@ -18,30 +18,6 @@ Displays a list of options for the user to pick from—triggered by a button.
   ```
 </Example>
 
-## Fullscreen mode
-
-<Example>
-  <Box width="300px">
-    <Select
-      label="Select"
-      items={['One', 'Two', 'Three', 'Four', 'Five']}
-      placeholder="Please select an option"
-      isFullscreen
-    />
-  </Box>
-
-  ```jsx
-  <Box width="300px">
-    <Select
-      label="Select"
-      items={['One', 'Two', 'Three', 'Four', 'Five']}
-      placeholder="Please select an option"
-      isFullscreen
-    />
-  </Box>
-  ```
-</Example>
-
 ## With label
 
 <Example>
@@ -106,18 +82,6 @@ Displays a list of options for the user to pick from—triggered by a button.
   ```
 </Example>
 
-## Scrollable with search
-
-<Example>
-  <Box width="300px">
-    <SelectSearchExample values={Array.from(Array(42).keys().map(e => `${e}`))} />
-  </Box>
-
-  ```jsx
-  <Select items={Array.from(Array(42).keys())} placeholder="Please select an option" allowSearch />
-  ```
-</Example>
-
 ## Scrollable
 
 <Example>
@@ -129,6 +93,31 @@ Displays a list of options for the user to pick from—triggered by a button.
   <Select items={Array.from(Array(42).keys())} placeholder="Please select an option" />
   ```
 </Example>
+
+## Fullscreen mode
+
+<Example>
+  <Box width="300px">
+    <Select
+      label="Select"
+      items={['One', 'Two', 'Three', 'Four', 'Five']}
+      placeholder="Please select an option"
+      isFullscreen
+    />
+  </Box>
+
+  ```jsx
+  <Box width="300px">
+    <Select
+      label="Select"
+      items={['One', 'Two', 'Three', 'Four', 'Five']}
+      placeholder="Please select an option"
+      isFullscreen
+    />
+  </Box>
+  ```
+</Example>
+
 
 ## Component props
 

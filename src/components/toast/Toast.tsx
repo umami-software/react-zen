@@ -40,7 +40,7 @@ function Toast({
     <Row {...props} className={cn(toastVariant({ variant }), className)}>
       <Column flexGrow={1} gap="1">
         {title && <Text weight="semibold">{title}</Text>}
-        {message && <Text color="muted">{message}</Text>}
+        {message && <Text color={title ? 'muted' : undefined}>{message}</Text>}
       </Column>
       {hasActions &&
         actions.map(action => {

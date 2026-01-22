@@ -46,9 +46,7 @@ export function ColorSwatchesExample() {
     <Column gap="3">
       {COLORS.map(color => (
         <Row key={color} gap="1" alignItems="center">
-          <Text size="sm" color="muted" style={{ width: 70 }}>
-            {color}
-          </Text>
+          <Text style={{ width: 70 }}>{color}</Text>
           <Row gap="1">
             {SHADES.map(shade => (
               <Box

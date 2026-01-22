@@ -242,20 +242,20 @@ export function SidebarToggle() {
 ### With section dividers
 
 <Example backgroundColor="transparent">
-  <Box height="80" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
+  <Box height="90" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
     <Row height="100%">
       <Sidebar>
         <Column>
           <SidebarHeader title="Acme Inc" />
           <SidebarNav>
-            <Text size="xs" color="muted" weight="semibold" paddingX="3" paddingY="2">
-              MAIN
-            </Text>
+            <Box paddingX="3" paddingY="2">
+              <Text size="xs" color="muted" weight="semibold">MAIN</Text>
+            </Box>
             <SidebarItem icon={<Lucide.Home />} label="Dashboard" isSelected />
             <SidebarItem icon={<Lucide.Users />} label="Users" />
-            <Text size="xs" color="muted" weight="semibold" paddingX="3" paddingY="2" marginTop="4">
-              SETTINGS
-            </Text>
+            <Box paddingX="3" paddingY="2" marginTop="4">
+              <Text size="xs" color="muted" weight="semibold">SETTINGS</Text>
+            </Box>
             <SidebarItem icon={<Lucide.Settings />} label="General" />
             <SidebarItem icon={<Lucide.Shield />} label="Security" />
           </SidebarNav>
@@ -272,14 +272,14 @@ export function SidebarToggle() {
   <Column>
     <SidebarHeader title="Acme Inc" />
     <SidebarNav>
-      <Text size="xs" color="muted" weight="semibold" paddingX="3" paddingY="2">
-        MAIN
-      </Text>
+      <Box paddingX="3" paddingY="2">
+        <Text size="xs" color="muted" weight="semibold">MAIN</Text>
+      </Box>
       <SidebarItem icon={<Home />} label="Dashboard" isSelected />
       <SidebarItem icon={<Users />} label="Users" />
-      <Text size="xs" color="muted" weight="semibold" paddingX="3" paddingY="2" marginTop="4">
-        SETTINGS
-      </Text>
+      <Box paddingX="3" paddingY="2" marginTop="4">
+        <Text size="xs" color="muted" weight="semibold">SETTINGS</Text>
+      </Box>
       <SidebarItem icon={<Settings />} label="General" />
       <SidebarItem icon={<Shield />} label="Security" />
     </SidebarNav>
@@ -294,15 +294,12 @@ export function SidebarToggle() {
   <Box height="72" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
     <Row height="100%">
       <Sidebar defaultCollapsed collapsedWidth="4rem" expandedWidth="4rem">
-        <Column>
-          <SidebarHeader />
-          <SidebarNav>
+        <SidebarNav>
             <SidebarItem icon={<Lucide.Home />} label="Dashboard" isSelected />
             <SidebarItem icon={<Lucide.Users />} label="Users" />
             <SidebarItem icon={<Lucide.FileText />} label="Documents" />
             <SidebarItem icon={<Lucide.Settings />} label="Settings" />
-          </SidebarNav>
-        </Column>
+        </SidebarNav>
       </Sidebar>
       <Box padding="6" flexGrow="1">
         <Text color="muted">Main content area</Text>
@@ -312,15 +309,12 @@ export function SidebarToggle() {
 
 ```jsx
 <Sidebar defaultCollapsed collapsedWidth="4rem" expandedWidth="4rem">
-  <Column>
-    <SidebarHeader />
-    <SidebarNav>
-      <SidebarItem icon={<Home />} label="Dashboard" isSelected />
-      <SidebarItem icon={<Users />} label="Users" />
-      <SidebarItem icon={<FileText />} label="Documents" />
-      <SidebarItem icon={<Settings />} label="Settings" />
-    </SidebarNav>
-  </Column>
+  <SidebarNav>
+    <SidebarItem icon={<Home />} label="Dashboard" isSelected />
+    <SidebarItem icon={<Users />} label="Users" />
+    <SidebarItem icon={<FileText />} label="Documents" />
+    <SidebarItem icon={<Settings />} label="Settings" />
+  </SidebarNav>
 </Sidebar>
 ```
 </Example>
