@@ -76,7 +76,7 @@ export function CommandPaletteInline({
           filteredGroups.map(group => (
             <Column key={group.label}>
               <Box paddingX="3" paddingY="2">
-                <Text size="xs" color="muted" weight="semibold">
+                <Text color="muted" weight="semibold">
                   {group.label}
                 </Text>
               </Box>
@@ -101,12 +101,8 @@ export function CommandPaletteInline({
                       </Icon>
                     )}
                     <Column flexGrow="1" gap="0">
-                      <Text size="sm">{item.label}</Text>
-                      {item.description && (
-                        <Text size="xs" color="muted">
-                          {item.description}
-                        </Text>
-                      )}
+                      <Text>{item.label}</Text>
+                      {item.description && <Text color="muted">{item.description}</Text>}
                     </Column>
                     {item.shortcut && (
                       <Row gap="1">
@@ -120,9 +116,7 @@ export function CommandPaletteInline({
                             border
                             borderColor="muted"
                           >
-                            <Text size="xs" color="muted">
-                              {key}
-                            </Text>
+                            <Text color="muted">{key}</Text>
                           </Box>
                         ))}
                       </Row>

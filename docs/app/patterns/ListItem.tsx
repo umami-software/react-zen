@@ -57,7 +57,7 @@ export function ListItemAvatar({ src, fallback, size = 'md' }: ListItemAvatarPro
       {src ? (
         <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       ) : (
-        <Text size="sm" color="on-primary" weight="medium">
+        <Text color="on-primary" weight="medium">
           {fallback}
         </Text>
       )}
@@ -80,15 +80,11 @@ export function ListItemContent({ title, description, meta }: ListItemContentPro
             {title}
           </Text>
         </Box>
-        {meta && (
-          <Text size="xs" color="muted">
-            {meta}
-          </Text>
-        )}
+        {meta && <Text color="muted">{meta}</Text>}
       </Row>
       {description && (
         <Box overflow="hidden">
-          <Text size="sm" color="muted" truncate>
+          <Text color="muted" truncate>
             {description}
           </Text>
         </Box>
@@ -138,9 +134,7 @@ export function ListItemBadge({ children, variant = 'default' }: ListItemBadgePr
 
   return (
     <Box paddingX="2" paddingY="1" backgroundColor={colorMap[variant]} borderRadius="full">
-      <Text size="xs" color={variant === 'default' ? undefined : 'on-primary'}>
-        {children}
-      </Text>
+      <Text color={variant === 'default' ? undefined : 'on-primary'}>{children}</Text>
     </Box>
   );
 }

@@ -20,12 +20,8 @@ function SidebarUser() {
       <Box width="8" height="8" borderRadius="full" backgroundColor="blue-500" flexShrink="0" />
       {!isCollapsed && (
         <Column gap="0">
-          <Text size="sm" weight="medium">
-            John Doe
-          </Text>
-          <Text size="xs" color="muted">
-            Admin
-          </Text>
+          <Text weight="medium">John Doe</Text>
+          <Text color="muted">Admin</Text>
         </Column>
       )}
     </Row>

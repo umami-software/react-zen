@@ -42,7 +42,7 @@ export function NavMenuGroup({ title, defaultOpen = true, children, ...props }: 
         className="cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
+        <Text weight="semibold" color="muted" transform="uppercase">
           {title}
         </Text>
         <Icon size="sm" color="muted" rotate={isOpen ? 90 : 0}>

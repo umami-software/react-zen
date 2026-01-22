@@ -37,11 +37,7 @@ export function PageHeaderTitle({ title, description, breadcrumb }: PageHeaderTi
       <Text size="xl" weight="semibold">
         {title}
       </Text>
-      {description && (
-        <Text size="sm" color="muted">
-          {description}
-        </Text>
-      )}
+      {description && <Text color="muted">{description}</Text>}
     </Column>
   );
 }

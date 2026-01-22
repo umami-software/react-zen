@@ -30,9 +30,7 @@ export function StatCard({ label, value, change, icon, trend, ...props }: StatCa
     >
       <Column gap="3">
         <Row alignItems="center" justifyContent="space-between">
-          <Text size="sm" color="muted">
-            {label}
-          </Text>
+          <Text color="muted">{label}</Text>
           {icon && (
             <Icon size="sm" color="muted">
               {icon}
@@ -47,15 +45,11 @@ export function StatCard({ label, value, change, icon, trend, ...props }: StatCa
             <Icon size="xs" color={trendColor}>
               <TrendIcon />
             </Icon>
-            <Text size="sm" color={trendColor}>
+            <Text color={trendColor}>
               {change.value > 0 ? '+' : ''}
               {change.value}%
             </Text>
-            {change.label && (
-              <Text size="sm" color="muted">
-                {change.label}
-              </Text>
-            )}
+            {change.label && <Text color="muted">{change.label}</Text>}
           </Row>
         )}
       </Column>
@@ -84,18 +78,14 @@ interface StatCardCompactProps {
 export function StatCardCompact({ label, value, subValue }: StatCardCompactProps) {
   return (
     <Column gap="1">
-      <Text size="xs" color="muted" transform="uppercase">
+      <Text color="muted" transform="uppercase">
         {label}
       </Text>
       <Row alignItems="baseline" gap="1">
         <Text size="xl" weight="semibold">
           {value}
         </Text>
-        {subValue && (
-          <Text size="sm" color="muted">
-            {subValue}
-          </Text>
-        )}
+        {subValue && <Text color="muted">{subValue}</Text>}
       </Row>
     </Column>
   );

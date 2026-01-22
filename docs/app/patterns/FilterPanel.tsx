@@ -72,7 +72,7 @@ function FilterGroupComponent({ group, selected, onFilterChange }: FilterGroupCo
         className="cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Text size="sm" weight="medium">
+        <Text weight="medium">
           {group.label}
           {selected.length > 0 && (
             <Text as="span" color="muted">
@@ -94,13 +94,9 @@ function FilterGroupComponent({ group, selected, onFilterChange }: FilterGroupCo
                 isSelected={selected.includes(option.id)}
                 onChange={checked => onFilterChange(option.id, checked)}
               >
-                <Text size="sm">{option.label}</Text>
+                <Text>{option.label}</Text>
               </Checkbox>
-              {option.count !== undefined && (
-                <Text size="xs" color="muted">
-                  {option.count}
-                </Text>
-              )}
+              {option.count !== undefined && <Text color="muted">{option.count}</Text>}
             </Row>
           ))}
         </Column>
@@ -138,7 +134,7 @@ export function ActiveFilters({ groups, selectedFilters, onRemove }: ActiveFilte
           backgroundColor="interactive"
           borderRadius="full"
         >
-          <Text size="xs">{label}</Text>
+          <Text>{label}</Text>
           <Box className="cursor-pointer" onClick={() => onRemove(groupId, optionId)}>
             <Icon size="xs">
               <X />

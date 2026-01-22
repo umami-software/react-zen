@@ -119,11 +119,7 @@ export function SidebarItem({ icon, label, isSelected, onClick }: SidebarItemPro
       <Icon size="sm" color={isSelected ? undefined : 'muted'}>
         {icon}
       </Icon>
-      {!isCollapsed && (
-        <Text size="sm" color={isSelected ? undefined : 'muted'}>
-          {label}
-        </Text>
-      )}
+      {!isCollapsed && <Text color={isSelected ? undefined : 'muted'}>{label}</Text>}
     </Row>
   );
 }

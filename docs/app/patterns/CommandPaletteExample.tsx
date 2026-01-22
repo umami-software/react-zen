@@ -47,9 +47,7 @@ export function CommandPaletteExample() {
     <>
       <Row gap="2" alignItems="center">
         <Button onPress={open}>Open Command Palette</Button>
-        <Text size="sm" color="muted">
-          or press ⌘K
-        </Text>
+        <Text color="muted">or press ⌘K</Text>
       </Row>
       <CommandPalette groups={groups} isOpen={isOpen} onClose={close} />
     </>

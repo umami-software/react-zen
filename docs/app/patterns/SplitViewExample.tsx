@@ -18,9 +18,7 @@ export function SplitViewExample() {
             <SplitViewItem key={item.id} id={item.id}>
               <Column gap="1">
                 <Text weight="medium">{item.title}</Text>
-                <Text size="sm" color="muted">
-                  {item.preview}
-                </Text>
+                <Text color="muted">{item.preview}</Text>
               </Column>
             </SplitViewItem>
           ))}

@@ -26,11 +26,7 @@ export function SettingsSection({ title, description, children }: SettingsSectio
     <Column gap="4">
       <Column gap="1">
         <Text weight="semibold">{title}</Text>
-        {description && (
-          <Text size="sm" color="muted">
-            {description}
-          </Text>
-        )}
+        {description && <Text color="muted">{description}</Text>}
       </Column>
       <Column gap="4" paddingLeft="0">
         {children}
@@ -55,14 +51,8 @@ export function SettingsRow({ label, description, children }: SettingsRowProps) 
       border="bottom"
     >
       <Column gap="0" flexGrow="1" style={{ maxWidth: '70%' }}>
-        <Text size="sm" weight="medium">
-          {label}
-        </Text>
-        {description && (
-          <Text size="xs" color="muted">
-            {description}
-          </Text>
-        )}
+        <Text weight="medium">{label}</Text>
+        {description && <Text color="muted">{description}</Text>}
       </Column>
       <Box>{children}</Box>
     </Row>

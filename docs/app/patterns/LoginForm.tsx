@@ -46,9 +46,7 @@ export function LoginForm({
           <Text size="xl" weight="semibold">
             {title}
           </Text>
-          <Text size="sm" color="muted">
-            {subtitle}
-          </Text>
+          <Text color="muted">{subtitle}</Text>
         </Column>
 
         {showSocialLogin && (
@@ -70,9 +68,7 @@ export function LoginForm({
 
             <Row alignItems="center" gap="4">
               <Box flexGrow="1" height="1px" backgroundColor="muted" />
-              <Text size="xs" color="muted">
-                OR
-              </Text>
+              <Text color="muted">OR</Text>
               <Box flexGrow="1" height="1px" backgroundColor="muted" />
             </Row>
           </>
@@ -103,10 +99,8 @@ export function LoginForm({
         </form>
 
         <Row justifyContent="center" gap="1">
-          <Text size="sm" color="muted">
-            Don't have an account?
-          </Text>
-          <Text size="sm" color="primary" className="cursor-pointer hover:underline">
+          <Text color="muted">Don't have an account?</Text>
+          <Text color="primary" className="cursor-pointer hover:underline">
             Sign up
           </Text>
         </Row>

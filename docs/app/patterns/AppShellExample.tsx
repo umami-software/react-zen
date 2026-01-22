@@ -42,7 +42,7 @@ export function AppShellExample() {
                 <Icon size="sm">
                   <Home />
                 </Icon>
-                <Text size="sm">Dashboard</Text>
+                <Text>Dashboard</Text>
               </Row>
               <Row
                 paddingX="3"
@@ -55,9 +55,7 @@ export function AppShellExample() {
                 <Icon size="sm" color="muted">
                   <Users />
                 </Icon>
-                <Text size="sm" color="muted">
-                  Users
-                </Text>
+                <Text color="muted">Users</Text>
               </Row>
               <Row
                 paddingX="3"
@@ -70,9 +68,7 @@ export function AppShellExample() {
                 <Icon size="sm" color="muted">
                   <Settings />
                 </Icon>
-                <Text size="sm" color="muted">
-                  Settings
-                </Text>
+                <Text color="muted">Settings</Text>
               </Row>
             </Column>
           </AppShellSidebar>

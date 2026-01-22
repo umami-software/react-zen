@@ -92,20 +92,14 @@ export function Step({ step, title, description }: StepProps) {
               <Check />
             </Icon>
           ) : (
-            <Text size="sm" weight="medium" color={isActive ? 'on-primary' : 'muted'}>
+            <Text weight="medium" color={isActive ? 'on-primary' : 'muted'}>
               {step + 1}
             </Text>
           )}
         </Box>
         <Column gap="0">
-          <Text size="sm" weight={isActive ? 'medium' : undefined}>
-            {title}
-          </Text>
-          {description && (
-            <Text size="xs" color="muted">
-              {description}
-            </Text>
-          )}
+          <Text weight={isActive ? 'medium' : undefined}>{title}</Text>
+          {description && <Text color="muted">{description}</Text>}
         </Column>
       </Row>
       {!isLast && (
