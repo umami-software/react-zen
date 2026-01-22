@@ -1,5 +1,5 @@
 export default {
-  'login-form': 'Login Form',
   'filter-panel': 'Filter Panel',
+  'login-form': 'Login Form',
   'settings-form': 'Settings Form',
 };

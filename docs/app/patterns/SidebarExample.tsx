@@ -17,7 +17,7 @@ function SidebarUser() {
 
   return (
     <Row gap="3" alignItems="center" justifyContent={isCollapsed ? 'center' : 'flex-start'}>
-      <Box width="8" height="8" borderRadius="full" backgroundColor="blue-500" flexShrink="0" />
+      <Box width="8" height="8" borderRadius="full" backgroundColor="gray-200" flexShrink="0" />
       {!isCollapsed && (
         <Column gap="0">
           <Text weight="medium">John Doe</Text>

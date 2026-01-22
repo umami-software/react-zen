@@ -1,6 +1,6 @@
 export default {
-  'icon-label': 'Icon Label',
-  'stat-card': 'Stat Card',
-  'list-item': 'List Item',
   'empty-state': 'Empty State',
+  'icon-label': 'Icon Label',
+  'list-item': 'List Item',
+  'stat-card': 'Stat Card',
 };

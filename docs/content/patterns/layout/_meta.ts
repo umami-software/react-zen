@@ -1,7 +1,7 @@
 export default {
-  sidebar: 'Sidebar',
   'app-shell': 'App Shell',
-  'page-header': 'Page Header',
-  'split-view': 'Split View',
   'dashboard-grid': 'Dashboard Grid',
+  'page-header': 'Page Header',
+  sidebar: 'Sidebar',
+  'split-view': 'Split View',
 };

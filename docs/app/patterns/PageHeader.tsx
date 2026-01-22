@@ -10,7 +10,7 @@ interface PageHeaderProps extends RowProps {
 export function PageHeader({ children, ...props }: PageHeaderProps) {
   return (
     <Row
-      paddingX="6"
+      width="100%"
       paddingY="4"
       alignItems="center"
       justifyContent="space-between"
