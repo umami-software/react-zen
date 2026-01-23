@@ -66,9 +66,18 @@ export type SurfaceColor =
   | 'surface-inverted'
   | 'surface-disabled';
 
+// Interactive color variants
+export type InteractiveColor = 'interactive' | 'interactive-hover' | 'interactive-pressed';
+
 // All supported colors: semantic + base colors + color-shade combinations
 export type FontColor = SemanticColor | ColorName | TailwindColor | true;
-export type BackgroundColor = SemanticColor | SurfaceColor | ColorName | TailwindColor | true;
+export type BackgroundColor =
+  | SemanticColor
+  | SurfaceColor
+  | InteractiveColor
+  | ColorName
+  | TailwindColor
+  | true;
 export type BorderColor = SemanticColor | ColorName | TailwindColor | true;
 export type HoverColor = FontColor;
 export type StrokeColor = FontColor;

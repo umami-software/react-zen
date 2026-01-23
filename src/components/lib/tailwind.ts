@@ -744,6 +744,10 @@ const semanticColorMap: Record<string, { text: string; bg: string }> = {
   'surface-overlay': { text: '', bg: 'bg-surface-overlay' },
   'surface-inverted': { text: '', bg: 'bg-surface-inverted' },
   'surface-disabled': { text: '', bg: 'bg-surface-disabled' },
+  // Interactive colors
+  interactive: { text: '', bg: 'bg-interactive' },
+  'interactive-hover': { text: '', bg: 'bg-interactive-hover' },
+  'interactive-pressed': { text: '', bg: 'bg-interactive-pressed' },
 };
 
 // Tailwind color names for pattern matching
