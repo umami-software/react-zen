@@ -1,4 +1,5 @@
 'use client';
+export { ExampleCode } from '../components/ExampleCode';
 export { AccentColorsExample } from './AccentColorsExample';
 export { AlertDialogExample } from './AlertDialogExample';
 export { BreakpointExample } from './BreakpointExample';
