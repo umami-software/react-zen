@@ -70,6 +70,7 @@ export function NavMenuExample() {
 
 ## Source
 
+<ExampleCode>
 ```jsx
 'use client';
 
@@ -102,7 +103,7 @@ export function NavMenuGroup({ title, defaultOpen = true, collapsible = true, ch
         className={collapsible ? 'cursor-pointer' : ''}
         onClick={collapsible ? () => setIsOpen(!isOpen) : undefined}
       >
-        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
+        <Text size="sm" weight="semibold" color="muted" transform="uppercase">
           {title}
         </Text>
         {collapsible && (
@@ -146,6 +147,7 @@ export function NavMenuItem({ icon, isSelected, children, ...props }) {
   );
 }
 ```
+</ExampleCode>
 
 ## Variations
 

@@ -65,6 +65,7 @@ export function FilterPanelExample() {
 
 ## Source
 
+<ExampleCode>
 ```jsx
 'use client';
 
@@ -115,7 +116,7 @@ function FilterGroupComponent({ group, selected, onFilterChange }) {
         className="cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Text size="sm" weight="medium">
+        <Text weight="medium">
           {group.label}
           {selected.length > 0 && <Text as="span" color="muted"> ({selected.length})</Text>}
         </Text>
@@ -132,7 +133,7 @@ function FilterGroupComponent({ group, selected, onFilterChange }) {
                 isSelected={selected.includes(option.id)}
                 onChange={(checked) => onFilterChange(option.id, checked)}
               >
-                <Text size="sm">{option.label}</Text>
+                <Text>{option.label}</Text>
               </Checkbox>
               {option.count !== undefined && (
                 <Text color="muted">{option.count}</Text>
@@ -178,6 +179,7 @@ export function ActiveFilters({ groups, selectedFilters, onRemove }) {
   );
 }
 ```
+</ExampleCode>
 
 ## Variations
 

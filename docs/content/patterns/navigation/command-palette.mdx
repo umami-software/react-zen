@@ -51,6 +51,7 @@ export function CommandPaletteExample() {
 
 ## Source
 
+<ExampleCode>
 ```jsx
 'use client';
 
@@ -123,12 +124,12 @@ export function CommandPalette({
         </Row>
         <Column maxHeight="20rem" overflow="auto">
           {filteredGroups.length === 0 ? (
-            <Box padding="4"><Text color="muted" align="center">No results found</Text></Box>
+            <Box padding="4" textAlign="center"><Text color="muted">No results found</Text></Box>
           ) : (
             filteredGroups.map((group) => (
               <Column key={group.label}>
                 <Box paddingX="3" paddingY="2">
-                  <Text size="xs" color="muted" weight="semibold">{group.label}</Text>
+                  <Text color="muted" weight="semibold">{group.label}</Text>
                 </Box>
                 {group.items.map((item) => {
                   itemIndex++;
@@ -137,14 +138,14 @@ export function CommandPalette({
                     <Row key={item.id} paddingX="3" paddingY="2" gap="3" alignItems="center" backgroundColor={isSelected ? 'interactive' : undefined} className="cursor-pointer" onClick={() => { item.onSelect(); onClose(); }}>
                       {item.icon && <Icon size="sm" color="muted">{item.icon}</Icon>}
                       <Column flexGrow="1" gap="0">
-                        <Text size="sm">{item.label}</Text>
-                        {item.description && <Text size="xs" color="muted">{item.description}</Text>}
+                        <Text>{item.label}</Text>
+                        {item.description && <Text color="muted">{item.description}</Text>}
                       </Column>
                       {item.shortcut && (
                         <Row gap="1">
                           {item.shortcut.split('+').map((key, i) => (
                             <Box key={i} paddingX="2" paddingY="1" backgroundColor="surface-base" borderRadius="sm" border borderColor="muted">
-                              <Text size="xs" color="muted">{key}</Text>
+                              <Text color="muted">{key}</Text>
                             </Box>
                           ))}
                         </Row>
@@ -184,6 +185,7 @@ export function useCommandPalette() {
   };
 }
 ```
+</ExampleCode>
 
 ## Features
 

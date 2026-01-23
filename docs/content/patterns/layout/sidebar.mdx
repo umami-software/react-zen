@@ -107,6 +107,7 @@ export function SidebarExample() {
 
 ## Source
 
+<ExampleCode>
 ```jsx
 'use client';
 
@@ -208,7 +209,7 @@ export function SidebarItem({ icon, label, isSelected, onClick }) {
         {icon}
       </Icon>
       {!isCollapsed && (
-        <Text size="sm" color={isSelected ? undefined : 'muted'}>
+        <Text color={isSelected ? undefined : 'muted'}>
           {label}
         </Text>
       )}
@@ -236,6 +237,7 @@ export function SidebarToggle() {
   );
 }
 ```
+</ExampleCode>
 
 ## Variations
 

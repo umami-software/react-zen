@@ -22,6 +22,7 @@ import { LoginForm } from './LoginForm';
 
 ## Source
 
+<ExampleCode>
 ```jsx
 'use client';
 
@@ -59,7 +60,7 @@ export function LoginForm({
       <Column gap="6">
         <Column gap="2" alignItems="center">
           <Text size="xl" weight="semibold">{title}</Text>
-          <Text size="sm" color="muted">{subtitle}</Text>
+          <Text color="muted">{subtitle}</Text>
         </Column>
 
         {showSocialLogin && (
@@ -81,7 +82,7 @@ export function LoginForm({
 
             <Row alignItems="center" gap="4">
               <Box flexGrow="1" height="1px" backgroundColor="muted" />
-              <Text size="xs" color="muted">OR</Text>
+              <Text color="muted">OR</Text>
               <Box flexGrow="1" height="1px" backgroundColor="muted" />
             </Row>
           </>
@@ -94,7 +95,7 @@ export function LoginForm({
               <PasswordField name="password" label="Password" placeholder="Enter your password" />
               {showForgotPassword && (
                 <Row justifyContent="flex-end">
-                  <Text size="sm" color="primary" className="cursor-pointer hover:underline" onClick={onForgotPassword}>
+                  <Text color="primary" className="cursor-pointer hover:underline" onClick={onForgotPassword}>
                     Forgot password?
                   </Text>
                 </Row>
@@ -105,14 +106,15 @@ export function LoginForm({
         </form>
 
         <Row justifyContent="center" gap="1">
-          <Text size="sm" color="muted">Don't have an account?</Text>
-          <Text size="sm" color="primary" className="cursor-pointer hover:underline">Sign up</Text>
+          <Text color="muted">Don't have an account?</Text>
+          <Text color="primary" className="cursor-pointer hover:underline">Sign up</Text>
         </Row>
       </Column>
     </Box>
   );
 }
 ```
+</ExampleCode>
 
 ## Variations
 

@@ -37,10 +37,11 @@ import { PageHeader, PageHeaderTitle, PageHeaderActions } from './PageHeader';
 
 ## Source
 
+<ExampleCode>
 ```jsx
 'use client';
 
-import { Box, Column, Row, Text } from '@umami/react-zen';
+import { Column, Row, Text } from '@umami/react-zen';
 
 export function PageHeader({ children, ...props }) {
   return (
@@ -67,7 +68,7 @@ export function PageHeaderTitle({ title, description, breadcrumb }) {
         {title}
       </Text>
       {description && (
-        <Text size="sm" color="muted">
+        <Text color="muted">
           {description}
         </Text>
       )}
@@ -83,6 +84,7 @@ export function PageHeaderActions({ children }) {
   );
 }
 ```
+</ExampleCode>
 
 ## Variations
 
