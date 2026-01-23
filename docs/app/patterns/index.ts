@@ -29,14 +29,7 @@ export { Error404, Error500, ErrorPage } from './ErrorPage';
 export { ActiveFilters, FilterPanel } from './FilterPanel';
 export { FilterPanelExample } from './FilterPanelExample';
 export { IconLabel } from './IconLabel';
-export {
-  ListItem,
-  ListItemActions,
-  ListItemAvatar,
-  ListItemBadge,
-  ListItemContent,
-  ListItemMenu,
-} from './ListItem';
+export { ListItem, ListItemActions, ListItemAvatar, ListItemContent } from './ListItem';
 export { LoginForm } from './LoginForm';
 export { NavMenu, NavMenuGroup, NavMenuItem } from './NavMenu';
 export { NavMenuExample } from './NavMenuExample';

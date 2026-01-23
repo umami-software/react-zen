@@ -6,51 +6,35 @@ title: App Shell
 
 A full-page application layout with header, collapsible sidebar, and content area. Built using `Box`, `Column`, `Row`, and `Button` components.
 
-<Example backgroundColor="transparent">
+<Example>
   <AppShellExample />
 
 ```jsx
-import { useState } from 'react';
-import { Box, Row, Text, Button } from '@umami/react-zen';
-import { Home, Users, Settings, Bell } from 'lucide-react';
-import {
-  AppShell,
-  AppShellHeader,
-  AppShellBody,
-  AppShellSidebar,
-  AppShellContent,
-  AppShellSidebarToggle,
-} from './AppShell';
-
-export function AppShellExample() {
-  return (
-    <Box height="80" border borderRadius="lg" overflow="hidden">
-      <AppShell>
-        <AppShellHeader>
-          <Row gap="3" alignItems="center">
-            <AppShellSidebarToggle />
-            <Text weight="semibold">My Application</Text>
-          </Row>
-          <Row gap="2">
-            <Button variant="quiet">
-              <Bell size={18} />
-            </Button>
-          </Row>
-        </AppShellHeader>
-        <AppShellBody>
-          <AppShellSidebar>
-            <Box padding="4">
-              <Text size="sm" color="muted">Navigation here</Text>
-            </Box>
-          </AppShellSidebar>
-          <AppShellContent padding="6">
-            <Text>Main content area</Text>
-          </AppShellContent>
-        </AppShellBody>
-      </AppShell>
-    </Box>
-  );
-}
+<Box height="80" border borderRadius="lg" overflow="hidden">
+  <AppShell>
+    <AppShellHeader>
+      <Row gap="3" alignItems="center">
+        <AppShellSidebarToggle />
+        <Text weight="semibold">My Application</Text>
+      </Row>
+      <Row gap="2">
+        <Button variant="quiet">
+          <Bell size={18} />
+        </Button>
+      </Row>
+    </AppShellHeader>
+    <AppShellBody>
+      <AppShellSidebar>
+        <Box padding="4">
+          <Text size="sm" color="muted">Navigation here</Text>
+        </Box>
+      </AppShellSidebar>
+      <AppShellContent padding="6">
+        <Text>Main content area</Text>
+      </AppShellContent>
+    </AppShellBody>
+  </AppShell>
+</Box>
 ```
 </Example>
 
@@ -154,7 +138,7 @@ export function AppShellSidebarToggle() {
 
 ### With navigation
 
-<Example backgroundColor="transparent">
+<Example>
   <Box height="80" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
     <AppShell>
       <AppShellHeader>
@@ -217,7 +201,7 @@ export function AppShellSidebarToggle() {
 
 ### Sidebar closed by default
 
-<Example backgroundColor="transparent">
+<Example>
   <Box height="64" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
     <AppShell defaultSidebarOpen={false}>
       <AppShellHeader>

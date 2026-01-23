@@ -102,7 +102,7 @@ export function NavMenuGroup({ title, defaultOpen = true, children, ...props }) 
         className="cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
+        <Text size="sm" weight="semibold" color="muted" transform="uppercase">
           {title}
         </Text>
         <Icon size="sm" color="muted" rotate={isOpen ? 90 : 0}>
@@ -177,7 +177,7 @@ export function NavMenuItem({ icon, isSelected, children, ...props }) {
   <Box width="64" border borderRadius="lg" padding="2">
     <NavMenu>
       <Row paddingY="2" paddingX="3">
-        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
+        <Text size="sm" weight="semibold" color="muted" transform="uppercase">
           Navigation
         </Text>
       </Row>

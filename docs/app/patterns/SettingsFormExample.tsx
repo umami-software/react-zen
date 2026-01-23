@@ -9,7 +9,7 @@ export function SettingsFormExample() {
   const [displayName, setDisplayName] = useState('John Doe');
 
   return (
-    <SettingsForm maxWidth="32rem">
+    <SettingsForm width="100%">
       <SettingsSection title="Notifications" description="Manage how you receive notifications">
         <SettingsToggle
           label="Email notifications"

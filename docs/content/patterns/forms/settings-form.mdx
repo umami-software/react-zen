@@ -24,7 +24,7 @@ export function SettingsFormExample() {
   const [displayName, setDisplayName] = useState('John Doe');
 
   return (
-    <SettingsForm maxWidth="32rem">
+    <SettingsForm width="100%">
       <SettingsSection
         title="Notifications"
         description="Manage how you receive notifications"
@@ -136,7 +136,7 @@ export function SettingsInput({ label, description, value, onChange, placeholder
 ### Multiple sections
 
 <Example>
-  <SettingsForm maxWidth="32rem">
+  <SettingsForm width="100%">
     <SettingsSection title="Account" description="Manage your account settings">
       <SettingsRow label="Two-factor authentication" description="Add an extra layer of security">
         <Switch isSelected />
@@ -172,7 +172,7 @@ export function SettingsInput({ label, description, value, onChange, placeholder
 ### With custom controls
 
 <Example>
-  <SettingsForm maxWidth="32rem">
+  <SettingsForm width="100%">
     <SettingsSection title="Appearance">
       <SettingsRow label="Theme" description="Choose your preferred theme">
         <Row gap="1">

@@ -6,7 +6,7 @@ title: Error Page
 
 A full-page error display for 404, 500, and other error states. Built using `Box`, `Column`, `Row`, `Icon`, `Text`, and `Button` components.
 
-<Example backgroundColor="transparent">
+<Example>
   <Error404 />
 
 ```jsx
@@ -71,7 +71,7 @@ export function ErrorPage({
         )}
         <Column alignItems="center" gap="2">
           <Text size="xl" weight="semibold">{displayTitle}</Text>
-          <Box maxWidth="24rem"><Text color="muted" align="center">{displayDescription}</Text></Box>
+          <Box maxWidth="24rem" textAlign="center"><Text color="muted">{displayDescription}</Text></Box>
         </Column>
       </Column>
 
@@ -118,7 +118,7 @@ export function Error500(props) {
 
 ### 500 Server Error
 
-<Example backgroundColor="transparent">
+<Example>
   <Error500 />
 
 ```jsx
@@ -128,7 +128,7 @@ export function Error500(props) {
 
 ### Custom error with retry
 
-<Example backgroundColor="transparent">
+<Example>
   <ErrorPage
     title="Connection Lost"
     description="We couldn't connect to the server. Please check your internet connection and try again."
@@ -148,7 +148,7 @@ export function Error500(props) {
 
 ### 403 Forbidden
 
-<Example backgroundColor="transparent">
+<Example>
   <ErrorPage statusCode={403} />
 
 ```jsx
@@ -158,7 +158,7 @@ export function Error500(props) {
 
 ### Minimal (no status code)
 
-<Example backgroundColor="transparent">
+<Example>
   <ErrorPage
     title="Something went wrong"
     description="An unexpected error occurred. Please try again later."

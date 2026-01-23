@@ -135,7 +135,7 @@ function FilterGroupComponent({ group, selected, onFilterChange }) {
                 <Text size="sm">{option.label}</Text>
               </Checkbox>
               {option.count !== undefined && (
-                <Text size="xs" color="muted">{option.count}</Text>
+                <Text color="muted">{option.count}</Text>
               )}
             </Row>
           ))}
@@ -168,9 +168,9 @@ export function ActiveFilters({ groups, selectedFilters, onRemove }) {
           backgroundColor="interactive"
           borderRadius="full"
         >
-          <Text size="xs">{label}</Text>
+          <Text>{label}</Text>
           <Box className="cursor-pointer" onClick={() => onRemove(groupId, optionId)}>
-            <Icon size="xs"><X /></Icon>
+            <Icon><X /></Icon>
           </Box>
         </Row>
       ))}
@@ -187,16 +187,16 @@ export function ActiveFilters({ groups, selectedFilters, onRemove }) {
   <Column gap="4">
     <Row gap="2" flexWrap="wrap">
       <Row alignItems="center" gap="1" paddingX="2" paddingY="1" backgroundColor="interactive" borderRadius="full">
-        <Text size="xs">Electronics</Text>
-        <Icon size="xs"><Lucide.X /></Icon>
+        <Text>Electronics</Text>
+        <Icon><Lucide.X /></Icon>
       </Row>
       <Row alignItems="center" gap="1" paddingX="2" paddingY="1" backgroundColor="interactive" borderRadius="full">
-        <Text size="xs">Clothing</Text>
-        <Icon size="xs"><Lucide.X /></Icon>
+        <Text>Clothing</Text>
+        <Icon><Lucide.X /></Icon>
       </Row>
       <Row alignItems="center" gap="1" paddingX="2" paddingY="1" backgroundColor="interactive" borderRadius="full">
-        <Text size="xs">Apple</Text>
-        <Icon size="xs"><Lucide.X /></Icon>
+        <Text>Apple</Text>
+        <Icon><Lucide.X /></Icon>
       </Row>
     </Row>
   </Column>
@@ -222,14 +222,14 @@ export function ActiveFilters({ groups, selectedFilters, onRemove }) {
       </Row>
       <Column>
         <Row alignItems="center" justifyContent="space-between" paddingY="2" className="cursor-pointer">
-          <Text size="sm" weight="medium">Category</Text>
-          <Icon size="sm" color="muted"><Lucide.ChevronDown /></Icon>
+          <Text weight="medium">Category</Text>
+          <Icon color="muted"><Lucide.ChevronDown /></Icon>
         </Row>
       </Column>
       <Column>
         <Row alignItems="center" justifyContent="space-between" paddingY="2" className="cursor-pointer">
-          <Text size="sm" weight="medium">Price Range</Text>
-          <Icon size="sm" color="muted"><Lucide.ChevronDown /></Icon>
+          <Text weight="medium">Price Range</Text>
+          <Icon color="muted"><Lucide.ChevronDown /></Icon>
         </Row>
       </Column>
     </Column>

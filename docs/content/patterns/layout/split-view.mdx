@@ -6,7 +6,7 @@ title: Split View
 
 A two-panel layout commonly used for list/detail views like email clients or file browsers. Built using `Box`, `Row`, and context for selection state.
 
-<Example backgroundColor="transparent">
+<Example>
   <SplitViewExample />
 
 ```jsx
@@ -136,7 +136,7 @@ export function SplitViewDetail({ children, emptyState, ...props }) {
 
 ### Email-style layout
 
-<Example backgroundColor="transparent">
+<Example>
   <Box height="80" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
     <SplitView defaultSelectedId="1">
       <SplitViewList width="18rem">
@@ -207,7 +207,7 @@ export function SplitViewDetail({ children, emptyState, ...props }) {
 
 ### File browser style
 
-<Example backgroundColor="transparent">
+<Example>
   <Box height="64" border borderRadius="lg" overflow="hidden" backgroundColor="surface-base">
     <SplitView defaultSelectedId="docs">
       <SplitViewList width="14rem">

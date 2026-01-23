@@ -4,58 +4,39 @@ title: List Item
 
 # List Item
 
-A configurable list row with avatar, title, description, meta, and actions. Built using `Box`, `Row`, `Column`, `Icon`, `Text`, and `Button` components.
+A configurable list row with avatar, title, description, meta, and actions. Built using `Box`, `Row`, `Column`, `Icon`, and `Text` components.
 
 <Example>
   <Box border borderRadius="lg" overflow="hidden">
     <ListItem>
       <ListItemAvatar fallback="JD" />
       <ListItemContent title="John Doe" description="john@example.com" meta="Admin" />
-      <ListItemBadge variant="success">Active</ListItemBadge>
-      <ListItemActions>
-        <ListItemMenu />
-      </ListItemActions>
     </ListItem>
     <ListItem>
       <ListItemAvatar fallback="JS" />
       <ListItemContent title="Jane Smith" description="jane@example.com" meta="User" />
-      <ListItemBadge>Pending</ListItemBadge>
-      <ListItemActions>
-        <ListItemMenu />
-      </ListItemActions>
     </ListItem>
     <ListItem>
       <ListItemAvatar fallback="BW" />
       <ListItemContent title="Bob Wilson" description="bob@example.com" meta="User" />
-      <ListItemBadge variant="error">Inactive</ListItemBadge>
-      <ListItemActions>
-        <ListItemMenu />
-      </ListItemActions>
     </ListItem>
   </Box>
 
 ```jsx
-import {
-  ListItem,
-  ListItemAvatar,
-  ListItemContent,
-  ListItemBadge,
-  ListItemActions,
-  ListItemMenu,
-} from './ListItem';
-
-<ListItem onClick={() => console.log('Clicked')}>
-  <ListItemAvatar fallback="JD" />
-  <ListItemContent
-    title="John Doe"
-    description="john@example.com"
-    meta="Admin"
-  />
-  <ListItemBadge variant="success">Active</ListItemBadge>
-  <ListItemActions>
-    <ListItemMenu />
-  </ListItemActions>
-</ListItem>
+<Box border borderRadius="lg" overflow="hidden">
+  <ListItem>
+    <ListItemAvatar fallback="JD" />
+    <ListItemContent title="John Doe" description="john@example.com" meta="Admin" />
+  </ListItem>
+  <ListItem>
+    <ListItemAvatar fallback="JS" />
+    <ListItemContent title="Jane Smith" description="jane@example.com" meta="User" />
+  </ListItem>
+  <ListItem>
+    <ListItemAvatar fallback="BW" />
+    <ListItemContent title="Bob Wilson" description="bob@example.com" meta="User" />
+  </ListItem>
+</Box>
 ```
 </Example>
 
@@ -64,12 +45,13 @@ import {
 ```jsx
 'use client';
 
-import { ChevronRight, MoreHorizontal } from 'lucide-react';
-import { Box, Button, Column, Icon, Row, Text } from '@umami/react-zen';
+import { ChevronRight } from 'lucide-react';
+import { Box, Column, Icon, Row, Text } from '@umami/react-zen';
 
 export function ListItem({ children, onClick, isSelected, showChevron, ...props }) {
   return (
     <Row
+      minWidth="20rem"
       padding="3"
       alignItems="center"
       gap="3"
@@ -90,13 +72,12 @@ export function ListItemAvatar({ src, fallback, size = 'md' }) {
   const sizeMap = { sm: '8', md: '10', lg: '12' };
 
   return (
-    <Box
+    <Row
       width={sizeMap[size]}
       height={sizeMap[size]}
       borderRadius="full"
-      backgroundColor="primary"
+      backgroundColor="interactive"
       flexShrink="0"
-      display="flex"
       alignItems="center"
       justifyContent="center"
       overflow="hidden"
@@ -104,9 +85,9 @@ export function ListItemAvatar({ src, fallback, size = 'md' }) {
       {src ? (
         <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       ) : (
-        <Text size="sm" color="on-primary" weight="medium">{fallback}</Text>
+        <Text color="muted" weight="medium">{fallback}</Text>
       )}
-    </Box>
+    </Row>
   );
 }
 
@@ -114,15 +95,15 @@ export function ListItemContent({ title, description, meta }) {
   return (
     <Column gap="0" flexGrow="1" overflow="hidden">
       <Row alignItems="center" gap="2">
-        <Text weight="medium" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-          {title}
-        </Text>
-        {meta && <Text size="xs" color="muted">{meta}</Text>}
+        <Box overflow="hidden" flexGrow="1">
+          <Text weight="medium" truncate>{title}</Text>
+        </Box>
+        {meta && <Text color="muted">{meta}</Text>}
       </Row>
       {description && (
-        <Text size="sm" color="muted" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-          {description}
-        </Text>
+        <Box overflow="hidden">
+          <Text color="muted" truncate>{description}</Text>
+        </Box>
       )}
     </Column>
   );
@@ -133,29 +114,6 @@ export function ListItemActions({ children }) {
     <Row gap="1" alignItems="center" onClick={(e) => e.stopPropagation()}>
       {children}
     </Row>
-  );
-}
-
-export function ListItemMenu({ onPress }) {
-  return (
-    <Button variant="quiet" size="sm" onPress={onPress}>
-      <Icon size="sm"><MoreHorizontal /></Icon>
-    </Button>
-  );
-}
-
-export function ListItemBadge({ children, variant = 'default' }) {
-  const colorMap = {
-    default: 'muted',
-    success: 'green',
-    warning: 'yellow',
-    error: 'red',
-  };
-
-  return (
-    <Box paddingX="2" paddingY="1" backgroundColor={colorMap[variant]} borderRadius="full">
-      <Text size="xs" color={variant === 'default' ? undefined : 'on-primary'}>{children}</Text>
-    </Box>
   );
 }
 ```
@@ -181,13 +139,20 @@ export function ListItemBadge({ children, variant = 'default' }) {
   </Box>
 
 ```jsx
-<ListItem showChevron onClick={() => {}}>
-  <Icon color="muted"><Settings /></Icon>
-  <ListItemContent
-    title="Account Settings"
-    description="Manage your account preferences"
-  />
-</ListItem>
+<Box border borderRadius="lg" overflow="hidden">
+  <ListItem showChevron>
+    <Icon color="muted"><Settings /></Icon>
+    <ListItemContent title="Account Settings" description="Manage your account preferences" />
+  </ListItem>
+  <ListItem showChevron>
+    <Icon color="muted"><Bell /></Icon>
+    <ListItemContent title="Notifications" description="Configure notification settings" />
+  </ListItem>
+  <ListItem showChevron>
+    <Icon color="muted"><Shield /></Icon>
+    <ListItemContent title="Security" description="Password and authentication" />
+  </ListItem>
+</Box>
 ```
 </Example>
 
@@ -197,23 +162,33 @@ export function ListItemBadge({ children, variant = 'default' }) {
   <Box border borderRadius="lg" overflow="hidden">
     <ListItem>
       <ListItemContent title="item-1.txt" description="Modified 2 hours ago" />
-      <Text size="sm" color="muted">2.3 KB</Text>
+      <Text color="muted">2.3 KB</Text>
     </ListItem>
     <ListItem>
       <ListItemContent title="document.pdf" description="Modified yesterday" />
-      <Text size="sm" color="muted">1.2 MB</Text>
+      <Text color="muted">1.2 MB</Text>
     </ListItem>
     <ListItem>
       <ListItemContent title="image.png" description="Modified 3 days ago" />
-      <Text size="sm" color="muted">456 KB</Text>
+      <Text color="muted">456 KB</Text>
     </ListItem>
   </Box>
 
 ```jsx
-<ListItem>
-  <ListItemContent title="item-1.txt" description="Modified 2 hours ago" />
-  <Text size="sm" color="muted">2.3 KB</Text>
-</ListItem>
+<Box border borderRadius="lg" overflow="hidden">
+  <ListItem>
+    <ListItemContent title="item-1.txt" description="Modified 2 hours ago" />
+    <Text color="muted">2.3 KB</Text>
+  </ListItem>
+  <ListItem>
+    <ListItemContent title="document.pdf" description="Modified yesterday" />
+    <Text color="muted">1.2 MB</Text>
+  </ListItem>
+  <ListItem>
+    <ListItemContent title="image.png" description="Modified 3 days ago" />
+    <Text color="muted">456 KB</Text>
+  </ListItem>
+</Box>
 ```
 </Example>
 
@@ -232,9 +207,15 @@ export function ListItemBadge({ children, variant = 'default' }) {
   </Box>
 
 ```jsx
-<ListItem isSelected>
-  <ListItemAvatar fallback="A" />
-  <ListItemContent title="Selected Item" ... />
-</ListItem>
+<Box border borderRadius="lg" overflow="hidden">
+  <ListItem isSelected>
+    <ListItemAvatar fallback="A" />
+    <ListItemContent title="Selected Item" description="This item is selected" />
+  </ListItem>
+  <ListItem>
+    <ListItemAvatar fallback="B" />
+    <ListItemContent title="Other Item" description="Click to select" />
+  </ListItem>
+</Box>
 ```
 </Example>

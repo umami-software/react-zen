@@ -1,8 +1,8 @@
 'use client';
 
-import { ChevronRight, MoreHorizontal } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { Box, Button, Column, Icon, Row, type RowProps, Text } from '@/components';
+import { Box, Column, Icon, Row, type RowProps, Text } from '@/components';
 
 interface ListItemProps extends RowProps {
   children: ReactNode;
@@ -14,6 +14,7 @@ interface ListItemProps extends RowProps {
 export function ListItem({ children, onClick, isSelected, showChevron, ...props }: ListItemProps) {
   return (
     <Row
+      minWidth="20rem"
       padding="3"
       alignItems="center"
       gap="3"
@@ -48,7 +49,7 @@ export function ListItemAvatar({ src, fallback, size = 'md' }: ListItemAvatarPro
       width={sizeMap[size]}
       height={sizeMap[size]}
       borderRadius="full"
-      backgroundColor="primary"
+      backgroundColor="interactive"
       flexShrink="0"
       alignItems="center"
       justifyContent="center"
@@ -57,7 +58,7 @@ export function ListItemAvatar({ src, fallback, size = 'md' }: ListItemAvatarPro
       {src ? (
         <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       ) : (
-        <Text color="on-primary" weight="medium">
+        <Text color="muted" weight="medium">
           {fallback}
         </Text>
       )}
@@ -102,39 +103,5 @@ export function ListItemActions({ children }: ListItemActionsProps) {
     <Row gap="1" alignItems="center" onClick={e => e.stopPropagation()}>
       {children}
     </Row>
-  );
-}
-
-interface ListItemMenuProps {
-  onPress?: () => void;
-}
-
-export function ListItemMenu({ onPress }: ListItemMenuProps) {
-  return (
-    <Button variant="quiet" size="sm" onPress={onPress}>
-      <Icon size="sm">
-        <MoreHorizontal />
-      </Icon>
-    </Button>
-  );
-}
-
-interface ListItemBadgeProps {
-  children: ReactNode;
-  variant?: 'default' | 'success' | 'warning' | 'error';
-}
-
-export function ListItemBadge({ children, variant = 'default' }: ListItemBadgeProps) {
-  const colorMap = {
-    default: 'muted',
-    success: 'green',
-    warning: 'yellow',
-    error: 'red',
-  } as const;
-
-  return (
-    <Box paddingX="2" paddingY="1" backgroundColor={colorMap[variant]} borderRadius="full">
-      <Text color={variant === 'default' ? undefined : 'on-primary'}>{children}</Text>
-    </Box>
   );
 }

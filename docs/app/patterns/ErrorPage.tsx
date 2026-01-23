@@ -92,10 +92,8 @@ export function ErrorPage({
           <Text size="xl" weight="semibold">
             {displayTitle}
           </Text>
-          <Box maxWidth="24rem">
-            <Text color="muted" align="center">
-              {displayDescription}
-            </Text>
+          <Box maxWidth="24rem" textAlign="center">
+            <Text color="muted">{displayDescription}</Text>
           </Box>
         </Column>
       </Column>
