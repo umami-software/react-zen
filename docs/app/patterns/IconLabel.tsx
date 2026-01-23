@@ -1,27 +1,22 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { Icon, type IconProps, Row, type RowProps, Text, type TextProps } from '@/components';
+import { Icon, Row, type RowProps, Text } from '@/components';
 
 interface IconLabelProps extends RowProps {
   icon: ReactNode;
   label?: ReactNode;
-  iconProps?: Partial<IconProps>;
-  labelProps?: Partial<TextProps>;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export function IconLabel({
-  icon,
-  label,
-  iconProps,
-  labelProps,
-  children,
-  ...props
-}: IconLabelProps) {
+export function IconLabel({ icon, label, size = 'md', children, ...props }: IconLabelProps) {
+  const iconSize = size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'md';
+  const textSize = size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'base';
+
   return (
     <Row alignItems="center" gap="2" {...props}>
-      <Icon {...iconProps}>{icon}</Icon>
-      {label && <Text {...labelProps}>{label}</Text>}
+      <Icon size={iconSize}>{icon}</Icon>
+      {label && <Text size={textSize}>{label}</Text>}
       {children}
     </Row>
   );

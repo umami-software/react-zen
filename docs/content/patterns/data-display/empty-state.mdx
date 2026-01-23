@@ -59,8 +59,8 @@ export function EmptyState({
       <Column alignItems="center" gap="2">
         <Text size="lg" weight="semibold">{title}</Text>
         {description && (
-          <Box maxWidth="20rem">
-            <Text color="muted" align="center">{description}</Text>
+          <Box maxWidth="20rem" textAlign="center">
+            <Text color="muted">{description}</Text>
           </Box>
         )}
       </Column>
@@ -142,7 +142,7 @@ export function EmptyStateError(props) {
     </Row>
     <Column alignItems="center" gap="2">
       <Text size="lg" weight="semibold">Something went wrong</Text>
-      <Box maxWidth="20rem"><Text color="muted" align="center">We couldn't load this content. Please try again.</Text></Box>
+      <Box maxWidth="20rem" textAlign="center"><Text color="muted">We couldn't load this content. Please try again.</Text></Box>
     </Column>
     <Column gap="2" alignItems="center">
       <Button variant="primary">Try Again</Button>
@@ -167,7 +167,7 @@ export function EmptyStateError(props) {
     </Row>
     <Column alignItems="center" gap="2">
       <Text size="lg" weight="semibold">No projects</Text>
-      <Box maxWidth="20rem"><Text color="muted" align="center">Create a new project to get started building something amazing.</Text></Box>
+      <Box maxWidth="20rem" textAlign="center"><Text color="muted">Create a new project to get started building something amazing.</Text></Box>
     </Column>
     <Column gap="2" alignItems="center">
       <Button variant="primary">New Project</Button>

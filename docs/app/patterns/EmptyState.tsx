@@ -47,10 +47,8 @@ export function EmptyState({
           {title}
         </Text>
         {description && (
-          <Box maxWidth="20rem">
-            <Text color="muted" align="center">
-              {description}
-            </Text>
+          <Box maxWidth="20rem" textAlign="center">
+            <Text color="muted">{description}</Text>
           </Box>
         )}
       </Column>

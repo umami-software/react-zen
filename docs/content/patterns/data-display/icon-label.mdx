@@ -21,18 +21,14 @@ A simple pattern for pairing an icon with text. This is one of the most common U
 
 import { Icon, Row, Text } from '@umami/react-zen';
 
-export function IconLabel({
-  icon,
-  label,
-  iconProps,
-  labelProps,
-  children,
-  ...props
-}) {
+export function IconLabel({ icon, label, size = 'md', children, ...props }) {
+  const iconSize = size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'md';
+  const textSize = size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'base';
+
   return (
     <Row alignItems="center" gap="2" {...props}>
-      <Icon {...iconProps}>{icon}</Icon>
-      {label && <Text {...labelProps}>{label}</Text>}
+      <Icon size={iconSize}>{icon}</Icon>
+      {label && <Text size={textSize}>{label}</Text>}
       {children}
     </Row>
   );
@@ -44,30 +40,14 @@ export function IconLabel({
 ### Different sizes
 
 <Example direction="column" gap="4">
-  <IconLabel icon={<Lucide.Star />} label="Extra small" iconProps={{ size: 'xs' }} labelProps={{ size: 'xs' }} gap="1" />
-  <IconLabel icon={<Lucide.Star />} label="Small" iconProps={{ size: 'sm' }} labelProps={{ size: 'sm' }} gap="1" />
-  <IconLabel icon={<Lucide.Star />} label="Medium" iconProps={{ size: 'md' }} labelProps={{ size: 'md' }} />
-  <IconLabel icon={<Lucide.Star />} label="Large" iconProps={{ size: 'lg' }} labelProps={{ size: 'lg' }} />
+  <IconLabel icon={<Lucide.Star />} label="Small" size="sm" />
+  <IconLabel icon={<Lucide.Star />} label="Medium" size="md" />
+  <IconLabel icon={<Lucide.Star />} label="Large" size="lg" />
 
 ```jsx
-<IconLabel icon={<Star />} label="Extra small" iconProps={{ size: 'xs' }} labelProps={{ size: 'xs' }} gap="1" />
-<IconLabel icon={<Star />} label="Small" iconProps={{ size: 'sm' }} labelProps={{ size: 'sm' }} gap="1" />
-<IconLabel icon={<Star />} label="Medium" iconProps={{ size: 'md' }} labelProps={{ size: 'md' }} />
-<IconLabel icon={<Star />} label="Large" iconProps={{ size: 'lg' }} labelProps={{ size: 'lg' }} />
-```
-</Example>
-
-### With colors
-
-<Example direction="row" gap="6">
-  <IconLabel icon={<Lucide.CheckCircle />} label="Success" iconProps={{ color: 'green' }} labelProps={{ color: 'green' }} />
-  <IconLabel icon={<Lucide.XCircle />} label="Error" iconProps={{ color: 'red' }} labelProps={{ color: 'red' }} />
-  <IconLabel icon={<Lucide.AlertTriangle />} label="Warning" iconProps={{ color: 'yellow' }} labelProps={{ color: 'yellow-600' }} />
-
-```jsx
-<IconLabel icon={<CheckCircle />} label="Success" iconProps={{ color: 'green' }} labelProps={{ color: 'green' }} />
-<IconLabel icon={<XCircle />} label="Error" iconProps={{ color: 'red' }} labelProps={{ color: 'red' }} />
-<IconLabel icon={<AlertTriangle />} label="Warning" iconProps={{ color: 'yellow' }} labelProps={{ color: 'yellow-600' }} />
+<IconLabel icon={<Star />} label="Small" size="sm" />
+<IconLabel icon={<Star />} label="Medium" size="md" />
+<IconLabel icon={<Star />} label="Large" size="lg" />
 ```
 </Example>
 
@@ -75,12 +55,12 @@ export function IconLabel({
 
 <Example>
   <Button variant="outline">
-    <IconLabel icon={<Lucide.Download />} label="Download" iconProps={{ size: 'sm' }} />
+    <IconLabel icon={<Lucide.Download />} label="Download" size="sm" />
   </Button>
 
 ```jsx
 <Button variant="outline">
-  <IconLabel icon={<Download />} label="Download" iconProps={{ size: 'sm' }} />
+  <IconLabel icon={<Download />} label="Download" size="sm" />
 </Button>
 ```
 </Example>
@@ -90,13 +70,13 @@ export function IconLabel({
 <Example>
   <IconLabel icon={<Lucide.Mail />}>
     <Text>Messages</Text>
-    <Text color="muted" size="sm">(3 unread)</Text>
+    <Text color="muted">(3 unread)</Text>
   </IconLabel>
 
 ```jsx
 <IconLabel icon={<Mail />}>
   <Text>Messages</Text>
-  <Text color="muted" size="sm">(3 unread)</Text>
+  <Text color="muted">(3 unread)</Text>
 </IconLabel>
 ```
 </Example>
