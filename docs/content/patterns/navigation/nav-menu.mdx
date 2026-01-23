@@ -89,7 +89,7 @@ export function NavMenu({ onItemClick, children, ...props }) {
   );
 }
 
-export function NavMenuGroup({ title, defaultOpen = true, children, ...props }) {
+export function NavMenuGroup({ title, defaultOpen = true, collapsible = true, children, ...props }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
@@ -99,17 +99,19 @@ export function NavMenuGroup({ title, defaultOpen = true, children, ...props }) 
         paddingX="3"
         alignItems="center"
         justifyContent="space-between"
-        className="cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
+        className={collapsible ? 'cursor-pointer' : ''}
+        onClick={collapsible ? () => setIsOpen(!isOpen) : undefined}
       >
-        <Text size="sm" weight="semibold" color="muted" transform="uppercase">
+        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
           {title}
         </Text>
-        <Icon size="sm" color="muted" rotate={isOpen ? 90 : 0}>
-          <ChevronRight />
-        </Icon>
+        {collapsible && (
+          <Icon size="sm" color="muted" rotate={isOpen ? 90 : 0}>
+            <ChevronRight />
+          </Icon>
+        )}
       </Row>
-      {isOpen && <Column>{children}</Column>}
+      {(collapsible ? isOpen : true) && <Column>{children}</Column>}
     </Column>
   );
 }
@@ -176,25 +178,19 @@ export function NavMenuItem({ icon, isSelected, children, ...props }) {
 <Example>
   <Box width="64" border borderRadius="lg" padding="2">
     <NavMenu>
-      <Row paddingY="2" paddingX="3">
-        <Text size="sm" weight="semibold" color="muted" transform="uppercase">
-          Navigation
-        </Text>
-      </Row>
-      <NavMenuItem icon={<Lucide.Home />} isSelected>Home</NavMenuItem>
-      <NavMenuItem icon={<Lucide.Settings />}>Settings</NavMenuItem>
+      <NavMenuGroup title="Navigation" collapsible={false}>
+        <NavMenuItem icon={<Lucide.Home />} isSelected>Home</NavMenuItem>
+        <NavMenuItem icon={<Lucide.Settings />}>Settings</NavMenuItem>
+      </NavMenuGroup>
     </NavMenu>
   </Box>
 
 ```jsx
 <NavMenu>
-  <Row paddingY="2" paddingX="3">
-    <Text size="xs" weight="semibold" color="muted" transform="uppercase">
-      Navigation
-    </Text>
-  </Row>
-  <NavMenuItem icon={<Home />} isSelected>Home</NavMenuItem>
-  <NavMenuItem icon={<Settings />}>Settings</NavMenuItem>
+  <NavMenuGroup title="Navigation" collapsible={false}>
+    <NavMenuItem icon={<Home />} isSelected>Home</NavMenuItem>
+    <NavMenuItem icon={<Settings />}>Settings</NavMenuItem>
+  </NavMenuGroup>
 </NavMenu>
 ```
 </Example>

@@ -76,27 +76,27 @@ export function Step({ step, title, description }: StepProps) {
   return (
     <Row alignItems="center" flexGrow={isLast ? '0' : '1'}>
       <Row alignItems="center" gap="3">
-        <Box
+        <Row
           width="8"
           height="8"
           borderRadius="full"
-          backgroundColor={isCompleted || isActive ? 'primary' : 'surface-raised'}
+          backgroundColor={isCompleted ? 'interactive' : isActive ? 'primary' : 'surface-raised'}
           border={!isCompleted && !isActive}
           borderColor="muted"
-          display="flex"
           alignItems="center"
           justifyContent="center"
+          flexShrink="0"
         >
           {isCompleted ? (
-            <Icon size="sm" color="on-primary">
+            <Icon size="sm">
               <Check />
             </Icon>
           ) : (
-            <Text weight="medium" color={isActive ? 'on-primary' : 'muted'}>
+            <Text weight="medium" color={isActive ? 'inverted' : 'muted'}>
               {step + 1}
             </Text>
           )}
-        </Box>
+        </Row>
         <Column gap="0">
           <Text weight={isActive ? 'medium' : undefined}>{title}</Text>
           {description && <Text color="muted">{description}</Text>}

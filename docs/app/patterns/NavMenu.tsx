@@ -27,9 +27,16 @@ export function NavMenu({ onItemClick, children, ...props }: NavMenuProps) {
 interface NavMenuGroupProps extends ColumnProps {
   title: string;
   defaultOpen?: boolean;
+  collapsible?: boolean;
 }
 
-export function NavMenuGroup({ title, defaultOpen = true, children, ...props }: NavMenuGroupProps) {
+export function NavMenuGroup({
+  title,
+  defaultOpen = true,
+  collapsible = true,
+  children,
+  ...props
+}: NavMenuGroupProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
@@ -39,17 +46,19 @@ export function NavMenuGroup({ title, defaultOpen = true, children, ...props }: 
         paddingX="3"
         alignItems="center"
         justifyContent="space-between"
-        className="cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
+        className={collapsible ? 'cursor-pointer' : ''}
+        onClick={collapsible ? () => setIsOpen(!isOpen) : undefined}
       >
-        <Text size="sm" weight="semibold" color="muted" transform="uppercase">
+        <Text size="xs" weight="semibold" color="muted" transform="uppercase">
           {title}
         </Text>
-        <Icon size="sm" color="muted" rotate={isOpen ? 90 : 0}>
-          <ChevronRight />
-        </Icon>
+        {collapsible && (
+          <Icon size="sm" color="muted" rotate={isOpen ? 90 : 0}>
+            <ChevronRight />
+          </Icon>
+        )}
       </Row>
-      {isOpen && <Column>{children}</Column>}
+      {(collapsible ? isOpen : true) && <Column>{children}</Column>}
     </Column>
   );
 }
