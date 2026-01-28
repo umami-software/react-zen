@@ -71,6 +71,7 @@ export * from './StatusLight';
 export * from './Switch';
 export * from './Table';
 export * from './Tabs';
+export * from './TagGroup';
 export * from './Text';
 export * from './TextField';
 export * from './ThemeButton';

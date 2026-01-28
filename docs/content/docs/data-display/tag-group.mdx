@@ -1,0 +1,109 @@
+---
+title: Tag Group
+---
+
+# Tag Group
+
+A tag group displays a collection of tags that can optionally be removed.
+
+<Example>
+  <TagGroup label="Categories">
+    <Tag id="react">React</Tag>
+    <Tag id="vue">Vue</Tag>
+    <Tag id="angular">Angular</Tag>
+  </TagGroup>
+
+  ```jsx
+  <TagGroup label="Categories">
+    <Tag id="react">React</Tag>
+    <Tag id="vue">Vue</Tag>
+    <Tag id="angular">Angular</Tag>
+  </TagGroup>
+  ```
+</Example>
+
+## Removable
+
+Add `onRemove` to make tags removable. An X button will appear on each tag.
+
+<Example>
+  <RemovableTagGroupExample />
+
+  ```jsx
+  <TagGroup label="Skills" onRemove={keys => console.log('Remove:', [...keys])}>
+    <Tag id="javascript">JavaScript</Tag>
+    <Tag id="typescript">TypeScript</Tag>
+    <Tag id="python">Python</Tag>
+  </TagGroup>
+  ```
+</Example>
+
+## Variants
+
+<Example>
+  <Column gap="3">
+    <TagGroup label="Default">
+      <Tag id="one">Default</Tag>
+      <Tag id="two">Tags</Tag>
+    </TagGroup>
+    <TagGroup label="Outline">
+      <Tag id="one" variant="outline">Outline</Tag>
+      <Tag id="two" variant="outline">Tags</Tag>
+    </TagGroup>
+    <TagGroup label="Primary">
+      <Tag id="one" variant="primary">Primary</Tag>
+      <Tag id="two" variant="primary">Tags</Tag>
+    </TagGroup>
+  </Column>
+
+  ```jsx
+  <TagGroup label="Default">
+    <Tag id="one">Default</Tag>
+    <Tag id="two">Tags</Tag>
+  </TagGroup>
+
+  <TagGroup label="Outline">
+    <Tag id="one" variant="outline">Outline</Tag>
+    <Tag id="two" variant="outline">Tags</Tag>
+  </TagGroup>
+
+  <TagGroup label="Primary">
+    <Tag id="one" variant="primary">Primary</Tag>
+    <Tag id="two" variant="primary">Tags</Tag>
+  </TagGroup>
+  ```
+</Example>
+
+## Component props
+
+### TagGroup
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'label', value: 'string', description: 'Label text displayed above the group' },
+      { name: 'onRemove', value: '(keys: Set<Key>) => void', description: 'Called when tags are removed. Enables remove buttons.' },
+      { name: 'disabledKeys', value: 'Iterable<Key>', description: 'Keys of tags that cannot be removed' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### Tag
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'id', value: 'string', description: 'Unique tag identifier (required)' },
+      { name: 'variant', value: '"default" | "outline" | "primary"', description: 'Visual style variant' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the tag' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

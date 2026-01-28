@@ -21,6 +21,7 @@ export { PlaygroundExample } from './PlaygroundExample';
 export { SearchDelayExample } from './SearchDelayExample';
 export { SelectSearchExample } from './SelectSearchExample';
 export { SelectValueExample } from './SelectValueExample';
+export { RemovableTagGroupExample } from './TagGroupExample';
 export { ThemeButtonExample } from './ThemeButtonExample';
 export {
   ToastActionExample,

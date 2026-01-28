@@ -372,3 +372,38 @@ export const toast = tv({
 });
 
 export type ToastVariants = VariantProps<typeof toast>;
+
+// Tag variants
+export const tag = tv({
+  slots: {
+    base: [
+      'inline-flex items-center gap-1 px-2 py-0.5 rounded text-sm',
+      'cursor-default outline-none',
+      'focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-1',
+    ],
+    removeButton: [
+      'flex items-center justify-center rounded-full p-0.5 -mr-1',
+      'cursor-pointer outline-none',
+      'hover:bg-black/10 dark:hover:bg-white/10',
+      'pressed:bg-black/20 dark:pressed:bg-white/20',
+    ],
+  },
+  variants: {
+    variant: {
+      default: {
+        base: 'bg-interactive text-foreground-primary',
+      },
+      outline: {
+        base: 'bg-transparent border border-edge text-foreground-primary',
+      },
+      primary: {
+        base: 'bg-primary text-primary-foreground',
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+export type TagVariants = VariantProps<typeof tag>;

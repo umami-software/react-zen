@@ -7,4 +7,5 @@ export default {
   image: 'Image',
   list: 'List',
   table: 'Table',
+  'tag-group': 'Tag Group',
 };
