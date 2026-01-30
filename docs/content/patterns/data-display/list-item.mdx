@@ -1,41 +1,41 @@
 ---
-title: List Item
+title: List Row
 ---
 
-# List Item
+# List Row
 
 A configurable list row with avatar, title, description, meta, and actions. Built using `Box`, `Row`, `Column`, `Icon`, and `Text` components.
 
 <Example>
   <Box border borderRadius="lg" overflow="hidden">
-    <ListItem>
-      <ListItemAvatar fallback="JD" />
-      <ListItemContent title="John Doe" description="john@example.com" meta="Admin" />
-    </ListItem>
-    <ListItem>
-      <ListItemAvatar fallback="JS" />
-      <ListItemContent title="Jane Smith" description="jane@example.com" meta="User" />
-    </ListItem>
-    <ListItem>
-      <ListItemAvatar fallback="BW" />
-      <ListItemContent title="Bob Wilson" description="bob@example.com" meta="User" />
-    </ListItem>
+    <ListRow>
+      <ListRowAvatar fallback="JD" />
+      <ListRowContent title="John Doe" description="john@example.com" meta="Admin" />
+    </ListRow>
+    <ListRow>
+      <ListRowAvatar fallback="JS" />
+      <ListRowContent title="Jane Smith" description="jane@example.com" meta="User" />
+    </ListRow>
+    <ListRow>
+      <ListRowAvatar fallback="BW" />
+      <ListRowContent title="Bob Wilson" description="bob@example.com" meta="User" />
+    </ListRow>
   </Box>
 
 ```jsx
 <Box border borderRadius="lg" overflow="hidden">
-  <ListItem>
-    <ListItemAvatar fallback="JD" />
-    <ListItemContent title="John Doe" description="john@example.com" meta="Admin" />
-  </ListItem>
-  <ListItem>
-    <ListItemAvatar fallback="JS" />
-    <ListItemContent title="Jane Smith" description="jane@example.com" meta="User" />
-  </ListItem>
-  <ListItem>
-    <ListItemAvatar fallback="BW" />
-    <ListItemContent title="Bob Wilson" description="bob@example.com" meta="User" />
-  </ListItem>
+  <ListRow>
+    <ListRowAvatar fallback="JD" />
+    <ListRowContent title="John Doe" description="john@example.com" meta="Admin" />
+  </ListRow>
+  <ListRow>
+    <ListRowAvatar fallback="JS" />
+    <ListRowContent title="Jane Smith" description="jane@example.com" meta="User" />
+  </ListRow>
+  <ListRow>
+    <ListRowAvatar fallback="BW" />
+    <ListRowContent title="Bob Wilson" description="bob@example.com" meta="User" />
+  </ListRow>
 </Box>
 ```
 </Example>
@@ -49,7 +49,7 @@ A configurable list row with avatar, title, description, meta, and actions. Buil
 import { ChevronRight } from 'lucide-react';
 import { Box, Column, Icon, Row, Text } from '@umami/react-zen';
 
-export function ListItem({ children, onClick, isSelected, showChevron, ...props }) {
+export function ListRow({ children, onClick, isSelected, showChevron, ...props }) {
   return (
     <Row
       minWidth="20rem"
@@ -69,7 +69,7 @@ export function ListItem({ children, onClick, isSelected, showChevron, ...props 
   );
 }
 
-export function ListItemAvatar({ src, fallback, size = 'md' }) {
+export function ListRowAvatar({ src, fallback, size = 'md' }) {
   const sizeMap = { sm: '8', md: '10', lg: '12' };
 
   return (
@@ -92,7 +92,7 @@ export function ListItemAvatar({ src, fallback, size = 'md' }) {
   );
 }
 
-export function ListItemContent({ title, description, meta }) {
+export function ListRowContent({ title, description, meta }) {
   return (
     <Column gap="0" flexGrow="1" overflow="hidden">
       <Row alignItems="center" gap="2">
@@ -110,7 +110,7 @@ export function ListItemContent({ title, description, meta }) {
   );
 }
 
-export function ListItemActions({ children }) {
+export function ListRowActions({ children }) {
   return (
     <Row gap="1" alignItems="center" onClick={(e) => e.stopPropagation()}>
       {children}
@@ -126,34 +126,34 @@ export function ListItemActions({ children }) {
 
 <Example>
   <Box border borderRadius="lg" overflow="hidden">
-    <ListItem showChevron>
+    <ListRow showChevron>
       <Icon color="muted"><Lucide.Settings /></Icon>
-      <ListItemContent title="Account Settings" description="Manage your account preferences" />
-    </ListItem>
-    <ListItem showChevron>
+      <ListRowContent title="Account Settings" description="Manage your account preferences" />
+    </ListRow>
+    <ListRow showChevron>
       <Icon color="muted"><Lucide.Bell /></Icon>
-      <ListItemContent title="Notifications" description="Configure notification settings" />
-    </ListItem>
-    <ListItem showChevron>
+      <ListRowContent title="Notifications" description="Configure notification settings" />
+    </ListRow>
+    <ListRow showChevron>
       <Icon color="muted"><Lucide.Shield /></Icon>
-      <ListItemContent title="Security" description="Password and authentication" />
-    </ListItem>
+      <ListRowContent title="Security" description="Password and authentication" />
+    </ListRow>
   </Box>
 
 ```jsx
 <Box border borderRadius="lg" overflow="hidden">
-  <ListItem showChevron>
+  <ListRow showChevron>
     <Icon color="muted"><Settings /></Icon>
-    <ListItemContent title="Account Settings" description="Manage your account preferences" />
-  </ListItem>
-  <ListItem showChevron>
+    <ListRowContent title="Account Settings" description="Manage your account preferences" />
+  </ListRow>
+  <ListRow showChevron>
     <Icon color="muted"><Bell /></Icon>
-    <ListItemContent title="Notifications" description="Configure notification settings" />
-  </ListItem>
-  <ListItem showChevron>
+    <ListRowContent title="Notifications" description="Configure notification settings" />
+  </ListRow>
+  <ListRow showChevron>
     <Icon color="muted"><Shield /></Icon>
-    <ListItemContent title="Security" description="Password and authentication" />
-  </ListItem>
+    <ListRowContent title="Security" description="Password and authentication" />
+  </ListRow>
 </Box>
 ```
 </Example>
@@ -162,34 +162,34 @@ export function ListItemActions({ children }) {
 
 <Example>
   <Box border borderRadius="lg" overflow="hidden">
-    <ListItem>
-      <ListItemContent title="item-1.txt" description="Modified 2 hours ago" />
+    <ListRow>
+      <ListRowContent title="item-1.txt" description="Modified 2 hours ago" />
       <Text color="muted">2.3 KB</Text>
-    </ListItem>
-    <ListItem>
-      <ListItemContent title="document.pdf" description="Modified yesterday" />
+    </ListRow>
+    <ListRow>
+      <ListRowContent title="document.pdf" description="Modified yesterday" />
       <Text color="muted">1.2 MB</Text>
-    </ListItem>
-    <ListItem>
-      <ListItemContent title="image.png" description="Modified 3 days ago" />
+    </ListRow>
+    <ListRow>
+      <ListRowContent title="image.png" description="Modified 3 days ago" />
       <Text color="muted">456 KB</Text>
-    </ListItem>
+    </ListRow>
   </Box>
 
 ```jsx
 <Box border borderRadius="lg" overflow="hidden">
-  <ListItem>
-    <ListItemContent title="item-1.txt" description="Modified 2 hours ago" />
+  <ListRow>
+    <ListRowContent title="item-1.txt" description="Modified 2 hours ago" />
     <Text color="muted">2.3 KB</Text>
-  </ListItem>
-  <ListItem>
-    <ListItemContent title="document.pdf" description="Modified yesterday" />
+  </ListRow>
+  <ListRow>
+    <ListRowContent title="document.pdf" description="Modified yesterday" />
     <Text color="muted">1.2 MB</Text>
-  </ListItem>
-  <ListItem>
-    <ListItemContent title="image.png" description="Modified 3 days ago" />
+  </ListRow>
+  <ListRow>
+    <ListRowContent title="image.png" description="Modified 3 days ago" />
     <Text color="muted">456 KB</Text>
-  </ListItem>
+  </ListRow>
 </Box>
 ```
 </Example>
@@ -198,26 +198,26 @@ export function ListItemActions({ children }) {
 
 <Example>
   <Box border borderRadius="lg" overflow="hidden">
-    <ListItem isSelected>
-      <ListItemAvatar fallback="A" />
-      <ListItemContent title="Selected Item" description="This item is selected" />
-    </ListItem>
-    <ListItem>
-      <ListItemAvatar fallback="B" />
-      <ListItemContent title="Other Item" description="Click to select" />
-    </ListItem>
+    <ListRow isSelected>
+      <ListRowAvatar fallback="A" />
+      <ListRowContent title="Selected Item" description="This item is selected" />
+    </ListRow>
+    <ListRow>
+      <ListRowAvatar fallback="B" />
+      <ListRowContent title="Other Item" description="Click to select" />
+    </ListRow>
   </Box>
 
 ```jsx
 <Box border borderRadius="lg" overflow="hidden">
-  <ListItem isSelected>
-    <ListItemAvatar fallback="A" />
-    <ListItemContent title="Selected Item" description="This item is selected" />
-  </ListItem>
-  <ListItem>
-    <ListItemAvatar fallback="B" />
-    <ListItemContent title="Other Item" description="Click to select" />
-  </ListItem>
+  <ListRow isSelected>
+    <ListRowAvatar fallback="A" />
+    <ListRowContent title="Selected Item" description="This item is selected" />
+  </ListRow>
+  <ListRow>
+    <ListRowAvatar fallback="B" />
+    <ListRowContent title="Other Item" description="Click to select" />
+  </ListRow>
 </Box>
 ```
 </Example>

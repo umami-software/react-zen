@@ -11,20 +11,18 @@ import {
 import { Box } from '@/components/Box';
 import { Icon } from '@/components/Icon';
 import { ChevronRight } from '@/components/icons';
-import { List, ListItem, type ListProps } from '@/components/List';
+import { List, type ListProps } from '@/components/List';
 import { Popover } from '@/components/Popover';
 import { cn } from './lib/tailwind';
 
 export interface ComboBoxProps extends AriaComboBoxProps<any> {
   children?: ReactNode;
-  items?: any[];
   renderEmptyState?: (props: ListBoxRenderProps) => ReactNode;
   listProps?: ListProps;
   popoverProps?: PopoverProps;
 }
 
 export function ComboBox({
-  items,
   className,
   renderEmptyState,
   listProps,
@@ -57,13 +55,8 @@ export function ComboBox({
       </AriaGroup>
       <Popover {...popoverProps}>
         <Box padding="2" border borderRadius="md" shadow="lg" className="bg-surface-overlay">
-          <List items={items} renderEmptyState={renderEmptyState} {...listProps}>
-            {(children ||
-              items?.map(item => (
-                <ListItem key={item} textValue={item}>
-                  {item}
-                </ListItem>
-              ))) as ReactNode}
+          <List renderEmptyState={renderEmptyState} {...listProps}>
+            {children}
           </List>
         </Box>
       </Popover>

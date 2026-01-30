@@ -7,14 +7,27 @@ title: ComboBox
 A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.
 
 <Example>
-  <ComboBox
-    items={['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']}
-  />
+  <ComboBox>
+    <ListItem id="one">One</ListItem>
+    <ListItem id="two">Two</ListItem>
+    <ListItem id="three">Three</ListItem>
+    <ListItem id="four">Four</ListItem>
+    <ListItem id="five">Five</ListItem>
+    <ListItem id="six">Six</ListItem>
+    <ListItem id="seven">Seven</ListItem>
+    <ListItem id="eight">Eight</ListItem>
+    <ListItem id="nine">Nine</ListItem>
+    <ListItem id="ten">Ten</ListItem>
+  </ComboBox>
 
   ```jsx
-  <ComboBox
-    items={['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']}
-  />
+  <ComboBox>
+    <ListItem id="one">One</ListItem>
+    <ListItem id="two">Two</ListItem>
+    <ListItem id="three">Three</ListItem>
+    <ListItem id="four">Four</ListItem>
+    <ListItem id="five">Five</ListItem>
+  </ComboBox>
   ```
 </Example>
 
@@ -23,7 +36,6 @@ A combo box combines a text input with a listbox, allowing users to filter a lis
 <Example>
   <DataTable
     data={[
-      { name: 'items', value: 'any[]', description: 'Array of items to display' },
       { name: 'inputValue', value: 'string', description: 'Controlled input value' },
       { name: 'defaultInputValue', value: 'string', description: 'Default input value' },
       { name: 'selectedKey', value: 'string', description: 'Controlled selected key' },

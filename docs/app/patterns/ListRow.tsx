@@ -4,14 +4,14 @@ import { ChevronRight } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Box, Column, Icon, Row, type RowProps, Text } from '@/components';
 
-interface ListItemProps extends RowProps {
+interface ListRowProps extends RowProps {
   children: ReactNode;
   onClick?: () => void;
   isSelected?: boolean;
   showChevron?: boolean;
 }
 
-export function ListItem({ children, onClick, isSelected, showChevron, ...props }: ListItemProps) {
+export function ListRow({ children, onClick, isSelected, showChevron, ...props }: ListRowProps) {
   return (
     <Row
       minWidth="20rem"
@@ -35,13 +35,13 @@ export function ListItem({ children, onClick, isSelected, showChevron, ...props 
   );
 }
 
-interface ListItemAvatarProps {
+interface ListRowAvatarProps {
   src?: string;
   fallback?: string;
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function ListItemAvatar({ src, fallback, size = 'md' }: ListItemAvatarProps) {
+export function ListRowAvatar({ src, fallback, size = 'md' }: ListRowAvatarProps) {
   const sizeMap = { sm: '8', md: '10', lg: '12' } as const;
 
   return (
@@ -66,13 +66,13 @@ export function ListItemAvatar({ src, fallback, size = 'md' }: ListItemAvatarPro
   );
 }
 
-interface ListItemContentProps {
+interface ListRowContentProps {
   title: string;
   description?: string;
   meta?: string;
 }
 
-export function ListItemContent({ title, description, meta }: ListItemContentProps) {
+export function ListRowContent({ title, description, meta }: ListRowContentProps) {
   return (
     <Column gap="0" flexGrow="1" overflow="hidden">
       <Row alignItems="center" gap="2">
@@ -94,11 +94,11 @@ export function ListItemContent({ title, description, meta }: ListItemContentPro
   );
 }
 
-interface ListItemActionsProps {
+interface ListRowActionsProps {
   children: ReactNode;
 }
 
-export function ListItemActions({ children }: ListItemActionsProps) {
+export function ListRowActions({ children }: ListRowActionsProps) {
   return (
     <Row gap="1" alignItems="center" onClick={e => e.stopPropagation()}>
       {children}

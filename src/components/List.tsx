@@ -1,4 +1,4 @@
-import { Fragment, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
   Header,
   ListBox,
@@ -20,10 +20,6 @@ import { cn } from './lib/tailwind';
 
 export interface ListProps extends ListBoxProps<any> {
   children?: ReactNode;
-  items?: any[];
-  idProperty?: string;
-  labelProperty?: string;
-  separatorProperty?: string;
   highlightColor?: string;
   showCheckmark?: boolean;
   isFullscreen?: boolean;
@@ -34,10 +30,6 @@ export interface ListProps extends ListBoxProps<any> {
 
 export function List({
   id,
-  items = [],
-  idProperty = 'id',
-  labelProperty = 'label',
-  separatorProperty = 'separator',
   highlightColor,
   showCheckmark = true,
   isFullscreen,
@@ -69,7 +61,6 @@ export function List({
         {...props}
         selectedKeys={value || selectedKeys}
         defaultSelectedKeys={value || defaultSelectedKeys}
-        items={items}
         className={cn(
           'grid outline-none overflow-auto gap-1',
           isFullscreen &&
@@ -79,20 +70,7 @@ export function List({
         onSelectionChange={handleSelectionChange}
         style={{ ...style, ...getHighlightColor(highlightColor) }}
       >
-        {children ||
-          items?.map(item => {
-            const id = item[idProperty] || item.toString();
-            const label = item[labelProperty] || item.toString();
-
-            return (
-              <Fragment key={id}>
-                {item[separatorProperty] && <ListSeparator />}
-                <ListItem id={id} showCheckmark={showCheckmark}>
-                  {label}
-                </ListItem>
-              </Fragment>
-            );
-          })}
+        {children}
       </ListBox>
     </>
   );

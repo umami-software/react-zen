@@ -8,13 +8,21 @@ Displays a list of options for the user to pick from—triggered by a button.
 
 <Example>
   <Box width="300px">
-    <Select items={['One', 'Two', 'Three', 'Four', 'Five']} placeholder="Please select an option" />
+    <Select placeholder="Please select an option">
+      <ListItem id="one">One</ListItem>
+      <ListItem id="two">Two</ListItem>
+      <ListItem id="three">Three</ListItem>
+      <ListItem id="four">Four</ListItem>
+      <ListItem id="five">Five</ListItem>
+    </Select>
   </Box>
 
   ```jsx
-  <Box width="300px">
-    <Select items={['One', 'Two', 'Three', 'Four', 'Five']} placeholder="Please select an option" />
-  </Box>
+  <Select placeholder="Please select an option">
+    <ListItem id="one">One</ListItem>
+    <ListItem id="two">Two</ListItem>
+    <ListItem id="three">Three</ListItem>
+  </Select>
   ```
 </Example>
 
@@ -22,21 +30,21 @@ Displays a list of options for the user to pick from—triggered by a button.
 
 <Example>
   <Box width="300px">
-    <Select
-      label="Select"
-      items={['One', 'Two', 'Three', 'Four', 'Five']}
-      placeholder="Please select an option"
-    />
+    <Select label="Select" placeholder="Please select an option">
+      <ListItem id="one">One</ListItem>
+      <ListItem id="two">Two</ListItem>
+      <ListItem id="three">Three</ListItem>
+      <ListItem id="four">Four</ListItem>
+      <ListItem id="five">Five</ListItem>
+    </Select>
   </Box>
 
   ```jsx
-  <Box width="300px">
-    <Select
-      label="Select"
-      items={['One', 'Two', 'Three', 'Four', 'Five']}
-      placeholder="Please select an option"
-    />
-  </Box>
+  <Select label="Select" placeholder="Please select an option">
+    <ListItem id="one">One</ListItem>
+    <ListItem id="two">Two</ListItem>
+    <ListItem id="three">Three</ListItem>
+  </Select>
   ```
 </Example>
 
@@ -86,11 +94,19 @@ Displays a list of options for the user to pick from—triggered by a button.
 
 <Example>
   <Box width="300px">
-    <Select maxHeight="300px" items={Array.from(Array(42).keys())} placeholder="Please select an option" />
+    <Select maxHeight="300px" placeholder="Please select an option">
+      {Array.from(Array(42).keys()).map(i => (
+        <ListItem key={i} id={String(i)}>{i}</ListItem>
+      ))}
+    </Select>
   </Box>
 
   ```jsx
-  <Select items={Array.from(Array(42).keys())} placeholder="Please select an option" />
+  <Select maxHeight="300px" placeholder="Please select an option">
+    {Array.from(Array(42).keys()).map(i => (
+      <ListItem key={i} id={String(i)}>{i}</ListItem>
+    ))}
+  </Select>
   ```
 </Example>
 
@@ -98,23 +114,21 @@ Displays a list of options for the user to pick from—triggered by a button.
 
 <Example>
   <Box width="300px">
-    <Select
-      label="Select"
-      items={['One', 'Two', 'Three', 'Four', 'Five']}
-      placeholder="Please select an option"
-      isFullscreen
-    />
+    <Select label="Select" placeholder="Please select an option" isFullscreen>
+      <ListItem id="one">One</ListItem>
+      <ListItem id="two">Two</ListItem>
+      <ListItem id="three">Three</ListItem>
+      <ListItem id="four">Four</ListItem>
+      <ListItem id="five">Five</ListItem>
+    </Select>
   </Box>
 
   ```jsx
-  <Box width="300px">
-    <Select
-      label="Select"
-      items={['One', 'Two', 'Three', 'Four', 'Five']}
-      placeholder="Please select an option"
-      isFullscreen
-    />
-  </Box>
+  <Select label="Select" placeholder="Please select an option" isFullscreen>
+    <ListItem id="one">One</ListItem>
+    <ListItem id="two">Two</ListItem>
+    <ListItem id="three">Three</ListItem>
+  </Select>
   ```
 </Example>
 
@@ -124,7 +138,6 @@ Displays a list of options for the user to pick from—triggered by a button.
 <Example>
   <DataTable
     data={[
-      { name: 'items', value: 'any[]', description: 'Array of items to display' },
       { name: 'value', value: 'string | number', description: 'Controlled selected value' },
       { name: 'defaultValue', value: 'string | number', description: 'Default selected value' },
       { name: 'label', value: 'string', description: 'Label text displayed above the select' },

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Select } from '@/components';
+import { ListItem, Select } from '@/components';
 
 const valuesPredefined = [
   'One',
@@ -40,7 +40,6 @@ export function SelectSearchExample({
 
   return (
     <Select
-      items={items}
       label="Select"
       placeholder="Please select an option"
       maxHeight="300px"
@@ -49,6 +48,12 @@ export function SelectSearchExample({
       onSearch={handleSearch}
       onOpenChange={handleOpen}
       isLoading={isLoading}
-    />
+    >
+      {items.map(item => (
+        <ListItem key={item} id={item}>
+          {item}
+        </ListItem>
+      ))}
+    </Select>
   );
 }

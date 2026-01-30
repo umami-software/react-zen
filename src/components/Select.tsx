@@ -20,7 +20,6 @@ import { SearchField } from './SearchField';
 
 export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   children?: ReactNode;
-  items?: any[];
   value?: string | number;
   defaultValue?: string | number;
   label?: string;
@@ -42,7 +41,6 @@ export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
 }
 
 export function Select({
-  items = [],
   value,
   defaultValue,
   label,
@@ -118,7 +116,6 @@ export function Select({
           {isLoading && <Loading icon="dots" placement="center" size="sm" height="60px" />}
           <List
             {...listProps}
-            items={items}
             isFullscreen={isFullscreen}
             {...(isFullscreen && {
               shouldSelectOnPressUp: true,

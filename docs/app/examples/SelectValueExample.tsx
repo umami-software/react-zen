@@ -1,4 +1,4 @@
-import { Select, Text, Row } from '@/components';
+import { ListItem, Row, Select, Text } from '@/components';
 
 const items = ['One', 'Two', 'Three', 'Four', 'Five'];
 
@@ -15,11 +15,12 @@ export function SelectValueExample() {
   };
 
   return (
-    <Select
-      items={items}
-      label="Select"
-      placeholder="Please select an option"
-      renderValue={renderValue}
-    />
+    <Select label="Select" placeholder="Please select an option" renderValue={renderValue}>
+      {items.map(item => (
+        <ListItem key={item} id={item}>
+          {item}
+        </ListItem>
+      ))}
+    </Select>
   );
 }
