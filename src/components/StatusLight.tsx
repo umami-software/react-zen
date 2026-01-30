@@ -3,7 +3,7 @@ import { Box } from './Box';
 import { cn } from './lib/tailwind';
 import { Row } from './Row';
 
-interface StatusLightProps {
+export interface StatusLightProps {
   color?: string;
   variant?: 'info' | 'success' | 'warning' | 'error' | 'active' | 'inactive' | 'none';
   className?: string;
@@ -32,7 +32,7 @@ function StatusDot({ color, variant }: { color?: string; variant: string }) {
   );
 }
 
-function StatusLight(props: StatusLightProps) {
+export function StatusLight(props: StatusLightProps) {
   const { color, variant = 'inactive', children, className, ...domProps } = props;
 
   return (
@@ -42,6 +42,3 @@ function StatusLight(props: StatusLightProps) {
     </Row>
   );
 }
-
-export { StatusLight };
-export type { StatusLightProps };

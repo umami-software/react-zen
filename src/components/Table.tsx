@@ -17,11 +17,11 @@ import { cn } from './lib/tailwind';
 
 const gridTemplateColumns = 'repeat(auto-fit, minmax(140px, 1fr))';
 
-interface TableColumnProps extends ColumnProps {
+export interface TableColumnProps extends ColumnProps {
   align?: 'start' | 'center' | 'end';
 }
 
-interface TableCellProps extends CellProps {
+export interface TableCellProps extends CellProps {
   align?: 'start' | 'center' | 'end';
 }
 
@@ -31,7 +31,7 @@ const alignClasses = {
   end: 'justify-end',
 };
 
-function Table({ children, className, ...props }: TableProps) {
+export function Table({ children, className, ...props }: TableProps) {
   return (
     <AriaTable
       aria-label="Table"
@@ -47,7 +47,7 @@ interface TableHeaderComponentProps extends Omit<TableHeaderProps<any>, 'style'>
   style?: CSSProperties;
 }
 
-function TableHeader({ children, className, style, ...props }: TableHeaderComponentProps) {
+export function TableHeader({ children, className, style, ...props }: TableHeaderComponentProps) {
   const cols = style?.gridTemplateColumns || gridTemplateColumns;
 
   return (
@@ -64,7 +64,7 @@ function TableHeader({ children, className, style, ...props }: TableHeaderCompon
   );
 }
 
-function TableBody({ children, className, ...props }: TableBodyProps<any>) {
+export function TableBody({ children, className, ...props }: TableBodyProps<any>) {
   return (
     <AriaTableBody {...props} className={cn('contents', className)}>
       {children}
@@ -72,7 +72,7 @@ function TableBody({ children, className, ...props }: TableBodyProps<any>) {
   );
 }
 
-function TableRow({ children, className, style, ...props }: RowProps<any>) {
+export function TableRow({ children, className, style, ...props }: RowProps<any>) {
   return (
     <Row
       {...props}
@@ -84,7 +84,7 @@ function TableRow({ children, className, style, ...props }: RowProps<any>) {
   );
 }
 
-function TableColumn({ children, className, align, ...props }: TableColumnProps) {
+export function TableColumn({ children, className, align, ...props }: TableColumnProps) {
   return (
     <Column
       {...props}
@@ -100,7 +100,7 @@ function TableColumn({ children, className, align, ...props }: TableColumnProps)
   );
 }
 
-function TableCell({ children, className, align, ...props }: TableCellProps) {
+export function TableCell({ children, className, align, ...props }: TableCellProps) {
   return (
     <Cell
       {...props}
@@ -116,6 +116,3 @@ function TableCell({ children, className, align, ...props }: TableCellProps) {
     </Cell>
   );
 }
-
-export { Table, TableHeader, TableBody, TableRow, TableColumn, TableCell };
-export type { TableCellProps, TableColumnProps, TableBodyProps };

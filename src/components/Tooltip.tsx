@@ -8,12 +8,12 @@ import { Box } from './Box';
 import { cn } from './lib/tailwind';
 import { tooltip } from './variants';
 
-interface TooltipProps extends AriaTooltipProps {
+export interface TooltipProps extends AriaTooltipProps {
   children?: ReactNode;
   showArrow?: boolean;
 }
 
-function Tooltip({ children, className, showArrow, ...props }: TooltipProps) {
+export function Tooltip({ children, className, showArrow, ...props }: TooltipProps) {
   return (
     <AriaTooltip {...props} className={cn('group', tooltip(), className)}>
       {showArrow && (
@@ -36,18 +36,20 @@ function Tooltip({ children, className, showArrow, ...props }: TooltipProps) {
   );
 }
 
-interface TooltipBubbleProps extends HTMLAttributes<HTMLDivElement> {
+export interface TooltipBubbleProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
   showArrow?: boolean;
 }
 
-function TooltipBubble({ children, className, color: _color, ...props }: TooltipBubbleProps) {
+export function TooltipBubble({
+  children,
+  className,
+  color: _color,
+  ...props
+}: TooltipBubbleProps) {
   return (
     <Box {...props} className={className}>
       {children}
     </Box>
   );
 }
-
-export { Tooltip, TooltipBubble };
-export type { TooltipProps, TooltipBubbleProps };

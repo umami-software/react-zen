@@ -1,11 +1,16 @@
 import { Label as AriaLabel } from 'react-aria-components';
 import { Text, type TextProps } from './Text';
 
-interface LabelProps extends Omit<TextProps, 'as' | 'render'> {
+export interface LabelProps extends Omit<TextProps, 'as' | 'render'> {
   htmlFor?: string;
 }
 
-function Label({ size = 'base', weight = 'semibold', lineHeight = 'loose', ...props }: LabelProps) {
+export function Label({
+  size = 'base',
+  weight = 'semibold',
+  lineHeight = 'loose',
+  ...props
+}: LabelProps) {
   return (
     <Text
       {...props}
@@ -16,6 +21,3 @@ function Label({ size = 'base', weight = 'semibold', lineHeight = 'loose', ...pr
     />
   );
 }
-
-export { Label };
-export type { LabelProps };

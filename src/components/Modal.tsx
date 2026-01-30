@@ -8,7 +8,7 @@ import {
 import { cn } from './lib/tailwind';
 import './Modal.css';
 
-interface ModalProps extends AriaModalOverlayProps {
+export interface ModalProps extends AriaModalOverlayProps {
   children?: ReactNode | ((values: ModalRenderProps & { defaultChildren: ReactNode }) => ReactNode);
   isOpen?: boolean;
   placement?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'fullscreen';
@@ -25,7 +25,7 @@ const placementClasses = {
   fullscreen: 'zen-modal-fullscreen w-dvw h-dvh rounded-none',
 };
 
-function Modal({
+export function Modal({
   placement = 'center',
   offset,
   children,
@@ -50,6 +50,3 @@ function Modal({
     </AriaModalOverlay>
   );
 }
-
-export { Modal };
-export type { ModalProps };

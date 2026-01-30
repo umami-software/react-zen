@@ -7,7 +7,7 @@ const defaultToastConfig = {
   duration: 3000,
 };
 
-interface ZenProviderProps {
+export interface ZenProviderProps {
   theme?: Theme;
   colorScheme?: 'light' | 'dark' | 'system';
   palette?: Palette;
@@ -15,7 +15,7 @@ interface ZenProviderProps {
   children: ReactNode;
 }
 
-function ZenProvider({
+export function ZenProvider({
   children,
   theme,
   colorScheme,
@@ -26,6 +26,3 @@ function ZenProvider({
 
   return <ToastProvider {...toast}>{children}</ToastProvider>;
 }
-
-export { ZenProvider };
-export type { ZenProviderProps };

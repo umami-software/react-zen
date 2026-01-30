@@ -9,7 +9,7 @@ import { ChevronRight } from '@/components/icons';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
 
-function Breadcrumbs({ children, className, ...props }: BreadcrumbsProps<any>) {
+export function Breadcrumbs({ children, className, ...props }: BreadcrumbsProps<any>) {
   return (
     <AriaBreadcrumbs {...props} className={cn('flex items-center gap-3', className)}>
       {children}
@@ -17,7 +17,7 @@ function Breadcrumbs({ children, className, ...props }: BreadcrumbsProps<any>) {
   );
 }
 
-function Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
+export function Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
   return (
     <AriaBreadcrumb
       {...props}
@@ -36,6 +36,3 @@ function Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
     </AriaBreadcrumb>
   );
 }
-
-export { Breadcrumb, Breadcrumbs };
-export type { BreadcrumbProps, BreadcrumbsProps };

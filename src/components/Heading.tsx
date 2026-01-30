@@ -5,13 +5,13 @@ import { Text, type TextProps } from './Text';
 
 type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-interface HeadingProps extends Omit<TextProps, 'as' | 'size'> {
+export interface HeadingProps extends Omit<TextProps, 'as' | 'size'> {
   children?: ReactNode;
   size?: Responsive<HeadingSize>;
   as?: HeadingElement;
 }
 
-function Heading({
+export function Heading({
   size = '2xl',
   spacing = 'tight',
   as = 'h2',
@@ -31,6 +31,3 @@ function Heading({
     </Text>
   );
 }
-
-export { Heading };
-export type { HeadingProps };

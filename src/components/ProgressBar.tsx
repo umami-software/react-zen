@@ -37,7 +37,7 @@ function Fill({ percentage }: { percentage: number }) {
   );
 }
 
-function ProgressBar({ className, showPercentage, ...props }: ProgressBarProps) {
+export function ProgressBar({ className, showPercentage, ...props }: ProgressBarProps) {
   return (
     <AriaProgressBar {...props} className={cn('flex items-center gap-3 w-full', className)}>
       {({ percentage = 0, valueText }) => {
@@ -53,5 +53,3 @@ function ProgressBar({ className, showPercentage, ...props }: ProgressBarProps) 
     </AriaProgressBar>
   );
 }
-
-export { ProgressBar };

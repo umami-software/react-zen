@@ -9,7 +9,7 @@ import {
 import { AlertBanner } from '@/components/AlertBanner';
 import { cn } from '../lib/tailwind';
 
-interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 'children'> {
+export interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 'children'> {
   autoComplete?: string;
   onSubmit?: SubmitHandler<any>;
   error?: ReactNode | Error;
@@ -17,7 +17,7 @@ interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 
   children?: ReactNode | ((e: UseFormReturn) => ReactNode);
 }
 
-function Form({
+export function Form({
   autoComplete,
   onSubmit,
   error,
@@ -98,6 +98,3 @@ function Form({
     </FormProvider>
   );
 }
-
-export { Form };
-export type { FormProps };

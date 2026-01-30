@@ -10,7 +10,7 @@ import {
 } from 'react-aria-components';
 import { cn } from './lib/tailwind';
 
-function Tabs({ children, className, ...props }: TabsProps) {
+export function Tabs({ children, className, ...props }: TabsProps) {
   return (
     <AriaTabs {...props} className={cn('grid relative w-full gap-6', className)}>
       {children}
@@ -18,7 +18,7 @@ function Tabs({ children, className, ...props }: TabsProps) {
   );
 }
 
-function TabList({ children, className, ...props }: TabListProps<any>) {
+export function TabList({ children, className, ...props }: TabListProps<any>) {
   return (
     <AriaTabList
       {...props}
@@ -33,7 +33,7 @@ function TabList({ children, className, ...props }: TabListProps<any>) {
   );
 }
 
-function Tab({ children, className, ...props }: TabProps) {
+export function Tab({ children, className, ...props }: TabProps) {
   return (
     <AriaTab
       {...props}
@@ -50,13 +50,10 @@ function Tab({ children, className, ...props }: TabProps) {
   );
 }
 
-function TabPanel({ children, className, ...props }: TabPanelProps) {
+export function TabPanel({ children, className, ...props }: TabPanelProps) {
   return (
     <AriaTabPanel {...props} className={className}>
       {children}
     </AriaTabPanel>
   );
 }
-
-export { Tabs, TabList, Tab, TabPanel };
-export type { TabsProps, TabListProps, TabProps, TabPanelProps };

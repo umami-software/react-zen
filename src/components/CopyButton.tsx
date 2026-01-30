@@ -5,14 +5,20 @@ import { cn } from './lib/tailwind';
 
 const TIMEOUT = 2000;
 
-interface CopyButtonProps {
+export interface CopyButtonProps {
   value?: string | (() => string);
   timeout?: number;
   className?: string;
   children?: ReactNode;
 }
 
-function CopyButton({ value, timeout = TIMEOUT, className, children, ...props }: CopyButtonProps) {
+export function CopyButton({
+  value,
+  timeout = TIMEOUT,
+  className,
+  children,
+  ...props
+}: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
   const ref = useRef(timeout);
 
@@ -35,6 +41,3 @@ function CopyButton({ value, timeout = TIMEOUT, className, children, ...props }:
     </Icon>
   );
 }
-
-export { CopyButton };
-export type { CopyButtonProps };

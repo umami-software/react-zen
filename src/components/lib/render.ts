@@ -1,6 +1,6 @@
 import { cloneElement, isValidElement, type ReactElement } from 'react';
 
-type RenderProp<P = Record<string, unknown>> = ReactElement | ((props: P) => ReactElement);
+export type RenderProp<P = Record<string, unknown>> = ReactElement | ((props: P) => ReactElement);
 
 /**
  * Resolves a render prop to a React element.
@@ -17,7 +17,7 @@ type RenderProp<P = Record<string, unknown>> = ReactElement | ((props: P) => Rea
  * // Function form - you control prop spreading
  * <Button render={(props) => <a {...props} href="/foo">Click</a>} />
  */
-function resolveRender<P extends Record<string, unknown>>(
+export function resolveRender<P extends Record<string, unknown>>(
   render: RenderProp<P> | undefined,
   props: P,
   defaultElement: ReactElement,
@@ -48,6 +48,3 @@ function resolveRender<P extends Record<string, unknown>>(
 
   return defaultElement;
 }
-
-export { resolveRender };
-export type { RenderProp };

@@ -1,16 +1,16 @@
 import type { ReactNode } from 'react';
-import { Button, ButtonProps } from './Button';
+import { Button, type ButtonProps } from './Button';
 import { Icon } from './Icon';
 import { Spinner } from './Spinner';
 
-interface LoadingButtonProps extends ButtonProps {
+export interface LoadingButtonProps extends ButtonProps {
   children?: ReactNode;
   isDisabled?: boolean;
   isLoading?: boolean;
   showText?: boolean;
 }
 
-function LoadingButton({
+export function LoadingButton({
   isLoading,
   isDisabled,
   showText = true,
@@ -28,6 +28,3 @@ function LoadingButton({
     </Button>
   );
 }
-
-export { LoadingButton };
-export type { LoadingButtonProps };

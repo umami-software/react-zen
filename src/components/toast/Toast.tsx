@@ -10,7 +10,7 @@ import { toast as toastVariant } from '@/components/variants';
 
 const TOAST_CLOSE_ACTION = 'close';
 
-interface ToastProps extends HTMLAttributes<HTMLDivElement> {
+export interface ToastProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
   id: string;
   message: string;
@@ -21,7 +21,7 @@ interface ToastProps extends HTMLAttributes<HTMLDivElement> {
   onClose?: (action?: string) => void;
 }
 
-function Toast({
+export function Toast({
   id,
   message,
   title,
@@ -64,6 +64,3 @@ function Toast({
     </Row>
   );
 }
-
-export { Toast };
-export type { ToastProps };

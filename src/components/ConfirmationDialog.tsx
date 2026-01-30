@@ -5,12 +5,12 @@ import { cn } from './lib/tailwind';
 import { Text } from './Text';
 import { TextField } from './TextField';
 
-interface ConfirmationDialogProps extends AlertDialogProps {
+export interface ConfirmationDialogProps extends AlertDialogProps {
   value: string;
   confirmMessage?: ReactNode;
 }
 
-function ConfirmationDialog({
+export function ConfirmationDialog({
   value,
   confirmMessage,
   className,
@@ -46,6 +46,3 @@ function ConfirmationDialog({
     </AlertDialog>
   );
 }
-
-export { ConfirmationDialog };
-export type { ConfirmationDialogProps };

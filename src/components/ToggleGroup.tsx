@@ -19,7 +19,7 @@ export interface ToggleGroupProps extends TagGroupProps {
   onChange?: (value: string[]) => void;
 }
 
-function ToggleGroup({
+export function ToggleGroup({
   label,
   value,
   defaultValue,
@@ -58,7 +58,7 @@ function ToggleGroup({
 
 export interface ToggleGroupItemProps extends TagProps {}
 
-function ToggleGroupItem({ className, children, ...props }: ToggleGroupItemProps) {
+export function ToggleGroupItem({ className, children, ...props }: ToggleGroupItemProps) {
   return (
     <Tag
       {...props}
@@ -75,5 +75,3 @@ function ToggleGroupItem({ className, children, ...props }: ToggleGroupItemProps
     </Tag>
   );
 }
-
-export { ToggleGroup, ToggleGroupItem };

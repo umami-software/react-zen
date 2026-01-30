@@ -8,13 +8,13 @@ import { Column } from './Column';
 import { Heading } from './Heading';
 import { cn } from './lib/tailwind';
 
-interface DialogProps extends AriaDialogProps {
+export interface DialogProps extends AriaDialogProps {
   children?: ReactNode | ((props: DialogRenderProps) => ReactNode);
   title?: ReactNode;
   variant?: 'sheet';
 }
 
-function Dialog({ title, variant, children, className, ...props }: DialogProps) {
+export function Dialog({ title, variant, children, className, ...props }: DialogProps) {
   return (
     <AriaDialog
       aria-label="Dialog"
@@ -36,6 +36,3 @@ function Dialog({ title, variant, children, className, ...props }: DialogProps) 
     </AriaDialog>
   );
 }
-
-export { Dialog };
-export type { DialogProps };

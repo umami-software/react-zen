@@ -1,14 +1,19 @@
 import type { ReactNode } from 'react';
-import { FieldValues, useFormContext } from 'react-hook-form';
-import { PressEvent } from 'react-aria-components';
-import { Button, ButtonProps } from '../Button';
+import type { PressEvent } from 'react-aria-components';
+import { type FieldValues, useFormContext } from 'react-hook-form';
+import { Button, type ButtonProps } from '../Button';
 
-interface FormResetButtonProps extends ButtonProps {
+export interface FormResetButtonProps extends ButtonProps {
   children?: ReactNode;
   values?: FieldValues | { [p: string]: any };
 }
 
-function FormResetButton({ values = {}, children, onPress, ...props }: FormResetButtonProps) {
+export function FormResetButton({
+  values = {},
+  children,
+  onPress,
+  ...props
+}: FormResetButtonProps) {
   const { reset } = useFormContext();
 
   const handleReset = (e: PressEvent) => {
@@ -22,6 +27,3 @@ function FormResetButton({ values = {}, children, onPress, ...props }: FormReset
     </Button>
   );
 }
-
-export { FormResetButton };
-export type { FormResetButtonProps };
