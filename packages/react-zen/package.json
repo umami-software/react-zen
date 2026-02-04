@@ -1,0 +1,97 @@
+{
+  "name": "@umami/react-zen",
+  "version": "0.239.0",
+  "description": "Modern, minimalist React component library",
+  "homepage": "https://zen.umami.is",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umami-software/react-zen.git"
+  },
+  "license": "MIT",
+  "author": "Umami <hello@umami.is>",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "styles.css",
+    "styles.full.css",
+    "tailwind.preset.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./styles.css",
+    "./styles.full.css": "./styles.full.css",
+    "./tailwind-preset": "./tailwind.preset.ts"
+  },
+  "scripts": {
+    "build": "npm-run-all tsup css",
+    "lint": "biome check ./src",
+    "icons": "svgr ./src/assets --out-dir src/components/svg --typescript",
+    "rollup": "rollup -c",
+    "css": "node css.mjs",
+    "tsup": "tsup"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.7",
+    "@hyrious/esbuild-plugin-commonjs": "^0.2.6",
+    "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@svgr/cli": "^8.1.0",
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^22.19.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@umami/esbuild-plugin-css-modules": "0.4.0",
+    "autoprefixer": "^10.4.23",
+    "dts-bundle": "^0.7.3",
+    "esbuild": "^0.27.0",
+    "esbuild-css-modules-plugin": "^3.1.5",
+    "esbuild-plugin-svgr": "^3.1.1",
+    "esbuild-postcss": "^0.0.4",
+    "glob": "^13.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.5.6",
+    "react-aria-components": "^1.13.0",
+    "react-hook-form": "^7.66.1",
+    "rollup": "^4.53.3",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-dts": "^6.3.0",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "tailwind-merge": "^3.4.0",
+    "tailwind-variants": "^3.2.2",
+    "tailwindcss": "^4.1.18",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@internationalized/date": "^3.10.0",
+    "@react-aria/focus": "^3.21.2",
+    "@react-spring/web": "^9.7.5",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.555.0",
+    "react-hook-form": "^7.66.1",
+    "tailwind-merge": "^3.4.0",
+    "tailwind-variants": "^3.2.2",
+    "zustand": "^5.0.8"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-aria-components": "^1.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  }
+}

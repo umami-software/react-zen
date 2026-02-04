@@ -4,49 +4,63 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**zen** (`@umami/react-zen`) is a modern, minimalist React component library built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) primitives. This is a pnpm workspace monorepo containing the component library and a Next.js documentation site.
+**zen** (`@umami/react-zen`) is a modern, minimalist React component library built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/) primitives. This is a Turborepo monorepo with:
+
+- `packages/react-zen` - The component library
+- `apps/docs` - Next.js documentation site
 
 ## Development
 
-**IMPORTANT**: Assume a dev server is always running on port 9001. Do not start the dev server - it's already running. After making changes to the library, run `pnpm bundle` to rebuild and the dev server will pick up changes automatically via hot reload.
+**IMPORTANT**: Assume a dev server is always running on port 9001. Do not start the dev server - it's already running. After making changes to the library, run `pnpm --filter @umami/react-zen build` to rebuild and the dev server will pick up changes automatically via hot reload.
 
 ## Commands
 
-### Build
+### Turbo Commands (root)
 ```bash
-pnpm bundle        # Build library (runs: types → esbuild → css)
-pnpm build         # Build library + docs site
+pnpm build         # Build all packages (library first, then docs)
+pnpm dev           # Start dev servers
+pnpm lint          # Run linters across all packages
 ```
 
-### Linting
+### Library Commands (packages/react-zen)
 ```bash
-pnpm lint          # Run Biome linter on src/
+pnpm --filter @umami/react-zen build    # Build library (tsup + css)
+pnpm --filter @umami/react-zen lint     # Run Biome linter
+pnpm --filter @umami/react-zen icons    # Generate SVG icon components
 ```
 
-### Individual Build Steps
+### Docs Commands (apps/docs)
 ```bash
-pnpm types         # Generate TypeScript declarations with tsup
-pnpm esbuild       # Bundle JS (CJS + ESM) via esbuild
-pnpm css           # Concatenate CSS into styles.css
-pnpm icons         # Generate SVG icon components from src/assets
+pnpm --filter react-zen-docs dev        # Start docs dev server (port 9001)
+pnpm --filter react-zen-docs build      # Build docs site
 ```
 
 ## Architecture
 
+### Monorepo Structure
+```
+/
+├── apps/
+│   └── docs/                 # Next.js 16 documentation site
+├── packages/
+│   └── react-zen/           # Component library
+│       ├── src/components/  # Component source
+│       ├── dist/            # Build output
+│       └── styles.css       # Combined CSS
+├── turbo.json               # Turborepo config
+└── pnpm-workspace.yaml      # Workspace config
+```
+
 ### Component Structure
-- Components live in `src/components/` with co-located CSS modules (`.module.css`)
+- Components live in `packages/react-zen/src/components/` with co-located CSS modules
 - Entry point: `src/components/index.ts` - exports all public components
 - All components use `'use client'` directive for React Server Components compatibility
 
 ### Key Patterns
 
-**React Aria Foundation**: Components wrap React Aria primitives from `react-aria-components`. Example pattern:
-```tsx
-import { Button as AriaButton } from 'react-aria-components';
-// Wrap with custom styling and props
-```
+**React Aria Foundation**: Components wrap React Aria primitives from `react-aria-components`.
 
-**CSS Modules**: Each component has its own `.module.css` file. Class names are scoped with pattern `zen-{component}-{class}-{hash}`.
+**CSS Modules**: Each component has its own `.module.css` file.
 
 **Form System**: Built on `react-hook-form` with custom wrappers:
 - `Form` - Wraps `FormProvider` with submit handling and error display
@@ -62,9 +76,9 @@ import { Button as AriaButton } from 'react-aria-components';
 - Theme applied via `data-theme` attribute on `<html>`
 
 ### Docs Site
-Located in `docs/` - a Next.js 16 app using `@umami/shiso` for MDX documentation. Content lives in `src/content/docs/`.
+Located in `apps/docs/` - a Next.js 16 app using Nextra for MDX documentation. Content lives in `apps/docs/content/`.
 
-### Build Output
+### Build Output (packages/react-zen)
 - `dist/index.js` - CommonJS bundle
 - `dist/index.mjs` - ES module bundle
 - `dist/index.d.ts` - TypeScript declarations

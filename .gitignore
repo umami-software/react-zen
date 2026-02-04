@@ -25,6 +25,8 @@ _pagefind/
 .DS_Store
 *.pem
 .idea
+.turbo
+.claude
 
 # debug
 npm-debug.log*
