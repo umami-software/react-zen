@@ -56,6 +56,38 @@ Zen eliminates that friction:
 | Handle responsive manually | Use responsive objects |
 | Configure accessibility | Already done |
 
+## Development
+
+This is a Turborepo monorepo with:
+- `packages/react-zen` - Component library
+- `apps/docs` - Documentation site
+
+### Build the component library
+
+```bash
+pnpm --filter @umami/react-zen build
+```
+
+### Run the docs site
+
+```bash
+pnpm --filter react-zen-docs dev
+```
+
+Runs on http://localhost:9001
+
+### Build everything
+
+```bash
+pnpm build
+```
+
+### Lint
+
+```bash
+pnpm lint
+```
+
 ## License
 
 MIT

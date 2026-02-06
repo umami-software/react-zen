@@ -356,7 +356,7 @@ interface ButtonRenderProps {
     children: ReactNode;
     [key: string]: unknown;
 }
-declare function Button({ variant, size, render, preventFocusOnPress, className, children, ...props }: ButtonProps): ReactElement<unknown, string | react.JSXElementConstructor<any>>;
+declare function Button({ variant, size, render, preventFocusOnPress, className, children, ...props }: ButtonProps): react.ReactElement<unknown, string | react.JSXElementConstructor<any>>;
 
 interface CalendarProps extends Omit<CalendarProps$1<any>, 'value' | 'minValue' | 'maxValue' | 'defaultValue' | 'onChange'> {
     value: Date;
@@ -489,7 +489,7 @@ interface DataColumnProps extends Omit<HTMLAttributes<any>, 'children'> {
     hidden?: boolean;
     children?: ReactNode | ((row: any, index: number) => void);
 }
-declare function DataColumn(props: DataColumnProps): null;
+declare function DataColumn(_props: DataColumnProps): null;
 
 interface DotsProps extends HTMLAttributes<HTMLDivElement> {
     size?: 'sm' | 'md' | 'lg';

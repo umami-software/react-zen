@@ -2887,20 +2887,12 @@ function Calendar({
 function Checkbox({ label, className, children, ...props }) {
   const isSelected = typeof props.value !== "undefined" ? !!props.value : void 0;
   const styles = checkbox();
-  return /* @__PURE__ */ jsx(
-    Checkbox$1,
-    {
-      ...props,
-      isSelected,
-      className: cn(styles.root(), className),
-      children: ({ isIndeterminate, isSelected: isSelected2 }) => {
-        return /* @__PURE__ */ jsxs(Fragment, { children: [
-          /* @__PURE__ */ jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsx(Icon, { className: styles.icon(), size: "sm", children: isIndeterminate ? /* @__PURE__ */ jsx(icons_exports.Minus, {}) : isSelected2 ? /* @__PURE__ */ jsx(icons_exports.Check, {}) : null }) }),
-          children
-        ] });
-      }
-    }
-  );
+  return /* @__PURE__ */ jsx(Checkbox$1, { ...props, isSelected, className: cn(styles.root(), className), children: ({ isIndeterminate, isSelected: isSelected2 }) => {
+    return /* @__PURE__ */ jsxs(Fragment, { children: [
+      /* @__PURE__ */ jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsx(Icon, { className: styles.icon(), size: "sm", children: isIndeterminate ? /* @__PURE__ */ jsx(icons_exports.Minus, {}) : isSelected2 ? /* @__PURE__ */ jsx(icons_exports.Check, {}) : null }) }),
+      children
+    ] });
+  } });
 }
 function Code({ className, children, ...props }) {
   return /* @__PURE__ */ jsx(
@@ -3425,10 +3417,13 @@ function DataCard({ data = [], labelWidth = "auto", ...props }) {
       padding: "6",
       ...props,
       children: rows.map((row, index) => {
-        return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-          /* @__PURE__ */ jsx(Row, { paddingY: "3", border: "bottom", borderColor: "muted", paddingRight: "6", children: /* @__PURE__ */ jsx(Text, { weight: "bold", children: row?.label }) }),
-          /* @__PURE__ */ jsx(Row, { paddingY: "3", border: "bottom", children: /* @__PURE__ */ jsx(Text, { children: row?.value }) })
-        ] }, index);
+        return (
+          // biome-ignore lint/suspicious/noArrayIndexKey: rows are static display data
+          /* @__PURE__ */ jsxs(Fragment$1, { children: [
+            /* @__PURE__ */ jsx(Row, { paddingY: "3", border: "bottom", borderColor: "muted", paddingRight: "6", children: /* @__PURE__ */ jsx(Text, { weight: "bold", children: row?.label }) }),
+            /* @__PURE__ */ jsx(Row, { paddingY: "3", border: "bottom", children: /* @__PURE__ */ jsx(Text, { children: row?.value }) })
+          ] }, index)
+        );
       })
     }
   );
@@ -3544,25 +3539,28 @@ function DataTable({
       return /* @__PURE__ */ createElement(TableColumn, { ...columnProps, key: id, id }, label);
     }) }),
     /* @__PURE__ */ jsx(TableBody, { children: rows.map((row, index) => {
-      return /* @__PURE__ */ jsx(TableRow, { style: { gridTemplateColumns: gridTemplateColumns2 }, children: columns?.map(({ id, as, hidden, className: className2, children: children2, ...cellProps }) => {
-        if (hidden) {
-          return null;
-        }
-        const value = typeof children2 === "function" ? children2(row, index) : children2 || row[id];
-        return /* @__PURE__ */ createElement(
-          TableCell,
-          {
-            ...cellProps,
-            key: id,
-            className: cn("items-center", className2)
-          },
-          as ? createElement(as, {}, value) : value
-        );
-      }) }, index);
+      return (
+        // biome-ignore lint/suspicious/noArrayIndexKey: row data may not have unique ids
+        /* @__PURE__ */ jsx(TableRow, { style: { gridTemplateColumns: gridTemplateColumns2 }, children: columns?.map(({ id, as, hidden, className: className2, children: children2, ...cellProps }) => {
+          if (hidden) {
+            return null;
+          }
+          const value = typeof children2 === "function" ? children2(row, index) : children2 || row[id];
+          return /* @__PURE__ */ createElement(
+            TableCell,
+            {
+              ...cellProps,
+              key: id,
+              className: cn("items-center", className2)
+            },
+            as ? createElement(as, {}, value) : value
+          );
+        }) }, index)
+      );
     }) })
   ] });
 }
-function DataColumn(props) {
+function DataColumn(_props) {
   return null;
 }
 var sizeMap2 = {
@@ -3626,7 +3624,10 @@ function FloatingTooltip({ className, style, children, ...props }) {
     TooltipBubble,
     {
       ...props,
-      className: cn("fixed pointer-events-none z-[9999] -translate-x-1/2 -translate-y-[calc(100%+10px)]", className),
+      className: cn(
+        "fixed pointer-events-none z-[9999] -translate-x-1/2 -translate-y-[calc(100%+10px)]",
+        className
+      ),
       style: { ...style, left: position.x, top: position.y },
       children
     }
@@ -4089,13 +4090,13 @@ function Toast({
 }
 var positionClasses = {
   "top-left": "top-4 left-4 items-start",
-  "top": "top-4 left-1/2 -translate-x-1/2 items-center",
+  top: "top-4 left-1/2 -translate-x-1/2 items-center",
   "top-right": "top-4 right-4 items-end",
   "bottom-left": "bottom-4 left-4 items-start",
-  "bottom": "bottom-4 left-1/2 -translate-x-1/2 items-center",
+  bottom: "bottom-4 left-1/2 -translate-x-1/2 items-center",
   "bottom-right": "bottom-4 right-4 items-end",
-  "left": "top-1/2 left-4 -translate-y-1/2 items-start",
-  "right": "top-1/2 right-4 -translate-y-1/2 items-end"
+  left: "top-1/2 left-4 -translate-y-1/2 items-start",
+  right: "top-1/2 right-4 -translate-y-1/2 items-end"
 };
 var AnimatedBox = animated(Box);
 function Toaster({ duration = 0, position = "bottom-right" }) {
@@ -4446,32 +4447,6 @@ function PaletteSwitcher({ className }) {
     }
   );
 }
-var SvgEyeSlash = (props) => /* @__PURE__ */ jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256", ...props, children: [
-  /* @__PURE__ */ jsx("path", { fill: "none", d: "M0 0h256v256H0z" }),
-  /* @__PURE__ */ jsx(
-    "path",
-    {
-      fill: "none",
-      stroke: "currentColor",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeWidth: 16,
-      d: "m48 40 160 176M154.91 157.6a40 40 0 0 1-53.82-59.2M135.53 88.71a40 40 0 0 1 32.3 35.53"
-    }
-  ),
-  /* @__PURE__ */ jsx(
-    "path",
-    {
-      fill: "none",
-      stroke: "currentColor",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeWidth: 16,
-      d: "M208.61 169.1C230.41 149.58 240 128 240 128s-32-72-112-72a126 126 0 0 0-20.68 1.68M74 68.6C33.23 89.24 16 128 16 128s32 72 112 72a118.05 118.05 0 0 0 54-12.6"
-    }
-  )
-] });
-var EyeSlash_default = SvgEyeSlash;
 var SvgEye = (props) => /* @__PURE__ */ jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256", ...props, children: [
   /* @__PURE__ */ jsx("path", { fill: "none", d: "M0 0h256v256H0z" }),
   /* @__PURE__ */ jsx(
@@ -4500,6 +4475,32 @@ var SvgEye = (props) => /* @__PURE__ */ jsxs("svg", { xmlns: "http://www.w3.org/
   )
 ] });
 var Eye_default = SvgEye;
+var SvgEyeSlash = (props) => /* @__PURE__ */ jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256", ...props, children: [
+  /* @__PURE__ */ jsx("path", { fill: "none", d: "M0 0h256v256H0z" }),
+  /* @__PURE__ */ jsx(
+    "path",
+    {
+      fill: "none",
+      stroke: "currentColor",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeWidth: 16,
+      d: "m48 40 160 176M154.91 157.6a40 40 0 0 1-53.82-59.2M135.53 88.71a40 40 0 0 1 32.3 35.53"
+    }
+  ),
+  /* @__PURE__ */ jsx(
+    "path",
+    {
+      fill: "none",
+      stroke: "currentColor",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeWidth: 16,
+      d: "M208.61 169.1C230.41 149.58 240 128 240 128s-32-72-112-72a126 126 0 0 0-20.68 1.68M74 68.6C33.23 89.24 16 128 16 128s32 72 112 72a118.05 118.05 0 0 0 54-12.6"
+    }
+  )
+] });
+var EyeSlash_default = SvgEyeSlash;
 function PasswordField({ label, className, ...props }) {
   const [show, setShow] = useState(false);
   const type = show ? "text" : "password";
