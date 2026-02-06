@@ -13,6 +13,7 @@ export default {
       sidebar: false,
       toc: false,
       timestamp: false,
+      copyPage: false,
     },
   },
   docs: {

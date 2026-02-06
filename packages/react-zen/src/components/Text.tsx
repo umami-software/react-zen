@@ -106,7 +106,6 @@ export function Text({
   const decorationColorStr = decorationColor === true ? 'true' : decorationColor;
 
   const classes = cn(
-    'text-foreground-primary',
     mapFontSize(size),
     mapFontWeight(weight),
     mapTextAlign(align),
