@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 @import "./theme.css";
+@import "../components/Dots.css";
+@import "../components/Modal.css";
+@import "../components/Popover.css";
+@import "../components/Spinner.css";
 
 @source "../../src/components";
 
