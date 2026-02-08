@@ -146,10 +146,16 @@ Displays a list of options for the user to pick from—triggered by a button.
       { name: 'isDisabled', value: 'boolean', description: 'Disables the select' },
       { name: 'isFullscreen', value: 'boolean', description: 'Opens options in fullscreen mode' },
       { name: 'allowSearch', value: 'boolean', description: 'Enables search within options' },
+      { name: 'searchValue', value: 'string', description: 'Controlled search field value' },
       { name: 'searchDelay', value: 'number', description: 'Debounce delay for search' },
+      { name: 'maxHeight', value: 'string | number', description: 'Max height of the dropdown list' },
+      { name: 'showIcon', value: 'boolean', description: 'Show chevron icon on trigger button (default: true)' },
       { name: 'onChange', value: '(value: any) => void', description: 'Called when selection changes' },
       { name: 'onSearch', value: '(value: string) => void', description: 'Called when search value changes' },
       { name: 'renderValue', value: 'ReactNode | Function', description: 'Custom render for selected value' },
+      { name: 'buttonProps', value: 'ButtonProps', description: 'Props passed to the trigger button' },
+      { name: 'listProps', value: 'ListProps', description: 'Props passed to the list component' },
+      { name: 'popoverProps', value: 'PopoverProps', description: 'Props passed to the popover' },
     ]}
   >
     <DataColumn id="name" label="Name" />
