@@ -4698,6 +4698,7 @@ function Select({
   searchDelay,
   isFullscreen,
   maxHeight,
+  showIcon = true,
   onSearch,
   onChange,
   buttonProps,
@@ -4731,10 +4732,18 @@ function Select({
       onChange: handleChange,
       children: [
         label && /* @__PURE__ */ jsx(Label, { children: label }),
-        /* @__PURE__ */ jsx(Button, { variant: "outline", ...buttonProps, className: cn("w-full", buttonProps?.className), children: /* @__PURE__ */ jsxs(Row, { flexGrow: 1, alignItems: "center", justifyContent: "space-between", children: [
-          /* @__PURE__ */ jsx(SelectValue, { children: renderValue }),
-          /* @__PURE__ */ jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) })
-        ] }) }),
+        /* @__PURE__ */ jsxs(
+          Button,
+          {
+            variant: "outline",
+            ...buttonProps,
+            className: cn("w-full justify-between", buttonProps?.className),
+            children: [
+              /* @__PURE__ */ jsx(SelectValue, { children: renderValue }),
+              showIcon && /* @__PURE__ */ jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) })
+            ]
+          }
+        ),
         /* @__PURE__ */ jsx(Popover, { ...popoverProps, onOpenChange: handleOpenChange, isFullscreen, children: /* @__PURE__ */ jsxs(
           Column,
           {

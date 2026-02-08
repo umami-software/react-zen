@@ -847,6 +847,7 @@ interface SelectProps extends SelectProps$1<HTMLSelectElement> {
     searchDelay?: number;
     isFullscreen?: boolean;
     maxHeight?: string | number;
+    showIcon?: boolean;
     onSearch?: (value: string) => void;
     onChange?: (e: any) => void;
     buttonProps?: ButtonProps;
@@ -856,7 +857,7 @@ interface SelectProps extends SelectProps$1<HTMLSelectElement> {
         defaultChildren: ReactNode;
     }) => ReactNode);
 }
-declare function Select({ value, defaultValue, label, isLoading, allowSearch, searchValue, searchDelay, isFullscreen, maxHeight, onSearch, onChange, buttonProps, listProps, popoverProps, renderValue, className, children, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
+declare function Select({ value, defaultValue, label, isLoading, allowSearch, searchValue, searchDelay, isFullscreen, maxHeight, showIcon, onSearch, onChange, buttonProps, listProps, popoverProps, renderValue, className, children, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
 
 interface SliderProps extends SliderProps$1 {
     label?: ReactNode;
