@@ -65,6 +65,7 @@ import {
   mapPointerEvents,
   mapPosition,
   mapShadow,
+  mapSpace,
   mapStateStyles,
   mapTextAlign,
   mapTextColor,
@@ -96,6 +97,8 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   marginRight?: Responsive<Spacing>;
   marginBottom?: Responsive<Spacing>;
   marginLeft?: Responsive<Spacing>;
+  spaceX?: Responsive<Spacing>;
+  spaceY?: Responsive<Spacing>;
 
   width?: Responsive<Width | string>;
   minWidth?: Responsive<MinWidth | string>;
@@ -185,6 +188,8 @@ export const Box = forwardRef(function Box(
     marginRight,
     marginBottom,
     marginLeft,
+    spaceX,
+    spaceY,
     width,
     minWidth,
     maxWidth,
@@ -263,6 +268,8 @@ export const Box = forwardRef(function Box(
     mapMargin(marginRight, 'r'),
     mapMargin(marginBottom, 'b'),
     mapMargin(marginLeft, 'l'),
+    mapSpace(spaceX as Responsive<string>, 'x'),
+    mapSpace(spaceY as Responsive<string>, 'y'),
     mapWidth(width as Responsive<string>),
     mapMinWidth(minWidth as Responsive<string>),
     mapMaxWidth(maxWidth as Responsive<string>),
