@@ -13,9 +13,9 @@ export interface TooltipProps extends AriaTooltipProps {
   showArrow?: boolean;
 }
 
-export function Tooltip({ children, className, showArrow, ...props }: TooltipProps) {
+export function Tooltip({ children, className, offset = 8, showArrow, ...props }: TooltipProps) {
   return (
-    <AriaTooltip {...props} className={cn('group', tooltip(), className)}>
+    <AriaTooltip {...props} offset={offset} className={cn('group', tooltip(), className)}>
       {showArrow && (
         <OverlayArrow className="w-2 h-2">
           <svg

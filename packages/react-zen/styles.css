@@ -266,6 +266,7 @@
   --status-error-text: oklch(0.396 0.141 25.723); /* red-900 */
 }
 
+
 /* ./src/components/Dots.css */
 .zen-dot {
   border-radius: 100%;
@@ -297,6 +298,7 @@
     opacity: 0.2;
   }
 }
+
 
 /* ./src/components/Modal.css */
 .zen-modal-overlay[data-entering] {
@@ -401,6 +403,7 @@
   }
 }
 
+
 /* ./src/components/Popover.css */
 .zen-popover[data-placement="top"] {
   --origin: translateY(8px);
@@ -436,6 +439,7 @@
     opacity: 1;
   }
 }
+
 
 /* ./src/components/Spinner.css */
 .zen-spinner-svg {

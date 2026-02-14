@@ -1050,6 +1050,80 @@ var gapYMap = {
   "32": "gap-y-32",
   true: "gap-y-[var(--gap-default)]"
 };
+var spaceXMap = {
+  "0": "space-x-0",
+  px: "space-x-px",
+  "0.5": "space-x-0.5",
+  "1": "space-x-1",
+  "1.5": "space-x-1.5",
+  "2": "space-x-2",
+  "2.5": "space-x-2.5",
+  "3": "space-x-3",
+  "3.5": "space-x-3.5",
+  "4": "space-x-4",
+  "5": "space-x-5",
+  "6": "space-x-6",
+  "7": "space-x-7",
+  "8": "space-x-8",
+  "9": "space-x-9",
+  "10": "space-x-10",
+  "11": "space-x-11",
+  "12": "space-x-12",
+  "14": "space-x-14",
+  "16": "space-x-16",
+  "20": "space-x-20",
+  "24": "space-x-24",
+  "28": "space-x-28",
+  "32": "space-x-32",
+  "36": "space-x-36",
+  "40": "space-x-40",
+  "44": "space-x-44",
+  "48": "space-x-48",
+  "52": "space-x-52",
+  "56": "space-x-56",
+  "60": "space-x-60",
+  "64": "space-x-64",
+  "72": "space-x-72",
+  "80": "space-x-80",
+  "96": "space-x-96"
+};
+var spaceYMap = {
+  "0": "space-y-0",
+  px: "space-y-px",
+  "0.5": "space-y-0.5",
+  "1": "space-y-1",
+  "1.5": "space-y-1.5",
+  "2": "space-y-2",
+  "2.5": "space-y-2.5",
+  "3": "space-y-3",
+  "3.5": "space-y-3.5",
+  "4": "space-y-4",
+  "5": "space-y-5",
+  "6": "space-y-6",
+  "7": "space-y-7",
+  "8": "space-y-8",
+  "9": "space-y-9",
+  "10": "space-y-10",
+  "11": "space-y-11",
+  "12": "space-y-12",
+  "14": "space-y-14",
+  "16": "space-y-16",
+  "20": "space-y-20",
+  "24": "space-y-24",
+  "28": "space-y-28",
+  "32": "space-y-32",
+  "36": "space-y-36",
+  "40": "space-y-40",
+  "44": "space-y-44",
+  "48": "space-y-48",
+  "52": "space-y-52",
+  "56": "space-y-56",
+  "60": "space-y-60",
+  "64": "space-y-64",
+  "72": "space-y-72",
+  "80": "space-y-80",
+  "96": "space-y-96"
+};
 var fontSizeMap = {
   xs: "text-xs",
   sm: "text-sm",
@@ -1509,6 +1583,10 @@ function mapMargin(value, side) {
 }
 function mapGap(value, axis) {
   const map = axis === "x" ? gapXMap : axis === "y" ? gapYMap : gapMap;
+  return mapResponsive(value, (v) => map[String(v)]);
+}
+function mapSpace(value, axis) {
+  const map = axis === "x" ? spaceXMap : spaceYMap;
   return mapResponsive(value, (v) => map[String(v)]);
 }
 function mapFontSize(value) {
@@ -2510,6 +2588,8 @@ var Box = forwardRef(function Box2({
   marginRight,
   marginBottom,
   marginLeft,
+  spaceX,
+  spaceY,
   width,
   minWidth,
   maxWidth,
@@ -2579,6 +2659,8 @@ var Box = forwardRef(function Box2({
     mapMargin(marginRight, "r"),
     mapMargin(marginBottom, "b"),
     mapMargin(marginLeft, "l"),
+    mapSpace(spaceX, "x"),
+    mapSpace(spaceY, "y"),
     mapWidth(width),
     mapMinWidth(minWidth),
     mapMaxWidth(maxWidth),
@@ -3582,8 +3664,8 @@ function Dots({ size = "md", className, color: _color, ...props }) {
     /* @__PURE__ */ jsx(Dot, { size })
   ] });
 }
-function Tooltip({ children, className, showArrow, ...props }) {
-  return /* @__PURE__ */ jsxs(Tooltip$1, { ...props, className: cn("group", tooltip(), className), children: [
+function Tooltip({ children, className, offset = 8, showArrow, ...props }) {
+  return /* @__PURE__ */ jsxs(Tooltip$1, { ...props, offset, className: cn("group", tooltip(), className), children: [
     showArrow && /* @__PURE__ */ jsx(OverlayArrow, { className: "w-2 h-2", children: /* @__PURE__ */ jsx(
       "svg",
       {
@@ -5137,6 +5219,6 @@ function ZenProvider({
   return /* @__PURE__ */ jsx(ToastProvider, { ...toast2, children });
 }
 
-export { Accordion, AccordionItem, AlertBanner, AlertDialog, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Checkbox, Code, Column, ComboBox, ConfirmationDialog, Container, CopyButton, DataCard, DataColumn, DataTable, Dialog, Dots, Flexbox, FloatingTooltip, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, Label, List, ListItem, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, Modal, Navbar, NavbarContext, NavbarItem, PALETTES, PaletteSwitcher, PasswordField, Popover, ProgressBar, ProgressCircle, Radio, RadioGroup, Row, SearchField, Select, Slider, Spinner, StatusLight, SubMenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Tooltip, TooltipBubble, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, useBreakpoint, useDebounce, useInitTheme, useNavigationContext, useTheme, useToast };
+export { Accordion, AccordionItem, AlertBanner, AlertDialog, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Checkbox, Code, Column, ComboBox, ConfirmationDialog, Container, CopyButton, DataCard, DataColumn, DataTable, Dialog, Dots, Flexbox, FloatingTooltip, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, Label, List, ListItem, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, Modal, Navbar, NavbarContext, NavbarItem, PALETTES, PaletteSwitcher, PasswordField, Popover, ProgressBar, ProgressCircle, Radio, RadioGroup, Row, SearchField, Select, Slider, Spinner, StatusLight, SubMenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Tooltip, TooltipBubble, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, useBreakpoint, useDebounce, useInitTheme, useNavigationContext, useTheme, useToast };
 //# sourceMappingURL=index.mjs.map
 //# sourceMappingURL=index.mjs.map
