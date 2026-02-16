@@ -17,8 +17,15 @@ export const metadata: Metadata = {
   description: 'A modern, minimalist React component library',
 };
 
+const navbarLogo = (
+  <span className="inline-flex items-center gap-2 font-bold tracking-tight">
+    <img src="/favicon-32x32.png" alt="" aria-hidden="true" className="size-4" />
+    <span>zen</span>
+  </span>
+);
+
 const navbar = (
-  <Navbar logo={<b>zen</b>} projectLink="https://github.com/umami-software/react-zen" />
+  <Navbar logo={navbarLogo} projectLink="https://github.com/umami-software/react-zen" />
 );
 
 const footer = <Footer>MIT {new Date().getFullYear()} © Umami Software.</Footer>;
