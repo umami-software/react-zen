@@ -7,6 +7,8 @@ import {
   type Ref,
 } from 'react';
 import type {
+  AlignContent,
+  AlignItems,
   AlignSelf,
   BackgroundColor,
   Border,
@@ -20,6 +22,8 @@ import type {
   FlexShrink,
   FontColor,
   Height,
+  JustifyContent,
+  JustifyItems,
   JustifySelf,
   MaxHeight,
   MaxWidth,
@@ -45,6 +49,8 @@ import {
   isMinHeightPreset,
   isMinWidthPreset,
   isWidthPreset,
+  mapAlignContent,
+  mapAlignItems,
   mapAlignSelf,
   mapBackgroundColor,
   mapBorder,
@@ -64,6 +70,8 @@ import {
   mapPadding,
   mapPointerEvents,
   mapPosition,
+  mapJustifyContent,
+  mapJustifyItems,
   mapShadow,
   mapSpace,
   mapStateStyles,
@@ -124,7 +132,11 @@ export interface BoxProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   opacity?: Responsive<Opacity>;
   pointerEvents?: Responsive<PointerEvents>;
 
+  alignContent?: Responsive<AlignContent>;
+  alignItems?: Responsive<AlignItems>;
   alignSelf?: Responsive<AlignSelf>;
+  justifyContent?: Responsive<JustifyContent>;
+  justifyItems?: Responsive<JustifyItems>;
   justifySelf?: Responsive<JustifySelf>;
 
   flexBasis?: string;
@@ -208,7 +220,11 @@ export const Box = forwardRef(function Box(
     cursor,
     opacity,
     pointerEvents,
+    alignContent,
+    alignItems,
     alignSelf,
+    justifyContent,
+    justifyItems,
     justifySelf,
     flexBasis,
     flexGrow,
@@ -284,7 +300,11 @@ export const Box = forwardRef(function Box(
     mapCursor(cursor),
     mapOpacity(opacity),
     mapPointerEvents(pointerEvents),
+    mapAlignContent(alignContent),
+    mapAlignItems(alignItems),
     mapAlignSelf(alignSelf),
+    mapJustifyContent(justifyContent),
+    mapJustifyItems(justifyItems),
     theme && `${theme}-theme`,
     mapStateStyles('hover', hover),
     mapStateStyles('focus', focus),
