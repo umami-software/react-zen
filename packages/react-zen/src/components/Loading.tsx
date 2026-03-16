@@ -1,4 +1,4 @@
-import { Box, type BoxProps } from './Box';
+import { Box, type BoxProps } from '@umami/kaze';
 import { Dots } from './Dots';
 import { cn } from './lib/tailwind';
 import { Spinner } from './Spinner';

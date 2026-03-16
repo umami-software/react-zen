@@ -1,4 +1,16 @@
 import { type CSSProperties, useId } from 'react';
+import {
+  cn,
+  mapAlignContent,
+  mapAlignItems,
+  mapDisplay,
+  mapGap,
+  mapGridAutoFlow,
+  mapGridColumns,
+  mapGridRows,
+  mapJustifyContent,
+  mapJustifyItems,
+} from '@/lib/tailwind';
 import type {
   AlignContent,
   AlignItems,
@@ -14,18 +26,6 @@ import type {
   Responsive,
 } from '@/lib/types';
 import { Box, type BoxProps } from './Box';
-import {
-  cn,
-  mapAlignContent,
-  mapAlignItems,
-  mapDisplay,
-  mapGap,
-  mapGridAutoFlow,
-  mapGridColumns,
-  mapGridRows,
-  mapJustifyContent,
-  mapJustifyItems,
-} from './lib/tailwind';
 
 const PRESET_VALUES = [
   '1',
@@ -139,7 +139,7 @@ export function Grid({
   ...props
 }: GridProps) {
   const reactId = useId();
-  const id = `zen-grid-${reactId.replace(/:/g, '')}`;
+  const id = `kaze-grid-${reactId.replace(/:/g, '')}`;
 
   // Check for custom values (non-preset strings)
   const isCustomColumns = typeof columns === 'string' && !isPresetValue(columns);

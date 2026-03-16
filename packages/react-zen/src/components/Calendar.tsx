@@ -1,4 +1,5 @@
 import { getLocalTimeZone } from '@internationalized/date';
+import { Row } from '@umami/kaze';
 import {
   Calendar as AriaCalendar,
   type CalendarProps as AriaCalendarProps,
@@ -15,7 +16,6 @@ import { toCalendarDate } from '@/lib/date';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
-import { Row } from './Row';
 
 export interface CalendarProps
   extends Omit<

@@ -1,7 +1,6 @@
+import { Box, Column } from '@umami/kaze';
 import type { ReactNode } from 'react';
 import { Switch as AriaSwitch, type SwitchProps as AriaSwitchProps } from 'react-aria-components';
-import { Box } from './Box';
-import { Column } from './Column';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 import { switchVariant } from './variants';

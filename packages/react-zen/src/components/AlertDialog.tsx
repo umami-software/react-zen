@@ -1,9 +1,8 @@
+import { Column, Row } from '@umami/kaze';
 import type { ReactNode } from 'react';
 import { Button } from './Button';
-import { Column } from './Column';
 import { Dialog, type DialogProps } from './Dialog';
 import { cn } from './lib/tailwind';
-import { Row } from './Row';
 
 export interface AlertDialogProps extends DialogProps {
   title?: ReactNode;

@@ -1,3 +1,4 @@
+import { Row } from '@umami/kaze';
 import {
   createContext,
   type Dispatch,
@@ -11,7 +12,6 @@ import { ChevronRight } from '@/components/icons';
 import { HoverTrigger } from './HoverTrigger';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
-import { Row } from './Row';
 import { Text } from './Text';
 
 export type NavigationContext = {

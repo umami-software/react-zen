@@ -1,3 +1,4 @@
+import { Grid } from '@umami/kaze';
 import {
   Children,
   createElement,
@@ -7,7 +8,6 @@ import {
 } from 'react';
 import type { TableProps } from 'react-aria-components';
 import { DataCard } from '@/components/DataCard';
-import { Grid } from '@/components/Grid';
 import { mapIdProperty } from '@/lib/utils';
 import { cn } from './lib/tailwind';
 import {

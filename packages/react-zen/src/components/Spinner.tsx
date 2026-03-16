@@ -1,5 +1,5 @@
+import { Box } from '@umami/kaze';
 import type { HTMLAttributes } from 'react';
-import { Box } from './Box';
 import { cn } from './lib/tailwind';
 import './Spinner.css';
 

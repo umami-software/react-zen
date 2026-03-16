@@ -1,10 +1,10 @@
+import { Box } from '@umami/kaze';
 import type { HTMLAttributes, ReactNode } from 'react';
 import {
   Tooltip as AriaTooltip,
   type TooltipProps as AriaTooltipProps,
   OverlayArrow,
 } from 'react-aria-components';
-import { Box } from './Box';
 import { cn } from './lib/tailwind';
 import { tooltip } from './variants';
 

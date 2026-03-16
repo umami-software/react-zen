@@ -1,3 +1,4 @@
+import { Column } from '@umami/kaze';
 import { Children, cloneElement, type HTMLAttributes } from 'react';
 import {
   type FieldValues,
@@ -6,7 +7,6 @@ import {
   useFormContext,
 } from 'react-hook-form';
 import { useFieldId } from '@/components/hooks/useFieldId';
-import { Column } from '../Column';
 import { Label } from '../Label';
 import { Text } from '../Text';
 import { FormController } from './FormController';

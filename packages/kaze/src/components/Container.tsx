@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
+import { cn } from '@/lib/tailwind';
 import { Box, type BoxProps } from './Box';
-import { cn } from './lib/tailwind';
 
 export interface ContainerProps extends BoxProps {
   children?: ReactNode;

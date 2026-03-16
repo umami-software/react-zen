@@ -72,6 +72,7 @@
     "@internationalized/date": "^3.10.0",
     "@react-aria/focus": "^3.21.2",
     "@react-spring/web": "^9.7.5",
+    "@umami/kaze": "workspace:*",
     "clsx": "^2.1.1",
     "lucide-react": "^0.555.0",
     "react-hook-form": "^7.66.1",

@@ -1,5 +1,4 @@
-import { Box } from '@/components';
-import type { BoxProps } from '@/components/Box';
+import { Box, type BoxProps } from '@/components';
 
 const SIZES = {
   sm: '25px',

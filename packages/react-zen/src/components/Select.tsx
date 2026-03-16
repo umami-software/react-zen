@@ -1,3 +1,4 @@
+import { Column } from '@umami/kaze';
 import { type ReactNode, useState } from 'react';
 import {
   Select as AriaSelect,
@@ -8,7 +9,6 @@ import {
 } from 'react-aria-components';
 import { ChevronRight } from '@/components/icons';
 import { Button, type ButtonProps } from './Button';
-import { Column } from './Column';
 import { Icon } from './Icon';
 import { Label } from './Label';
 import { List, type ListProps } from './List';

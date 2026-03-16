@@ -1,6 +1,6 @@
+import { Box } from '@umami/kaze';
 import { type ChangeEvent, type ReactNode, useState } from 'react';
 import { AlertDialog, type AlertDialogProps } from './AlertDialog';
-import { Box } from './Box';
 import { cn } from './lib/tailwind';
 import { Text } from './Text';
 import { TextField } from './TextField';

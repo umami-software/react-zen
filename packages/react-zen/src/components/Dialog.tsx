@@ -1,10 +1,10 @@
+import { Column } from '@umami/kaze';
 import type { ReactNode } from 'react';
 import {
   Dialog as AriaDialog,
   type DialogProps as AriaDialogProps,
   type DialogRenderProps,
 } from 'react-aria-components';
-import { Column } from './Column';
 import { Heading } from './Heading';
 import { cn } from './lib/tailwind';
 

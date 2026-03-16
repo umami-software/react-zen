@@ -1,8 +1,8 @@
+import { Box } from '@umami/kaze';
 import {
   ProgressBar as AriaProgressBar,
   type ProgressBarProps as AriaProgressBarProps,
 } from 'react-aria-components';
-import { Box } from './Box';
 import { cn } from './lib/tailwind';
 import { Text } from './Text';
 

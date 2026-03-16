@@ -20,6 +20,7 @@ export default defineConfig({
     '@react-spring/web',
     '@internationalized/date',
     '@react-aria/focus',
+    '@umami/kaze',
     'tailwind-merge',
     'tailwind-variants',
     'lucide-react',

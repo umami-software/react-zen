@@ -1,5 +1,5 @@
+import { Row, type RowProps } from '@umami/kaze';
 import type { ReactNode } from 'react';
-import { Row, type RowProps } from '../Row';
 
 export interface FormButtonsProps extends RowProps {
   children?: ReactNode;

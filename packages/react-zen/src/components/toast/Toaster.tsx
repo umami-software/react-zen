@@ -1,7 +1,6 @@
 import { animated, useTransition } from '@react-spring/web';
+import { Box, Column } from '@umami/kaze';
 import { useEffect, useState } from 'react';
-import { Box } from '@/components/Box';
-import { Column } from '@/components/Column';
 import { removeToast, useToast } from '@/components/hooks/useToast';
 import { cn } from '@/components/lib/tailwind';
 import { Toast } from '@/components/toast/Toast';

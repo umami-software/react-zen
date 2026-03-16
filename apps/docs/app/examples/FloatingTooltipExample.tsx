@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Text, TooltipBubble } from '@/components';
-import { Box } from '@/components/Box';
+import { Box, Text, TooltipBubble } from '@/components';
 import { FloatingTooltip } from '@/components/FloatingTooltip';
 
 export function FloatingTooltipExample() {

@@ -1,10 +1,10 @@
+import { Box } from '@umami/kaze';
 import type { ReactNode } from 'react';
 import {
   Checkbox as AriaCheckbox,
   type CheckboxProps as AriaCheckboxProps,
 } from 'react-aria-components';
 import { Check, Minus } from '@/components/icons';
-import { Box } from './Box';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
 import { checkbox } from './variants';

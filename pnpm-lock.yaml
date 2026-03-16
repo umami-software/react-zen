@@ -85,6 +85,55 @@ importers:
         specifier: ^8.5.6
         version: 8.5.6
 
+  packages/kaze:
+    dependencies:
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      react:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.2.4
+      react-dom:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.2.4(react@19.2.4)
+      tailwind-merge:
+        specifier: ^3.4.0
+        version: 3.4.0
+    devDependencies:
+      '@biomejs/biome':
+        specifier: ^2.3.7
+        version: 2.3.14
+      '@tailwindcss/cli':
+        specifier: ^4.1.18
+        version: 4.1.18
+      '@types/node':
+        specifier: ^22.19.1
+        version: 22.19.8
+      '@types/react':
+        specifier: ^19.2.7
+        version: 19.2.11
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.11)
+      autoprefixer:
+        specifier: ^10.4.23
+        version: 10.4.24(postcss@8.5.6)
+      npm-run-all:
+        specifier: ^4.1.5
+        version: 4.1.5
+      postcss:
+        specifier: ^8.5.6
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^4.1.18
+        version: 4.1.18
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.6.1)(postcss@8.5.6)(typescript@5.9.3)(yaml@2.8.2)
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   packages/react-zen:
     dependencies:
       '@internationalized/date':
@@ -96,6 +145,9 @@ importers:
       '@react-spring/web':
         specifier: ^9.7.5
         version: 9.7.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@umami/kaze':
+        specifier: workspace:*
+        version: link:../kaze
       clsx:
         specifier: ^2.1.1
         version: 2.1.1

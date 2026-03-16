@@ -1,5 +1,5 @@
+import { Box, type BoxProps } from '@umami/kaze';
 import { cloneElement, isValidElement, type ReactElement, type ReactNode } from 'react';
-import { Box, type BoxProps } from './Box';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 

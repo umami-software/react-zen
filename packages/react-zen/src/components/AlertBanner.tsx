@@ -1,9 +1,8 @@
+import { Column, Row } from '@umami/kaze';
 import { createElement, type ReactNode } from 'react';
 import { CircleAlert, CircleCheck, Info, TriangleAlert, X } from '@/components/icons';
-import { Column } from './Column';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
-import { Row } from './Row';
 import { Text } from './Text';
 import { alertBanner } from './variants';
 

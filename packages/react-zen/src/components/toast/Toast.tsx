@@ -1,10 +1,9 @@
+import { Column, Row } from '@umami/kaze';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Button } from '@/components/Button';
-import { Column } from '@/components/Column';
 import { Icon } from '@/components/Icon';
 import { X } from '@/components/icons';
 import { cn } from '@/components/lib/tailwind';
-import { Row } from '@/components/Row';
 import { Text } from '@/components/Text';
 import { toast as toastVariant } from '@/components/variants';
 

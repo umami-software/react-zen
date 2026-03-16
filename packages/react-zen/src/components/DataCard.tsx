@@ -1,6 +1,5 @@
+import { Grid, type GridProps, Row } from '@umami/kaze';
 import { Fragment, type ReactNode } from 'react';
-import { Grid, type GridProps } from '@/components/Grid';
-import { Row } from '@/components/Row';
 import { Text } from '@/components/Text';
 import { mapIdProperty } from '@/lib/utils';
 
