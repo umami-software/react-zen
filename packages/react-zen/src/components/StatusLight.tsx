@@ -1,6 +1,7 @@
-import { Box, Row } from '@umami/kaze';
 import type { ReactNode } from 'react';
+import { Box } from './Box';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
 
 export interface StatusLightProps {
   color?: string;

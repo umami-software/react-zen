@@ -1,4 +1,3 @@
-import { Column } from '@umami/kaze';
 import type { ReactNode } from 'react';
 import {
   Radio as AriaRadio,
@@ -6,6 +5,7 @@ import {
   type RadioGroupProps as AriaRadioGroupProps,
   type RadioProps,
 } from 'react-aria-components';
+import { Column } from './Column';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 

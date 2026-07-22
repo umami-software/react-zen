@@ -1,6 +1,7 @@
-import { Box, Row } from '@umami/kaze';
 import type { HTMLAttributes } from 'react';
+import { Box } from './Box';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
 import './Dots.css';
 
 export interface DotsProps extends HTMLAttributes<HTMLDivElement> {

@@ -1,4 +1,3 @@
-import { Row } from '@umami/kaze';
 import type { ReactNode } from 'react';
 import {
   Slider as AriaSlider,
@@ -9,6 +8,7 @@ import {
 } from 'react-aria-components';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
 
 export interface SliderProps extends AriaSliderProps {
   label?: ReactNode;

@@ -1,4 +1,3 @@
-import { Box } from '@umami/kaze';
 import type { ReactNode } from 'react';
 import {
   Button as AriaButton,
@@ -9,6 +8,7 @@ import {
   type ListBoxRenderProps,
   type PopoverProps,
 } from 'react-aria-components';
+import { Box } from '@/components/Box';
 import { Icon } from '@/components/Icon';
 import { ChevronRight } from '@/components/icons';
 import { List, type ListProps } from '@/components/List';

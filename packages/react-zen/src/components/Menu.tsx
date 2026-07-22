@@ -1,4 +1,3 @@
-import { Row } from '@umami/kaze';
 import type { ReactNode } from 'react';
 import {
   Menu as AriaMenu,
@@ -16,6 +15,7 @@ import {
 import { Check, ChevronRight } from '@/components/icons';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
+import { Row } from './Row';
 import { Text } from './Text';
 
 export interface MenuProps extends AriaMenuProps<any> {

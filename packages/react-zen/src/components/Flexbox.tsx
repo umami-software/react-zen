@@ -1,14 +1,3 @@
-import {
-  cn,
-  mapAlignContent,
-  mapAlignItems,
-  mapDisplay,
-  mapFlexDirection,
-  mapFlexWrap,
-  mapGap,
-  mapJustifyContent,
-  mapJustifyItems,
-} from '@/lib/tailwind';
 import type {
   AlignContent,
   AlignItems,
@@ -21,6 +10,17 @@ import type {
   Responsive,
 } from '@/lib/types';
 import { Box, type BoxProps } from './Box';
+import {
+  cn,
+  mapAlignContent,
+  mapAlignItems,
+  mapDisplay,
+  mapFlexDirection,
+  mapFlexWrap,
+  mapGap,
+  mapJustifyContent,
+  mapJustifyItems,
+} from './lib/tailwind';
 
 export interface FlexboxProps extends Omit<BoxProps, 'display' | 'gap'> {
   display?: Responsive<FlexDisplay>;
