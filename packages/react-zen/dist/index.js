@@ -1,16 +1,32 @@
 'use strict';
 
-var reactAriaComponents = require('react-aria-components');
+var accordion = require('@base-ui/react/accordion');
 var lucide_react_star = require('lucide-react');
 var react = require('react');
-var tailwindVariants = require('tailwind-variants');
-var jsxRuntime = require('react/jsx-runtime');
 var clsx = require('clsx');
 var tailwindMerge = require('tailwind-merge');
-var date = require('@internationalized/date');
+var jsxRuntime = require('react/jsx-runtime');
+var tailwindVariants = require('tailwind-variants');
+var button$1 = require('@base-ui/react/button');
+var dialog = require('@base-ui/react/dialog');
+var menu = require('@base-ui/react/menu');
+var popover = require('@base-ui/react/popover');
+var tooltip$1 = require('@base-ui/react/tooltip');
+var reactDayPicker = require('react-day-picker');
+var checkbox$1 = require('@base-ui/react/checkbox');
+var combobox = require('@base-ui/react/combobox');
+var select = require('@base-ui/react/select');
 var reactHookForm = require('react-hook-form');
 var zustand = require('zustand');
 var web = require('@react-spring/web');
+var progress = require('@base-ui/react/progress');
+var radio = require('@base-ui/react/radio');
+var radioGroup = require('@base-ui/react/radio-group');
+var slider = require('@base-ui/react/slider');
+var _switch = require('@base-ui/react/switch');
+var tabs = require('@base-ui/react/tabs');
+var toggle = require('@base-ui/react/toggle');
+var toggleGroup = require('@base-ui/react/toggle-group');
 
 function _interopNamespace(e) {
   if (e && e.__esModule) return e;
@@ -49,391 +65,6 @@ var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "defau
 // src/components/icons.tsx
 var icons_exports = {};
 __reExport(icons_exports, lucide_react_star__namespace);
-function resolveRender(render, props, defaultElement) {
-  if (!render) {
-    return defaultElement;
-  }
-  if (typeof render === "function") {
-    return render(props);
-  }
-  if (react.isValidElement(render)) {
-    const renderProps = render.props;
-    const children = renderProps.children !== void 0 ? renderProps.children : props.children;
-    return react.cloneElement(render, {
-      ...props,
-      ...renderProps,
-      children,
-      // Merge classNames if both exist
-      className: renderProps.className ? `${props.className || ""} ${renderProps.className}`.trim() : props.className
-    });
-  }
-  return defaultElement;
-}
-var button = tailwindVariants.tv({
-  base: [
-    "inline-flex items-center justify-center gap-3 whitespace-nowrap",
-    "font-medium rounded border border-transparent cursor-pointer",
-    "transition-colors leading-normal relative no-underline",
-    "outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface-base"
-  ],
-  variants: {
-    variant: {
-      default: [
-        "bg-interactive text-foreground-primary",
-        "hover:bg-interactive-hover",
-        "pressed:bg-interactive-pressed"
-      ],
-      primary: [
-        "bg-primary text-primary-foreground",
-        "hover:opacity-90",
-        "pressed:opacity-80",
-        "disabled:opacity-50"
-      ],
-      outline: [
-        "bg-surface-base border-edge shadow-sm text-foreground-primary",
-        "hover:border-edge-strong",
-        "pressed:bg-surface-raised",
-        "disabled:bg-surface-disabled"
-      ],
-      quiet: ["bg-transparent", "hover:bg-interactive", "pressed:bg-interactive-hover"],
-      danger: [
-        "bg-status-error text-white",
-        "hover:opacity-90",
-        "pressed:opacity-80",
-        "disabled:opacity-50"
-      ],
-      zero: ["bg-transparent border-0", "hover:bg-transparent", "pressed:bg-transparent"]
-    },
-    size: {
-      xs: "text-sm py-1 px-2",
-      sm: "text-base py-1.5 px-2.5",
-      md: "text-base py-2 px-3",
-      lg: "text-lg py-2.5 px-4",
-      xl: "text-xl py-3 px-5"
-    }
-  },
-  defaultVariants: {
-    variant: "default",
-    size: "md"
-  }
-});
-tailwindVariants.tv({
-  base: [
-    "flex items-center px-3 gap-3",
-    "text-base rounded border border-edge bg-surface-base shadow-sm",
-    "leading-6 relative text-foreground-primary",
-    "focus-within:border-edge-strong",
-    "focus-within:ring-2 focus-within:ring-focus-ring focus-within:ring-offset-1 focus-within:ring-offset-surface-base"
-  ],
-  variants: {
-    variant: {
-      default: "",
-      quiet: "border-transparent shadow-none bg-transparent focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent"
-    }
-  },
-  compoundVariants: [
-    {
-      class: "readonly:bg-surface-raised"
-    },
-    {
-      class: "disabled:bg-surface-disabled disabled:opacity-50 disabled:cursor-not-allowed"
-    }
-  ]
-});
-tailwindVariants.tv({
-  base: [
-    "flex items-center justify-between",
-    "gap-3 text-base py-2 px-3 min-w-[120px]",
-    "cursor-pointer outline-none rounded",
-    "text-foreground-primary",
-    "hovered:bg-interactive",
-    "focused:bg-interactive",
-    "focus-visible:bg-interactive",
-    "disabled:text-foreground-disabled disabled:cursor-default",
-    "selected:font-semibold"
-  ]
-});
-tailwindVariants.tv({
-  base: [
-    "fixed inset-0",
-    "bg-black/80 flex items-center justify-center",
-    "z-[9999]",
-    "entering:animate-modal-fade-in",
-    "exiting:animate-modal-fade-out"
-  ]
-});
-tailwindVariants.tv({
-  base: "relative z-[9999]",
-  variants: {
-    position: {
-      center: "entering:animate-modal-zoom-in",
-      left: [
-        "absolute top-0 left-0 bottom-0 m-auto",
-        "w-[calc(100dvw-var(--modal-offset,0))]",
-        "entering:animate-modal-slide-left-in",
-        "exiting:animate-modal-slide-left-out"
-      ],
-      right: [
-        "absolute top-0 right-0 bottom-0 m-auto",
-        "w-[calc(100dvw-var(--modal-offset,0))]",
-        "entering:animate-modal-slide-right-in",
-        "exiting:animate-modal-slide-right-out"
-      ],
-      top: [
-        "absolute top-0 left-0 right-0 m-auto",
-        "h-[calc(100dvh-var(--modal-offset,0))]",
-        "entering:animate-modal-slide-up-in",
-        "exiting:animate-modal-slide-up-out"
-      ],
-      bottom: [
-        "absolute bottom-0 left-0 right-0 m-auto",
-        "h-[calc(100dvh-var(--modal-offset,0))]",
-        "entering:animate-modal-slide-down-in",
-        "exiting:animate-modal-slide-down-out"
-      ],
-      fullscreen: ["w-dvw h-dvh rounded-none", "entering:animate-modal-fade-in"]
-    }
-  },
-  defaultVariants: {
-    position: "center"
-  }
-});
-tailwindVariants.tv({
-  base: [
-    "bg-surface-overlay border border-edge-muted rounded-lg shadow-lg p-4",
-    "entering:animate-popover-in",
-    "exiting:animate-popover-out"
-  ],
-  variants: {
-    placement: {
-      top: "[--tw-translate:translateY(8px)]",
-      bottom: "[--tw-translate:translateY(-8px)]",
-      left: "[--tw-translate:translateX(8px)]",
-      right: "[--tw-translate:translateX(-8px)]"
-    }
-  }
-});
-var tooltip = tailwindVariants.tv({
-  base: [
-    "bg-surface-inverted text-surface-base text-base px-2 py-1 rounded",
-    "entering:animate-popover-in",
-    "exiting:animate-popover-out"
-  ]
-});
-var checkbox = tailwindVariants.tv({
-  slots: {
-    root: [
-      "group flex items-center gap-3",
-      "text-base cursor-pointer",
-      "disabled:text-foreground-disabled disabled:cursor-default"
-    ],
-    box: [
-      "flex items-center justify-center",
-      "w-5 h-5 rounded border border-edge bg-surface-base",
-      "shadow-sm transition-colors",
-      "group-selected:bg-primary group-selected:border-primary group-selected:text-primary-foreground",
-      "group-indeterminate:bg-surface-base group-indeterminate:text-foreground-primary",
-      "group-disabled:bg-surface-disabled",
-      "group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1"
-    ],
-    icon: [
-      "hidden",
-      "group-selected:flex",
-      "group-indeterminate:flex",
-      "items-center justify-center"
-    ]
-  }
-});
-var switchVariant = tailwindVariants.tv({
-  slots: {
-    root: [
-      "group flex items-center gap-3",
-      "text-base cursor-pointer",
-      "disabled:opacity-50 disabled:cursor-default"
-    ],
-    track: [
-      "flex items-center w-10 h-6 px-1 rounded-full",
-      "bg-interactive",
-      "transition-colors",
-      "group-selected:bg-primary",
-      "group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1"
-    ],
-    thumb: [
-      "w-4 h-4 rounded-full",
-      "bg-surface-base shadow-sm",
-      "transition-transform",
-      "group-selected:translate-x-4"
-    ]
-  }
-});
-tailwindVariants.tv({
-  slots: {
-    root: "flex flex-col",
-    list: ["flex gap-1 border-b border-edge-muted"],
-    tab: [
-      "px-4 py-2 text-base font-medium cursor-pointer",
-      "text-foreground-muted outline-none",
-      "border-b-2 border-transparent -mb-px",
-      "hovered:text-foreground-primary",
-      "selected:text-foreground-primary selected:border-primary",
-      "disabled:text-foreground-disabled disabled:cursor-default",
-      "focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
-    ],
-    panel: "py-4"
-  }
-});
-tailwindVariants.tv({
-  base: "text-foreground-primary",
-  variants: {
-    size: {
-      xs: "text-xs",
-      sm: "text-sm",
-      base: "text-base",
-      lg: "text-lg",
-      xl: "text-xl",
-      "2xl": "text-2xl",
-      "3xl": "text-3xl",
-      "4xl": "text-4xl"
-    },
-    color: {
-      default: "",
-      muted: "text-foreground-muted",
-      disabled: "text-foreground-disabled"
-    },
-    weight: {
-      thin: "font-thin",
-      extralight: "font-extralight",
-      light: "font-light",
-      normal: "font-normal",
-      medium: "font-medium",
-      semibold: "font-semibold",
-      bold: "font-bold",
-      extrabold: "font-extrabold",
-      black: "font-black"
-    }
-  },
-  defaultVariants: {
-    size: "sm"
-  }
-});
-tailwindVariants.tv({
-  base: "font-semibold text-foreground-primary",
-  variants: {
-    size: {
-      sm: "text-sm",
-      base: "text-base",
-      lg: "text-lg",
-      xl: "text-xl",
-      "2xl": "text-2xl",
-      "3xl": "text-3xl",
-      "4xl": "text-4xl",
-      "5xl": "text-5xl",
-      "6xl": "text-6xl"
-    }
-  },
-  defaultVariants: {
-    size: "2xl"
-  }
-});
-var alertBanner = tailwindVariants.tv({
-  base: ["w-full flex items-start gap-3 px-4 py-3 rounded-lg", "text-base"],
-  variants: {
-    variant: {
-      info: "bg-status-info-bg text-status-info-text",
-      success: "bg-status-success-bg text-status-success-text",
-      warning: "bg-status-warning-bg text-status-warning-text",
-      error: "bg-status-error-bg text-status-error-text"
-    }
-  },
-  defaultVariants: {
-    variant: "info"
-  }
-});
-tailwindVariants.tv({
-  base: "inline-flex items-center gap-2",
-  slots: {
-    dot: "w-2 h-2 rounded-full",
-    label: "text-base"
-  },
-  variants: {
-    color: {
-      gray: { dot: "bg-content-muted" },
-      green: { dot: "bg-status-success" },
-      yellow: { dot: "bg-status-warning" },
-      red: { dot: "bg-status-error" },
-      blue: { dot: "bg-status-info" }
-    }
-  },
-  defaultVariants: {
-    color: "gray"
-  }
-});
-var toast = tailwindVariants.tv({
-  base: [
-    "flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg",
-    "bg-surface-overlay",
-    "border border-edge-muted",
-    "text-base",
-    "entering:animate-toast-in",
-    "exiting:animate-toast-out"
-  ],
-  variants: {
-    variant: {
-      default: "",
-      success: "bg-status-success-bg text-status-success-text",
-      error: "bg-status-error-bg text-status-error-text"
-    }
-  }
-});
-var tag = tailwindVariants.tv({
-  slots: {
-    base: [
-      "inline-flex items-center gap-1 px-2 py-0.5 rounded text-sm",
-      "cursor-default outline-none",
-      "focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-1"
-    ],
-    removeButton: [
-      "flex items-center justify-center rounded-full p-0.5 -mr-1",
-      "cursor-pointer outline-none",
-      "hover:bg-black/10 dark:hover:bg-white/10",
-      "pressed:bg-black/20 dark:pressed:bg-white/20"
-    ]
-  },
-  variants: {
-    variant: {
-      default: {
-        base: "bg-interactive text-foreground-primary"
-      },
-      outline: {
-        base: "bg-transparent border border-edge text-foreground-primary"
-      },
-      primary: {
-        base: "bg-primary text-primary-foreground"
-      }
-    }
-  },
-  defaultVariants: {
-    variant: "default"
-  }
-});
-function Button({
-  variant,
-  size = "md",
-  render,
-  preventFocusOnPress = true,
-  className,
-  children,
-  ...props
-}) {
-  const buttonClassName = button({ variant, size, className });
-  const renderProps = {
-    ...props,
-    className: buttonClassName,
-    children
-  };
-  const defaultElement = /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Button, { ...props, preventFocusOnPress, className: buttonClassName, children });
-  return resolveRender(render, renderProps, defaultElement);
-}
 function cn(...inputs) {
   return tailwindMerge.twMerge(clsx.clsx(inputs));
 }
@@ -2480,6 +2111,26 @@ function Icon({
   const clonedChild = react.isValidElement(children) ? react.cloneElement(children, svgProps) : children;
   return /* @__PURE__ */ jsxRuntime.jsx("span", { ...props, className: wrapperClasses, style: wrapperStyle, children: clonedChild });
 }
+function resolveRender(render, props, defaultElement) {
+  if (!render) {
+    return defaultElement;
+  }
+  if (typeof render === "function") {
+    return render(props);
+  }
+  if (react.isValidElement(render)) {
+    const renderProps = render.props;
+    const children = renderProps.children !== void 0 ? renderProps.children : props.children;
+    return react.cloneElement(render, {
+      ...props,
+      ...renderProps,
+      children,
+      // Merge classNames if both exist
+      className: renderProps.className ? `${props.className || ""} ${renderProps.className}`.trim() : props.className
+    });
+  }
+  return defaultElement;
+}
 function Text({
   color,
   size = "base",
@@ -2537,49 +2188,54 @@ function Text({
   const defaultElement = /* @__PURE__ */ jsxRuntime.jsx(Component, { ...props, className: classes, children });
   return resolveRender(render, renderProps, defaultElement);
 }
-function Accordion({ className, children, ...props }) {
+function Accordion({
+  className,
+  children,
+  type,
+  allowsMultipleExpanded,
+  expandedKeys,
+  defaultExpandedKeys,
+  onExpandedChange,
+  ...props
+}) {
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.DisclosureGroup,
+    accordion.Accordion.Root,
     {
       ...props,
+      multiple: type === "multiple" || allowsMultipleExpanded,
+      value: expandedKeys ? Array.from(expandedKeys) : void 0,
+      defaultValue: defaultExpandedKeys ? Array.from(defaultExpandedKeys) : void 0,
+      onValueChange: (value) => onExpandedChange?.(new Set(value)),
       className: cn("flex flex-col items-start w-full gap-2 text-base", className),
       children
     }
   );
 }
-function AccordionItem({ className, children, ...props }) {
+function AccordionItem({
+  id,
+  value,
+  isDisabled,
+  className,
+  children,
+  ...props
+}) {
   const [trigger, panel] = children;
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Disclosure, { ...props, className: cn("w-full cursor-pointer group", className), children: ({ isExpanded }) => /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-    /* @__PURE__ */ jsxRuntime.jsxs(
-      Button,
-      {
-        slot: "trigger",
-        variant: "zero",
-        className: "w-full justify-between font-bold py-2 px-0",
-        children: [
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    accordion.Accordion.Item,
+    {
+      ...props,
+      value: value || id,
+      disabled: isDisabled,
+      className: cn("w-full cursor-pointer group", className),
+      children: [
+        /* @__PURE__ */ jsxRuntime.jsx(accordion.Accordion.Header, { children: /* @__PURE__ */ jsxRuntime.jsxs(accordion.Accordion.Trigger, { className: "w-full flex items-center justify-between font-bold py-2 px-0", children: [
           /* @__PURE__ */ jsxRuntime.jsx(Text, { children: trigger }),
-          /* @__PURE__ */ jsxRuntime.jsx(
-            Icon,
-            {
-              className: cn("transition-transform duration-200", isExpanded && "rotate-90"),
-              size: "sm",
-              children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {})
-            }
-          )
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxRuntime.jsx(
-      reactAriaComponents.DisclosurePanel,
-      {
-        className: cn(
-          "overflow-hidden transition-all duration-300 ease-out",
-          isExpanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-        ),
-        children: panel
-      }
-    )
-  ] }) });
+          /* @__PURE__ */ jsxRuntime.jsx(Icon, { className: "transition-transform duration-200 group-data-[open]:rotate-90", size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) })
+        ] }) }),
+        /* @__PURE__ */ jsxRuntime.jsx(accordion.Accordion.Panel, { className: "overflow-hidden transition-all duration-300 ease-out h-[var(--accordion-panel-height)] data-[ending-style]:h-0 data-[starting-style]:h-0", children: panel })
+      ]
+    }
+  );
 }
 function toStringValue(value) {
   if (value === void 0 || value === null) return void 0;
@@ -2629,7 +2285,11 @@ var Box = react.forwardRef(function Box2({
   cursor,
   opacity,
   pointerEvents,
+  alignContent,
+  alignItems,
   alignSelf,
+  justifyContent,
+  justifyItems,
   justifySelf,
   flexBasis,
   flexGrow,
@@ -2696,7 +2356,11 @@ var Box = react.forwardRef(function Box2({
     mapCursor(cursor),
     mapOpacity(opacity),
     mapPointerEvents(pointerEvents),
+    mapAlignContent(alignContent),
+    mapAlignItems(alignItems),
     mapAlignSelf(alignSelf),
+    mapJustifyContent(justifyContent),
+    mapJustifyItems(justifyItems),
     theme && `${theme}-theme`,
     mapStateStyles("hover", hover),
     mapStateStyles("focus", focus),
@@ -2787,6 +2451,353 @@ function Column({ reverse, children, ...props }) {
 function Row({ reverse, children, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(Flexbox, { ...props, direction: reverse ? "row-reverse" : "row", children });
 }
+var button = tailwindVariants.tv({
+  base: [
+    "inline-flex items-center justify-center gap-3 whitespace-nowrap",
+    "font-medium rounded border border-transparent cursor-pointer",
+    "transition-colors leading-normal relative no-underline",
+    "outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface-base"
+  ],
+  variants: {
+    variant: {
+      default: [
+        "bg-interactive text-foreground-primary",
+        "hover:bg-interactive-hover",
+        "pressed:bg-interactive-pressed"
+      ],
+      primary: [
+        "bg-primary text-primary-foreground",
+        "hover:opacity-90",
+        "pressed:opacity-80",
+        "disabled:opacity-50"
+      ],
+      outline: [
+        "bg-surface-base border-edge shadow-sm text-foreground-primary",
+        "hover:border-edge-strong",
+        "pressed:bg-surface-raised",
+        "disabled:bg-surface-disabled"
+      ],
+      quiet: ["bg-transparent", "hover:bg-interactive", "pressed:bg-interactive-hover"],
+      danger: [
+        "bg-status-error text-white",
+        "hover:opacity-90",
+        "pressed:opacity-80",
+        "disabled:opacity-50"
+      ],
+      zero: ["bg-transparent border-0", "hover:bg-transparent", "pressed:bg-transparent"]
+    },
+    size: {
+      xs: "text-sm py-1 px-2",
+      sm: "text-base py-1.5 px-2.5",
+      md: "text-base py-2 px-3",
+      lg: "text-lg py-2.5 px-4",
+      xl: "text-xl py-3 px-5"
+    }
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md"
+  }
+});
+tailwindVariants.tv({
+  base: [
+    "flex items-center px-3 gap-3",
+    "text-base rounded border border-edge bg-surface-base shadow-sm",
+    "leading-6 relative text-foreground-primary",
+    "focus-within:border-edge-strong",
+    "focus-within:ring-2 focus-within:ring-focus-ring focus-within:ring-offset-1 focus-within:ring-offset-surface-base"
+  ],
+  variants: {
+    variant: {
+      default: "",
+      quiet: "border-transparent shadow-none bg-transparent focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent"
+    }
+  },
+  compoundVariants: [
+    {
+      class: "readonly:bg-surface-raised"
+    },
+    {
+      class: "disabled:bg-surface-disabled disabled:opacity-50 disabled:cursor-not-allowed"
+    }
+  ]
+});
+tailwindVariants.tv({
+  base: [
+    "flex items-center justify-between",
+    "gap-3 text-base py-2 px-3 min-w-[120px]",
+    "cursor-pointer outline-none rounded",
+    "text-foreground-primary",
+    "hovered:bg-interactive",
+    "focused:bg-interactive",
+    "focus-visible:bg-interactive",
+    "disabled:text-foreground-disabled disabled:cursor-default",
+    "selected:font-semibold"
+  ]
+});
+tailwindVariants.tv({
+  base: [
+    "fixed inset-0",
+    "bg-black/80 flex items-center justify-center",
+    "z-[9999]",
+    "entering:animate-modal-fade-in",
+    "exiting:animate-modal-fade-out"
+  ]
+});
+tailwindVariants.tv({
+  base: "relative z-[9999]",
+  variants: {
+    position: {
+      center: "entering:animate-modal-zoom-in",
+      left: [
+        "absolute top-0 left-0 bottom-0 m-auto",
+        "w-[calc(100dvw-var(--modal-offset,0))]",
+        "entering:animate-modal-slide-left-in",
+        "exiting:animate-modal-slide-left-out"
+      ],
+      right: [
+        "absolute top-0 right-0 bottom-0 m-auto",
+        "w-[calc(100dvw-var(--modal-offset,0))]",
+        "entering:animate-modal-slide-right-in",
+        "exiting:animate-modal-slide-right-out"
+      ],
+      top: [
+        "absolute top-0 left-0 right-0 m-auto",
+        "h-[calc(100dvh-var(--modal-offset,0))]",
+        "entering:animate-modal-slide-up-in",
+        "exiting:animate-modal-slide-up-out"
+      ],
+      bottom: [
+        "absolute bottom-0 left-0 right-0 m-auto",
+        "h-[calc(100dvh-var(--modal-offset,0))]",
+        "entering:animate-modal-slide-down-in",
+        "exiting:animate-modal-slide-down-out"
+      ],
+      fullscreen: ["w-dvw h-dvh rounded-none", "entering:animate-modal-fade-in"]
+    }
+  },
+  defaultVariants: {
+    position: "center"
+  }
+});
+tailwindVariants.tv({
+  base: [
+    "bg-surface-overlay border border-edge-muted rounded-lg shadow-lg p-4",
+    "entering:animate-popover-in",
+    "exiting:animate-popover-out"
+  ],
+  variants: {
+    placement: {
+      top: "[--tw-translate:translateY(8px)]",
+      bottom: "[--tw-translate:translateY(-8px)]",
+      left: "[--tw-translate:translateX(8px)]",
+      right: "[--tw-translate:translateX(-8px)]"
+    }
+  }
+});
+var tooltip = tailwindVariants.tv({
+  base: [
+    "bg-surface-inverted text-surface-base text-base px-2 py-1 rounded",
+    "entering:animate-popover-in",
+    "exiting:animate-popover-out"
+  ]
+});
+var checkbox = tailwindVariants.tv({
+  slots: {
+    root: [
+      "group flex items-center gap-3",
+      "text-base cursor-pointer",
+      "disabled:text-foreground-disabled disabled:cursor-default"
+    ],
+    box: [
+      "flex items-center justify-center",
+      "w-5 h-5 rounded border border-edge bg-surface-base",
+      "shadow-sm transition-colors",
+      "group-selected:bg-primary group-selected:border-primary group-selected:text-primary-foreground",
+      "group-indeterminate:bg-surface-base group-indeterminate:text-foreground-primary",
+      "group-disabled:bg-surface-disabled",
+      "group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1"
+    ],
+    icon: [
+      "hidden",
+      "group-selected:flex",
+      "group-indeterminate:flex",
+      "items-center justify-center"
+    ]
+  }
+});
+var switchVariant = tailwindVariants.tv({
+  slots: {
+    root: [
+      "group flex items-center gap-3",
+      "text-base cursor-pointer",
+      "disabled:opacity-50 disabled:cursor-default"
+    ],
+    track: [
+      "flex items-center w-10 h-6 px-1 rounded-full",
+      "bg-interactive",
+      "transition-colors",
+      "group-selected:bg-primary",
+      "group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1"
+    ],
+    thumb: [
+      "w-4 h-4 rounded-full",
+      "bg-surface-base shadow-sm",
+      "transition-transform",
+      "group-selected:translate-x-4"
+    ]
+  }
+});
+tailwindVariants.tv({
+  slots: {
+    root: "flex flex-col",
+    list: ["flex gap-1 border-b border-edge-muted"],
+    tab: [
+      "px-4 py-2 text-base font-medium cursor-pointer",
+      "text-foreground-muted outline-none",
+      "border-b-2 border-transparent -mb-px",
+      "hovered:text-foreground-primary",
+      "selected:text-foreground-primary selected:border-primary",
+      "disabled:text-foreground-disabled disabled:cursor-default",
+      "focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
+    ],
+    panel: "py-4"
+  }
+});
+tailwindVariants.tv({
+  base: "text-foreground-primary",
+  variants: {
+    size: {
+      xs: "text-xs",
+      sm: "text-sm",
+      base: "text-base",
+      lg: "text-lg",
+      xl: "text-xl",
+      "2xl": "text-2xl",
+      "3xl": "text-3xl",
+      "4xl": "text-4xl"
+    },
+    color: {
+      default: "",
+      muted: "text-foreground-muted",
+      disabled: "text-foreground-disabled"
+    },
+    weight: {
+      thin: "font-thin",
+      extralight: "font-extralight",
+      light: "font-light",
+      normal: "font-normal",
+      medium: "font-medium",
+      semibold: "font-semibold",
+      bold: "font-bold",
+      extrabold: "font-extrabold",
+      black: "font-black"
+    }
+  },
+  defaultVariants: {
+    size: "sm"
+  }
+});
+tailwindVariants.tv({
+  base: "font-semibold text-foreground-primary",
+  variants: {
+    size: {
+      sm: "text-sm",
+      base: "text-base",
+      lg: "text-lg",
+      xl: "text-xl",
+      "2xl": "text-2xl",
+      "3xl": "text-3xl",
+      "4xl": "text-4xl",
+      "5xl": "text-5xl",
+      "6xl": "text-6xl"
+    }
+  },
+  defaultVariants: {
+    size: "2xl"
+  }
+});
+var alertBanner = tailwindVariants.tv({
+  base: ["w-full flex items-start gap-3 px-4 py-3 rounded-lg", "text-base"],
+  variants: {
+    variant: {
+      info: "bg-status-info-bg text-status-info-text",
+      success: "bg-status-success-bg text-status-success-text",
+      warning: "bg-status-warning-bg text-status-warning-text",
+      error: "bg-status-error-bg text-status-error-text"
+    }
+  },
+  defaultVariants: {
+    variant: "info"
+  }
+});
+tailwindVariants.tv({
+  base: "inline-flex items-center gap-2",
+  slots: {
+    dot: "w-2 h-2 rounded-full",
+    label: "text-base"
+  },
+  variants: {
+    color: {
+      gray: { dot: "bg-content-muted" },
+      green: { dot: "bg-status-success" },
+      yellow: { dot: "bg-status-warning" },
+      red: { dot: "bg-status-error" },
+      blue: { dot: "bg-status-info" }
+    }
+  },
+  defaultVariants: {
+    color: "gray"
+  }
+});
+var toast = tailwindVariants.tv({
+  base: [
+    "flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg",
+    "bg-surface-overlay",
+    "border border-edge-muted",
+    "text-base",
+    "entering:animate-toast-in",
+    "exiting:animate-toast-out"
+  ],
+  variants: {
+    variant: {
+      default: "",
+      success: "bg-status-success-bg text-status-success-text",
+      error: "bg-status-error-bg text-status-error-text"
+    }
+  }
+});
+var tag = tailwindVariants.tv({
+  slots: {
+    base: [
+      "inline-flex items-center gap-1 px-2 py-0.5 rounded text-sm",
+      "cursor-default outline-none",
+      "focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-1"
+    ],
+    removeButton: [
+      "flex items-center justify-center rounded-full p-0.5 -mr-1",
+      "cursor-pointer outline-none",
+      "hover:bg-black/10 dark:hover:bg-white/10",
+      "pressed:bg-black/20 dark:pressed:bg-white/20"
+    ]
+  },
+  variants: {
+    variant: {
+      default: {
+        base: "bg-interactive text-foreground-primary"
+      },
+      outline: {
+        base: "bg-transparent border border-edge text-foreground-primary"
+      },
+      primary: {
+        base: "bg-primary text-primary-foreground"
+      }
+    }
+  },
+  defaultVariants: {
+    variant: "default"
+  }
+});
 var AlertIcons = {
   info: icons_exports.Info,
   success: icons_exports.CircleCheck,
@@ -2828,6 +2839,33 @@ function AlertBanner({
     }
   );
 }
+function Button({
+  variant,
+  size = "md",
+  render,
+  preventFocusOnPress: _preventFocusOnPress = true,
+  isDisabled,
+  onPress,
+  onClick,
+  className,
+  children,
+  ...props
+}) {
+  const buttonClassName = button({ variant, size, className });
+  const renderProps = {
+    ...props,
+    className: buttonClassName,
+    children
+  };
+  const handleClick = (event) => {
+    onClick?.(event);
+    if (!event.defaultPrevented) {
+      onPress?.(event);
+    }
+  };
+  const defaultElement = /* @__PURE__ */ jsxRuntime.jsx(button$1.Button, { ...props, disabled: isDisabled, className: buttonClassName, onClick: handleClick, children });
+  return resolveRender(render, renderProps, defaultElement);
+}
 function Heading({
   size = "2xl",
   spacing = "tight",
@@ -2848,23 +2886,109 @@ function Heading({
     }
   );
 }
+var OverlayContext = react.createContext({ close: () => void 0 });
+var MenuPrimitiveContext = react.createContext(false);
+function useOverlayTrigger() {
+  return react.useContext(OverlayContext);
+}
+function DialogTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
+  const items = react.Children.toArray(children);
+  const trigger = items[0];
+  const target = items[1];
+  const targetOpen = target?.props?.isOpen;
+  const targetOpenChange = target?.props?.onOpenChange;
+  const [uncontrolledOpen, setUncontrolledOpen] = react.useState(defaultOpen ?? false);
+  const controlledOpen = isOpen ?? targetOpen;
+  const open = controlledOpen ?? uncontrolledOpen;
+  const setOpen = (nextOpen) => {
+    if (controlledOpen === void 0) {
+      setUncontrolledOpen(nextOpen);
+    }
+    onOpenChange?.(nextOpen);
+    targetOpenChange?.(nextOpen);
+  };
+  const content = /* @__PURE__ */ jsxRuntime.jsx(OverlayContext.Provider, { value: { close: () => setOpen(false) }, children: target });
+  return /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Root, { open, onOpenChange: setOpen, children: /* @__PURE__ */ jsxRuntime.jsxs(popover.Popover.Root, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Trigger, { render: trigger }),
+    content
+  ] }) });
+}
+function TooltipTrigger({ children, delay, closeDelay }) {
+  const items = react.Children.toArray(children);
+  return /* @__PURE__ */ jsxRuntime.jsx(tooltip$1.Tooltip.Provider, { delay, closeDelay, children: /* @__PURE__ */ jsxRuntime.jsxs(tooltip$1.Tooltip.Root, { children: [
+    /* @__PURE__ */ jsxRuntime.jsx(tooltip$1.Tooltip.Trigger, { render: items[0] }),
+    items[1]
+  ] }) });
+}
+function MenuTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
+  const items = react.Children.toArray(children);
+  const [uncontrolledOpen, setUncontrolledOpen] = react.useState(defaultOpen ?? false);
+  const open = isOpen ?? uncontrolledOpen;
+  const setOpen = (nextOpen) => {
+    if (isOpen === void 0) {
+      setUncontrolledOpen(nextOpen);
+    }
+    onOpenChange?.(nextOpen);
+  };
+  return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Root, { open, onOpenChange: setOpen, children: /* @__PURE__ */ jsxRuntime.jsxs(popover.Popover.Root, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Trigger, { render: items[0] }),
+    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: true, children: items[1] })
+  ] }) });
+}
+function FileTrigger({
+  children,
+  acceptedFileTypes,
+  allowsMultiple,
+  onSelect
+}) {
+  const inputId = react.useId();
+  return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+    react.isValidElement(children) && react.cloneElement(children, {
+      onClick: () => document.getElementById(inputId)?.click()
+    }),
+    /* @__PURE__ */ jsxRuntime.jsx(
+      "input",
+      {
+        id: inputId,
+        className: "sr-only",
+        type: "file",
+        accept: acceptedFileTypes?.join(","),
+        multiple: allowsMultiple,
+        onChange: (event) => onSelect?.(event.target.files)
+      }
+    )
+  ] });
+}
+function Focusable({ children }) {
+  const element = children;
+  return react.cloneElement(element, { tabIndex: element.props.tabIndex ?? 0 });
+}
+function Pressable({
+  children,
+  onPress
+}) {
+  return react.cloneElement(children, { onClick: onPress });
+}
+function RouterProvider({ children }) {
+  return children;
+}
 function Dialog({ title, variant, children, className, ...props }) {
+  const { close } = useOverlayTrigger();
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Dialog,
+    "div",
     {
-      "aria-label": "Dialog",
+      "aria-label": title ? void 0 : "Dialog",
+      role: "dialog",
       ...props,
       className: cn(
         "p-6 shadow-xl bg-surface-base border border-edge rounded relative outline-none overflow-auto",
         variant === "sheet" && "w-full h-full p-0 border-0 rounded-none shadow-none z-[9999]",
         className
       ),
-      children: (dialogProps) => {
-        return /* @__PURE__ */ jsxRuntime.jsxs(Column, { height: "100%", gap: true, children: [
-          title && /* @__PURE__ */ jsxRuntime.jsx(Heading, { size: "xl", children: title }),
-          typeof children === "function" ? children(dialogProps) : children
-        ] });
-      }
+      children: /* @__PURE__ */ jsxRuntime.jsxs(Column, { height: "100%", gap: true, children: [
+        title && /* @__PURE__ */ jsxRuntime.jsx(Heading, { size: "xl", children: title }),
+        typeof children === "function" ? children({ close }) : children
+      ] })
     }
   );
 }
@@ -2910,14 +3034,23 @@ function AlertDialog({
 function Blockquote({ className, children, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(Text, { ...props, as: "blockquote", className: cn("border-l-2 border-primary pl-5", className), children });
 }
-function Breadcrumbs({ children, className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Breadcrumbs, { ...props, className: cn("flex items-center gap-3", className), children });
-}
-function Breadcrumb({ children, className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsxs(
-    reactAriaComponents.Breadcrumb,
+function Breadcrumbs({ children, className, isDisabled, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx("nav", { "aria-label": "Breadcrumb", children: /* @__PURE__ */ jsxRuntime.jsx(
+    "ol",
     {
       ...props,
+      "aria-disabled": isDisabled || void 0,
+      className: cn("flex items-center gap-3", className),
+      children
+    }
+  ) });
+}
+function Breadcrumb({ children, className, isDisabled, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    "li",
+    {
+      ...props,
+      "aria-disabled": isDisabled || void 0,
       className: cn(
         "flex items-center text-base gap-3 list-none",
         "[&_a]:text-foreground-muted [&_a]:no-underline [&_a]:font-normal [&_a]:p-2",
@@ -2932,11 +3065,6 @@ function Breadcrumb({ children, className, ...props }) {
     }
   );
 }
-function toCalendarDate(date$1) {
-  if (date$1) {
-    return new date.CalendarDate(date$1.getFullYear(), date$1.getMonth() + 1, date$1.getDate());
-  }
-}
 function Calendar({
   className,
   value,
@@ -2944,57 +3072,99 @@ function Calendar({
   maxValue,
   defaultValue,
   onChange,
+  isDisabled,
+  isReadOnly,
   ...props
 }) {
-  const handleChange = (date$1) => {
-    onChange?.(date$1.toDate(date.getLocalTimeZone()));
-  };
-  return /* @__PURE__ */ jsxRuntime.jsxs(
-    reactAriaComponents.Calendar,
+  const disabled = [
+    ...minValue ? [{ before: minValue }] : [],
+    ...maxValue ? [{ after: maxValue }] : []
+  ];
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    reactDayPicker.DayPicker,
     {
       ...props,
-      value: toCalendarDate(value),
-      minValue: toCalendarDate(minValue),
-      maxValue: toCalendarDate(maxValue),
-      defaultValue: toCalendarDate(defaultValue),
+      mode: "single",
+      selected: value,
+      defaultMonth: defaultValue || value,
+      disabled: isDisabled ? true : disabled,
+      onSelect: (date) => {
+        if (date && !isReadOnly) {
+          onChange?.(date);
+        }
+      },
       className: cn("w-fit max-w-full text-base", className),
-      onChange: handleChange,
-      children: [
-        /* @__PURE__ */ jsxRuntime.jsxs(Row, { as: "header", alignItems: "center", marginBottom: "4", children: [
-          /* @__PURE__ */ jsxRuntime.jsx(Button, { slot: "previous", variant: "quiet", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { rotate: 180, children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) }) }),
-          /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Heading, { className: "flex-1 m-0 text-center text-base font-bold" }),
-          /* @__PURE__ */ jsxRuntime.jsx(Button, { slot: "next", variant: "quiet", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) }) })
-        ] }),
-        /* @__PURE__ */ jsxRuntime.jsxs(reactAriaComponents.CalendarGrid, { children: [
-          /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.CalendarGridHeader, { children: (day) => /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.CalendarHeaderCell, { className: "font-bold", children: day }) }),
-          /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.CalendarGridBody, { children: (date) => /* @__PURE__ */ jsxRuntime.jsx(
-            reactAriaComponents.CalendarCell,
-            {
-              className: cn(
-                "w-12 leading-[3rem] text-center rounded cursor-pointer outline-none m-0.5",
-                "hover:bg-interactive",
-                "data-[outside-month]:hidden",
-                "data-[focus-visible]:outline-2 data-[focus-visible]:outline-focus-ring data-[focus-visible]:outline-offset-2",
-                "data-[selected]:text-primary-foreground data-[selected]:bg-primary",
-                "data-[disabled]:text-foreground-disabled"
-              ),
-              date
-            }
-          ) })
-        ] })
-      ]
+      classNames: {
+        months: "relative",
+        month: "space-y-4",
+        month_caption: "flex justify-center items-center h-10 font-bold",
+        nav: "absolute inset-x-0 top-0 flex justify-between",
+        button_previous: "inline-flex items-center justify-center size-10 rounded hover:bg-interactive",
+        button_next: "inline-flex items-center justify-center size-10 rounded hover:bg-interactive",
+        month_grid: "border-collapse",
+        weekdays: "flex",
+        weekday: "w-12 text-center font-bold",
+        week: "flex mt-1",
+        day: "size-12 text-center",
+        day_button: "size-12 rounded cursor-pointer outline-none hover:bg-interactive focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2",
+        selected: "[&>button]:text-primary-foreground [&>button]:bg-primary",
+        outside: "invisible",
+        disabled: "text-foreground-disabled pointer-events-none opacity-50",
+        today: "[&>button]:font-bold"
+      },
+      components: {
+        Chevron: ({ orientation }) => /* @__PURE__ */ jsxRuntime.jsx(
+          icons_exports.ChevronRight,
+          {
+            className: cn(
+              "size-4",
+              orientation === "left" && "rotate-180",
+              orientation === "up" && "-rotate-90",
+              orientation === "down" && "rotate-90"
+            )
+          }
+        )
+      }
     }
   );
 }
-function Checkbox({ label, className, children, ...props }) {
-  const isSelected = typeof props.value !== "undefined" ? !!props.value : void 0;
+function Checkbox({
+  label: _label,
+  className,
+  children,
+  isSelected,
+  defaultSelected,
+  isDisabled,
+  isIndeterminate,
+  onChange,
+  value,
+  ...props
+}) {
+  const checked = isSelected ?? (typeof value !== "undefined" ? !!value : void 0);
   const styles = checkbox();
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Checkbox, { ...props, isSelected, className: cn(styles.root(), className), children: ({ isIndeterminate, isSelected: isSelected2 }) => {
-    return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { className: styles.icon(), size: "sm", children: isIndeterminate ? /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Minus, {}) : isSelected2 ? /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) : null }) }),
-      children
-    ] });
-  } });
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    checkbox$1.Checkbox.Root,
+    {
+      ...props,
+      value: typeof value === "string" ? value : void 0,
+      checked,
+      defaultChecked: defaultSelected,
+      disabled: isDisabled,
+      indeterminate: isIndeterminate,
+      className: cn(styles.root(), className),
+      onCheckedChange: onChange,
+      children: [
+        /* @__PURE__ */ jsxRuntime.jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsxRuntime.jsx(
+          checkbox$1.Checkbox.Indicator,
+          {
+            className: styles.icon(),
+            render: isIndeterminate ? /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Minus, {}) : /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {})
+          }
+        ) }),
+        children
+      ]
+    }
+  );
 }
 function Code({ className, children, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
@@ -3026,7 +3196,7 @@ function Label({
       size,
       weight,
       lineHeight,
-      render: (renderProps) => /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Label, { ...renderProps })
+      render: (renderProps) => /* @__PURE__ */ jsxRuntime.jsx("label", { ...renderProps })
     }
   );
 }
@@ -3089,10 +3259,24 @@ function getHighlightColor(color) {
   }
   return { "--highlight-color": color };
 }
+var ListContext = react.createContext({
+  kind: "native",
+  selected: /* @__PURE__ */ new Set(),
+  toggle: () => void 0
+});
+function ListPrimitiveProvider({
+  kind,
+  children
+}) {
+  const value = react.useMemo(
+    () => ({ kind, selected: /* @__PURE__ */ new Set(), toggle: () => void 0 }),
+    [kind]
+  );
+  return /* @__PURE__ */ jsxRuntime.jsx(ListContext.Provider, { value, children });
+}
 function List({
   id,
   highlightColor,
-  showCheckmark = true,
   isFullscreen,
   label,
   value,
@@ -3101,129 +3285,205 @@ function List({
   selectedKeys,
   defaultSelectedKeys,
   onSelectionChange,
+  selectionMode = "none",
   style,
   children,
+  renderEmptyState,
   ...props
 }) {
-  const handleSelectionChange = (keys) => {
-    onSelectionChange?.(keys);
-    if (keys !== "all") {
-      onChange?.([...keys].map(String));
-    }
-  };
+  const parent = react.useContext(ListContext);
+  const [uncontrolled, setUncontrolled] = react.useState(
+    new Set(value || selectedKeys || defaultSelectedKeys)
+  );
+  const selected = new Set(value || selectedKeys || uncontrolled);
   const fieldId = useFieldId(id);
+  const toggle = (key) => {
+    if (selectionMode === "none") {
+      return;
+    }
+    const next = new Set(selectionMode === "multiple" ? selected : []);
+    if (next.has(key)) {
+      next.delete(key);
+    } else {
+      next.add(key);
+    }
+    if (!value && !selectedKeys) {
+      setUncontrolled(next);
+    }
+    onSelectionChange?.(next);
+    onChange?.(Array.from(next, String));
+  };
+  const classes = cn(
+    "grid outline-none overflow-auto gap-1",
+    isFullscreen && "block p-3 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
+    className
+  );
+  if (parent.kind === "select") {
+    return /* @__PURE__ */ jsxRuntime.jsx(select.Select.List, { ...props, id: fieldId, className: classes, style, children });
+  }
+  if (parent.kind === "combobox") {
+    return /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.List, { ...props, id: fieldId, className: classes, style, children });
+  }
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
     label && /* @__PURE__ */ jsxRuntime.jsx(Label, { htmlFor: fieldId, children: label }),
-    /* @__PURE__ */ jsxRuntime.jsx(
-      reactAriaComponents.ListBox,
+    /* @__PURE__ */ jsxRuntime.jsx(ListContext.Provider, { value: { kind: "native", selected, toggle }, children: /* @__PURE__ */ jsxRuntime.jsx(
+      "div",
       {
         id: fieldId,
-        "aria-label": "list",
+        role: "listbox",
+        "aria-multiselectable": selectionMode === "multiple" || void 0,
         ...props,
-        selectedKeys: value || selectedKeys,
-        defaultSelectedKeys: value || defaultSelectedKeys,
-        className: cn(
-          "grid outline-none overflow-auto gap-1",
-          isFullscreen && "block p-3 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
-          className
-        ),
-        onSelectionChange: handleSelectionChange,
+        className: classes,
         style: { ...style, ...getHighlightColor(highlightColor) },
-        children
+        children: children || renderEmptyState?.({})
       }
-    )
+    ) })
   ] });
 }
+var itemClasses = "text-base flex items-center justify-between px-2 py-1.5 gap-3 min-w-[120px] cursor-pointer outline-none rounded hover:bg-interactive data-[highlighted]:bg-interactive data-[disabled]:text-foreground-disabled data-[selected]:font-semibold";
 function ListItem({
   id,
+  value,
   children,
   className,
   showCheckmark = true,
+  isDisabled,
+  onClick,
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.ListBoxItem,
+  const context = react.useContext(ListContext);
+  const itemValue = value || String(id ?? (typeof children === "string" ? children : ""));
+  if (context.kind === "select") {
+    return /* @__PURE__ */ jsxRuntime.jsxs(
+      select.Select.Item,
+      {
+        ...props,
+        value: itemValue,
+        disabled: isDisabled,
+        className: cn(itemClasses, className),
+        children: [
+          /* @__PURE__ */ jsxRuntime.jsx(select.Select.ItemText, { children }),
+          showCheckmark && /* @__PURE__ */ jsxRuntime.jsx(select.Select.ItemIndicator, { children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) }) })
+        ]
+      }
+    );
+  }
+  if (context.kind === "combobox") {
+    return /* @__PURE__ */ jsxRuntime.jsxs(
+      combobox.Combobox.Item,
+      {
+        ...props,
+        value: itemValue,
+        disabled: isDisabled,
+        className: cn(itemClasses, className),
+        children: [
+          children,
+          showCheckmark && /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.ItemIndicator, { children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) }) })
+        ]
+      }
+    );
+  }
+  const isSelected = context.selected.has(itemValue);
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    "div",
     {
       ...props,
-      id,
-      className: cn(
-        "text-base flex items-center justify-between px-2 py-1.5 gap-3 min-w-[120px] cursor-pointer outline-none rounded",
-        "hover:bg-interactive",
-        "data-[focus]:bg-interactive",
-        "data-[disabled]:text-foreground-disabled",
-        "data-[selected]:font-semibold",
-        className
-      ),
-      textValue: typeof children === "string" ? children : id?.toString(),
-      children: ({ isSelected }) => /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+      id: id === void 0 ? void 0 : String(id),
+      role: "option",
+      tabIndex: isDisabled ? void 0 : 0,
+      "aria-disabled": isDisabled || void 0,
+      "aria-selected": isSelected,
+      "data-selected": isSelected || void 0,
+      className: cn(itemClasses, className),
+      onClick: (event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented && !isDisabled) {
+          context.toggle(itemValue);
+        }
+      },
+      onKeyDown: (event) => {
+        props.onKeyDown?.(event);
+        if (!isDisabled && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          context.toggle(itemValue);
+        }
+      },
+      children: [
         children,
         showCheckmark && isSelected && /* @__PURE__ */ jsxRuntime.jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) })
-      ] })
+      ]
     }
   );
 }
 function ListSeparator({ className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Separator, { ...props, className: cn("border-b border-edge-muted", className) });
+  return /* @__PURE__ */ jsxRuntime.jsx("hr", { ...props, className: cn("border-b border-edge-muted", className) });
 }
 function ListSection({ title, className, children, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsxs(reactAriaComponents.ListBoxSection, { ...props, className: cn("[&:not(:last-child)]:mb-4", className), children: [
-    title && /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Header, { className: "text-base font-bold px-2 py-1.5", children: title }),
+  const { kind } = react.useContext(ListContext);
+  const content = /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+    title && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "text-base font-bold px-2 py-1.5", children: title }),
     children
   ] });
-}
-function Popover({ children, isFullscreen, className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Popover,
-    {
-      ...props,
-      className: cn(
-        "zen-popover outline-none",
-        isFullscreen && "block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base [&[data-entering]]:!animate-none [&[data-exiting]]:!animate-none",
-        className
-      ),
-      children
-    }
-  );
+  if (kind === "select") {
+    return /* @__PURE__ */ jsxRuntime.jsx(select.Select.Group, { ...props, className: cn("[&:not(:last-child)]:mb-4", className), children: content });
+  }
+  if (kind === "combobox") {
+    return /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Group, { ...props, className: cn("[&:not(:last-child)]:mb-4", className), children: content });
+  }
+  return /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, role: "group", className: cn("[&:not(:last-child)]:mb-4", className), children: content });
 }
 function ComboBox({
   className,
+  label,
+  placeholder,
+  isDisabled,
+  onChange,
   renderEmptyState,
   listProps,
   popoverProps,
   children,
+  items,
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsxs(reactAriaComponents.ComboBox, { "aria-label": "ComboBox", ...props, className: cn("relative", className), children: [
-    /* @__PURE__ */ jsxRuntime.jsxs(
-      reactAriaComponents.Group,
-      {
-        className: cn(
-          "flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6",
-          "focus-within:border-edge-strong"
-        ),
-        children: [
-          /* @__PURE__ */ jsxRuntime.jsx(
-            reactAriaComponents.Input,
-            {
-              className: cn(
-                "flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted"
-              )
-            }
-          ),
-          /* @__PURE__ */ jsxRuntime.jsx(
-            reactAriaComponents.Button,
-            {
-              className: cn(
-                "flex items-center mr-3 text-foreground-muted hover:text-foreground-primary"
+  const normalizedItems = items?.map(
+    (item) => typeof item === "object" ? item : { label: item, value: item }
+  );
+  const collection = children || normalizedItems?.map((item) => /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value));
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    combobox.Combobox.Root,
+    {
+      ...props,
+      items: normalizedItems,
+      disabled: isDisabled,
+      onValueChange: onChange,
+      children: /* @__PURE__ */ jsxRuntime.jsxs("div", { className: cn("relative", className), children: [
+        label && /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Label, { className: "text-base font-semibold", children: label }),
+        /* @__PURE__ */ jsxRuntime.jsxs(
+          combobox.Combobox.InputGroup,
+          {
+            className: cn(
+              "flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6",
+              "focus-within:border-edge-strong"
+            ),
+            children: [
+              /* @__PURE__ */ jsxRuntime.jsx(
+                combobox.Combobox.Input,
+                {
+                  placeholder,
+                  className: "flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted"
+                }
               ),
-              children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) })
-            }
-          )
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxRuntime.jsx(Popover, { ...popoverProps, children: /* @__PURE__ */ jsxRuntime.jsx(Box, { padding: "2", border: true, borderRadius: "md", shadow: "lg", className: "bg-surface-overlay", children: /* @__PURE__ */ jsxRuntime.jsx(List, { renderEmptyState, ...listProps, children }) }) })
-  ] });
+              /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Trigger, { className: "flex items-center mr-3 text-foreground-muted hover:text-foreground-primary", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) }) })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Positioner, { ...popoverProps, children: /* @__PURE__ */ jsxRuntime.jsxs(combobox.Combobox.Popup, { className: "p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
+          /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsxRuntime.jsx(List, { ...listProps, children: collection }) }),
+          renderEmptyState && /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Empty, { children: renderEmptyState({}) })
+        ] }) }) })
+      ] })
+    }
+  );
 }
 var TIMEOUT = 2e3;
 function CopyButton({
@@ -3265,17 +3525,20 @@ function TextField({
   isReadOnly,
   isDisabled,
   className,
-  children,
+  children: _children,
   ...props
 }) {
-  const [inputValue, setInputValue] = react.useState(defaultValue || value);
-  const Component = asTextArea ? reactAriaComponents.TextArea : reactAriaComponents.Input;
-  const handleChange = (value2) => {
-    setInputValue(value2);
-    return onChange?.(value2);
+  const [inputValue, setInputValue] = react.useState(defaultValue ?? value ?? "");
+  const Component = asTextArea ? "textarea" : "input";
+  const handleChange = (event) => {
+    const nextValue = event.target.value;
+    setInputValue(nextValue);
+    onChange?.(nextValue);
   };
   react.useEffect(() => {
-    setInputValue(value);
+    if (value !== void 0) {
+      setInputValue(value);
+    }
   }, [value]);
   const inputClasses = cn(
     "flex-1 min-w-0 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted",
@@ -3284,45 +3547,44 @@ function TextField({
   );
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
     label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
-    /* @__PURE__ */ jsxRuntime.jsx(
-      reactAriaComponents.TextField,
+    /* @__PURE__ */ jsxRuntime.jsxs(
+      "div",
       {
-        "aria-label": "Text",
-        ...props,
-        className: cn("relative", className),
-        value: inputValue,
-        isReadOnly,
-        isDisabled,
-        onChange: handleChange,
-        children: /* @__PURE__ */ jsxRuntime.jsxs(
-          reactAriaComponents.Group,
-          {
-            className: cn(
-              "flex items-center w-full text-base border border-edge rounded bg-surface-base shadow-sm leading-6",
-              "focus-within:border-edge-strong",
-              "data-[readonly]:bg-surface-raised",
-              "data-[disabled]:text-foreground-disabled data-[disabled]:bg-surface-disabled",
-              "focus-within:data-[readonly]:border-edge",
-              asTextArea && "p-0",
-              variant === "quiet" && "py-0 px-0 shadow-none rounded-none border-transparent bg-transparent text-[length:inherit] focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent",
-              variant === "quiet" && allowCopy && "pr-3"
-            ),
-            children: [
-              /* @__PURE__ */ jsxRuntime.jsx(Component, { placeholder, className: inputClasses }),
-              allowCopy && /* @__PURE__ */ jsxRuntime.jsx(
-                CopyButton,
-                {
-                  value: inputValue,
-                  className: cn(
-                    "mr-3 text-foreground-muted cursor-pointer hover:text-foreground-primary",
-                    !inputValue && "text-foreground-disabled",
-                    asTextArea && "absolute top-3 right-3 z-10 mr-0"
-                  )
-                }
+        className: cn(
+          "relative flex items-center w-full text-base border border-edge rounded bg-surface-base shadow-sm leading-6",
+          "focus-within:border-edge-strong",
+          isReadOnly && "bg-surface-raised focus-within:border-edge",
+          isDisabled && "text-foreground-disabled bg-surface-disabled",
+          asTextArea && "p-0",
+          variant === "quiet" && "py-0 px-0 shadow-none rounded-none border-transparent bg-transparent text-[length:inherit] focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent",
+          variant === "quiet" && allowCopy && "pr-3",
+          className
+        ),
+        children: [
+          /* @__PURE__ */ jsxRuntime.jsx(
+            Component,
+            {
+              ...props,
+              placeholder,
+              value: inputValue,
+              readOnly: isReadOnly,
+              disabled: isDisabled,
+              className: inputClasses,
+              onChange: handleChange
+            }
+          ),
+          allowCopy && /* @__PURE__ */ jsxRuntime.jsx(
+            CopyButton,
+            {
+              value: String(inputValue),
+              className: cn(
+                "mr-3 text-foreground-muted cursor-pointer hover:text-foreground-primary",
+                !inputValue && "text-foreground-disabled",
+                asTextArea && "absolute top-3 right-3 z-10 mr-0"
               )
-            ]
-          }
-        )
+            }
+          )
+        ]
       }
     )
   ] });
@@ -3536,21 +3798,21 @@ var alignClasses2 = {
   center: "justify-center",
   end: "justify-end"
 };
-function Table({ children, className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Table,
-    {
-      "aria-label": "Table",
-      ...props,
-      className: cn("grid text-base w-full relative", className),
-      children
-    }
-  );
+function Table({
+  children,
+  className,
+  selectionMode: _selectionMode,
+  selectedKeys: _selectedKeys,
+  defaultSelectedKeys: _defaultSelectedKeys,
+  onSelectionChange: _onSelectionChange,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx("table", { ...props, className: cn("grid text-base w-full relative", className), children });
 }
 function TableHeader({ children, className, style, ...props }) {
   const cols = style?.gridTemplateColumns || gridTemplateColumns;
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.TableHeader,
+    "thead",
     {
       ...props,
       className: cn(
@@ -3558,42 +3820,53 @@ function TableHeader({ children, className, style, ...props }) {
         className
       ),
       style: { "--grid-cols": cols },
-      children
+      children: /* @__PURE__ */ jsxRuntime.jsx("tr", { children })
     }
   );
 }
-function TableBody({ children, className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.TableBody, { ...props, className: cn("contents", className), children });
+function TableBody({
+  children,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx("tbody", { ...props, className: cn("contents", className), children });
 }
-function TableRow({ children, className, style, ...props }) {
+function TableRow({ children, className, style, id, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Row,
+    "tr",
     {
       ...props,
+      "data-row-id": id,
       className: cn("grid border-b border-edge-muted min-h-10", className),
       style: { gridTemplateColumns, ...style },
       children
     }
   );
 }
-function TableColumn({ children, className, align, ...props }) {
+function TableColumn({
+  children,
+  className,
+  align,
+  isRowHeader: _isRowHeader,
+  ...props
+}) {
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Column,
+    "th",
     {
       ...props,
+      scope: "col",
       className: cn(
         "flex p-2 text-left font-bold flex-1 first:pl-0 last:pr-0",
         align && alignClasses2[align],
         className
       ),
-      isRowHeader: true,
       children
     }
   );
 }
 function TableCell({ children, className, align, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Cell,
+    "td",
     {
       ...props,
       className: cn(
@@ -3685,23 +3958,17 @@ function Dots({ size = "md", className, color: _color, ...props }) {
     /* @__PURE__ */ jsxRuntime.jsx(Dot, { size })
   ] });
 }
-function Tooltip({ children, className, offset = 8, showArrow, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsxs(reactAriaComponents.Tooltip, { ...props, offset, className: cn("group", tooltip(), className), children: [
-    showArrow && /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.OverlayArrow, { className: "w-2 h-2", children: /* @__PURE__ */ jsxRuntime.jsx(
-      "svg",
-      {
-        viewBox: "0 0 8 8",
-        className: cn(
-          "block fill-surface-inverted",
-          "group-data-[placement=bottom]:rotate-180",
-          "group-data-[placement=left]:-rotate-90",
-          "group-data-[placement=right]:rotate-90"
-        ),
-        children: /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 0 L4 4 L8 0" })
-      }
-    ) }),
+function Tooltip({
+  children,
+  className,
+  sideOffset = 8,
+  showArrow,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(tooltip$1.Tooltip.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(tooltip$1.Tooltip.Positioner, { ...props, sideOffset, children: /* @__PURE__ */ jsxRuntime.jsxs(tooltip$1.Tooltip.Popup, { className: cn("group", tooltip(), className), children: [
+    showArrow && /* @__PURE__ */ jsxRuntime.jsx(tooltip$1.Tooltip.Arrow, { className: "w-2 h-2 fill-surface-inverted" }),
     children
-  ] });
+  ] }) }) });
 }
 function TooltipBubble({
   children,
@@ -4002,9 +4269,15 @@ function HoverTrigger({
       }
     }, closeDelay);
   };
-  return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-    /* @__PURE__ */ jsxRuntime.jsx("span", { ref: triggerRef, onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, children: triggerElement }),
-    /* @__PURE__ */ jsxRuntime.jsx(Popover, { isOpen: open, isNonModal: true, triggerRef, children: /* @__PURE__ */ jsxRuntime.jsx("div", { onMouseEnter: handleMenuEnter, onMouseLeave: handleMenuLeave, children: popupElement }) })
+  return /* @__PURE__ */ jsxRuntime.jsxs(popover.Popover.Root, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(
+      popover.Popover.Trigger,
+      {
+        ref: triggerRef,
+        render: /* @__PURE__ */ jsxRuntime.jsx("span", { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, children: triggerElement })
+      }
+    ),
+    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Popup, { className: "zen-popover outline-none", children: /* @__PURE__ */ jsxRuntime.jsx("div", { onMouseEnter: handleMenuEnter, onMouseLeave: handleMenuLeave, children: popupElement }) }) }) })
   ] });
 }
 var breakpoints = {
@@ -4339,41 +4612,123 @@ function Loading({
     }
   );
 }
-function Menu({ className, children, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Menu,
+
+// src/components/lib/interaction.ts
+function toSelection(value) {
+  return value === "all" ? "all" : new Set(value);
+}
+function selectionToStrings(value) {
+  return value === "all" ? [] : Array.from(value, String);
+}
+var MenuContext = react.createContext({
+  selected: /* @__PURE__ */ new Set(),
+  select: () => void 0
+});
+function Menu({
+  className,
+  children,
+  selectionMode = "none",
+  selectedKeys,
+  defaultSelectedKeys,
+  onSelectionChange,
+  ...props
+}) {
+  const [uncontrolled, setUncontrolled] = react.useState(new Set(defaultSelectedKeys));
+  const useBasePrimitive = react.useContext(MenuPrimitiveContext);
+  const selected = new Set(selectedKeys || uncontrolled);
+  const select = (key) => {
+    if (selectionMode === "none") {
+      return;
+    }
+    const next = new Set(selectionMode === "multiple" ? selected : []);
+    if (next.has(key)) {
+      next.delete(key);
+    } else {
+      next.add(key);
+    }
+    if (!selectedKeys) {
+      setUncontrolled(next);
+    }
+    onSelectionChange?.(next);
+  };
+  const content = /* @__PURE__ */ jsxRuntime.jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsxRuntime.jsx(
+    "div",
     {
       ...props,
+      role: "menu",
       className: cn(
         "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
         className
       ),
       children
     }
-  );
+  ) });
+  if (useBasePrimitive) {
+    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(
+      menu.Menu.Popup,
+      {
+        render: content,
+        className: cn(
+          "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
+          className
+        )
+      }
+    ) }) });
+  }
+  return content;
 }
 function MenuItem({
+  id,
+  value,
   icon,
   label,
   showChecked = true,
   showSubMenuIcon,
+  isDisabled,
+  onAction,
   children,
   className,
+  onClick,
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.MenuItem,
+  const context = react.useContext(MenuContext);
+  const key = value || id || (typeof children === "string" ? children : "");
+  const isSelected = context.selected.has(key);
+  const activate = () => {
+    if (!isDisabled) {
+      context.select(key);
+      onAction?.(key);
+    }
+  };
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    "div",
     {
       ...props,
+      role: "menuitem",
+      tabIndex: isDisabled ? void 0 : -1,
+      "aria-disabled": isDisabled || void 0,
+      "data-selected": isSelected || void 0,
       className: cn(
-        "text-base flex items-center justify-between gap-3 text-base px-2 py-1.5 rounded cursor-pointer outline-none w-full",
-        "hover:bg-interactive",
-        "data-[focus]:bg-interactive",
+        "text-base flex items-center justify-between gap-3 px-2 py-1.5 rounded cursor-pointer outline-none w-full",
+        "hover:bg-interactive focus:bg-interactive",
         "data-[disabled]:text-foreground-disabled",
         "data-[selected]:font-semibold",
         className
       ),
-      children: ({ isSelected }) => /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+      onClick: (event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) {
+          activate();
+        }
+      },
+      onKeyDown: (event) => {
+        props.onKeyDown?.(event);
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          activate();
+        }
+      },
+      children: [
         /* @__PURE__ */ jsxRuntime.jsxs(Row, { alignItems: "center", gap: true, children: [
           icon && /* @__PURE__ */ jsxRuntime.jsx(Icon, { children: icon }),
           label && /* @__PURE__ */ jsxRuntime.jsx(Text, { children: label }),
@@ -4381,12 +4736,12 @@ function MenuItem({
         ] }),
         showChecked && isSelected && /* @__PURE__ */ jsxRuntime.jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) }),
         showSubMenuIcon && /* @__PURE__ */ jsxRuntime.jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) })
-      ] })
+      ]
     }
   );
 }
 function MenuSeparator({ className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Separator, { ...props, className: cn("border-b border-edge-muted my-2 -mx-2", className) });
+  return /* @__PURE__ */ jsxRuntime.jsx("hr", { ...props, className: cn("border-b border-edge-muted my-2 -mx-2", className) });
 }
 function MenuSection({
   title,
@@ -4396,25 +4751,26 @@ function MenuSection({
   children,
   ...props
 }) {
-  const sectionStyle = {
-    maxHeight,
-    overflow: maxHeight ? "auto" : void 0
-  };
-  return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-    title && /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Header, { className: "text-base font-bold px-2 py-1.5", children: title }),
-    /* @__PURE__ */ jsxRuntime.jsx(
-      reactAriaComponents.MenuSection,
-      {
-        ...props,
-        className: cn("[&:not(:last-child)]:mb-4", className),
-        style: { ...sectionStyle, ...style },
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    "div",
+    {
+      ...props,
+      role: "group",
+      className: cn("[&:not(:last-child)]:mb-4", className),
+      style: { maxHeight, overflow: maxHeight ? "auto" : void 0, ...style },
+      children: [
+        title && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "text-base font-bold px-2 py-1.5", children: title }),
         children
-      }
-    )
-  ] });
+      ]
+    }
+  );
 }
-function SubMenuTrigger({ children, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.SubmenuTrigger, { ...props, children });
+function SubMenuTrigger({ children }) {
+  const items = react.Children.toArray(children);
+  return /* @__PURE__ */ jsxRuntime.jsxs(popover.Popover.Root, { children: [
+    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Trigger, { render: items[0] }),
+    items[1]
+  ] });
 }
 var placementClasses2 = {
   center: "zen-modal-center",
@@ -4429,23 +4785,28 @@ function Modal({
   offset,
   children,
   className,
-  style = {},
+  style,
+  isOpen: _isOpen,
+  onOpenChange: _onOpenChange,
   ...props
 }) {
-  if (offset) {
-    style[`--modal-offset`] = offset;
-  }
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.ModalOverlay,
-    {
-      ...props,
-      className: "zen-modal-overlay fixed inset-0 bg-black/80 flex items-center justify-center z-[9999]",
-      style,
-      isDismissable: true,
-      children: /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Modal, { className: cn("relative z-[9999]", placementClasses2[placement], className), children })
-    }
-  );
+  const modalStyle = {
+    ...style,
+    ...offset ? { "--modal-offset": offset } : {}
+  };
+  return /* @__PURE__ */ jsxRuntime.jsxs(dialog.Dialog.Portal, { ...props, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(
+      dialog.Dialog.Popup,
+      {
+        className: cn("relative z-[9999]", placementClasses2[placement], className),
+        style: modalStyle,
+        children
+      }
+    ) })
+  ] });
 }
+Modal.zenOverlayType = "dialog";
 var NavbarContext = react.createContext(void 0);
 var useNavigationContext = () => {
   const context = react.useContext(NavbarContext);
@@ -4603,104 +4964,146 @@ var SvgEyeSlash = (props) => /* @__PURE__ */ jsxRuntime.jsxs("svg", { xmlns: "ht
   )
 ] });
 var EyeSlash_default = SvgEyeSlash;
-function PasswordField({ label, className, ...props }) {
+function PasswordField({
+  label,
+  className,
+  isDisabled,
+  isReadOnly,
+  ...props
+}) {
   const [show, setShow] = react.useState(false);
-  const type = show ? "text" : "password";
-  const handleShowPassword = () => setShow((state) => !state);
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { htmlFor: props.id, children: label }),
     /* @__PURE__ */ jsxRuntime.jsxs(
-      reactAriaComponents.TextField,
+      "div",
       {
-        "aria-label": "Password",
-        ...props,
         className: cn(
           "flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative",
           "focus-within:border-edge-strong",
-          "[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:px-3 [&_input]:bg-transparent [&_input]:w-full [&_input]:flex-1",
-          "[&_input]:placeholder:text-foreground-muted",
           className
         ),
         children: [
-          /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Input, { type }),
-          /* @__PURE__ */ jsxRuntime.jsx(Icon, { className: "mr-3", onClick: handleShowPassword, children: show ? /* @__PURE__ */ jsxRuntime.jsx(EyeSlash_default, {}) : /* @__PURE__ */ jsxRuntime.jsx(Eye_default, {}) })
+          /* @__PURE__ */ jsxRuntime.jsx(
+            "input",
+            {
+              "aria-label": "Password",
+              ...props,
+              type: show ? "text" : "password",
+              disabled: isDisabled,
+              readOnly: isReadOnly,
+              className: "border-0 outline-none py-2 px-3 bg-transparent w-full flex-1 placeholder:text-foreground-muted"
+            }
+          ),
+          /* @__PURE__ */ jsxRuntime.jsx(
+            "button",
+            {
+              type: "button",
+              className: "mr-3",
+              "aria-label": show ? "Hide password" : "Show password",
+              onClick: () => setShow((state) => !state),
+              children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { children: show ? /* @__PURE__ */ jsxRuntime.jsx(EyeSlash_default, {}) : /* @__PURE__ */ jsxRuntime.jsx(Eye_default, {}) })
+            }
+          )
         ]
       }
     )
   ] });
 }
-function Track({ children }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    Box,
+function Popover({
+  children,
+  isFullscreen,
+  className,
+  isOpen: _isOpen,
+  isNonModal: _isNonModal,
+  triggerRef: _triggerRef,
+  onOpenChange: _onOpenChange,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { ...props, children: /* @__PURE__ */ jsxRuntime.jsx(
+    popover.Popover.Popup,
     {
-      position: "relative",
-      borderRadius: "full",
-      overflow: "hidden",
-      className: "w-full h-2 bg-interactive",
+      className: cn(
+        "zen-popover outline-none",
+        isFullscreen && "block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
+        className
+      ),
       children
     }
-  );
+  ) }) });
 }
-function Fill({ percentage }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    Box,
+Popover.zenOverlayType = "popover";
+function ProgressBar({ className, showPercentage, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsxs(progress.Progress.Root, { ...props, className: cn("flex items-center gap-3 w-full", className), children: [
+    /* @__PURE__ */ jsxRuntime.jsx(progress.Progress.Track, { className: "relative overflow-hidden w-full h-2 rounded-full bg-interactive", children: /* @__PURE__ */ jsxRuntime.jsx(progress.Progress.Indicator, { className: "h-full rounded-full bg-primary transition-all" }) }),
+    showPercentage && /* @__PURE__ */ jsxRuntime.jsx(Text, { className: "tabular-nums", children: /* @__PURE__ */ jsxRuntime.jsx(progress.Progress.Value, {}) })
+  ] });
+}
+function ProgressCircle({
+  className,
+  showPercentage,
+  value = 0,
+  min = 0,
+  max = 100,
+  ...props
+}) {
+  const numericValue = value ?? min;
+  const percentage = Math.max(0, Math.min(100, (numericValue - min) / (max - min) * 100));
+  const radius = 45;
+  const circumference = radius * 2 * Math.PI;
+  const offset = circumference - percentage / 100 * circumference;
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    progress.Progress.Root,
     {
-      position: "absolute",
-      top: "0",
-      bottom: "0",
-      left: "0",
-      borderRadius: "full",
-      className: "bg-primary transition-all",
-      style: { width: `${percentage}%` }
+      ...props,
+      value,
+      min,
+      max,
+      className: cn("relative flex justify-center items-center", className),
+      children: [
+        /* @__PURE__ */ jsxRuntime.jsxs(
+          "svg",
+          {
+            viewBox: "0 0 100 100",
+            xmlns: "http://www.w3.org/2000/svg",
+            className: "fill-none stroke-[8px] -rotate-90 w-24 h-24",
+            children: [
+              /* @__PURE__ */ jsxRuntime.jsx("circle", { className: "stroke-interactive", cx: "50", cy: "50", r: radius }),
+              /* @__PURE__ */ jsxRuntime.jsx(
+                "circle",
+                {
+                  className: "stroke-primary",
+                  cx: "50",
+                  cy: "50",
+                  r: radius,
+                  strokeDasharray: `${circumference} ${circumference}`,
+                  strokeDashoffset: offset
+                }
+              )
+            ]
+          }
+        ),
+        showPercentage && /* @__PURE__ */ jsxRuntime.jsx(progress.Progress.Value, { className: "text-base font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" })
+      ]
     }
   );
 }
-function ProgressBar({ className, showPercentage, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.ProgressBar, { ...props, className: cn("flex items-center gap-3 w-full", className), children: ({ percentage = 0, valueText }) => {
-    return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx(Track, { children: /* @__PURE__ */ jsxRuntime.jsx(Fill, { percentage }) }),
-      showPercentage && /* @__PURE__ */ jsxRuntime.jsx(Text, { className: "tabular-nums", children: valueText })
-    ] });
-  } });
-}
-function ProgressCircle({ className, showPercentage, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.ProgressBar, { ...props, className: cn("relative flex justify-center items-center", className), children: ({ percentage = 0, valueText }) => {
-    const radius = 45;
-    const circumference = radius * 2 * Math.PI;
-    const offset = circumference - percentage / 100 * circumference;
-    return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntime.jsxs(
-        "svg",
-        {
-          viewBox: "0 0 100 100",
-          xmlns: "http://www.w3.org/2000/svg",
-          className: "fill-none stroke-[8px] -rotate-90 w-24 h-24",
-          children: [
-            /* @__PURE__ */ jsxRuntime.jsx("circle", { className: "stroke-interactive", cx: "50", cy: "50", r: "45" }),
-            /* @__PURE__ */ jsxRuntime.jsx(
-              "circle",
-              {
-                className: "stroke-primary",
-                cx: "50",
-                cy: "50",
-                r: "45",
-                strokeDasharray: `${circumference} ${circumference}`,
-                strokeDashoffset: offset
-              }
-            )
-          ]
-        }
-      ),
-      showPercentage && /* @__PURE__ */ jsxRuntime.jsx("label", { className: "text-base font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2", children: valueText })
-    ] });
-  } });
-}
-function RadioGroup({ label, children, className, ...props }) {
+function RadioGroup({
+  label,
+  children,
+  className,
+  isDisabled,
+  isReadOnly,
+  onChange,
+  ...props
+}) {
   return /* @__PURE__ */ jsxRuntime.jsxs(
-    reactAriaComponents.RadioGroup,
+    radioGroup.RadioGroup,
     {
       "aria-label": "RadioGroup",
       ...props,
+      disabled: isDisabled,
+      readOnly: isReadOnly,
+      onValueChange: onChange,
       className: cn("flex flex-col gap-2", className),
       children: [
         label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
@@ -4709,17 +5112,18 @@ function RadioGroup({ label, children, className, ...props }) {
     }
   );
 }
-function Radio({ children, className, ...props }) {
+function Radio({ children, className, isDisabled, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Radio,
+    radio.Radio.Root,
     {
       "aria-label": "Radio",
       ...props,
+      disabled: isDisabled,
       className: cn(
         "radio group flex items-center gap-3 cursor-pointer text-base",
         "before:content-[''] before:block before:w-5 before:h-5 before:box-border before:rounded-full",
         "before:border before:border-edge-strong before:bg-surface-base before:transition-all before:duration-200",
-        "data-[selected]:before:border-[6px] data-[selected]:before:border-primary",
+        "data-[checked]:before:border-[6px] data-[checked]:before:border-primary",
         "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
         className
       ),
@@ -4738,55 +5142,67 @@ function SearchField({
   className,
   ...props
 }) {
-  const [search, setSearch] = react.useState(defaultValue);
+  const [search, setSearch] = react.useState(String(value ?? defaultValue));
   const searchValue = useDebounce(search, delay);
-  const handleChange = (value2) => {
-    setSearch(value2);
-    if (delay === 0 || value2 === "") {
-      onSearch?.(value2);
+  const handleChange = (nextValue) => {
+    setSearch(nextValue);
+    if (delay === 0 || nextValue === "") {
+      onSearch?.(nextValue);
     }
-    onChange?.(value2);
+    onChange?.(nextValue);
   };
-  const resetSearch = () => {
-    setSearch("");
-    onSearch?.("");
-    onChange?.("");
-  };
+  react.useEffect(() => {
+    if (value !== void 0) {
+      setSearch(String(value));
+    }
+  }, [value]);
   react.useEffect(() => {
     if (delay > 0) {
       onSearch?.(searchValue);
     }
-  }, [searchValue, delay]);
+  }, [searchValue, delay, onSearch]);
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
-    /* @__PURE__ */ jsxRuntime.jsx(
-      reactAriaComponents.SearchField,
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { htmlFor: props.id, children: label }),
+    /* @__PURE__ */ jsxRuntime.jsxs(
+      "div",
       {
-        "aria-label": "Search",
-        ...props,
-        className: cn("relative", className),
-        onChange: handleChange,
-        children: /* @__PURE__ */ jsxRuntime.jsxs(
-          reactAriaComponents.Group,
-          {
-            className: cn(
-              "flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6",
-              "focus-within:border-edge-strong"
-            ),
-            children: [
-              /* @__PURE__ */ jsxRuntime.jsx(Icon, { className: "ml-3", color: "muted", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Search, {}) }),
-              /* @__PURE__ */ jsxRuntime.jsx(
-                reactAriaComponents.Input,
-                {
-                  placeholder,
-                  value: search,
-                  className: "flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden"
+        role: "search",
+        className: cn(
+          "relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6",
+          "focus-within:border-edge-strong",
+          className
+        ),
+        children: [
+          /* @__PURE__ */ jsxRuntime.jsx(Icon, { className: "ml-3", color: "muted", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Search, {}) }),
+          /* @__PURE__ */ jsxRuntime.jsx(
+            "input",
+            {
+              "aria-label": "Search",
+              ...props,
+              type: "search",
+              placeholder,
+              value: search,
+              className: "flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden",
+              onChange: (event) => handleChange(event.target.value),
+              onKeyDown: (event) => {
+                props.onKeyDown?.(event);
+                if (event.key === "Enter") {
+                  onSearch?.(search);
                 }
-              ),
-              search && /* @__PURE__ */ jsxRuntime.jsx(Icon, { className: "mr-3", size: "sm", color: "muted", onClick: resetSearch, children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.X, {}) })
-            ]
-          }
-        )
+              }
+            }
+          ),
+          search && /* @__PURE__ */ jsxRuntime.jsx(
+            "button",
+            {
+              type: "button",
+              className: "mr-3 text-foreground-muted",
+              "aria-label": "Clear search",
+              onClick: () => handleChange(""),
+              children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.X, {}) })
+            }
+          )
+        ]
       }
     )
   ] });
@@ -4795,7 +5211,9 @@ function Select({
   value,
   defaultValue,
   label,
+  placeholder,
   isLoading,
+  isDisabled,
   allowSearch,
   searchValue,
   searchDelay,
@@ -4810,118 +5228,138 @@ function Select({
   renderValue,
   className,
   children,
+  items,
+  onOpenChange,
   ...props
 }) {
   const [search, setSearch] = react.useState("");
-  const handleChange = (e) => {
-    onChange?.(e);
-  };
-  const handleSearch = (value2) => {
-    setSearch(value2);
-    onSearch?.(value2);
-  };
-  const handleOpenChange = () => {
-    setSearch("");
-    onSearch?.("");
-  };
-  return /* @__PURE__ */ jsxRuntime.jsxs(
-    reactAriaComponents.Select,
+  const normalizedItems = items?.map(
+    (item) => typeof item === "object" ? item : { label: String(item), value: item }
+  );
+  const collection = children || normalizedItems?.map((item) => /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: String(item.value), children: item.label }, item.value));
+  return /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("flex flex-col gap-1", className), children: /* @__PURE__ */ jsxRuntime.jsxs(
+    select.Select.Root,
     {
-      "aria-label": "Select",
       ...props,
-      className: cn("flex flex-col gap-1", className),
+      items: normalizedItems,
       value,
       defaultValue,
-      onChange: handleChange,
+      disabled: isDisabled,
+      onValueChange: onChange,
+      onOpenChange: (open, details) => {
+        if (!open) {
+          setSearch("");
+          onSearch?.("");
+        }
+        onOpenChange?.(open, details);
+      },
       children: [
         label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
         /* @__PURE__ */ jsxRuntime.jsxs(
-          Button,
+          select.Select.Trigger,
           {
-            variant: "outline",
-            ...buttonProps,
-            className: cn("w-full justify-between", buttonProps?.className),
+            render: /* @__PURE__ */ jsxRuntime.jsx(
+              Button,
+              {
+                variant: "outline",
+                ...buttonProps,
+                className: cn("w-full justify-between", buttonProps?.className)
+              }
+            ),
             children: [
-              /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.SelectValue, { children: renderValue }),
+              /* @__PURE__ */ jsxRuntime.jsx(select.Select.Value, { placeholder, children: (selected) => {
+                const defaultChildren = selected ?? placeholder;
+                return typeof renderValue === "function" ? renderValue({
+                  defaultChildren,
+                  isPlaceholder: selected == null
+                }) : renderValue || defaultChildren;
+              } }),
               showIcon && /* @__PURE__ */ jsxRuntime.jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) })
             ]
           }
         ),
-        /* @__PURE__ */ jsxRuntime.jsx(Popover, { ...popoverProps, onOpenChange: handleOpenChange, isFullscreen, children: /* @__PURE__ */ jsxRuntime.jsxs(
-          Column,
+        /* @__PURE__ */ jsxRuntime.jsx(select.Select.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(select.Select.Positioner, { ...popoverProps, children: /* @__PURE__ */ jsxRuntime.jsx(
+          select.Select.Popup,
           {
-            gap: "2",
-            padding: "2",
-            border: true,
-            borderRadius: "md",
-            shadow: "lg",
-            className: "bg-surface-overlay",
-            children: [
+            className: cn(
+              "bg-surface-overlay border border-edge rounded-md shadow-lg outline-none",
+              isFullscreen && "fixed inset-0 rounded-none z-[9999]"
+            ),
+            children: /* @__PURE__ */ jsxRuntime.jsxs(Column, { gap: "2", padding: "2", children: [
               allowSearch && /* @__PURE__ */ jsxRuntime.jsx(
                 SearchField,
                 {
                   className: "mb-2",
                   value: search,
-                  onSearch: handleSearch,
+                  onChange: setSearch,
+                  onSearch: (value2) => {
+                    setSearch(value2);
+                    onSearch?.(value2);
+                  },
                   delay: searchDelay,
                   defaultValue: searchValue,
                   autoFocus: true
                 }
               ),
               isLoading && /* @__PURE__ */ jsxRuntime.jsx(Loading, { icon: "dots", placement: "center", size: "sm", height: "60px" }),
-              /* @__PURE__ */ jsxRuntime.jsx(
+              /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "select", children: /* @__PURE__ */ jsxRuntime.jsx(
                 List,
                 {
                   ...listProps,
                   isFullscreen,
-                  ...isFullscreen && {
-                    shouldSelectOnPressUp: true,
-                    shouldFocusOnHover: false,
-                    autoFocus: "first"
-                  },
                   className: cn("overflow-auto", listProps?.className),
-                  style: { ...listProps?.style, maxHeight, display: isLoading ? "none" : void 0 },
-                  children
+                  style: {
+                    ...listProps?.style,
+                    maxHeight,
+                    display: isLoading ? "none" : void 0
+                  },
+                  children: collection
                 }
-              )
-            ]
+              ) })
+            ] })
           }
-        ) })
+        ) }) })
+      ]
+    }
+  ) });
+}
+function Slider({
+  className,
+  showValue = true,
+  label,
+  isDisabled,
+  onChange,
+  onChangeEnd,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    slider.Slider.Root,
+    {
+      ...props,
+      disabled: isDisabled,
+      onValueChange: onChange,
+      onValueCommitted: onChangeEnd,
+      className: cn("flex flex-col gap-2 w-full", className),
+      children: [
+        /* @__PURE__ */ jsxRuntime.jsxs(Row, { justifyContent: "space-between", alignItems: "center", children: [
+          label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+          showValue && /* @__PURE__ */ jsxRuntime.jsx(slider.Slider.Value, { className: "text-base tabular-nums" })
+        ] }),
+        /* @__PURE__ */ jsxRuntime.jsxs(slider.Slider.Control, { className: "relative h-5 w-full touch-none", children: [
+          /* @__PURE__ */ jsxRuntime.jsx(slider.Slider.Track, { className: "absolute inset-x-0 top-1/2 -translate-y-1/2 h-2 rounded-full bg-interactive overflow-hidden", children: /* @__PURE__ */ jsxRuntime.jsx(slider.Slider.Indicator, { className: "h-full rounded-full bg-primary" }) }),
+          /* @__PURE__ */ jsxRuntime.jsx(
+            slider.Slider.Thumb,
+            {
+              className: cn(
+                "w-5 h-5 rounded-full bg-surface-base border-2 border-primary shadow",
+                "focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2"
+              )
+            }
+          )
+        ] })
       ]
     }
   );
-}
-function Fill2({ percentage }) {
-  const width = `calc(10px + ${percentage}% - ${percentage * 0.2}px)`;
-  return /* @__PURE__ */ jsxRuntime.jsx("div", { className: "absolute inset-y-0 left-0 rounded-full bg-primary", style: { width } });
-}
-function Thumb({ percentage }) {
-  const left = `calc(${percentage}% - ${percentage * 0.2}px)`;
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.SliderThumb,
-    {
-      className: cn(
-        "absolute w-5 h-5 rounded-full bg-surface-base border-2 border-primary shadow",
-        "focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2"
-      ),
-      style: { top: "50%", left, transform: "translateY(-50%)" }
-    }
-  );
-}
-function Slider({ className, showValue = true, label, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsxs(reactAriaComponents.Slider, { ...props, className: cn("flex flex-col gap-2 w-full", className), children: [
-    /* @__PURE__ */ jsxRuntime.jsxs(Row, { justifyContent: "space-between", alignItems: "center", children: [
-      label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
-      showValue && /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.SliderOutput, { className: "text-base tabular-nums" })
-    ] }),
-    /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.SliderTrack, { className: "relative h-5 w-full", children: ({ state }) => {
-      const percentage = state.getThumbPercent(0) * 100;
-      return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-        /* @__PURE__ */ jsxRuntime.jsx("div", { className: "absolute inset-x-0 top-1/2 -translate-y-1/2 h-2 rounded-full bg-interactive overflow-hidden", children: /* @__PURE__ */ jsxRuntime.jsx(Fill2, { percentage }) }),
-        /* @__PURE__ */ jsxRuntime.jsx(Thumb, { percentage })
-      ] });
-    } })
-  ] });
 }
 var variantColors = {
   info: "bg-status-info",
@@ -4949,22 +5387,59 @@ function StatusLight(props) {
     children
   ] });
 }
-function Switch({ label, children, className, ...props }) {
+function Switch({
+  label,
+  children,
+  className,
+  isSelected,
+  defaultSelected,
+  isDisabled,
+  onChange,
+  ...props
+}) {
   const styles = switchVariant();
   return /* @__PURE__ */ jsxRuntime.jsxs(Column, { children: [
     label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
-    /* @__PURE__ */ jsxRuntime.jsxs(reactAriaComponents.Switch, { ...props, className: cn(styles.root(), className), children: [
-      /* @__PURE__ */ jsxRuntime.jsx(Box, { className: styles.track(), children: /* @__PURE__ */ jsxRuntime.jsx(Box, { className: styles.thumb() }) }),
-      children
-    ] })
+    /* @__PURE__ */ jsxRuntime.jsxs(
+      _switch.Switch.Root,
+      {
+        ...props,
+        checked: isSelected,
+        defaultChecked: defaultSelected,
+        disabled: isDisabled,
+        className: cn(styles.root(), className),
+        onCheckedChange: onChange,
+        children: [
+          /* @__PURE__ */ jsxRuntime.jsx("span", { className: styles.track(), children: /* @__PURE__ */ jsxRuntime.jsx(_switch.Switch.Thumb, { className: styles.thumb() }) }),
+          children
+        ]
+      }
+    )
   ] });
 }
-function Tabs({ children, className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Tabs, { ...props, className: cn("grid relative w-full gap-6", className), children });
+function Tabs({
+  children,
+  className,
+  selectedKey,
+  defaultSelectedKey,
+  onSelectionChange,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    tabs.Tabs.Root,
+    {
+      ...props,
+      value: selectedKey,
+      defaultValue: defaultSelectedKey,
+      onValueChange: (value) => onSelectionChange?.(String(value)),
+      className: cn("grid relative w-full gap-6", className),
+      children
+    }
+  );
 }
 function TabList({ children, className, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.TabList,
+    tabs.Tabs.List,
     {
       ...props,
       className: cn(
@@ -4976,15 +5451,18 @@ function TabList({ children, className, ...props }) {
     }
   );
 }
-function Tab({ children, className, ...props }) {
+function Tab({ id, value, isDisabled, href, children, className, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Tab,
+    tabs.Tabs.Tab,
     {
       ...props,
+      value: value || id,
+      disabled: isDisabled,
+      render: href ? /* @__PURE__ */ jsxRuntime.jsx("a", { href }) : void 0,
       className: cn(
         "tab flex items-center justify-center text-base text-foreground-muted py-2 border-b-2 border-transparent select-none -mb-[2px] cursor-pointer outline-none",
-        "data-[hovered]:text-foreground-primary",
-        "data-[selected]:text-foreground-primary data-[selected]:border-b-primary",
+        "hover:text-foreground-primary",
+        "data-[active]:text-foreground-primary data-[active]:border-b-primary",
         "data-[disabled]:text-foreground-disabled data-[disabled]:cursor-default",
         className
       ),
@@ -4992,22 +5470,53 @@ function Tab({ children, className, ...props }) {
     }
   );
 }
-function TabPanel({ children, className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.TabPanel, { ...props, className, children });
+function TabPanel({ id, value, children, className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(tabs.Tabs.Panel, { ...props, value: value || id, className, children });
 }
-function TagGroup({ label, children, className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsxs(reactAriaComponents.TagGroup, { ...props, className: cn("flex flex-col gap-1", className), children: [
-    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
-    /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.TagList, { className: "flex flex-wrap gap-1", children })
-  ] });
+var TagContext = react.createContext({
+  allowsRemoving: false,
+  remove: () => void 0
+});
+function TagGroup({ label, children, className, onRemove, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    TagContext.Provider,
+    {
+      value: {
+        allowsRemoving: !!onRemove,
+        remove: (key) => onRemove?.(/* @__PURE__ */ new Set([key]))
+      },
+      children: /* @__PURE__ */ jsxRuntime.jsxs("div", { ...props, className: cn("flex flex-col gap-1", className), children: [
+        label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+        /* @__PURE__ */ jsxRuntime.jsx("div", { role: "list", className: "flex flex-wrap gap-1", children })
+      ] })
+    }
+  );
 }
-function Tag({ variant, children, className, ...props }) {
-  const textValue = typeof children === "string" ? children : void 0;
+function Tag({ id, variant, children, className, isDisabled, ...props }) {
   const styles = tag({ variant });
-  return /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Tag, { ...props, textValue, className: cn(styles.base(), className), children: ({ allowsRemoving }) => /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-    children,
-    allowsRemoving && /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.Button, { slot: "remove", className: styles.removeButton(), children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "xs", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.X, {}) }) })
-  ] }) });
+  const { allowsRemoving, remove } = react.useContext(TagContext);
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    "div",
+    {
+      ...props,
+      role: "listitem",
+      "aria-disabled": isDisabled || void 0,
+      className: cn(styles.base(), className),
+      children: [
+        children,
+        allowsRemoving && !isDisabled && /* @__PURE__ */ jsxRuntime.jsx(
+          "button",
+          {
+            type: "button",
+            className: styles.removeButton(),
+            "aria-label": `Remove ${typeof children === "string" ? children : "tag"}`,
+            onClick: () => remove(id ?? String(children)),
+            children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "xs", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.X, {}) })
+          }
+        )
+      ]
+    }
+  );
 }
 function getElement(target) {
   return "current" in target ? target.current : target;
@@ -5151,20 +5660,31 @@ function ThemeSwitcher({ className }) {
     }
   );
 }
-function Toggle({ label, children, className, ...props }) {
-  const isSelected = typeof props.value !== "undefined" ? !!props.value : void 0;
+function Toggle({
+  label,
+  children,
+  className,
+  isSelected,
+  defaultSelected,
+  isDisabled,
+  onChange,
+  ...props
+}) {
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
     label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
     /* @__PURE__ */ jsxRuntime.jsx(
-      reactAriaComponents.ToggleButton,
+      toggle.Toggle,
       {
         ...props,
-        isSelected,
+        pressed: isSelected,
+        defaultPressed: defaultSelected,
+        disabled: isDisabled,
+        onPressedChange: onChange,
         className: cn(
           "flex items-center justify-center whitespace-nowrap gap-3 font-medium bg-interactive border border-transparent rounded p-2 relative cursor-pointer",
           "hover:bg-interactive-hover",
           "pressed:bg-interactive-pressed",
-          "data-[selected]:text-primary-foreground data-[selected]:bg-primary",
+          "data-[pressed]:text-primary-foreground data-[pressed]:bg-primary",
           className
         ),
         children
@@ -5187,38 +5707,46 @@ function ToggleGroup({
   ...props
 }) {
   const handleChange = (keys) => {
-    onSelectionChange?.(keys);
-    onChange?.(Array.from(keys).map((k) => k.toString()));
+    onSelectionChange?.(new Set(keys));
+    onChange?.(keys);
   };
-  return /* @__PURE__ */ jsxRuntime.jsxs(
-    reactAriaComponents.TagGroup,
-    {
-      ...props,
-      selectedKeys: value || selectedKeys,
-      defaultSelectedKeys: defaultValue || defaultSelectedKeys,
-      selectionMode,
-      onSelectionChange: handleChange,
-      className: cn(
-        "bg-surface-base shadow-sm border border-edge rounded overflow-hidden",
-        className
-      ),
-      children: [
-        label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
-        /* @__PURE__ */ jsxRuntime.jsx(reactAriaComponents.TagList, { className: "flex flex-row items-center", children })
-      ]
-    }
-  );
+  return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    /* @__PURE__ */ jsxRuntime.jsx(
+      toggleGroup.ToggleGroup,
+      {
+        ...props,
+        value: value || (selectedKeys ? Array.from(selectedKeys) : void 0),
+        defaultValue: defaultValue || (defaultSelectedKeys ? Array.from(defaultSelectedKeys) : void 0),
+        multiple: selectionMode === "multiple",
+        onValueChange: handleChange,
+        className: cn(
+          "bg-surface-base shadow-sm border border-edge rounded overflow-hidden",
+          className
+        ),
+        children
+      }
+    )
+  ] });
 }
-function ToggleGroupItem({ className, children, ...props }) {
+function ToggleGroupItem({
+  id,
+  className,
+  children,
+  isDisabled,
+  ...props
+}) {
   return /* @__PURE__ */ jsxRuntime.jsx(
-    reactAriaComponents.Tag,
+    toggle.Toggle,
     {
       ...props,
+      value: props.value || id,
+      disabled: isDisabled,
       className: cn(
         "text-foreground-muted bg-surface-base font-bold flex items-center justify-center p-2 cursor-pointer outline-none",
         "[&:not(:first-child)]:border-l [&:not(:first-child)]:border-edge",
         "hover:bg-interactive",
-        "data-[selected]:text-foreground-primary data-[selected]:bg-interactive",
+        "data-[pressed]:text-foreground-primary data-[pressed]:bg-interactive",
         "data-[disabled]:text-foreground-disabled",
         className
       ),
@@ -5240,38 +5768,6 @@ function ZenProvider({
   return /* @__PURE__ */ jsxRuntime.jsx(ToastProvider, { ...toast2, children });
 }
 
-Object.defineProperty(exports, "DialogTrigger", {
-  enumerable: true,
-  get: function () { return reactAriaComponents.DialogTrigger; }
-});
-Object.defineProperty(exports, "FileTrigger", {
-  enumerable: true,
-  get: function () { return reactAriaComponents.FileTrigger; }
-});
-Object.defineProperty(exports, "Focusable", {
-  enumerable: true,
-  get: function () { return reactAriaComponents.Focusable; }
-});
-Object.defineProperty(exports, "MenuTrigger", {
-  enumerable: true,
-  get: function () { return reactAriaComponents.MenuTrigger; }
-});
-Object.defineProperty(exports, "Pressable", {
-  enumerable: true,
-  get: function () { return reactAriaComponents.Pressable; }
-});
-Object.defineProperty(exports, "RouterProvider", {
-  enumerable: true,
-  get: function () { return reactAriaComponents.RouterProvider; }
-});
-Object.defineProperty(exports, "SubmenuTrigger", {
-  enumerable: true,
-  get: function () { return reactAriaComponents.SubmenuTrigger; }
-});
-Object.defineProperty(exports, "TooltipTrigger", {
-  enumerable: true,
-  get: function () { return reactAriaComponents.TooltipTrigger; }
-});
 exports.Accordion = Accordion;
 exports.AccordionItem = AccordionItem;
 exports.AlertBanner = AlertBanner;
@@ -5293,9 +5789,12 @@ exports.DataCard = DataCard;
 exports.DataColumn = DataColumn;
 exports.DataTable = DataTable;
 exports.Dialog = Dialog;
+exports.DialogTrigger = DialogTrigger;
 exports.Dots = Dots;
+exports.FileTrigger = FileTrigger;
 exports.Flexbox = Flexbox;
 exports.FloatingTooltip = FloatingTooltip;
+exports.Focusable = Focusable;
 exports.Form = Form;
 exports.FormButtons = FormButtons;
 exports.FormController = FormController;
@@ -5311,6 +5810,7 @@ exports.Image = Image;
 exports.Label = Label;
 exports.List = List;
 exports.ListItem = ListItem;
+exports.ListPrimitiveProvider = ListPrimitiveProvider;
 exports.ListSection = ListSection;
 exports.ListSeparator = ListSeparator;
 exports.Loading = Loading;
@@ -5319,6 +5819,7 @@ exports.Menu = Menu;
 exports.MenuItem = MenuItem;
 exports.MenuSection = MenuSection;
 exports.MenuSeparator = MenuSeparator;
+exports.MenuTrigger = MenuTrigger;
 exports.Modal = Modal;
 exports.Navbar = Navbar;
 exports.NavbarContext = NavbarContext;
@@ -5327,10 +5828,12 @@ exports.PALETTES = PALETTES;
 exports.PaletteSwitcher = PaletteSwitcher;
 exports.PasswordField = PasswordField;
 exports.Popover = Popover;
+exports.Pressable = Pressable;
 exports.ProgressBar = ProgressBar;
 exports.ProgressCircle = ProgressCircle;
 exports.Radio = Radio;
 exports.RadioGroup = RadioGroup;
+exports.RouterProvider = RouterProvider;
 exports.Row = Row;
 exports.SearchField = SearchField;
 exports.Select = Select;
@@ -5338,6 +5841,7 @@ exports.Slider = Slider;
 exports.Spinner = Spinner;
 exports.StatusLight = StatusLight;
 exports.SubMenuTrigger = SubMenuTrigger;
+exports.SubmenuTrigger = SubMenuTrigger;
 exports.Switch = Switch;
 exports.Tab = Tab;
 exports.TabList = TabList;
@@ -5364,6 +5868,7 @@ exports.ToggleGroup = ToggleGroup;
 exports.ToggleGroupItem = ToggleGroupItem;
 exports.Tooltip = Tooltip;
 exports.TooltipBubble = TooltipBubble;
+exports.TooltipTrigger = TooltipTrigger;
 exports.ZenProvider = ZenProvider;
 exports.cn = cn;
 exports.getCssColorValue = getCssColorValue;
@@ -5422,6 +5927,8 @@ exports.mapWidth = mapWidth;
 exports.mapWordBreak = mapWordBreak;
 exports.removeToast = removeToast;
 exports.resolveRender = resolveRender;
+exports.selectionToStrings = selectionToStrings;
+exports.toSelection = toSelection;
 exports.useBreakpoint = useBreakpoint;
 exports.useDebounce = useDebounce;
 exports.useInitTheme = useInitTheme;

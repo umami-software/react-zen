@@ -1,26 +1,35 @@
-import type { ReactNode } from 'react';
-import {
-  Breadcrumb as AriaBreadcrumb,
-  Breadcrumbs as AriaBreadcrumbs,
-  type BreadcrumbProps,
-  type BreadcrumbsProps,
-} from 'react-aria-components';
+import type { HTMLAttributes, LiHTMLAttributes, ReactNode } from 'react';
 import { ChevronRight } from '@/components/icons';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
 
-export function Breadcrumbs({ children, className, ...props }: BreadcrumbsProps<any>) {
+export interface BreadcrumbsProps extends HTMLAttributes<HTMLOListElement> {
+  isDisabled?: boolean;
+}
+
+export interface BreadcrumbProps extends LiHTMLAttributes<HTMLLIElement> {
+  isDisabled?: boolean;
+}
+
+export function Breadcrumbs({ children, className, isDisabled, ...props }: BreadcrumbsProps) {
   return (
-    <AriaBreadcrumbs {...props} className={cn('flex items-center gap-3', className)}>
-      {children}
-    </AriaBreadcrumbs>
+    <nav aria-label="Breadcrumb">
+      <ol
+        {...props}
+        aria-disabled={isDisabled || undefined}
+        className={cn('flex items-center gap-3', className)}
+      >
+        {children}
+      </ol>
+    </nav>
   );
 }
 
-export function Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
+export function Breadcrumb({ children, className, isDisabled, ...props }: BreadcrumbProps) {
   return (
-    <AriaBreadcrumb
+    <li
       {...props}
+      aria-disabled={isDisabled || undefined}
       className={cn(
         'flex items-center text-base gap-3 list-none',
         '[&_a]:text-foreground-muted [&_a]:no-underline [&_a]:font-normal [&_a]:p-2',
@@ -33,6 +42,6 @@ export function Breadcrumb({ children, className, ...props }: BreadcrumbProps) {
       <Icon className="text-foreground-muted" size="xs">
         <ChevronRight />
       </Icon>
-    </AriaBreadcrumb>
+    </li>
   );
 }

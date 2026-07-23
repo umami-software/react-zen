@@ -1,5 +1,5 @@
+import { Popover as BasePopover } from '@base-ui/react/popover';
 import { type ReactElement, useEffect, useRef, useState } from 'react';
-import { Popover } from '@/components/index';
 
 const CLOSE_DELAY = 500;
 
@@ -71,15 +71,24 @@ export function HoverTrigger({
   };
 
   return (
-    <>
-      <span ref={triggerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        {triggerElement}
-      </span>
-      <Popover isOpen={open} isNonModal triggerRef={triggerRef}>
-        <div onMouseEnter={handleMenuEnter} onMouseLeave={handleMenuLeave}>
-          {popupElement}
-        </div>
-      </Popover>
-    </>
+    <BasePopover.Root open={open} onOpenChange={setOpen}>
+      <BasePopover.Trigger
+        ref={triggerRef}
+        render={
+          <span onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            {triggerElement}
+          </span>
+        }
+      />
+      <BasePopover.Portal>
+        <BasePopover.Positioner>
+          <BasePopover.Popup className="zen-popover outline-none">
+            <div onMouseEnter={handleMenuEnter} onMouseLeave={handleMenuLeave}>
+              {popupElement}
+            </div>
+          </BasePopover.Popup>
+        </BasePopover.Positioner>
+      </BasePopover.Portal>
+    </BasePopover.Root>
   );
 }

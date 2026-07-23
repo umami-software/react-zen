@@ -1,18 +1,17 @@
-import type { ReactNode } from 'react';
-import {
-  Modal as AriaModal,
-  ModalOverlay as AriaModalOverlay,
-  type ModalOverlayProps as AriaModalOverlayProps,
-  type ModalRenderProps,
-} from 'react-aria-components';
+import { Dialog as BaseDialog } from '@base-ui/react/dialog';
+import type { CSSProperties, ReactNode } from 'react';
 import { cn } from './lib/tailwind';
+import type { OverlayTarget } from './OverlayTrigger';
 import './Modal.css';
 
-export interface ModalProps extends AriaModalOverlayProps {
-  children?: ReactNode | ((values: ModalRenderProps & { defaultChildren: ReactNode }) => ReactNode);
+export interface ModalProps extends BaseDialog.Portal.Props {
+  children?: ReactNode;
   isOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
   placement?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'fullscreen';
   offset?: string;
+  className?: string;
+  style?: CSSProperties;
 }
 
 const placementClasses = {
@@ -30,23 +29,29 @@ export function Modal({
   offset,
   children,
   className,
-  style = {},
+  style,
+  isOpen: _isOpen,
+  onOpenChange: _onOpenChange,
   ...props
 }: ModalProps) {
-  if (offset) {
-    style[`--modal-offset` as keyof typeof style] = offset as never;
-  }
+  const modalStyle = {
+    ...style,
+    ...(offset ? { '--modal-offset': offset } : {}),
+  } as CSSProperties;
 
   return (
-    <AriaModalOverlay
-      {...props}
-      className="zen-modal-overlay fixed inset-0 bg-black/80 flex items-center justify-center z-[9999]"
-      style={style}
-      isDismissable
-    >
-      <AriaModal className={cn('relative z-[9999]', placementClasses[placement], className)}>
-        {children}
-      </AriaModal>
-    </AriaModalOverlay>
+    <BaseDialog.Portal {...props}>
+      <BaseDialog.Backdrop className="zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" />
+      <BaseDialog.Viewport className="fixed inset-0 flex items-center justify-center z-[9999]">
+        <BaseDialog.Popup
+          className={cn('relative z-[9999]', placementClasses[placement], className)}
+          style={modalStyle}
+        >
+          {children}
+        </BaseDialog.Popup>
+      </BaseDialog.Viewport>
+    </BaseDialog.Portal>
   );
 }
+
+(Modal as typeof Modal & OverlayTarget).zenOverlayType = 'dialog';

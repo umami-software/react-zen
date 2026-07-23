@@ -1,15 +1,4 @@
 'use client';
-export {
-  DialogTrigger,
-  FileTrigger,
-  Focusable,
-  MenuTrigger,
-  Pressable,
-  RouterProvider,
-  type Selection,
-  SubmenuTrigger,
-  TooltipTrigger,
-} from 'react-aria-components';
 export * from './Accordion';
 export * from './AlertBanner';
 export * from './AlertDialog';
@@ -51,11 +40,23 @@ export * from './Label';
 export * from './List';
 export * from './Loading';
 export * from './LoadingButton';
+export type { Selection } from './lib/interaction';
+export * from './lib/interaction';
 export * from './lib/render';
 export * from './lib/tailwind';
 export * from './Menu';
+export { SubMenuTrigger as SubmenuTrigger } from './Menu';
 export * from './Modal';
 export * from './Navbar';
+export {
+  DialogTrigger,
+  FileTrigger,
+  Focusable,
+  MenuTrigger,
+  Pressable,
+  RouterProvider,
+  TooltipTrigger,
+} from './OverlayTrigger';
 export * from './PaletteSwitcher';
 export * from './PasswordField';
 export * from './Popover';

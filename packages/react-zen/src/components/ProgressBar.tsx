@@ -1,55 +1,23 @@
-import {
-  ProgressBar as AriaProgressBar,
-  type ProgressBarProps as AriaProgressBarProps,
-} from 'react-aria-components';
-import { Box } from './Box';
+import type { ProgressRoot } from '@base-ui/react/progress';
+import { Progress as BaseProgress } from '@base-ui/react/progress';
 import { cn } from './lib/tailwind';
 import { Text } from './Text';
 
-export interface ProgressBarProps extends AriaProgressBarProps {
+export interface ProgressBarProps extends ProgressRoot.Props {
   showPercentage?: boolean;
-}
-
-function Track({ children }: { children: React.ReactNode }) {
-  return (
-    <Box
-      position="relative"
-      borderRadius="full"
-      overflow="hidden"
-      className="w-full h-2 bg-interactive"
-    >
-      {children}
-    </Box>
-  );
-}
-
-function Fill({ percentage }: { percentage: number }) {
-  return (
-    <Box
-      position="absolute"
-      top="0"
-      bottom="0"
-      left="0"
-      borderRadius="full"
-      className="bg-primary transition-all"
-      style={{ width: `${percentage}%` }}
-    />
-  );
 }
 
 export function ProgressBar({ className, showPercentage, ...props }: ProgressBarProps) {
   return (
-    <AriaProgressBar {...props} className={cn('flex items-center gap-3 w-full', className)}>
-      {({ percentage = 0, valueText }) => {
-        return (
-          <>
-            <Track>
-              <Fill percentage={percentage} />
-            </Track>
-            {showPercentage && <Text className="tabular-nums">{valueText}</Text>}
-          </>
-        );
-      }}
-    </AriaProgressBar>
+    <BaseProgress.Root {...props} className={cn('flex items-center gap-3 w-full', className)}>
+      <BaseProgress.Track className="relative overflow-hidden w-full h-2 rounded-full bg-interactive">
+        <BaseProgress.Indicator className="h-full rounded-full bg-primary transition-all" />
+      </BaseProgress.Track>
+      {showPercentage && (
+        <Text className="tabular-nums">
+          <BaseProgress.Value />
+        </Text>
+      )}
+    </BaseProgress.Root>
   );
 }

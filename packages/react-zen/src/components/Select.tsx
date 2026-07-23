@@ -1,29 +1,33 @@
+import { Select as BaseSelect } from '@base-ui/react/select';
 import { type ReactNode, useState } from 'react';
-import {
-  Select as AriaSelect,
-  type SelectProps as AriaSelectProps,
-  type PopoverProps,
-  SelectValue,
-  type SelectValueRenderProps,
-} from 'react-aria-components';
 import { ChevronRight } from '@/components/icons';
 import { Button, type ButtonProps } from './Button';
 import { Column } from './Column';
 import { Icon } from './Icon';
 import { Label } from './Label';
-import { List, type ListProps } from './List';
+import { List, ListItem, ListPrimitiveProvider, type ListProps } from './List';
 import { Loading } from './Loading';
 import { cn } from './lib/tailwind';
-import { Popover } from './Popover';
 import { SearchField } from './SearchField';
 
-export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
+export interface SelectValueRenderProps {
+  defaultChildren: ReactNode;
+  isPlaceholder: boolean;
+}
+
+export interface SelectProps
+  extends Omit<
+    BaseSelect.Root.Props<string | number>,
+    'children' | 'value' | 'defaultValue' | 'items' | 'disabled' | 'onValueChange'
+  > {
   children?: ReactNode;
+  items?: ReadonlyArray<string | number | { label: ReactNode; value: string | number }>;
   value?: string | number;
   defaultValue?: string | number;
   label?: string;
   placeholder?: string;
   isLoading?: boolean;
+  isDisabled?: boolean;
   allowSearch?: boolean;
   searchValue?: string;
   searchDelay?: number;
@@ -31,20 +35,21 @@ export interface SelectProps extends AriaSelectProps<HTMLSelectElement> {
   maxHeight?: string | number;
   showIcon?: boolean;
   onSearch?: (value: string) => void;
-  onChange?: (e: any) => void;
+  onChange?: (value: string | number | null) => void;
   buttonProps?: ButtonProps;
   listProps?: ListProps;
-  popoverProps?: PopoverProps;
-  renderValue?:
-    | ReactNode
-    | ((values: SelectValueRenderProps<object> & { defaultChildren: ReactNode }) => ReactNode);
+  popoverProps?: BaseSelect.Positioner.Props;
+  renderValue?: ReactNode | ((values: SelectValueRenderProps) => ReactNode);
+  className?: string;
 }
 
 export function Select({
   value,
   defaultValue,
   label,
+  placeholder,
   isLoading,
+  isDisabled,
   allowSearch,
   searchValue,
   searchDelay,
@@ -59,81 +64,109 @@ export function Select({
   renderValue,
   className,
   children,
+  items,
+  onOpenChange,
   ...props
 }: SelectProps) {
   const [search, setSearch] = useState('');
-
-  const handleChange = (e: any) => {
-    onChange?.(e);
-  };
-
-  const handleSearch = (value: string) => {
-    setSearch(value);
-    onSearch?.(value);
-  };
-
-  const handleOpenChange = () => {
-    setSearch('');
-    onSearch?.('');
-  };
+  const normalizedItems = items?.map(item =>
+    typeof item === 'object' ? item : { label: String(item), value: item },
+  );
+  const collection =
+    children ||
+    normalizedItems?.map(item => (
+      <ListItem key={item.value} value={String(item.value)}>
+        {item.label}
+      </ListItem>
+    ));
 
   return (
-    <AriaSelect
-      aria-label="Select"
-      {...props}
-      className={cn('flex flex-col gap-1', className)}
-      value={value}
-      defaultValue={defaultValue}
-      onChange={handleChange}
-    >
-      {label && <Label>{label}</Label>}
-      <Button
-        variant="outline"
-        {...buttonProps}
-        className={cn('w-full justify-between', buttonProps?.className)}
+    <div className={cn('flex flex-col gap-1', className)}>
+      <BaseSelect.Root
+        {...props}
+        items={normalizedItems}
+        value={value}
+        defaultValue={defaultValue}
+        disabled={isDisabled}
+        onValueChange={onChange}
+        onOpenChange={(open, details) => {
+          if (!open) {
+            setSearch('');
+            onSearch?.('');
+          }
+          onOpenChange?.(open, details);
+        }}
       >
-        <SelectValue>{renderValue}</SelectValue>
-        {showIcon && (
-          <Icon rotate={90} aria-hidden="true" size="sm">
-            <ChevronRight />
-          </Icon>
-        )}
-      </Button>
-      <Popover {...popoverProps} onOpenChange={handleOpenChange} isFullscreen={isFullscreen}>
-        <Column
-          gap="2"
-          padding="2"
-          border
-          borderRadius="md"
-          shadow="lg"
-          className="bg-surface-overlay"
-        >
-          {allowSearch && (
-            <SearchField
-              className="mb-2"
-              value={search}
-              onSearch={handleSearch}
-              delay={searchDelay}
-              defaultValue={searchValue}
-              autoFocus
+        {label && <Label>{label}</Label>}
+        <BaseSelect.Trigger
+          render={
+            <Button
+              variant="outline"
+              {...buttonProps}
+              className={cn('w-full justify-between', buttonProps?.className)}
             />
+          }
+        >
+          <BaseSelect.Value placeholder={placeholder}>
+            {selected => {
+              const defaultChildren = selected ?? placeholder;
+              return typeof renderValue === 'function'
+                ? renderValue({
+                    defaultChildren,
+                    isPlaceholder: selected == null,
+                  })
+                : renderValue || defaultChildren;
+            }}
+          </BaseSelect.Value>
+          {showIcon && (
+            <Icon rotate={90} aria-hidden="true" size="sm">
+              <ChevronRight />
+            </Icon>
           )}
-          {isLoading && <Loading icon="dots" placement="center" size="sm" height="60px" />}
-          <List
-            {...listProps}
-            isFullscreen={isFullscreen}
-            {...(isFullscreen && {
-              shouldSelectOnPressUp: true,
-              shouldFocusOnHover: false,
-              autoFocus: 'first',
-            })}
-            className={cn('overflow-auto', listProps?.className)}
-            style={{ ...listProps?.style, maxHeight, display: isLoading ? 'none' : undefined }}
-          >
-            {children}
-          </List>
-        </Column>
-      </Popover>
-    </AriaSelect>
+        </BaseSelect.Trigger>
+        <BaseSelect.Portal>
+          <BaseSelect.Positioner {...popoverProps}>
+            <BaseSelect.Popup
+              className={cn(
+                'bg-surface-overlay border border-edge rounded-md shadow-lg outline-none',
+                isFullscreen && 'fixed inset-0 rounded-none z-[9999]',
+              )}
+            >
+              <Column gap="2" padding="2">
+                {allowSearch && (
+                  <SearchField
+                    className="mb-2"
+                    value={search}
+                    onChange={setSearch}
+                    onSearch={value => {
+                      setSearch(value);
+                      onSearch?.(value);
+                    }}
+                    delay={searchDelay}
+                    defaultValue={searchValue}
+                    autoFocus
+                  />
+                )}
+                {isLoading && <Loading icon="dots" placement="center" size="sm" height="60px" />}
+                <ListPrimitiveProvider kind="select">
+                  <List
+                    {...listProps}
+                    isFullscreen={isFullscreen}
+                    className={cn('overflow-auto', listProps?.className)}
+                    style={{
+                      ...listProps?.style,
+                      maxHeight,
+                      display: isLoading ? 'none' : undefined,
+                    }}
+                  >
+                    {collection}
+                  </List>
+                </ListPrimitiveProvider>
+              </Column>
+            </BaseSelect.Popup>
+          </BaseSelect.Positioner>
+        </BaseSelect.Portal>
+      </BaseSelect.Root>
+    </div>
   );
 }

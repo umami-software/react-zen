@@ -1,10 +1,10 @@
 import { animated, useTransition } from '@react-spring/web';
 import { type RefObject, useEffect, useRef, useState } from 'react';
-import type { PressEvent } from 'react-aria-components';
 import { Moon, Sun } from '@/components/icons';
 import { Button, type ButtonProps } from './Button';
 import { type Theme, useTheme } from './hooks/useTheme';
 import { Icon } from './Icon';
+import type { PressEvent } from './lib/interaction';
 import { cn } from './lib/tailwind';
 
 export interface ThemeButtonProps extends ButtonProps {

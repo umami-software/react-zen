@@ -5,7 +5,6 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react';
-import type { TableProps } from 'react-aria-components';
 import { DataCard } from '@/components/DataCard';
 import { Grid } from '@/components/Grid';
 import { mapIdProperty } from '@/lib/utils';
@@ -17,6 +16,7 @@ import {
   type TableCellProps,
   TableColumn,
   TableHeader,
+  type TableProps,
   TableRow,
 } from './Table';
 

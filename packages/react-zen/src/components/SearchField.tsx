@@ -1,21 +1,14 @@
+import type { InputHTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
-import {
-  Group as AriaGroup,
-  SearchField as AriaSearchField,
-  type SearchFieldProps as AriaSearchFieldProps,
-  Input,
-} from 'react-aria-components';
 import { Search, X } from '@/components/icons';
 import { useDebounce } from './hooks/useDebounce';
 import { Icon } from './Icon';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 
-export interface SearchFieldProps extends AriaSearchFieldProps {
+export interface SearchFieldProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'onSearch'> {
   label?: string;
-  placeholder?: string;
-  value?: string;
-  defaultValue?: string;
   delay?: number;
   onChange?: (value: string) => void;
   onSearch?: (value: string) => void;
@@ -32,61 +25,71 @@ export function SearchField({
   className,
   ...props
 }: SearchFieldProps) {
-  const [search, setSearch] = useState(defaultValue);
+  const [search, setSearch] = useState(String(value ?? defaultValue));
   const searchValue = useDebounce(search, delay);
 
-  const handleChange = (value: string) => {
-    setSearch(value);
-
-    if (delay === 0 || value === '') {
-      onSearch?.(value);
+  const handleChange = (nextValue: string) => {
+    setSearch(nextValue);
+    if (delay === 0 || nextValue === '') {
+      onSearch?.(nextValue);
     }
-
-    onChange?.(value);
+    onChange?.(nextValue);
   };
 
-  const resetSearch = () => {
-    setSearch('');
-    onSearch?.('');
-    onChange?.('');
-  };
+  useEffect(() => {
+    if (value !== undefined) {
+      setSearch(String(value));
+    }
+  }, [value]);
 
   useEffect(() => {
     if (delay > 0) {
       onSearch?.(searchValue);
     }
-  }, [searchValue, delay]);
+  }, [searchValue, delay, onSearch]);
 
   return (
     <>
-      {label && <Label>{label}</Label>}
-      <AriaSearchField
-        aria-label="Search"
-        {...props}
-        className={cn('relative', className)}
-        onChange={handleChange}
+      {label && <Label htmlFor={props.id}>{label}</Label>}
+      <div
+        role="search"
+        className={cn(
+          'relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
+          'focus-within:border-edge-strong',
+          className,
+        )}
       >
-        <AriaGroup
-          className={cn(
-            'flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
-            'focus-within:border-edge-strong',
-          )}
-        >
-          <Icon className="ml-3" color="muted">
-            <Search />
-          </Icon>
-          <Input
-            placeholder={placeholder}
-            value={search}
-            className="flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden"
-          />
-          {search && (
-            <Icon className="mr-3" size="sm" color="muted" onClick={resetSearch}>
+        <Icon className="ml-3" color="muted">
+          <Search />
+        </Icon>
+        <input
+          aria-label="Search"
+          {...props}
+          type="search"
+          placeholder={placeholder}
+          value={search}
+          className="flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden"
+          onChange={event => handleChange(event.target.value)}
+          onKeyDown={event => {
+            props.onKeyDown?.(event);
+            if (event.key === 'Enter') {
+              onSearch?.(search);
+            }
+          }}
+        />
+        {search && (
+          <button
+            type="button"
+            className="mr-3 text-foreground-muted"
+            aria-label="Clear search"
+            onClick={() => handleChange('')}
+          >
+            <Icon size="sm">
               <X />
             </Icon>
-          )}
-        </AriaGroup>
-      </AriaSearchField>
+          </button>
+        )}
+      </div>
     </>
   );
 }

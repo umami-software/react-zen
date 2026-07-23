@@ -1,12 +1,17 @@
-import type { ReactNode } from 'react';
-import { Button as AriaButton, type ButtonProps as AriaButtonProps } from 'react-aria-components';
+import { Button as BaseButton, type ButtonProps as BaseButtonProps } from '@base-ui/react/button';
+import type { MouseEvent, ReactNode } from 'react';
 import { type RenderProp, resolveRender } from './lib/render';
 import { type ButtonVariants, button } from './variants';
 
-export interface ButtonProps extends Omit<AriaButtonProps, 'className' | 'render'>, ButtonVariants {
+export interface ButtonProps
+  extends Omit<BaseButtonProps, 'className' | 'disabled' | 'render'>,
+    ButtonVariants {
   render?: RenderProp<ButtonRenderProps>;
   children?: ReactNode;
   className?: string;
+  isDisabled?: boolean;
+  onPress?: (event: MouseEvent<HTMLElement>) => void;
+  preventFocusOnPress?: boolean;
 }
 
 export interface ButtonRenderProps {
@@ -19,7 +24,10 @@ export function Button({
   variant,
   size = 'md',
   render,
-  preventFocusOnPress = true,
+  preventFocusOnPress: _preventFocusOnPress = true,
+  isDisabled,
+  onPress,
+  onClick,
   className,
   children,
   ...props
@@ -32,10 +40,17 @@ export function Button({
     children,
   };
 
+  const handleClick = (event: any) => {
+    onClick?.(event);
+    if (!event.defaultPrevented) {
+      onPress?.(event);
+    }
+  };
+
   const defaultElement = (
-    <AriaButton {...props} preventFocusOnPress={preventFocusOnPress} className={buttonClassName}>
+    <BaseButton {...props} disabled={isDisabled} className={buttonClassName} onClick={handleClick}>
       {children}
-    </AriaButton>
+    </BaseButton>
   );
 
   return resolveRender(render, renderProps, defaultElement);

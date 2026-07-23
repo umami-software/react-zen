@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import type { PressEvent } from 'react-aria-components';
 import { type FieldValues, useFormContext } from 'react-hook-form';
 import { Button, type ButtonProps } from '../Button';
+import type { PressEvent } from '../lib/interaction';
 
 export interface FormResetButtonProps extends ButtonProps {
   children?: ReactNode;

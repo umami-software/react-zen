@@ -1,23 +1,26 @@
-import type { ReactNode } from 'react';
-import {
-  Dialog as AriaDialog,
-  type DialogProps as AriaDialogProps,
-  type DialogRenderProps,
-} from 'react-aria-components';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { Column } from './Column';
 import { Heading } from './Heading';
 import { cn } from './lib/tailwind';
+import { useOverlayTrigger } from './OverlayTrigger';
 
-export interface DialogProps extends AriaDialogProps {
+export interface DialogRenderProps {
+  close: () => void;
+}
+
+export interface DialogProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'children'> {
   children?: ReactNode | ((props: DialogRenderProps) => ReactNode);
   title?: ReactNode;
   variant?: 'sheet';
 }
 
 export function Dialog({ title, variant, children, className, ...props }: DialogProps) {
+  const { close } = useOverlayTrigger();
+
   return (
-    <AriaDialog
-      aria-label="Dialog"
+    <div
+      aria-label={title ? undefined : 'Dialog'}
+      role="dialog"
       {...props}
       className={cn(
         'p-6 shadow-xl bg-surface-base border border-edge rounded relative outline-none overflow-auto',
@@ -25,14 +28,10 @@ export function Dialog({ title, variant, children, className, ...props }: Dialog
         className,
       )}
     >
-      {dialogProps => {
-        return (
-          <Column height="100%" gap>
-            {title && <Heading size="xl">{title}</Heading>}
-            {typeof children === 'function' ? children(dialogProps) : children}
-          </Column>
-        );
-      }}
-    </AriaDialog>
+      <Column height="100%" gap>
+        {title && <Heading size="xl">{title}</Heading>}
+        {typeof children === 'function' ? children({ close }) : children}
+      </Column>
+    </div>
   );
 }

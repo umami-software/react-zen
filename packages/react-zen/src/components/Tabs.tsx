@@ -1,26 +1,55 @@
-import {
-  Tab as AriaTab,
-  TabList as AriaTabList,
-  TabPanel as AriaTabPanel,
-  Tabs as AriaTabs,
-  type TabListProps,
-  type TabPanelProps,
-  type TabProps,
-  type TabsProps,
-} from 'react-aria-components';
+import { Tabs as BaseTabs } from '@base-ui/react/tabs';
+import type { ReactNode } from 'react';
 import { cn } from './lib/tailwind';
 
-export function Tabs({ children, className, ...props }: TabsProps) {
+export interface TabsProps
+  extends Omit<BaseTabs.Root.Props, 'value' | 'defaultValue' | 'onValueChange'> {
+  children?: ReactNode;
+  selectedKey?: string;
+  defaultSelectedKey?: string;
+  onSelectionChange?: (key: string) => void;
+}
+
+export interface TabListProps extends BaseTabs.List.Props {
+  children?: ReactNode;
+}
+
+export interface TabProps extends Omit<BaseTabs.Tab.Props, 'value' | 'disabled'> {
+  id?: string;
+  value?: string;
+  isDisabled?: boolean;
+  href?: string;
+}
+
+export interface TabPanelProps extends Omit<BaseTabs.Panel.Props, 'value'> {
+  id?: string;
+  value?: string;
+}
+
+export function Tabs({
+  children,
+  className,
+  selectedKey,
+  defaultSelectedKey,
+  onSelectionChange,
+  ...props
+}: TabsProps) {
   return (
-    <AriaTabs {...props} className={cn('grid relative w-full gap-6', className)}>
+    <BaseTabs.Root
+      {...props}
+      value={selectedKey}
+      defaultValue={defaultSelectedKey}
+      onValueChange={value => onSelectionChange?.(String(value))}
+      className={cn('grid relative w-full gap-6', className)}
+    >
       {children}
-    </AriaTabs>
+    </BaseTabs.Root>
   );
 }
 
-export function TabList({ children, className, ...props }: TabListProps<any>) {
+export function TabList({ children, className, ...props }: TabListProps) {
   return (
-    <AriaTabList
+    <BaseTabs.List
       {...props}
       className={cn(
         'flex items-center border-b border-edge gap-6',
@@ -29,31 +58,34 @@ export function TabList({ children, className, ...props }: TabListProps<any>) {
       )}
     >
       {children}
-    </AriaTabList>
+    </BaseTabs.List>
   );
 }
 
-export function Tab({ children, className, ...props }: TabProps) {
+export function Tab({ id, value, isDisabled, href, children, className, ...props }: TabProps) {
   return (
-    <AriaTab
+    <BaseTabs.Tab
       {...props}
+      value={value || id}
+      disabled={isDisabled}
+      render={href ? <a href={href} /> : undefined}
       className={cn(
         'tab flex items-center justify-center text-base text-foreground-muted py-2 border-b-2 border-transparent select-none -mb-[2px] cursor-pointer outline-none',
-        'data-[hovered]:text-foreground-primary',
-        'data-[selected]:text-foreground-primary data-[selected]:border-b-primary',
+        'hover:text-foreground-primary',
+        'data-[active]:text-foreground-primary data-[active]:border-b-primary',
         'data-[disabled]:text-foreground-disabled data-[disabled]:cursor-default',
         className,
       )}
     >
       {children}
-    </AriaTab>
+    </BaseTabs.Tab>
   );
 }
 
-export function TabPanel({ children, className, ...props }: TabPanelProps) {
+export function TabPanel({ id, value, children, className, ...props }: TabPanelProps) {
   return (
-    <AriaTabPanel {...props} className={className}>
+    <BaseTabs.Panel {...props} value={value || id} className={className}>
       {children}
-    </AriaTabPanel>
+    </BaseTabs.Panel>
   );
 }

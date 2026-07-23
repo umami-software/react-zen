@@ -1,28 +1,32 @@
-import type { CSSProperties } from 'react';
-import {
-  Table as AriaTable,
-  TableBody as AriaTableBody,
-  TableHeader as AriaTableHeader,
-  Cell,
-  type CellProps,
-  Column,
-  type ColumnProps,
-  Row,
-  type RowProps,
-  type TableBodyProps,
-  type TableHeaderProps,
-  type TableProps,
-} from 'react-aria-components';
+import type {
+  CSSProperties,
+  HTMLAttributes,
+  TableHTMLAttributes,
+  TdHTMLAttributes,
+  ThHTMLAttributes,
+} from 'react';
 import { cn } from './lib/tailwind';
 
 const gridTemplateColumns = 'repeat(auto-fit, minmax(140px, 1fr))';
 
-export interface TableColumnProps extends ColumnProps {
+export interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
+  selectionMode?: 'none' | 'single' | 'multiple';
+  selectedKeys?: Iterable<string>;
+  defaultSelectedKeys?: Iterable<string>;
+  onSelectionChange?: (keys: Set<string>) => void;
+}
+
+export interface TableColumnProps extends Omit<ThHTMLAttributes<HTMLTableCellElement>, 'align'> {
+  align?: 'start' | 'center' | 'end';
+  isRowHeader?: boolean;
+}
+
+export interface TableCellProps extends Omit<TdHTMLAttributes<HTMLTableCellElement>, 'align'> {
   align?: 'start' | 'center' | 'end';
 }
 
-export interface TableCellProps extends CellProps {
-  align?: 'start' | 'center' | 'end';
+export interface TableRowProps extends HTMLAttributes<HTMLTableRowElement> {
+  id?: string;
 }
 
 const alignClasses = {
@@ -31,27 +35,30 @@ const alignClasses = {
   end: 'justify-end',
 };
 
-export function Table({ children, className, ...props }: TableProps) {
+export function Table({
+  children,
+  className,
+  selectionMode: _selectionMode,
+  selectedKeys: _selectedKeys,
+  defaultSelectedKeys: _defaultSelectedKeys,
+  onSelectionChange: _onSelectionChange,
+  ...props
+}: TableProps) {
   return (
-    <AriaTable
-      aria-label="Table"
-      {...props}
-      className={cn('grid text-base w-full relative', className)}
-    >
+    <table {...props} className={cn('grid text-base w-full relative', className)}>
       {children}
-    </AriaTable>
+    </table>
   );
 }
 
-interface TableHeaderComponentProps extends Omit<TableHeaderProps<any>, 'style'> {
+interface TableHeaderComponentProps extends HTMLAttributes<HTMLTableSectionElement> {
   style?: CSSProperties;
 }
 
 export function TableHeader({ children, className, style, ...props }: TableHeaderComponentProps) {
   const cols = style?.gridTemplateColumns || gridTemplateColumns;
-
   return (
-    <AriaTableHeader
+    <thead
       {...props}
       className={cn(
         '[&>tr]:grid [&>tr]:border-b [&>tr]:border-edge [&>tr]:[grid-template-columns:var(--grid-cols)]',
@@ -59,50 +66,61 @@ export function TableHeader({ children, className, style, ...props }: TableHeade
       )}
       style={{ '--grid-cols': cols } as CSSProperties}
     >
-      {children}
-    </AriaTableHeader>
+      <tr>{children}</tr>
+    </thead>
   );
 }
 
-export function TableBody({ children, className, ...props }: TableBodyProps<any>) {
+export function TableBody({
+  children,
+  className,
+  ...props
+}: HTMLAttributes<HTMLTableSectionElement>) {
   return (
-    <AriaTableBody {...props} className={cn('contents', className)}>
+    <tbody {...props} className={cn('contents', className)}>
       {children}
-    </AriaTableBody>
+    </tbody>
   );
 }
 
-export function TableRow({ children, className, style, ...props }: RowProps<any>) {
+export function TableRow({ children, className, style, id, ...props }: TableRowProps) {
   return (
-    <Row
+    <tr
       {...props}
+      data-row-id={id}
       className={cn('grid border-b border-edge-muted min-h-10', className)}
       style={{ gridTemplateColumns, ...style }}
     >
       {children}
-    </Row>
+    </tr>
   );
 }
 
-export function TableColumn({ children, className, align, ...props }: TableColumnProps) {
+export function TableColumn({
+  children,
+  className,
+  align,
+  isRowHeader: _isRowHeader,
+  ...props
+}: TableColumnProps) {
   return (
-    <Column
+    <th
       {...props}
+      scope="col"
       className={cn(
         'flex p-2 text-left font-bold flex-1 first:pl-0 last:pr-0',
         align && alignClasses[align],
         className,
       )}
-      isRowHeader
     >
       {children}
-    </Column>
+    </th>
   );
 }
 
 export function TableCell({ children, className, align, ...props }: TableCellProps) {
   return (
-    <Cell
+    <td
       {...props}
       className={cn(
         'flex p-2 flex-1 first:pl-0 last:pr-0',
@@ -113,6 +131,6 @@ export function TableCell({ children, className, align, ...props }: TableCellPro
       )}
     >
       {children}
-    </Cell>
+    </td>
   );
 }

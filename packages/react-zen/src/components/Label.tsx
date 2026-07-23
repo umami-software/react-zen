@@ -1,4 +1,3 @@
-import { Label as AriaLabel } from 'react-aria-components';
 import { Text, type TextProps } from './Text';
 
 export interface LabelProps extends Omit<TextProps, 'as' | 'render'> {
@@ -17,7 +16,7 @@ export function Label({
       size={size}
       weight={weight}
       lineHeight={lineHeight}
-      render={renderProps => <AriaLabel {...renderProps} />}
+      render={renderProps => <label {...renderProps} />}
     />
   );
 }

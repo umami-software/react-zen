@@ -1,39 +1,53 @@
+import type { InputHTMLAttributes } from 'react';
 import { useState } from 'react';
-import { Input, TextField, type TextFieldProps } from 'react-aria-components';
 import { Eye, EyeSlash } from '@/components/svg';
 import { Icon } from './Icon';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 
-export interface PasswordFieldProps extends TextFieldProps {
+export interface PasswordFieldProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'disabled' | 'readOnly'> {
   label?: string;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
 }
 
-export function PasswordField({ label, className, ...props }: PasswordFieldProps) {
+export function PasswordField({
+  label,
+  className,
+  isDisabled,
+  isReadOnly,
+  ...props
+}: PasswordFieldProps) {
   const [show, setShow] = useState(false);
-  const type = show ? 'text' : 'password';
-
-  const handleShowPassword = () => setShow(state => !state);
 
   return (
     <>
-      {label && <Label>{label}</Label>}
-      <TextField
-        aria-label="Password"
-        {...props}
+      {label && <Label htmlFor={props.id}>{label}</Label>}
+      <div
         className={cn(
           'flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative',
           'focus-within:border-edge-strong',
-          '[&_input]:border-0 [&_input]:outline-none [&_input]:py-2 [&_input]:px-3 [&_input]:bg-transparent [&_input]:w-full [&_input]:flex-1',
-          '[&_input]:placeholder:text-foreground-muted',
           className,
         )}
       >
-        <Input type={type} />
-        <Icon className="mr-3" onClick={handleShowPassword}>
-          {show ? <EyeSlash /> : <Eye />}
-        </Icon>
-      </TextField>
+        <input
+          aria-label="Password"
+          {...props}
+          type={show ? 'text' : 'password'}
+          disabled={isDisabled}
+          readOnly={isReadOnly}
+          className="border-0 outline-none py-2 px-3 bg-transparent w-full flex-1 placeholder:text-foreground-muted"
+        />
+        <button
+          type="button"
+          className="mr-3"
+          aria-label={show ? 'Hide password' : 'Show password'}
+          onClick={() => setShow(state => !state)}
+        >
+          <Icon>{show ? <EyeSlash /> : <Eye />}</Icon>
+        </button>
+      </div>
     </>
   );
 }

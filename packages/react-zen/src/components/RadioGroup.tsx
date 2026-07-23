@@ -1,49 +1,66 @@
-import type { ReactNode } from 'react';
+import { Radio as BaseRadio, type RadioRoot } from '@base-ui/react/radio';
 import {
-  Radio as AriaRadio,
-  RadioGroup as AriaRadioGroup,
-  type RadioGroupProps as AriaRadioGroupProps,
-  type RadioProps,
-} from 'react-aria-components';
+  RadioGroup as BaseRadioGroup,
+  type RadioGroupProps as BaseRadioGroupProps,
+} from '@base-ui/react/radio-group';
+import type { ReactNode } from 'react';
 import { Column } from './Column';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 
-export interface RadioGroupProps extends AriaRadioGroupProps {
+export interface RadioGroupProps
+  extends Omit<BaseRadioGroupProps, 'disabled' | 'readOnly' | 'onChange' | 'onValueChange'> {
   children?: ReactNode;
   label?: string;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  onChange?: (value: string) => void;
 }
 
-export function RadioGroup({ label, children, className, ...props }: RadioGroupProps) {
+export function RadioGroup({
+  label,
+  children,
+  className,
+  isDisabled,
+  isReadOnly,
+  onChange,
+  ...props
+}: RadioGroupProps) {
   return (
-    <AriaRadioGroup
+    <BaseRadioGroup
       aria-label="RadioGroup"
       {...props}
+      disabled={isDisabled}
+      readOnly={isReadOnly}
+      onValueChange={onChange}
       className={cn('flex flex-col gap-2', className)}
     >
       {label && <Label>{label}</Label>}
       <Column gap="2">{children as ReactNode}</Column>
-    </AriaRadioGroup>
+    </BaseRadioGroup>
   );
 }
 
-export type { RadioProps };
+export interface RadioProps extends Omit<RadioRoot.Props, 'disabled'> {
+  isDisabled?: boolean;
+}
 
-export function Radio({ children, className, ...props }: RadioProps) {
+export function Radio({ children, className, isDisabled, ...props }: RadioProps) {
   return (
-    <AriaRadio
+    <BaseRadio.Root
       aria-label="Radio"
       {...props}
+      disabled={isDisabled}
       className={cn(
         'radio group flex items-center gap-3 cursor-pointer text-base',
         "before:content-[''] before:block before:w-5 before:h-5 before:box-border before:rounded-full",
         'before:border before:border-edge-strong before:bg-surface-base before:transition-all before:duration-200',
-        'data-[selected]:before:border-[6px] data-[selected]:before:border-primary',
+        'data-[checked]:before:border-[6px] data-[checked]:before:border-primary',
         'data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
         className,
       )}
     >
       {children}
-    </AriaRadio>
+    </BaseRadio.Root>
   );
 }
