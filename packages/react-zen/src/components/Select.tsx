@@ -34,6 +34,7 @@ export interface SelectProps
   isFullscreen?: boolean;
   maxHeight?: string | number;
   showIcon?: boolean;
+  alignItemWithTrigger?: boolean;
   onSearch?: (value: string) => void;
   onChange?: (value: string | number | null) => void;
   buttonProps?: ButtonProps;
@@ -56,6 +57,7 @@ export function Select({
   isFullscreen,
   maxHeight,
   showIcon = true,
+  alignItemWithTrigger = false,
   onSearch,
   onChange,
   buttonProps,
@@ -125,7 +127,12 @@ export function Select({
           )}
         </BaseSelect.Trigger>
         <BaseSelect.Portal>
-          <BaseSelect.Positioner {...popoverProps}>
+          <BaseSelect.Positioner
+            align="start"
+            sideOffset={4}
+            alignItemWithTrigger={alignItemWithTrigger}
+            {...popoverProps}
+          >
             <BaseSelect.Popup
               className={cn(
                 'bg-surface-overlay border border-edge rounded-md shadow-lg outline-none',

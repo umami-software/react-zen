@@ -26,6 +26,33 @@ Displays a list of options for the user to pick from—triggered by a button.
   ```
 </Example>
 
+## Selected item alignment
+
+By default, the menu opens below the trigger like a dropdown. Set `alignItemWithTrigger` to align
+the selected option with the trigger value instead.
+
+<Example>
+  <Box width="300px">
+    <Select defaultValue="three" alignItemWithTrigger>
+      <ListItem id="one">One</ListItem>
+      <ListItem id="two">Two</ListItem>
+      <ListItem id="three">Three</ListItem>
+      <ListItem id="four">Four</ListItem>
+      <ListItem id="five">Five</ListItem>
+    </Select>
+  </Box>
+
+  ```jsx
+  <Select defaultValue="three" alignItemWithTrigger>
+    <ListItem id="one">One</ListItem>
+    <ListItem id="two">Two</ListItem>
+    <ListItem id="three">Three</ListItem>
+    <ListItem id="four">Four</ListItem>
+    <ListItem id="five">Five</ListItem>
+  </Select>
+  ```
+</Example>
+
 ## With label
 
 <Example>
@@ -150,6 +177,7 @@ Displays a list of options for the user to pick from—triggered by a button.
       { name: 'searchDelay', value: 'number', description: 'Debounce delay for search' },
       { name: 'maxHeight', value: 'string | number', description: 'Max height of the dropdown list' },
       { name: 'showIcon', value: 'boolean', description: 'Show chevron icon on trigger button (default: true)' },
+      { name: 'alignItemWithTrigger', value: 'boolean', description: 'Aligns the selected option with the trigger instead of opening below it (default: false)' },
       { name: 'onChange', value: '(value: any) => void', description: 'Called when selection changes' },
       { name: 'onSearch', value: '(value: string) => void', description: 'Called when search value changes' },
       { name: 'renderValue', value: 'ReactNode | Function', description: 'Custom render for selected value' },
