@@ -13,8 +13,8 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono' });
 
 export const metadata: Metadata = {
-  title: 'zen - React Component Library',
-  description: 'A modern, minimalist React component library',
+  title: 'Zen — Umami Design System',
+  description: 'The design system and React components used by Umami.',
 };
 
 const navbarLogo = (
@@ -28,7 +28,7 @@ const navbar = (
   <Navbar logo={navbarLogo} projectLink="https://github.com/umami-software/react-zen" />
 );
 
-const footer = <Footer>MIT {new Date().getFullYear()} © Umami Software.</Footer>;
+const footer = <Footer>&copy; {new Date().getFullYear()} Umami Software, Inc.</Footer>;
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -49,6 +49,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             navbar={navbar}
             pageMap={await getPageMap()}
             docsRepositoryBase="https://github.com/umami-software/react-zen/tree/main/docs"
+            darkMode={false}
             footer={footer}
           >
             {children}

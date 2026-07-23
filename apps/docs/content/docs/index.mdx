@@ -4,93 +4,43 @@ title: Introduction
 
 # Introduction
 
-**Zen** is a props-driven React component library built for speed. Created by the team at [Umami](https://umami.is),
-it lets you build polished interfaces without writing HTML, CSS, or even thinking about Tailwind classes.
+**Zen** is the design system and React component collection used by [Umami](https://umami.is).
+It contains the design tokens, layout primitives, controls, and interface patterns used across
+Umami products.
 
-The interactive components use [Base UI](https://base-ui.com/) primitives with shadcn-style
-composition and [Tailwind CSS](https://tailwindcss.com/) for styling, but you never have to touch
-either directly.
-Just compose components and pass props.
+This documentation is a reference for the system. It covers installation, component APIs,
+design tokens, and common patterns.
 
 Source code is available on [GitHub](https://github.com/umami-software/react-zen).
 
-## Why Zen?
+## Implementation
 
-Building UI is slow. You have to think about markup structure, CSS organization, responsive breakpoints,
-accessibility, and design consistency, all before you can ship a feature.
+The current components follow [shadcn](https://ui.shadcn.com/) conventions and use
+[Base UI](https://base-ui.com/) primitives for interactive behavior. Styling is implemented with
+[Tailwind CSS](https://tailwindcss.com/) and CSS custom properties.
 
-Zen eliminates that friction. Instead of assembling Tailwind classes or writing custom CSS, you work with
-**primitive components** that handle everything through props:
+## What is included
 
-<Example>
+- Design tokens for [color](/docs/design/colors), [type](/docs/design/fonts),
+  [spacing](/docs/design/spacing), [shadows](/docs/design/shadows), and
+  [borders](/docs/design/borders)
+- Layout and typography primitives
+- Form controls and interactive components
+- Reusable interface patterns from Umami products
+
+## Basic usage
+
+After [installing the package](/docs/install), wrap the application with `ZenProvider` and import
+the components you need.
+
 ```jsx
-<Box padding="12" border borderRadius="lg" shadow="lg">
-  <Column alignItems="center" gap="6">
-    <Heading size="3xl">Welcome</Heading>
-    <Text color="muted" weight="medium">
-      This is the Zen way.
-    </Text>
-    <Button variant="primary">Enter</Button>
-  </Column>
-</Box>
+import { Button, ZenProvider } from '@umami/react-zen';
+
+export function App() {
+  return (
+    <ZenProvider>
+      <Button variant="primary">Save</Button>
+    </ZenProvider>
+  );
+}
 ```
-  <Box padding="12" border borderRadius="lg" shadow="lg">
-    <Column alignItems="center" gap="6">
-      <Heading size="3xl">Welcome</Heading>
-      <Text color="muted" weight="medium">{`This is the Zen way.`}</Text>
-      <Button variant="primary">Enter</Button>
-    </Column>
-  </Box>
-</Example>
-
-No `className`. No CSS files. No memorizing utility classes. Just components and props.
-
-## Design out of the box
-
-Zen ships with a complete design system covering
-[colors](/docs/design/colors),
-[fonts](/docs/design/fonts),
-[spacing](/docs/design/spacing),
-[shadows](/docs/design/shadows),
-and [borders](/docs/design/borders).
-
-Everything works together. The spacing scale is consistent. The colors have proper contrast.
-Dark mode just works. You get a professional-looking UI without making design decisions.
-
-Need to customize? Override the CSS variables and the entire system adapts.
-
-## Primitive components
-
-Zen provides building blocks, not pre-built widgets. Components like [Box](/docs/layout/box),
-[Row](/docs/layout/row), [Column](/docs/layout/column), and [Grid](/docs/layout/grid)
-let you compose any layout through props:
-
-- **Spacing**: `padding`, `margin`, `gap`
-- **Layout**: `alignItems`, `justifyContent`, `direction`
-- **Responsive**: `{{ base: 'column', md: 'row' }}`
-- **Visual**: `border`, `borderRadius`, `shadow`
-
-This is faster than writing Tailwind because you're working at a higher level of abstraction.
-You don't assemble classes; you describe what you want.
-
-## Accessibility included
-
-Interactive primitives are keyboard-navigable and screen reader-friendly, powered by
-[Base UI](https://base-ui.com/). Focus management, ARIA attributes, and interaction patterns are
-handled by the primitive layer.
-
-You don't configure accessibility. You just use the components.
-
-## Props over classes
-
-Zen inverts the typical workflow. Instead of starting with markup and adding styles,
-you compose semantic components that already know how to render themselves:
-
-| Traditional approach | Zen approach |
-|---------------------|--------------|
-| Write HTML structure | Compose components |
-| Add Tailwind classes | Pass props |
-| Handle responsive manually | Use responsive objects |
-| Configure accessibility | Already done |
-
-The result: less code, fewer decisions, faster shipping.

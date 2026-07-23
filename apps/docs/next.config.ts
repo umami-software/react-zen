@@ -17,6 +17,15 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/docs',
+        permanent: false,
+      },
+    ];
+  },
   async rewrites() {
     // Form Inputs
     const formInputs = [

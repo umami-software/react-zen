@@ -4,20 +4,8 @@ export default {
       timestamp: false,
     },
   },
-  index: {
-    title: 'Home',
-    type: 'page',
-    theme: {
-      layout: 'full',
-      breadcrumb: false,
-      sidebar: false,
-      toc: false,
-      timestamp: false,
-      copyPage: false,
-    },
-  },
   docs: {
-    title: 'Documentation',
+    title: 'Docs',
     type: 'page',
   },
   playground: {
