@@ -1,27 +1,66 @@
 'use client';
 
+import { Inbox, Layers, Sparkles } from 'lucide-react';
 import { useRef, useState } from 'react';
 import {
   Accordion,
   AccordionItem,
   AlertBanner,
+  Blockquote,
   Box,
+  Breadcrumb,
+  Breadcrumbs,
   Button,
+  Calendar,
   Checkbox,
+  Code,
   Column,
+  ComboBox,
+  DataCard,
+  DataColumn,
+  DataTable,
+  Dots,
+  EmptyState,
+  Grid,
   Heading,
   Label,
+  List,
   ListItem,
+  LoadingButton,
+  Menu,
+  MenuItem,
+  MenuSection,
+  Navbar,
+  NavbarItem,
+  PageHeader,
+  PageHeaderActions,
+  PageHeaderTitle,
+  PasswordField,
   ProgressBar,
   ProgressCircle,
+  Radio,
+  RadioGroup,
   Row,
+  SearchField,
   Select,
+  Skeleton,
+  SkeletonAvatar,
+  SkeletonText,
   Slider,
+  Spinner,
   StatusLight,
   Switch,
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs,
+  Tag,
+  TagGroup,
   Text,
   TextField,
   Toggle,
+  ToggleGroup,
+  ToggleGroupItem,
   useToast,
 } from '@/components';
 
@@ -664,6 +703,7 @@ export function PlaygroundExample() {
   const [checked, setChecked] = useState(true);
   const [switchOn, setSwitchOn] = useState(true);
   const [sliderValue, setSliderValue] = useState(65);
+  const [calendarValue, setCalendarValue] = useState(new Date());
 
   const handleChange = (name: string, value: string) => {
     setValues(prev => ({ ...prev, [name]: value }));
@@ -686,7 +726,7 @@ export function PlaygroundExample() {
     setValues(resetValues);
     if (containerRef.current) {
       allVariables.forEach(v => {
-        containerRef.current!.style.removeProperty(v.name);
+        containerRef.current?.style.removeProperty(v.name);
       });
     }
   };
@@ -791,45 +831,80 @@ export function PlaygroundExample() {
         {/* Preview Content */}
         <Box padding="8" flexGrow="1">
           <Column gap="12">
+            {/* Page structure */}
+            <Column gap="3">
+              <Text size="xs" weight="semibold" color="muted">
+                PAGE STRUCTURE & NAVIGATION
+              </Text>
+              <PageHeader>
+                <PageHeaderTitle
+                  breadcrumb={
+                    <Breadcrumbs>
+                      <Breadcrumb>
+                        <a href="#playground">Workspace</a>
+                      </Breadcrumb>
+                      <Breadcrumb>Overview</Breadcrumb>
+                    </Breadcrumbs>
+                  }
+                  title="Design system preview"
+                  description="See token changes across the component library."
+                />
+                <PageHeaderActions>
+                  <Button variant="outline">Share</Button>
+                  <Button variant="primary">Create</Button>
+                </PageHeaderActions>
+              </PageHeader>
+              <Navbar>
+                <NavbarItem>
+                  <Text weight="medium">Overview</Text>
+                </NavbarItem>
+                <NavbarItem>
+                  <Text color="muted">Activity</Text>
+                </NavbarItem>
+                <NavbarItem>
+                  <Text color="muted">Settings</Text>
+                </NavbarItem>
+              </Navbar>
+              <Tabs defaultSelectedKey="preview">
+                <TabList>
+                  <Tab id="preview">Preview</Tab>
+                  <Tab id="tokens">Tokens</Tab>
+                  <Tab id="disabled" isDisabled>
+                    Disabled
+                  </Tab>
+                </TabList>
+                <TabPanel id="preview">
+                  Components inherit the variables configured in the sidebar.
+                </TabPanel>
+                <TabPanel id="tokens">Token values update immediately.</TabPanel>
+                <TabPanel id="disabled">Disabled tab content.</TabPanel>
+              </Tabs>
+            </Column>
+
             {/* Typography */}
             <Column gap="3">
               <Text size="xs" weight="semibold" color="muted">
                 TYPOGRAPHY
               </Text>
-              <Column gap="2">
-                <Text size="lg" weight="semibold">
-                  The quick brown fox jumps over the lazy dog
-                </Text>
-                <Text>Regular text using font-family variable</Text>
-                <Text size="sm" style={{ fontFamily: 'var(--font-family-mono)' }}>
-                  const monospace = "using font-family-mono variable";
-                </Text>
-              </Column>
+              <Heading size="2xl">The quick brown fox</Heading>
+              <Text>Regular text using the configured font-family variable.</Text>
+              <Text size="sm" color="muted">
+                Muted text provides supporting context and secondary information.
+              </Text>
+              <Text>
+                Inline values such as <Code>--surface-raised</Code> use the monospace font.
+              </Text>
+              <Blockquote>
+                Good design makes the relationship between content and action feel obvious.
+              </Blockquote>
             </Column>
 
-            {/* Defaults */}
+            {/* Defaults and surfaces */}
             <Column gap="3">
               <Text size="xs" weight="semibold" color="muted">
-                DEFAULTS
+                LAYOUT, SURFACES & DEFAULTS
               </Text>
-              <Row gap="3" wrap="wrap">
-                <Box border borderRadius padding shadow>
-                  <Text>borderRadius, padding, shadow</Text>
-                </Box>
-                <Row gap border borderRadius padding>
-                  <Text>Item 1</Text>
-                  <Text>Item 2</Text>
-                  <Text>Item 3</Text>
-                </Row>
-              </Row>
-            </Column>
-
-            {/* Surfaces & Text */}
-            <Column gap="3">
-              <Text size="xs" weight="semibold" color="muted">
-                SURFACES & TEXT
-              </Text>
-              <Row gap="3" wrap="wrap">
+              <Grid columns={{ base: '1', xl: '3' }} gap="3">
                 <Box
                   backgroundColor="surface-base"
                   border
@@ -872,6 +947,16 @@ export function PlaygroundExample() {
                     <Text color="muted">Muted text</Text>
                   </Column>
                 </Box>
+              </Grid>
+              <Row gap="3" wrap="wrap">
+                <Box border borderRadius padding shadow>
+                  <Text>borderRadius, padding, shadow</Text>
+                </Box>
+                <Row gap border borderRadius padding>
+                  <Text>Item 1</Text>
+                  <Text>Item 2</Text>
+                  <Text>Item 3</Text>
+                </Row>
               </Row>
             </Column>
 
@@ -893,19 +978,71 @@ export function PlaygroundExample() {
               </Row>
             </Column>
 
-            {/* Interactive */}
+            {/* Actions */}
             <Column gap="3">
               <Text size="xs" weight="semibold" color="muted">
-                INTERACTIVE
+                ACTIONS
               </Text>
               <Row gap="3" wrap="wrap" alignItems="center">
                 <Button variant="primary">Primary</Button>
                 <Button>Default</Button>
                 <Button variant="outline">Outline</Button>
                 <Button variant="quiet">Quiet</Button>
+                <Button variant="danger">Danger</Button>
+                <LoadingButton isLoading>Loading</LoadingButton>
               </Row>
-              <Row gap="4" wrap="wrap" alignItems="center">
-                <Toggle isSelected>Selected</Toggle>
+              <Row gap="3" wrap="wrap">
+                <Button variant="outline" onPress={() => toast('The toast component is working')}>
+                  Show toast
+                </Button>
+                <Button isDisabled>Disabled</Button>
+              </Row>
+            </Column>
+
+            {/* Form fields */}
+            <Column gap="3">
+              <Text size="xs" weight="semibold" color="muted">
+                FORM FIELDS
+              </Text>
+              <Grid columns={{ base: '1', xl: '2' }} gap="4">
+                <Column gap="1">
+                  <TextField label="Name" placeholder="Ada Lovelace" />
+                </Column>
+                <Column gap="1">
+                  <PasswordField label="Password" defaultValue="password" />
+                </Column>
+                <Column gap="1">
+                  <SearchField label="Search" placeholder="Search components..." />
+                </Column>
+                <Column gap="1">
+                  <Label>Role</Label>
+                  <Select defaultValue="designer">
+                    <ListItem id="designer">Designer</ListItem>
+                    <ListItem id="engineer">Engineer</ListItem>
+                    <ListItem id="manager">Manager</ListItem>
+                  </Select>
+                </Column>
+                <Column gap="1">
+                  <Label>Framework</Label>
+                  <ComboBox defaultValue="react">
+                    <ListItem id="react">React</ListItem>
+                    <ListItem id="vue">Vue</ListItem>
+                    <ListItem id="svelte">Svelte</ListItem>
+                  </ComboBox>
+                </Column>
+                <Column gap="1">
+                  <TextField label="Read only" value="Locked value" isReadOnly />
+                </Column>
+              </Grid>
+            </Column>
+
+            {/* Selection controls */}
+            <Column gap="3">
+              <Text size="xs" weight="semibold" color="muted">
+                SELECTION CONTROLS
+              </Text>
+              <Row gap="5" wrap="wrap" alignItems="center">
+                <Toggle isSelected>Selected toggle</Toggle>
                 <Checkbox isSelected={checked} onChange={setChecked}>
                   Checkbox
                 </Checkbox>
@@ -913,38 +1050,140 @@ export function PlaygroundExample() {
                   Switch
                 </Switch>
               </Row>
+              <Grid columns={{ base: '1', xl: '2' }} gap="5">
+                <RadioGroup label="Plan" defaultValue="pro">
+                  <Radio value="starter">Starter</Radio>
+                  <Radio value="pro">Professional</Radio>
+                  <Radio value="enterprise">Enterprise</Radio>
+                </RadioGroup>
+                <Column gap="2">
+                  <Label>Alignment</Label>
+                  <ToggleGroup defaultValue={['center']}>
+                    <ToggleGroupItem id="left">Left</ToggleGroupItem>
+                    <ToggleGroupItem id="center">Center</ToggleGroupItem>
+                    <ToggleGroupItem id="right">Right</ToggleGroupItem>
+                  </ToggleGroup>
+                </Column>
+              </Grid>
+              <Column gap="3" maxWidth="md">
+                <Label>Completion: {sliderValue}%</Label>
+                <Slider value={sliderValue} onChange={setSliderValue} min={0} max={100} />
+              </Column>
             </Column>
 
-            {/* Focus */}
+            {/* Data display */}
             <Column gap="3">
               <Text size="xs" weight="semibold" color="muted">
-                FOCUS (click to focus)
+                DATA DISPLAY
               </Text>
-              <Row gap="3" wrap="wrap">
-                <Box maxWidth="48">
-                  <TextField placeholder="Focus me..." />
+              <Grid columns={{ base: '1', xl: '2' }} gap="5">
+                <DataCard
+                  data={[
+                    { label: 'Owner', value: 'Ada Lovelace' },
+                    { label: 'Status', value: 'Active' },
+                    { label: 'Updated', value: 'Today' },
+                  ]}
+                />
+                <Box border borderRadius="lg" padding="3">
+                  <List
+                    label="Recent projects"
+                    selectionMode="single"
+                    defaultSelectedKeys={['analytics']}
+                  >
+                    <ListItem id="analytics">Analytics dashboard</ListItem>
+                    <ListItem id="commerce">Commerce storefront</ListItem>
+                    <ListItem id="docs">Documentation site</ListItem>
+                  </List>
                 </Box>
-                <Button variant="outline">Focus me</Button>
-              </Row>
+              </Grid>
+              <TagGroup label="Technologies">
+                <Tag id="react" variant="primary">
+                  React
+                </Tag>
+                <Tag id="typescript" variant="outline">
+                  TypeScript
+                </Tag>
+                <Tag id="css">CSS</Tag>
+              </TagGroup>
+              <Box overflow="auto">
+                <DataTable
+                  data={[
+                    { id: 'one', component: 'Button', category: 'Actions', status: 'Stable' },
+                    { id: 'two', component: 'DataTable', category: 'Data', status: 'Stable' },
+                    { id: 'three', component: 'Calendar', category: 'Input', status: 'Stable' },
+                  ]}
+                >
+                  <DataColumn id="component" label="Component" width="1.5fr" />
+                  <DataColumn id="category" label="Category" />
+                  <DataColumn id="status" label="Status" />
+                </DataTable>
+              </Box>
             </Column>
 
-            {/* Progress */}
+            {/* Menu and calendar */}
             <Column gap="3">
               <Text size="xs" weight="semibold" color="muted">
-                PROGRESS
+                MENU & CALENDAR
               </Text>
-              <Row gap="6" alignItems="center">
-                <Column gap="3" maxWidth="xs" flexGrow="1">
-                  <Slider
-                    value={sliderValue}
-                    onChange={v => setSliderValue(v as number)}
-                    minValue={0}
-                    maxValue={100}
+              <Grid columns={{ base: '1', xl: '2' }} gap="6" alignItems="start">
+                <Menu selectionMode="single" defaultSelectedKeys={['overview']}>
+                  <MenuSection title="Workspace">
+                    <MenuItem id="overview" icon={<Layers />}>
+                      Overview
+                    </MenuItem>
+                    <MenuItem id="activity" icon={<Sparkles />}>
+                      Activity
+                    </MenuItem>
+                    <MenuItem id="disabled" isDisabled>
+                      Disabled item
+                    </MenuItem>
+                  </MenuSection>
+                </Menu>
+                <Box border borderRadius="lg" padding="3" overflow="auto">
+                  <Calendar
+                    value={calendarValue}
+                    onChange={setCalendarValue}
+                    defaultValue={calendarValue}
                   />
+                </Box>
+              </Grid>
+            </Column>
+
+            {/* Progress and loading */}
+            <Column gap="3">
+              <Text size="xs" weight="semibold" color="muted">
+                PROGRESS & LOADING
+              </Text>
+              <Row gap="6" alignItems="center" wrap="wrap">
+                <Column gap="3" maxWidth="xs" flexGrow="1">
                   <ProgressBar value={sliderValue} />
+                  <Row gap="5" alignItems="center">
+                    <Spinner size="sm" />
+                    <Spinner />
+                    <Dots size="lg" />
+                  </Row>
                 </Column>
                 <ProgressCircle value={sliderValue} />
               </Row>
+              <Grid columns={{ base: '1', xl: '2' }} gap="5">
+                <Box border borderRadius="lg" padding="4">
+                  <Row gap="3" alignItems="center">
+                    <SkeletonAvatar />
+                    <Column gap="2" flexGrow="1">
+                      <Skeleton height="1rem" width="45%" />
+                      <SkeletonText lines={2} />
+                    </Column>
+                  </Row>
+                </Box>
+                <Box border borderRadius="lg">
+                  <EmptyState
+                    icon={<Inbox />}
+                    title="No messages"
+                    description="New messages will appear here."
+                    actions={<Button variant="primary">Compose</Button>}
+                  />
+                </Box>
+              </Grid>
             </Column>
 
             {/* Status */}
