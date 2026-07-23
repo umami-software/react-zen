@@ -63,7 +63,7 @@ interface StatCardGroupProps extends BoxProps {
 
 export function StatCardGroup({ children, ...props }: StatCardGroupProps) {
   return (
-    <Row gap="4" flexWrap="wrap" {...props}>
+    <Row gap="4" wrap="wrap" {...props}>
       {children}
     </Row>
   );

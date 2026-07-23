@@ -1,93 +1,118 @@
-# zen
+# Zen
 
-**Zen** is a props-driven React component library built for speed. Build polished interfaces without writing HTML, CSS, or thinking about Tailwind classes.
+Zen is the design system and React component collection used by [Umami](https://umami.is).
+It contains the design tokens, layout primitives, controls, and interface patterns used across
+Umami products.
 
-- **Props over classes** - Style through component props, not utility classes
-- **Design included** - Complete design system out of the box with dark mode
-- **Accessible** - Built on [React Aria](https://react-spectrum.adobe.com/react-aria/) primitives
-- **Powered by Tailwind** - Uses [Tailwind CSS](https://tailwindcss.com/) under the hood, but you never touch it
+The components follow [shadcn](https://ui.shadcn.com/) conventions, use
+[Base UI](https://base-ui.com/) primitives for interactive behavior, and are styled with
+[Tailwind CSS](https://tailwindcss.com/) and CSS custom properties.
 
-[Documentation](https://zen.umami.is/)
+[Documentation](https://zen.umami.is/) ·
+[Component source](./packages/react-zen/src/components)
+
+## Contents
+
+- Design tokens for color, typography, spacing, borders, and shadows
+- Layout and typography primitives
+- Form controls and interactive components
+- Reusable interface patterns from Umami products
 
 ## Installation
 
 ```shell
-npm install @umami/react-zen
+pnpm install @umami/react-zen
+```
+
+### With Tailwind CSS
+
+For projects using Tailwind CSS v4, add the Zen preset and include the package in the content
+paths:
+
+```ts
+import zenPreset from '@umami/react-zen/tailwind-preset';
+
+export default {
+  presets: [zenPreset],
+  content: [
+    './src/**/*.{ts,tsx}',
+    './node_modules/@umami/react-zen/dist/**/*.{js,mjs}',
+  ],
+};
+```
+
+Import the theme variables and component animations:
+
+```js
+import '@umami/react-zen/styles.css';
+```
+
+### Without Tailwind CSS
+
+Import the full stylesheet:
+
+```js
+import '@umami/react-zen/styles.full.css';
 ```
 
 ## Usage
 
-### Import styles
-
-```javascript
-import '@umami/react-zen/styles.css';
-```
-
-### Build with components
+Wrap the application with `ZenProvider`, then import components from the package:
 
 ```jsx
-import { Box, Column, Heading, Text, Button } from '@umami/react-zen';
+import { Button, ZenProvider } from '@umami/react-zen';
 
-export default function Welcome() {
+export function App() {
   return (
-    <Box padding="6" border borderRadius="lg" shadow="lg">
-      <Column alignItems="center" gap="6">
-        <Heading size="3xl">Welcome</Heading>
-        <Text color="muted">This is the zen way.</Text>
-        <Button variant="primary">Enter</Button>
-      </Column>
-    </Box>
+    <ZenProvider>
+      <Button variant="primary">Save</Button>
+    </ZenProvider>
   );
 }
 ```
 
-No `className`. No CSS files. Just components and props.
-
-## Why Zen?
-
-Building UI is slow. You have to think about markup, CSS organization, responsive breakpoints, accessibility, and design consistency.
-
-Zen eliminates that friction:
-
-| Traditional approach | zen approach |
-|---------------------|--------------|
-| Write HTML structure | Compose components |
-| Add Tailwind classes | Pass props |
-| Handle responsive manually | Use responsive objects |
-| Configure accessibility | Already done |
+See the [documentation](https://zen.umami.is/docs) for component APIs, design tokens, and patterns.
 
 ## Development
 
-This is a Turborepo monorepo with:
-- `packages/react-zen` - Component library
-- `apps/docs` - Documentation site
+This repository is a pnpm and Turborepo monorepo:
 
-### Build the component library
+- `packages/react-zen` contains the component package
+- `apps/docs` contains the documentation site
 
-```bash
-pnpm --filter @umami/react-zen build
+Install dependencies:
+
+```shell
+pnpm install
 ```
 
-### Run the docs site
+Run the workspace in development:
 
-```bash
-pnpm --filter react-zen-docs dev
+```shell
+pnpm dev
 ```
 
-Runs on http://localhost:9001
+Build all packages and apps:
 
-### Build everything
-
-```bash
+```shell
 pnpm build
 ```
 
-### Lint
+Lint the workspace:
 
-```bash
+```shell
 pnpm lint
 ```
 
+To run a command for one workspace:
+
+```shell
+pnpm --filter @umami/react-zen build
+pnpm --filter react-zen-docs dev
+```
+
+The documentation development server runs at `http://localhost:9001`.
+
 ## License
 
-MIT
+[MIT](./LICENSE)

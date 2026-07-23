@@ -123,7 +123,7 @@ export function ActiveFilters({ groups, selectedFilters, onRemove }: ActiveFilte
   if (activeFilters.length === 0) return null;
 
   return (
-    <Row gap="2" flexWrap="wrap">
+    <Row gap="2" wrap="wrap">
       {activeFilters.map(({ groupId, optionId, label }) => (
         <Row
           key={`${groupId}-${optionId}`}
