@@ -8,10 +8,11 @@ import { switchVariant } from './variants';
 export interface SwitchProps
   extends Omit<
     BaseSwitch.Root.Props,
-    'checked' | 'defaultChecked' | 'disabled' | 'onCheckedChange'
+    'checked' | 'defaultChecked' | 'disabled' | 'onCheckedChange' | 'value'
   > {
   children?: ReactNode;
   label?: string;
+  value?: string | boolean;
   isSelected?: boolean;
   defaultSelected?: boolean;
   isDisabled?: boolean;
@@ -26,8 +27,10 @@ export function Switch({
   defaultSelected,
   isDisabled,
   onChange,
+  value,
   ...props
 }: SwitchProps) {
+  const checked = isSelected ?? (typeof value === 'boolean' ? value : undefined);
   const styles = switchVariant();
 
   return (
@@ -35,7 +38,8 @@ export function Switch({
       {label && <Label>{label}</Label>}
       <BaseSwitch.Root
         {...props}
-        checked={isSelected}
+        value={typeof value === 'string' ? value : undefined}
+        checked={checked}
         defaultChecked={defaultSelected}
         disabled={isDisabled}
         className={cn(styles.root(), className)}

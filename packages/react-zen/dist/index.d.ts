@@ -409,9 +409,10 @@ type CalendarProps = Omit<ComponentProps<typeof DayPicker>, 'mode' | 'selected' 
 };
 declare function Calendar({ className, value, minValue, maxValue, defaultValue, onChange, isDisabled, isReadOnly, ...props }: CalendarProps): react_jsx_runtime.JSX.Element;
 
-interface CheckboxProps extends Omit<CheckboxRoot.Props, 'checked' | 'defaultChecked' | 'disabled' | 'indeterminate' | 'onCheckedChange'> {
+interface CheckboxProps extends Omit<CheckboxRoot.Props, 'checked' | 'defaultChecked' | 'disabled' | 'indeterminate' | 'onCheckedChange' | 'value'> {
     children?: ReactNode;
     label?: string;
+    value?: string | boolean;
     isSelected?: boolean;
     defaultSelected?: boolean;
     isDisabled?: boolean;
@@ -1046,15 +1047,16 @@ interface StatusLightProps {
 }
 declare function StatusLight(props: StatusLightProps): react_jsx_runtime.JSX.Element;
 
-interface SwitchProps extends Omit<Switch$1.Root.Props, 'checked' | 'defaultChecked' | 'disabled' | 'onCheckedChange'> {
+interface SwitchProps extends Omit<Switch$1.Root.Props, 'checked' | 'defaultChecked' | 'disabled' | 'onCheckedChange' | 'value'> {
     children?: ReactNode;
     label?: string;
+    value?: string | boolean;
     isSelected?: boolean;
     defaultSelected?: boolean;
     isDisabled?: boolean;
     onChange?: (selected: boolean) => void;
 }
-declare function Switch({ label, children, className, isSelected, defaultSelected, isDisabled, onChange, ...props }: SwitchProps): react_jsx_runtime.JSX.Element;
+declare function Switch({ label, children, className, isSelected, defaultSelected, isDisabled, onChange, value, ...props }: SwitchProps): react_jsx_runtime.JSX.Element;
 
 interface TabsProps extends Omit<Tabs$1.Root.Props, 'value' | 'defaultValue' | 'onValueChange'> {
     children?: ReactNode;

@@ -9,10 +9,11 @@ import { checkbox } from './variants';
 export interface CheckboxProps
   extends Omit<
     CheckboxRoot.Props,
-    'checked' | 'defaultChecked' | 'disabled' | 'indeterminate' | 'onCheckedChange'
+    'checked' | 'defaultChecked' | 'disabled' | 'indeterminate' | 'onCheckedChange' | 'value'
   > {
   children?: ReactNode;
   label?: string;
+  value?: string | boolean;
   isSelected?: boolean;
   defaultSelected?: boolean;
   isDisabled?: boolean;
@@ -32,7 +33,7 @@ export function Checkbox({
   value,
   ...props
 }: CheckboxProps) {
-  const checked = isSelected ?? (typeof value !== 'undefined' ? !!value : undefined);
+  const checked = isSelected ?? (typeof value === 'boolean' ? value : undefined);
   const styles = checkbox();
 
   return (

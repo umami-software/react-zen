@@ -2591,14 +2591,14 @@ var checkbox = tv({
       "flex items-center justify-center",
       "w-5 h-5 rounded border border-edge bg-surface-base",
       "shadow-sm transition-colors",
-      "group-selected:bg-primary group-selected:border-primary group-selected:text-primary-foreground",
+      "group-data-[checked]:bg-primary group-data-[checked]:border-primary group-data-[checked]:text-primary-foreground",
       "group-indeterminate:bg-surface-base group-indeterminate:text-foreground-primary",
       "group-disabled:bg-surface-disabled",
       "group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1"
     ],
     icon: [
       "hidden",
-      "group-selected:flex",
+      "group-data-[checked]:flex",
       "group-indeterminate:flex",
       "items-center justify-center"
     ]
@@ -2615,14 +2615,14 @@ var switchVariant = tv({
       "flex items-center w-10 h-6 px-1 rounded-full",
       "bg-interactive",
       "transition-colors",
-      "group-selected:bg-primary",
+      "group-data-[checked]:bg-primary",
       "group-focus-visible:ring-2 group-focus-visible:ring-focus-ring group-focus-visible:ring-offset-1"
     ],
     thumb: [
       "w-4 h-4 rounded-full",
       "bg-surface-base shadow-sm",
       "transition-transform",
-      "group-selected:translate-x-4"
+      "group-data-[checked]:translate-x-4"
     ]
   }
 });
@@ -3118,7 +3118,7 @@ function Checkbox({
   value,
   ...props
 }) {
-  const checked = isSelected ?? (typeof value !== "undefined" ? !!value : void 0);
+  const checked = isSelected ?? (typeof value === "boolean" ? value : void 0);
   const styles = checkbox();
   return /* @__PURE__ */ jsxs(
     Checkbox$1.Root,
@@ -5373,8 +5373,10 @@ function Switch({
   defaultSelected,
   isDisabled,
   onChange,
+  value,
   ...props
 }) {
+  const checked = isSelected ?? (typeof value === "boolean" ? value : void 0);
   const styles = switchVariant();
   return /* @__PURE__ */ jsxs(Column, { children: [
     label && /* @__PURE__ */ jsx(Label, { children: label }),
@@ -5382,7 +5384,8 @@ function Switch({
       Switch$1.Root,
       {
         ...props,
-        checked: isSelected,
+        value: typeof value === "string" ? value : void 0,
+        checked,
         defaultChecked: defaultSelected,
         disabled: isDisabled,
         className: cn(styles.root(), className),

@@ -25,9 +25,10 @@ const defaultValues = {
   password: '',
   search: '',
   select: '',
+  checkbox: false,
   radio: '',
   toggle: '',
-  switch: '',
+  switch: false,
   slider: 0,
   list: [],
 };
