@@ -1,9 +1,37 @@
 import { Combobox as BaseCombobox } from '@base-ui/react/combobox';
-import type { ReactNode } from 'react';
+import { Children, isValidElement, type ReactElement, type ReactNode } from 'react';
 import { Icon } from '@/components/Icon';
 import { ChevronRight } from '@/components/icons';
-import { List, ListItem, ListPrimitiveProvider, type ListProps } from '@/components/List';
+import {
+  List,
+  ListItem,
+  type ListItemProps,
+  ListPrimitiveProvider,
+  type ListProps,
+} from '@/components/List';
 import { cn } from './lib/tailwind';
+
+interface ComboBoxItem {
+  label: ReactNode;
+  value: string;
+  element?: ReactElement<ListItemProps>;
+}
+
+function getItemLabel(label: ReactNode): string {
+  if (typeof label === 'string' || typeof label === 'number') {
+    return String(label);
+  }
+
+  if (Array.isArray(label)) {
+    return label.map(getItemLabel).join('');
+  }
+
+  if (isValidElement<{ children?: ReactNode }>(label)) {
+    return getItemLabel(label.props.children);
+  }
+
+  return '';
+}
 
 export interface ComboBoxProps
   extends Omit<
@@ -33,23 +61,34 @@ export function ComboBox({
   popoverProps,
   children,
   items,
+  itemToStringLabel,
   ...props
 }: ComboBoxProps) {
-  const normalizedItems = items?.map(item =>
-    typeof item === 'object' ? item : { label: item, value: item },
+  const childItems = Children.toArray(children).flatMap<ComboBoxItem>(child => {
+    if (!isValidElement<ListItemProps>(child)) {
+      return [];
+    }
+
+    const value = String(
+      child.props.value ??
+        child.props.id ??
+        (typeof child.props.children === 'string' ? child.props.children : ''),
+    );
+
+    return value ? [{ label: child.props.children, value, element: child }] : [];
+  });
+  const normalizedItems: ComboBoxItem[] =
+    items?.map(item => (typeof item === 'object' ? item : { label: item, value: item })) ??
+    childItems;
+  const itemLabels = new Map(
+    normalizedItems.map(item => [item.value, getItemLabel(item.label) || item.value]),
   );
-  const collection =
-    children ||
-    normalizedItems?.map(item => (
-      <ListItem key={item.value} value={item.value}>
-        {item.label}
-      </ListItem>
-    ));
 
   return (
     <BaseCombobox.Root
       {...props}
-      items={normalizedItems}
+      items={normalizedItems.map(item => item.value)}
+      itemToStringLabel={itemToStringLabel ?? (value => itemLabels.get(value) ?? value)}
       disabled={isDisabled}
       onValueChange={onChange}
     >
@@ -74,10 +113,28 @@ export function ComboBox({
           </BaseCombobox.Trigger>
         </BaseCombobox.InputGroup>
         <BaseCombobox.Portal>
-          <BaseCombobox.Positioner {...popoverProps}>
-            <BaseCombobox.Popup className="p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none">
+          <BaseCombobox.Positioner align="start" sideOffset={4} {...popoverProps}>
+            <BaseCombobox.Popup className="w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none">
               <ListPrimitiveProvider kind="combobox">
-                <List {...listProps}>{collection}</List>
+                <List {...listProps}>
+                  <BaseCombobox.Collection>
+                    {value => {
+                      const item = normalizedItems.find(option => option.value === value);
+
+                      if (!item) {
+                        return null;
+                      }
+
+                      return (
+                        item.element ?? (
+                          <ListItem key={item.value} value={item.value}>
+                            {item.label}
+                          </ListItem>
+                        )
+                      );
+                    }}
+                  </BaseCombobox.Collection>
+                </List>
               </ListPrimitiveProvider>
               {renderEmptyState && <BaseCombobox.Empty>{renderEmptyState({})}</BaseCombobox.Empty>}
             </BaseCombobox.Popup>
