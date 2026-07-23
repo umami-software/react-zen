@@ -152,6 +152,11 @@ export function Select({
                     delay={searchDelay}
                     defaultValue={searchValue}
                     autoFocus
+                    onKeyDown={event => {
+                      if (event.key !== 'Escape' && event.key !== 'Tab') {
+                        event.stopPropagation();
+                      }
+                    }}
                   />
                 )}
                 {isLoading && <Loading icon="dots" placement="center" size="sm" height="60px" />}
