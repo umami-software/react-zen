@@ -3958,6 +3958,36 @@ function Dots({ size = "md", className, color: _color, ...props }) {
     /* @__PURE__ */ jsxRuntime.jsx(Dot, { size })
   ] });
 }
+function EmptyState({
+  icon,
+  title,
+  description,
+  actions,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsxs(Column, { alignItems: "center", justifyContent: "center", padding: "8", gap: "4", ...props, children: [
+    icon && /* @__PURE__ */ jsxRuntime.jsx(
+      Row,
+      {
+        width: "16",
+        height: "16",
+        borderRadius: "full",
+        backgroundColor: "surface-raised",
+        alignItems: "center",
+        justifyContent: "center",
+        "aria-hidden": "true",
+        children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "lg", color: "muted", children: icon })
+      }
+    ),
+    /* @__PURE__ */ jsxRuntime.jsxs(Column, { alignItems: "center", gap: "2", children: [
+      /* @__PURE__ */ jsxRuntime.jsx(Text, { size: "lg", weight: "semibold", align: "center", children: title }),
+      description && /* @__PURE__ */ jsxRuntime.jsx(Box, { maxWidth: "20rem", textAlign: "center", children: /* @__PURE__ */ jsxRuntime.jsx(Text, { color: "muted", children: description }) })
+    ] }),
+    children,
+    actions && /* @__PURE__ */ jsxRuntime.jsx(Row, { gap: "2", alignItems: "center", justifyContent: "center", wrap: "wrap", children: actions })
+  ] });
+}
 function Tooltip({
   children,
   className,
@@ -4868,6 +4898,39 @@ function NavbarItem({
     }
   );
 }
+function PageHeader({ children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    Row,
+    {
+      width: "100%",
+      paddingY: "4",
+      alignItems: "center",
+      justifyContent: "space-between",
+      borderColor: "muted",
+      border: "bottom",
+      gap: "4",
+      ...props,
+      children
+    }
+  );
+}
+function PageHeaderTitle({
+  title,
+  description,
+  breadcrumb,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsxs(Column, { gap: "1", ...props, children: [
+    breadcrumb,
+    /* @__PURE__ */ jsxRuntime.jsx(Text, { size: "xl", weight: "semibold", children: title }),
+    description && /* @__PURE__ */ jsxRuntime.jsx(Text, { color: "muted", children: description }),
+    children
+  ] });
+}
+function PageHeaderActions({ children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(Row, { gap: "2", alignItems: "center", ...props, children });
+}
 var PALETTE_LABELS = {
   neutral: "Neutral",
   slate: "Slate",
@@ -5322,6 +5385,57 @@ function Select({
       ]
     }
   ) });
+}
+function Skeleton({
+  width = "100%",
+  height = "1rem",
+  borderRadius = "md",
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    Box,
+    {
+      "aria-hidden": "true",
+      ...props,
+      width,
+      height,
+      borderRadius,
+      className: cn("zen-skeleton", className)
+    }
+  );
+}
+function SkeletonText({
+  lines = 3,
+  lastLineWidth = "60%",
+  lineHeight = "0.875rem",
+  ...props
+}) {
+  const lineKeys = Array.from({ length: lines }, (_, index) => `line-${index}`);
+  return /* @__PURE__ */ jsxRuntime.jsx(Column, { gap: "2", ...props, children: lineKeys.map((key, index) => /* @__PURE__ */ jsxRuntime.jsx(
+    Skeleton,
+    {
+      height: lineHeight,
+      width: index === lines - 1 ? lastLineWidth : "100%"
+    },
+    key
+  )) });
+}
+var avatarSizeMap = {
+  sm: "2rem",
+  md: "2.5rem",
+  lg: "3rem"
+};
+function SkeletonAvatar({ size = "md", ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    Skeleton,
+    {
+      width: avatarSizeMap[size],
+      height: avatarSizeMap[size],
+      borderRadius: "full",
+      ...props
+    }
+  );
 }
 function Slider({
   className,
@@ -5794,6 +5908,7 @@ exports.DataTable = DataTable;
 exports.Dialog = Dialog;
 exports.DialogTrigger = DialogTrigger;
 exports.Dots = Dots;
+exports.EmptyState = EmptyState;
 exports.FileTrigger = FileTrigger;
 exports.Flexbox = Flexbox;
 exports.FloatingTooltip = FloatingTooltip;
@@ -5828,6 +5943,9 @@ exports.Navbar = Navbar;
 exports.NavbarContext = NavbarContext;
 exports.NavbarItem = NavbarItem;
 exports.PALETTES = PALETTES;
+exports.PageHeader = PageHeader;
+exports.PageHeaderActions = PageHeaderActions;
+exports.PageHeaderTitle = PageHeaderTitle;
 exports.PaletteSwitcher = PaletteSwitcher;
 exports.PasswordField = PasswordField;
 exports.Popover = Popover;
@@ -5840,6 +5958,9 @@ exports.RouterProvider = RouterProvider;
 exports.Row = Row;
 exports.SearchField = SearchField;
 exports.Select = Select;
+exports.Skeleton = Skeleton;
+exports.SkeletonAvatar = SkeletonAvatar;
+exports.SkeletonText = SkeletonText;
 exports.Slider = Slider;
 exports.Spinner = Spinner;
 exports.StatusLight = StatusLight;

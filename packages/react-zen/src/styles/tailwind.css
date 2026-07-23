@@ -4,6 +4,7 @@
 @import "../components/Dots.css";
 @import "../components/Modal.css";
 @import "../components/Popover.css";
+@import "../components/Skeleton.css";
 @import "../components/Spinner.css";
 
 @source "../../src/components";

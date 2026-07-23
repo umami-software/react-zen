@@ -597,6 +597,14 @@ interface DotsProps extends HTMLAttributes<HTMLDivElement> {
 }
 declare function Dots({ size, className, color: _color, ...props }: DotsProps): react_jsx_runtime.JSX.Element;
 
+interface EmptyStateProps extends Omit<ColumnProps, 'title'> {
+    icon?: ReactNode;
+    title: ReactNode;
+    description?: ReactNode;
+    actions?: ReactNode;
+}
+declare function EmptyState({ icon, title, description, actions, children, ...props }: EmptyStateProps): react_jsx_runtime.JSX.Element;
+
 interface TooltipProps extends Omit<Tooltip$1.Positioner.Props, 'children' | 'className'> {
     children?: ReactNode;
     showArrow?: boolean;
@@ -937,6 +945,21 @@ declare function RouterProvider({ children }: {
     children?: ReactNode;
 }): ReactNode;
 
+interface PageHeaderProps extends RowProps {
+    children?: ReactNode;
+}
+declare function PageHeader({ children, ...props }: PageHeaderProps): react_jsx_runtime.JSX.Element;
+interface PageHeaderTitleProps extends Omit<ColumnProps, 'title'> {
+    title: ReactNode;
+    description?: ReactNode;
+    breadcrumb?: ReactNode;
+}
+declare function PageHeaderTitle({ title, description, breadcrumb, children, ...props }: PageHeaderTitleProps): react_jsx_runtime.JSX.Element;
+interface PageHeaderActionsProps extends RowProps {
+    children?: ReactNode;
+}
+declare function PageHeaderActions({ children, ...props }: PageHeaderActionsProps): react_jsx_runtime.JSX.Element;
+
 interface PaletteSwitcherProps {
     className?: string;
 }
@@ -1022,6 +1045,20 @@ interface SelectProps extends Omit<Select$1.Root.Props<string | number>, 'childr
     className?: string;
 }
 declare function Select({ value, defaultValue, label, placeholder, isLoading, isDisabled, allowSearch, searchValue, searchDelay, isFullscreen, maxHeight, showIcon, onSearch, onChange, buttonProps, listProps, popoverProps, renderValue, className, children, items, onOpenChange, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
+
+interface SkeletonProps extends BoxProps {
+}
+declare function Skeleton({ width, height, borderRadius, className, ...props }: SkeletonProps): react_jsx_runtime.JSX.Element;
+interface SkeletonTextProps extends ColumnProps {
+    lines?: number;
+    lastLineWidth?: BoxProps['width'];
+    lineHeight?: BoxProps['height'];
+}
+declare function SkeletonText({ lines, lastLineWidth, lineHeight, ...props }: SkeletonTextProps): react_jsx_runtime.JSX.Element;
+interface SkeletonAvatarProps extends Omit<SkeletonProps, 'width' | 'height' | 'borderRadius'> {
+    size?: 'sm' | 'md' | 'lg';
+}
+declare function SkeletonAvatar({ size, ...props }: SkeletonAvatarProps): react_jsx_runtime.JSX.Element;
 
 interface SliderProps extends Omit<Slider$1.Root.Props<number>, 'disabled' | 'onChange' | 'onValueChange' | 'onValueCommitted'> {
     label?: ReactNode;
@@ -1182,4 +1219,4 @@ interface ZenProviderProps {
 }
 declare function ZenProvider({ children, theme, colorScheme, palette, toast, }: ZenProviderProps): react_jsx_runtime.JSX.Element;
 
-export { Accordion, AccordionItem, type AccordionItemProps, type AccordionProps, AlertBanner, type AlertBannerProps, AlertDialog, type AlertDialogProps, Blockquote, type BlockquoteProps, Box, type BoxProps, type BoxRenderProps, Breadcrumb, type BreadcrumbProps, Breadcrumbs, type BreadcrumbsProps, type BreakpointKey, Button, type ButtonProps, type ButtonRenderProps, Calendar, type CalendarProps, Checkbox, type CheckboxProps, Code, type CodeProps, Column, type ColumnProps, ComboBox, type ComboBoxProps, ConfirmationDialog, type ConfirmationDialogProps, Container, type ContainerProps, CopyButton, type CopyButtonProps, DataCard, type DataCardProps, DataColumn, type DataColumnProps, DataTable, type DataTableProps, Dialog, type DialogProps, type DialogRenderProps, DialogTrigger, Dots, type DotsProps, FileTrigger, Flexbox, type FlexboxProps, FloatingTooltip, type FloatingTooltipProps, Focusable, Form, FormButtons, type FormButtonsProps, FormController, type FormControllerProps, FormField, FormFieldArray, type FormFieldArrayProps, type FormFieldProps, type FormProps, FormResetButton, type FormResetButtonProps, FormSubmitButton, Grid, type GridProps, Heading, type HeadingProps, type HoverButtonProps, HoverTrigger, Icon, type IconProps, Image, type ImageProps, Label, type LabelProps, List, ListItem, type ListItemProps, ListPrimitiveProvider, type ListProps, ListSection, type ListSectionProps, ListSeparator, Loading, LoadingButton, type LoadingButtonProps, type LoadingProps, Menu, MenuItem, type MenuItemProps, type MenuProps, MenuSection, type MenuSectionProps, MenuSeparator, MenuTrigger, Modal, type ModalProps, Navbar, NavbarContext, NavbarItem, type NavbarItemProps, type NavbarProps, type NavigationContext, PALETTES, type Palette, PaletteSwitcher, type PaletteSwitcherProps, PasswordField, type PasswordFieldProps, Popover, type PopoverProps, type PressEvent, Pressable, ProgressBar, type ProgressBarProps, ProgressCircle, type ProgressCircleProps, Radio, RadioGroup, type RadioGroupProps, type RadioProps, type RenderProp, RouterProvider, Row, type RowProps, SearchField, type SearchFieldProps, Select, type SelectProps, type SelectValueRenderProps, type Selection, Slider, type SliderProps, Spinner, type SpinnerProps, StatusLight, type StatusLightProps, type StrokeWidth, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, type SubmenuTriggerProps, Switch, type SwitchProps, Tab, TabList, type TabListProps, TabPanel, type TabPanelProps, type TabProps, Table, TableBody, TableCell, type TableCellProps, TableColumn, type TableColumnProps, TableHeader, type TableProps, TableRow, type TableRowProps, Tabs, type TabsProps, Tag, TagGroup, type TagGroupProps, type TagProps, Text, TextField, type TextFieldProps, type TextProps, type TextRenderProps, type Theme, ThemeButton, type ThemeButtonProps, type ThemeMode, ThemeSwitcher, type ThemeSwitcherProps, Toast, ToastContext, type ToastOptions, type ToastPosition, type ToastProps, ToastProvider, type ToastProviderProps, type ToastState, type ToastVariant, Toaster, type ToasterProps, Toggle, ToggleGroup, ToggleGroupItem, type ToggleGroupItemProps, type ToggleGroupProps, type ToggleProps, Tooltip, TooltipBubble, type TooltipBubbleProps, type TooltipProps, TooltipTrigger, ZenProvider, type ZenProviderProps, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useNavigationContext, useTheme, useToast };
+export { Accordion, AccordionItem, type AccordionItemProps, type AccordionProps, AlertBanner, type AlertBannerProps, AlertDialog, type AlertDialogProps, Blockquote, type BlockquoteProps, Box, type BoxProps, type BoxRenderProps, Breadcrumb, type BreadcrumbProps, Breadcrumbs, type BreadcrumbsProps, type BreakpointKey, Button, type ButtonProps, type ButtonRenderProps, Calendar, type CalendarProps, Checkbox, type CheckboxProps, Code, type CodeProps, Column, type ColumnProps, ComboBox, type ComboBoxProps, ConfirmationDialog, type ConfirmationDialogProps, Container, type ContainerProps, CopyButton, type CopyButtonProps, DataCard, type DataCardProps, DataColumn, type DataColumnProps, DataTable, type DataTableProps, Dialog, type DialogProps, type DialogRenderProps, DialogTrigger, Dots, type DotsProps, EmptyState, type EmptyStateProps, FileTrigger, Flexbox, type FlexboxProps, FloatingTooltip, type FloatingTooltipProps, Focusable, Form, FormButtons, type FormButtonsProps, FormController, type FormControllerProps, FormField, FormFieldArray, type FormFieldArrayProps, type FormFieldProps, type FormProps, FormResetButton, type FormResetButtonProps, FormSubmitButton, Grid, type GridProps, Heading, type HeadingProps, type HoverButtonProps, HoverTrigger, Icon, type IconProps, Image, type ImageProps, Label, type LabelProps, List, ListItem, type ListItemProps, ListPrimitiveProvider, type ListProps, ListSection, type ListSectionProps, ListSeparator, Loading, LoadingButton, type LoadingButtonProps, type LoadingProps, Menu, MenuItem, type MenuItemProps, type MenuProps, MenuSection, type MenuSectionProps, MenuSeparator, MenuTrigger, Modal, type ModalProps, Navbar, NavbarContext, NavbarItem, type NavbarItemProps, type NavbarProps, type NavigationContext, PALETTES, PageHeader, PageHeaderActions, type PageHeaderActionsProps, type PageHeaderProps, PageHeaderTitle, type PageHeaderTitleProps, type Palette, PaletteSwitcher, type PaletteSwitcherProps, PasswordField, type PasswordFieldProps, Popover, type PopoverProps, type PressEvent, Pressable, ProgressBar, type ProgressBarProps, ProgressCircle, type ProgressCircleProps, Radio, RadioGroup, type RadioGroupProps, type RadioProps, type RenderProp, RouterProvider, Row, type RowProps, SearchField, type SearchFieldProps, Select, type SelectProps, type SelectValueRenderProps, type Selection, Skeleton, SkeletonAvatar, type SkeletonAvatarProps, type SkeletonProps, SkeletonText, type SkeletonTextProps, Slider, type SliderProps, Spinner, type SpinnerProps, StatusLight, type StatusLightProps, type StrokeWidth, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, type SubmenuTriggerProps, Switch, type SwitchProps, Tab, TabList, type TabListProps, TabPanel, type TabPanelProps, type TabProps, Table, TableBody, TableCell, type TableCellProps, TableColumn, type TableColumnProps, TableHeader, type TableProps, TableRow, type TableRowProps, Tabs, type TabsProps, Tag, TagGroup, type TagGroupProps, type TagProps, Text, TextField, type TextFieldProps, type TextProps, type TextRenderProps, type Theme, ThemeButton, type ThemeButtonProps, type ThemeMode, ThemeSwitcher, type ThemeSwitcherProps, Toast, ToastContext, type ToastOptions, type ToastPosition, type ToastProps, ToastProvider, type ToastProviderProps, type ToastState, type ToastVariant, Toaster, type ToasterProps, Toggle, ToggleGroup, ToggleGroupItem, type ToggleGroupItemProps, type ToggleGroupProps, type ToggleProps, Tooltip, TooltipBubble, type TooltipBubbleProps, type TooltipProps, TooltipTrigger, ZenProvider, type ZenProviderProps, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useNavigationContext, useTheme, useToast };

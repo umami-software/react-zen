@@ -19,8 +19,4 @@ export default {
       timestamp: false,
     },
   },
-  patterns: {
-    title: 'Patterns',
-    type: 'page',
-  },
 };

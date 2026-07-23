@@ -1,0 +1,116 @@
+---
+title: Empty State
+---
+
+# Empty State
+
+Displays a message and optional actions when a view has no content.
+
+<Example>
+  <EmptyState
+    icon={<Lucide.Inbox />}
+    title="No messages"
+    description="You don't have any messages yet."
+    actions={<Button variant="primary">Compose message</Button>}
+  />
+
+```jsx
+import { Inbox } from 'lucide-react';
+import { Button, EmptyState } from '@umami/react-zen';
+
+<EmptyState
+  icon={<Inbox />}
+  title="No messages"
+  description="You don't have any messages yet."
+  actions={<Button variant="primary">Compose message</Button>}
+/>
+```
+</Example>
+
+## Props
+
+`EmptyState` accepts `Column` props in addition to the props below.
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `title` | `ReactNode` | Main message |
+| `description` | `ReactNode` | Supporting text |
+| `icon` | `ReactNode` | Icon displayed above the title |
+| `actions` | `ReactNode` | Buttons or links displayed below the message |
+| `children` | `ReactNode` | Additional content between the message and actions |
+
+## Examples
+
+### No search results
+
+<Example>
+  <EmptyState
+    icon={<Lucide.Search />}
+    title="No results found"
+    description="Try adjusting your search or filters."
+  />
+
+```jsx
+<EmptyState
+  icon={<Search />}
+  title="No results found"
+  description="Try adjusting your search or filters."
+/>
+```
+</Example>
+
+### Error state
+
+<Example>
+  <EmptyState
+    icon={<Lucide.FileX />}
+    title="Something went wrong"
+    description="The content could not be loaded."
+    actions={
+      <>
+        <Button variant="primary">Try again</Button>
+        <Button variant="quiet">Contact support</Button>
+      </>
+    }
+  />
+
+```jsx
+<EmptyState
+  icon={<FileX />}
+  title="Something went wrong"
+  description="The content could not be loaded."
+  actions={
+    <>
+      <Button variant="primary">Try again</Button>
+      <Button variant="quiet">Contact support</Button>
+    </>
+  }
+/>
+```
+</Example>
+
+### Additional content
+
+Use `children` for content that does not belong in the description or action row.
+
+<Example>
+  <EmptyState
+    title="No projects"
+    description="Create a project or import an existing one."
+    actions={<Button variant="primary">New project</Button>}
+  >
+    <Text size="sm" color="muted">JSON and CSV imports are supported.</Text>
+  </EmptyState>
+
+```jsx
+<EmptyState
+  title="No projects"
+  description="Create a project or import an existing one."
+  actions={<Button variant="primary">New project</Button>}
+>
+  <Text size="sm" color="muted">
+    JSON and CSV imports are supported.
+  </Text>
+</EmptyState>
+```
+</Example>

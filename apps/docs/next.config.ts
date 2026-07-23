@@ -24,6 +24,21 @@ const nextConfig: NextConfig = {
         destination: '/docs',
         permanent: false,
       },
+      {
+        source: '/patterns/data-display/empty-state',
+        destination: '/docs/feedback-status/empty-state',
+        permanent: true,
+      },
+      {
+        source: '/patterns/feedback/skeleton-loader',
+        destination: '/docs/feedback-status/skeleton',
+        permanent: true,
+      },
+      {
+        source: '/patterns/layout/page-header',
+        destination: '/docs/layout/page-header',
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
@@ -60,11 +75,13 @@ const nextConfig: NextConfig = {
       'alert-dialog',
       'confirmation-dialog',
       'dialog',
+      'empty-state',
       'loading',
       'modal',
       'popover',
       'progress-bar',
       'progress-circle',
+      'skeleton',
       'status-light',
       'toast',
       'tooltip',
@@ -99,6 +116,10 @@ const nextConfig: NextConfig = {
         source: `/docs/components/${c}`,
         destination: `/docs/data-display/${c}`,
       })),
+      {
+        source: '/docs/components/page-header',
+        destination: '/docs/layout/page-header',
+      },
     ];
 
     return [

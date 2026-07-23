@@ -1,0 +1,156 @@
+---
+title: Skeleton
+---
+
+# Skeleton
+
+Displays a placeholder while content is loading.
+
+<Example direction="column" gap="4">
+  <SkeletonText lines={3} />
+
+```jsx
+import { SkeletonText } from '@umami/react-zen';
+
+<SkeletonText lines={3} />
+```
+</Example>
+
+## Components
+
+### Skeleton
+
+The base placeholder. It accepts `Box` props and defaults to full width, `1rem` height, and a
+medium border radius.
+
+### SkeletonText
+
+Renders a stack of skeleton lines. It accepts `Column` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `lines` | `number` | `3` | Number of lines |
+| `lastLineWidth` | `BoxProps['width']` | `'60%'` | Width of the final line |
+| `lineHeight` | `BoxProps['height']` | `'0.875rem'` | Height of each line |
+
+### SkeletonAvatar
+
+Renders a circular skeleton.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Avatar size |
+
+## Examples
+
+### Avatar
+
+<Example direction="row" gap="4">
+  <SkeletonAvatar size="sm" />
+  <SkeletonAvatar size="md" />
+  <SkeletonAvatar size="lg" />
+
+```jsx
+import { SkeletonAvatar } from '@umami/react-zen';
+
+<SkeletonAvatar size="sm" />
+<SkeletonAvatar size="md" />
+<SkeletonAvatar size="lg" />
+```
+</Example>
+
+### List
+
+List placeholders remain a composition of the base skeleton components.
+
+<Example>
+  <Box border borderRadius="lg" overflow="hidden">
+    <Row padding="3" alignItems="center" gap="3" borderColor="muted" border="bottom">
+      <SkeletonAvatar />
+      <Column gap="2" flexGrow="1">
+        <Skeleton height="1rem" width="40%" />
+        <Skeleton height="0.75rem" width="60%" />
+      </Column>
+    </Row>
+    <Row padding="3" alignItems="center" gap="3" borderColor="muted" border="bottom">
+      <SkeletonAvatar />
+      <Column gap="2" flexGrow="1">
+        <Skeleton height="1rem" width="50%" />
+        <Skeleton height="0.75rem" width="65%" />
+      </Column>
+    </Row>
+    <Row padding="3" alignItems="center" gap="3">
+      <SkeletonAvatar />
+      <Column gap="2" flexGrow="1">
+        <Skeleton height="1rem" width="35%" />
+        <Skeleton height="0.75rem" width="55%" />
+      </Column>
+    </Row>
+  </Box>
+
+```jsx
+<Row padding="3" alignItems="center" gap="3">
+  <SkeletonAvatar />
+  <Column gap="2" flexGrow="1">
+    <Skeleton height="1rem" width="40%" />
+    <Skeleton height="0.75rem" width="60%" />
+  </Column>
+</Row>
+```
+</Example>
+
+### Table
+
+<Example>
+  <Box border borderRadius="lg" overflow="hidden">
+    <Row padding="3" gap="4" borderColor="muted" border="bottom">
+      <Skeleton height="1rem" width="8rem" />
+      <Skeleton height="1rem" width="6rem" />
+      <Skeleton height="1rem" width="6rem" />
+      <Skeleton height="1rem" width="6rem" />
+    </Row>
+    <Row padding="3" gap="4" borderColor="muted" border="bottom">
+      <Skeleton height="1rem" width="8rem" />
+      <Skeleton height="1rem" width="6rem" />
+      <Skeleton height="1rem" width="6rem" />
+      <Skeleton height="1rem" width="6rem" />
+    </Row>
+    <Row padding="3" gap="4">
+      <Skeleton height="1rem" width="8rem" />
+      <Skeleton height="1rem" width="6rem" />
+      <Skeleton height="1rem" width="6rem" />
+      <Skeleton height="1rem" width="6rem" />
+    </Row>
+  </Box>
+
+```jsx
+<Row padding="3" gap="4">
+  <Skeleton height="1rem" width="8rem" />
+  <Skeleton height="1rem" width="6rem" />
+  <Skeleton height="1rem" width="6rem" />
+  <Skeleton height="1rem" width="6rem" />
+</Row>
+```
+</Example>
+
+### Custom layout
+
+<Example>
+  <Row gap="4" alignItems="center">
+    <Skeleton width="4rem" height="4rem" borderRadius="lg" />
+    <Column gap="2" flexGrow="1">
+      <Skeleton height="1.5rem" width="50%" />
+      <Skeleton height="1rem" width="80%" />
+    </Column>
+  </Row>
+
+```jsx
+<Row gap="4" alignItems="center">
+  <Skeleton width="4rem" height="4rem" borderRadius="lg" />
+  <Column gap="2" flexGrow="1">
+    <Skeleton height="1.5rem" width="50%" />
+    <Skeleton height="1rem" width="80%" />
+  </Column>
+</Row>
+```
+</Example>

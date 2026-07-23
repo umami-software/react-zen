@@ -11,7 +11,6 @@
 @source "../../../packages/react-zen/src/components";
 @source "./components";
 @source "./examples";
-@source "./patterns";
 
 /* Safelist responsive width classes using brace expansion */
 @source inline("{,sm:,md:,lg:,xl:,2xl:}w-{full,1/2,1/3,2/3,1/4,3/4,1/5,2/5,3/5,4/5,1/6,5/6,auto,screen,min,max,fit}");
@@ -80,38 +79,4 @@ pre:has(> code) {
   font-weight: 700 !important;
   color: var(--text-primary) !important;
   opacity: 1 !important;
-}
-
-/* Skeleton loader shimmer animation */
-@keyframes skeleton-shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.skeleton {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--gray-300);
-}
-
-.skeleton::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, var(--gray-100), transparent);
-  animation: skeleton-shimmer 1.5s ease-in-out infinite;
-}
-
-[data-theme="dark"] .skeleton,
-.dark .skeleton {
-  background-color: var(--gray-600);
-}
-
-[data-theme="dark"] .skeleton::after,
-.dark .skeleton::after {
-  background: linear-gradient(90deg, transparent, var(--gray-400), transparent);
 }

@@ -7,6 +7,7 @@ const cssFiles = [
   './src/components/Dots.css',
   './src/components/Modal.css',
   './src/components/Popover.css',
+  './src/components/Skeleton.css',
   './src/components/Spinner.css',
 ];
 
