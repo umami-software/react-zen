@@ -1,0 +1,40 @@
+---
+title: Scroll Area
+---
+
+# Scroll Area
+
+A scroll area provides scrollable content with custom styled scrollbars.
+
+<Example>
+  <Box width="300px" border borderRadius="lg" padding="2">
+    <ScrollArea maxHeight={200}>
+      {Array.from({ length: 20 }, (_, i) => (
+        <Box key={i} paddingX="3" paddingY="2">Row {i + 1}</Box>
+      ))}
+    </ScrollArea>
+  </Box>
+
+  ```jsx
+  <ScrollArea maxHeight={200}>
+    {Array.from({ length: 20 }, (_, i) => (
+      <Box key={i} paddingX="3" paddingY="2">Row {i + 1}</Box>
+    ))}
+  </ScrollArea>
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'maxHeight', value: 'string | number', description: 'Maximum height of the scrollable viewport' },
+      { name: 'orientation', value: 'string', description: '"vertical" | "horizontal" | "both" (default: "vertical")' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

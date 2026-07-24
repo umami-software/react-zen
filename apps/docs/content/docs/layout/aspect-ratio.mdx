@@ -1,0 +1,35 @@
+---
+title: Aspect Ratio
+---
+
+# Aspect Ratio
+
+Aspect ratio constrains its content to a fixed width-to-height ratio.
+
+<Example>
+  <Box width="400px">
+    <AspectRatio ratio={16 / 9}>
+      <img src="/images/sample.jpg" alt="Sample" style={{ borderRadius: '8px' }} />
+    </AspectRatio>
+  </Box>
+
+  ```jsx
+  <AspectRatio ratio={16 / 9}>
+    <img src="/images/sample.jpg" alt="Sample" />
+  </AspectRatio>
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'ratio', value: 'number', description: 'Width-to-height ratio, e.g. 16 / 9 (default: 1)' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

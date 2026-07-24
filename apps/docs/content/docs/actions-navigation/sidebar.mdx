@@ -1,0 +1,129 @@
+---
+title: Sidebar
+---
+
+# Sidebar
+
+A collapsible side navigation panel with header, content, and footer sections.
+
+<Example>
+  <SidebarExample />
+
+  ```jsx
+  function App() {
+    const [selected, setSelected] = useState('home');
+
+    return (
+      <Sidebar>
+        <SidebarHeader>
+          <SidebarToggle />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup title="Main">
+            <SidebarItem
+              icon={<Home />}
+              label="Home"
+              isSelected={selected === 'home'}
+              onPress={() => setSelected('home')}
+            />
+            <SidebarItem
+              icon={<Inbox />}
+              label="Inbox"
+              isSelected={selected === 'inbox'}
+              onPress={() => setSelected('inbox')}
+            />
+            <SidebarItem
+              icon={<FileText />}
+              label="Documents"
+              isSelected={selected === 'documents'}
+              onPress={() => setSelected('documents')}
+            />
+          </SidebarGroup>
+          <SidebarGroup title="Workspace">
+            <SidebarItem
+              icon={<Users />}
+              label="Team"
+              isSelected={selected === 'team'}
+              onPress={() => setSelected('team')}
+            />
+            <SidebarItem
+              icon={<Settings />}
+              label="Settings"
+              isSelected={selected === 'settings'}
+              onPress={() => setSelected('settings')}
+            />
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarItem icon={<HelpCircle />} label="Help" isDisabled />
+        </SidebarFooter>
+      </Sidebar>
+    );
+  }
+  ```
+</Example>
+
+## Component props
+
+### Sidebar
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'isCollapsed', value: 'boolean', description: 'Controlled collapsed state' },
+      { name: 'defaultCollapsed', value: 'boolean', description: 'Default collapsed state' },
+      { name: 'onCollapseChange', value: '(collapsed: boolean) => void', description: 'Called when the collapsed state changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### SidebarGroup
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'title', value: 'string', description: 'Group title (hidden when collapsed)' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### SidebarItem
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'icon', value: 'ReactNode', description: 'Icon displayed before the label' },
+      { name: 'label', value: 'string', description: 'Item label (hidden when collapsed)' },
+      { name: 'href', value: 'string', description: 'Renders the item as a link' },
+      { name: 'isSelected', value: 'boolean', description: 'Marks the item as the current page' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the item' },
+      { name: 'onPress', value: '(event: MouseEvent) => void', description: 'Called when the item is pressed' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### SidebarToggle
+
+<Example>
+  <DataTable
+    data={[
+      { name: '...ButtonProps', value: 'ButtonProps', description: 'Accepts all Button props; toggles the sidebar collapsed state' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

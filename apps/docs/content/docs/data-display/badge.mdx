@@ -1,0 +1,64 @@
+---
+title: Badge
+---
+
+# Badge
+
+A badge displays a small label used to highlight a status or category.
+
+<Example>
+  <Badge>Badge</Badge>
+
+  ```jsx
+  <Badge>Badge</Badge>
+  ```
+</Example>
+
+## Variants
+
+<Example>
+  <Badge variant="default">Default</Badge>
+  <Badge variant="primary">Primary</Badge>
+  <Badge variant="outline">Outline</Badge>
+  <Badge variant="success">Success</Badge>
+  <Badge variant="warning">Warning</Badge>
+  <Badge variant="error">Error</Badge>
+  <Badge variant="info">Info</Badge>
+
+  ```jsx
+  <Badge variant="default">Default</Badge>
+  <Badge variant="primary">Primary</Badge>
+  <Badge variant="outline">Outline</Badge>
+  <Badge variant="success">Success</Badge>
+  <Badge variant="warning">Warning</Badge>
+  <Badge variant="error">Error</Badge>
+  <Badge variant="info">Info</Badge>
+  ```
+</Example>
+
+## Sizes
+
+<Example>
+  <Badge size="sm">Small</Badge>
+  <Badge size="md">Medium</Badge>
+
+  ```jsx
+  <Badge size="sm">Small</Badge>
+  <Badge size="md">Medium</Badge>
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'variant', value: 'string', description: '"default" | "primary" | "outline" | "success" | "warning" | "error" | "info" (default: "default")' },
+      { name: 'size', value: 'string', description: '"sm" | "md" (default: "md")' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

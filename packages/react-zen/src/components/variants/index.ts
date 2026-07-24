@@ -373,6 +373,94 @@ export const toast = tv({
 
 export type ToastVariants = VariantProps<typeof toast>;
 
+// Badge variants
+export const badge = tv({
+  base: [
+    'inline-flex items-center gap-1 rounded-full font-medium whitespace-nowrap',
+    'border border-transparent',
+  ],
+  variants: {
+    variant: {
+      default: 'bg-interactive text-foreground-primary',
+      primary: 'bg-primary text-primary-foreground',
+      outline: 'bg-transparent border-edge text-foreground-primary',
+      success: 'bg-status-success-bg text-status-success-text',
+      warning: 'bg-status-warning-bg text-status-warning-text',
+      error: 'bg-status-error-bg text-status-error-text',
+      info: 'bg-status-info-bg text-status-info-text',
+    },
+    size: {
+      sm: 'text-xs px-2 py-0.5',
+      md: 'text-sm px-2.5 py-0.5',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+  },
+});
+
+export type BadgeVariants = VariantProps<typeof badge>;
+
+// Avatar variants
+export const avatar = tv({
+  slots: {
+    root: [
+      'relative inline-flex items-center justify-center shrink-0 select-none',
+      'overflow-hidden rounded-full align-middle bg-interactive',
+    ],
+    image: 'size-full object-cover',
+    fallback: [
+      'flex size-full items-center justify-center',
+      'font-medium text-foreground-primary uppercase',
+    ],
+  },
+  variants: {
+    size: {
+      xs: { root: 'size-6', fallback: 'text-xs' },
+      sm: { root: 'size-8', fallback: 'text-sm' },
+      md: { root: 'size-10', fallback: 'text-base' },
+      lg: { root: 'size-12', fallback: 'text-lg' },
+      xl: { root: 'size-16', fallback: 'text-xl' },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
+
+export type AvatarVariants = VariantProps<typeof avatar>;
+
+// Sidebar variants
+export const sidebar = tv({
+  slots: {
+    root: [
+      'flex flex-col h-full min-h-0 overflow-hidden',
+      'border-r border-edge bg-surface-raised',
+      'transition-[width] duration-200 ease-out',
+      'w-64 data-[collapsed]:w-14',
+    ],
+    header: 'flex items-center gap-3 px-3 py-3 min-h-14',
+    content: 'flex flex-col flex-1 gap-4 overflow-y-auto overflow-x-hidden px-2 py-2',
+    footer: 'flex items-center gap-3 px-3 py-3 mt-auto border-t border-edge-muted',
+    group: 'flex flex-col gap-0.5',
+    groupTitle: [
+      'px-2 py-1.5 text-xs font-bold uppercase tracking-wide text-foreground-muted',
+      'whitespace-nowrap overflow-hidden',
+    ],
+    item: [
+      'flex items-center gap-3 px-2 py-2 rounded cursor-pointer outline-none w-full',
+      'text-base text-foreground-primary no-underline whitespace-nowrap',
+      'hover:bg-interactive',
+      'focus-visible:ring-2 focus-visible:ring-focus-ring',
+      'data-[selected]:bg-interactive data-[selected]:font-semibold',
+      'data-[disabled]:text-foreground-disabled data-[disabled]:cursor-default data-[disabled]:hover:bg-transparent',
+    ],
+  },
+});
+
+export type SidebarVariants = VariantProps<typeof sidebar>;
+
 // Tag variants
 export const tag = tv({
   slots: {

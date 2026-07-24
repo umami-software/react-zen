@@ -1,0 +1,88 @@
+---
+title: OTP Field
+---
+
+# OTP Field
+
+An OTP field allows a user to enter a one-time password or verification code, one character per input slot.
+
+<Example>
+  <OTPField label="Verification code" />
+
+  ```jsx
+  <OTPField label="Verification code" />
+  ```
+</Example>
+
+## Length
+
+<Example>
+  <OTPField label="PIN" length={4} />
+
+  ```jsx
+  <OTPField label="PIN" length={4} />
+  ```
+</Example>
+
+## Masked
+
+<Example>
+  <OTPField label="PIN" length={4} mask />
+
+  ```jsx
+  <OTPField label="PIN" length={4} mask />
+  ```
+</Example>
+
+## Disabled
+
+<Example>
+  <OTPField label="Verification code" defaultValue="123" isDisabled />
+
+  ```jsx
+  <OTPField label="Verification code" defaultValue="123" isDisabled />
+  ```
+</Example>
+
+## Controlled
+
+<Example>
+  <OTPFieldExample />
+
+  ```jsx
+  const [value, setValue] = useState('');
+  const [isComplete, setIsComplete] = useState(false);
+
+  <OTPField
+    label="Verification code"
+    value={value}
+    onChange={setValue}
+    onComplete={() => setIsComplete(true)}
+  />
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'length', value: 'number', description: 'Number of input slots (default: 6)' },
+      { name: 'label', value: 'string', description: 'Label text displayed above the field' },
+      { name: 'value', value: 'string', description: 'Controlled value' },
+      { name: 'defaultValue', value: 'string', description: 'Default value' },
+      { name: 'mask', value: 'boolean', description: 'Masks entered characters (default: false)' },
+      { name: 'autoSubmit', value: 'boolean', description: 'Submits the owning form when all slots are filled' },
+      { name: 'validationType', value: 'string', description: '"numeric" | "alpha" | "alphanumeric" | "none"' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the field' },
+      { name: 'isReadOnly', value: 'boolean', description: 'Prevents changing the value' },
+      { name: 'isRequired', value: 'boolean', description: 'Marks the field as required' },
+      { name: 'onChange', value: '(value: string) => void', description: 'Called when the value changes' },
+      { name: 'onComplete', value: '(value: string) => void', description: 'Called when all slots are filled' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

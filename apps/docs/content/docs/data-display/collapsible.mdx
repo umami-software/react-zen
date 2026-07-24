@@ -1,0 +1,80 @@
+---
+title: Collapsible
+---
+
+# Collapsible
+
+A collapsible shows and hides a section of content.
+
+<Example>
+  <Box width="300px">
+    <Collapsible>
+      <CollapsibleTrigger>Show details</CollapsibleTrigger>
+      <CollapsiblePanel>
+        <Box paddingY="2">
+          <Text>Here are the details you were looking for.</Text>
+        </Box>
+      </CollapsiblePanel>
+    </Collapsible>
+  </Box>
+
+  ```jsx
+  <Collapsible>
+    <CollapsibleTrigger>Show details</CollapsibleTrigger>
+    <CollapsiblePanel>
+      <Text>Here are the details you were looking for.</Text>
+    </CollapsiblePanel>
+  </Collapsible>
+  ```
+</Example>
+
+## Default expanded
+
+<Example>
+  <Box width="300px">
+    <Collapsible defaultExpanded>
+      <CollapsibleTrigger>Show details</CollapsibleTrigger>
+      <CollapsiblePanel>
+        <Box paddingY="2">
+          <Text>This panel starts out expanded.</Text>
+        </Box>
+      </CollapsiblePanel>
+    </Collapsible>
+  </Box>
+
+  ```jsx
+  <Collapsible defaultExpanded>
+    <CollapsibleTrigger>Show details</CollapsibleTrigger>
+    <CollapsiblePanel>
+      <Text>This panel starts out expanded.</Text>
+    </CollapsiblePanel>
+  </Collapsible>
+  ```
+</Example>
+
+## Component props
+
+### Collapsible
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'isExpanded', value: 'boolean', description: 'Controlled expanded state' },
+      { name: 'defaultExpanded', value: 'boolean', description: 'Default expanded state' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the collapsible' },
+      { name: 'onExpandedChange', value: '(expanded: boolean) => void', description: 'Called when the expanded state changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### CollapsibleTrigger
+
+The button that toggles the panel.
+
+### CollapsiblePanel
+
+The content that is shown and hidden.

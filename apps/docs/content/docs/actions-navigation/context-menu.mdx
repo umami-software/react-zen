@@ -1,0 +1,58 @@
+---
+title: Context Menu
+---
+
+# Context Menu
+
+A context menu opens a menu at the pointer position when a user right clicks the trigger area.
+Pass two children: the trigger element followed by a `Menu`.
+
+<Example>
+  <ContextMenu>
+    <Box
+      border
+      borderRadius="md"
+      padding="8"
+      style={{ borderStyle: 'dashed' }}
+    >
+      Right click here
+    </Box>
+    <Menu>
+      <MenuItem>Cut</MenuItem>
+      <MenuItem>Copy</MenuItem>
+      <MenuItem>Paste</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Delete</MenuItem>
+    </Menu>
+  </ContextMenu>
+
+  ```jsx
+  <ContextMenu>
+    <Box border borderRadius="md" padding="8" style={{ borderStyle: 'dashed' }}>
+      Right click here
+    </Box>
+    <Menu>
+      <MenuItem>Cut</MenuItem>
+      <MenuItem>Copy</MenuItem>
+      <MenuItem>Paste</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Delete</MenuItem>
+    </Menu>
+  </ContextMenu>
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'children', value: 'ReactNode', description: 'Trigger element followed by a Menu' },
+      { name: 'onOpenChange', value: '(open: boolean) => void', description: 'Called when the menu opens or closes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

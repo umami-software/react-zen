@@ -1,0 +1,55 @@
+---
+title: Separator
+---
+
+# Separator
+
+A separator visually divides content into groups.
+
+<Example>
+  <Box width="300px">
+    <Text>Above the line</Text>
+    <Box paddingY="3">
+      <Separator />
+    </Box>
+    <Text>Below the line</Text>
+  </Box>
+
+  ```jsx
+  <Text>Above the line</Text>
+  <Separator />
+  <Text>Below the line</Text>
+  ```
+</Example>
+
+## Vertical
+
+<Example>
+  <Flexbox gap="3" alignItems="center">
+    <Text>Left</Text>
+    <Separator orientation="vertical" style={{ height: '24px' }} />
+    <Text>Right</Text>
+  </Flexbox>
+
+  ```jsx
+  <Flexbox gap="3" alignItems="center">
+    <Text>Left</Text>
+    <Separator orientation="vertical" />
+    <Text>Right</Text>
+  </Flexbox>
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'orientation', value: 'string', description: '"horizontal" | "vertical" (default: "horizontal")' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

@@ -1,0 +1,78 @@
+---
+title: Sheet
+---
+
+# Sheet
+
+A sheet is a panel that slides in from the edge of the screen, overlaying the current content.
+
+<Example>
+  <SheetExample />
+
+  ```jsx
+  <DialogTrigger>
+    <Button variant="outline">Open sheet</Button>
+    <Sheet side="right">
+      <SheetHeader title="Settings" />
+      <Text>Sheet content slides in from the right.</Text>
+    </Sheet>
+  </DialogTrigger>
+  ```
+</Example>
+
+## Size
+
+The `size` prop sets the width for left and right sheets, and the height for top and bottom sheets.
+
+<Example>
+  <DialogTrigger>
+    <Button variant="outline">Wide sheet</Button>
+    <Sheet side="right" size="40rem">
+      <SheetHeader title="Details" />
+      <Text>A wider sheet panel.</Text>
+    </Sheet>
+  </DialogTrigger>
+
+  ```jsx
+  <DialogTrigger>
+    <Button variant="outline">Wide sheet</Button>
+    <Sheet side="right" size="40rem">
+      <SheetHeader title="Details" />
+      <Text>A wider sheet panel.</Text>
+    </Sheet>
+  </DialogTrigger>
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'side', value: 'string', description: '"left" | "right" | "top" | "bottom" (default: "right")' },
+      { name: 'size', value: 'string | number', description: 'Width (left/right) or height (top/bottom) of the sheet' },
+      { name: 'isOpen', value: 'boolean', description: 'Controlled open state' },
+      { name: 'onOpenChange', value: '(open: boolean) => void', description: 'Called when the open state changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+## SheetHeader props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'title', value: 'ReactNode', description: 'Title displayed at the top of the sheet' },
+      { name: 'showClose', value: 'boolean', description: 'Shows the close button (default: true)' },
+      { name: 'children', value: 'ReactNode', description: 'Additional content below the title' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

@@ -1,6 +1,6 @@
 import { Accordion as Accordion$1 } from '@base-ui/react/accordion';
 import * as lucide_react_star from 'lucide-react';
-import { forwardRef, createContext, isValidElement, cloneElement, createElement, Children, useState, useId, useMemo, useContext, useRef, useEffect, Fragment as Fragment$1, useCallback, useLayoutEffect } from 'react';
+import { forwardRef, createContext, isValidElement, cloneElement, createElement, Children, useState, useId, useCallback, useEffect, useMemo, useContext, useRef, Fragment as Fragment$1, useLayoutEffect } from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
@@ -10,21 +10,35 @@ import { Dialog as Dialog$1 } from '@base-ui/react/dialog';
 import { Menu as Menu$1 } from '@base-ui/react/menu';
 import { Popover as Popover$1 } from '@base-ui/react/popover';
 import { Tooltip as Tooltip$1 } from '@base-ui/react/tooltip';
+import { Avatar as Avatar$1 } from '@base-ui/react/avatar';
 import { DayPicker } from 'react-day-picker';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Checkbox as Checkbox$1 } from '@base-ui/react/checkbox';
+import { CheckboxGroup as CheckboxGroup$1 } from '@base-ui/react/checkbox-group';
+import { Collapsible as Collapsible$1 } from '@base-ui/react/collapsible';
 import { Combobox } from '@base-ui/react/combobox';
 import { Select as Select$1 } from '@base-ui/react/select';
+import { Command as Command$1 } from 'cmdk';
+import { ContextMenu as ContextMenu$1 } from '@base-ui/react/context-menu';
 import { useForm, FormProvider, Controller, useFormContext, useFieldArray } from 'react-hook-form';
 import { create } from 'zustand';
 import { animated, useTransition } from '@react-spring/web';
+import { Menubar as Menubar$1 } from '@base-ui/react/menubar';
+import { Meter as Meter$1 } from '@base-ui/react/meter';
+import { NumberField as NumberField$1 } from '@base-ui/react/number-field';
+import { OTPField as OTPField$1 } from '@base-ui/react/otp-field';
 import { Progress } from '@base-ui/react/progress';
 import { Radio as Radio$1 } from '@base-ui/react/radio';
 import { RadioGroup as RadioGroup$1 } from '@base-ui/react/radio-group';
+import { Group, Panel, Separator } from 'react-resizable-panels';
+import { ScrollArea as ScrollArea$1 } from '@base-ui/react/scroll-area';
+import { Separator as Separator$1 } from '@base-ui/react/separator';
 import { Slider as Slider$1 } from '@base-ui/react/slider';
 import { Switch as Switch$1 } from '@base-ui/react/switch';
 import { Tabs as Tabs$1 } from '@base-ui/react/tabs';
 import { Toggle as Toggle$1 } from '@base-ui/react/toggle';
 import { ToggleGroup as ToggleGroup$1 } from '@base-ui/react/toggle-group';
+import { Toolbar as Toolbar$1 } from '@base-ui/react/toolbar';
 
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -2477,7 +2491,7 @@ var button = tv({
     size: "md"
   }
 });
-tv({
+var inputField = tv({
   base: [
     "flex items-center px-3 gap-3",
     "text-base rounded border border-edge bg-surface-base shadow-sm",
@@ -2745,6 +2759,82 @@ var toast = tv({
     }
   }
 });
+var badge = tv({
+  base: [
+    "inline-flex items-center gap-1 rounded-full font-medium whitespace-nowrap",
+    "border border-transparent"
+  ],
+  variants: {
+    variant: {
+      default: "bg-interactive text-foreground-primary",
+      primary: "bg-primary text-primary-foreground",
+      outline: "bg-transparent border-edge text-foreground-primary",
+      success: "bg-status-success-bg text-status-success-text",
+      warning: "bg-status-warning-bg text-status-warning-text",
+      error: "bg-status-error-bg text-status-error-text",
+      info: "bg-status-info-bg text-status-info-text"
+    },
+    size: {
+      sm: "text-xs px-2 py-0.5",
+      md: "text-sm px-2.5 py-0.5"
+    }
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md"
+  }
+});
+var avatar = tv({
+  slots: {
+    root: [
+      "relative inline-flex items-center justify-center shrink-0 select-none",
+      "overflow-hidden rounded-full align-middle bg-interactive"
+    ],
+    image: "size-full object-cover",
+    fallback: [
+      "flex size-full items-center justify-center",
+      "font-medium text-foreground-primary uppercase"
+    ]
+  },
+  variants: {
+    size: {
+      xs: { root: "size-6", fallback: "text-xs" },
+      sm: { root: "size-8", fallback: "text-sm" },
+      md: { root: "size-10", fallback: "text-base" },
+      lg: { root: "size-12", fallback: "text-lg" },
+      xl: { root: "size-16", fallback: "text-xl" }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
+});
+var sidebar = tv({
+  slots: {
+    root: [
+      "flex flex-col h-full min-h-0 overflow-hidden",
+      "border-r border-edge bg-surface-raised",
+      "transition-[width] duration-200 ease-out",
+      "w-64 data-[collapsed]:w-14"
+    ],
+    header: "flex items-center gap-3 px-3 py-3 min-h-14",
+    content: "flex flex-col flex-1 gap-4 overflow-y-auto overflow-x-hidden px-2 py-2",
+    footer: "flex items-center gap-3 px-3 py-3 mt-auto border-t border-edge-muted",
+    group: "flex flex-col gap-0.5",
+    groupTitle: [
+      "px-2 py-1.5 text-xs font-bold uppercase tracking-wide text-foreground-muted",
+      "whitespace-nowrap overflow-hidden"
+    ],
+    item: [
+      "flex items-center gap-3 px-2 py-2 rounded cursor-pointer outline-none w-full",
+      "text-base text-foreground-primary no-underline whitespace-nowrap",
+      "hover:bg-interactive",
+      "focus-visible:ring-2 focus-visible:ring-focus-ring",
+      "data-[selected]:bg-interactive data-[selected]:font-semibold",
+      "data-[disabled]:text-foreground-disabled data-[disabled]:cursor-default data-[disabled]:hover:bg-transparent"
+    ]
+  }
+});
 var tag = tv({
   slots: {
     base: [
@@ -3009,6 +3099,38 @@ function AlertDialog({
     ] });
   } });
 }
+function AspectRatio({ ratio = 1, className, style, children, ...props }) {
+  return /* @__PURE__ */ jsx(
+    "div",
+    {
+      ...props,
+      className: cn(
+        "relative w-full overflow-hidden",
+        "[&>*]:absolute [&>*]:inset-0 [&>*]:size-full [&>img]:object-cover [&>video]:object-cover",
+        className
+      ),
+      style: { aspectRatio: ratio, ...style },
+      children
+    }
+  );
+}
+function getInitials(name) {
+  if (!name) {
+    return null;
+  }
+  return name.split(/\s+/).slice(0, 2).map((word) => word.charAt(0)).join("");
+}
+function Avatar({ src, alt, fallback, size, className, children, ...props }) {
+  const styles = avatar({ size });
+  return /* @__PURE__ */ jsxs(Avatar$1.Root, { ...props, className: cn(styles.root(), className), children: [
+    src && /* @__PURE__ */ jsx(Avatar$1.Image, { src, alt, className: styles.image() }),
+    /* @__PURE__ */ jsx(Avatar$1.Fallback, { className: styles.fallback(), children: fallback ?? getInitials(alt) }),
+    children
+  ] });
+}
+function Badge({ variant, size, className, children, ...props }) {
+  return /* @__PURE__ */ jsx("span", { ...props, className: cn(badge({ variant, size }), className), children });
+}
 function Blockquote({ className, children, ...props }) {
   return /* @__PURE__ */ jsx(Text, { ...props, as: "blockquote", className: cn("border-l-2 border-primary pl-5", className), children });
 }
@@ -3106,6 +3228,117 @@ function Calendar({
     }
   );
 }
+function Carousel({
+  orientation = "horizontal",
+  loop,
+  showArrows = true,
+  showDots,
+  opts,
+  onIndexChange,
+  className,
+  children,
+  ...props
+}) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    axis: orientation === "vertical" ? "y" : "x",
+    loop,
+    ...opts
+  });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
+  const onSelect = useCallback(() => {
+    if (!emblaApi) {
+      return;
+    }
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+    onIndexChange?.(emblaApi.selectedScrollSnap());
+  }, [emblaApi, onIndexChange]);
+  useEffect(() => {
+    if (!emblaApi) {
+      return;
+    }
+    setScrollSnaps(emblaApi.scrollSnapList());
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+  const isVertical = orientation === "vertical";
+  return /* @__PURE__ */ jsxs(
+    "div",
+    {
+      ...props,
+      role: "region",
+      "aria-roledescription": "carousel",
+      className: cn("relative", className),
+      children: [
+        /* @__PURE__ */ jsx("div", { ref: emblaRef, className: "overflow-hidden", children: /* @__PURE__ */ jsx("div", { className: cn("flex", isVertical && "flex-col max-h-full"), children }) }),
+        showArrows && /* @__PURE__ */ jsxs(Fragment, { children: [
+          /* @__PURE__ */ jsx(
+            Button,
+            {
+              variant: "outline",
+              "aria-label": "Previous slide",
+              isDisabled: !canScrollPrev,
+              className: cn(
+                "absolute rounded-full size-9 p-0",
+                isVertical ? "left-1/2 -translate-x-1/2 top-2 rotate-90" : "top-1/2 -translate-y-1/2 left-2"
+              ),
+              onPress: () => emblaApi?.scrollPrev(),
+              children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.ChevronLeft, {}) })
+            }
+          ),
+          /* @__PURE__ */ jsx(
+            Button,
+            {
+              variant: "outline",
+              "aria-label": "Next slide",
+              isDisabled: !canScrollNext,
+              className: cn(
+                "absolute rounded-full size-9 p-0",
+                isVertical ? "left-1/2 -translate-x-1/2 bottom-2 rotate-90" : "top-1/2 -translate-y-1/2 right-2"
+              ),
+              onPress: () => emblaApi?.scrollNext(),
+              children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) })
+            }
+          )
+        ] }),
+        showDots && scrollSnaps.length > 1 && /* @__PURE__ */ jsx("div", { className: "absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5", children: scrollSnaps.map((snap, index) => /* @__PURE__ */ jsx(
+          "button",
+          {
+            type: "button",
+            "aria-label": `Go to slide ${index + 1}`,
+            className: cn(
+              "size-2 rounded-full cursor-pointer transition-colors",
+              index === selectedIndex ? "bg-primary" : "bg-interactive hover:bg-interactive-hover"
+            ),
+            onClick: () => emblaApi?.scrollTo(index)
+          },
+          snap
+        )) })
+      ]
+    }
+  );
+}
+function CarouselItem({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx(
+    "div",
+    {
+      ...props,
+      role: "group",
+      "aria-roledescription": "slide",
+      className: cn("min-w-0 shrink-0 grow-0 basis-full", className),
+      children
+    }
+  );
+}
 function Checkbox({
   label: _label,
   className,
@@ -3144,23 +3377,6 @@ function Checkbox({
     }
   );
 }
-function Code({ className, children, ...props }) {
-  return /* @__PURE__ */ jsx(
-    Text,
-    {
-      ...props,
-      as: "code",
-      size: "base",
-      weight: "medium",
-      className: cn("font-mono bg-surface-sunken rounded p-1", className),
-      children
-    }
-  );
-}
-function useFieldId(id) {
-  const generatedId = useId();
-  return id ?? generatedId;
-}
 function Label({
   size = "base",
   weight = "semibold",
@@ -3177,6 +3393,97 @@ function Label({
       render: (renderProps) => /* @__PURE__ */ jsx("label", { ...renderProps })
     }
   );
+}
+function CheckboxGroup({
+  label,
+  isDisabled,
+  orientation = "vertical",
+  onChange,
+  className,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxs("div", { className: cn("flex flex-col gap-2", className), children: [
+    label && /* @__PURE__ */ jsx(Label, { children: label }),
+    /* @__PURE__ */ jsx(
+      CheckboxGroup$1,
+      {
+        ...props,
+        disabled: isDisabled,
+        onValueChange: (value) => onChange?.(value),
+        className: cn("flex gap-3", orientation === "vertical" ? "flex-col" : "flex-row flex-wrap"),
+        children
+      }
+    )
+  ] });
+}
+function Code({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Text,
+    {
+      ...props,
+      as: "code",
+      size: "base",
+      weight: "medium",
+      className: cn("font-mono bg-surface-sunken rounded p-1", className),
+      children
+    }
+  );
+}
+function Collapsible({
+  isExpanded,
+  defaultExpanded,
+  isDisabled,
+  onExpandedChange,
+  className,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsx(
+    Collapsible$1.Root,
+    {
+      ...props,
+      open: isExpanded,
+      defaultOpen: defaultExpanded,
+      disabled: isDisabled,
+      onOpenChange: onExpandedChange,
+      className: cn("flex flex-col w-full", className),
+      children
+    }
+  );
+}
+function CollapsibleTrigger({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Collapsible$1.Trigger,
+    {
+      ...props,
+      className: cn(
+        "flex items-center gap-2 cursor-pointer outline-none text-base",
+        "focus-visible:ring-2 focus-visible:ring-focus-ring rounded",
+        "disabled:text-foreground-disabled disabled:cursor-default",
+        className
+      ),
+      children
+    }
+  );
+}
+function CollapsiblePanel({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Collapsible$1.Panel,
+    {
+      ...props,
+      className: cn(
+        "overflow-hidden transition-all duration-300 ease-out",
+        "h-[var(--collapsible-panel-height)] data-[starting-style]:h-0 data-[ending-style]:h-0",
+        className
+      ),
+      children
+    }
+  );
+}
+function useFieldId(id) {
+  const generatedId = useId();
+  return id ?? generatedId;
 }
 
 // src/lib/constants.ts
@@ -3410,6 +3717,18 @@ function ListSection({ title, className, children, ...props }) {
   }
   return /* @__PURE__ */ jsx("div", { ...props, role: "group", className: cn("[&:not(:last-child)]:mb-4", className), children: content });
 }
+function getItemLabel(label) {
+  if (typeof label === "string" || typeof label === "number") {
+    return String(label);
+  }
+  if (Array.isArray(label)) {
+    return label.map(getItemLabel).join("");
+  }
+  if (isValidElement(label)) {
+    return getItemLabel(label.props.children);
+  }
+  return "";
+}
 function ComboBox({
   className,
   label,
@@ -3421,17 +3740,28 @@ function ComboBox({
   popoverProps,
   children,
   items,
+  itemToStringLabel,
   ...props
 }) {
-  const normalizedItems = items?.map(
-    (item) => typeof item === "object" ? item : { label: item, value: item }
+  const childItems = Children.toArray(children).flatMap((child) => {
+    if (!isValidElement(child)) {
+      return [];
+    }
+    const value = String(
+      child.props.value ?? child.props.id ?? (typeof child.props.children === "string" ? child.props.children : "")
+    );
+    return value ? [{ label: child.props.children, value, element: child }] : [];
+  });
+  const normalizedItems = items?.map((item) => typeof item === "object" ? item : { label: item, value: item }) ?? childItems;
+  const itemLabels = new Map(
+    normalizedItems.map((item) => [item.value, getItemLabel(item.label) || item.value])
   );
-  const collection = children || normalizedItems?.map((item) => /* @__PURE__ */ jsx(ListItem, { value: item.value, children: item.label }, item.value));
   return /* @__PURE__ */ jsx(
     Combobox.Root,
     {
       ...props,
-      items: normalizedItems,
+      items: normalizedItems.map((item) => item.value),
+      itemToStringLabel: itemToStringLabel ?? ((value) => itemLabels.get(value) ?? value),
       disabled: isDisabled,
       onValueChange: onChange,
       children: /* @__PURE__ */ jsxs("div", { className: cn("relative", className), children: [
@@ -3455,13 +3785,157 @@ function ComboBox({
             ]
           }
         ),
-        /* @__PURE__ */ jsx(Combobox.Portal, { children: /* @__PURE__ */ jsx(Combobox.Positioner, { ...popoverProps, children: /* @__PURE__ */ jsxs(Combobox.Popup, { className: "p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
-          /* @__PURE__ */ jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsx(List, { ...listProps, children: collection }) }),
+        /* @__PURE__ */ jsx(Combobox.Portal, { children: /* @__PURE__ */ jsx(Combobox.Positioner, { align: "start", sideOffset: 4, ...popoverProps, children: /* @__PURE__ */ jsxs(Combobox.Popup, { className: "w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
+          /* @__PURE__ */ jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsx(List, { ...listProps, children: /* @__PURE__ */ jsx(Combobox.Collection, { children: (value) => {
+            const item = normalizedItems.find((option) => option.value === value);
+            if (!item) {
+              return null;
+            }
+            return item.element ?? /* @__PURE__ */ jsx(ListItem, { value: item.value, children: item.label }, item.value);
+          } }) }) }),
           renderEmptyState && /* @__PURE__ */ jsx(Combobox.Empty, { children: renderEmptyState({}) })
         ] }) }) })
       ] })
     }
   );
+}
+var placementClasses = {
+  center: "zen-modal-center",
+  left: "zen-modal-left absolute inset-y-0 left-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
+  right: "zen-modal-right absolute inset-y-0 right-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
+  top: "zen-modal-top absolute inset-x-0 top-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
+  bottom: "zen-modal-bottom absolute inset-x-0 bottom-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
+  fullscreen: "zen-modal-fullscreen w-dvw h-dvh rounded-none"
+};
+function Modal({
+  placement = "center",
+  offset,
+  children,
+  className,
+  style,
+  isOpen: _isOpen,
+  onOpenChange: _onOpenChange,
+  ...props
+}) {
+  const modalStyle = {
+    ...style,
+    ...offset ? { "--modal-offset": offset } : {}
+  };
+  return /* @__PURE__ */ jsxs(Dialog$1.Portal, { ...props, children: [
+    /* @__PURE__ */ jsx(Dialog$1.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
+    /* @__PURE__ */ jsx(Dialog$1.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsx(
+      Dialog$1.Popup,
+      {
+        className: cn("relative z-[9999]", placementClasses[placement], className),
+        style: modalStyle,
+        children
+      }
+    ) })
+  ] });
+}
+Modal.zenOverlayType = "dialog";
+function Command({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Command$1,
+    {
+      ...props,
+      className: cn(
+        "flex size-full flex-col overflow-hidden rounded-md bg-surface-base text-foreground-primary",
+        className
+      ),
+      children
+    }
+  );
+}
+function CommandInput({ className, ...props }) {
+  return /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3 border-b border-edge px-3", children: [
+    /* @__PURE__ */ jsx(Icon, { size: "sm", className: "shrink-0 text-foreground-muted", children: /* @__PURE__ */ jsx(icons_exports.Search, {}) }),
+    /* @__PURE__ */ jsx(
+      Command$1.Input,
+      {
+        ...props,
+        className: cn(
+          "flex h-11 w-full bg-transparent text-base outline-none",
+          "placeholder:text-foreground-muted",
+          "disabled:cursor-not-allowed disabled:text-foreground-disabled",
+          className
+        )
+      }
+    )
+  ] });
+}
+function CommandList({ className, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Command$1.List,
+    {
+      ...props,
+      className: cn("max-h-[300px] overflow-y-auto overflow-x-hidden p-2", className)
+    }
+  );
+}
+function CommandEmpty({ className, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Command$1.Empty,
+    {
+      ...props,
+      className: cn("py-6 text-center text-base text-foreground-muted", className)
+    }
+  );
+}
+function CommandGroup({ className, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Command$1.Group,
+    {
+      ...props,
+      className: cn(
+        "overflow-hidden [&:not(:last-child)]:mb-2",
+        "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5",
+        "[&_[cmdk-group-heading]]:text-sm [&_[cmdk-group-heading]]:font-bold [&_[cmdk-group-heading]]:text-foreground-muted",
+        className
+      )
+    }
+  );
+}
+function CommandItem({ icon, isDisabled, className, children, ...props }) {
+  return /* @__PURE__ */ jsxs(
+    Command$1.Item,
+    {
+      ...props,
+      disabled: isDisabled,
+      className: cn(
+        "flex items-center gap-3 px-2 py-1.5 rounded cursor-pointer outline-none text-base",
+        "data-[selected=true]:bg-interactive",
+        "data-[disabled=true]:text-foreground-disabled data-[disabled=true]:cursor-default",
+        className
+      ),
+      children: [
+        icon && /* @__PURE__ */ jsx(Icon, { size: "sm", children: icon }),
+        children
+      ]
+    }
+  );
+}
+function CommandSeparator({ className, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Command$1.Separator,
+    {
+      ...props,
+      className: cn("h-px bg-edge-muted my-2 -mx-2", className)
+    }
+  );
+}
+function CommandDialog({ isOpen, onOpenChange, children, ...props }) {
+  return /* @__PURE__ */ jsx(Dialog$1.Root, { open: isOpen, onOpenChange, children: /* @__PURE__ */ jsx(Modal, { children: /* @__PURE__ */ jsx(
+    Command,
+    {
+      ...props,
+      className: cn(
+        "w-[32rem] max-w-[calc(100dvw-2rem)] border border-edge shadow-xl",
+        props.className
+      ),
+      children
+    }
+  ) }) });
 }
 var TIMEOUT = 2e3;
 function CopyButton({
@@ -3621,6 +4095,13 @@ function Container({
       children
     }
   );
+}
+function ContextMenu({ children, onOpenChange }) {
+  const items = Children.toArray(children);
+  return /* @__PURE__ */ jsxs(ContextMenu$1.Root, { onOpenChange, children: [
+    /* @__PURE__ */ jsx(ContextMenu$1.Trigger, { render: items[0] }),
+    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: true, children: items[1] })
+  ] });
 }
 var PRESET_VALUES = [
   "1",
@@ -3915,6 +4396,85 @@ function DataTable({
 }
 function DataColumn(_props) {
   return null;
+}
+function Popover({
+  children,
+  isFullscreen,
+  className,
+  isOpen: _isOpen,
+  isNonModal: _isNonModal,
+  triggerRef: _triggerRef,
+  onOpenChange: _onOpenChange,
+  ...props
+}) {
+  return /* @__PURE__ */ jsx(Popover$1.Portal, { children: /* @__PURE__ */ jsx(Popover$1.Positioner, { ...props, children: /* @__PURE__ */ jsx(
+    Popover$1.Popup,
+    {
+      className: cn(
+        "zen-popover outline-none",
+        isFullscreen && "block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
+        className
+      ),
+      children
+    }
+  ) }) });
+}
+Popover.zenOverlayType = "popover";
+function DatePicker({
+  value,
+  defaultValue,
+  minValue,
+  maxValue,
+  label,
+  placeholder = "Select date",
+  locale,
+  isDisabled,
+  isReadOnly,
+  formatOptions = { dateStyle: "medium" },
+  onChange,
+  buttonProps,
+  calendarProps,
+  className
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
+  const date = value ?? uncontrolledValue;
+  const handleChange = (nextDate) => {
+    if (value === void 0) {
+      setUncontrolledValue(nextDate);
+    }
+    onChange?.(nextDate);
+    setIsOpen(false);
+  };
+  return /* @__PURE__ */ jsxs("div", { className: cn("flex flex-col gap-1", className), children: [
+    label && /* @__PURE__ */ jsx(Label, { children: label }),
+    /* @__PURE__ */ jsxs(DialogTrigger, { isOpen, onOpenChange: setIsOpen, children: [
+      /* @__PURE__ */ jsxs(
+        Button,
+        {
+          variant: "outline",
+          isDisabled,
+          ...buttonProps,
+          className: cn("justify-start gap-3 font-normal", buttonProps?.className),
+          children: [
+            /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.CalendarDays, {}) }),
+            date ? new Intl.DateTimeFormat(locale, formatOptions).format(date) : /* @__PURE__ */ jsx("span", { className: "text-foreground-muted", children: placeholder })
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsx(Popover, { children: /* @__PURE__ */ jsx(
+        Calendar,
+        {
+          ...calendarProps,
+          value: date,
+          minValue,
+          maxValue,
+          isReadOnly,
+          onChange: handleChange
+        }
+      ) })
+    ] })
+  ] });
 }
 var sizeMap2 = {
   sm: "w-1.5 h-1.5",
@@ -4592,7 +5152,22 @@ function Image({
   );
   return /* @__PURE__ */ jsx("img", { ...props, className: classes, src, alt });
 }
-var placementClasses = {
+function Kbd({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx(
+    "kbd",
+    {
+      ...props,
+      className: cn(
+        "inline-flex items-center justify-center gap-1",
+        "text-sm font-mono text-foreground-primary",
+        "px-1.5 py-0.5 rounded border border-edge bg-surface-raised shadow-sm",
+        className
+      ),
+      children
+    }
+  );
+}
+var placementClasses2 = {
   absolute: "absolute inset-0 m-auto",
   center: "m-auto",
   inline: "inline-flex"
@@ -4610,7 +5185,7 @@ function Loading({
       ...props,
       className: cn(
         "relative flex justify-center items-center flex-1 pointer-events-none",
-        placementClasses[placement],
+        placementClasses2[placement],
         className
       ),
       children: [
@@ -4780,41 +5355,60 @@ function SubMenuTrigger({ children }) {
     items[1]
   ] });
 }
-var placementClasses2 = {
-  center: "zen-modal-center",
-  left: "zen-modal-left absolute inset-y-0 left-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
-  right: "zen-modal-right absolute inset-y-0 right-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
-  top: "zen-modal-top absolute inset-x-0 top-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
-  bottom: "zen-modal-bottom absolute inset-x-0 bottom-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
-  fullscreen: "zen-modal-fullscreen w-dvw h-dvh rounded-none"
-};
-function Modal({
-  placement = "center",
-  offset,
-  children,
-  className,
-  style,
-  isOpen: _isOpen,
-  onOpenChange: _onOpenChange,
-  ...props
-}) {
-  const modalStyle = {
-    ...style,
-    ...offset ? { "--modal-offset": offset } : {}
-  };
-  return /* @__PURE__ */ jsxs(Dialog$1.Portal, { ...props, children: [
-    /* @__PURE__ */ jsx(Dialog$1.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-    /* @__PURE__ */ jsx(Dialog$1.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsx(
-      Dialog$1.Popup,
+function Menubar({ isDisabled, className, children, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Menubar$1,
+    {
+      ...props,
+      disabled: isDisabled,
+      className: cn(
+        "flex items-center gap-1 p-1 rounded-md border border-edge bg-surface-base shadow-sm w-fit",
+        className
+      ),
+      children
+    }
+  );
+}
+function MenubarMenu({ label, isDisabled, children, ...props }) {
+  return /* @__PURE__ */ jsxs(Menu$1.Root, { ...props, disabled: isDisabled, children: [
+    /* @__PURE__ */ jsx(
+      Menu$1.Trigger,
       {
-        className: cn("relative z-[9999]", placementClasses2[placement], className),
-        style: modalStyle,
-        children
+        render: /* @__PURE__ */ jsx(Button, { variant: "quiet", size: "sm", className: "data-[popup-open]:bg-interactive", children: label })
       }
-    ) })
+    ),
+    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: true, children })
   ] });
 }
-Modal.zenOverlayType = "dialog";
+function Meter({
+  value,
+  minValue,
+  maxValue,
+  label,
+  showValue,
+  formatOptions,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxs(
+    Meter$1.Root,
+    {
+      ...props,
+      value,
+      min: minValue,
+      max: maxValue,
+      format: formatOptions,
+      className: cn("flex flex-col gap-1 w-full", className),
+      children: [
+        (label || showValue) && /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between gap-3", children: [
+          label && /* @__PURE__ */ jsx(Meter$1.Label, { render: /* @__PURE__ */ jsx(Label, {}), children: label }),
+          showValue && /* @__PURE__ */ jsx(Text, { className: "tabular-nums", children: /* @__PURE__ */ jsx(Meter$1.Value, {}) })
+        ] }),
+        /* @__PURE__ */ jsx(Meter$1.Track, { className: "relative overflow-hidden w-full h-2 rounded-full bg-interactive", children: /* @__PURE__ */ jsx(Meter$1.Indicator, { className: "h-full rounded-full bg-primary transition-all" }) })
+      ]
+    }
+  );
+}
 var NavbarContext = createContext(void 0);
 var useNavigationContext = () => {
   const context = useContext(NavbarContext);
@@ -4876,6 +5470,95 @@ function NavbarItem({
     }
   );
 }
+var stepperClasses = [
+  "flex items-center justify-center self-stretch px-3 shrink-0",
+  "cursor-pointer select-none bg-transparent text-foreground-primary",
+  "hover:bg-interactive active:bg-interactive-hover",
+  "disabled:text-foreground-disabled disabled:cursor-default disabled:hover:bg-transparent"
+];
+function NumberField({
+  label,
+  placeholder,
+  minValue,
+  maxValue,
+  isDisabled,
+  isReadOnly,
+  isRequired,
+  formatOptions,
+  onChange,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxs(
+    NumberField$1.Root,
+    {
+      ...props,
+      min: minValue,
+      max: maxValue,
+      disabled: isDisabled,
+      readOnly: isReadOnly,
+      required: isRequired,
+      format: formatOptions,
+      onValueChange: (value) => onChange?.(value),
+      className: cn("flex flex-col gap-1", className),
+      children: [
+        label && /* @__PURE__ */ jsx(Label, { children: label }),
+        /* @__PURE__ */ jsxs(NumberField$1.Group, { className: cn(inputField(), "p-0 px-0 gap-0 overflow-hidden"), children: [
+          /* @__PURE__ */ jsx(NumberField$1.Decrement, { className: cn(stepperClasses, "border-r border-edge"), children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.Minus, {}) }) }),
+          /* @__PURE__ */ jsx(
+            NumberField$1.Input,
+            {
+              placeholder,
+              className: "w-full min-w-0 text-base text-center tabular-nums bg-transparent py-2 px-3 outline-none placeholder:text-foreground-muted"
+            }
+          ),
+          /* @__PURE__ */ jsx(NumberField$1.Increment, { className: cn(stepperClasses, "border-l border-edge"), children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.Plus, {}) }) })
+        ] })
+      ]
+    }
+  );
+}
+function OTPField({
+  length = 6,
+  label,
+  isDisabled,
+  isReadOnly,
+  isRequired,
+  onChange,
+  onComplete,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-1", children: [
+    label && /* @__PURE__ */ jsx(Label, { children: label }),
+    /* @__PURE__ */ jsx(
+      OTPField$1.Root,
+      {
+        ...props,
+        length,
+        disabled: isDisabled,
+        readOnly: isReadOnly,
+        required: isRequired,
+        onValueChange: (value) => onChange?.(value),
+        onValueComplete: (value) => onComplete?.(value),
+        className: cn("flex items-center gap-2", className),
+        children: Array.from({ length }, (_, index) => /* @__PURE__ */ jsx(
+          OTPField$1.Input,
+          {
+            className: cn(
+              "size-10 text-center text-base rounded border border-edge bg-surface-base shadow-sm",
+              "text-foreground-primary outline-none transition-colors",
+              "focus:border-edge-strong focus:ring-2 focus:ring-focus-ring focus:ring-offset-1 focus:ring-offset-surface-base",
+              "data-[filled]:border-edge-strong",
+              "disabled:bg-surface-disabled disabled:text-foreground-disabled"
+            )
+          },
+          index
+        ))
+      }
+    )
+  ] });
+}
 function PageHeader({ children, ...props }) {
   return /* @__PURE__ */ jsx(
     Row,
@@ -4908,6 +5591,98 @@ function PageHeaderTitle({
 }
 function PageHeaderActions({ children, ...props }) {
   return /* @__PURE__ */ jsx(Row, { gap: "2", alignItems: "center", ...props, children });
+}
+function getPageRange(pageCount, page, siblingCount) {
+  const totalShown = siblingCount * 2 + 5;
+  if (pageCount <= totalShown) {
+    return Array.from({ length: pageCount }, (_, i) => i + 1);
+  }
+  const start = Math.max(page - siblingCount, 1);
+  const end = Math.min(page + siblingCount, pageCount);
+  const showLeftEllipsis = start > 2;
+  const showRightEllipsis = end < pageCount - 1;
+  if (!showLeftEllipsis && showRightEllipsis) {
+    const leftRange = Array.from({ length: 3 + siblingCount * 2 }, (_, i) => i + 1);
+    return [...leftRange, "ellipsis", pageCount];
+  }
+  if (showLeftEllipsis && !showRightEllipsis) {
+    const rangeLength = 3 + siblingCount * 2;
+    const rightRange = Array.from(
+      { length: rangeLength },
+      (_, i) => pageCount - rangeLength + i + 1
+    );
+    return [1, "ellipsis", ...rightRange];
+  }
+  const middleRange = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  return [1, "ellipsis", ...middleRange, "ellipsis", pageCount];
+}
+function Pagination({
+  pageCount,
+  totalItems,
+  pageSize = 10,
+  page,
+  defaultPage = 1,
+  siblingCount = 1,
+  isDisabled,
+  onChange,
+  className,
+  ...props
+}) {
+  const [uncontrolledPage, setUncontrolledPage] = useState(defaultPage);
+  const count = Math.max(pageCount ?? Math.ceil((totalItems ?? 0) / pageSize), 1);
+  const currentPage = Math.min(Math.max(page ?? uncontrolledPage, 1), count);
+  const setPage = (nextPage) => {
+    const clamped = Math.min(Math.max(nextPage, 1), count);
+    if (page === void 0) {
+      setUncontrolledPage(clamped);
+    }
+    onChange?.(clamped);
+  };
+  return /* @__PURE__ */ jsxs("nav", { ...props, "aria-label": "Pagination", className: cn("flex items-center gap-1", className), children: [
+    /* @__PURE__ */ jsx(
+      Button,
+      {
+        variant: "quiet",
+        "aria-label": "Previous page",
+        isDisabled: isDisabled || currentPage <= 1,
+        onPress: () => setPage(currentPage - 1),
+        children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.ChevronLeft, {}) })
+      }
+    ),
+    getPageRange(count, currentPage, siblingCount).map(
+      (item, index) => item === "ellipsis" ? /* @__PURE__ */ jsx(
+        "span",
+        {
+          className: "flex items-center justify-center size-9 text-foreground-muted",
+          "aria-hidden": "true",
+          children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.Ellipsis, {}) })
+        },
+        `ellipsis-${index}`
+      ) : /* @__PURE__ */ jsx(
+        Button,
+        {
+          variant: item === currentPage ? "outline" : "quiet",
+          "aria-current": item === currentPage ? "page" : void 0,
+          "aria-label": `Page ${item}`,
+          isDisabled,
+          className: "min-w-9 tabular-nums",
+          onPress: () => setPage(item),
+          children: item
+        },
+        item
+      )
+    ),
+    /* @__PURE__ */ jsx(
+      Button,
+      {
+        variant: "quiet",
+        "aria-label": "Next page",
+        isDisabled: isDisabled || currentPage >= count,
+        onPress: () => setPage(currentPage + 1),
+        children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) })
+      }
+    )
+  ] });
 }
 var PALETTE_LABELS = {
   neutral: "Neutral",
@@ -5050,29 +5825,6 @@ function PasswordField({
     )
   ] });
 }
-function Popover({
-  children,
-  isFullscreen,
-  className,
-  isOpen: _isOpen,
-  isNonModal: _isNonModal,
-  triggerRef: _triggerRef,
-  onOpenChange: _onOpenChange,
-  ...props
-}) {
-  return /* @__PURE__ */ jsx(Popover$1.Portal, { children: /* @__PURE__ */ jsx(Popover$1.Positioner, { ...props, children: /* @__PURE__ */ jsx(
-    Popover$1.Popup,
-    {
-      className: cn(
-        "zen-popover outline-none",
-        isFullscreen && "block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
-        className
-      ),
-      children
-    }
-  ) }) });
-}
-Popover.zenOverlayType = "popover";
 function ProgressBar({ className, showPercentage, ...props }) {
   return /* @__PURE__ */ jsxs(Progress.Root, { ...props, className: cn("flex items-center gap-3 w-full", className), children: [
     /* @__PURE__ */ jsx(Progress.Track, { className: "relative overflow-hidden w-full h-2 rounded-full bg-interactive", children: /* @__PURE__ */ jsx(Progress.Indicator, { className: "h-full rounded-full bg-primary transition-all" }) }),
@@ -5172,6 +5924,103 @@ function Radio({ children, className, isDisabled, ...props }) {
     }
   );
 }
+var ResizableOrientationContext = createContext("horizontal");
+function ResizablePanelGroup({
+  direction = "horizontal",
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsx(ResizableOrientationContext.Provider, { value: direction, children: /* @__PURE__ */ jsx(
+    Group,
+    {
+      ...props,
+      orientation: direction,
+      className: cn("flex size-full", direction === "vertical" && "flex-col", className)
+    }
+  ) });
+}
+function ResizablePanel({ className, ...props }) {
+  return /* @__PURE__ */ jsx(Panel, { ...props, className: cn("overflow-hidden", className) });
+}
+function ResizableHandle({ withHandle, className, ...props }) {
+  const direction = useContext(ResizableOrientationContext);
+  const isVertical = direction === "vertical";
+  return /* @__PURE__ */ jsx(
+    Separator,
+    {
+      ...props,
+      className: cn(
+        "relative flex items-center justify-center bg-edge shrink-0",
+        isVertical ? "h-px w-full" : "w-px",
+        isVertical ? "after:absolute after:inset-x-0 after:-top-1 after:h-2" : "after:absolute after:inset-y-0 after:-left-1 after:w-2",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
+        className
+      ),
+      children: withHandle && /* @__PURE__ */ jsx(
+        "div",
+        {
+          className: cn(
+            "z-10 flex h-5 w-3.5 items-center justify-center rounded-sm border border-edge bg-surface-raised",
+            isVertical && "rotate-90"
+          ),
+          children: /* @__PURE__ */ jsx(icons_exports.GripVertical, { className: "size-2.5 text-foreground-muted" })
+        }
+      )
+    }
+  );
+}
+var scrollbarClasses = [
+  "flex touch-none select-none justify-center rounded bg-transparent",
+  "opacity-0 transition-opacity duration-200 delay-300",
+  "data-[hovering]:opacity-100 data-[hovering]:delay-0",
+  "data-[scrolling]:opacity-100 data-[scrolling]:delay-0"
+];
+function ScrollArea({
+  maxHeight,
+  orientation = "vertical",
+  className,
+  style,
+  children,
+  ...props
+}) {
+  const showVertical = orientation !== "horizontal";
+  const showHorizontal = orientation !== "vertical";
+  return /* @__PURE__ */ jsxs(
+    ScrollArea$1.Root,
+    {
+      ...props,
+      className: cn("relative overflow-hidden", className),
+      style,
+      children: [
+        /* @__PURE__ */ jsx(
+          ScrollArea$1.Viewport,
+          {
+            className: "size-full overscroll-contain rounded-[inherit] outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
+            style: { maxHeight },
+            children: /* @__PURE__ */ jsx(ScrollArea$1.Content, { children })
+          }
+        ),
+        showVertical && /* @__PURE__ */ jsx(
+          ScrollArea$1.Scrollbar,
+          {
+            orientation: "vertical",
+            className: cn(scrollbarClasses, "w-1.5 mr-0.5"),
+            children: /* @__PURE__ */ jsx(ScrollArea$1.Thumb, { className: "w-full rounded bg-edge-strong" })
+          }
+        ),
+        showHorizontal && /* @__PURE__ */ jsx(
+          ScrollArea$1.Scrollbar,
+          {
+            orientation: "horizontal",
+            className: cn(scrollbarClasses, "h-1.5 mb-0.5 flex-col"),
+            children: /* @__PURE__ */ jsx(ScrollArea$1.Thumb, { className: "h-full rounded bg-edge-strong" })
+          }
+        ),
+        orientation === "both" && /* @__PURE__ */ jsx(ScrollArea$1.Corner, {})
+      ]
+    }
+  );
+}
 function SearchField({
   label,
   placeholder,
@@ -5261,6 +6110,7 @@ function Select({
   isFullscreen,
   maxHeight,
   showIcon = true,
+  alignItemWithTrigger = false,
   onSearch,
   onChange,
   buttonProps,
@@ -5319,50 +6169,228 @@ function Select({
             ]
           }
         ),
-        /* @__PURE__ */ jsx(Select$1.Portal, { children: /* @__PURE__ */ jsx(Select$1.Positioner, { ...popoverProps, children: /* @__PURE__ */ jsx(
-          Select$1.Popup,
+        /* @__PURE__ */ jsx(Select$1.Portal, { children: /* @__PURE__ */ jsx(
+          Select$1.Positioner,
           {
-            className: cn(
-              "bg-surface-overlay border border-edge rounded-md shadow-lg outline-none",
-              isFullscreen && "fixed inset-0 rounded-none z-[9999]"
-            ),
-            children: /* @__PURE__ */ jsxs(Column, { gap: "2", padding: "2", children: [
-              allowSearch && /* @__PURE__ */ jsx(
-                SearchField,
-                {
-                  className: "mb-2",
-                  value: search,
-                  onChange: setSearch,
-                  onSearch: (value2) => {
-                    setSearch(value2);
-                    onSearch?.(value2);
-                  },
-                  delay: searchDelay,
-                  defaultValue: searchValue,
-                  autoFocus: true
-                }
-              ),
-              isLoading && /* @__PURE__ */ jsx(Loading, { icon: "dots", placement: "center", size: "sm", height: "60px" }),
-              /* @__PURE__ */ jsx(ListPrimitiveProvider, { kind: "select", children: /* @__PURE__ */ jsx(
-                List,
-                {
-                  ...listProps,
-                  isFullscreen,
-                  className: cn("overflow-auto", listProps?.className),
-                  style: {
-                    ...listProps?.style,
-                    maxHeight,
-                    display: isLoading ? "none" : void 0
-                  },
-                  children: collection
-                }
-              ) })
-            ] })
+            align: "start",
+            sideOffset: 4,
+            alignItemWithTrigger,
+            ...popoverProps,
+            children: /* @__PURE__ */ jsx(
+              Select$1.Popup,
+              {
+                className: cn(
+                  "bg-surface-overlay border border-edge rounded-md shadow-lg outline-none",
+                  isFullscreen && "fixed inset-0 rounded-none z-[9999]"
+                ),
+                children: /* @__PURE__ */ jsxs(Column, { gap: "2", padding: "2", children: [
+                  allowSearch && /* @__PURE__ */ jsx(
+                    SearchField,
+                    {
+                      className: "mb-2",
+                      value: search,
+                      onChange: setSearch,
+                      onSearch: (value2) => {
+                        setSearch(value2);
+                        onSearch?.(value2);
+                      },
+                      delay: searchDelay,
+                      defaultValue: searchValue,
+                      autoFocus: true,
+                      onKeyDown: (event) => {
+                        if (event.key !== "Escape" && event.key !== "Tab") {
+                          event.stopPropagation();
+                        }
+                      }
+                    }
+                  ),
+                  isLoading && /* @__PURE__ */ jsx(Loading, { className: "py-8", icon: "dots", placement: "center", size: "sm" }),
+                  /* @__PURE__ */ jsx(ListPrimitiveProvider, { kind: "select", children: /* @__PURE__ */ jsx(
+                    List,
+                    {
+                      ...listProps,
+                      isFullscreen,
+                      className: cn("overflow-auto", listProps?.className),
+                      style: {
+                        ...listProps?.style,
+                        maxHeight,
+                        display: isLoading ? "none" : void 0
+                      },
+                      children: collection
+                    }
+                  ) })
+                ] })
+              }
+            )
           }
-        ) }) })
+        ) })
       ]
     }
   ) });
+}
+function Separator2({ orientation = "horizontal", className, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Separator$1,
+    {
+      ...props,
+      orientation,
+      className: cn(
+        "shrink-0 bg-edge-muted",
+        orientation === "horizontal" ? "h-px w-full" : "w-px self-stretch",
+        className
+      )
+    }
+  );
+}
+var sideClasses = {
+  left: "zen-modal-left absolute inset-y-0 left-0 h-full border-r",
+  right: "zen-modal-right absolute inset-y-0 right-0 h-full border-l",
+  top: "zen-modal-top absolute inset-x-0 top-0 w-full border-b",
+  bottom: "zen-modal-bottom absolute inset-x-0 bottom-0 w-full border-t"
+};
+function Sheet({
+  side = "right",
+  size,
+  children,
+  className,
+  style,
+  isOpen: _isOpen,
+  onOpenChange: _onOpenChange,
+  ...props
+}) {
+  const isHorizontal = side === "left" || side === "right";
+  const sheetStyle = {
+    ...isHorizontal ? { width: size ?? "24rem", maxWidth: "100dvw" } : { height: size, maxHeight: "100dvh" },
+    ...style
+  };
+  return /* @__PURE__ */ jsxs(Dialog$1.Portal, { ...props, children: [
+    /* @__PURE__ */ jsx(Dialog$1.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
+    /* @__PURE__ */ jsx(Dialog$1.Viewport, { className: "fixed inset-0 z-[9999]", children: /* @__PURE__ */ jsx(
+      Dialog$1.Popup,
+      {
+        className: cn(
+          "relative z-[9999] p-6 overflow-auto outline-none",
+          "bg-surface-base border-edge shadow-xl",
+          sideClasses[side],
+          className
+        ),
+        style: sheetStyle,
+        children
+      }
+    ) })
+  ] });
+}
+Sheet.zenOverlayType = "dialog";
+function SheetHeader({ title, showClose = true, className, children }) {
+  const { close } = useOverlayTrigger();
+  return /* @__PURE__ */ jsxs("div", { className: cn("flex items-start justify-between gap-3 mb-4", className), children: [
+    /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-1", children: [
+      title && /* @__PURE__ */ jsx(Heading, { size: "xl", children: title }),
+      children
+    ] }),
+    showClose && /* @__PURE__ */ jsx(Button, { variant: "quiet", size: "xs", "aria-label": "Close", onPress: close, children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.X, {}) }) })
+  ] });
+}
+var SidebarContext = createContext({
+  isCollapsed: false,
+  toggle: () => void 0
+});
+function useSidebar() {
+  return useContext(SidebarContext);
+}
+function Sidebar({
+  isCollapsed,
+  defaultCollapsed,
+  onCollapseChange,
+  className,
+  children,
+  ...props
+}) {
+  const [uncontrolledCollapsed, setUncontrolledCollapsed] = useState(defaultCollapsed ?? false);
+  const collapsed = isCollapsed ?? uncontrolledCollapsed;
+  const toggle = () => {
+    if (isCollapsed === void 0) {
+      setUncontrolledCollapsed(!collapsed);
+    }
+    onCollapseChange?.(!collapsed);
+  };
+  return /* @__PURE__ */ jsx(SidebarContext.Provider, { value: { isCollapsed: collapsed, toggle }, children: /* @__PURE__ */ jsx(
+    "aside",
+    {
+      ...props,
+      "data-collapsed": collapsed || void 0,
+      className: cn(sidebar().root(), className),
+      children
+    }
+  ) });
+}
+function SidebarHeader({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx("div", { ...props, className: cn(sidebar().header(), className), children });
+}
+function SidebarContent({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx("div", { ...props, className: cn(sidebar().content(), className), children });
+}
+function SidebarFooter({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx("div", { ...props, className: cn(sidebar().footer(), className), children });
+}
+function SidebarGroup({ title, className, children, ...props }) {
+  const { isCollapsed } = useSidebar();
+  return /* @__PURE__ */ jsxs("div", { ...props, role: "group", className: cn(sidebar().group(), className), children: [
+    title && !isCollapsed && /* @__PURE__ */ jsx("div", { className: sidebar().groupTitle(), children: title }),
+    children
+  ] });
+}
+function SidebarItem({
+  icon,
+  label,
+  href,
+  isSelected,
+  isDisabled,
+  onPress,
+  className,
+  children,
+  ...props
+}) {
+  const { isCollapsed } = useSidebar();
+  const Element = href && !isDisabled ? "a" : "button";
+  return /* @__PURE__ */ jsxs(
+    Element,
+    {
+      ...props,
+      href: href && !isDisabled ? href : void 0,
+      type: Element === "button" ? "button" : void 0,
+      disabled: Element === "button" ? isDisabled : void 0,
+      "aria-current": isSelected ? "page" : void 0,
+      "data-selected": isSelected || void 0,
+      "data-disabled": isDisabled || void 0,
+      title: isCollapsed ? label : void 0,
+      className: cn(sidebar().item(), isCollapsed && "justify-center px-0", className),
+      onClick: isDisabled ? void 0 : onPress,
+      children: [
+        icon && /* @__PURE__ */ jsx(Icon, { size: "sm", children: icon }),
+        !isCollapsed && /* @__PURE__ */ jsxs(Fragment, { children: [
+          label,
+          children
+        ] })
+      ]
+    }
+  );
+}
+function SidebarToggle({ onPress, ...props }) {
+  const { isCollapsed, toggle } = useSidebar();
+  return /* @__PURE__ */ jsx(
+    Button,
+    {
+      variant: "quiet",
+      "aria-label": isCollapsed ? "Expand sidebar" : "Collapse sidebar",
+      ...props,
+      onPress: (event) => {
+        toggle();
+        onPress?.(event);
+      },
+      children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.PanelLeft, {}) })
+    }
+  );
 }
 function Skeleton({
   width = "100%",
@@ -5849,6 +6877,37 @@ function ToggleGroupItem({
     }
   );
 }
+function Toolbar({ isDisabled, orientation, className, children, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Toolbar$1.Root,
+    {
+      ...props,
+      disabled: isDisabled,
+      orientation,
+      className: cn(
+        "flex items-center gap-1 p-1 rounded-md border border-edge bg-surface-base shadow-sm w-fit",
+        orientation === "vertical" && "flex-col",
+        className
+      ),
+      children
+    }
+  );
+}
+function ToolbarGroup({ className, children, ...props }) {
+  return /* @__PURE__ */ jsx(Toolbar$1.Group, { ...props, className: cn("flex items-center gap-1", className), children });
+}
+function ToolbarButton({ isDisabled, variant = "quiet", ...props }) {
+  return /* @__PURE__ */ jsx(Toolbar$1.Button, { disabled: isDisabled, render: /* @__PURE__ */ jsx(Button, { variant, ...props }) });
+}
+function ToolbarSeparator({ className, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Toolbar$1.Separator,
+    {
+      ...props,
+      render: /* @__PURE__ */ jsx(Separator2, { orientation: "vertical", className: cn("mx-1 h-5 self-center", className) })
+    }
+  );
+}
 var defaultToastConfig = {
   duration: 3e3
 };
@@ -5863,6 +6922,6 @@ function ZenProvider({
   return /* @__PURE__ */ jsx(ToastProvider, { ...toast2, children });
 }
 
-export { Accordion, AccordionItem, AlertBanner, AlertDialog, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Checkbox, Code, Column, ComboBox, ConfirmationDialog, Container, CopyButton, DataCard, DataColumn, DataTable, Dialog, DialogTrigger, Dots, EmptyState, FileTrigger, Flexbox, FloatingTooltip, Focusable, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, Label, List, ListItem, ListPrimitiveProvider, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, MenuTrigger, Modal, Navbar, NavbarContext, NavbarItem, PALETTES, PageHeader, PageHeaderActions, PageHeaderTitle, PaletteSwitcher, PasswordField, Popover, Pressable, ProgressBar, ProgressCircle, Radio, RadioGroup, RouterProvider, Row, SearchField, Select, Skeleton, SkeletonAvatar, SkeletonText, Slider, Spinner, StatusLight, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Tooltip, TooltipBubble, TooltipTrigger, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useNavigationContext, useTheme, useToast };
+export { Accordion, AccordionItem, AlertBanner, AlertDialog, AspectRatio, Avatar, Badge, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Carousel, CarouselItem, Checkbox, CheckboxGroup, Code, Collapsible, CollapsiblePanel, CollapsibleTrigger, Column, ComboBox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, ConfirmationDialog, Container, ContextMenu, CopyButton, DataCard, DataColumn, DataTable, DatePicker, Dialog, DialogTrigger, Dots, EmptyState, FileTrigger, Flexbox, FloatingTooltip, Focusable, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, Kbd, Label, List, ListItem, ListPrimitiveProvider, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, MenuTrigger, Menubar, MenubarMenu, Meter, Modal, Navbar, NavbarContext, NavbarItem, NumberField, OTPField, PALETTES, PageHeader, PageHeaderActions, PageHeaderTitle, Pagination, PaletteSwitcher, PasswordField, Popover, Pressable, ProgressBar, ProgressCircle, Radio, RadioGroup, ResizableHandle, ResizablePanel, ResizablePanelGroup, RouterProvider, Row, ScrollArea, SearchField, Select, Separator2 as Separator, Sheet, SheetHeader, Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, SidebarItem, SidebarToggle, Skeleton, SkeletonAvatar, SkeletonText, Slider, Spinner, StatusLight, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator, Tooltip, TooltipBubble, TooltipTrigger, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useNavigationContext, useSidebar, useTheme, useToast };
 //# sourceMappingURL=index.mjs.map
 //# sourceMappingURL=index.mjs.map

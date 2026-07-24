@@ -1,0 +1,63 @@
+---
+title: Meter
+---
+
+# Meter
+
+A meter represents a measured value within a known range, such as disk usage or battery level.
+
+<Example>
+  <Box width="300px"><Meter label="Storage used" value={60} showValue /></Box>
+
+  ```jsx
+  <Meter label="Storage used" value={60} showValue />
+  ```
+</Example>
+
+## Custom range
+
+<Example>
+  <Box width="300px"><Meter label="Battery" value={2500} minValue={0} maxValue={5000} showValue /></Box>
+
+  ```jsx
+  <Meter label="Battery" value={2500} minValue={0} maxValue={5000} showValue />
+  ```
+</Example>
+
+## Format options
+
+Values are formatted with `Intl.NumberFormat` using the `formatOptions` prop.
+
+<Example>
+  <Box width="300px"><Meter label="Memory" value={0.35} minValue={0} maxValue={1} showValue formatOptions={{ style: 'percent' }} /></Box>
+
+  ```jsx
+  <Meter
+    label="Memory"
+    value={0.35}
+    minValue={0}
+    maxValue={1}
+    showValue
+    formatOptions={{ style: 'percent' }}
+  />
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'value', value: 'number', description: 'Current value (required)' },
+      { name: 'minValue', value: 'number', description: 'Minimum value' },
+      { name: 'maxValue', value: 'number', description: 'Maximum value' },
+      { name: 'label', value: 'string', description: 'Label text displayed above the meter' },
+      { name: 'showValue', value: 'boolean', description: 'Shows the formatted value' },
+      { name: 'formatOptions', value: 'Intl.NumberFormatOptions', description: 'Number format options for the displayed value' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

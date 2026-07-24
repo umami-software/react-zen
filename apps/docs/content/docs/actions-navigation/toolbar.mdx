@@ -1,0 +1,201 @@
+---
+title: Toolbar
+---
+
+# Toolbar
+
+A toolbar groups a set of buttons and controls with keyboard navigation between them.
+
+<Example>
+  <Toolbar>
+    <ToolbarGroup>
+      <ToolbarButton>
+        <Icon size="sm"><Lucide.Bold /></Icon>
+      </ToolbarButton>
+      <ToolbarButton>
+        <Icon size="sm"><Lucide.Italic /></Icon>
+      </ToolbarButton>
+      <ToolbarButton>
+        <Icon size="sm"><Lucide.Underline /></Icon>
+      </ToolbarButton>
+    </ToolbarGroup>
+    <ToolbarSeparator />
+    <ToolbarGroup>
+      <ToolbarButton>
+        <Icon size="sm"><Lucide.AlignLeft /></Icon>
+      </ToolbarButton>
+      <ToolbarButton>
+        <Icon size="sm"><Lucide.AlignCenter /></Icon>
+      </ToolbarButton>
+      <ToolbarButton>
+        <Icon size="sm"><Lucide.AlignRight /></Icon>
+      </ToolbarButton>
+    </ToolbarGroup>
+    <ToolbarSeparator />
+    <ToolbarButton isDisabled>
+      <Icon size="sm"><Lucide.Link /></Icon>
+    </ToolbarButton>
+  </Toolbar>
+
+  ```jsx
+  <Toolbar>
+    <ToolbarGroup>
+      <ToolbarButton>
+        <Icon size="sm"><Bold /></Icon>
+      </ToolbarButton>
+      <ToolbarButton>
+        <Icon size="sm"><Italic /></Icon>
+      </ToolbarButton>
+      <ToolbarButton>
+        <Icon size="sm"><Underline /></Icon>
+      </ToolbarButton>
+    </ToolbarGroup>
+    <ToolbarSeparator />
+    <ToolbarGroup>
+      <ToolbarButton>
+        <Icon size="sm"><AlignLeft /></Icon>
+      </ToolbarButton>
+      <ToolbarButton>
+        <Icon size="sm"><AlignCenter /></Icon>
+      </ToolbarButton>
+    </ToolbarGroup>
+    <ToolbarSeparator />
+    <ToolbarButton isDisabled>
+      <Icon size="sm"><Link /></Icon>
+    </ToolbarButton>
+  </Toolbar>
+  ```
+</Example>
+
+## With toggles
+
+Toolbars work with `Toggle` and `ToggleGroup` for pressed states.
+
+<Example>
+  <Toolbar>
+    <ToggleGroup selectionMode="multiple">
+      <Toggle value="bold">
+        <Icon size="sm"><Lucide.Bold /></Icon>
+      </Toggle>
+      <Toggle value="italic">
+        <Icon size="sm"><Lucide.Italic /></Icon>
+      </Toggle>
+      <Toggle value="underline">
+        <Icon size="sm"><Lucide.Underline /></Icon>
+      </Toggle>
+    </ToggleGroup>
+    <ToolbarSeparator />
+    <ToolbarButton>
+      <Icon size="sm"><Lucide.Undo /></Icon>
+    </ToolbarButton>
+    <ToolbarButton>
+      <Icon size="sm"><Lucide.Redo /></Icon>
+    </ToolbarButton>
+  </Toolbar>
+
+  ```jsx
+  <Toolbar>
+    <ToggleGroup selectionMode="multiple">
+      <Toggle value="bold">
+        <Icon size="sm"><Bold /></Icon>
+      </Toggle>
+      <Toggle value="italic">
+        <Icon size="sm"><Italic /></Icon>
+      </Toggle>
+      <Toggle value="underline">
+        <Icon size="sm"><Underline /></Icon>
+      </Toggle>
+    </ToggleGroup>
+    <ToolbarSeparator />
+    <ToolbarButton>
+      <Icon size="sm"><Undo /></Icon>
+    </ToolbarButton>
+    <ToolbarButton>
+      <Icon size="sm"><Redo /></Icon>
+    </ToolbarButton>
+  </Toolbar>
+  ```
+</Example>
+
+## Vertical
+
+<Example>
+  <Toolbar orientation="vertical">
+    <ToolbarButton>
+      <Icon size="sm"><Lucide.Bold /></Icon>
+    </ToolbarButton>
+    <ToolbarButton>
+      <Icon size="sm"><Lucide.Italic /></Icon>
+    </ToolbarButton>
+    <ToolbarButton>
+      <Icon size="sm"><Lucide.Underline /></Icon>
+    </ToolbarButton>
+  </Toolbar>
+
+  ```jsx
+  <Toolbar orientation="vertical">
+    <ToolbarButton>
+      <Icon size="sm"><Bold /></Icon>
+    </ToolbarButton>
+    <ToolbarButton>
+      <Icon size="sm"><Italic /></Icon>
+    </ToolbarButton>
+  </Toolbar>
+  ```
+</Example>
+
+## Disabled
+
+<Example>
+  <Toolbar isDisabled>
+    <ToolbarButton>
+      <Icon size="sm"><Lucide.Bold /></Icon>
+    </ToolbarButton>
+    <ToolbarButton>
+      <Icon size="sm"><Lucide.Italic /></Icon>
+    </ToolbarButton>
+  </Toolbar>
+
+  ```jsx
+  <Toolbar isDisabled>
+    <ToolbarButton>
+      <Icon size="sm"><Bold /></Icon>
+    </ToolbarButton>
+    <ToolbarButton>
+      <Icon size="sm"><Italic /></Icon>
+    </ToolbarButton>
+  </Toolbar>
+  ```
+</Example>
+
+## Component props
+
+### Toolbar
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'orientation', value: "'horizontal' | 'vertical'", description: 'Toolbar layout direction (default: "horizontal")' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the entire toolbar' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### ToolbarButton
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the button' },
+      { name: '...ButtonProps', value: 'ButtonProps', description: 'Accepts all Button props (default variant: "quiet")' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

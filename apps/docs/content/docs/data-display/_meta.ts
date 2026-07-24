@@ -1,6 +1,10 @@
 export default {
   accordion: 'Accordion',
+  avatar: 'Avatar',
+  badge: 'Badge',
   calendar: 'Calendar',
+  carousel: 'Carousel',
+  collapsible: 'Collapsible',
   'data-card': 'Data Card',
   'data-table': 'Data Table',
   icon: 'Icon',

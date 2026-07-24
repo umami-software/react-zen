@@ -12,21 +12,37 @@ var dialog = require('@base-ui/react/dialog');
 var menu = require('@base-ui/react/menu');
 var popover = require('@base-ui/react/popover');
 var tooltip$1 = require('@base-ui/react/tooltip');
+var avatar$1 = require('@base-ui/react/avatar');
 var reactDayPicker = require('react-day-picker');
+var useEmblaCarousel = require('embla-carousel-react');
 var checkbox$1 = require('@base-ui/react/checkbox');
+var checkboxGroup = require('@base-ui/react/checkbox-group');
+var collapsible = require('@base-ui/react/collapsible');
 var combobox = require('@base-ui/react/combobox');
 var select = require('@base-ui/react/select');
+var cmdk = require('cmdk');
+var contextMenu = require('@base-ui/react/context-menu');
 var reactHookForm = require('react-hook-form');
 var zustand = require('zustand');
 var web = require('@react-spring/web');
+var menubar = require('@base-ui/react/menubar');
+var meter = require('@base-ui/react/meter');
+var numberField = require('@base-ui/react/number-field');
+var otpField = require('@base-ui/react/otp-field');
 var progress = require('@base-ui/react/progress');
 var radio = require('@base-ui/react/radio');
 var radioGroup = require('@base-ui/react/radio-group');
+var reactResizablePanels = require('react-resizable-panels');
+var scrollArea = require('@base-ui/react/scroll-area');
+var separator = require('@base-ui/react/separator');
 var slider = require('@base-ui/react/slider');
 var _switch = require('@base-ui/react/switch');
 var tabs = require('@base-ui/react/tabs');
 var toggle = require('@base-ui/react/toggle');
 var toggleGroup = require('@base-ui/react/toggle-group');
+var toolbar = require('@base-ui/react/toolbar');
+
+function _interopDefault (e) { return e && e.__esModule ? e : { default: e }; }
 
 function _interopNamespace(e) {
   if (e && e.__esModule) return e;
@@ -47,6 +63,7 @@ function _interopNamespace(e) {
 }
 
 var lucide_react_star__namespace = /*#__PURE__*/_interopNamespace(lucide_react_star);
+var useEmblaCarousel__default = /*#__PURE__*/_interopDefault(useEmblaCarousel);
 
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -2499,7 +2516,7 @@ var button = tailwindVariants.tv({
     size: "md"
   }
 });
-tailwindVariants.tv({
+var inputField = tailwindVariants.tv({
   base: [
     "flex items-center px-3 gap-3",
     "text-base rounded border border-edge bg-surface-base shadow-sm",
@@ -2767,6 +2784,82 @@ var toast = tailwindVariants.tv({
     }
   }
 });
+var badge = tailwindVariants.tv({
+  base: [
+    "inline-flex items-center gap-1 rounded-full font-medium whitespace-nowrap",
+    "border border-transparent"
+  ],
+  variants: {
+    variant: {
+      default: "bg-interactive text-foreground-primary",
+      primary: "bg-primary text-primary-foreground",
+      outline: "bg-transparent border-edge text-foreground-primary",
+      success: "bg-status-success-bg text-status-success-text",
+      warning: "bg-status-warning-bg text-status-warning-text",
+      error: "bg-status-error-bg text-status-error-text",
+      info: "bg-status-info-bg text-status-info-text"
+    },
+    size: {
+      sm: "text-xs px-2 py-0.5",
+      md: "text-sm px-2.5 py-0.5"
+    }
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md"
+  }
+});
+var avatar = tailwindVariants.tv({
+  slots: {
+    root: [
+      "relative inline-flex items-center justify-center shrink-0 select-none",
+      "overflow-hidden rounded-full align-middle bg-interactive"
+    ],
+    image: "size-full object-cover",
+    fallback: [
+      "flex size-full items-center justify-center",
+      "font-medium text-foreground-primary uppercase"
+    ]
+  },
+  variants: {
+    size: {
+      xs: { root: "size-6", fallback: "text-xs" },
+      sm: { root: "size-8", fallback: "text-sm" },
+      md: { root: "size-10", fallback: "text-base" },
+      lg: { root: "size-12", fallback: "text-lg" },
+      xl: { root: "size-16", fallback: "text-xl" }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
+});
+var sidebar = tailwindVariants.tv({
+  slots: {
+    root: [
+      "flex flex-col h-full min-h-0 overflow-hidden",
+      "border-r border-edge bg-surface-raised",
+      "transition-[width] duration-200 ease-out",
+      "w-64 data-[collapsed]:w-14"
+    ],
+    header: "flex items-center gap-3 px-3 py-3 min-h-14",
+    content: "flex flex-col flex-1 gap-4 overflow-y-auto overflow-x-hidden px-2 py-2",
+    footer: "flex items-center gap-3 px-3 py-3 mt-auto border-t border-edge-muted",
+    group: "flex flex-col gap-0.5",
+    groupTitle: [
+      "px-2 py-1.5 text-xs font-bold uppercase tracking-wide text-foreground-muted",
+      "whitespace-nowrap overflow-hidden"
+    ],
+    item: [
+      "flex items-center gap-3 px-2 py-2 rounded cursor-pointer outline-none w-full",
+      "text-base text-foreground-primary no-underline whitespace-nowrap",
+      "hover:bg-interactive",
+      "focus-visible:ring-2 focus-visible:ring-focus-ring",
+      "data-[selected]:bg-interactive data-[selected]:font-semibold",
+      "data-[disabled]:text-foreground-disabled data-[disabled]:cursor-default data-[disabled]:hover:bg-transparent"
+    ]
+  }
+});
 var tag = tailwindVariants.tv({
   slots: {
     base: [
@@ -3031,6 +3124,38 @@ function AlertDialog({
     ] });
   } });
 }
+function AspectRatio({ ratio = 1, className, style, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    "div",
+    {
+      ...props,
+      className: cn(
+        "relative w-full overflow-hidden",
+        "[&>*]:absolute [&>*]:inset-0 [&>*]:size-full [&>img]:object-cover [&>video]:object-cover",
+        className
+      ),
+      style: { aspectRatio: ratio, ...style },
+      children
+    }
+  );
+}
+function getInitials(name) {
+  if (!name) {
+    return null;
+  }
+  return name.split(/\s+/).slice(0, 2).map((word) => word.charAt(0)).join("");
+}
+function Avatar({ src, alt, fallback, size, className, children, ...props }) {
+  const styles = avatar({ size });
+  return /* @__PURE__ */ jsxRuntime.jsxs(avatar$1.Avatar.Root, { ...props, className: cn(styles.root(), className), children: [
+    src && /* @__PURE__ */ jsxRuntime.jsx(avatar$1.Avatar.Image, { src, alt, className: styles.image() }),
+    /* @__PURE__ */ jsxRuntime.jsx(avatar$1.Avatar.Fallback, { className: styles.fallback(), children: fallback ?? getInitials(alt) }),
+    children
+  ] });
+}
+function Badge({ variant, size, className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx("span", { ...props, className: cn(badge({ variant, size }), className), children });
+}
 function Blockquote({ className, children, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(Text, { ...props, as: "blockquote", className: cn("border-l-2 border-primary pl-5", className), children });
 }
@@ -3128,6 +3253,117 @@ function Calendar({
     }
   );
 }
+function Carousel({
+  orientation = "horizontal",
+  loop,
+  showArrows = true,
+  showDots,
+  opts,
+  onIndexChange,
+  className,
+  children,
+  ...props
+}) {
+  const [emblaRef, emblaApi] = useEmblaCarousel__default.default({
+    axis: orientation === "vertical" ? "y" : "x",
+    loop,
+    ...opts
+  });
+  const [canScrollPrev, setCanScrollPrev] = react.useState(false);
+  const [canScrollNext, setCanScrollNext] = react.useState(false);
+  const [selectedIndex, setSelectedIndex] = react.useState(0);
+  const [scrollSnaps, setScrollSnaps] = react.useState([]);
+  const onSelect = react.useCallback(() => {
+    if (!emblaApi) {
+      return;
+    }
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+    onIndexChange?.(emblaApi.selectedScrollSnap());
+  }, [emblaApi, onIndexChange]);
+  react.useEffect(() => {
+    if (!emblaApi) {
+      return;
+    }
+    setScrollSnaps(emblaApi.scrollSnapList());
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+  const isVertical = orientation === "vertical";
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    "div",
+    {
+      ...props,
+      role: "region",
+      "aria-roledescription": "carousel",
+      className: cn("relative", className),
+      children: [
+        /* @__PURE__ */ jsxRuntime.jsx("div", { ref: emblaRef, className: "overflow-hidden", children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("flex", isVertical && "flex-col max-h-full"), children }) }),
+        showArrows && /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+          /* @__PURE__ */ jsxRuntime.jsx(
+            Button,
+            {
+              variant: "outline",
+              "aria-label": "Previous slide",
+              isDisabled: !canScrollPrev,
+              className: cn(
+                "absolute rounded-full size-9 p-0",
+                isVertical ? "left-1/2 -translate-x-1/2 top-2 rotate-90" : "top-1/2 -translate-y-1/2 left-2"
+              ),
+              onPress: () => emblaApi?.scrollPrev(),
+              children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronLeft, {}) })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntime.jsx(
+            Button,
+            {
+              variant: "outline",
+              "aria-label": "Next slide",
+              isDisabled: !canScrollNext,
+              className: cn(
+                "absolute rounded-full size-9 p-0",
+                isVertical ? "left-1/2 -translate-x-1/2 bottom-2 rotate-90" : "top-1/2 -translate-y-1/2 right-2"
+              ),
+              onPress: () => emblaApi?.scrollNext(),
+              children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) })
+            }
+          )
+        ] }),
+        showDots && scrollSnaps.length > 1 && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5", children: scrollSnaps.map((snap, index) => /* @__PURE__ */ jsxRuntime.jsx(
+          "button",
+          {
+            type: "button",
+            "aria-label": `Go to slide ${index + 1}`,
+            className: cn(
+              "size-2 rounded-full cursor-pointer transition-colors",
+              index === selectedIndex ? "bg-primary" : "bg-interactive hover:bg-interactive-hover"
+            ),
+            onClick: () => emblaApi?.scrollTo(index)
+          },
+          snap
+        )) })
+      ]
+    }
+  );
+}
+function CarouselItem({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    "div",
+    {
+      ...props,
+      role: "group",
+      "aria-roledescription": "slide",
+      className: cn("min-w-0 shrink-0 grow-0 basis-full", className),
+      children
+    }
+  );
+}
 function Checkbox({
   label: _label,
   className,
@@ -3166,23 +3402,6 @@ function Checkbox({
     }
   );
 }
-function Code({ className, children, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    Text,
-    {
-      ...props,
-      as: "code",
-      size: "base",
-      weight: "medium",
-      className: cn("font-mono bg-surface-sunken rounded p-1", className),
-      children
-    }
-  );
-}
-function useFieldId(id) {
-  const generatedId = react.useId();
-  return id ?? generatedId;
-}
 function Label({
   size = "base",
   weight = "semibold",
@@ -3199,6 +3418,97 @@ function Label({
       render: (renderProps) => /* @__PURE__ */ jsxRuntime.jsx("label", { ...renderProps })
     }
   );
+}
+function CheckboxGroup({
+  label,
+  isDisabled,
+  orientation = "vertical",
+  onChange,
+  className,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: cn("flex flex-col gap-2", className), children: [
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    /* @__PURE__ */ jsxRuntime.jsx(
+      checkboxGroup.CheckboxGroup,
+      {
+        ...props,
+        disabled: isDisabled,
+        onValueChange: (value) => onChange?.(value),
+        className: cn("flex gap-3", orientation === "vertical" ? "flex-col" : "flex-row flex-wrap"),
+        children
+      }
+    )
+  ] });
+}
+function Code({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    Text,
+    {
+      ...props,
+      as: "code",
+      size: "base",
+      weight: "medium",
+      className: cn("font-mono bg-surface-sunken rounded p-1", className),
+      children
+    }
+  );
+}
+function Collapsible({
+  isExpanded,
+  defaultExpanded,
+  isDisabled,
+  onExpandedChange,
+  className,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    collapsible.Collapsible.Root,
+    {
+      ...props,
+      open: isExpanded,
+      defaultOpen: defaultExpanded,
+      disabled: isDisabled,
+      onOpenChange: onExpandedChange,
+      className: cn("flex flex-col w-full", className),
+      children
+    }
+  );
+}
+function CollapsibleTrigger({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    collapsible.Collapsible.Trigger,
+    {
+      ...props,
+      className: cn(
+        "flex items-center gap-2 cursor-pointer outline-none text-base",
+        "focus-visible:ring-2 focus-visible:ring-focus-ring rounded",
+        "disabled:text-foreground-disabled disabled:cursor-default",
+        className
+      ),
+      children
+    }
+  );
+}
+function CollapsiblePanel({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    collapsible.Collapsible.Panel,
+    {
+      ...props,
+      className: cn(
+        "overflow-hidden transition-all duration-300 ease-out",
+        "h-[var(--collapsible-panel-height)] data-[starting-style]:h-0 data-[ending-style]:h-0",
+        className
+      ),
+      children
+    }
+  );
+}
+function useFieldId(id) {
+  const generatedId = react.useId();
+  return id ?? generatedId;
 }
 
 // src/lib/constants.ts
@@ -3432,6 +3742,18 @@ function ListSection({ title, className, children, ...props }) {
   }
   return /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, role: "group", className: cn("[&:not(:last-child)]:mb-4", className), children: content });
 }
+function getItemLabel(label) {
+  if (typeof label === "string" || typeof label === "number") {
+    return String(label);
+  }
+  if (Array.isArray(label)) {
+    return label.map(getItemLabel).join("");
+  }
+  if (react.isValidElement(label)) {
+    return getItemLabel(label.props.children);
+  }
+  return "";
+}
 function ComboBox({
   className,
   label,
@@ -3443,17 +3765,28 @@ function ComboBox({
   popoverProps,
   children,
   items,
+  itemToStringLabel,
   ...props
 }) {
-  const normalizedItems = items?.map(
-    (item) => typeof item === "object" ? item : { label: item, value: item }
+  const childItems = react.Children.toArray(children).flatMap((child) => {
+    if (!react.isValidElement(child)) {
+      return [];
+    }
+    const value = String(
+      child.props.value ?? child.props.id ?? (typeof child.props.children === "string" ? child.props.children : "")
+    );
+    return value ? [{ label: child.props.children, value, element: child }] : [];
+  });
+  const normalizedItems = items?.map((item) => typeof item === "object" ? item : { label: item, value: item }) ?? childItems;
+  const itemLabels = new Map(
+    normalizedItems.map((item) => [item.value, getItemLabel(item.label) || item.value])
   );
-  const collection = children || normalizedItems?.map((item) => /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value));
   return /* @__PURE__ */ jsxRuntime.jsx(
     combobox.Combobox.Root,
     {
       ...props,
-      items: normalizedItems,
+      items: normalizedItems.map((item) => item.value),
+      itemToStringLabel: itemToStringLabel ?? ((value) => itemLabels.get(value) ?? value),
       disabled: isDisabled,
       onValueChange: onChange,
       children: /* @__PURE__ */ jsxRuntime.jsxs("div", { className: cn("relative", className), children: [
@@ -3477,13 +3810,157 @@ function ComboBox({
             ]
           }
         ),
-        /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Positioner, { ...popoverProps, children: /* @__PURE__ */ jsxRuntime.jsxs(combobox.Combobox.Popup, { className: "p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
-          /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsxRuntime.jsx(List, { ...listProps, children: collection }) }),
+        /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Positioner, { align: "start", sideOffset: 4, ...popoverProps, children: /* @__PURE__ */ jsxRuntime.jsxs(combobox.Combobox.Popup, { className: "w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
+          /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsxRuntime.jsx(List, { ...listProps, children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Collection, { children: (value) => {
+            const item = normalizedItems.find((option) => option.value === value);
+            if (!item) {
+              return null;
+            }
+            return item.element ?? /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value);
+          } }) }) }),
           renderEmptyState && /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Empty, { children: renderEmptyState({}) })
         ] }) }) })
       ] })
     }
   );
+}
+var placementClasses = {
+  center: "zen-modal-center",
+  left: "zen-modal-left absolute inset-y-0 left-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
+  right: "zen-modal-right absolute inset-y-0 right-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
+  top: "zen-modal-top absolute inset-x-0 top-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
+  bottom: "zen-modal-bottom absolute inset-x-0 bottom-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
+  fullscreen: "zen-modal-fullscreen w-dvw h-dvh rounded-none"
+};
+function Modal({
+  placement = "center",
+  offset,
+  children,
+  className,
+  style,
+  isOpen: _isOpen,
+  onOpenChange: _onOpenChange,
+  ...props
+}) {
+  const modalStyle = {
+    ...style,
+    ...offset ? { "--modal-offset": offset } : {}
+  };
+  return /* @__PURE__ */ jsxRuntime.jsxs(dialog.Dialog.Portal, { ...props, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(
+      dialog.Dialog.Popup,
+      {
+        className: cn("relative z-[9999]", placementClasses[placement], className),
+        style: modalStyle,
+        children
+      }
+    ) })
+  ] });
+}
+Modal.zenOverlayType = "dialog";
+function Command({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    cmdk.Command,
+    {
+      ...props,
+      className: cn(
+        "flex size-full flex-col overflow-hidden rounded-md bg-surface-base text-foreground-primary",
+        className
+      ),
+      children
+    }
+  );
+}
+function CommandInput({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex items-center gap-3 border-b border-edge px-3", children: [
+    /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", className: "shrink-0 text-foreground-muted", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Search, {}) }),
+    /* @__PURE__ */ jsxRuntime.jsx(
+      cmdk.Command.Input,
+      {
+        ...props,
+        className: cn(
+          "flex h-11 w-full bg-transparent text-base outline-none",
+          "placeholder:text-foreground-muted",
+          "disabled:cursor-not-allowed disabled:text-foreground-disabled",
+          className
+        )
+      }
+    )
+  ] });
+}
+function CommandList({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    cmdk.Command.List,
+    {
+      ...props,
+      className: cn("max-h-[300px] overflow-y-auto overflow-x-hidden p-2", className)
+    }
+  );
+}
+function CommandEmpty({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    cmdk.Command.Empty,
+    {
+      ...props,
+      className: cn("py-6 text-center text-base text-foreground-muted", className)
+    }
+  );
+}
+function CommandGroup({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    cmdk.Command.Group,
+    {
+      ...props,
+      className: cn(
+        "overflow-hidden [&:not(:last-child)]:mb-2",
+        "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5",
+        "[&_[cmdk-group-heading]]:text-sm [&_[cmdk-group-heading]]:font-bold [&_[cmdk-group-heading]]:text-foreground-muted",
+        className
+      )
+    }
+  );
+}
+function CommandItem({ icon, isDisabled, className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    cmdk.Command.Item,
+    {
+      ...props,
+      disabled: isDisabled,
+      className: cn(
+        "flex items-center gap-3 px-2 py-1.5 rounded cursor-pointer outline-none text-base",
+        "data-[selected=true]:bg-interactive",
+        "data-[disabled=true]:text-foreground-disabled data-[disabled=true]:cursor-default",
+        className
+      ),
+      children: [
+        icon && /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: icon }),
+        children
+      ]
+    }
+  );
+}
+function CommandSeparator({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    cmdk.Command.Separator,
+    {
+      ...props,
+      className: cn("h-px bg-edge-muted my-2 -mx-2", className)
+    }
+  );
+}
+function CommandDialog({ isOpen, onOpenChange, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Root, { open: isOpen, onOpenChange, children: /* @__PURE__ */ jsxRuntime.jsx(Modal, { children: /* @__PURE__ */ jsxRuntime.jsx(
+    Command,
+    {
+      ...props,
+      className: cn(
+        "w-[32rem] max-w-[calc(100dvw-2rem)] border border-edge shadow-xl",
+        props.className
+      ),
+      children
+    }
+  ) }) });
 }
 var TIMEOUT = 2e3;
 function CopyButton({
@@ -3643,6 +4120,13 @@ function Container({
       children
     }
   );
+}
+function ContextMenu({ children, onOpenChange }) {
+  const items = react.Children.toArray(children);
+  return /* @__PURE__ */ jsxRuntime.jsxs(contextMenu.ContextMenu.Root, { onOpenChange, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Trigger, { render: items[0] }),
+    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: true, children: items[1] })
+  ] });
 }
 var PRESET_VALUES = [
   "1",
@@ -3937,6 +4421,85 @@ function DataTable({
 }
 function DataColumn(_props) {
   return null;
+}
+function Popover({
+  children,
+  isFullscreen,
+  className,
+  isOpen: _isOpen,
+  isNonModal: _isNonModal,
+  triggerRef: _triggerRef,
+  onOpenChange: _onOpenChange,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { ...props, children: /* @__PURE__ */ jsxRuntime.jsx(
+    popover.Popover.Popup,
+    {
+      className: cn(
+        "zen-popover outline-none",
+        isFullscreen && "block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
+        className
+      ),
+      children
+    }
+  ) }) });
+}
+Popover.zenOverlayType = "popover";
+function DatePicker({
+  value,
+  defaultValue,
+  minValue,
+  maxValue,
+  label,
+  placeholder = "Select date",
+  locale,
+  isDisabled,
+  isReadOnly,
+  formatOptions = { dateStyle: "medium" },
+  onChange,
+  buttonProps,
+  calendarProps,
+  className
+}) {
+  const [isOpen, setIsOpen] = react.useState(false);
+  const [uncontrolledValue, setUncontrolledValue] = react.useState(defaultValue);
+  const date = value ?? uncontrolledValue;
+  const handleChange = (nextDate) => {
+    if (value === void 0) {
+      setUncontrolledValue(nextDate);
+    }
+    onChange?.(nextDate);
+    setIsOpen(false);
+  };
+  return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: cn("flex flex-col gap-1", className), children: [
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    /* @__PURE__ */ jsxRuntime.jsxs(DialogTrigger, { isOpen, onOpenChange: setIsOpen, children: [
+      /* @__PURE__ */ jsxRuntime.jsxs(
+        Button,
+        {
+          variant: "outline",
+          isDisabled,
+          ...buttonProps,
+          className: cn("justify-start gap-3 font-normal", buttonProps?.className),
+          children: [
+            /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.CalendarDays, {}) }),
+            date ? new Intl.DateTimeFormat(locale, formatOptions).format(date) : /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-foreground-muted", children: placeholder })
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxRuntime.jsx(Popover, { children: /* @__PURE__ */ jsxRuntime.jsx(
+        Calendar,
+        {
+          ...calendarProps,
+          value: date,
+          minValue,
+          maxValue,
+          isReadOnly,
+          onChange: handleChange
+        }
+      ) })
+    ] })
+  ] });
 }
 var sizeMap2 = {
   sm: "w-1.5 h-1.5",
@@ -4614,7 +5177,22 @@ function Image({
   );
   return /* @__PURE__ */ jsxRuntime.jsx("img", { ...props, className: classes, src, alt });
 }
-var placementClasses = {
+function Kbd({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    "kbd",
+    {
+      ...props,
+      className: cn(
+        "inline-flex items-center justify-center gap-1",
+        "text-sm font-mono text-foreground-primary",
+        "px-1.5 py-0.5 rounded border border-edge bg-surface-raised shadow-sm",
+        className
+      ),
+      children
+    }
+  );
+}
+var placementClasses2 = {
   absolute: "absolute inset-0 m-auto",
   center: "m-auto",
   inline: "inline-flex"
@@ -4632,7 +5210,7 @@ function Loading({
       ...props,
       className: cn(
         "relative flex justify-center items-center flex-1 pointer-events-none",
-        placementClasses[placement],
+        placementClasses2[placement],
         className
       ),
       children: [
@@ -4802,41 +5380,60 @@ function SubMenuTrigger({ children }) {
     items[1]
   ] });
 }
-var placementClasses2 = {
-  center: "zen-modal-center",
-  left: "zen-modal-left absolute inset-y-0 left-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
-  right: "zen-modal-right absolute inset-y-0 right-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
-  top: "zen-modal-top absolute inset-x-0 top-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
-  bottom: "zen-modal-bottom absolute inset-x-0 bottom-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
-  fullscreen: "zen-modal-fullscreen w-dvw h-dvh rounded-none"
-};
-function Modal({
-  placement = "center",
-  offset,
-  children,
-  className,
-  style,
-  isOpen: _isOpen,
-  onOpenChange: _onOpenChange,
-  ...props
-}) {
-  const modalStyle = {
-    ...style,
-    ...offset ? { "--modal-offset": offset } : {}
-  };
-  return /* @__PURE__ */ jsxRuntime.jsxs(dialog.Dialog.Portal, { ...props, children: [
-    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(
-      dialog.Dialog.Popup,
+function Menubar({ isDisabled, className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    menubar.Menubar,
+    {
+      ...props,
+      disabled: isDisabled,
+      className: cn(
+        "flex items-center gap-1 p-1 rounded-md border border-edge bg-surface-base shadow-sm w-fit",
+        className
+      ),
+      children
+    }
+  );
+}
+function MenubarMenu({ label, isDisabled, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsxs(menu.Menu.Root, { ...props, disabled: isDisabled, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(
+      menu.Menu.Trigger,
       {
-        className: cn("relative z-[9999]", placementClasses2[placement], className),
-        style: modalStyle,
-        children
+        render: /* @__PURE__ */ jsxRuntime.jsx(Button, { variant: "quiet", size: "sm", className: "data-[popup-open]:bg-interactive", children: label })
       }
-    ) })
+    ),
+    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: true, children })
   ] });
 }
-Modal.zenOverlayType = "dialog";
+function Meter({
+  value,
+  minValue,
+  maxValue,
+  label,
+  showValue,
+  formatOptions,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    meter.Meter.Root,
+    {
+      ...props,
+      value,
+      min: minValue,
+      max: maxValue,
+      format: formatOptions,
+      className: cn("flex flex-col gap-1 w-full", className),
+      children: [
+        (label || showValue) && /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex items-center justify-between gap-3", children: [
+          label && /* @__PURE__ */ jsxRuntime.jsx(meter.Meter.Label, { render: /* @__PURE__ */ jsxRuntime.jsx(Label, {}), children: label }),
+          showValue && /* @__PURE__ */ jsxRuntime.jsx(Text, { className: "tabular-nums", children: /* @__PURE__ */ jsxRuntime.jsx(meter.Meter.Value, {}) })
+        ] }),
+        /* @__PURE__ */ jsxRuntime.jsx(meter.Meter.Track, { className: "relative overflow-hidden w-full h-2 rounded-full bg-interactive", children: /* @__PURE__ */ jsxRuntime.jsx(meter.Meter.Indicator, { className: "h-full rounded-full bg-primary transition-all" }) })
+      ]
+    }
+  );
+}
 var NavbarContext = react.createContext(void 0);
 var useNavigationContext = () => {
   const context = react.useContext(NavbarContext);
@@ -4898,6 +5495,95 @@ function NavbarItem({
     }
   );
 }
+var stepperClasses = [
+  "flex items-center justify-center self-stretch px-3 shrink-0",
+  "cursor-pointer select-none bg-transparent text-foreground-primary",
+  "hover:bg-interactive active:bg-interactive-hover",
+  "disabled:text-foreground-disabled disabled:cursor-default disabled:hover:bg-transparent"
+];
+function NumberField({
+  label,
+  placeholder,
+  minValue,
+  maxValue,
+  isDisabled,
+  isReadOnly,
+  isRequired,
+  formatOptions,
+  onChange,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    numberField.NumberField.Root,
+    {
+      ...props,
+      min: minValue,
+      max: maxValue,
+      disabled: isDisabled,
+      readOnly: isReadOnly,
+      required: isRequired,
+      format: formatOptions,
+      onValueChange: (value) => onChange?.(value),
+      className: cn("flex flex-col gap-1", className),
+      children: [
+        label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+        /* @__PURE__ */ jsxRuntime.jsxs(numberField.NumberField.Group, { className: cn(inputField(), "p-0 px-0 gap-0 overflow-hidden"), children: [
+          /* @__PURE__ */ jsxRuntime.jsx(numberField.NumberField.Decrement, { className: cn(stepperClasses, "border-r border-edge"), children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Minus, {}) }) }),
+          /* @__PURE__ */ jsxRuntime.jsx(
+            numberField.NumberField.Input,
+            {
+              placeholder,
+              className: "w-full min-w-0 text-base text-center tabular-nums bg-transparent py-2 px-3 outline-none placeholder:text-foreground-muted"
+            }
+          ),
+          /* @__PURE__ */ jsxRuntime.jsx(numberField.NumberField.Increment, { className: cn(stepperClasses, "border-l border-edge"), children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Plus, {}) }) })
+        ] })
+      ]
+    }
+  );
+}
+function OTPField({
+  length = 6,
+  label,
+  isDisabled,
+  isReadOnly,
+  isRequired,
+  onChange,
+  onComplete,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col gap-1", children: [
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    /* @__PURE__ */ jsxRuntime.jsx(
+      otpField.OTPField.Root,
+      {
+        ...props,
+        length,
+        disabled: isDisabled,
+        readOnly: isReadOnly,
+        required: isRequired,
+        onValueChange: (value) => onChange?.(value),
+        onValueComplete: (value) => onComplete?.(value),
+        className: cn("flex items-center gap-2", className),
+        children: Array.from({ length }, (_, index) => /* @__PURE__ */ jsxRuntime.jsx(
+          otpField.OTPField.Input,
+          {
+            className: cn(
+              "size-10 text-center text-base rounded border border-edge bg-surface-base shadow-sm",
+              "text-foreground-primary outline-none transition-colors",
+              "focus:border-edge-strong focus:ring-2 focus:ring-focus-ring focus:ring-offset-1 focus:ring-offset-surface-base",
+              "data-[filled]:border-edge-strong",
+              "disabled:bg-surface-disabled disabled:text-foreground-disabled"
+            )
+          },
+          index
+        ))
+      }
+    )
+  ] });
+}
 function PageHeader({ children, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
     Row,
@@ -4930,6 +5616,98 @@ function PageHeaderTitle({
 }
 function PageHeaderActions({ children, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(Row, { gap: "2", alignItems: "center", ...props, children });
+}
+function getPageRange(pageCount, page, siblingCount) {
+  const totalShown = siblingCount * 2 + 5;
+  if (pageCount <= totalShown) {
+    return Array.from({ length: pageCount }, (_, i) => i + 1);
+  }
+  const start = Math.max(page - siblingCount, 1);
+  const end = Math.min(page + siblingCount, pageCount);
+  const showLeftEllipsis = start > 2;
+  const showRightEllipsis = end < pageCount - 1;
+  if (!showLeftEllipsis && showRightEllipsis) {
+    const leftRange = Array.from({ length: 3 + siblingCount * 2 }, (_, i) => i + 1);
+    return [...leftRange, "ellipsis", pageCount];
+  }
+  if (showLeftEllipsis && !showRightEllipsis) {
+    const rangeLength = 3 + siblingCount * 2;
+    const rightRange = Array.from(
+      { length: rangeLength },
+      (_, i) => pageCount - rangeLength + i + 1
+    );
+    return [1, "ellipsis", ...rightRange];
+  }
+  const middleRange = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  return [1, "ellipsis", ...middleRange, "ellipsis", pageCount];
+}
+function Pagination({
+  pageCount,
+  totalItems,
+  pageSize = 10,
+  page,
+  defaultPage = 1,
+  siblingCount = 1,
+  isDisabled,
+  onChange,
+  className,
+  ...props
+}) {
+  const [uncontrolledPage, setUncontrolledPage] = react.useState(defaultPage);
+  const count = Math.max(pageCount ?? Math.ceil((totalItems ?? 0) / pageSize), 1);
+  const currentPage = Math.min(Math.max(page ?? uncontrolledPage, 1), count);
+  const setPage = (nextPage) => {
+    const clamped = Math.min(Math.max(nextPage, 1), count);
+    if (page === void 0) {
+      setUncontrolledPage(clamped);
+    }
+    onChange?.(clamped);
+  };
+  return /* @__PURE__ */ jsxRuntime.jsxs("nav", { ...props, "aria-label": "Pagination", className: cn("flex items-center gap-1", className), children: [
+    /* @__PURE__ */ jsxRuntime.jsx(
+      Button,
+      {
+        variant: "quiet",
+        "aria-label": "Previous page",
+        isDisabled: isDisabled || currentPage <= 1,
+        onPress: () => setPage(currentPage - 1),
+        children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronLeft, {}) })
+      }
+    ),
+    getPageRange(count, currentPage, siblingCount).map(
+      (item, index) => item === "ellipsis" ? /* @__PURE__ */ jsxRuntime.jsx(
+        "span",
+        {
+          className: "flex items-center justify-center size-9 text-foreground-muted",
+          "aria-hidden": "true",
+          children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Ellipsis, {}) })
+        },
+        `ellipsis-${index}`
+      ) : /* @__PURE__ */ jsxRuntime.jsx(
+        Button,
+        {
+          variant: item === currentPage ? "outline" : "quiet",
+          "aria-current": item === currentPage ? "page" : void 0,
+          "aria-label": `Page ${item}`,
+          isDisabled,
+          className: "min-w-9 tabular-nums",
+          onPress: () => setPage(item),
+          children: item
+        },
+        item
+      )
+    ),
+    /* @__PURE__ */ jsxRuntime.jsx(
+      Button,
+      {
+        variant: "quiet",
+        "aria-label": "Next page",
+        isDisabled: isDisabled || currentPage >= count,
+        onPress: () => setPage(currentPage + 1),
+        children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) })
+      }
+    )
+  ] });
 }
 var PALETTE_LABELS = {
   neutral: "Neutral",
@@ -5072,29 +5850,6 @@ function PasswordField({
     )
   ] });
 }
-function Popover({
-  children,
-  isFullscreen,
-  className,
-  isOpen: _isOpen,
-  isNonModal: _isNonModal,
-  triggerRef: _triggerRef,
-  onOpenChange: _onOpenChange,
-  ...props
-}) {
-  return /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { ...props, children: /* @__PURE__ */ jsxRuntime.jsx(
-    popover.Popover.Popup,
-    {
-      className: cn(
-        "zen-popover outline-none",
-        isFullscreen && "block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
-        className
-      ),
-      children
-    }
-  ) }) });
-}
-Popover.zenOverlayType = "popover";
 function ProgressBar({ className, showPercentage, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsxs(progress.Progress.Root, { ...props, className: cn("flex items-center gap-3 w-full", className), children: [
     /* @__PURE__ */ jsxRuntime.jsx(progress.Progress.Track, { className: "relative overflow-hidden w-full h-2 rounded-full bg-interactive", children: /* @__PURE__ */ jsxRuntime.jsx(progress.Progress.Indicator, { className: "h-full rounded-full bg-primary transition-all" }) }),
@@ -5194,6 +5949,103 @@ function Radio({ children, className, isDisabled, ...props }) {
     }
   );
 }
+var ResizableOrientationContext = react.createContext("horizontal");
+function ResizablePanelGroup({
+  direction = "horizontal",
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(ResizableOrientationContext.Provider, { value: direction, children: /* @__PURE__ */ jsxRuntime.jsx(
+    reactResizablePanels.Group,
+    {
+      ...props,
+      orientation: direction,
+      className: cn("flex size-full", direction === "vertical" && "flex-col", className)
+    }
+  ) });
+}
+function ResizablePanel({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(reactResizablePanels.Panel, { ...props, className: cn("overflow-hidden", className) });
+}
+function ResizableHandle({ withHandle, className, ...props }) {
+  const direction = react.useContext(ResizableOrientationContext);
+  const isVertical = direction === "vertical";
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    reactResizablePanels.Separator,
+    {
+      ...props,
+      className: cn(
+        "relative flex items-center justify-center bg-edge shrink-0",
+        isVertical ? "h-px w-full" : "w-px",
+        isVertical ? "after:absolute after:inset-x-0 after:-top-1 after:h-2" : "after:absolute after:inset-y-0 after:-left-1 after:w-2",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
+        className
+      ),
+      children: withHandle && /* @__PURE__ */ jsxRuntime.jsx(
+        "div",
+        {
+          className: cn(
+            "z-10 flex h-5 w-3.5 items-center justify-center rounded-sm border border-edge bg-surface-raised",
+            isVertical && "rotate-90"
+          ),
+          children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.GripVertical, { className: "size-2.5 text-foreground-muted" })
+        }
+      )
+    }
+  );
+}
+var scrollbarClasses = [
+  "flex touch-none select-none justify-center rounded bg-transparent",
+  "opacity-0 transition-opacity duration-200 delay-300",
+  "data-[hovering]:opacity-100 data-[hovering]:delay-0",
+  "data-[scrolling]:opacity-100 data-[scrolling]:delay-0"
+];
+function ScrollArea({
+  maxHeight,
+  orientation = "vertical",
+  className,
+  style,
+  children,
+  ...props
+}) {
+  const showVertical = orientation !== "horizontal";
+  const showHorizontal = orientation !== "vertical";
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    scrollArea.ScrollArea.Root,
+    {
+      ...props,
+      className: cn("relative overflow-hidden", className),
+      style,
+      children: [
+        /* @__PURE__ */ jsxRuntime.jsx(
+          scrollArea.ScrollArea.Viewport,
+          {
+            className: "size-full overscroll-contain rounded-[inherit] outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
+            style: { maxHeight },
+            children: /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Content, { children })
+          }
+        ),
+        showVertical && /* @__PURE__ */ jsxRuntime.jsx(
+          scrollArea.ScrollArea.Scrollbar,
+          {
+            orientation: "vertical",
+            className: cn(scrollbarClasses, "w-1.5 mr-0.5"),
+            children: /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Thumb, { className: "w-full rounded bg-edge-strong" })
+          }
+        ),
+        showHorizontal && /* @__PURE__ */ jsxRuntime.jsx(
+          scrollArea.ScrollArea.Scrollbar,
+          {
+            orientation: "horizontal",
+            className: cn(scrollbarClasses, "h-1.5 mb-0.5 flex-col"),
+            children: /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Thumb, { className: "h-full rounded bg-edge-strong" })
+          }
+        ),
+        orientation === "both" && /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Corner, {})
+      ]
+    }
+  );
+}
 function SearchField({
   label,
   placeholder,
@@ -5283,6 +6135,7 @@ function Select({
   isFullscreen,
   maxHeight,
   showIcon = true,
+  alignItemWithTrigger = false,
   onSearch,
   onChange,
   buttonProps,
@@ -5341,50 +6194,228 @@ function Select({
             ]
           }
         ),
-        /* @__PURE__ */ jsxRuntime.jsx(select.Select.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(select.Select.Positioner, { ...popoverProps, children: /* @__PURE__ */ jsxRuntime.jsx(
-          select.Select.Popup,
+        /* @__PURE__ */ jsxRuntime.jsx(select.Select.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(
+          select.Select.Positioner,
           {
-            className: cn(
-              "bg-surface-overlay border border-edge rounded-md shadow-lg outline-none",
-              isFullscreen && "fixed inset-0 rounded-none z-[9999]"
-            ),
-            children: /* @__PURE__ */ jsxRuntime.jsxs(Column, { gap: "2", padding: "2", children: [
-              allowSearch && /* @__PURE__ */ jsxRuntime.jsx(
-                SearchField,
-                {
-                  className: "mb-2",
-                  value: search,
-                  onChange: setSearch,
-                  onSearch: (value2) => {
-                    setSearch(value2);
-                    onSearch?.(value2);
-                  },
-                  delay: searchDelay,
-                  defaultValue: searchValue,
-                  autoFocus: true
-                }
-              ),
-              isLoading && /* @__PURE__ */ jsxRuntime.jsx(Loading, { icon: "dots", placement: "center", size: "sm", height: "60px" }),
-              /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "select", children: /* @__PURE__ */ jsxRuntime.jsx(
-                List,
-                {
-                  ...listProps,
-                  isFullscreen,
-                  className: cn("overflow-auto", listProps?.className),
-                  style: {
-                    ...listProps?.style,
-                    maxHeight,
-                    display: isLoading ? "none" : void 0
-                  },
-                  children: collection
-                }
-              ) })
-            ] })
+            align: "start",
+            sideOffset: 4,
+            alignItemWithTrigger,
+            ...popoverProps,
+            children: /* @__PURE__ */ jsxRuntime.jsx(
+              select.Select.Popup,
+              {
+                className: cn(
+                  "bg-surface-overlay border border-edge rounded-md shadow-lg outline-none",
+                  isFullscreen && "fixed inset-0 rounded-none z-[9999]"
+                ),
+                children: /* @__PURE__ */ jsxRuntime.jsxs(Column, { gap: "2", padding: "2", children: [
+                  allowSearch && /* @__PURE__ */ jsxRuntime.jsx(
+                    SearchField,
+                    {
+                      className: "mb-2",
+                      value: search,
+                      onChange: setSearch,
+                      onSearch: (value2) => {
+                        setSearch(value2);
+                        onSearch?.(value2);
+                      },
+                      delay: searchDelay,
+                      defaultValue: searchValue,
+                      autoFocus: true,
+                      onKeyDown: (event) => {
+                        if (event.key !== "Escape" && event.key !== "Tab") {
+                          event.stopPropagation();
+                        }
+                      }
+                    }
+                  ),
+                  isLoading && /* @__PURE__ */ jsxRuntime.jsx(Loading, { className: "py-8", icon: "dots", placement: "center", size: "sm" }),
+                  /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "select", children: /* @__PURE__ */ jsxRuntime.jsx(
+                    List,
+                    {
+                      ...listProps,
+                      isFullscreen,
+                      className: cn("overflow-auto", listProps?.className),
+                      style: {
+                        ...listProps?.style,
+                        maxHeight,
+                        display: isLoading ? "none" : void 0
+                      },
+                      children: collection
+                    }
+                  ) })
+                ] })
+              }
+            )
           }
-        ) }) })
+        ) })
       ]
     }
   ) });
+}
+function Separator2({ orientation = "horizontal", className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    separator.Separator,
+    {
+      ...props,
+      orientation,
+      className: cn(
+        "shrink-0 bg-edge-muted",
+        orientation === "horizontal" ? "h-px w-full" : "w-px self-stretch",
+        className
+      )
+    }
+  );
+}
+var sideClasses = {
+  left: "zen-modal-left absolute inset-y-0 left-0 h-full border-r",
+  right: "zen-modal-right absolute inset-y-0 right-0 h-full border-l",
+  top: "zen-modal-top absolute inset-x-0 top-0 w-full border-b",
+  bottom: "zen-modal-bottom absolute inset-x-0 bottom-0 w-full border-t"
+};
+function Sheet({
+  side = "right",
+  size,
+  children,
+  className,
+  style,
+  isOpen: _isOpen,
+  onOpenChange: _onOpenChange,
+  ...props
+}) {
+  const isHorizontal = side === "left" || side === "right";
+  const sheetStyle = {
+    ...isHorizontal ? { width: size ?? "24rem", maxWidth: "100dvw" } : { height: size, maxHeight: "100dvh" },
+    ...style
+  };
+  return /* @__PURE__ */ jsxRuntime.jsxs(dialog.Dialog.Portal, { ...props, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(
+      dialog.Dialog.Popup,
+      {
+        className: cn(
+          "relative z-[9999] p-6 overflow-auto outline-none",
+          "bg-surface-base border-edge shadow-xl",
+          sideClasses[side],
+          className
+        ),
+        style: sheetStyle,
+        children
+      }
+    ) })
+  ] });
+}
+Sheet.zenOverlayType = "dialog";
+function SheetHeader({ title, showClose = true, className, children }) {
+  const { close } = useOverlayTrigger();
+  return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: cn("flex items-start justify-between gap-3 mb-4", className), children: [
+    /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col gap-1", children: [
+      title && /* @__PURE__ */ jsxRuntime.jsx(Heading, { size: "xl", children: title }),
+      children
+    ] }),
+    showClose && /* @__PURE__ */ jsxRuntime.jsx(Button, { variant: "quiet", size: "xs", "aria-label": "Close", onPress: close, children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.X, {}) }) })
+  ] });
+}
+var SidebarContext = react.createContext({
+  isCollapsed: false,
+  toggle: () => void 0
+});
+function useSidebar() {
+  return react.useContext(SidebarContext);
+}
+function Sidebar({
+  isCollapsed,
+  defaultCollapsed,
+  onCollapseChange,
+  className,
+  children,
+  ...props
+}) {
+  const [uncontrolledCollapsed, setUncontrolledCollapsed] = react.useState(defaultCollapsed ?? false);
+  const collapsed = isCollapsed ?? uncontrolledCollapsed;
+  const toggle = () => {
+    if (isCollapsed === void 0) {
+      setUncontrolledCollapsed(!collapsed);
+    }
+    onCollapseChange?.(!collapsed);
+  };
+  return /* @__PURE__ */ jsxRuntime.jsx(SidebarContext.Provider, { value: { isCollapsed: collapsed, toggle }, children: /* @__PURE__ */ jsxRuntime.jsx(
+    "aside",
+    {
+      ...props,
+      "data-collapsed": collapsed || void 0,
+      className: cn(sidebar().root(), className),
+      children
+    }
+  ) });
+}
+function SidebarHeader({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, className: cn(sidebar().header(), className), children });
+}
+function SidebarContent({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, className: cn(sidebar().content(), className), children });
+}
+function SidebarFooter({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, className: cn(sidebar().footer(), className), children });
+}
+function SidebarGroup({ title, className, children, ...props }) {
+  const { isCollapsed } = useSidebar();
+  return /* @__PURE__ */ jsxRuntime.jsxs("div", { ...props, role: "group", className: cn(sidebar().group(), className), children: [
+    title && !isCollapsed && /* @__PURE__ */ jsxRuntime.jsx("div", { className: sidebar().groupTitle(), children: title }),
+    children
+  ] });
+}
+function SidebarItem({
+  icon,
+  label,
+  href,
+  isSelected,
+  isDisabled,
+  onPress,
+  className,
+  children,
+  ...props
+}) {
+  const { isCollapsed } = useSidebar();
+  const Element = href && !isDisabled ? "a" : "button";
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    Element,
+    {
+      ...props,
+      href: href && !isDisabled ? href : void 0,
+      type: Element === "button" ? "button" : void 0,
+      disabled: Element === "button" ? isDisabled : void 0,
+      "aria-current": isSelected ? "page" : void 0,
+      "data-selected": isSelected || void 0,
+      "data-disabled": isDisabled || void 0,
+      title: isCollapsed ? label : void 0,
+      className: cn(sidebar().item(), isCollapsed && "justify-center px-0", className),
+      onClick: isDisabled ? void 0 : onPress,
+      children: [
+        icon && /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: icon }),
+        !isCollapsed && /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+          label,
+          children
+        ] })
+      ]
+    }
+  );
+}
+function SidebarToggle({ onPress, ...props }) {
+  const { isCollapsed, toggle } = useSidebar();
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    Button,
+    {
+      variant: "quiet",
+      "aria-label": isCollapsed ? "Expand sidebar" : "Collapse sidebar",
+      ...props,
+      onPress: (event) => {
+        toggle();
+        onPress?.(event);
+      },
+      children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.PanelLeft, {}) })
+    }
+  );
 }
 function Skeleton({
   width = "100%",
@@ -5871,6 +6902,37 @@ function ToggleGroupItem({
     }
   );
 }
+function Toolbar({ isDisabled, orientation, className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    toolbar.Toolbar.Root,
+    {
+      ...props,
+      disabled: isDisabled,
+      orientation,
+      className: cn(
+        "flex items-center gap-1 p-1 rounded-md border border-edge bg-surface-base shadow-sm w-fit",
+        orientation === "vertical" && "flex-col",
+        className
+      ),
+      children
+    }
+  );
+}
+function ToolbarGroup({ className, children, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(toolbar.Toolbar.Group, { ...props, className: cn("flex items-center gap-1", className), children });
+}
+function ToolbarButton({ isDisabled, variant = "quiet", ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(toolbar.Toolbar.Button, { disabled: isDisabled, render: /* @__PURE__ */ jsxRuntime.jsx(Button, { variant, ...props }) });
+}
+function ToolbarSeparator({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    toolbar.Toolbar.Separator,
+    {
+      ...props,
+      render: /* @__PURE__ */ jsxRuntime.jsx(Separator2, { orientation: "vertical", className: cn("mx-1 h-5 self-center", className) })
+    }
+  );
+}
 var defaultToastConfig = {
   duration: 3e3
 };
@@ -5889,22 +6951,41 @@ exports.Accordion = Accordion;
 exports.AccordionItem = AccordionItem;
 exports.AlertBanner = AlertBanner;
 exports.AlertDialog = AlertDialog;
+exports.AspectRatio = AspectRatio;
+exports.Avatar = Avatar;
+exports.Badge = Badge;
 exports.Blockquote = Blockquote;
 exports.Box = Box;
 exports.Breadcrumb = Breadcrumb;
 exports.Breadcrumbs = Breadcrumbs;
 exports.Button = Button;
 exports.Calendar = Calendar;
+exports.Carousel = Carousel;
+exports.CarouselItem = CarouselItem;
 exports.Checkbox = Checkbox;
+exports.CheckboxGroup = CheckboxGroup;
 exports.Code = Code;
+exports.Collapsible = Collapsible;
+exports.CollapsiblePanel = CollapsiblePanel;
+exports.CollapsibleTrigger = CollapsibleTrigger;
 exports.Column = Column;
 exports.ComboBox = ComboBox;
+exports.Command = Command;
+exports.CommandDialog = CommandDialog;
+exports.CommandEmpty = CommandEmpty;
+exports.CommandGroup = CommandGroup;
+exports.CommandInput = CommandInput;
+exports.CommandItem = CommandItem;
+exports.CommandList = CommandList;
+exports.CommandSeparator = CommandSeparator;
 exports.ConfirmationDialog = ConfirmationDialog;
 exports.Container = Container;
+exports.ContextMenu = ContextMenu;
 exports.CopyButton = CopyButton;
 exports.DataCard = DataCard;
 exports.DataColumn = DataColumn;
 exports.DataTable = DataTable;
+exports.DatePicker = DatePicker;
 exports.Dialog = Dialog;
 exports.DialogTrigger = DialogTrigger;
 exports.Dots = Dots;
@@ -5925,6 +7006,7 @@ exports.Heading = Heading;
 exports.HoverTrigger = HoverTrigger;
 exports.Icon = Icon;
 exports.Image = Image;
+exports.Kbd = Kbd;
 exports.Label = Label;
 exports.List = List;
 exports.ListItem = ListItem;
@@ -5938,14 +7020,20 @@ exports.MenuItem = MenuItem;
 exports.MenuSection = MenuSection;
 exports.MenuSeparator = MenuSeparator;
 exports.MenuTrigger = MenuTrigger;
+exports.Menubar = Menubar;
+exports.MenubarMenu = MenubarMenu;
+exports.Meter = Meter;
 exports.Modal = Modal;
 exports.Navbar = Navbar;
 exports.NavbarContext = NavbarContext;
 exports.NavbarItem = NavbarItem;
+exports.NumberField = NumberField;
+exports.OTPField = OTPField;
 exports.PALETTES = PALETTES;
 exports.PageHeader = PageHeader;
 exports.PageHeaderActions = PageHeaderActions;
 exports.PageHeaderTitle = PageHeaderTitle;
+exports.Pagination = Pagination;
 exports.PaletteSwitcher = PaletteSwitcher;
 exports.PasswordField = PasswordField;
 exports.Popover = Popover;
@@ -5954,10 +7042,24 @@ exports.ProgressBar = ProgressBar;
 exports.ProgressCircle = ProgressCircle;
 exports.Radio = Radio;
 exports.RadioGroup = RadioGroup;
+exports.ResizableHandle = ResizableHandle;
+exports.ResizablePanel = ResizablePanel;
+exports.ResizablePanelGroup = ResizablePanelGroup;
 exports.RouterProvider = RouterProvider;
 exports.Row = Row;
+exports.ScrollArea = ScrollArea;
 exports.SearchField = SearchField;
 exports.Select = Select;
+exports.Separator = Separator2;
+exports.Sheet = Sheet;
+exports.SheetHeader = SheetHeader;
+exports.Sidebar = Sidebar;
+exports.SidebarContent = SidebarContent;
+exports.SidebarFooter = SidebarFooter;
+exports.SidebarGroup = SidebarGroup;
+exports.SidebarHeader = SidebarHeader;
+exports.SidebarItem = SidebarItem;
+exports.SidebarToggle = SidebarToggle;
 exports.Skeleton = Skeleton;
 exports.SkeletonAvatar = SkeletonAvatar;
 exports.SkeletonText = SkeletonText;
@@ -5990,6 +7092,10 @@ exports.Toaster = Toaster;
 exports.Toggle = Toggle;
 exports.ToggleGroup = ToggleGroup;
 exports.ToggleGroupItem = ToggleGroupItem;
+exports.Toolbar = Toolbar;
+exports.ToolbarButton = ToolbarButton;
+exports.ToolbarGroup = ToolbarGroup;
+exports.ToolbarSeparator = ToolbarSeparator;
 exports.Tooltip = Tooltip;
 exports.TooltipBubble = TooltipBubble;
 exports.TooltipTrigger = TooltipTrigger;
@@ -6057,6 +7163,7 @@ exports.useBreakpoint = useBreakpoint;
 exports.useDebounce = useDebounce;
 exports.useInitTheme = useInitTheme;
 exports.useNavigationContext = useNavigationContext;
+exports.useSidebar = useSidebar;
 exports.useTheme = useTheme;
 exports.useToast = useToast;
 //# sourceMappingURL=index.js.map

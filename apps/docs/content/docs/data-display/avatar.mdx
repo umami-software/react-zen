@@ -1,0 +1,64 @@
+---
+title: Avatar
+---
+
+# Avatar
+
+An avatar displays a user's profile image with a fallback to their initials.
+
+<Example>
+  <Avatar src="/images/sample.jpg" alt="Jane Doe" />
+
+  ```jsx
+  <Avatar src="/images/sample.jpg" alt="Jane Doe" />
+  ```
+</Example>
+
+## Sizes
+
+<Example>
+  <Avatar alt="Jane Doe" size="xs" />
+  <Avatar alt="Jane Doe" size="sm" />
+  <Avatar alt="Jane Doe" size="md" />
+  <Avatar alt="Jane Doe" size="lg" />
+  <Avatar alt="Jane Doe" size="xl" />
+
+  ```jsx
+  <Avatar alt="Jane Doe" size="xs" />
+  <Avatar alt="Jane Doe" size="sm" />
+  <Avatar alt="Jane Doe" size="md" />
+  <Avatar alt="Jane Doe" size="lg" />
+  <Avatar alt="Jane Doe" size="xl" />
+  ```
+</Example>
+
+## Fallback
+
+When no image is provided, the avatar shows the initials derived from `alt`, or a custom `fallback`.
+
+<Example>
+  <Avatar alt="Jane Doe" />
+  <Avatar fallback="?" />
+
+  ```jsx
+  <Avatar alt="Jane Doe" />
+  <Avatar fallback="?" />
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'src', value: 'string', description: 'Image source URL' },
+      { name: 'alt', value: 'string', description: 'Alt text (also used to generate initials)' },
+      { name: 'fallback', value: 'ReactNode', description: 'Custom fallback content (overrides initials)' },
+      { name: 'size', value: 'string', description: '"xs" | "sm" | "md" | "lg" | "xl" (default: "md")' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

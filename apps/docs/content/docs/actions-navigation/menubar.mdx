@@ -1,0 +1,100 @@
+---
+title: Menubar
+---
+
+# Menubar
+
+A menubar displays a horizontal row of menus, like the menu bar found at the top of desktop applications.
+
+<Example>
+  <Menubar>
+    <MenubarMenu label="File">
+      <Menu>
+        <MenuItem>New file</MenuItem>
+        <MenuItem>Open</MenuItem>
+        <MenuSeparator />
+        <MenuItem>Save</MenuItem>
+        <MenuItem>Save as</MenuItem>
+      </Menu>
+    </MenubarMenu>
+    <MenubarMenu label="Edit">
+      <Menu>
+        <MenuItem>Undo</MenuItem>
+        <MenuItem>Redo</MenuItem>
+        <MenuSeparator />
+        <MenuItem>Cut</MenuItem>
+        <MenuItem>Copy</MenuItem>
+        <MenuItem>Paste</MenuItem>
+      </Menu>
+    </MenubarMenu>
+    <MenubarMenu label="View">
+      <Menu>
+        <MenuItem>Zoom in</MenuItem>
+        <MenuItem>Zoom out</MenuItem>
+        <MenuSeparator />
+        <MenuItem>Full screen</MenuItem>
+      </Menu>
+    </MenubarMenu>
+    <MenubarMenu label="Help" isDisabled>
+      <Menu>
+        <MenuItem>Documentation</MenuItem>
+      </Menu>
+    </MenubarMenu>
+  </Menubar>
+
+  ```jsx
+  <Menubar>
+    <MenubarMenu label="File">
+      <Menu>
+        <MenuItem>New file</MenuItem>
+        <MenuItem>Open</MenuItem>
+        <MenuSeparator />
+        <MenuItem>Save</MenuItem>
+      </Menu>
+    </MenubarMenu>
+    <MenubarMenu label="Edit">
+      <Menu>
+        <MenuItem>Undo</MenuItem>
+        <MenuItem>Redo</MenuItem>
+      </Menu>
+    </MenubarMenu>
+    <MenubarMenu label="Help" isDisabled>
+      <Menu>
+        <MenuItem>Documentation</MenuItem>
+      </Menu>
+    </MenubarMenu>
+  </Menubar>
+  ```
+</Example>
+
+## Component props
+
+### Menubar
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the entire menubar' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### MenubarMenu
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'label', value: 'ReactNode', description: 'Label shown on the menubar trigger button' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the menu' },
+      { name: 'children', value: 'ReactNode', description: 'A Menu containing MenuItems' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

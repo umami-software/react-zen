@@ -1,6 +1,10 @@
 export default {
   checkbox: 'Checkbox',
+  'checkbox-group': 'Checkbox Group',
   combobox: 'Combobox',
+  'date-picker': 'Date Picker',
+  'number-field': 'Number Field',
+  'otp-field': 'OTP Field',
   'password-field': 'Password Field',
   'radio-group': 'Radio Group',
   'search-field': 'Search Field',

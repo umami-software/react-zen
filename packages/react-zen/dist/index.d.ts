@@ -1,28 +1,42 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { Accordion as Accordion$1 } from '@base-ui/react/accordion';
 import * as react from 'react';
-import { ReactNode, HTMLAttributes, ReactElement, CSSProperties, LiHTMLAttributes, MouseEvent, ComponentProps, Key, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes, Dispatch, SetStateAction, InputHTMLAttributes, TextareaHTMLAttributes, RefObject } from 'react';
-import { ButtonProps as ButtonProps$1 } from '@base-ui/react/button';
+import { ReactNode, HTMLAttributes, ReactElement, CSSProperties, LiHTMLAttributes, MouseEvent, ComponentProps, Key, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes, Dispatch, SetStateAction, InputHTMLAttributes, AnchorHTMLAttributes, TextareaHTMLAttributes, RefObject } from 'react';
+import { Avatar as Avatar$1 } from '@base-ui/react/avatar';
 import * as tailwind_variants from 'tailwind-variants';
 import { VariantProps } from 'tailwind-variants';
+import { ButtonProps as ButtonProps$1 } from '@base-ui/react/button';
 import { DayPicker } from 'react-day-picker';
+import useEmblaCarousel from 'embla-carousel-react';
 import { CheckboxRoot } from '@base-ui/react/checkbox';
+import { CheckboxGroup as CheckboxGroup$1 } from '@base-ui/react/checkbox-group';
+import { Collapsible as Collapsible$1 } from '@base-ui/react/collapsible';
 import { Combobox } from '@base-ui/react/combobox';
+import { Command as Command$1 } from 'cmdk';
 import { Tooltip as Tooltip$1 } from '@base-ui/react/tooltip';
 import { UseFormProps, SubmitHandler, UseFormReturn, ControllerProps, ControllerRenderProps, FieldValues, ControllerFieldState, UseFormStateReturn, RegisterOptions } from 'react-hook-form';
 import * as zustand from 'zustand';
 import { ClassValue } from 'clsx';
+import { Menu as Menu$1 } from '@base-ui/react/menu';
+import { Menubar as Menubar$1 } from '@base-ui/react/menubar';
+import { Meter as Meter$1 } from '@base-ui/react/meter';
 import { Dialog as Dialog$1 } from '@base-ui/react/dialog';
+import { NumberField as NumberField$1 } from '@base-ui/react/number-field';
+import { OTPField as OTPField$1 } from '@base-ui/react/otp-field';
 import { Popover as Popover$1 } from '@base-ui/react/popover';
 import { ProgressRoot } from '@base-ui/react/progress';
 import { RadioRoot } from '@base-ui/react/radio';
 import { RadioGroupProps as RadioGroupProps$1 } from '@base-ui/react/radio-group';
+import { SeparatorProps as SeparatorProps$1, PanelProps, GroupProps } from 'react-resizable-panels';
+import { ScrollArea as ScrollArea$1 } from '@base-ui/react/scroll-area';
 import { Select as Select$1 } from '@base-ui/react/select';
+import { Separator as Separator$1 } from '@base-ui/react/separator';
 import { Slider as Slider$1 } from '@base-ui/react/slider';
 import { Switch as Switch$1 } from '@base-ui/react/switch';
 import { Tabs as Tabs$1 } from '@base-ui/react/tabs';
 import { ToggleProps as ToggleProps$1 } from '@base-ui/react/toggle';
 import { ToggleGroupProps as ToggleGroupProps$1 } from '@base-ui/react/toggle-group';
+import { Toolbar as Toolbar$1 } from '@base-ui/react/toolbar';
 
 interface AccordionProps extends Omit<Accordion$1.Root.Props<string>, 'value' | 'defaultValue' | 'multiple' | 'onValueChange'> {
     type?: 'single' | 'multiple';
@@ -75,6 +89,250 @@ interface AlertDialogProps extends DialogProps {
     onCancel?: () => void;
 }
 declare function AlertDialog({ title, description, isDanger, isConfirmDisabled, confirmLabel, cancelLabel, onConfirm, onCancel, className, children, ...props }: AlertDialogProps): react_jsx_runtime.JSX.Element;
+
+interface AspectRatioProps extends HTMLAttributes<HTMLDivElement> {
+    ratio?: number;
+}
+declare function AspectRatio({ ratio, className, style, children, ...props }: AspectRatioProps): react_jsx_runtime.JSX.Element;
+
+declare const button: tailwind_variants.TVReturnType<{
+    variant: {
+        default: string[];
+        primary: string[];
+        outline: string[];
+        quiet: string[];
+        danger: string[];
+        zero: string[];
+    };
+    size: {
+        xs: string;
+        sm: string;
+        md: string;
+        lg: string;
+        xl: string;
+    };
+}, undefined, string[], {
+    variant: {
+        default: string[];
+        primary: string[];
+        outline: string[];
+        quiet: string[];
+        danger: string[];
+        zero: string[];
+    };
+    size: {
+        xs: string;
+        sm: string;
+        md: string;
+        lg: string;
+        xl: string;
+    };
+}, undefined, tailwind_variants.TVReturnType<{
+    variant: {
+        default: string[];
+        primary: string[];
+        outline: string[];
+        quiet: string[];
+        danger: string[];
+        zero: string[];
+    };
+    size: {
+        xs: string;
+        sm: string;
+        md: string;
+        lg: string;
+        xl: string;
+    };
+}, undefined, string[], unknown, unknown, undefined>>;
+type ButtonVariants = VariantProps<typeof button>;
+declare const badge: tailwind_variants.TVReturnType<{
+    variant: {
+        default: string;
+        primary: string;
+        outline: string;
+        success: string;
+        warning: string;
+        error: string;
+        info: string;
+    };
+    size: {
+        sm: string;
+        md: string;
+    };
+}, undefined, string[], {
+    variant: {
+        default: string;
+        primary: string;
+        outline: string;
+        success: string;
+        warning: string;
+        error: string;
+        info: string;
+    };
+    size: {
+        sm: string;
+        md: string;
+    };
+}, undefined, tailwind_variants.TVReturnType<{
+    variant: {
+        default: string;
+        primary: string;
+        outline: string;
+        success: string;
+        warning: string;
+        error: string;
+        info: string;
+    };
+    size: {
+        sm: string;
+        md: string;
+    };
+}, undefined, string[], unknown, unknown, undefined>>;
+type BadgeVariants = VariantProps<typeof badge>;
+declare const avatar: tailwind_variants.TVReturnType<{
+    size: {
+        xs: {
+            root: string;
+            fallback: string;
+        };
+        sm: {
+            root: string;
+            fallback: string;
+        };
+        md: {
+            root: string;
+            fallback: string;
+        };
+        lg: {
+            root: string;
+            fallback: string;
+        };
+        xl: {
+            root: string;
+            fallback: string;
+        };
+    };
+}, {
+    root: string[];
+    image: string;
+    fallback: string[];
+}, undefined, {
+    size: {
+        xs: {
+            root: string;
+            fallback: string;
+        };
+        sm: {
+            root: string;
+            fallback: string;
+        };
+        md: {
+            root: string;
+            fallback: string;
+        };
+        lg: {
+            root: string;
+            fallback: string;
+        };
+        xl: {
+            root: string;
+            fallback: string;
+        };
+    };
+}, {
+    root: string[];
+    image: string;
+    fallback: string[];
+}, tailwind_variants.TVReturnType<{
+    size: {
+        xs: {
+            root: string;
+            fallback: string;
+        };
+        sm: {
+            root: string;
+            fallback: string;
+        };
+        md: {
+            root: string;
+            fallback: string;
+        };
+        lg: {
+            root: string;
+            fallback: string;
+        };
+        xl: {
+            root: string;
+            fallback: string;
+        };
+    };
+}, {
+    root: string[];
+    image: string;
+    fallback: string[];
+}, undefined, unknown, unknown, undefined>>;
+type AvatarVariants = VariantProps<typeof avatar>;
+declare const tag: tailwind_variants.TVReturnType<{
+    variant: {
+        default: {
+            base: string;
+        };
+        outline: {
+            base: string;
+        };
+        primary: {
+            base: string;
+        };
+    };
+}, {
+    base: string[];
+    removeButton: string[];
+}, undefined, {
+    variant: {
+        default: {
+            base: string;
+        };
+        outline: {
+            base: string;
+        };
+        primary: {
+            base: string;
+        };
+    };
+}, {
+    base: string[];
+    removeButton: string[];
+}, tailwind_variants.TVReturnType<{
+    variant: {
+        default: {
+            base: string;
+        };
+        outline: {
+            base: string;
+        };
+        primary: {
+            base: string;
+        };
+    };
+}, {
+    base: string[];
+    removeButton: string[];
+}, undefined, unknown, unknown, undefined>>;
+type TagVariants = VariantProps<typeof tag>;
+
+interface AvatarProps extends Avatar$1.Root.Props {
+    src?: string;
+    alt?: string;
+    fallback?: ReactNode;
+    size?: AvatarVariants['size'];
+}
+declare function Avatar({ src, alt, fallback, size, className, children, ...props }: AvatarProps): react_jsx_runtime.JSX.Element;
+
+interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
+    variant?: BadgeVariants['variant'];
+    size?: BadgeVariants['size'];
+}
+declare function Badge({ variant, size, className, children, ...props }: BadgeProps): react_jsx_runtime.JSX.Element;
 
 declare const Breakpoints: readonly ["base", "sm", "md", "lg", "xl", "2xl"];
 type Breakpoint$1 = (typeof Breakpoints)[number];
@@ -285,104 +543,6 @@ interface BreadcrumbProps extends LiHTMLAttributes<HTMLLIElement> {
 declare function Breadcrumbs({ children, className, isDisabled, ...props }: BreadcrumbsProps): react_jsx_runtime.JSX.Element;
 declare function Breadcrumb({ children, className, isDisabled, ...props }: BreadcrumbProps): react_jsx_runtime.JSX.Element;
 
-declare const button: tailwind_variants.TVReturnType<{
-    variant: {
-        default: string[];
-        primary: string[];
-        outline: string[];
-        quiet: string[];
-        danger: string[];
-        zero: string[];
-    };
-    size: {
-        xs: string;
-        sm: string;
-        md: string;
-        lg: string;
-        xl: string;
-    };
-}, undefined, string[], {
-    variant: {
-        default: string[];
-        primary: string[];
-        outline: string[];
-        quiet: string[];
-        danger: string[];
-        zero: string[];
-    };
-    size: {
-        xs: string;
-        sm: string;
-        md: string;
-        lg: string;
-        xl: string;
-    };
-}, undefined, tailwind_variants.TVReturnType<{
-    variant: {
-        default: string[];
-        primary: string[];
-        outline: string[];
-        quiet: string[];
-        danger: string[];
-        zero: string[];
-    };
-    size: {
-        xs: string;
-        sm: string;
-        md: string;
-        lg: string;
-        xl: string;
-    };
-}, undefined, string[], unknown, unknown, undefined>>;
-type ButtonVariants = VariantProps<typeof button>;
-declare const tag: tailwind_variants.TVReturnType<{
-    variant: {
-        default: {
-            base: string;
-        };
-        outline: {
-            base: string;
-        };
-        primary: {
-            base: string;
-        };
-    };
-}, {
-    base: string[];
-    removeButton: string[];
-}, undefined, {
-    variant: {
-        default: {
-            base: string;
-        };
-        outline: {
-            base: string;
-        };
-        primary: {
-            base: string;
-        };
-    };
-}, {
-    base: string[];
-    removeButton: string[];
-}, tailwind_variants.TVReturnType<{
-    variant: {
-        default: {
-            base: string;
-        };
-        outline: {
-            base: string;
-        };
-        primary: {
-            base: string;
-        };
-    };
-}, {
-    base: string[];
-    removeButton: string[];
-}, undefined, unknown, unknown, undefined>>;
-type TagVariants = VariantProps<typeof tag>;
-
 interface ButtonProps extends Omit<ButtonProps$1, 'className' | 'disabled' | 'render'>, ButtonVariants {
     render?: RenderProp<ButtonRenderProps>;
     children?: ReactNode;
@@ -409,6 +569,18 @@ type CalendarProps = Omit<ComponentProps<typeof DayPicker>, 'mode' | 'selected' 
 };
 declare function Calendar({ className, value, minValue, maxValue, defaultValue, onChange, isDisabled, isReadOnly, ...props }: CalendarProps): react_jsx_runtime.JSX.Element;
 
+type EmblaOptions = NonNullable<Parameters<typeof useEmblaCarousel>[0]>;
+interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
+    orientation?: 'horizontal' | 'vertical';
+    loop?: boolean;
+    showArrows?: boolean;
+    showDots?: boolean;
+    opts?: EmblaOptions;
+    onIndexChange?: (index: number) => void;
+}
+declare function Carousel({ orientation, loop, showArrows, showDots, opts, onIndexChange, className, children, ...props }: CarouselProps): react_jsx_runtime.JSX.Element;
+declare function CarouselItem({ className, children, ...props }: HTMLAttributes<HTMLDivElement>): react_jsx_runtime.JSX.Element;
+
 interface CheckboxProps extends Omit<CheckboxRoot.Props, 'checked' | 'defaultChecked' | 'disabled' | 'indeterminate' | 'onCheckedChange' | 'value'> {
     children?: ReactNode;
     label?: string;
@@ -421,10 +593,36 @@ interface CheckboxProps extends Omit<CheckboxRoot.Props, 'checked' | 'defaultChe
 }
 declare function Checkbox({ label: _label, className, children, isSelected, defaultSelected, isDisabled, isIndeterminate, onChange, value, ...props }: CheckboxProps): react_jsx_runtime.JSX.Element;
 
+interface CheckboxGroupProps extends Omit<CheckboxGroup$1.Props, 'disabled' | 'onValueChange' | 'onChange'> {
+    label?: string;
+    isDisabled?: boolean;
+    orientation?: 'vertical' | 'horizontal';
+    onChange?: (value: string[]) => void;
+    children?: ReactNode;
+}
+declare function CheckboxGroup({ label, isDisabled, orientation, onChange, className, children, ...props }: CheckboxGroupProps): react_jsx_runtime.JSX.Element;
+
 interface CodeProps extends Omit<TextProps, 'as'> {
     children?: ReactNode;
 }
 declare function Code({ className, children, ...props }: CodeProps): react_jsx_runtime.JSX.Element;
+
+interface CollapsibleProps extends Omit<Collapsible$1.Root.Props, 'open' | 'defaultOpen' | 'onOpenChange' | 'disabled'> {
+    isExpanded?: boolean;
+    defaultExpanded?: boolean;
+    isDisabled?: boolean;
+    onExpandedChange?: (expanded: boolean) => void;
+    children?: ReactNode;
+}
+declare function Collapsible({ isExpanded, defaultExpanded, isDisabled, onExpandedChange, className, children, ...props }: CollapsibleProps): react_jsx_runtime.JSX.Element;
+interface CollapsibleTriggerProps extends Collapsible$1.Trigger.Props {
+    children?: ReactNode;
+}
+declare function CollapsibleTrigger({ className, children, ...props }: CollapsibleTriggerProps): react_jsx_runtime.JSX.Element;
+interface CollapsiblePanelProps extends Collapsible$1.Panel.Props {
+    children?: ReactNode;
+}
+declare function CollapsiblePanel({ className, children, ...props }: CollapsiblePanelProps): react_jsx_runtime.JSX.Element;
 
 interface FlexboxProps extends Omit<BoxProps, 'display' | 'gap'> {
     display?: Responsive$1<FlexDisplay>;
@@ -502,7 +700,36 @@ interface ComboBoxProps extends Omit<Combobox.Root.Props<string>, 'children' | '
     popoverProps?: Combobox.Positioner.Props;
     className?: string;
 }
-declare function ComboBox({ className, label, placeholder, isDisabled, onChange, renderEmptyState, listProps, popoverProps, children, items, ...props }: ComboBoxProps): react_jsx_runtime.JSX.Element;
+declare function ComboBox({ className, label, placeholder, isDisabled, onChange, renderEmptyState, listProps, popoverProps, children, items, itemToStringLabel, ...props }: ComboBoxProps): react_jsx_runtime.JSX.Element;
+
+interface CommandProps extends ComponentProps<typeof Command$1> {
+}
+declare function Command({ className, children, ...props }: CommandProps): react_jsx_runtime.JSX.Element;
+interface CommandInputProps extends ComponentProps<typeof Command$1.Input> {
+}
+declare function CommandInput({ className, ...props }: CommandInputProps): react_jsx_runtime.JSX.Element;
+interface CommandListProps extends ComponentProps<typeof Command$1.List> {
+}
+declare function CommandList({ className, ...props }: CommandListProps): react_jsx_runtime.JSX.Element;
+interface CommandEmptyProps extends ComponentProps<typeof Command$1.Empty> {
+}
+declare function CommandEmpty({ className, ...props }: CommandEmptyProps): react_jsx_runtime.JSX.Element;
+interface CommandGroupProps extends ComponentProps<typeof Command$1.Group> {
+}
+declare function CommandGroup({ className, ...props }: CommandGroupProps): react_jsx_runtime.JSX.Element;
+interface CommandItemProps extends Omit<ComponentProps<typeof Command$1.Item>, 'disabled'> {
+    icon?: ReactNode;
+    isDisabled?: boolean;
+}
+declare function CommandItem({ icon, isDisabled, className, children, ...props }: CommandItemProps): react_jsx_runtime.JSX.Element;
+interface CommandSeparatorProps extends ComponentProps<typeof Command$1.Separator> {
+}
+declare function CommandSeparator({ className, ...props }: CommandSeparatorProps): react_jsx_runtime.JSX.Element;
+interface CommandDialogProps extends CommandProps {
+    isOpen?: boolean;
+    onOpenChange?: (open: boolean) => void;
+}
+declare function CommandDialog({ isOpen, onOpenChange, children, ...props }: CommandDialogProps): react_jsx_runtime.JSX.Element;
 
 interface ConfirmationDialogProps extends AlertDialogProps {
     value: string;
@@ -516,6 +743,12 @@ interface ContainerProps extends BoxProps {
     isCentered?: boolean;
 }
 declare function Container({ isCentered, isFluid, className, children, ...props }: ContainerProps): react_jsx_runtime.JSX.Element;
+
+interface ContextMenuProps {
+    children: ReactNode;
+    onOpenChange?: (open: boolean) => void;
+}
+declare function ContextMenu({ children, onOpenChange }: ContextMenuProps): react_jsx_runtime.JSX.Element;
 
 interface CopyButtonProps {
     value?: string | (() => string);
@@ -591,6 +824,24 @@ interface DataColumnProps extends Omit<HTMLAttributes<any>, 'children'> {
     children?: ReactNode | ((row: any, index: number) => void);
 }
 declare function DataColumn(_props: DataColumnProps): null;
+
+interface DatePickerProps {
+    value?: Date;
+    defaultValue?: Date;
+    minValue?: Date;
+    maxValue?: Date;
+    label?: string;
+    placeholder?: string;
+    locale?: string;
+    isDisabled?: boolean;
+    isReadOnly?: boolean;
+    formatOptions?: Intl.DateTimeFormatOptions;
+    onChange?: (date: Date) => void;
+    buttonProps?: ButtonProps;
+    calendarProps?: Partial<CalendarProps>;
+    className?: string;
+}
+declare function DatePicker({ value, defaultValue, minValue, maxValue, label, placeholder, locale, isDisabled, isReadOnly, formatOptions, onChange, buttonProps, calendarProps, className, }: DatePickerProps): react_jsx_runtime.JSX.Element;
 
 interface DotsProps extends HTMLAttributes<HTMLDivElement> {
     size?: 'sm' | 'md' | 'lg';
@@ -773,6 +1024,9 @@ interface ImageProps extends HTMLAttributes<HTMLImageElement> {
 }
 declare function Image({ src, alt, objectFit, isCentered, borderRadius, shadow, className, ...props }: ImageProps): react_jsx_runtime.JSX.Element;
 
+type KbdProps = HTMLAttributes<HTMLElement>;
+declare function Kbd({ className, children, ...props }: KbdProps): react_jsx_runtime.JSX.Element;
+
 interface LabelProps extends Omit<TextProps, 'as' | 'render'> {
     htmlFor?: string;
 }
@@ -880,6 +1134,28 @@ interface SubmenuTriggerProps {
 }
 declare function SubMenuTrigger({ children }: SubmenuTriggerProps): react_jsx_runtime.JSX.Element;
 
+interface MenubarProps extends Omit<Menubar$1.Props, 'disabled'> {
+    isDisabled?: boolean;
+    children?: ReactNode;
+}
+declare function Menubar({ isDisabled, className, children, ...props }: MenubarProps): react_jsx_runtime.JSX.Element;
+interface MenubarMenuProps extends Omit<Menu$1.Root.Props, 'children' | 'disabled'> {
+    label: ReactNode;
+    isDisabled?: boolean;
+    children?: ReactNode;
+}
+declare function MenubarMenu({ label, isDisabled, children, ...props }: MenubarMenuProps): react_jsx_runtime.JSX.Element;
+
+interface MeterProps extends Omit<Meter$1.Root.Props, 'min' | 'max' | 'format'> {
+    value: number;
+    minValue?: number;
+    maxValue?: number;
+    label?: string;
+    showValue?: boolean;
+    formatOptions?: Intl.NumberFormatOptions;
+}
+declare function Meter({ value, minValue, maxValue, label, showValue, formatOptions, className, ...props }: MeterProps): react_jsx_runtime.JSX.Element;
+
 interface ModalProps extends Dialog$1.Portal.Props {
     children?: ReactNode;
     isOpen?: boolean;
@@ -906,6 +1182,30 @@ interface NavbarItemProps extends HTMLAttributes<HTMLElement> {
     children?: ReactNode;
 }
 declare function NavbarItem({ label, children, className, color: _color, ...props }: NavbarItemProps): react_jsx_runtime.JSX.Element;
+
+interface NumberFieldProps extends Omit<NumberField$1.Root.Props, 'min' | 'max' | 'disabled' | 'readOnly' | 'required' | 'format' | 'onValueChange'> {
+    label?: string;
+    placeholder?: string;
+    minValue?: number;
+    maxValue?: number;
+    isDisabled?: boolean;
+    isReadOnly?: boolean;
+    isRequired?: boolean;
+    formatOptions?: Intl.NumberFormatOptions;
+    onChange?: (value: number | null) => void;
+}
+declare function NumberField({ label, placeholder, minValue, maxValue, isDisabled, isReadOnly, isRequired, formatOptions, onChange, className, ...props }: NumberFieldProps): react_jsx_runtime.JSX.Element;
+
+interface OTPFieldProps extends Omit<OTPField$1.Root.Props, 'length' | 'disabled' | 'readOnly' | 'required' | 'onValueChange' | 'onValueComplete'> {
+    length?: number;
+    label?: string;
+    isDisabled?: boolean;
+    isReadOnly?: boolean;
+    isRequired?: boolean;
+    onChange?: (value: string) => void;
+    onComplete?: (value: string) => void;
+}
+declare function OTPField({ length, label, isDisabled, isReadOnly, isRequired, onChange, onComplete, className, ...props }: OTPFieldProps): react_jsx_runtime.JSX.Element;
 
 interface DialogTriggerProps {
     children: ReactNode;
@@ -960,6 +1260,18 @@ interface PageHeaderActionsProps extends RowProps {
 }
 declare function PageHeaderActions({ children, ...props }: PageHeaderActionsProps): react_jsx_runtime.JSX.Element;
 
+interface PaginationProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'> {
+    pageCount?: number;
+    totalItems?: number;
+    pageSize?: number;
+    page?: number;
+    defaultPage?: number;
+    siblingCount?: number;
+    isDisabled?: boolean;
+    onChange?: (page: number) => void;
+}
+declare function Pagination({ pageCount, totalItems, pageSize, page, defaultPage, siblingCount, isDisabled, onChange, className, ...props }: PaginationProps): react_jsx_runtime.JSX.Element;
+
 interface PaletteSwitcherProps {
     className?: string;
 }
@@ -1006,6 +1318,27 @@ interface RadioProps extends Omit<RadioRoot.Props, 'disabled'> {
 }
 declare function Radio({ children, className, isDisabled, ...props }: RadioProps): react_jsx_runtime.JSX.Element;
 
+interface ResizablePanelGroupProps extends Omit<GroupProps, 'orientation'> {
+    direction?: 'horizontal' | 'vertical';
+}
+declare function ResizablePanelGroup({ direction, className, ...props }: ResizablePanelGroupProps): react_jsx_runtime.JSX.Element;
+interface ResizablePanelProps extends PanelProps {
+}
+declare function ResizablePanel({ className, ...props }: ResizablePanelProps): react_jsx_runtime.JSX.Element;
+interface ResizableHandleProps extends SeparatorProps$1 {
+    withHandle?: boolean;
+}
+declare function ResizableHandle({ withHandle, className, ...props }: ResizableHandleProps): react_jsx_runtime.JSX.Element;
+
+interface ScrollAreaProps extends ScrollArea$1.Root.Props {
+    maxHeight?: string | number;
+    orientation?: 'vertical' | 'horizontal' | 'both';
+    children?: ReactNode;
+    className?: string;
+    style?: CSSProperties;
+}
+declare function ScrollArea({ maxHeight, orientation, className, style, children, ...props }: ScrollAreaProps): react_jsx_runtime.JSX.Element;
+
 interface SearchFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'onSearch'> {
     label?: string;
     delay?: number;
@@ -1036,6 +1369,7 @@ interface SelectProps extends Omit<Select$1.Root.Props<string | number>, 'childr
     isFullscreen?: boolean;
     maxHeight?: string | number;
     showIcon?: boolean;
+    alignItemWithTrigger?: boolean;
     onSearch?: (value: string) => void;
     onChange?: (value: string | number | null) => void;
     buttonProps?: ButtonProps;
@@ -1044,7 +1378,61 @@ interface SelectProps extends Omit<Select$1.Root.Props<string | number>, 'childr
     renderValue?: ReactNode | ((values: SelectValueRenderProps) => ReactNode);
     className?: string;
 }
-declare function Select({ value, defaultValue, label, placeholder, isLoading, isDisabled, allowSearch, searchValue, searchDelay, isFullscreen, maxHeight, showIcon, onSearch, onChange, buttonProps, listProps, popoverProps, renderValue, className, children, items, onOpenChange, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
+declare function Select({ value, defaultValue, label, placeholder, isLoading, isDisabled, allowSearch, searchValue, searchDelay, isFullscreen, maxHeight, showIcon, alignItemWithTrigger, onSearch, onChange, buttonProps, listProps, popoverProps, renderValue, className, children, items, onOpenChange, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
+
+interface SeparatorProps extends Separator$1.Props {
+    orientation?: 'horizontal' | 'vertical';
+}
+declare function Separator({ orientation, className, ...props }: SeparatorProps): react_jsx_runtime.JSX.Element;
+
+interface SheetProps extends Dialog$1.Portal.Props {
+    children?: ReactNode;
+    side?: 'left' | 'right' | 'top' | 'bottom';
+    size?: string | number;
+    isOpen?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    className?: string;
+    style?: CSSProperties;
+}
+declare function Sheet({ side, size, children, className, style, isOpen: _isOpen, onOpenChange: _onOpenChange, ...props }: SheetProps): react_jsx_runtime.JSX.Element;
+interface SheetHeaderProps {
+    title?: ReactNode;
+    showClose?: boolean;
+    className?: string;
+    children?: ReactNode;
+}
+declare function SheetHeader({ title, showClose, className, children }: SheetHeaderProps): react_jsx_runtime.JSX.Element;
+
+interface SidebarContextValue {
+    isCollapsed: boolean;
+    toggle: () => void;
+}
+declare function useSidebar(): SidebarContextValue;
+interface SidebarProps extends HTMLAttributes<HTMLElement> {
+    isCollapsed?: boolean;
+    defaultCollapsed?: boolean;
+    onCollapseChange?: (collapsed: boolean) => void;
+}
+declare function Sidebar({ isCollapsed, defaultCollapsed, onCollapseChange, className, children, ...props }: SidebarProps): react_jsx_runtime.JSX.Element;
+declare function SidebarHeader({ className, children, ...props }: HTMLAttributes<HTMLDivElement>): react_jsx_runtime.JSX.Element;
+declare function SidebarContent({ className, children, ...props }: HTMLAttributes<HTMLDivElement>): react_jsx_runtime.JSX.Element;
+declare function SidebarFooter({ className, children, ...props }: HTMLAttributes<HTMLDivElement>): react_jsx_runtime.JSX.Element;
+interface SidebarGroupProps extends HTMLAttributes<HTMLDivElement> {
+    title?: string;
+}
+declare function SidebarGroup({ title, className, children, ...props }: SidebarGroupProps): react_jsx_runtime.JSX.Element;
+interface SidebarItemProps extends Omit<AnchorHTMLAttributes<HTMLElement>, 'onClick'> {
+    icon?: ReactNode;
+    label?: string;
+    href?: string;
+    isSelected?: boolean;
+    isDisabled?: boolean;
+    onPress?: (event: MouseEvent<HTMLElement>) => void;
+}
+declare function SidebarItem({ icon, label, href, isSelected, isDisabled, onPress, className, children, ...props }: SidebarItemProps): react_jsx_runtime.JSX.Element;
+interface SidebarToggleProps extends ButtonProps {
+}
+declare function SidebarToggle({ onPress, ...props }: SidebarToggleProps): react_jsx_runtime.JSX.Element;
 
 interface SkeletonProps extends BoxProps {
 }
@@ -1185,6 +1573,21 @@ interface ToggleGroupItemProps extends Omit<ToggleProps$1<string>, 'disabled'> {
 }
 declare function ToggleGroupItem({ id, className, children, isDisabled, ...props }: ToggleGroupItemProps): react_jsx_runtime.JSX.Element;
 
+interface ToolbarProps extends Omit<Toolbar$1.Root.Props, 'disabled'> {
+    isDisabled?: boolean;
+    children?: ReactNode;
+}
+declare function Toolbar({ isDisabled, orientation, className, children, ...props }: ToolbarProps): react_jsx_runtime.JSX.Element;
+interface ToolbarGroupProps extends Toolbar$1.Group.Props {
+    children?: ReactNode;
+}
+declare function ToolbarGroup({ className, children, ...props }: ToolbarGroupProps): react_jsx_runtime.JSX.Element;
+interface ToolbarButtonProps extends ButtonProps {
+    isDisabled?: boolean;
+}
+declare function ToolbarButton({ isDisabled, variant, ...props }: ToolbarButtonProps): react_jsx_runtime.JSX.Element;
+declare function ToolbarSeparator({ className, ...props }: Toolbar$1.Separator.Props): react_jsx_runtime.JSX.Element;
+
 interface ToastProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode;
     id: string;
@@ -1219,4 +1622,4 @@ interface ZenProviderProps {
 }
 declare function ZenProvider({ children, theme, colorScheme, palette, toast, }: ZenProviderProps): react_jsx_runtime.JSX.Element;
 
-export { Accordion, AccordionItem, type AccordionItemProps, type AccordionProps, AlertBanner, type AlertBannerProps, AlertDialog, type AlertDialogProps, Blockquote, type BlockquoteProps, Box, type BoxProps, type BoxRenderProps, Breadcrumb, type BreadcrumbProps, Breadcrumbs, type BreadcrumbsProps, type BreakpointKey, Button, type ButtonProps, type ButtonRenderProps, Calendar, type CalendarProps, Checkbox, type CheckboxProps, Code, type CodeProps, Column, type ColumnProps, ComboBox, type ComboBoxProps, ConfirmationDialog, type ConfirmationDialogProps, Container, type ContainerProps, CopyButton, type CopyButtonProps, DataCard, type DataCardProps, DataColumn, type DataColumnProps, DataTable, type DataTableProps, Dialog, type DialogProps, type DialogRenderProps, DialogTrigger, Dots, type DotsProps, EmptyState, type EmptyStateProps, FileTrigger, Flexbox, type FlexboxProps, FloatingTooltip, type FloatingTooltipProps, Focusable, Form, FormButtons, type FormButtonsProps, FormController, type FormControllerProps, FormField, FormFieldArray, type FormFieldArrayProps, type FormFieldProps, type FormProps, FormResetButton, type FormResetButtonProps, FormSubmitButton, Grid, type GridProps, Heading, type HeadingProps, type HoverButtonProps, HoverTrigger, Icon, type IconProps, Image, type ImageProps, Label, type LabelProps, List, ListItem, type ListItemProps, ListPrimitiveProvider, type ListProps, ListSection, type ListSectionProps, ListSeparator, Loading, LoadingButton, type LoadingButtonProps, type LoadingProps, Menu, MenuItem, type MenuItemProps, type MenuProps, MenuSection, type MenuSectionProps, MenuSeparator, MenuTrigger, Modal, type ModalProps, Navbar, NavbarContext, NavbarItem, type NavbarItemProps, type NavbarProps, type NavigationContext, PALETTES, PageHeader, PageHeaderActions, type PageHeaderActionsProps, type PageHeaderProps, PageHeaderTitle, type PageHeaderTitleProps, type Palette, PaletteSwitcher, type PaletteSwitcherProps, PasswordField, type PasswordFieldProps, Popover, type PopoverProps, type PressEvent, Pressable, ProgressBar, type ProgressBarProps, ProgressCircle, type ProgressCircleProps, Radio, RadioGroup, type RadioGroupProps, type RadioProps, type RenderProp, RouterProvider, Row, type RowProps, SearchField, type SearchFieldProps, Select, type SelectProps, type SelectValueRenderProps, type Selection, Skeleton, SkeletonAvatar, type SkeletonAvatarProps, type SkeletonProps, SkeletonText, type SkeletonTextProps, Slider, type SliderProps, Spinner, type SpinnerProps, StatusLight, type StatusLightProps, type StrokeWidth, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, type SubmenuTriggerProps, Switch, type SwitchProps, Tab, TabList, type TabListProps, TabPanel, type TabPanelProps, type TabProps, Table, TableBody, TableCell, type TableCellProps, TableColumn, type TableColumnProps, TableHeader, type TableProps, TableRow, type TableRowProps, Tabs, type TabsProps, Tag, TagGroup, type TagGroupProps, type TagProps, Text, TextField, type TextFieldProps, type TextProps, type TextRenderProps, type Theme, ThemeButton, type ThemeButtonProps, type ThemeMode, ThemeSwitcher, type ThemeSwitcherProps, Toast, ToastContext, type ToastOptions, type ToastPosition, type ToastProps, ToastProvider, type ToastProviderProps, type ToastState, type ToastVariant, Toaster, type ToasterProps, Toggle, ToggleGroup, ToggleGroupItem, type ToggleGroupItemProps, type ToggleGroupProps, type ToggleProps, Tooltip, TooltipBubble, type TooltipBubbleProps, type TooltipProps, TooltipTrigger, ZenProvider, type ZenProviderProps, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useNavigationContext, useTheme, useToast };
+export { Accordion, AccordionItem, type AccordionItemProps, type AccordionProps, AlertBanner, type AlertBannerProps, AlertDialog, type AlertDialogProps, AspectRatio, type AspectRatioProps, Avatar, type AvatarProps, Badge, type BadgeProps, Blockquote, type BlockquoteProps, Box, type BoxProps, type BoxRenderProps, Breadcrumb, type BreadcrumbProps, Breadcrumbs, type BreadcrumbsProps, type BreakpointKey, Button, type ButtonProps, type ButtonRenderProps, Calendar, type CalendarProps, Carousel, CarouselItem, type CarouselProps, Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps, Code, type CodeProps, Collapsible, CollapsiblePanel, type CollapsiblePanelProps, type CollapsibleProps, CollapsibleTrigger, type CollapsibleTriggerProps, Column, type ColumnProps, ComboBox, type ComboBoxProps, Command, CommandDialog, type CommandDialogProps, CommandEmpty, type CommandEmptyProps, CommandGroup, type CommandGroupProps, CommandInput, type CommandInputProps, CommandItem, type CommandItemProps, CommandList, type CommandListProps, type CommandProps, CommandSeparator, type CommandSeparatorProps, ConfirmationDialog, type ConfirmationDialogProps, Container, type ContainerProps, ContextMenu, type ContextMenuProps, CopyButton, type CopyButtonProps, DataCard, type DataCardProps, DataColumn, type DataColumnProps, DataTable, type DataTableProps, DatePicker, type DatePickerProps, Dialog, type DialogProps, type DialogRenderProps, DialogTrigger, Dots, type DotsProps, EmptyState, type EmptyStateProps, FileTrigger, Flexbox, type FlexboxProps, FloatingTooltip, type FloatingTooltipProps, Focusable, Form, FormButtons, type FormButtonsProps, FormController, type FormControllerProps, FormField, FormFieldArray, type FormFieldArrayProps, type FormFieldProps, type FormProps, FormResetButton, type FormResetButtonProps, FormSubmitButton, Grid, type GridProps, Heading, type HeadingProps, type HoverButtonProps, HoverTrigger, Icon, type IconProps, Image, type ImageProps, Kbd, type KbdProps, Label, type LabelProps, List, ListItem, type ListItemProps, ListPrimitiveProvider, type ListProps, ListSection, type ListSectionProps, ListSeparator, Loading, LoadingButton, type LoadingButtonProps, type LoadingProps, Menu, MenuItem, type MenuItemProps, type MenuProps, MenuSection, type MenuSectionProps, MenuSeparator, MenuTrigger, Menubar, MenubarMenu, type MenubarMenuProps, type MenubarProps, Meter, type MeterProps, Modal, type ModalProps, Navbar, NavbarContext, NavbarItem, type NavbarItemProps, type NavbarProps, type NavigationContext, NumberField, type NumberFieldProps, OTPField, type OTPFieldProps, PALETTES, PageHeader, PageHeaderActions, type PageHeaderActionsProps, type PageHeaderProps, PageHeaderTitle, type PageHeaderTitleProps, Pagination, type PaginationProps, type Palette, PaletteSwitcher, type PaletteSwitcherProps, PasswordField, type PasswordFieldProps, Popover, type PopoverProps, type PressEvent, Pressable, ProgressBar, type ProgressBarProps, ProgressCircle, type ProgressCircleProps, Radio, RadioGroup, type RadioGroupProps, type RadioProps, type RenderProp, ResizableHandle, type ResizableHandleProps, ResizablePanel, ResizablePanelGroup, type ResizablePanelGroupProps, type ResizablePanelProps, RouterProvider, Row, type RowProps, ScrollArea, type ScrollAreaProps, SearchField, type SearchFieldProps, Select, type SelectProps, type SelectValueRenderProps, type Selection, Separator, type SeparatorProps, Sheet, SheetHeader, type SheetHeaderProps, type SheetProps, Sidebar, SidebarContent, SidebarFooter, SidebarGroup, type SidebarGroupProps, SidebarHeader, SidebarItem, type SidebarItemProps, type SidebarProps, SidebarToggle, type SidebarToggleProps, Skeleton, SkeletonAvatar, type SkeletonAvatarProps, type SkeletonProps, SkeletonText, type SkeletonTextProps, Slider, type SliderProps, Spinner, type SpinnerProps, StatusLight, type StatusLightProps, type StrokeWidth, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, type SubmenuTriggerProps, Switch, type SwitchProps, Tab, TabList, type TabListProps, TabPanel, type TabPanelProps, type TabProps, Table, TableBody, TableCell, type TableCellProps, TableColumn, type TableColumnProps, TableHeader, type TableProps, TableRow, type TableRowProps, Tabs, type TabsProps, Tag, TagGroup, type TagGroupProps, type TagProps, Text, TextField, type TextFieldProps, type TextProps, type TextRenderProps, type Theme, ThemeButton, type ThemeButtonProps, type ThemeMode, ThemeSwitcher, type ThemeSwitcherProps, Toast, ToastContext, type ToastOptions, type ToastPosition, type ToastProps, ToastProvider, type ToastProviderProps, type ToastState, type ToastVariant, Toaster, type ToasterProps, Toggle, ToggleGroup, ToggleGroupItem, type ToggleGroupItemProps, type ToggleGroupProps, type ToggleProps, Toolbar, ToolbarButton, type ToolbarButtonProps, ToolbarGroup, type ToolbarGroupProps, type ToolbarProps, ToolbarSeparator, Tooltip, TooltipBubble, type TooltipBubbleProps, type TooltipProps, TooltipTrigger, ZenProvider, type ZenProviderProps, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useNavigationContext, useSidebar, useTheme, useToast };

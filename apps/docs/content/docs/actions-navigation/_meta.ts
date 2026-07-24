@@ -1,12 +1,18 @@
 export default {
   breadcrumbs: 'Breadcrumbs',
   button: 'Button',
+  command: 'Command',
+  'context-menu': 'Context Menu',
   'hover-trigger': 'Hover Trigger',
   'loading-button': 'Loading Button',
   menu: 'Menu',
+  menubar: 'Menubar',
   navbar: 'Navbar',
+  pagination: 'Pagination',
   'palette-switcher': 'Palette Switcher',
+  sidebar: 'Sidebar',
   tabs: 'Tabs',
+  toolbar: 'Toolbar',
   'theme-button': 'Theme Button',
   'theme-switcher': 'Theme Switcher',
 };

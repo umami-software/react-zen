@@ -1,0 +1,91 @@
+---
+title: Pagination
+---
+
+# Pagination
+
+Pagination lets users navigate between pages of content.
+
+<Example>
+  <Pagination pageCount={10} defaultPage={1} />
+
+  ```jsx
+  <Pagination pageCount={10} defaultPage={1} />
+  ```
+</Example>
+
+## Total items
+
+Instead of `pageCount`, pass `totalItems` and `pageSize` and the page count is calculated automatically.
+
+<Example>
+  <Pagination totalItems={250} pageSize={25} />
+
+  ```jsx
+  <Pagination totalItems={250} pageSize={25} />
+  ```
+</Example>
+
+## Sibling count
+
+Control how many pages are shown on each side of the current page with `siblingCount`.
+
+<Example>
+  <Pagination pageCount={20} defaultPage={10} siblingCount={2} />
+
+  ```jsx
+  <Pagination pageCount={20} defaultPage={10} siblingCount={2} />
+  ```
+</Example>
+
+## Controlled
+
+Use the `page` and `onChange` props to control the current page.
+
+<Example>
+  <PaginationExample />
+
+  ```jsx
+  function App() {
+    const [page, setPage] = useState(1);
+
+    return (
+      <Column gap="3" alignItems="center">
+        <Pagination pageCount={10} page={page} onChange={setPage} />
+        <Text color="muted">Current page: {page}</Text>
+      </Column>
+    );
+  }
+  ```
+</Example>
+
+## Disabled
+
+<Example>
+  <Pagination pageCount={10} defaultPage={3} isDisabled />
+
+  ```jsx
+  <Pagination pageCount={10} defaultPage={3} isDisabled />
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'pageCount', value: 'number', description: 'Total number of pages' },
+      { name: 'totalItems', value: 'number', description: 'Total number of items (used when pageCount is not set)' },
+      { name: 'pageSize', value: 'number', description: 'Items per page used with totalItems (default: 10)' },
+      { name: 'page', value: 'number', description: 'Controlled current page' },
+      { name: 'defaultPage', value: 'number', description: 'Default current page (default: 1)' },
+      { name: 'siblingCount', value: 'number', description: 'Pages shown on each side of the current page (default: 1)' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables all pagination controls' },
+      { name: 'onChange', value: '(page: number) => void', description: 'Called when the page changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

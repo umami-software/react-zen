@@ -1,0 +1,100 @@
+---
+title: Resizable
+---
+
+# Resizable
+
+Resizable panels allow users to adjust the size of adjacent sections by dragging a handle.
+
+<Example>
+  <Box width="400px" height="200px" border borderRadius="lg" overflow="hidden">
+    <ResizablePanelGroup direction="horizontal">
+      <ResizablePanel defaultSize={50}>
+        <Flexbox alignItems="center" justifyContent="center" height="100%">One</Flexbox>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={50}>
+        <Flexbox alignItems="center" justifyContent="center" height="100%">Two</Flexbox>
+      </ResizablePanel>
+    </ResizablePanelGroup>
+  </Box>
+
+  ```jsx
+  <ResizablePanelGroup direction="horizontal">
+    <ResizablePanel defaultSize={50}>One</ResizablePanel>
+    <ResizableHandle withHandle />
+    <ResizablePanel defaultSize={50}>Two</ResizablePanel>
+  </ResizablePanelGroup>
+  ```
+</Example>
+
+## Vertical
+
+<Example>
+  <Box width="400px" height="200px" border borderRadius="lg" overflow="hidden">
+    <ResizablePanelGroup direction="vertical">
+      <ResizablePanel defaultSize={50}>
+        <Flexbox alignItems="center" justifyContent="center" height="100%">Top</Flexbox>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={50}>
+        <Flexbox alignItems="center" justifyContent="center" height="100%">Bottom</Flexbox>
+      </ResizablePanel>
+    </ResizablePanelGroup>
+  </Box>
+
+  ```jsx
+  <ResizablePanelGroup direction="vertical">
+    <ResizablePanel defaultSize={50}>Top</ResizablePanel>
+    <ResizableHandle withHandle />
+    <ResizablePanel defaultSize={50}>Bottom</ResizablePanel>
+  </ResizablePanelGroup>
+  ```
+</Example>
+
+## Component props
+
+### ResizablePanelGroup
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'direction', value: 'string', description: '"horizontal" | "vertical" (default: "horizontal")' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### ResizablePanel
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'defaultSize', value: 'number', description: 'Initial size as a percentage' },
+      { name: 'minSize', value: 'number', description: 'Minimum size as a percentage' },
+      { name: 'maxSize', value: 'number', description: 'Maximum size as a percentage' },
+      { name: 'collapsible', value: 'boolean', description: 'Allows the panel to collapse below its minimum size' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### ResizableHandle
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'withHandle', value: 'boolean', description: 'Shows a visible grip on the handle' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

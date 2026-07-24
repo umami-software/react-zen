@@ -1,0 +1,76 @@
+---
+title: Number Field
+---
+
+# Number Field
+
+A number field allows a user to enter a numeric value with stepper buttons for incrementing and decrementing.
+
+<Example>
+  <Box width="200px"><NumberField label="Quantity" defaultValue={1} /></Box>
+
+  ```jsx
+  <NumberField label="Quantity" defaultValue={1} />
+  ```
+</Example>
+
+## Min, max, and step
+
+<Example>
+  <Box width="200px"><NumberField label="Percent" defaultValue={50} minValue={0} maxValue={100} step={10} /></Box>
+
+  ```jsx
+  <NumberField label="Percent" defaultValue={50} minValue={0} maxValue={100} step={10} />
+  ```
+</Example>
+
+## Format options
+
+Values are formatted with `Intl.NumberFormat` using the `formatOptions` prop.
+
+<Example>
+  <Box width="200px"><NumberField label="Price" defaultValue={25} formatOptions={{ style: 'currency', currency: 'USD' }} /></Box>
+
+  ```jsx
+  <NumberField
+    label="Price"
+    defaultValue={25}
+    formatOptions={{ style: 'currency', currency: 'USD' }}
+  />
+  ```
+</Example>
+
+## Disabled
+
+<Example>
+  <Box width="200px"><NumberField label="Quantity" defaultValue={1} isDisabled /></Box>
+
+  ```jsx
+  <NumberField label="Quantity" defaultValue={1} isDisabled />
+  ```
+</Example>
+
+## Component props
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'label', value: 'string', description: 'Label text displayed above the field' },
+      { name: 'placeholder', value: 'string', description: 'Placeholder text' },
+      { name: 'value', value: 'number', description: 'Controlled value' },
+      { name: 'defaultValue', value: 'number', description: 'Default value' },
+      { name: 'minValue', value: 'number', description: 'Minimum value' },
+      { name: 'maxValue', value: 'number', description: 'Maximum value' },
+      { name: 'step', value: 'number', description: 'Amount to increment or decrement' },
+      { name: 'formatOptions', value: 'Intl.NumberFormatOptions', description: 'Number format options' },
+      { name: 'isDisabled', value: 'boolean', description: 'Disables the field' },
+      { name: 'isReadOnly', value: 'boolean', description: 'Prevents changing the value' },
+      { name: 'isRequired', value: 'boolean', description: 'Marks the field as required' },
+      { name: 'onChange', value: '(value: number | null) => void', description: 'Called when the value changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>

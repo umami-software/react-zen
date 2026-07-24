@@ -1,0 +1,88 @@
+---
+title: Carousel
+---
+
+# Carousel
+
+A carousel displays a set of slides that users can scroll through.
+
+<Example>
+  <Box width="400px">
+    <Carousel>
+      <CarouselItem>
+        <Box height="200px" backgroundColor="surface-raised" border borderRadius="lg" display="flex" alignItems="center" justifyContent="center">1</Box>
+      </CarouselItem>
+      <CarouselItem>
+        <Box height="200px" backgroundColor="surface-raised" border borderRadius="lg" display="flex" alignItems="center" justifyContent="center">2</Box>
+      </CarouselItem>
+      <CarouselItem>
+        <Box height="200px" backgroundColor="surface-raised" border borderRadius="lg" display="flex" alignItems="center" justifyContent="center">3</Box>
+      </CarouselItem>
+    </Carousel>
+  </Box>
+
+  ```jsx
+  <Carousel>
+    <CarouselItem>
+      <Box height="200px">1</Box>
+    </CarouselItem>
+    <CarouselItem>
+      <Box height="200px">2</Box>
+    </CarouselItem>
+    <CarouselItem>
+      <Box height="200px">3</Box>
+    </CarouselItem>
+  </Carousel>
+  ```
+</Example>
+
+## Dots
+
+<Example>
+  <Box width="400px">
+    <Carousel loop showDots>
+      <CarouselItem>
+        <Box height="200px" backgroundColor="surface-raised" border borderRadius="lg" display="flex" alignItems="center" justifyContent="center">1</Box>
+      </CarouselItem>
+      <CarouselItem>
+        <Box height="200px" backgroundColor="surface-raised" border borderRadius="lg" display="flex" alignItems="center" justifyContent="center">2</Box>
+      </CarouselItem>
+      <CarouselItem>
+        <Box height="200px" backgroundColor="surface-raised" border borderRadius="lg" display="flex" alignItems="center" justifyContent="center">3</Box>
+      </CarouselItem>
+    </Carousel>
+  </Box>
+
+  ```jsx
+  <Carousel loop showDots>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </Carousel>
+  ```
+</Example>
+
+## Component props
+
+### Carousel
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'orientation', value: 'string', description: '"horizontal" | "vertical" (default: "horizontal")' },
+      { name: 'loop', value: 'boolean', description: 'Loops back to the first slide' },
+      { name: 'showArrows', value: 'boolean', description: 'Shows previous/next arrows (default: true)' },
+      { name: 'showDots', value: 'boolean', description: 'Shows dot indicators' },
+      { name: 'opts', value: 'EmblaOptions', description: 'Additional Embla carousel options' },
+      { name: 'onIndexChange', value: '(index: number) => void', description: 'Called when the selected slide changes' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### CarouselItem
+
+Accepts standard HTML div props. Each item renders as a slide.
