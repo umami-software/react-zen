@@ -240,8 +240,10 @@ export function ListItem({
   );
 }
 
-export function ListSeparator({ className, ...props }: HTMLAttributes<HTMLHRElement>) {
-  return <hr {...props} className={cn('border-b border-edge-muted', className)} />;
+export interface ListSeparatorProps extends BaseSelect.Separator.Props {}
+
+export function ListSeparator({ className, ...props }: ListSeparatorProps) {
+  return <BaseSelect.Separator {...props} className={cn('block h-px bg-edge-muted', className)} />;
 }
 
 export interface ListSectionProps extends HTMLAttributes<HTMLDivElement> {
@@ -251,30 +253,37 @@ export interface ListSectionProps extends HTMLAttributes<HTMLDivElement> {
 
 export function ListSection({ title, className, children, ...props }: ListSectionProps) {
   const { kind } = useContext(ListContext);
-  const content = (
-    <>
-      {title && <div className="text-base font-bold px-2 py-1.5">{title}</div>}
-      {children}
-    </>
-  );
 
   if (kind === 'select') {
     return (
       <BaseSelect.Group {...props} className={cn('[&:not(:last-child)]:mb-4', className)}>
-        {content}
+        {title && (
+          <BaseSelect.GroupLabel className="text-base font-bold px-2 py-1.5">
+            {title}
+          </BaseSelect.GroupLabel>
+        )}
+        {children}
       </BaseSelect.Group>
     );
   }
+
   if (kind === 'combobox') {
     return (
       <BaseCombobox.Group {...props} className={cn('[&:not(:last-child)]:mb-4', className)}>
-        {content}
+        {title && (
+          <BaseCombobox.GroupLabel className="text-base font-bold px-2 py-1.5">
+            {title}
+          </BaseCombobox.GroupLabel>
+        )}
+        {children}
       </BaseCombobox.Group>
     );
   }
+
   return (
     <div {...props} role="group" className={cn('[&:not(:last-child)]:mb-4', className)}>
-      {content}
+      {title && <div className="text-base font-bold px-2 py-1.5">{title}</div>}
+      {children}
     </div>
   );
 }

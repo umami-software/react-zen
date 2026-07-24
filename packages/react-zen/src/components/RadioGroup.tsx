@@ -52,7 +52,6 @@ export interface RadioProps extends Omit<RadioRoot.Props, 'disabled'> {
 export function Radio({ children, className, isDisabled, ...props }: RadioProps) {
   return (
     <BaseRadio.Root
-      aria-label="Radio"
       {...props}
       disabled={isDisabled}
       className={cn(

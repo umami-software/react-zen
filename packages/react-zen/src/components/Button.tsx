@@ -3,9 +3,7 @@ import type { MouseEvent, ReactNode } from 'react';
 import type { RenderProp } from './lib/render';
 import { type ButtonVariants, button } from './variants';
 
-export interface ButtonProps
-  extends Omit<BaseButtonProps, 'className' | 'disabled' | 'render'>,
-    ButtonVariants {
+export interface ButtonProps extends Omit<BaseButtonProps, 'className' | 'render'>, ButtonVariants {
   render?: RenderProp<ButtonRenderProps>;
   children?: ReactNode;
   className?: string;
@@ -26,6 +24,7 @@ export function Button({
   render,
   preventFocusOnPress: _preventFocusOnPress = true,
   isDisabled,
+  disabled,
   onPress,
   onClick,
   className,
@@ -45,7 +44,7 @@ export function Button({
     <BaseButton
       {...props}
       render={render as BaseButtonProps['render']}
-      disabled={isDisabled}
+      disabled={isDisabled ?? disabled}
       className={buttonClassName}
       onClick={handleClick}
     >

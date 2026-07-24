@@ -10,10 +10,12 @@ import {
   cloneElement,
   createContext,
   isValidElement,
+  type MouseEvent,
   type ReactElement,
   type ReactNode,
+  type Ref,
   useContext,
-  useId,
+  useRef,
   useState,
 } from 'react';
 
@@ -97,6 +99,8 @@ export function DialogTrigger({
   const target = items[1] as ReactElement<any>;
   const targetOpen = target?.props?.isOpen as boolean | undefined;
   const targetOpenChange = target?.props?.onOpenChange as ((open: boolean) => void) | undefined;
+  const targetNonModal = target?.props?.isNonModal as boolean | undefined;
+  const targetTriggerRef = target?.props?.triggerRef as Ref<HTMLElement> | undefined;
   const kind = overlayType ?? getOverlayKind(target) ?? 'dialog';
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen ?? false);
   const controlledOpen = isOpen ?? targetOpen;
@@ -116,8 +120,12 @@ export function DialogTrigger({
 
   if (kind === 'popover') {
     return (
-      <BasePopover.Root open={open} onOpenChange={setOpen}>
-        <BasePopover.Trigger render={trigger} />
+      <BasePopover.Root
+        open={open}
+        modal={targetNonModal === undefined ? undefined : !targetNonModal}
+        onOpenChange={setOpen}
+      >
+        <BasePopover.Trigger ref={targetTriggerRef as Ref<HTMLButtonElement>} render={trigger} />
         {content}
       </BasePopover.Root>
     );
@@ -198,15 +206,24 @@ export function FileTrigger({
   allowsMultiple,
   onSelect,
 }: FileTriggerProps) {
-  const inputId = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const child = children as ReactElement<{
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+  }>;
+
   return (
     <>
-      {isValidElement(children) &&
-        cloneElement(children, {
-          onClick: () => document.getElementById(inputId)?.click(),
-        } as object)}
+      {isValidElement(child) &&
+        cloneElement(child, {
+          onClick: (event: MouseEvent<HTMLElement>) => {
+            child.props.onClick?.(event);
+            if (!event.defaultPrevented) {
+              inputRef.current?.click();
+            }
+          },
+        })}
       <input
-        id={inputId}
+        ref={inputRef}
         className="sr-only"
         type="file"
         accept={acceptedFileTypes?.join(',')}
@@ -227,9 +244,20 @@ export function Pressable({
   onPress,
 }: {
   children: ReactElement;
-  onPress?: (event: import('react').MouseEvent<HTMLElement>) => void;
+  onPress?: (event: MouseEvent<HTMLElement>) => void;
 }) {
-  return cloneElement(children, { onClick: onPress } as object);
+  const child = children as ReactElement<{
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+  }>;
+
+  return cloneElement(child, {
+    onClick: (event: MouseEvent<HTMLElement>) => {
+      child.props.onClick?.(event);
+      if (!event.defaultPrevented) {
+        onPress?.(event);
+      }
+    },
+  });
 }
 
 export function RouterProvider({ children }: { children?: ReactNode }) {

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CalendarDays } from '@/components/icons';
 import { Button, type ButtonProps } from './Button';
 import { Calendar, type CalendarProps } from './Calendar';
+import { useFieldId } from './hooks/useFieldId';
 import { Icon } from './Icon';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
@@ -9,6 +10,7 @@ import { DialogTrigger } from './OverlayTrigger';
 import { Popover } from './Popover';
 
 export interface DatePickerProps {
+  id?: string;
   value?: Date;
   defaultValue?: Date;
   minValue?: Date;
@@ -26,6 +28,7 @@ export interface DatePickerProps {
 }
 
 export function DatePicker({
+  id,
   value,
   defaultValue,
   minValue,
@@ -41,6 +44,7 @@ export function DatePicker({
   calendarProps,
   className,
 }: DatePickerProps) {
+  const fieldId = useFieldId(id ?? buttonProps?.id);
   const [isOpen, setIsOpen] = useState(false);
   const [uncontrolledValue, setUncontrolledValue] = useState<Date | undefined>(defaultValue);
   const date = value ?? uncontrolledValue;
@@ -55,12 +59,13 @@ export function DatePicker({
 
   return (
     <div className={cn('flex flex-col gap-1', className)}>
-      {label && <Label>{label}</Label>}
+      {label && <Label htmlFor={fieldId}>{label}</Label>}
       <DialogTrigger overlayType="popover" isOpen={isOpen} onOpenChange={setIsOpen}>
         <Button
           variant="outline"
           isDisabled={isDisabled}
           {...buttonProps}
+          id={fieldId}
           className={cn('justify-start gap-3 font-normal', buttonProps?.className)}
         >
           <Icon size="sm">
@@ -75,7 +80,7 @@ export function DatePicker({
         <Popover>
           <Calendar
             {...calendarProps}
-            value={date as Date}
+            value={date}
             minValue={minValue}
             maxValue={maxValue}
             isReadOnly={isReadOnly}

@@ -7,7 +7,7 @@ export type CalendarProps = Omit<
   ComponentProps<typeof DayPicker>,
   'mode' | 'selected' | 'defaultMonth' | 'onSelect' | 'disabled'
 > & {
-  value: Date;
+  value?: Date;
   minValue?: Date;
   maxValue?: Date;
   defaultValue?: Date;
@@ -37,7 +37,7 @@ export function Calendar({
       {...props}
       mode="single"
       selected={value}
-      defaultMonth={defaultValue || value}
+      defaultMonth={defaultValue ?? value}
       disabled={isDisabled ? true : disabled}
       onSelect={date => {
         if (date && !isReadOnly) {

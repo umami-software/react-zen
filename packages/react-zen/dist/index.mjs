@@ -1,6 +1,6 @@
 import { Accordion as Accordion$1 } from '@base-ui/react/accordion';
 import * as lucide_react_star from 'lucide-react';
-import { forwardRef, createContext, isValidElement, cloneElement, createElement, Children, useState, useId, useCallback, useEffect, useMemo, useContext, useRef, Fragment as Fragment$1, useLayoutEffect } from 'react';
+import { forwardRef, createContext, isValidElement, cloneElement, createElement, Children, useState, useRef, useCallback, useEffect, useId, useMemo, useContext, Fragment as Fragment$1, useLayoutEffect } from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
@@ -2914,6 +2914,7 @@ function Button({
   render,
   preventFocusOnPress: _preventFocusOnPress = true,
   isDisabled,
+  disabled,
   onPress,
   onClick,
   className,
@@ -2932,7 +2933,7 @@ function Button({
     {
       ...props,
       render,
-      disabled: isDisabled,
+      disabled: isDisabled ?? disabled,
       className: buttonClassName,
       onClick: handleClick,
       children
@@ -2990,13 +2991,21 @@ function unwrapMenuContent(element) {
   }
   return getOverlayKind(element) === "popover" ? element.props.children : element;
 }
-function DialogTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
+function DialogTrigger({
+  children,
+  overlayType,
+  isOpen,
+  defaultOpen,
+  onOpenChange
+}) {
   const items = Children.toArray(children);
   const trigger = items[0];
   const target = items[1];
   const targetOpen = target?.props?.isOpen;
   const targetOpenChange = target?.props?.onOpenChange;
-  const kind = getOverlayKind(target) ?? "dialog";
+  const targetNonModal = target?.props?.isNonModal;
+  const targetTriggerRef = target?.props?.triggerRef;
+  const kind = overlayType ?? getOverlayKind(target) ?? "dialog";
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen ?? false);
   const controlledOpen = isOpen ?? targetOpen;
   const open = controlledOpen ?? uncontrolledOpen;
@@ -3009,10 +3018,18 @@ function DialogTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
   };
   const content = /* @__PURE__ */ jsx(OverlayContentProvider, { close: () => setOpen(false), kind, children: target });
   if (kind === "popover") {
-    return /* @__PURE__ */ jsxs(Popover$1.Root, { open, onOpenChange: setOpen, children: [
-      /* @__PURE__ */ jsx(Popover$1.Trigger, { render: trigger }),
-      content
-    ] });
+    return /* @__PURE__ */ jsxs(
+      Popover$1.Root,
+      {
+        open,
+        modal: targetNonModal === void 0 ? void 0 : !targetNonModal,
+        onOpenChange: setOpen,
+        children: [
+          /* @__PURE__ */ jsx(Popover$1.Trigger, { ref: targetTriggerRef, render: trigger }),
+          content
+        ]
+      }
+    );
   }
   if (kind === "alert-dialog") {
     return /* @__PURE__ */ jsxs(AlertDialog$1.Root, { open, onOpenChange: setOpen, children: [
@@ -3054,15 +3071,21 @@ function FileTrigger({
   allowsMultiple,
   onSelect
 }) {
-  const inputId = useId();
+  const inputRef = useRef(null);
+  const child = children;
   return /* @__PURE__ */ jsxs(Fragment, { children: [
-    isValidElement(children) && cloneElement(children, {
-      onClick: () => document.getElementById(inputId)?.click()
+    isValidElement(child) && cloneElement(child, {
+      onClick: (event) => {
+        child.props.onClick?.(event);
+        if (!event.defaultPrevented) {
+          inputRef.current?.click();
+        }
+      }
     }),
     /* @__PURE__ */ jsx(
       "input",
       {
-        id: inputId,
+        ref: inputRef,
         className: "sr-only",
         type: "file",
         accept: acceptedFileTypes?.join(","),
@@ -3080,7 +3103,15 @@ function Pressable({
   children,
   onPress
 }) {
-  return cloneElement(children, { onClick: onPress });
+  const child = children;
+  return cloneElement(child, {
+    onClick: (event) => {
+      child.props.onClick?.(event);
+      if (!event.defaultPrevented) {
+        onPress?.(event);
+      }
+    }
+  });
 }
 function RouterProvider({ children }) {
   return children;
@@ -3232,7 +3263,7 @@ function Calendar({
       ...props,
       mode: "single",
       selected: value,
-      defaultMonth: defaultValue || value,
+      defaultMonth: defaultValue ?? value,
       disabled: isDisabled ? true : disabled,
       onSelect: (date) => {
         if (date && !isReadOnly) {
@@ -3744,21 +3775,26 @@ function ListItem({
   );
 }
 function ListSeparator({ className, ...props }) {
-  return /* @__PURE__ */ jsx("hr", { ...props, className: cn("border-b border-edge-muted", className) });
+  return /* @__PURE__ */ jsx(Select$1.Separator, { ...props, className: cn("block h-px bg-edge-muted", className) });
 }
 function ListSection({ title, className, children, ...props }) {
   const { kind } = useContext(ListContext);
-  const content = /* @__PURE__ */ jsxs(Fragment, { children: [
+  if (kind === "select") {
+    return /* @__PURE__ */ jsxs(Select$1.Group, { ...props, className: cn("[&:not(:last-child)]:mb-4", className), children: [
+      title && /* @__PURE__ */ jsx(Select$1.GroupLabel, { className: "text-base font-bold px-2 py-1.5", children: title }),
+      children
+    ] });
+  }
+  if (kind === "combobox") {
+    return /* @__PURE__ */ jsxs(Combobox.Group, { ...props, className: cn("[&:not(:last-child)]:mb-4", className), children: [
+      title && /* @__PURE__ */ jsx(Combobox.GroupLabel, { className: "text-base font-bold px-2 py-1.5", children: title }),
+      children
+    ] });
+  }
+  return /* @__PURE__ */ jsxs("div", { ...props, role: "group", className: cn("[&:not(:last-child)]:mb-4", className), children: [
     title && /* @__PURE__ */ jsx("div", { className: "text-base font-bold px-2 py-1.5", children: title }),
     children
   ] });
-  if (kind === "select") {
-    return /* @__PURE__ */ jsx(Select$1.Group, { ...props, className: cn("[&:not(:last-child)]:mb-4", className), children: content });
-  }
-  if (kind === "combobox") {
-    return /* @__PURE__ */ jsx(Combobox.Group, { ...props, className: cn("[&:not(:last-child)]:mb-4", className), children: content });
-  }
-  return /* @__PURE__ */ jsx("div", { ...props, role: "group", className: cn("[&:not(:last-child)]:mb-4", className), children: content });
 }
 function getItemLabel(label) {
   if (typeof label === "string" || typeof label === "number") {
@@ -4478,6 +4514,7 @@ function Popover({
 }
 Popover.zenOverlayType = "popover";
 function DatePicker({
+  id,
   value,
   defaultValue,
   minValue,
@@ -4493,6 +4530,7 @@ function DatePicker({
   calendarProps,
   className
 }) {
+  const fieldId = useFieldId(id ?? buttonProps?.id);
   const [isOpen, setIsOpen] = useState(false);
   const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
   const date = value ?? uncontrolledValue;
@@ -4504,14 +4542,15 @@ function DatePicker({
     setIsOpen(false);
   };
   return /* @__PURE__ */ jsxs("div", { className: cn("flex flex-col gap-1", className), children: [
-    label && /* @__PURE__ */ jsx(Label, { children: label }),
-    /* @__PURE__ */ jsxs(DialogTrigger, { isOpen, onOpenChange: setIsOpen, children: [
+    label && /* @__PURE__ */ jsx(Label, { htmlFor: fieldId, children: label }),
+    /* @__PURE__ */ jsxs(DialogTrigger, { overlayType: "popover", isOpen, onOpenChange: setIsOpen, children: [
       /* @__PURE__ */ jsxs(
         Button,
         {
           variant: "outline",
           isDisabled,
           ...buttonProps,
+          id: fieldId,
           className: cn("justify-start gap-3 font-normal", buttonProps?.className),
           children: [
             /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.CalendarDays, {}) }),
@@ -4586,11 +4625,13 @@ function EmptyState({
 function Tooltip({
   children,
   className,
+  placement,
+  side,
   sideOffset = 8,
   showArrow,
   ...props
 }) {
-  return /* @__PURE__ */ jsx(Tooltip$1.Portal, { children: /* @__PURE__ */ jsx(Tooltip$1.Positioner, { ...props, sideOffset, children: /* @__PURE__ */ jsxs(Tooltip$1.Popup, { className: cn("group", tooltip(), className), children: [
+  return /* @__PURE__ */ jsx(Tooltip$1.Portal, { children: /* @__PURE__ */ jsx(Tooltip$1.Positioner, { ...props, side: placement ?? side, sideOffset, children: /* @__PURE__ */ jsxs(Tooltip$1.Popup, { className: cn("group", tooltip(), className), children: [
     showArrow && /* @__PURE__ */ jsx(Tooltip$1.Arrow, { className: "w-2 h-2 fill-surface-inverted" }),
     children
   ] }) }) });
@@ -6018,7 +6059,6 @@ function Radio({ children, className, isDisabled, ...props }) {
   return /* @__PURE__ */ jsx(
     Radio$1.Root,
     {
-      "aria-label": "Radio",
       ...props,
       disabled: isDisabled,
       className: cn(

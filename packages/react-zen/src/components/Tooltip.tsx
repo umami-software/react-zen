@@ -8,20 +8,38 @@ export interface TooltipProps extends Omit<BaseTooltip.Positioner.Props, 'childr
   children?: ReactNode;
   showArrow?: boolean;
   className?: string;
+  placement?: BaseTooltip.Positioner.Props['side'];
 }
 
 export function Tooltip({
   children,
   className,
+  placement,
+  side,
   sideOffset = 8,
   showArrow,
   ...props
 }: TooltipProps) {
   return (
     <BaseTooltip.Portal>
-      <BaseTooltip.Positioner {...props} sideOffset={sideOffset}>
+      <BaseTooltip.Positioner {...props} side={placement ?? side} sideOffset={sideOffset}>
         <BaseTooltip.Popup className={cn('group', tooltip(), className)}>
-          {showArrow && <BaseTooltip.Arrow className="w-2 h-2 fill-surface-inverted" />}
+          {showArrow && (
+            <BaseTooltip.Arrow
+              style={({ side }) => ({
+                width: 12,
+                height: 6,
+                ...(side === 'top' && { bottom: -6, transform: 'rotate(180deg)' }),
+                ...(side === 'bottom' && { top: -6 }),
+                ...(side === 'left' && { right: -9, transform: 'rotate(90deg)' }),
+                ...(side === 'right' && { left: -9, transform: 'rotate(-90deg)' }),
+              })}
+            >
+              <svg aria-hidden="true" viewBox="0 0 12 6" className="block w-full h-full">
+                <path d="M0 6 6 0l6 6Z" className="fill-surface-inverted" />
+              </svg>
+            </BaseTooltip.Arrow>
+          )}
           {children}
         </BaseTooltip.Popup>
       </BaseTooltip.Positioner>

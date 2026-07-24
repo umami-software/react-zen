@@ -17,7 +17,7 @@ the React Zen component runtime. Removing it would require replacing or changing
 | Button / LoadingButton / CopyButton / ThemeButton | Base UI Button | `onPress` and `isDisabled` remain as compatibility props; `onClick` and `disabled` are also available from the primitive. |
 | Checkbox | Base UI Checkbox | `isSelected`, `defaultSelected`, `isIndeterminate`, and `onChange` are translated to checked-state props. |
 | ComboBox | Base UI Combobox | Uses Base UI's input, trigger, popup, list, and items. |
-| Dialog / Modal / AlertDialog / ConfirmationDialog | Base UI Dialog and Alert Dialog | `DialogTrigger` keeps Zen's two-child composition while selecting the matching Dialog, Alert Dialog, or Popover root and trigger. `Modal` owns the matching portal, backdrop, viewport, and popup; `Dialog` remains the styled content surface. |
+| Dialog / Modal / AlertDialog / ConfirmationDialog | Base UI Dialog and Alert Dialog | `DialogTrigger` keeps Zen's two-child composition. Use `overlayType="alert-dialog"` for alerts and `overlayType="popover"` for popovers; regular dialogs are the default. This explicit type remains reliable across Next.js and MDX client boundaries. `Modal` owns the matching portal, backdrop, viewport, and popup; `Dialog` remains the styled content surface. |
 | Popover / HoverTrigger | Base UI Popover | Trigger compatibility wrappers now provide the explicit Base UI root and anchor required by popovers. |
 | ProgressBar | Base UI Progress | Track, indicator, and value now use Base UI parts. |
 | RadioGroup / Radio | Base UI Radio Group and Radio | React Aria state prop names remain supported. |
@@ -57,3 +57,7 @@ behavior, spacing scale, and styling utilities were intentionally left unchanged
 `RouterProvider`, `Selection`, and `SubmenuTrigger` are now Zen compatibility exports rather than
 re-exports from `react-aria-components`. Consumers that imported additional React Aria types through
 Zen should import the corresponding Base UI or React types directly.
+
+Compatibility wrappers compose their matching Base UI primitive chains instead of nesting unrelated
+overlay roots. Trigger children keep their own event handlers; Zen compatibility callbacks run only
+when the child event was not prevented.
