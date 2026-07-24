@@ -1,5 +1,6 @@
 import { NumberField as BaseNumberField } from '@base-ui/react/number-field';
 import { Minus, Plus } from '@/components/icons';
+import { useFieldId } from './hooks/useFieldId';
 import { Icon } from './Icon';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
@@ -39,11 +40,15 @@ export function NumberField({
   formatOptions,
   onChange,
   className,
+  id,
   ...props
 }: NumberFieldProps) {
+  const fieldId = useFieldId(id);
+
   return (
     <BaseNumberField.Root
       {...props}
+      id={fieldId}
       min={minValue}
       max={maxValue}
       disabled={isDisabled}
@@ -53,7 +58,7 @@ export function NumberField({
       onValueChange={value => onChange?.(value)}
       className={cn('flex flex-col gap-1', className)}
     >
-      {label && <Label>{label}</Label>}
+      {label && <Label htmlFor={fieldId}>{label}</Label>}
       <BaseNumberField.Group className={cn(inputField(), 'p-0 px-0 gap-0 overflow-hidden')}>
         <BaseNumberField.Decrement className={cn(stepperClasses, 'border-r border-edge')}>
           <Icon size="sm">

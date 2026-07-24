@@ -28,7 +28,7 @@ export function AlertDialogExample() {
   ];
 
   return (
-    <DialogTrigger>
+    <DialogTrigger overlayType="alert-dialog">
       <Button variant="primary">Delete account</Button>
       <Modal>
         <AlertDialog title="Are you sure you want to delete your account?">

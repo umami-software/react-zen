@@ -143,7 +143,7 @@ export function List({
 export interface ListItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'id'> {
   children?: ReactNode;
   id?: string | number;
-  value?: string;
+  value?: string | number;
   showCheckmark?: boolean;
   isDisabled?: boolean;
   textValue?: string;
@@ -163,7 +163,7 @@ export function ListItem({
   ...props
 }: ListItemProps) {
   const context = useContext(ListContext);
-  const itemValue = value || String(id ?? (typeof children === 'string' ? children : ''));
+  const itemValue = value ?? id ?? (typeof children === 'string' ? children : '');
 
   if (context.kind === 'select') {
     return (
@@ -189,7 +189,7 @@ export function ListItem({
     return (
       <BaseCombobox.Item
         {...props}
-        value={itemValue}
+        value={String(itemValue)}
         disabled={isDisabled}
         className={cn(itemClasses, className)}
       >

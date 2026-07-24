@@ -1,6 +1,6 @@
 import { Button as BaseButton, type ButtonProps as BaseButtonProps } from '@base-ui/react/button';
 import type { MouseEvent, ReactNode } from 'react';
-import { type RenderProp, resolveRender } from './lib/render';
+import type { RenderProp } from './lib/render';
 import { type ButtonVariants, button } from './variants';
 
 export interface ButtonProps
@@ -34,12 +34,6 @@ export function Button({
 }: ButtonProps) {
   const buttonClassName = button({ variant, size, className });
 
-  const renderProps: ButtonRenderProps = {
-    ...props,
-    className: buttonClassName,
-    children,
-  };
-
   const handleClick = (event: any) => {
     onClick?.(event);
     if (!event.defaultPrevented) {
@@ -47,11 +41,15 @@ export function Button({
     }
   };
 
-  const defaultElement = (
-    <BaseButton {...props} disabled={isDisabled} className={buttonClassName} onClick={handleClick}>
+  return (
+    <BaseButton
+      {...props}
+      render={render as BaseButtonProps['render']}
+      disabled={isDisabled}
+      className={buttonClassName}
+      onClick={handleClick}
+    >
       {children}
     </BaseButton>
   );
-
-  return resolveRender(render, renderProps, defaultElement);
 }

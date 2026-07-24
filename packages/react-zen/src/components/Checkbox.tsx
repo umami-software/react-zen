@@ -3,6 +3,7 @@ import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox';
 import type { ReactNode } from 'react';
 import { Check, Minus } from '@/components/icons';
 import { Box } from './Box';
+import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
 import { checkbox } from './variants';
 
@@ -22,7 +23,7 @@ export interface CheckboxProps
 }
 
 export function Checkbox({
-  label: _label,
+  label,
   className,
   children,
   isSelected,
@@ -39,6 +40,7 @@ export function Checkbox({
   return (
     <BaseCheckbox.Root
       {...props}
+      aria-label={props['aria-label'] ?? label}
       value={typeof value === 'string' ? value : undefined}
       checked={checked}
       defaultChecked={defaultSelected}
@@ -48,10 +50,9 @@ export function Checkbox({
       onCheckedChange={onChange}
     >
       <Box className={styles.box()}>
-        <BaseCheckbox.Indicator
-          className={styles.icon()}
-          render={isIndeterminate ? <Minus /> : <Check />}
-        />
+        <BaseCheckbox.Indicator className={styles.icon()}>
+          <Icon size="sm">{isIndeterminate ? <Minus /> : <Check />}</Icon>
+        </BaseCheckbox.Indicator>
       </Box>
       {children}
     </BaseCheckbox.Root>

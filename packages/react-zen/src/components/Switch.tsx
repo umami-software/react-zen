@@ -1,6 +1,7 @@
 import { Switch as BaseSwitch } from '@base-ui/react/switch';
 import type { ReactNode } from 'react';
 import { Column } from './Column';
+import { useFieldId } from './hooks/useFieldId';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 import { switchVariant } from './variants';
@@ -28,16 +29,19 @@ export function Switch({
   isDisabled,
   onChange,
   value,
+  id,
   ...props
 }: SwitchProps) {
   const checked = isSelected ?? (typeof value === 'boolean' ? value : undefined);
   const styles = switchVariant();
+  const fieldId = useFieldId(id);
 
   return (
     <Column>
-      {label && <Label>{label}</Label>}
+      {label && <Label htmlFor={fieldId}>{label}</Label>}
       <BaseSwitch.Root
         {...props}
+        id={fieldId}
         value={typeof value === 'string' ? value : undefined}
         checked={checked}
         defaultChecked={defaultSelected}

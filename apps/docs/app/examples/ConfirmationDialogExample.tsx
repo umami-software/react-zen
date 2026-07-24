@@ -2,7 +2,7 @@ import { Button, ConfirmationDialog, DialogTrigger, Modal, Text } from '@/compon
 
 export function ConfirmationDialogExample() {
   return (
-    <DialogTrigger>
+    <DialogTrigger overlayType="alert-dialog">
       <Button variant="danger">Delete account</Button>
       <Modal>
         <ConfirmationDialog

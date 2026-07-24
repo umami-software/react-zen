@@ -1,3 +1,6 @@
+import { AlertDialog as BaseAlertDialog } from '@base-ui/react/alert-dialog';
+import { Dialog as BaseDialog } from '@base-ui/react/dialog';
+import { Popover as BasePopover } from '@base-ui/react/popover';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Column } from './Column';
 import { Heading } from './Heading';
@@ -15,12 +18,23 @@ export interface DialogProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
 }
 
 export function Dialog({ title, variant, children, className, ...props }: DialogProps) {
-  const { close } = useOverlayTrigger();
+  const { close, kind } = useOverlayTrigger();
+  const titleContent = title ?? 'Dialog';
+  const titleClassName = title ? undefined : 'sr-only';
+  const heading = <Heading size="xl">{titleContent}</Heading>;
+  const primitiveTitle =
+    kind === 'alert-dialog' ? (
+      <BaseAlertDialog.Title className={titleClassName} render={heading} />
+    ) : kind === 'dialog' ? (
+      <BaseDialog.Title className={titleClassName} render={heading} />
+    ) : kind === 'popover' ? (
+      <BasePopover.Title className={titleClassName} render={heading} />
+    ) : (
+      title && heading
+    );
 
   return (
     <div
-      aria-label={title ? undefined : 'Dialog'}
-      role="dialog"
       {...props}
       className={cn(
         'p-6 shadow-xl bg-surface-base border border-edge rounded relative outline-none overflow-auto',
@@ -29,7 +43,7 @@ export function Dialog({ title, variant, children, className, ...props }: Dialog
       )}
     >
       <Column height="100%" gap>
-        {title && <Heading size="xl">{title}</Heading>}
+        {primitiveTitle}
         {typeof children === 'function' ? children({ close }) : children}
       </Column>
     </div>

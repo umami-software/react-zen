@@ -41,7 +41,7 @@ export function MenubarMenu({ label, isDisabled, children, ...props }: MenubarMe
           </Button>
         }
       />
-      <MenuPrimitiveContext.Provider value>{children}</MenuPrimitiveContext.Provider>
+      <MenuPrimitiveContext.Provider value="menu">{children}</MenuPrimitiveContext.Provider>
     </BaseMenu.Root>
   );
 }

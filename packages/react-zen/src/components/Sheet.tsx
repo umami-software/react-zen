@@ -5,7 +5,7 @@ import { Button } from './Button';
 import { Heading } from './Heading';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
-import { type OverlayTarget, useOverlayTrigger } from './OverlayTrigger';
+import type { OverlayTarget } from './OverlayTrigger';
 import './Modal.css';
 
 export interface SheetProps extends BaseDialog.Portal.Props {
@@ -73,20 +73,22 @@ export interface SheetHeaderProps {
 }
 
 export function SheetHeader({ title, showClose = true, className, children }: SheetHeaderProps) {
-  const { close } = useOverlayTrigger();
-
   return (
     <div className={cn('flex items-start justify-between gap-3 mb-4', className)}>
       <div className="flex flex-col gap-1">
-        {title && <Heading size="xl">{title}</Heading>}
+        {title && <BaseDialog.Title render={<Heading size="xl" />}>{title}</BaseDialog.Title>}
         {children}
       </div>
       {showClose && (
-        <Button variant="quiet" size="xs" aria-label="Close" onPress={close}>
-          <Icon size="sm">
-            <X />
-          </Icon>
-        </Button>
+        <BaseDialog.Close
+          render={
+            <Button variant="quiet" size="xs" aria-label="Close">
+              <Icon size="sm">
+                <X />
+              </Icon>
+            </Button>
+          }
+        />
       )}
     </div>
   );

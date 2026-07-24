@@ -5,10 +5,11 @@ import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
 import { tv } from 'tailwind-variants';
+import { AlertDialog as AlertDialog$1 } from '@base-ui/react/alert-dialog';
 import { Button as Button$1 } from '@base-ui/react/button';
 import { Dialog as Dialog$1 } from '@base-ui/react/dialog';
-import { Menu as Menu$1 } from '@base-ui/react/menu';
 import { Popover as Popover$1 } from '@base-ui/react/popover';
+import { Menu as Menu$1 } from '@base-ui/react/menu';
 import { Tooltip as Tooltip$1 } from '@base-ui/react/tooltip';
 import { Avatar as Avatar$1 } from '@base-ui/react/avatar';
 import { DayPicker } from 'react-day-picker';
@@ -2920,19 +2921,23 @@ function Button({
   ...props
 }) {
   const buttonClassName = button({ variant, size, className });
-  const renderProps = {
-    ...props,
-    className: buttonClassName,
-    children
-  };
   const handleClick = (event) => {
     onClick?.(event);
     if (!event.defaultPrevented) {
       onPress?.(event);
     }
   };
-  const defaultElement = /* @__PURE__ */ jsx(Button$1, { ...props, disabled: isDisabled, className: buttonClassName, onClick: handleClick, children });
-  return resolveRender(render, renderProps, defaultElement);
+  return /* @__PURE__ */ jsx(
+    Button$1,
+    {
+      ...props,
+      render,
+      disabled: isDisabled,
+      className: buttonClassName,
+      onClick: handleClick,
+      children
+    }
+  );
 }
 function Heading({
   size = "2xl",
@@ -2954,10 +2959,36 @@ function Heading({
     }
   );
 }
-var OverlayContext = createContext({ close: () => void 0 });
-var MenuPrimitiveContext = createContext(false);
+var OverlayContext = createContext({
+  close: () => void 0,
+  kind: "dialog"
+});
+var MenuPrimitiveContext = createContext(null);
 function useOverlayTrigger() {
   return useContext(OverlayContext);
+}
+function OverlayContentProvider({
+  children,
+  close,
+  kind
+}) {
+  return /* @__PURE__ */ jsx(OverlayContext.Provider, { value: { close, kind }, children });
+}
+function getOverlayKind(element) {
+  if (!element) {
+    return void 0;
+  }
+  const nestedKinds = Children.toArray(element.props.children).filter(isValidElement).map((child) => getOverlayKind(child));
+  if (nestedKinds.includes("alert-dialog")) {
+    return "alert-dialog";
+  }
+  return element.type.zenOverlayType;
+}
+function unwrapMenuContent(element) {
+  if (!element) {
+    return element;
+  }
+  return getOverlayKind(element) === "popover" ? element.props.children : element;
 }
 function DialogTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
   const items = Children.toArray(children);
@@ -2965,6 +2996,7 @@ function DialogTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
   const target = items[1];
   const targetOpen = target?.props?.isOpen;
   const targetOpenChange = target?.props?.onOpenChange;
+  const kind = getOverlayKind(target) ?? "dialog";
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen ?? false);
   const controlledOpen = isOpen ?? targetOpen;
   const open = controlledOpen ?? uncontrolledOpen;
@@ -2975,11 +3007,23 @@ function DialogTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
     onOpenChange?.(nextOpen);
     targetOpenChange?.(nextOpen);
   };
-  const content = /* @__PURE__ */ jsx(OverlayContext.Provider, { value: { close: () => setOpen(false) }, children: target });
-  return /* @__PURE__ */ jsx(Dialog$1.Root, { open, onOpenChange: setOpen, children: /* @__PURE__ */ jsxs(Popover$1.Root, { open, onOpenChange: setOpen, children: [
-    /* @__PURE__ */ jsx(Popover$1.Trigger, { render: trigger }),
+  const content = /* @__PURE__ */ jsx(OverlayContentProvider, { close: () => setOpen(false), kind, children: target });
+  if (kind === "popover") {
+    return /* @__PURE__ */ jsxs(Popover$1.Root, { open, onOpenChange: setOpen, children: [
+      /* @__PURE__ */ jsx(Popover$1.Trigger, { render: trigger }),
+      content
+    ] });
+  }
+  if (kind === "alert-dialog") {
+    return /* @__PURE__ */ jsxs(AlertDialog$1.Root, { open, onOpenChange: setOpen, children: [
+      /* @__PURE__ */ jsx(AlertDialog$1.Trigger, { render: trigger }),
+      content
+    ] });
+  }
+  return /* @__PURE__ */ jsxs(Dialog$1.Root, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsx(Dialog$1.Trigger, { render: trigger }),
     content
-  ] }) });
+  ] });
 }
 function TooltipTrigger({ children, delay, closeDelay }) {
   const items = Children.toArray(children);
@@ -2990,6 +3034,7 @@ function TooltipTrigger({ children, delay, closeDelay }) {
 }
 function MenuTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
   const items = Children.toArray(children);
+  const content = unwrapMenuContent(items[1]);
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen ?? false);
   const open = isOpen ?? uncontrolledOpen;
   const setOpen = (nextOpen) => {
@@ -2998,10 +3043,10 @@ function MenuTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
     }
     onOpenChange?.(nextOpen);
   };
-  return /* @__PURE__ */ jsx(Menu$1.Root, { open, onOpenChange: setOpen, children: /* @__PURE__ */ jsxs(Popover$1.Root, { open, onOpenChange: setOpen, children: [
-    /* @__PURE__ */ jsx(Popover$1.Trigger, { render: items[0] }),
-    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: true, children: items[1] })
-  ] }) });
+  return /* @__PURE__ */ jsxs(Menu$1.Root, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsx(Menu$1.Trigger, { render: items[0] }),
+    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: "menu", children: content })
+  ] });
 }
 function FileTrigger({
   children,
@@ -3041,12 +3086,14 @@ function RouterProvider({ children }) {
   return children;
 }
 function Dialog({ title, variant, children, className, ...props }) {
-  const { close } = useOverlayTrigger();
+  const { close, kind } = useOverlayTrigger();
+  const titleContent = title ?? "Dialog";
+  const titleClassName = title ? void 0 : "sr-only";
+  const heading2 = /* @__PURE__ */ jsx(Heading, { size: "xl", children: titleContent });
+  const primitiveTitle = kind === "alert-dialog" ? /* @__PURE__ */ jsx(AlertDialog$1.Title, { className: titleClassName, render: heading2 }) : kind === "dialog" ? /* @__PURE__ */ jsx(Dialog$1.Title, { className: titleClassName, render: heading2 }) : kind === "popover" ? /* @__PURE__ */ jsx(Popover$1.Title, { className: titleClassName, render: heading2 }) : title && heading2;
   return /* @__PURE__ */ jsx(
     "div",
     {
-      "aria-label": title ? void 0 : "Dialog",
-      role: "dialog",
       ...props,
       className: cn(
         "p-6 shadow-xl bg-surface-base border border-edge rounded relative outline-none overflow-auto",
@@ -3054,7 +3101,7 @@ function Dialog({ title, variant, children, className, ...props }) {
         className
       ),
       children: /* @__PURE__ */ jsxs(Column, { height: "100%", gap: true, children: [
-        title && /* @__PURE__ */ jsx(Heading, { size: "xl", children: title }),
+        primitiveTitle,
         typeof children === "function" ? children({ close }) : children
       ] })
     }
@@ -3073,32 +3120,31 @@ function AlertDialog({
   children,
   ...props
 }) {
-  const handleConfirm = (close) => {
-    onConfirm?.();
-    close();
-  };
-  const handleClose = (close) => {
-    onCancel?.();
-    close();
-  };
   return /* @__PURE__ */ jsx(Dialog, { ...props, title, className: cn("grid", className), children: ({ close }) => {
     return /* @__PURE__ */ jsxs(Column, { gap: "4", children: [
+      description && /* @__PURE__ */ jsx(AlertDialog$1.Description, { render: /* @__PURE__ */ jsx(Text, { color: "muted" }), children: description }),
       typeof children === "function" ? children({ close }) : children,
       /* @__PURE__ */ jsxs(Row, { gap: "3", justifyContent: "end", children: [
-        /* @__PURE__ */ jsx(Button, { onPress: () => handleClose(close), children: cancelLabel }),
+        /* @__PURE__ */ jsx(AlertDialog$1.Close, { render: /* @__PURE__ */ jsx(Button, { onPress: onCancel, children: cancelLabel }) }),
         /* @__PURE__ */ jsx(
-          Button,
+          AlertDialog$1.Close,
           {
-            variant: isDanger ? "danger" : "primary",
-            isDisabled: isConfirmDisabled,
-            onPress: () => handleConfirm(close),
-            children: confirmLabel
+            render: /* @__PURE__ */ jsx(
+              Button,
+              {
+                variant: isDanger ? "danger" : "primary",
+                isDisabled: isConfirmDisabled,
+                onPress: onConfirm,
+                children: confirmLabel
+              }
+            )
           }
         )
       ] })
     ] });
   } });
 }
+AlertDialog.zenOverlayType = "alert-dialog";
 function AspectRatio({ ratio = 1, className, style, children, ...props }) {
   return /* @__PURE__ */ jsx(
     "div",
@@ -3340,7 +3386,7 @@ function CarouselItem({ className, children, ...props }) {
   );
 }
 function Checkbox({
-  label: _label,
+  label,
   className,
   children,
   isSelected,
@@ -3357,6 +3403,7 @@ function Checkbox({
     Checkbox$1.Root,
     {
       ...props,
+      "aria-label": props["aria-label"] ?? label,
       value: typeof value === "string" ? value : void 0,
       checked,
       defaultChecked: defaultSelected,
@@ -3365,13 +3412,7 @@ function Checkbox({
       className: cn(styles.root(), className),
       onCheckedChange: onChange,
       children: [
-        /* @__PURE__ */ jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsx(
-          Checkbox$1.Indicator,
-          {
-            className: styles.icon(),
-            render: isIndeterminate ? /* @__PURE__ */ jsx(icons_exports.Minus, {}) : /* @__PURE__ */ jsx(icons_exports.Check, {})
-          }
-        ) }),
+        /* @__PURE__ */ jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsx(Checkbox$1.Indicator, { className: styles.icon(), children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: isIndeterminate ? /* @__PURE__ */ jsx(icons_exports.Minus, {}) : /* @__PURE__ */ jsx(icons_exports.Check, {}) }) }) }),
         children
       ]
     }
@@ -3403,12 +3444,14 @@ function CheckboxGroup({
   children,
   ...props
 }) {
+  const labelId = useId();
   return /* @__PURE__ */ jsxs("div", { className: cn("flex flex-col gap-2", className), children: [
-    label && /* @__PURE__ */ jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsx(Label, { id: labelId, children: label }),
     /* @__PURE__ */ jsx(
       CheckboxGroup$1,
       {
         ...props,
+        "aria-labelledby": label ? labelId : props["aria-labelledby"],
         disabled: isDisabled,
         onValueChange: (value) => onChange?.(value),
         className: cn("flex gap-3", orientation === "vertical" ? "flex-col" : "flex-row flex-wrap"),
@@ -3637,7 +3680,7 @@ function ListItem({
   ...props
 }) {
   const context = useContext(ListContext);
-  const itemValue = value || String(id ?? (typeof children === "string" ? children : ""));
+  const itemValue = value ?? id ?? (typeof children === "string" ? children : "");
   if (context.kind === "select") {
     return /* @__PURE__ */ jsxs(
       Select$1.Item,
@@ -3658,7 +3701,7 @@ function ListItem({
       Combobox.Item,
       {
         ...props,
-        value: itemValue,
+        value: String(itemValue),
         disabled: isDisabled,
         className: cn(itemClasses, className),
         children: [
@@ -3793,7 +3836,7 @@ function ComboBox({
             }
             return item.element ?? /* @__PURE__ */ jsx(ListItem, { value: item.value, children: item.label }, item.value);
           } }) }) }),
-          /* @__PURE__ */ jsx(Combobox.Empty, { children: /* @__PURE__ */ jsx("div", { className: "flex min-h-32 flex-col items-center justify-center gap-2 px-4 py-6 text-center", children: renderEmptyState ? renderEmptyState({}) : /* @__PURE__ */ jsx("span", { className: "text-foreground-muted", "aria-hidden": "true", children: /* @__PURE__ */ jsx(Icon, { size: "md", children: /* @__PURE__ */ jsx(icons_exports.SearchX, {}) }) }) }) })
+          /* @__PURE__ */ jsx(Combobox.Empty, { children: /* @__PURE__ */ jsx("div", { className: "flex min-h-16 items-center justify-center px-4 py-3 text-center", children: renderEmptyState ? renderEmptyState({}) : /* @__PURE__ */ jsx("span", { className: "text-base text-foreground-muted", children: "No items found." }) }) })
         ] }) }) })
       ] })
     }
@@ -3817,20 +3860,21 @@ function Modal({
   onOpenChange: _onOpenChange,
   ...props
 }) {
+  const { kind } = useOverlayTrigger();
   const modalStyle = {
     ...style,
     ...offset ? { "--modal-offset": offset } : {}
   };
+  const popupClassName = cn("relative z-[9999]", placementClasses[placement], className);
+  if (kind === "alert-dialog") {
+    return /* @__PURE__ */ jsxs(AlertDialog$1.Portal, { ...props, children: [
+      /* @__PURE__ */ jsx(AlertDialog$1.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
+      /* @__PURE__ */ jsx(AlertDialog$1.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsx(AlertDialog$1.Popup, { className: popupClassName, style: modalStyle, children }) })
+    ] });
+  }
   return /* @__PURE__ */ jsxs(Dialog$1.Portal, { ...props, children: [
     /* @__PURE__ */ jsx(Dialog$1.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-    /* @__PURE__ */ jsx(Dialog$1.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsx(
-      Dialog$1.Popup,
-      {
-        className: cn("relative z-[9999]", placementClasses[placement], className),
-        style: modalStyle,
-        children
-      }
-    ) })
+    /* @__PURE__ */ jsx(Dialog$1.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsx(Dialog$1.Popup, { className: popupClassName, style: modalStyle, children }) })
   ] });
 }
 Modal.zenOverlayType = "dialog";
@@ -3924,18 +3968,31 @@ function CommandSeparator({ className, ...props }) {
     }
   );
 }
-function CommandDialog({ isOpen, onOpenChange, children, ...props }) {
-  return /* @__PURE__ */ jsx(Dialog$1.Root, { open: isOpen, onOpenChange, children: /* @__PURE__ */ jsx(Modal, { children: /* @__PURE__ */ jsx(
-    Command,
-    {
-      ...props,
-      className: cn(
-        "w-[32rem] max-w-[calc(100dvw-2rem)] border border-edge shadow-xl",
-        props.className
-      ),
-      children
-    }
-  ) }) });
+function CommandDialog({
+  isOpen,
+  onOpenChange,
+  title = "Command Palette",
+  description = "Search for a command to run.",
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsx(Dialog$1.Root, { open: isOpen, onOpenChange, children: /* @__PURE__ */ jsxs(Modal, { children: [
+    /* @__PURE__ */ jsxs("div", { className: "sr-only", children: [
+      /* @__PURE__ */ jsx(Dialog$1.Title, { children: title }),
+      /* @__PURE__ */ jsx(Dialog$1.Description, { children: description })
+    ] }),
+    /* @__PURE__ */ jsx(
+      Command,
+      {
+        ...props,
+        className: cn(
+          "w-[32rem] max-w-[calc(100dvw-2rem)] border border-edge shadow-xl",
+          props.className
+        ),
+        children
+      }
+    )
+  ] }) });
 }
 var TIMEOUT = 2e3;
 function CopyButton({
@@ -4100,7 +4157,7 @@ function ContextMenu({ children, onOpenChange }) {
   const items = Children.toArray(children);
   return /* @__PURE__ */ jsxs(ContextMenu$1.Root, { onOpenChange, children: [
     /* @__PURE__ */ jsx(ContextMenu$1.Trigger, { render: items[0] }),
-    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: true, children: items[1] })
+    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: "context-menu", children: items[1] })
   ] });
 }
 var PRESET_VALUES = [
@@ -4807,6 +4864,7 @@ function HoverTrigger({
       setOpen(isOpen);
     }
   }, [isOpen]);
+  const _close = () => setOpen(false);
   const handleMouseEnter = () => {
     isOverMenu.current = false;
     isOverButton.current = true;
@@ -4845,7 +4903,7 @@ function HoverTrigger({
         render: /* @__PURE__ */ jsx("span", { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, children: triggerElement })
       }
     ),
-    /* @__PURE__ */ jsx(Popover$1.Portal, { children: /* @__PURE__ */ jsx(Popover$1.Positioner, { children: /* @__PURE__ */ jsx(Popover$1.Popup, { className: "zen-popover outline-none", children: /* @__PURE__ */ jsx("div", { onMouseEnter: handleMenuEnter, onMouseLeave: handleMenuLeave, children: popupElement }) }) }) })
+    /* @__PURE__ */ jsx(Popover$1.Portal, { children: /* @__PURE__ */ jsx(Popover$1.Positioner, { children: /* @__PURE__ */ jsx(Popover$1.Popup, { className: "zen-popover outline-none", children: /* @__PURE__ */ jsx("div", { onMouseEnter: handleMenuEnter, onMouseLeave: handleMenuLeave, children: /* @__PURE__ */ jsx(OverlayContentProvider, { close: _close, kind: "popover", children: popupElement }) }) }) }) })
   ] });
 }
 var breakpoints = {
@@ -5207,6 +5265,7 @@ var MenuContext = createContext({
   selected: /* @__PURE__ */ new Set(),
   select: () => void 0
 });
+var MenuSubmenuTriggerContext = createContext(null);
 function Menu({
   className,
   children,
@@ -5217,7 +5276,7 @@ function Menu({
   ...props
 }) {
   const [uncontrolled, setUncontrolled] = useState(new Set(defaultSelectedKeys));
-  const useBasePrimitive = useContext(MenuPrimitiveContext);
+  const primitiveKind = useContext(MenuPrimitiveContext);
   const selected = new Set(selectedKeys || uncontrolled);
   const select = (key) => {
     if (selectionMode === "none") {
@@ -5234,31 +5293,18 @@ function Menu({
     }
     onSelectionChange?.(next);
   };
-  const content = /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsx(
-    "div",
-    {
-      ...props,
-      role: "menu",
-      className: cn(
-        "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
-        className
-      ),
-      children
-    }
-  ) });
-  if (useBasePrimitive) {
-    return /* @__PURE__ */ jsx(Menu$1.Portal, { children: /* @__PURE__ */ jsx(Menu$1.Positioner, { children: /* @__PURE__ */ jsx(
-      Menu$1.Popup,
-      {
-        render: content,
-        className: cn(
-          "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
-          className
-        )
-      }
-    ) }) });
+  const popupClassName = cn(
+    "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
+    className
+  );
+  const popupContent = /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children });
+  if (primitiveKind === "context-menu") {
+    return /* @__PURE__ */ jsx(ContextMenu$1.Portal, { children: /* @__PURE__ */ jsx(ContextMenu$1.Positioner, { children: /* @__PURE__ */ jsx(ContextMenu$1.Popup, { ...props, className: popupClassName, children: popupContent }) }) });
   }
-  return content;
+  if (primitiveKind === "menu") {
+    return /* @__PURE__ */ jsx(Menu$1.Portal, { children: /* @__PURE__ */ jsx(Menu$1.Positioner, { children: /* @__PURE__ */ jsx(Menu$1.Popup, { ...props, className: popupClassName, children: popupContent }) }) });
+  }
+  return /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsx("div", { ...props, role: "menu", className: popupClassName, children }) });
 }
 function MenuItem({
   id,
@@ -5275,7 +5321,9 @@ function MenuItem({
   ...props
 }) {
   const context = useContext(MenuContext);
-  const key = value || id || (typeof children === "string" ? children : "");
+  const primitiveKind = useContext(MenuPrimitiveContext);
+  const submenuTriggerKind = useContext(MenuSubmenuTriggerContext);
+  const key = value ?? id ?? (typeof children === "string" ? children : "");
   const isSelected = context.selected.has(key);
   const activate = () => {
     if (!isDisabled) {
@@ -5283,21 +5331,59 @@ function MenuItem({
       onAction?.(key);
     }
   };
-  return /* @__PURE__ */ jsxs(
+  const itemClassName = cn(
+    "text-base flex items-center justify-between gap-3 px-2 py-1.5 rounded cursor-pointer outline-none w-full",
+    "hover:bg-interactive focus:bg-interactive data-[highlighted]:bg-interactive",
+    "data-[disabled]:text-foreground-disabled",
+    "data-[selected]:font-semibold",
+    className
+  );
+  const content = /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsxs(Row, { alignItems: "center", gap: true, children: [
+      icon && /* @__PURE__ */ jsx(Icon, { children: icon }),
+      label && /* @__PURE__ */ jsx(Text, { children: label }),
+      children
+    ] }),
+    showChecked && isSelected && /* @__PURE__ */ jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsx(icons_exports.Check, {}) }),
+    showSubMenuIcon && /* @__PURE__ */ jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) })
+  ] });
+  const primitiveProps = {
+    ...props,
+    id: id === void 0 ? void 0 : String(id),
+    label,
+    disabled: isDisabled,
+    "data-selected": isSelected || void 0,
+    className: itemClassName,
+    onClick: (event) => {
+      onClick?.(event);
+      if (!event.defaultPrevented) {
+        activate();
+      }
+    },
+    children: content
+  };
+  if (submenuTriggerKind === "context-menu") {
+    return /* @__PURE__ */ jsx(ContextMenu$1.SubmenuTrigger, { ...primitiveProps });
+  }
+  if (submenuTriggerKind === "menu") {
+    return /* @__PURE__ */ jsx(Menu$1.SubmenuTrigger, { ...primitiveProps });
+  }
+  if (primitiveKind === "context-menu") {
+    return /* @__PURE__ */ jsx(ContextMenu$1.Item, { ...primitiveProps });
+  }
+  if (primitiveKind === "menu") {
+    return /* @__PURE__ */ jsx(Menu$1.Item, { ...primitiveProps });
+  }
+  return /* @__PURE__ */ jsx(
     "div",
     {
       ...props,
+      id: id === void 0 ? void 0 : String(id),
       role: "menuitem",
       tabIndex: isDisabled ? void 0 : -1,
       "aria-disabled": isDisabled || void 0,
       "data-selected": isSelected || void 0,
-      className: cn(
-        "text-base flex items-center justify-between gap-3 px-2 py-1.5 rounded cursor-pointer outline-none w-full",
-        "hover:bg-interactive focus:bg-interactive",
-        "data-[disabled]:text-foreground-disabled",
-        "data-[selected]:font-semibold",
-        className
-      ),
+      className: itemClassName,
       onClick: (event) => {
         onClick?.(event);
         if (!event.defaultPrevented) {
@@ -5311,20 +5397,18 @@ function MenuItem({
           activate();
         }
       },
-      children: [
-        /* @__PURE__ */ jsxs(Row, { alignItems: "center", gap: true, children: [
-          icon && /* @__PURE__ */ jsx(Icon, { children: icon }),
-          label && /* @__PURE__ */ jsx(Text, { children: label }),
-          children
-        ] }),
-        showChecked && isSelected && /* @__PURE__ */ jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsx(icons_exports.Check, {}) }),
-        showSubMenuIcon && /* @__PURE__ */ jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) })
-      ]
+      children: content
     }
   );
 }
 function MenuSeparator({ className, ...props }) {
-  return /* @__PURE__ */ jsx("hr", { ...props, className: cn("border-b border-edge-muted my-2 -mx-2", className) });
+  return /* @__PURE__ */ jsx(
+    Menu$1.Separator,
+    {
+      ...props,
+      className: cn("block h-px bg-edge-muted my-2 -mx-2", className)
+    }
+  );
 }
 function MenuSection({
   title,
@@ -5334,22 +5418,38 @@ function MenuSection({
   children,
   ...props
 }) {
-  return /* @__PURE__ */ jsxs(
-    "div",
-    {
-      ...props,
-      role: "group",
-      className: cn("[&:not(:last-child)]:mb-4", className),
-      style: { maxHeight, overflow: maxHeight ? "auto" : void 0, ...style },
-      children: [
-        title && /* @__PURE__ */ jsx("div", { className: "text-base font-bold px-2 py-1.5", children: title }),
-        children
-      ]
-    }
-  );
+  const primitiveKind = useContext(MenuPrimitiveContext);
+  const groupClassName = cn("[&:not(:last-child)]:mb-4", className);
+  const groupStyle = { maxHeight, overflow: maxHeight ? "auto" : void 0, ...style };
+  const content = /* @__PURE__ */ jsxs(Fragment, { children: [
+    title && (primitiveKind === "context-menu" ? /* @__PURE__ */ jsx(ContextMenu$1.GroupLabel, { className: "text-base font-bold px-2 py-1.5", children: title }) : primitiveKind === "menu" ? /* @__PURE__ */ jsx(Menu$1.GroupLabel, { className: "text-base font-bold px-2 py-1.5", children: title }) : /* @__PURE__ */ jsx("div", { className: "text-base font-bold px-2 py-1.5", children: title })),
+    children
+  ] });
+  if (primitiveKind === "context-menu") {
+    return /* @__PURE__ */ jsx(ContextMenu$1.Group, { ...props, className: groupClassName, style: groupStyle, children: content });
+  }
+  if (primitiveKind === "menu") {
+    return /* @__PURE__ */ jsx(Menu$1.Group, { ...props, className: groupClassName, style: groupStyle, children: content });
+  }
+  return /* @__PURE__ */ jsx("div", { ...props, role: "group", className: groupClassName, style: groupStyle, children: content });
 }
 function SubMenuTrigger({ children }) {
   const items = Children.toArray(children);
+  const primitiveKind = useContext(MenuPrimitiveContext);
+  const targetKind = items[1]?.type?.zenOverlayType;
+  const content = targetKind === "popover" ? items[1].props.children : items[1];
+  if (primitiveKind === "context-menu") {
+    return /* @__PURE__ */ jsxs(ContextMenu$1.SubmenuRoot, { children: [
+      /* @__PURE__ */ jsx(MenuSubmenuTriggerContext.Provider, { value: "context-menu", children: items[0] }),
+      /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: "context-menu", children: content })
+    ] });
+  }
+  if (primitiveKind === "menu") {
+    return /* @__PURE__ */ jsxs(Menu$1.SubmenuRoot, { children: [
+      /* @__PURE__ */ jsx(MenuSubmenuTriggerContext.Provider, { value: "menu", children: items[0] }),
+      /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: "menu", children: content })
+    ] });
+  }
   return /* @__PURE__ */ jsxs(Popover$1.Root, { children: [
     /* @__PURE__ */ jsx(Popover$1.Trigger, { render: items[0] }),
     items[1]
@@ -5377,7 +5477,7 @@ function MenubarMenu({ label, isDisabled, children, ...props }) {
         render: /* @__PURE__ */ jsx(Button, { variant: "quiet", size: "sm", className: "data-[popup-open]:bg-interactive", children: label })
       }
     ),
-    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: true, children })
+    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: "menu", children })
   ] });
 }
 function Meter({
@@ -5487,12 +5587,15 @@ function NumberField({
   formatOptions,
   onChange,
   className,
+  id,
   ...props
 }) {
+  const fieldId = useFieldId(id);
   return /* @__PURE__ */ jsxs(
     NumberField$1.Root,
     {
       ...props,
+      id: fieldId,
       min: minValue,
       max: maxValue,
       disabled: isDisabled,
@@ -5502,7 +5605,7 @@ function NumberField({
       onValueChange: (value) => onChange?.(value),
       className: cn("flex flex-col gap-1", className),
       children: [
-        label && /* @__PURE__ */ jsx(Label, { children: label }),
+        label && /* @__PURE__ */ jsx(Label, { htmlFor: fieldId, children: label }),
         /* @__PURE__ */ jsxs(NumberField$1.Group, { className: cn(inputField(), "p-0 px-0 gap-0 overflow-hidden"), children: [
           /* @__PURE__ */ jsx(NumberField$1.Decrement, { className: cn(stepperClasses, "border-r border-edge"), children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.Minus, {}) }) }),
           /* @__PURE__ */ jsx(
@@ -5527,14 +5630,17 @@ function OTPField({
   onChange,
   onComplete,
   className,
+  id,
   ...props
 }) {
+  const fieldId = useFieldId(id);
   return /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-1", children: [
-    label && /* @__PURE__ */ jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsx(Label, { htmlFor: fieldId, children: label }),
     /* @__PURE__ */ jsx(
       OTPField$1.Root,
       {
         ...props,
+        id: fieldId,
         length,
         disabled: isDisabled,
         readOnly: isReadOnly,
@@ -5889,17 +5995,20 @@ function RadioGroup({
   onChange,
   ...props
 }) {
+  const labelId = useId();
+  const ariaLabel = props["aria-label"] ?? (label ? void 0 : "Radio group");
   return /* @__PURE__ */ jsxs(
     RadioGroup$1,
     {
-      "aria-label": "RadioGroup",
       ...props,
+      "aria-label": ariaLabel,
+      "aria-labelledby": label ? labelId : props["aria-labelledby"],
       disabled: isDisabled,
       readOnly: isReadOnly,
       onValueChange: onChange,
       className: cn("flex flex-col gap-2", className),
       children: [
-        label && /* @__PURE__ */ jsx(Label, { children: label }),
+        label && /* @__PURE__ */ jsx(Label, { id: labelId, children: label }),
         /* @__PURE__ */ jsx(Column, { gap: "2", children })
       ]
     }
@@ -6121,17 +6230,20 @@ function Select({
   children,
   items,
   onOpenChange,
+  id,
   ...props
 }) {
+  const fieldId = useFieldId(id);
   const [search, setSearch] = useState("");
   const normalizedItems = items?.map(
     (item) => typeof item === "object" ? item : { label: String(item), value: item }
   );
-  const collection = children || normalizedItems?.map((item) => /* @__PURE__ */ jsx(ListItem, { value: String(item.value), children: item.label }, item.value));
+  const collection = children || normalizedItems?.map((item) => /* @__PURE__ */ jsx(ListItem, { value: item.value, children: item.label }, item.value));
   return /* @__PURE__ */ jsx("div", { className: cn("flex flex-col gap-1", className), children: /* @__PURE__ */ jsxs(
     Select$1.Root,
     {
       ...props,
+      id: fieldId,
       items: normalizedItems,
       value,
       defaultValue,
@@ -6145,7 +6257,7 @@ function Select({
         onOpenChange?.(open, details);
       },
       children: [
-        label && /* @__PURE__ */ jsx(Label, { children: label }),
+        label && /* @__PURE__ */ jsx(Label, { htmlFor: fieldId, children: label }),
         /* @__PURE__ */ jsxs(
           Select$1.Trigger,
           {
@@ -6282,13 +6394,17 @@ function Sheet({
 }
 Sheet.zenOverlayType = "dialog";
 function SheetHeader({ title, showClose = true, className, children }) {
-  const { close } = useOverlayTrigger();
   return /* @__PURE__ */ jsxs("div", { className: cn("flex items-start justify-between gap-3 mb-4", className), children: [
     /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-1", children: [
-      title && /* @__PURE__ */ jsx(Heading, { size: "xl", children: title }),
+      title && /* @__PURE__ */ jsx(Dialog$1.Title, { render: /* @__PURE__ */ jsx(Heading, { size: "xl" }), children: title }),
       children
     ] }),
-    showClose && /* @__PURE__ */ jsx(Button, { variant: "quiet", size: "xs", "aria-label": "Close", onPress: close, children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.X, {}) }) })
+    showClose && /* @__PURE__ */ jsx(
+      Dialog$1.Close,
+      {
+        render: /* @__PURE__ */ jsx(Button, { variant: "quiet", size: "xs", "aria-label": "Close", children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.X, {}) }) })
+      }
+    )
   ] });
 }
 var SidebarContext = createContext({
@@ -6452,17 +6568,19 @@ function Slider({
   onChangeEnd,
   ...props
 }) {
+  const labelId = useId();
   return /* @__PURE__ */ jsxs(
     Slider$1.Root,
     {
       ...props,
+      "aria-labelledby": label ? labelId : props["aria-labelledby"],
       disabled: isDisabled,
       onValueChange: onChange,
       onValueCommitted: onChangeEnd,
       className: cn("flex flex-col gap-2 w-full", className),
       children: [
         /* @__PURE__ */ jsxs(Row, { justifyContent: "space-between", alignItems: "center", children: [
-          label && /* @__PURE__ */ jsx(Label, { children: label }),
+          label && /* @__PURE__ */ jsx(Label, { id: labelId, children: label }),
           showValue && /* @__PURE__ */ jsx(Slider$1.Value, { className: "text-base tabular-nums" })
         ] }),
         /* @__PURE__ */ jsxs(Slider$1.Control, { className: "relative h-5 w-full touch-none", children: [
@@ -6516,16 +6634,19 @@ function Switch({
   isDisabled,
   onChange,
   value,
+  id,
   ...props
 }) {
   const checked = isSelected ?? (typeof value === "boolean" ? value : void 0);
   const styles = switchVariant();
+  const fieldId = useFieldId(id);
   return /* @__PURE__ */ jsxs(Column, { children: [
-    label && /* @__PURE__ */ jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsx(Label, { htmlFor: fieldId, children: label }),
     /* @__PURE__ */ jsxs(
       Switch$1.Root,
       {
         ...props,
+        id: fieldId,
         value: typeof value === "string" ? value : void 0,
         checked,
         defaultChecked: defaultSelected,
@@ -6579,7 +6700,7 @@ function Tab({ id, value, isDisabled, href, children, className, ...props }) {
     Tabs$1.Tab,
     {
       ...props,
-      value: value || id,
+      value: value ?? id,
       disabled: isDisabled,
       render: href ? /* @__PURE__ */ jsx("a", { href }) : void 0,
       className: cn(
@@ -6594,7 +6715,7 @@ function Tab({ id, value, isDisabled, href, children, className, ...props }) {
   );
 }
 function TabPanel({ id, value, children, className, ...props }) {
-  return /* @__PURE__ */ jsx(Tabs$1.Panel, { ...props, value: value || id, className, children });
+  return /* @__PURE__ */ jsx(Tabs$1.Panel, { ...props, value: value ?? id, className, children });
 }
 var TagContext = createContext({
   allowsRemoving: false,
@@ -6793,12 +6914,14 @@ function Toggle({
   onChange,
   ...props
 }) {
+  const labelId = useId();
   return /* @__PURE__ */ jsxs(Fragment, { children: [
-    label && /* @__PURE__ */ jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsx(Label, { id: labelId, children: label }),
     /* @__PURE__ */ jsx(
       Toggle$1,
       {
         ...props,
+        "aria-labelledby": label ? labelId : props["aria-labelledby"],
         pressed: isSelected,
         defaultPressed: defaultSelected,
         disabled: isDisabled,
@@ -6829,16 +6952,18 @@ function ToggleGroup({
   onSelectionChange,
   ...props
 }) {
+  const labelId = useId();
   const handleChange = (keys) => {
     onSelectionChange?.(new Set(keys));
     onChange?.(keys);
   };
   return /* @__PURE__ */ jsxs(Fragment, { children: [
-    label && /* @__PURE__ */ jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsx(Label, { id: labelId, children: label }),
     /* @__PURE__ */ jsx(
       ToggleGroup$1,
       {
         ...props,
+        "aria-labelledby": label ? labelId : props["aria-labelledby"],
         value: value || (selectedKeys ? Array.from(selectedKeys) : void 0),
         defaultValue: defaultValue || (defaultSelectedKeys ? Array.from(defaultSelectedKeys) : void 0),
         multiple: selectionMode === "multiple",

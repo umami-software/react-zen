@@ -66,7 +66,7 @@ export function Tab({ id, value, isDisabled, href, children, className, ...props
   return (
     <BaseTabs.Tab
       {...props}
-      value={value || id}
+      value={value ?? id}
       disabled={isDisabled}
       render={href ? <a href={href} /> : undefined}
       className={cn(
@@ -84,7 +84,7 @@ export function Tab({ id, value, isDisabled, href, children, className, ...props
 
 export function TabPanel({ id, value, children, className, ...props }: TabPanelProps) {
   return (
-    <BaseTabs.Panel {...props} value={value || id} className={className}>
+    <BaseTabs.Panel {...props} value={value ?? id} className={className}>
       {children}
     </BaseTabs.Panel>
   );

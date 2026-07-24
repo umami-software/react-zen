@@ -3,7 +3,7 @@ import {
   RadioGroup as BaseRadioGroup,
   type RadioGroupProps as BaseRadioGroupProps,
 } from '@base-ui/react/radio-group';
-import type { ReactNode } from 'react';
+import { type ReactNode, useId } from 'react';
 import { Column } from './Column';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
@@ -26,16 +26,20 @@ export function RadioGroup({
   onChange,
   ...props
 }: RadioGroupProps) {
+  const labelId = useId();
+  const ariaLabel = props['aria-label'] ?? (label ? undefined : 'Radio group');
+
   return (
     <BaseRadioGroup
-      aria-label="RadioGroup"
       {...props}
+      aria-label={ariaLabel}
+      aria-labelledby={label ? labelId : props['aria-labelledby']}
       disabled={isDisabled}
       readOnly={isReadOnly}
       onValueChange={onChange}
       className={cn('flex flex-col gap-2', className)}
     >
-      {label && <Label>{label}</Label>}
+      {label && <Label id={labelId}>{label}</Label>}
       <Column gap="2">{children as ReactNode}</Column>
     </BaseRadioGroup>
   );

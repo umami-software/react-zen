@@ -1,4 +1,5 @@
 import { Toggle as BaseToggle, type ToggleProps as BaseToggleProps } from '@base-ui/react/toggle';
+import { useId } from 'react';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 
@@ -25,11 +26,14 @@ export function Toggle({
   onChange,
   ...props
 }: ToggleProps) {
+  const labelId = useId();
+
   return (
     <>
-      {label && <Label>{label}</Label>}
+      {label && <Label id={labelId}>{label}</Label>}
       <BaseToggle
         {...props}
+        aria-labelledby={label ? labelId : props['aria-labelledby']}
         pressed={isSelected}
         defaultPressed={defaultSelected}
         disabled={isDisabled}

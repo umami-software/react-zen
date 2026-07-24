@@ -116,15 +116,28 @@ export function CommandSeparator({ className, ...props }: CommandSeparatorProps)
   );
 }
 
-export interface CommandDialogProps extends CommandProps {
+export interface CommandDialogProps extends Omit<CommandProps, 'title'> {
   isOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
+  title?: ReactNode;
+  description?: ReactNode;
 }
 
-export function CommandDialog({ isOpen, onOpenChange, children, ...props }: CommandDialogProps) {
+export function CommandDialog({
+  isOpen,
+  onOpenChange,
+  title = 'Command Palette',
+  description = 'Search for a command to run.',
+  children,
+  ...props
+}: CommandDialogProps) {
   return (
     <BaseDialog.Root open={isOpen} onOpenChange={onOpenChange}>
       <Modal>
+        <div className="sr-only">
+          <BaseDialog.Title>{title}</BaseDialog.Title>
+          <BaseDialog.Description>{description}</BaseDialog.Description>
+        </div>
         <Command
           {...props}
           className={cn(

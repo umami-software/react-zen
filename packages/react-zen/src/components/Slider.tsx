@@ -1,5 +1,5 @@
 import { Slider as BaseSlider } from '@base-ui/react/slider';
-import type { ReactNode } from 'react';
+import { type ReactNode, useId } from 'react';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 import { Row } from './Row';
@@ -25,16 +25,19 @@ export function Slider({
   onChangeEnd,
   ...props
 }: SliderProps) {
+  const labelId = useId();
+
   return (
     <BaseSlider.Root
       {...props}
+      aria-labelledby={label ? labelId : props['aria-labelledby']}
       disabled={isDisabled}
       onValueChange={onChange}
       onValueCommitted={onChangeEnd}
       className={cn('flex flex-col gap-2 w-full', className)}
     >
       <Row justifyContent="space-between" alignItems="center">
-        {label && <Label>{label}</Label>}
+        {label && <Label id={labelId}>{label}</Label>}
         {showValue && <BaseSlider.Value className="text-base tabular-nums" />}
       </Row>
       <BaseSlider.Control className="relative h-5 w-full touch-none">

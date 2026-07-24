@@ -138,36 +138,38 @@ A menu displays a list of actions or options that a user can choose.
 ## Submenu
 
 <Example>
-  <Menu>
-    <MenuItem id="one">One</MenuItem>
-    <MenuItem id="two">Two</MenuItem>
-    <MenuItem id="three">Three</MenuItem>
-    <MenuItem id="four">Four</MenuItem>
-    <SubMenuTrigger>
-      <MenuItem id="five" showSubMenuIcon>Five</MenuItem>
-      <Popover>
+  <MenuTrigger>
+    <Button variant="outline">Open menu</Button>
+    <Menu>
+      <MenuItem id="one">One</MenuItem>
+      <MenuItem id="two">Two</MenuItem>
+      <MenuItem id="three">Three</MenuItem>
+      <MenuItem id="four">Four</MenuItem>
+      <SubMenuTrigger>
+        <MenuItem id="five" showSubMenuIcon>Five</MenuItem>
         <Menu>
           <MenuItem id="six">Six</MenuItem>
           <MenuItem id="seven">Seven</MenuItem>
           <MenuItem id="eight">Eight</MenuItem>
         </Menu>
-      </Popover>
-    </SubMenuTrigger>
-  </Menu>
+      </SubMenuTrigger>
+    </Menu>
+  </MenuTrigger>
 
   ```jsx
-  <Menu>
-    <MenuItem>One</MenuItem>
-    <SubMenuTrigger>
-      <MenuItem showSubMenuIcon>More</MenuItem>
-      <Popover>
+  <MenuTrigger>
+    <Button>Open menu</Button>
+    <Menu>
+      <MenuItem>One</MenuItem>
+      <SubMenuTrigger>
+        <MenuItem showSubMenuIcon>More</MenuItem>
         <Menu>
           <MenuItem>Sub item 1</MenuItem>
           <MenuItem>Sub item 2</MenuItem>
         </Menu>
-      </Popover>
-    </SubMenuTrigger>
-  </Menu>
+      </SubMenuTrigger>
+    </Menu>
+  </MenuTrigger>
   ```
 </Example>
 

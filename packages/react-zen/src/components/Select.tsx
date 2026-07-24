@@ -3,6 +3,7 @@ import { type ReactNode, useState } from 'react';
 import { ChevronRight } from '@/components/icons';
 import { Button, type ButtonProps } from './Button';
 import { Column } from './Column';
+import { useFieldId } from './hooks/useFieldId';
 import { Icon } from './Icon';
 import { Label } from './Label';
 import { List, ListItem, ListPrimitiveProvider, type ListProps } from './List';
@@ -68,8 +69,10 @@ export function Select({
   children,
   items,
   onOpenChange,
+  id,
   ...props
 }: SelectProps) {
+  const fieldId = useFieldId(id);
   const [search, setSearch] = useState('');
   const normalizedItems = items?.map(item =>
     typeof item === 'object' ? item : { label: String(item), value: item },
@@ -77,7 +80,7 @@ export function Select({
   const collection =
     children ||
     normalizedItems?.map(item => (
-      <ListItem key={item.value} value={String(item.value)}>
+      <ListItem key={item.value} value={item.value}>
         {item.label}
       </ListItem>
     ));
@@ -86,6 +89,7 @@ export function Select({
     <div className={cn('flex flex-col gap-1', className)}>
       <BaseSelect.Root
         {...props}
+        id={fieldId}
         items={normalizedItems}
         value={value}
         defaultValue={defaultValue}
@@ -99,7 +103,7 @@ export function Select({
           onOpenChange?.(open, details);
         }}
       >
-        {label && <Label>{label}</Label>}
+        {label && <Label htmlFor={fieldId}>{label}</Label>}
         <BaseSelect.Trigger
           render={
             <Button

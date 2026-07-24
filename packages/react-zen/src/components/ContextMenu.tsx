@@ -13,7 +13,7 @@ export function ContextMenu({ children, onOpenChange }: ContextMenuProps) {
   return (
     <BaseContextMenu.Root onOpenChange={onOpenChange}>
       <BaseContextMenu.Trigger render={items[0]} />
-      <MenuPrimitiveContext.Provider value>{items[1]}</MenuPrimitiveContext.Provider>
+      <MenuPrimitiveContext.Provider value="context-menu">{items[1]}</MenuPrimitiveContext.Provider>
     </BaseContextMenu.Root>
   );
 }

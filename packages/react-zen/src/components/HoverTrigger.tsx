@@ -1,5 +1,6 @@
 import { Popover as BasePopover } from '@base-ui/react/popover';
 import { type ReactElement, useEffect, useRef, useState } from 'react';
+import { OverlayContentProvider } from './OverlayTrigger';
 
 const CLOSE_DELAY = 500;
 
@@ -84,7 +85,9 @@ export function HoverTrigger({
         <BasePopover.Positioner>
           <BasePopover.Popup className="zen-popover outline-none">
             <div onMouseEnter={handleMenuEnter} onMouseLeave={handleMenuLeave}>
-              {popupElement}
+              <OverlayContentProvider close={_close} kind="popover">
+                {popupElement}
+              </OverlayContentProvider>
             </div>
           </BasePopover.Popup>
         </BasePopover.Positioner>

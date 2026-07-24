@@ -56,7 +56,7 @@ export function DatePicker({
   return (
     <div className={cn('flex flex-col gap-1', className)}>
       {label && <Label>{label}</Label>}
-      <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger overlayType="popover" isOpen={isOpen} onOpenChange={setIsOpen}>
         <Button
           variant="outline"
           isDisabled={isDisabled}

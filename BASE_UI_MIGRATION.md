@@ -17,7 +17,7 @@ the React Zen component runtime. Removing it would require replacing or changing
 | Button / LoadingButton / CopyButton / ThemeButton | Base UI Button | `onPress` and `isDisabled` remain as compatibility props; `onClick` and `disabled` are also available from the primitive. |
 | Checkbox | Base UI Checkbox | `isSelected`, `defaultSelected`, `isIndeterminate`, and `onChange` are translated to checked-state props. |
 | ComboBox | Base UI Combobox | Uses Base UI's input, trigger, popup, list, and items. |
-| Dialog / Modal / AlertDialog / ConfirmationDialog | Base UI Dialog | `DialogTrigger` keeps Zen's two-child composition and supplies coordinated Dialog/Popover roots. `Modal` owns the Base UI portal, backdrop, viewport, and popup; `Dialog` remains the styled content surface. |
+| Dialog / Modal / AlertDialog / ConfirmationDialog | Base UI Dialog and Alert Dialog | `DialogTrigger` keeps Zen's two-child composition while selecting the matching Dialog, Alert Dialog, or Popover root and trigger. `Modal` owns the matching portal, backdrop, viewport, and popup; `Dialog` remains the styled content surface. |
 | Popover / HoverTrigger | Base UI Popover | Trigger compatibility wrappers now provide the explicit Base UI root and anchor required by popovers. |
 | ProgressBar | Base UI Progress | Track, indicator, and value now use Base UI parts. |
 | RadioGroup / Radio | Base UI Radio Group and Radio | React Aria state prop names remain supported. |
@@ -39,7 +39,7 @@ the corresponding shadcn component.
 | Calendar | `react-day-picker` | Dates are native `Date` values; internationalized calendar-system objects are no longer exposed. |
 | DataTable / Table | Semantic native table parts | Rendering and layout are preserved. React Aria row selection behavior is not provided by the native wrapper. |
 | List | Native listbox compatibility layer | Supports single/multiple key selection. Advanced React Aria collection features such as virtual focus and dynamic collection render functions are not reproduced. Select and ComboBox items switch to their Base UI item primitives automatically. |
-| Menu when used as static Popover content | Native menu roles | The existing triggerless/static composition remains supported. Base UI Menu is used by `MenuTrigger`; advanced React Aria collection selection is reduced to Zen's key-based compatibility behavior. |
+| Menu when used without a trigger | Native menu roles | The existing triggerless/static composition remains supported. `MenuTrigger`, context menus, menubars, and their submenus use complete Base UI primitive chains; advanced React Aria collection selection is reduced to Zen's key-based compatibility behavior. |
 | SearchField | Native search input | Keeps debounce and `onSearch`; browser-native input events replace React Aria field state. |
 | PasswordField / TextField / Label | Native form controls | State props are translated to `disabled` and `readOnly`; `TextField.onChange` continues to receive the field value. |
 | ProgressCircle | SVG rendered inside Base UI Progress Root | Base UI supplies accessible progress state; Zen still owns the circular visualization. |

@@ -7,10 +7,11 @@ var clsx = require('clsx');
 var tailwindMerge = require('tailwind-merge');
 var jsxRuntime = require('react/jsx-runtime');
 var tailwindVariants = require('tailwind-variants');
+var alertDialog = require('@base-ui/react/alert-dialog');
 var button$1 = require('@base-ui/react/button');
 var dialog = require('@base-ui/react/dialog');
-var menu = require('@base-ui/react/menu');
 var popover = require('@base-ui/react/popover');
+var menu = require('@base-ui/react/menu');
 var tooltip$1 = require('@base-ui/react/tooltip');
 var avatar$1 = require('@base-ui/react/avatar');
 var reactDayPicker = require('react-day-picker');
@@ -2945,19 +2946,23 @@ function Button({
   ...props
 }) {
   const buttonClassName = button({ variant, size, className });
-  const renderProps = {
-    ...props,
-    className: buttonClassName,
-    children
-  };
   const handleClick = (event) => {
     onClick?.(event);
     if (!event.defaultPrevented) {
       onPress?.(event);
     }
   };
-  const defaultElement = /* @__PURE__ */ jsxRuntime.jsx(button$1.Button, { ...props, disabled: isDisabled, className: buttonClassName, onClick: handleClick, children });
-  return resolveRender(render, renderProps, defaultElement);
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    button$1.Button,
+    {
+      ...props,
+      render,
+      disabled: isDisabled,
+      className: buttonClassName,
+      onClick: handleClick,
+      children
+    }
+  );
 }
 function Heading({
   size = "2xl",
@@ -2979,10 +2984,36 @@ function Heading({
     }
   );
 }
-var OverlayContext = react.createContext({ close: () => void 0 });
-var MenuPrimitiveContext = react.createContext(false);
+var OverlayContext = react.createContext({
+  close: () => void 0,
+  kind: "dialog"
+});
+var MenuPrimitiveContext = react.createContext(null);
 function useOverlayTrigger() {
   return react.useContext(OverlayContext);
+}
+function OverlayContentProvider({
+  children,
+  close,
+  kind
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(OverlayContext.Provider, { value: { close, kind }, children });
+}
+function getOverlayKind(element) {
+  if (!element) {
+    return void 0;
+  }
+  const nestedKinds = react.Children.toArray(element.props.children).filter(react.isValidElement).map((child) => getOverlayKind(child));
+  if (nestedKinds.includes("alert-dialog")) {
+    return "alert-dialog";
+  }
+  return element.type.zenOverlayType;
+}
+function unwrapMenuContent(element) {
+  if (!element) {
+    return element;
+  }
+  return getOverlayKind(element) === "popover" ? element.props.children : element;
 }
 function DialogTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
   const items = react.Children.toArray(children);
@@ -2990,6 +3021,7 @@ function DialogTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
   const target = items[1];
   const targetOpen = target?.props?.isOpen;
   const targetOpenChange = target?.props?.onOpenChange;
+  const kind = getOverlayKind(target) ?? "dialog";
   const [uncontrolledOpen, setUncontrolledOpen] = react.useState(defaultOpen ?? false);
   const controlledOpen = isOpen ?? targetOpen;
   const open = controlledOpen ?? uncontrolledOpen;
@@ -3000,11 +3032,23 @@ function DialogTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
     onOpenChange?.(nextOpen);
     targetOpenChange?.(nextOpen);
   };
-  const content = /* @__PURE__ */ jsxRuntime.jsx(OverlayContext.Provider, { value: { close: () => setOpen(false) }, children: target });
-  return /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Root, { open, onOpenChange: setOpen, children: /* @__PURE__ */ jsxRuntime.jsxs(popover.Popover.Root, { open, onOpenChange: setOpen, children: [
-    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Trigger, { render: trigger }),
+  const content = /* @__PURE__ */ jsxRuntime.jsx(OverlayContentProvider, { close: () => setOpen(false), kind, children: target });
+  if (kind === "popover") {
+    return /* @__PURE__ */ jsxRuntime.jsxs(popover.Popover.Root, { open, onOpenChange: setOpen, children: [
+      /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Trigger, { render: trigger }),
+      content
+    ] });
+  }
+  if (kind === "alert-dialog") {
+    return /* @__PURE__ */ jsxRuntime.jsxs(alertDialog.AlertDialog.Root, { open, onOpenChange: setOpen, children: [
+      /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Trigger, { render: trigger }),
+      content
+    ] });
+  }
+  return /* @__PURE__ */ jsxRuntime.jsxs(dialog.Dialog.Root, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Trigger, { render: trigger }),
     content
-  ] }) });
+  ] });
 }
 function TooltipTrigger({ children, delay, closeDelay }) {
   const items = react.Children.toArray(children);
@@ -3015,6 +3059,7 @@ function TooltipTrigger({ children, delay, closeDelay }) {
 }
 function MenuTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
   const items = react.Children.toArray(children);
+  const content = unwrapMenuContent(items[1]);
   const [uncontrolledOpen, setUncontrolledOpen] = react.useState(defaultOpen ?? false);
   const open = isOpen ?? uncontrolledOpen;
   const setOpen = (nextOpen) => {
@@ -3023,10 +3068,10 @@ function MenuTrigger({ children, isOpen, defaultOpen, onOpenChange }) {
     }
     onOpenChange?.(nextOpen);
   };
-  return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Root, { open, onOpenChange: setOpen, children: /* @__PURE__ */ jsxRuntime.jsxs(popover.Popover.Root, { open, onOpenChange: setOpen, children: [
-    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Trigger, { render: items[0] }),
-    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: true, children: items[1] })
-  ] }) });
+  return /* @__PURE__ */ jsxRuntime.jsxs(menu.Menu.Root, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Trigger, { render: items[0] }),
+    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: "menu", children: content })
+  ] });
 }
 function FileTrigger({
   children,
@@ -3066,12 +3111,14 @@ function RouterProvider({ children }) {
   return children;
 }
 function Dialog({ title, variant, children, className, ...props }) {
-  const { close } = useOverlayTrigger();
+  const { close, kind } = useOverlayTrigger();
+  const titleContent = title ?? "Dialog";
+  const titleClassName = title ? void 0 : "sr-only";
+  const heading2 = /* @__PURE__ */ jsxRuntime.jsx(Heading, { size: "xl", children: titleContent });
+  const primitiveTitle = kind === "alert-dialog" ? /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Title, { className: titleClassName, render: heading2 }) : kind === "dialog" ? /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Title, { className: titleClassName, render: heading2 }) : kind === "popover" ? /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Title, { className: titleClassName, render: heading2 }) : title && heading2;
   return /* @__PURE__ */ jsxRuntime.jsx(
     "div",
     {
-      "aria-label": title ? void 0 : "Dialog",
-      role: "dialog",
       ...props,
       className: cn(
         "p-6 shadow-xl bg-surface-base border border-edge rounded relative outline-none overflow-auto",
@@ -3079,7 +3126,7 @@ function Dialog({ title, variant, children, className, ...props }) {
         className
       ),
       children: /* @__PURE__ */ jsxRuntime.jsxs(Column, { height: "100%", gap: true, children: [
-        title && /* @__PURE__ */ jsxRuntime.jsx(Heading, { size: "xl", children: title }),
+        primitiveTitle,
         typeof children === "function" ? children({ close }) : children
       ] })
     }
@@ -3098,32 +3145,31 @@ function AlertDialog({
   children,
   ...props
 }) {
-  const handleConfirm = (close) => {
-    onConfirm?.();
-    close();
-  };
-  const handleClose = (close) => {
-    onCancel?.();
-    close();
-  };
   return /* @__PURE__ */ jsxRuntime.jsx(Dialog, { ...props, title, className: cn("grid", className), children: ({ close }) => {
     return /* @__PURE__ */ jsxRuntime.jsxs(Column, { gap: "4", children: [
+      description && /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Description, { render: /* @__PURE__ */ jsxRuntime.jsx(Text, { color: "muted" }), children: description }),
       typeof children === "function" ? children({ close }) : children,
       /* @__PURE__ */ jsxRuntime.jsxs(Row, { gap: "3", justifyContent: "end", children: [
-        /* @__PURE__ */ jsxRuntime.jsx(Button, { onPress: () => handleClose(close), children: cancelLabel }),
+        /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Close, { render: /* @__PURE__ */ jsxRuntime.jsx(Button, { onPress: onCancel, children: cancelLabel }) }),
         /* @__PURE__ */ jsxRuntime.jsx(
-          Button,
+          alertDialog.AlertDialog.Close,
           {
-            variant: isDanger ? "danger" : "primary",
-            isDisabled: isConfirmDisabled,
-            onPress: () => handleConfirm(close),
-            children: confirmLabel
+            render: /* @__PURE__ */ jsxRuntime.jsx(
+              Button,
+              {
+                variant: isDanger ? "danger" : "primary",
+                isDisabled: isConfirmDisabled,
+                onPress: onConfirm,
+                children: confirmLabel
+              }
+            )
           }
         )
       ] })
     ] });
   } });
 }
+AlertDialog.zenOverlayType = "alert-dialog";
 function AspectRatio({ ratio = 1, className, style, children, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
     "div",
@@ -3365,7 +3411,7 @@ function CarouselItem({ className, children, ...props }) {
   );
 }
 function Checkbox({
-  label: _label,
+  label,
   className,
   children,
   isSelected,
@@ -3382,6 +3428,7 @@ function Checkbox({
     checkbox$1.Checkbox.Root,
     {
       ...props,
+      "aria-label": props["aria-label"] ?? label,
       value: typeof value === "string" ? value : void 0,
       checked,
       defaultChecked: defaultSelected,
@@ -3390,13 +3437,7 @@ function Checkbox({
       className: cn(styles.root(), className),
       onCheckedChange: onChange,
       children: [
-        /* @__PURE__ */ jsxRuntime.jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsxRuntime.jsx(
-          checkbox$1.Checkbox.Indicator,
-          {
-            className: styles.icon(),
-            render: isIndeterminate ? /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Minus, {}) : /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {})
-          }
-        ) }),
+        /* @__PURE__ */ jsxRuntime.jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsxRuntime.jsx(checkbox$1.Checkbox.Indicator, { className: styles.icon(), children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: isIndeterminate ? /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Minus, {}) : /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) }) }) }),
         children
       ]
     }
@@ -3428,12 +3469,14 @@ function CheckboxGroup({
   children,
   ...props
 }) {
+  const labelId = react.useId();
   return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: cn("flex flex-col gap-2", className), children: [
-    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { id: labelId, children: label }),
     /* @__PURE__ */ jsxRuntime.jsx(
       checkboxGroup.CheckboxGroup,
       {
         ...props,
+        "aria-labelledby": label ? labelId : props["aria-labelledby"],
         disabled: isDisabled,
         onValueChange: (value) => onChange?.(value),
         className: cn("flex gap-3", orientation === "vertical" ? "flex-col" : "flex-row flex-wrap"),
@@ -3662,7 +3705,7 @@ function ListItem({
   ...props
 }) {
   const context = react.useContext(ListContext);
-  const itemValue = value || String(id ?? (typeof children === "string" ? children : ""));
+  const itemValue = value ?? id ?? (typeof children === "string" ? children : "");
   if (context.kind === "select") {
     return /* @__PURE__ */ jsxRuntime.jsxs(
       select.Select.Item,
@@ -3683,7 +3726,7 @@ function ListItem({
       combobox.Combobox.Item,
       {
         ...props,
-        value: itemValue,
+        value: String(itemValue),
         disabled: isDisabled,
         className: cn(itemClasses, className),
         children: [
@@ -3818,7 +3861,7 @@ function ComboBox({
             }
             return item.element ?? /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value);
           } }) }) }),
-          /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Empty, { children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex min-h-32 flex-col items-center justify-center gap-2 px-4 py-6 text-center", children: renderEmptyState ? renderEmptyState({}) : /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-foreground-muted", "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "md", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.SearchX, {}) }) }) }) })
+          /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Empty, { children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex min-h-16 items-center justify-center px-4 py-3 text-center", children: renderEmptyState ? renderEmptyState({}) : /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base text-foreground-muted", children: "No items found." }) }) })
         ] }) }) })
       ] })
     }
@@ -3842,20 +3885,21 @@ function Modal({
   onOpenChange: _onOpenChange,
   ...props
 }) {
+  const { kind } = useOverlayTrigger();
   const modalStyle = {
     ...style,
     ...offset ? { "--modal-offset": offset } : {}
   };
+  const popupClassName = cn("relative z-[9999]", placementClasses[placement], className);
+  if (kind === "alert-dialog") {
+    return /* @__PURE__ */ jsxRuntime.jsxs(alertDialog.AlertDialog.Portal, { ...props, children: [
+      /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
+      /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Popup, { className: popupClassName, style: modalStyle, children }) })
+    ] });
+  }
   return /* @__PURE__ */ jsxRuntime.jsxs(dialog.Dialog.Portal, { ...props, children: [
     /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(
-      dialog.Dialog.Popup,
-      {
-        className: cn("relative z-[9999]", placementClasses[placement], className),
-        style: modalStyle,
-        children
-      }
-    ) })
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Popup, { className: popupClassName, style: modalStyle, children }) })
   ] });
 }
 Modal.zenOverlayType = "dialog";
@@ -3949,18 +3993,31 @@ function CommandSeparator({ className, ...props }) {
     }
   );
 }
-function CommandDialog({ isOpen, onOpenChange, children, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Root, { open: isOpen, onOpenChange, children: /* @__PURE__ */ jsxRuntime.jsx(Modal, { children: /* @__PURE__ */ jsxRuntime.jsx(
-    Command,
-    {
-      ...props,
-      className: cn(
-        "w-[32rem] max-w-[calc(100dvw-2rem)] border border-edge shadow-xl",
-        props.className
-      ),
-      children
-    }
-  ) }) });
+function CommandDialog({
+  isOpen,
+  onOpenChange,
+  title = "Command Palette",
+  description = "Search for a command to run.",
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Root, { open: isOpen, onOpenChange, children: /* @__PURE__ */ jsxRuntime.jsxs(Modal, { children: [
+    /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "sr-only", children: [
+      /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Title, { children: title }),
+      /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Description, { children: description })
+    ] }),
+    /* @__PURE__ */ jsxRuntime.jsx(
+      Command,
+      {
+        ...props,
+        className: cn(
+          "w-[32rem] max-w-[calc(100dvw-2rem)] border border-edge shadow-xl",
+          props.className
+        ),
+        children
+      }
+    )
+  ] }) });
 }
 var TIMEOUT = 2e3;
 function CopyButton({
@@ -4125,7 +4182,7 @@ function ContextMenu({ children, onOpenChange }) {
   const items = react.Children.toArray(children);
   return /* @__PURE__ */ jsxRuntime.jsxs(contextMenu.ContextMenu.Root, { onOpenChange, children: [
     /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Trigger, { render: items[0] }),
-    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: true, children: items[1] })
+    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: "context-menu", children: items[1] })
   ] });
 }
 var PRESET_VALUES = [
@@ -4832,6 +4889,7 @@ function HoverTrigger({
       setOpen(isOpen);
     }
   }, [isOpen]);
+  const _close = () => setOpen(false);
   const handleMouseEnter = () => {
     isOverMenu.current = false;
     isOverButton.current = true;
@@ -4870,7 +4928,7 @@ function HoverTrigger({
         render: /* @__PURE__ */ jsxRuntime.jsx("span", { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, children: triggerElement })
       }
     ),
-    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Popup, { className: "zen-popover outline-none", children: /* @__PURE__ */ jsxRuntime.jsx("div", { onMouseEnter: handleMenuEnter, onMouseLeave: handleMenuLeave, children: popupElement }) }) }) })
+    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Popup, { className: "zen-popover outline-none", children: /* @__PURE__ */ jsxRuntime.jsx("div", { onMouseEnter: handleMenuEnter, onMouseLeave: handleMenuLeave, children: /* @__PURE__ */ jsxRuntime.jsx(OverlayContentProvider, { close: _close, kind: "popover", children: popupElement }) }) }) }) })
   ] });
 }
 var breakpoints = {
@@ -5232,6 +5290,7 @@ var MenuContext = react.createContext({
   selected: /* @__PURE__ */ new Set(),
   select: () => void 0
 });
+var MenuSubmenuTriggerContext = react.createContext(null);
 function Menu({
   className,
   children,
@@ -5242,7 +5301,7 @@ function Menu({
   ...props
 }) {
   const [uncontrolled, setUncontrolled] = react.useState(new Set(defaultSelectedKeys));
-  const useBasePrimitive = react.useContext(MenuPrimitiveContext);
+  const primitiveKind = react.useContext(MenuPrimitiveContext);
   const selected = new Set(selectedKeys || uncontrolled);
   const select = (key) => {
     if (selectionMode === "none") {
@@ -5259,31 +5318,18 @@ function Menu({
     }
     onSelectionChange?.(next);
   };
-  const content = /* @__PURE__ */ jsxRuntime.jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsxRuntime.jsx(
-    "div",
-    {
-      ...props,
-      role: "menu",
-      className: cn(
-        "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
-        className
-      ),
-      children
-    }
-  ) });
-  if (useBasePrimitive) {
-    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(
-      menu.Menu.Popup,
-      {
-        render: content,
-        className: cn(
-          "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
-          className
-        )
-      }
-    ) }) });
+  const popupClassName = cn(
+    "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
+    className
+  );
+  const popupContent = /* @__PURE__ */ jsxRuntime.jsx(MenuContext.Provider, { value: { selected, select }, children });
+  if (primitiveKind === "context-menu") {
+    return /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Popup, { ...props, className: popupClassName, children: popupContent }) }) });
   }
-  return content;
+  if (primitiveKind === "menu") {
+    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Popup, { ...props, className: popupClassName, children: popupContent }) }) });
+  }
+  return /* @__PURE__ */ jsxRuntime.jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, role: "menu", className: popupClassName, children }) });
 }
 function MenuItem({
   id,
@@ -5300,7 +5346,9 @@ function MenuItem({
   ...props
 }) {
   const context = react.useContext(MenuContext);
-  const key = value || id || (typeof children === "string" ? children : "");
+  const primitiveKind = react.useContext(MenuPrimitiveContext);
+  const submenuTriggerKind = react.useContext(MenuSubmenuTriggerContext);
+  const key = value ?? id ?? (typeof children === "string" ? children : "");
   const isSelected = context.selected.has(key);
   const activate = () => {
     if (!isDisabled) {
@@ -5308,21 +5356,59 @@ function MenuItem({
       onAction?.(key);
     }
   };
-  return /* @__PURE__ */ jsxRuntime.jsxs(
+  const itemClassName = cn(
+    "text-base flex items-center justify-between gap-3 px-2 py-1.5 rounded cursor-pointer outline-none w-full",
+    "hover:bg-interactive focus:bg-interactive data-[highlighted]:bg-interactive",
+    "data-[disabled]:text-foreground-disabled",
+    "data-[selected]:font-semibold",
+    className
+  );
+  const content = /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+    /* @__PURE__ */ jsxRuntime.jsxs(Row, { alignItems: "center", gap: true, children: [
+      icon && /* @__PURE__ */ jsxRuntime.jsx(Icon, { children: icon }),
+      label && /* @__PURE__ */ jsxRuntime.jsx(Text, { children: label }),
+      children
+    ] }),
+    showChecked && isSelected && /* @__PURE__ */ jsxRuntime.jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) }),
+    showSubMenuIcon && /* @__PURE__ */ jsxRuntime.jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) })
+  ] });
+  const primitiveProps = {
+    ...props,
+    id: id === void 0 ? void 0 : String(id),
+    label,
+    disabled: isDisabled,
+    "data-selected": isSelected || void 0,
+    className: itemClassName,
+    onClick: (event) => {
+      onClick?.(event);
+      if (!event.defaultPrevented) {
+        activate();
+      }
+    },
+    children: content
+  };
+  if (submenuTriggerKind === "context-menu") {
+    return /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.SubmenuTrigger, { ...primitiveProps });
+  }
+  if (submenuTriggerKind === "menu") {
+    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.SubmenuTrigger, { ...primitiveProps });
+  }
+  if (primitiveKind === "context-menu") {
+    return /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Item, { ...primitiveProps });
+  }
+  if (primitiveKind === "menu") {
+    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Item, { ...primitiveProps });
+  }
+  return /* @__PURE__ */ jsxRuntime.jsx(
     "div",
     {
       ...props,
+      id: id === void 0 ? void 0 : String(id),
       role: "menuitem",
       tabIndex: isDisabled ? void 0 : -1,
       "aria-disabled": isDisabled || void 0,
       "data-selected": isSelected || void 0,
-      className: cn(
-        "text-base flex items-center justify-between gap-3 px-2 py-1.5 rounded cursor-pointer outline-none w-full",
-        "hover:bg-interactive focus:bg-interactive",
-        "data-[disabled]:text-foreground-disabled",
-        "data-[selected]:font-semibold",
-        className
-      ),
+      className: itemClassName,
       onClick: (event) => {
         onClick?.(event);
         if (!event.defaultPrevented) {
@@ -5336,20 +5422,18 @@ function MenuItem({
           activate();
         }
       },
-      children: [
-        /* @__PURE__ */ jsxRuntime.jsxs(Row, { alignItems: "center", gap: true, children: [
-          icon && /* @__PURE__ */ jsxRuntime.jsx(Icon, { children: icon }),
-          label && /* @__PURE__ */ jsxRuntime.jsx(Text, { children: label }),
-          children
-        ] }),
-        showChecked && isSelected && /* @__PURE__ */ jsxRuntime.jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) }),
-        showSubMenuIcon && /* @__PURE__ */ jsxRuntime.jsx(Icon, { "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) })
-      ]
+      children: content
     }
   );
 }
 function MenuSeparator({ className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx("hr", { ...props, className: cn("border-b border-edge-muted my-2 -mx-2", className) });
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    menu.Menu.Separator,
+    {
+      ...props,
+      className: cn("block h-px bg-edge-muted my-2 -mx-2", className)
+    }
+  );
 }
 function MenuSection({
   title,
@@ -5359,22 +5443,38 @@ function MenuSection({
   children,
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsxs(
-    "div",
-    {
-      ...props,
-      role: "group",
-      className: cn("[&:not(:last-child)]:mb-4", className),
-      style: { maxHeight, overflow: maxHeight ? "auto" : void 0, ...style },
-      children: [
-        title && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "text-base font-bold px-2 py-1.5", children: title }),
-        children
-      ]
-    }
-  );
+  const primitiveKind = react.useContext(MenuPrimitiveContext);
+  const groupClassName = cn("[&:not(:last-child)]:mb-4", className);
+  const groupStyle = { maxHeight, overflow: maxHeight ? "auto" : void 0, ...style };
+  const content = /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+    title && (primitiveKind === "context-menu" ? /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.GroupLabel, { className: "text-base font-bold px-2 py-1.5", children: title }) : primitiveKind === "menu" ? /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.GroupLabel, { className: "text-base font-bold px-2 py-1.5", children: title }) : /* @__PURE__ */ jsxRuntime.jsx("div", { className: "text-base font-bold px-2 py-1.5", children: title })),
+    children
+  ] });
+  if (primitiveKind === "context-menu") {
+    return /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Group, { ...props, className: groupClassName, style: groupStyle, children: content });
+  }
+  if (primitiveKind === "menu") {
+    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Group, { ...props, className: groupClassName, style: groupStyle, children: content });
+  }
+  return /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, role: "group", className: groupClassName, style: groupStyle, children: content });
 }
 function SubMenuTrigger({ children }) {
   const items = react.Children.toArray(children);
+  const primitiveKind = react.useContext(MenuPrimitiveContext);
+  const targetKind = items[1]?.type?.zenOverlayType;
+  const content = targetKind === "popover" ? items[1].props.children : items[1];
+  if (primitiveKind === "context-menu") {
+    return /* @__PURE__ */ jsxRuntime.jsxs(contextMenu.ContextMenu.SubmenuRoot, { children: [
+      /* @__PURE__ */ jsxRuntime.jsx(MenuSubmenuTriggerContext.Provider, { value: "context-menu", children: items[0] }),
+      /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: "context-menu", children: content })
+    ] });
+  }
+  if (primitiveKind === "menu") {
+    return /* @__PURE__ */ jsxRuntime.jsxs(menu.Menu.SubmenuRoot, { children: [
+      /* @__PURE__ */ jsxRuntime.jsx(MenuSubmenuTriggerContext.Provider, { value: "menu", children: items[0] }),
+      /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: "menu", children: content })
+    ] });
+  }
   return /* @__PURE__ */ jsxRuntime.jsxs(popover.Popover.Root, { children: [
     /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Trigger, { render: items[0] }),
     items[1]
@@ -5402,7 +5502,7 @@ function MenubarMenu({ label, isDisabled, children, ...props }) {
         render: /* @__PURE__ */ jsxRuntime.jsx(Button, { variant: "quiet", size: "sm", className: "data-[popup-open]:bg-interactive", children: label })
       }
     ),
-    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: true, children })
+    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: "menu", children })
   ] });
 }
 function Meter({
@@ -5512,12 +5612,15 @@ function NumberField({
   formatOptions,
   onChange,
   className,
+  id,
   ...props
 }) {
+  const fieldId = useFieldId(id);
   return /* @__PURE__ */ jsxRuntime.jsxs(
     numberField.NumberField.Root,
     {
       ...props,
+      id: fieldId,
       min: minValue,
       max: maxValue,
       disabled: isDisabled,
@@ -5527,7 +5630,7 @@ function NumberField({
       onValueChange: (value) => onChange?.(value),
       className: cn("flex flex-col gap-1", className),
       children: [
-        label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+        label && /* @__PURE__ */ jsxRuntime.jsx(Label, { htmlFor: fieldId, children: label }),
         /* @__PURE__ */ jsxRuntime.jsxs(numberField.NumberField.Group, { className: cn(inputField(), "p-0 px-0 gap-0 overflow-hidden"), children: [
           /* @__PURE__ */ jsxRuntime.jsx(numberField.NumberField.Decrement, { className: cn(stepperClasses, "border-r border-edge"), children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Minus, {}) }) }),
           /* @__PURE__ */ jsxRuntime.jsx(
@@ -5552,14 +5655,17 @@ function OTPField({
   onChange,
   onComplete,
   className,
+  id,
   ...props
 }) {
+  const fieldId = useFieldId(id);
   return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col gap-1", children: [
-    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { htmlFor: fieldId, children: label }),
     /* @__PURE__ */ jsxRuntime.jsx(
       otpField.OTPField.Root,
       {
         ...props,
+        id: fieldId,
         length,
         disabled: isDisabled,
         readOnly: isReadOnly,
@@ -5914,17 +6020,20 @@ function RadioGroup({
   onChange,
   ...props
 }) {
+  const labelId = react.useId();
+  const ariaLabel = props["aria-label"] ?? (label ? void 0 : "Radio group");
   return /* @__PURE__ */ jsxRuntime.jsxs(
     radioGroup.RadioGroup,
     {
-      "aria-label": "RadioGroup",
       ...props,
+      "aria-label": ariaLabel,
+      "aria-labelledby": label ? labelId : props["aria-labelledby"],
       disabled: isDisabled,
       readOnly: isReadOnly,
       onValueChange: onChange,
       className: cn("flex flex-col gap-2", className),
       children: [
-        label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+        label && /* @__PURE__ */ jsxRuntime.jsx(Label, { id: labelId, children: label }),
         /* @__PURE__ */ jsxRuntime.jsx(Column, { gap: "2", children })
       ]
     }
@@ -6146,17 +6255,20 @@ function Select({
   children,
   items,
   onOpenChange,
+  id,
   ...props
 }) {
+  const fieldId = useFieldId(id);
   const [search, setSearch] = react.useState("");
   const normalizedItems = items?.map(
     (item) => typeof item === "object" ? item : { label: String(item), value: item }
   );
-  const collection = children || normalizedItems?.map((item) => /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: String(item.value), children: item.label }, item.value));
+  const collection = children || normalizedItems?.map((item) => /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value));
   return /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("flex flex-col gap-1", className), children: /* @__PURE__ */ jsxRuntime.jsxs(
     select.Select.Root,
     {
       ...props,
+      id: fieldId,
       items: normalizedItems,
       value,
       defaultValue,
@@ -6170,7 +6282,7 @@ function Select({
         onOpenChange?.(open, details);
       },
       children: [
-        label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+        label && /* @__PURE__ */ jsxRuntime.jsx(Label, { htmlFor: fieldId, children: label }),
         /* @__PURE__ */ jsxRuntime.jsxs(
           select.Select.Trigger,
           {
@@ -6307,13 +6419,17 @@ function Sheet({
 }
 Sheet.zenOverlayType = "dialog";
 function SheetHeader({ title, showClose = true, className, children }) {
-  const { close } = useOverlayTrigger();
   return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: cn("flex items-start justify-between gap-3 mb-4", className), children: [
     /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col gap-1", children: [
-      title && /* @__PURE__ */ jsxRuntime.jsx(Heading, { size: "xl", children: title }),
+      title && /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Title, { render: /* @__PURE__ */ jsxRuntime.jsx(Heading, { size: "xl" }), children: title }),
       children
     ] }),
-    showClose && /* @__PURE__ */ jsxRuntime.jsx(Button, { variant: "quiet", size: "xs", "aria-label": "Close", onPress: close, children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.X, {}) }) })
+    showClose && /* @__PURE__ */ jsxRuntime.jsx(
+      dialog.Dialog.Close,
+      {
+        render: /* @__PURE__ */ jsxRuntime.jsx(Button, { variant: "quiet", size: "xs", "aria-label": "Close", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.X, {}) }) })
+      }
+    )
   ] });
 }
 var SidebarContext = react.createContext({
@@ -6477,17 +6593,19 @@ function Slider({
   onChangeEnd,
   ...props
 }) {
+  const labelId = react.useId();
   return /* @__PURE__ */ jsxRuntime.jsxs(
     slider.Slider.Root,
     {
       ...props,
+      "aria-labelledby": label ? labelId : props["aria-labelledby"],
       disabled: isDisabled,
       onValueChange: onChange,
       onValueCommitted: onChangeEnd,
       className: cn("flex flex-col gap-2 w-full", className),
       children: [
         /* @__PURE__ */ jsxRuntime.jsxs(Row, { justifyContent: "space-between", alignItems: "center", children: [
-          label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+          label && /* @__PURE__ */ jsxRuntime.jsx(Label, { id: labelId, children: label }),
           showValue && /* @__PURE__ */ jsxRuntime.jsx(slider.Slider.Value, { className: "text-base tabular-nums" })
         ] }),
         /* @__PURE__ */ jsxRuntime.jsxs(slider.Slider.Control, { className: "relative h-5 w-full touch-none", children: [
@@ -6541,16 +6659,19 @@ function Switch({
   isDisabled,
   onChange,
   value,
+  id,
   ...props
 }) {
   const checked = isSelected ?? (typeof value === "boolean" ? value : void 0);
   const styles = switchVariant();
+  const fieldId = useFieldId(id);
   return /* @__PURE__ */ jsxRuntime.jsxs(Column, { children: [
-    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { htmlFor: fieldId, children: label }),
     /* @__PURE__ */ jsxRuntime.jsxs(
       _switch.Switch.Root,
       {
         ...props,
+        id: fieldId,
         value: typeof value === "string" ? value : void 0,
         checked,
         defaultChecked: defaultSelected,
@@ -6604,7 +6725,7 @@ function Tab({ id, value, isDisabled, href, children, className, ...props }) {
     tabs.Tabs.Tab,
     {
       ...props,
-      value: value || id,
+      value: value ?? id,
       disabled: isDisabled,
       render: href ? /* @__PURE__ */ jsxRuntime.jsx("a", { href }) : void 0,
       className: cn(
@@ -6619,7 +6740,7 @@ function Tab({ id, value, isDisabled, href, children, className, ...props }) {
   );
 }
 function TabPanel({ id, value, children, className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(tabs.Tabs.Panel, { ...props, value: value || id, className, children });
+  return /* @__PURE__ */ jsxRuntime.jsx(tabs.Tabs.Panel, { ...props, value: value ?? id, className, children });
 }
 var TagContext = react.createContext({
   allowsRemoving: false,
@@ -6818,12 +6939,14 @@ function Toggle({
   onChange,
   ...props
 }) {
+  const labelId = react.useId();
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { id: labelId, children: label }),
     /* @__PURE__ */ jsxRuntime.jsx(
       toggle.Toggle,
       {
         ...props,
+        "aria-labelledby": label ? labelId : props["aria-labelledby"],
         pressed: isSelected,
         defaultPressed: defaultSelected,
         disabled: isDisabled,
@@ -6854,16 +6977,18 @@ function ToggleGroup({
   onSelectionChange,
   ...props
 }) {
+  const labelId = react.useId();
   const handleChange = (keys) => {
     onSelectionChange?.(new Set(keys));
     onChange?.(keys);
   };
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
+    label && /* @__PURE__ */ jsxRuntime.jsx(Label, { id: labelId, children: label }),
     /* @__PURE__ */ jsxRuntime.jsx(
       toggleGroup.ToggleGroup,
       {
         ...props,
+        "aria-labelledby": label ? labelId : props["aria-labelledby"],
         value: value || (selectedKeys ? Array.from(selectedKeys) : void 0),
         defaultValue: defaultValue || (defaultSelectedKeys ? Array.from(defaultSelectedKeys) : void 0),
         multiple: selectionMode === "multiple",

@@ -1,4 +1,5 @@
 import { OTPField as BaseOTPField } from '@base-ui/react/otp-field';
+import { useFieldId } from './hooks/useFieldId';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 
@@ -25,13 +26,17 @@ export function OTPField({
   onChange,
   onComplete,
   className,
+  id,
   ...props
 }: OTPFieldProps) {
+  const fieldId = useFieldId(id);
+
   return (
     <div className="flex flex-col gap-1">
-      {label && <Label>{label}</Label>}
+      {label && <Label htmlFor={fieldId}>{label}</Label>}
       <BaseOTPField.Root
         {...props}
+        id={fieldId}
         length={length}
         disabled={isDisabled}
         readOnly={isReadOnly}

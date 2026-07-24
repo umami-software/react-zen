@@ -1,9 +1,12 @@
+import { AlertDialog as BaseAlertDialog } from '@base-ui/react/alert-dialog';
 import type { ReactNode } from 'react';
 import { Button } from './Button';
 import { Column } from './Column';
 import { Dialog, type DialogProps } from './Dialog';
 import { cn } from './lib/tailwind';
+import type { OverlayTarget } from './OverlayTrigger';
 import { Row } from './Row';
+import { Text } from './Text';
 
 export interface AlertDialogProps extends DialogProps {
   title?: ReactNode;
@@ -29,31 +32,30 @@ export function AlertDialog({
   children,
   ...props
 }: AlertDialogProps) {
-  const handleConfirm = (close: () => void) => {
-    onConfirm?.();
-    close();
-  };
-
-  const handleClose = (close: () => void) => {
-    onCancel?.();
-    close();
-  };
-
   return (
     <Dialog {...props} title={title} className={cn('grid', className)}>
       {({ close }) => {
         return (
           <Column gap="4">
+            {description && (
+              <BaseAlertDialog.Description render={<Text color="muted" />}>
+                {description}
+              </BaseAlertDialog.Description>
+            )}
             {typeof children === 'function' ? children({ close }) : children}
             <Row gap="3" justifyContent="end">
-              <Button onPress={() => handleClose(close)}>{cancelLabel}</Button>
-              <Button
-                variant={isDanger ? 'danger' : 'primary'}
-                isDisabled={isConfirmDisabled}
-                onPress={() => handleConfirm(close)}
-              >
-                {confirmLabel}
-              </Button>
+              <BaseAlertDialog.Close render={<Button onPress={onCancel}>{cancelLabel}</Button>} />
+              <BaseAlertDialog.Close
+                render={
+                  <Button
+                    variant={isDanger ? 'danger' : 'primary'}
+                    isDisabled={isConfirmDisabled}
+                    onPress={onConfirm}
+                  >
+                    {confirmLabel}
+                  </Button>
+                }
+              />
             </Row>
           </Column>
         );
@@ -61,3 +63,5 @@ export function AlertDialog({
     </Dialog>
   );
 }
+
+(AlertDialog as typeof AlertDialog & OverlayTarget).zenOverlayType = 'alert-dialog';

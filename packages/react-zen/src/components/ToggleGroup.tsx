@@ -5,6 +5,7 @@ import {
   ToggleGroup as BaseToggleGroup,
   type ToggleGroupProps as BaseToggleGroupProps,
 } from '@base-ui/react/toggle-group';
+import { useId } from 'react';
 import { Label } from './Label';
 import type { Selection } from './lib/interaction';
 import { cn } from './lib/tailwind';
@@ -39,6 +40,7 @@ export function ToggleGroup({
   onSelectionChange,
   ...props
 }: ToggleGroupProps) {
+  const labelId = useId();
   const handleChange = (keys: string[]) => {
     onSelectionChange?.(new Set(keys));
     onChange?.(keys);
@@ -46,9 +48,10 @@ export function ToggleGroup({
 
   return (
     <>
-      {label && <Label>{label}</Label>}
+      {label && <Label id={labelId}>{label}</Label>}
       <BaseToggleGroup
         {...props}
+        aria-labelledby={label ? labelId : props['aria-labelledby']}
         value={value || (selectedKeys ? Array.from(selectedKeys) : undefined)}
         defaultValue={
           defaultValue || (defaultSelectedKeys ? Array.from(defaultSelectedKeys) : undefined)
