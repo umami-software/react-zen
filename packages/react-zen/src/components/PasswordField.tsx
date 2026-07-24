@@ -26,7 +26,7 @@ export function PasswordField({
       {label && <Label htmlFor={props.id}>{label}</Label>}
       <div
         className={cn(
-          'flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative',
+          'flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative overflow-hidden',
           'focus-within:border-edge-strong',
           className,
         )}
@@ -37,11 +37,11 @@ export function PasswordField({
           type={show ? 'text' : 'password'}
           disabled={isDisabled}
           readOnly={isReadOnly}
-          className="border-0 outline-none py-2 px-3 bg-transparent w-full flex-1 placeholder:text-foreground-muted"
+          className="border-0 outline-none py-2 pl-3 pr-10 bg-transparent w-full placeholder:text-foreground-muted"
         />
         <button
           type="button"
-          className="mr-3"
+          className="absolute right-3 z-10"
           aria-label={show ? 'Hide password' : 'Show password'}
           onClick={() => setShow(state => !state)}
         >

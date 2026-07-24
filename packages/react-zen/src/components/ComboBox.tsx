@@ -98,15 +98,15 @@ export function ComboBox({
         )}
         <BaseCombobox.InputGroup
           className={cn(
-            'flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
+            'relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 overflow-hidden',
             'focus-within:border-edge-strong',
           )}
         >
           <BaseCombobox.Input
             placeholder={placeholder}
-            className="flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted"
+            className="w-full py-2 pl-3 pr-10 bg-transparent border-none outline-none placeholder:text-foreground-muted"
           />
-          <BaseCombobox.Trigger className="flex items-center mr-3 text-foreground-muted hover:text-foreground-primary">
+          <BaseCombobox.Trigger className="absolute right-3 z-10 flex items-center text-foreground-muted hover:text-foreground-primary">
             <Icon rotate={90} aria-hidden="true" size="sm">
               <ChevronRight />
             </Icon>

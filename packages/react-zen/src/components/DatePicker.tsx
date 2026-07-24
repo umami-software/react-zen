@@ -77,7 +77,7 @@ export function DatePicker({
             <span className="text-foreground-muted">{placeholder}</span>
           )}
         </Button>
-        <Popover>
+        <Popover className="bg-surface-overlay border border-edge-muted rounded-lg shadow-lg p-4">
           <Calendar
             {...calendarProps}
             value={date}
