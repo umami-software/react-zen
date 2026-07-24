@@ -5,7 +5,7 @@ import {
   ToggleGroup as BaseToggleGroup,
   type ToggleGroupProps as BaseToggleGroupProps,
 } from '@base-ui/react/toggle-group';
-import { useId } from 'react';
+import { createContext, useContext, useId } from 'react';
 import { Label } from './Label';
 import type { Selection } from './lib/interaction';
 import { cn } from './lib/tailwind';
@@ -25,6 +25,8 @@ export interface ToggleGroupProps
   defaultSelectedKeys?: Iterable<string>;
   onSelectionChange?: (value: Selection) => void;
 }
+
+const ToggleGroupVariantContext = createContext<ToggleGroupProps['variant']>(undefined);
 
 export function ToggleGroup({
   label,
@@ -49,22 +51,24 @@ export function ToggleGroup({
   return (
     <>
       {label && <Label id={labelId}>{label}</Label>}
-      <BaseToggleGroup
-        {...props}
-        aria-labelledby={label ? labelId : props['aria-labelledby']}
-        value={value || (selectedKeys ? Array.from(selectedKeys) : undefined)}
-        defaultValue={
-          defaultValue || (defaultSelectedKeys ? Array.from(defaultSelectedKeys) : undefined)
-        }
-        multiple={selectionMode === 'multiple'}
-        onValueChange={handleChange}
-        className={cn(
-          'bg-surface-base shadow-sm border border-edge rounded overflow-hidden',
-          className,
-        )}
-      >
-        {children}
-      </BaseToggleGroup>
+      <ToggleGroupVariantContext.Provider value={variant}>
+        <BaseToggleGroup
+          {...props}
+          aria-labelledby={label ? labelId : props['aria-labelledby']}
+          value={value || (selectedKeys ? Array.from(selectedKeys) : undefined)}
+          defaultValue={
+            defaultValue || (defaultSelectedKeys ? Array.from(defaultSelectedKeys) : undefined)
+          }
+          multiple={selectionMode === 'multiple'}
+          onValueChange={handleChange}
+          className={cn(
+            'inline-flex bg-surface-base shadow-sm border border-edge rounded overflow-hidden',
+            className,
+          )}
+        >
+          {children}
+        </BaseToggleGroup>
+      </ToggleGroupVariantContext.Provider>
     </>
   );
 }
@@ -81,6 +85,8 @@ export function ToggleGroupItem({
   isDisabled,
   ...props
 }: ToggleGroupItemProps) {
+  const variant = useContext(ToggleGroupVariantContext);
+
   return (
     <BaseToggle
       {...props}
@@ -90,7 +96,9 @@ export function ToggleGroupItem({
         'text-foreground-muted bg-surface-base font-bold flex items-center justify-center p-2 cursor-pointer outline-none',
         '[&:not(:first-child)]:border-l [&:not(:first-child)]:border-edge',
         'hover:bg-interactive',
-        'data-[pressed]:text-foreground-primary data-[pressed]:bg-interactive',
+        variant === 'primary'
+          ? 'data-[pressed]:text-primary-foreground data-[pressed]:bg-primary'
+          : 'data-[pressed]:text-foreground-primary data-[pressed]:bg-interactive',
         'data-[disabled]:text-foreground-disabled',
         className,
       )}

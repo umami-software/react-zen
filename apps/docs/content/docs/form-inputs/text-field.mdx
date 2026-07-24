@@ -7,7 +7,9 @@ title: Text Field
 A text field allows a user to enter a plain text value with a keyboard.
 
 <Example>
-  <TextField />
+  <Box width="300px" maxWidth="100%">
+    <TextField />
+  </Box>
 
   ```jsx
   <TextField />
@@ -17,7 +19,9 @@ A text field allows a user to enter a plain text value with a keyboard.
 ## Placeholder text
 
 <Example>
-  <TextField placeholder="Enter some text" />
+  <Box width="300px" maxWidth="100%">
+    <TextField placeholder="Enter some text" />
+  </Box>
 
   ```jsx
   <TextField placeholder="Enter some text" />
@@ -27,7 +31,9 @@ A text field allows a user to enter a plain text value with a keyboard.
 ## Disabled
 
 <Example>
-  <TextField defaultValue="Disabled" isDisabled />
+  <Box width="300px" maxWidth="100%">
+    <TextField defaultValue="Disabled" isDisabled />
+  </Box>
 
   ```jsx
   <TextField defaultValue="Disabled" isDisabled />
@@ -37,7 +43,9 @@ A text field allows a user to enter a plain text value with a keyboard.
 ## Read only
 
 <Example>
-  <TextField defaultValue="Read only" isReadOnly />
+  <Box width="300px" maxWidth="100%">
+    <TextField defaultValue="Read only" isReadOnly />
+  </Box>
 
   ```jsx
   <TextField defaultValue="Read only" isReadOnly />
@@ -47,7 +55,9 @@ A text field allows a user to enter a plain text value with a keyboard.
 ## As textarea
 
 <Example>
-  <TextField placeholder="Enter some text." asTextArea />
+  <Box width="300px" maxWidth="100%">
+    <TextField placeholder="Enter some text." asTextArea />
+  </Box>
 
   ```jsx
   <TextField placeholder="Enter some text." asTextArea />
@@ -75,9 +85,9 @@ A text field allows a user to enter a plain text value with a keyboard.
 ## Quiet
 
 <Example>
-  <Column gap>
-  <TextField placeholder="Enter some text." variant="quiet" style={{ fontSize: '2rem' }} />
-  <TextField placeholder="Enter some text." variant="quiet" />
+  <Column gap width="300px" maxWidth="100%">
+    <TextField placeholder="Enter some text." variant="quiet" style={{ fontSize: '2rem' }} />
+    <TextField placeholder="Enter some text." variant="quiet" />
   </Column>
 
   ```jsx
