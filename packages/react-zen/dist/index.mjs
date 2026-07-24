@@ -26,6 +26,7 @@ import { create } from 'zustand';
 import { animated, useTransition } from '@react-spring/web';
 import { Menubar as Menubar$1 } from '@base-ui/react/menubar';
 import { Meter as Meter$1 } from '@base-ui/react/meter';
+import { NavigationMenu } from '@base-ui/react/navigation-menu';
 import { NumberField as NumberField$1 } from '@base-ui/react/number-field';
 import { OTPField as OTPField$1 } from '@base-ui/react/otp-field';
 import { Progress } from '@base-ui/react/progress';
@@ -2810,32 +2811,6 @@ var avatar = tv({
     size: "md"
   }
 });
-var sidebar = tv({
-  slots: {
-    root: [
-      "flex flex-col h-full min-h-0 overflow-hidden",
-      "border-r border-edge bg-surface-raised",
-      "transition-[width] duration-200 ease-out",
-      "w-64 data-[collapsed]:w-14"
-    ],
-    header: "flex items-center gap-3 px-3 py-3 min-h-14",
-    content: "flex flex-col flex-1 gap-4 overflow-y-auto overflow-x-hidden px-2 py-2",
-    footer: "flex items-center gap-3 px-3 py-3 mt-auto border-t border-edge-muted",
-    group: "flex flex-col gap-0.5",
-    groupTitle: [
-      "px-2 py-1.5 text-xs font-bold uppercase tracking-wide text-foreground-muted",
-      "whitespace-nowrap overflow-hidden"
-    ],
-    item: [
-      "flex items-center gap-3 px-2 py-2 rounded cursor-pointer outline-none w-full",
-      "text-base text-foreground-primary no-underline whitespace-nowrap",
-      "hover:bg-interactive",
-      "focus-visible:ring-2 focus-visible:ring-focus-ring",
-      "data-[selected]:bg-interactive data-[selected]:font-semibold",
-      "data-[disabled]:text-foreground-disabled data-[disabled]:cursor-default data-[disabled]:hover:bg-transparent"
-    ]
-  }
-});
 var tag = tv({
   slots: {
     base: [
@@ -3849,7 +3824,7 @@ function ComboBox({
           Combobox.InputGroup,
           {
             className: cn(
-              "flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6",
+              "relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 overflow-hidden",
               "focus-within:border-edge-strong"
             ),
             children: [
@@ -3857,10 +3832,10 @@ function ComboBox({
                 Combobox.Input,
                 {
                   placeholder,
-                  className: "flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted"
+                  className: "w-full py-2 pl-3 pr-10 bg-transparent border-none outline-none placeholder:text-foreground-muted"
                 }
               ),
-              /* @__PURE__ */ jsx(Combobox.Trigger, { className: "flex items-center mr-3 text-foreground-muted hover:text-foreground-primary", children: /* @__PURE__ */ jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) }) })
+              /* @__PURE__ */ jsx(Combobox.Trigger, { className: "absolute right-3 z-10 flex items-center text-foreground-muted hover:text-foreground-primary", children: /* @__PURE__ */ jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) }) })
             ]
           }
         ),
@@ -3901,16 +3876,16 @@ function Modal({
     ...style,
     ...offset ? { "--modal-offset": offset } : {}
   };
-  const popupClassName = cn("relative z-[9999]", placementClasses[placement], className);
+  const popupClassName2 = cn("relative z-[9999]", placementClasses[placement], className);
   if (kind === "alert-dialog") {
     return /* @__PURE__ */ jsxs(AlertDialog$1.Portal, { ...props, children: [
       /* @__PURE__ */ jsx(AlertDialog$1.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-      /* @__PURE__ */ jsx(AlertDialog$1.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsx(AlertDialog$1.Popup, { className: popupClassName, style: modalStyle, children }) })
+      /* @__PURE__ */ jsx(AlertDialog$1.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsx(AlertDialog$1.Popup, { className: popupClassName2, style: modalStyle, children }) })
     ] });
   }
   return /* @__PURE__ */ jsxs(Dialog$1.Portal, { ...props, children: [
     /* @__PURE__ */ jsx(Dialog$1.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-    /* @__PURE__ */ jsx(Dialog$1.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsx(Dialog$1.Popup, { className: popupClassName, style: modalStyle, children }) })
+    /* @__PURE__ */ jsx(Dialog$1.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsx(Dialog$1.Popup, { className: popupClassName2, style: modalStyle, children }) })
   ] });
 }
 Modal.zenOverlayType = "dialog";
@@ -4086,7 +4061,8 @@ function TextField({
     }
   }, [value]);
   const inputClasses = cn(
-    "flex-1 min-w-0 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted",
+    "flex-1 min-w-0 w-full py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted",
+    allowCopy && !asTextArea && "pr-10",
     asTextArea && "p-3 w-full",
     resize && resizeClasses[resize]
   );
@@ -4101,6 +4077,7 @@ function TextField({
           isReadOnly && "bg-surface-raised focus-within:border-edge",
           isDisabled && "text-foreground-disabled bg-surface-disabled",
           asTextArea && "p-0",
+          allowCopy && !asTextArea && "overflow-hidden",
           variant === "quiet" && "py-0 px-0 shadow-none rounded-none border-transparent bg-transparent text-[length:inherit] focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent",
           variant === "quiet" && allowCopy && "pr-3",
           className
@@ -4123,8 +4100,9 @@ function TextField({
             {
               value: String(inputValue),
               className: cn(
-                "mr-3 text-foreground-muted cursor-pointer hover:text-foreground-primary",
+                "text-foreground-muted cursor-pointer hover:text-foreground-primary",
                 !inputValue && "text-foreground-disabled",
+                !asTextArea && "absolute right-3 z-10",
                 asTextArea && "absolute top-3 right-3 z-10 mr-0"
               )
             }
@@ -4558,7 +4536,7 @@ function DatePicker({
           ]
         }
       ),
-      /* @__PURE__ */ jsx(Popover, { children: /* @__PURE__ */ jsx(
+      /* @__PURE__ */ jsx(Popover, { className: "bg-surface-overlay border border-edge-muted rounded-lg shadow-lg p-4", children: /* @__PURE__ */ jsx(
         Calendar,
         {
           ...calendarProps,
@@ -4632,7 +4610,20 @@ function Tooltip({
   ...props
 }) {
   return /* @__PURE__ */ jsx(Tooltip$1.Portal, { children: /* @__PURE__ */ jsx(Tooltip$1.Positioner, { ...props, side: placement ?? side, sideOffset, children: /* @__PURE__ */ jsxs(Tooltip$1.Popup, { className: cn("group", tooltip(), className), children: [
-    showArrow && /* @__PURE__ */ jsx(Tooltip$1.Arrow, { className: "w-2 h-2 fill-surface-inverted" }),
+    showArrow && /* @__PURE__ */ jsx(
+      Tooltip$1.Arrow,
+      {
+        style: ({ side: side2 }) => ({
+          width: 12,
+          height: 6,
+          ...side2 === "top" && { bottom: -6, transform: "rotate(180deg)" },
+          ...side2 === "bottom" && { top: -6 },
+          ...side2 === "left" && { right: -9, transform: "rotate(90deg)" },
+          ...side2 === "right" && { left: -9, transform: "rotate(-90deg)" }
+        }),
+        children: /* @__PURE__ */ jsx("svg", { "aria-hidden": "true", viewBox: "0 0 12 6", className: "block w-full h-full", children: /* @__PURE__ */ jsx("path", { d: "M0 6 6 0l6 6Z", className: "fill-surface-inverted" }) })
+      }
+    ),
     children
   ] }) }) });
 }
@@ -5334,18 +5325,18 @@ function Menu({
     }
     onSelectionChange?.(next);
   };
-  const popupClassName = cn(
+  const popupClassName2 = cn(
     "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
     className
   );
   const popupContent = /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children });
   if (primitiveKind === "context-menu") {
-    return /* @__PURE__ */ jsx(ContextMenu$1.Portal, { children: /* @__PURE__ */ jsx(ContextMenu$1.Positioner, { children: /* @__PURE__ */ jsx(ContextMenu$1.Popup, { ...props, className: popupClassName, children: popupContent }) }) });
+    return /* @__PURE__ */ jsx(ContextMenu$1.Portal, { children: /* @__PURE__ */ jsx(ContextMenu$1.Positioner, { children: /* @__PURE__ */ jsx(ContextMenu$1.Popup, { ...props, className: popupClassName2, children: popupContent }) }) });
   }
   if (primitiveKind === "menu") {
-    return /* @__PURE__ */ jsx(Menu$1.Portal, { children: /* @__PURE__ */ jsx(Menu$1.Positioner, { children: /* @__PURE__ */ jsx(Menu$1.Popup, { ...props, className: popupClassName, children: popupContent }) }) });
+    return /* @__PURE__ */ jsx(Menu$1.Portal, { children: /* @__PURE__ */ jsx(Menu$1.Positioner, { children: /* @__PURE__ */ jsx(Menu$1.Popup, { ...props, className: popupClassName2, children: popupContent }) }) });
   }
-  return /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsx("div", { ...props, role: "menu", className: popupClassName, children }) });
+  return /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsx("div", { ...props, role: "menu", className: popupClassName2, children }) });
 }
 function MenuItem({
   id,
@@ -5550,14 +5541,48 @@ function Meter({
     }
   );
 }
-var NavbarContext = createContext(void 0);
-var useNavigationContext = () => {
-  const context = useContext(NavbarContext);
-  if (!context) {
-    throw new Error("useNavigationContext must be used within a Navbar");
-  }
-  return context;
-};
+var NavbarContext = createContext({ showArrow: true });
+var triggerClassName = cn(
+  "flex items-center gap-1 select-none cursor-pointer rounded-md px-3 py-2",
+  "text-base font-medium text-foreground-primary bg-transparent border-0",
+  "hover:bg-interactive data-[popup-open]:bg-interactive",
+  "outline-none [&:focus-visible]:outline-2 [&:focus-visible]:outline-offset-1 [&:focus-visible]:outline-focus-ring"
+);
+var itemLinkClassName = cn(
+  "flex items-center gap-1 select-none cursor-pointer rounded-md px-3 py-2",
+  "hover:bg-interactive",
+  "outline-none [&:focus-visible]:outline-2 [&:focus-visible]:outline-offset-1 [&:focus-visible]:outline-focus-ring"
+);
+var contentClassName = cn(
+  "w-max",
+  // Menu already provides the popup padding. Let the shared navbar popup own
+  // the surface so nested menus do not render a second border and shadow.
+  "[&>[role=menu]]:border-0 [&>[role=menu]]:rounded-none [&>[role=menu]]:shadow-none",
+  "transition-[opacity,transform,translate] duration-(--duration) ease-(--easing)",
+  "data-[starting-style]:opacity-0 data-[ending-style]:opacity-0",
+  "data-[starting-style]:data-[activation-direction=left]:translate-x-[-50%]",
+  "data-[starting-style]:data-[activation-direction=right]:translate-x-[50%]",
+  "data-[ending-style]:data-[activation-direction=left]:translate-x-[50%]",
+  "data-[ending-style]:data-[activation-direction=right]:translate-x-[-50%]"
+);
+var positionerClassName = cn(
+  "box-border h-(--positioner-height) w-(--positioner-width) max-w-(--available-width)",
+  "transition-[top,left,right,bottom] duration-(--duration) ease-(--easing)",
+  "data-[instant]:transition-none",
+  // Invisible bridge so the pointer can travel from trigger to popup without closing.
+  'before:absolute before:content-[""]',
+  "data-[side=bottom]:before:top-[-10px] data-[side=bottom]:before:right-0 data-[side=bottom]:before:left-0 data-[side=bottom]:before:h-2.5",
+  "data-[side=top]:before:bottom-[-10px] data-[side=top]:before:right-0 data-[side=top]:before:left-0 data-[side=top]:before:h-2.5"
+);
+var popupClassName = cn(
+  "relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin)",
+  // `overflow-hidden` clips the nested menu's square background to the rounded
+  // corners so the popup border stays visible all the way around.
+  "overflow-hidden rounded-md border border-edge bg-surface-base shadow-lg outline-none",
+  "transition-[opacity,transform,width,height,scale,translate] duration-(--duration) ease-(--easing)",
+  "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
+  "data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[ending-style]:duration-150 data-[ending-style]:ease-[ease]"
+);
 function Navbar({
   showArrow = true,
   className,
@@ -5565,8 +5590,22 @@ function Navbar({
   color: _color,
   ...props
 }) {
-  const [activeMenu, setActiveMenu] = useState("");
-  return /* @__PURE__ */ jsx(NavbarContext.Provider, { value: { activeMenu, setActiveMenu }, children: /* @__PURE__ */ jsx(Row, { ...props, alignItems: "center", gap: "1", className, children }) });
+  return /* @__PURE__ */ jsx(NavbarContext.Provider, { value: { showArrow }, children: /* @__PURE__ */ jsxs(NavigationMenu.Root, { className: cn("relative", className), ...props, children: [
+    /* @__PURE__ */ jsx(NavigationMenu.List, { className: "flex items-center gap-1", children }),
+    /* @__PURE__ */ jsx(NavigationMenu.Portal, { children: /* @__PURE__ */ jsx(
+      NavigationMenu.Positioner,
+      {
+        className: positionerClassName,
+        sideOffset: 10,
+        collisionPadding: 16,
+        style: {
+          ["--duration"]: "0.35s",
+          ["--easing"]: "cubic-bezier(0.22, 1, 0.36, 1)"
+        },
+        children: /* @__PURE__ */ jsx(NavigationMenu.Popup, { className: popupClassName, children: /* @__PURE__ */ jsx(NavigationMenu.Viewport, { className: "relative h-full w-full overflow-hidden" }) })
+      }
+    ) })
+  ] }) });
 }
 function NavbarItem({
   label,
@@ -5575,39 +5614,29 @@ function NavbarItem({
   color: _color,
   ...props
 }) {
-  const { activeMenu, setActiveMenu } = useNavigationContext();
+  const { showArrow } = useContext(NavbarContext);
   if (label) {
-    return /* @__PURE__ */ jsxs(HoverTrigger, { isOpen: activeMenu === label, onHoverStart: () => setActiveMenu(label), children: [
-      /* @__PURE__ */ jsxs(
-        Row,
-        {
-          ...props,
-          alignItems: "center",
-          gap: "1",
-          paddingX: "3",
-          paddingY: "2",
-          borderRadius: "md",
-          className: cn("cursor-pointer", "hover:bg-interactive", className),
-          children: [
-            /* @__PURE__ */ jsx(Text, { children: label }),
-            /* @__PURE__ */ jsx(Icon, { rotate: 90, size: "sm", color: "muted", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) })
-          ]
-        }
-      ),
-      children
+    return /* @__PURE__ */ jsxs(NavigationMenu.Item, { ...props, children: [
+      /* @__PURE__ */ jsxs(NavigationMenu.Trigger, { className: cn(triggerClassName, className), children: [
+        /* @__PURE__ */ jsx(Text, { children: label }),
+        showArrow && /* @__PURE__ */ jsx(NavigationMenu.Icon, { className: "flex text-foreground-muted transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180", children: /* @__PURE__ */ jsx(icons_exports.ChevronDown, { className: "size-4" }) })
+      ] }),
+      /* @__PURE__ */ jsx(NavigationMenu.Content, { className: contentClassName, children })
     ] });
   }
+  return /* @__PURE__ */ jsx(NavigationMenu.Item, { ...props, className: cn(itemLinkClassName, className), children });
+}
+function NavbarLink({ className, ...props }) {
   return /* @__PURE__ */ jsx(
-    Row,
+    NavigationMenu.Link,
     {
-      ...props,
-      alignItems: "center",
-      gap: "1",
-      paddingX: "3",
-      paddingY: "2",
-      borderRadius: "md",
-      className: cn("cursor-pointer", "hover:bg-interactive", className),
-      children
+      className: cn(
+        "flex items-center gap-1 select-none rounded-md px-3 py-2 no-underline text-foreground-primary",
+        "hover:bg-interactive",
+        "outline-none [&:focus-visible]:outline-2 [&:focus-visible]:outline-offset-1 [&:focus-visible]:outline-focus-ring",
+        className
+      ),
+      ...props
     }
   );
 }
@@ -5941,7 +5970,7 @@ function PasswordField({
       "div",
       {
         className: cn(
-          "flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative",
+          "flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative overflow-hidden",
           "focus-within:border-edge-strong",
           className
         ),
@@ -5954,14 +5983,14 @@ function PasswordField({
               type: show ? "text" : "password",
               disabled: isDisabled,
               readOnly: isReadOnly,
-              className: "border-0 outline-none py-2 px-3 bg-transparent w-full flex-1 placeholder:text-foreground-muted"
+              className: "border-0 outline-none py-2 pl-3 pr-10 bg-transparent w-full placeholder:text-foreground-muted"
             }
           ),
           /* @__PURE__ */ jsx(
             "button",
             {
               type: "button",
-              className: "mr-3",
+              className: "absolute right-3 z-10",
               "aria-label": show ? "Hide password" : "Show password",
               onClick: () => setShow((state) => !state),
               children: /* @__PURE__ */ jsx(Icon, { children: show ? /* @__PURE__ */ jsx(EyeSlash_default, {}) : /* @__PURE__ */ jsx(Eye_default, {}) })
@@ -6207,12 +6236,12 @@ function SearchField({
       {
         role: "search",
         className: cn(
-          "relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6",
+          "relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 overflow-hidden",
           "focus-within:border-edge-strong",
           className
         ),
         children: [
-          /* @__PURE__ */ jsx(Icon, { className: "ml-3", color: "muted", children: /* @__PURE__ */ jsx(icons_exports.Search, {}) }),
+          /* @__PURE__ */ jsx(Icon, { className: "absolute left-3 z-10", color: "muted", children: /* @__PURE__ */ jsx(icons_exports.Search, {}) }),
           /* @__PURE__ */ jsx(
             "input",
             {
@@ -6221,7 +6250,7 @@ function SearchField({
               type: "search",
               placeholder,
               value: search,
-              className: "flex-1 py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden",
+              className: "w-full py-2 px-10 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden",
               onChange: (event) => handleChange(event.target.value),
               onKeyDown: (event) => {
                 props.onKeyDown?.(event);
@@ -6235,7 +6264,7 @@ function SearchField({
             "button",
             {
               type: "button",
-              className: "mr-3 text-foreground-muted",
+              className: "absolute right-3 z-10 text-foreground-muted",
               "aria-label": "Clear search",
               onClick: () => handleChange(""),
               children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.X, {}) })
@@ -6446,107 +6475,6 @@ function SheetHeader({ title, showClose = true, className, children }) {
       }
     )
   ] });
-}
-var SidebarContext = createContext({
-  isCollapsed: false,
-  toggle: () => void 0
-});
-function useSidebar() {
-  return useContext(SidebarContext);
-}
-function Sidebar({
-  isCollapsed,
-  defaultCollapsed,
-  onCollapseChange,
-  className,
-  children,
-  ...props
-}) {
-  const [uncontrolledCollapsed, setUncontrolledCollapsed] = useState(defaultCollapsed ?? false);
-  const collapsed = isCollapsed ?? uncontrolledCollapsed;
-  const toggle = () => {
-    if (isCollapsed === void 0) {
-      setUncontrolledCollapsed(!collapsed);
-    }
-    onCollapseChange?.(!collapsed);
-  };
-  return /* @__PURE__ */ jsx(SidebarContext.Provider, { value: { isCollapsed: collapsed, toggle }, children: /* @__PURE__ */ jsx(
-    "aside",
-    {
-      ...props,
-      "data-collapsed": collapsed || void 0,
-      className: cn(sidebar().root(), className),
-      children
-    }
-  ) });
-}
-function SidebarHeader({ className, children, ...props }) {
-  return /* @__PURE__ */ jsx("div", { ...props, className: cn(sidebar().header(), className), children });
-}
-function SidebarContent({ className, children, ...props }) {
-  return /* @__PURE__ */ jsx("div", { ...props, className: cn(sidebar().content(), className), children });
-}
-function SidebarFooter({ className, children, ...props }) {
-  return /* @__PURE__ */ jsx("div", { ...props, className: cn(sidebar().footer(), className), children });
-}
-function SidebarGroup({ title, className, children, ...props }) {
-  const { isCollapsed } = useSidebar();
-  return /* @__PURE__ */ jsxs("div", { ...props, role: "group", className: cn(sidebar().group(), className), children: [
-    title && !isCollapsed && /* @__PURE__ */ jsx("div", { className: sidebar().groupTitle(), children: title }),
-    children
-  ] });
-}
-function SidebarItem({
-  icon,
-  label,
-  href,
-  isSelected,
-  isDisabled,
-  onPress,
-  className,
-  children,
-  ...props
-}) {
-  const { isCollapsed } = useSidebar();
-  const Element = href && !isDisabled ? "a" : "button";
-  return /* @__PURE__ */ jsxs(
-    Element,
-    {
-      ...props,
-      href: href && !isDisabled ? href : void 0,
-      type: Element === "button" ? "button" : void 0,
-      disabled: Element === "button" ? isDisabled : void 0,
-      "aria-current": isSelected ? "page" : void 0,
-      "data-selected": isSelected || void 0,
-      "data-disabled": isDisabled || void 0,
-      title: isCollapsed ? label : void 0,
-      className: cn(sidebar().item(), isCollapsed && "justify-center px-0", className),
-      onClick: isDisabled ? void 0 : onPress,
-      children: [
-        icon && /* @__PURE__ */ jsx(Icon, { size: "sm", children: icon }),
-        !isCollapsed && /* @__PURE__ */ jsxs(Fragment, { children: [
-          label,
-          children
-        ] })
-      ]
-    }
-  );
-}
-function SidebarToggle({ onPress, ...props }) {
-  const { isCollapsed, toggle } = useSidebar();
-  return /* @__PURE__ */ jsx(
-    Button,
-    {
-      variant: "quiet",
-      "aria-label": isCollapsed ? "Expand sidebar" : "Collapse sidebar",
-      ...props,
-      onPress: (event) => {
-        toggle();
-        onPress?.(event);
-      },
-      children: /* @__PURE__ */ jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsx(icons_exports.PanelLeft, {}) })
-    }
-  );
 }
 function Skeleton({
   width = "100%",
@@ -6969,7 +6897,6 @@ function Toggle({
         className: cn(
           "flex items-center justify-center whitespace-nowrap gap-3 font-medium bg-interactive border border-transparent rounded p-2 relative cursor-pointer",
           "hover:bg-interactive-hover",
-          "pressed:bg-interactive-pressed",
           "data-[pressed]:text-primary-foreground data-[pressed]:bg-primary",
           className
         ),
@@ -6978,6 +6905,7 @@ function Toggle({
     )
   ] });
 }
+var ToggleGroupVariantContext = createContext(void 0);
 function ToggleGroup({
   label,
   value,
@@ -6999,7 +6927,7 @@ function ToggleGroup({
   };
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     label && /* @__PURE__ */ jsx(Label, { id: labelId, children: label }),
-    /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx(ToggleGroupVariantContext.Provider, { value: variant, children: /* @__PURE__ */ jsx(
       ToggleGroup$1,
       {
         ...props,
@@ -7009,12 +6937,12 @@ function ToggleGroup({
         multiple: selectionMode === "multiple",
         onValueChange: handleChange,
         className: cn(
-          "bg-surface-base shadow-sm border border-edge rounded overflow-hidden",
+          "inline-flex bg-surface-base shadow-sm border border-edge rounded overflow-hidden",
           className
         ),
         children
       }
-    )
+    ) })
   ] });
 }
 function ToggleGroupItem({
@@ -7024,6 +6952,7 @@ function ToggleGroupItem({
   isDisabled,
   ...props
 }) {
+  const variant = useContext(ToggleGroupVariantContext);
   return /* @__PURE__ */ jsx(
     Toggle$1,
     {
@@ -7034,7 +6963,7 @@ function ToggleGroupItem({
         "text-foreground-muted bg-surface-base font-bold flex items-center justify-center p-2 cursor-pointer outline-none",
         "[&:not(:first-child)]:border-l [&:not(:first-child)]:border-edge",
         "hover:bg-interactive",
-        "data-[pressed]:text-foreground-primary data-[pressed]:bg-interactive",
+        variant === "primary" ? "data-[pressed]:text-primary-foreground data-[pressed]:bg-primary" : "data-[pressed]:text-foreground-primary data-[pressed]:bg-interactive",
         "data-[disabled]:text-foreground-disabled",
         className
       ),
@@ -7087,6 +7016,6 @@ function ZenProvider({
   return /* @__PURE__ */ jsx(ToastProvider, { ...toast2, children });
 }
 
-export { Accordion, AccordionItem, AlertBanner, AlertDialog, AspectRatio, Avatar, Badge, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Carousel, CarouselItem, Checkbox, CheckboxGroup, Code, Collapsible, CollapsiblePanel, CollapsibleTrigger, Column, ComboBox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, ConfirmationDialog, Container, ContextMenu, CopyButton, DataCard, DataColumn, DataTable, DatePicker, Dialog, DialogTrigger, Dots, EmptyState, FileTrigger, Flexbox, FloatingTooltip, Focusable, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, Kbd, Label, List, ListItem, ListPrimitiveProvider, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, MenuTrigger, Menubar, MenubarMenu, Meter, Modal, Navbar, NavbarContext, NavbarItem, NumberField, OTPField, PALETTES, PageHeader, PageHeaderActions, PageHeaderTitle, Pagination, PaletteSwitcher, PasswordField, Popover, Pressable, ProgressBar, ProgressCircle, Radio, RadioGroup, ResizableHandle, ResizablePanel, ResizablePanelGroup, RouterProvider, Row, ScrollArea, SearchField, Select, Separator2 as Separator, Sheet, SheetHeader, Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, SidebarItem, SidebarToggle, Skeleton, SkeletonAvatar, SkeletonText, Slider, Spinner, StatusLight, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator, Tooltip, TooltipBubble, TooltipTrigger, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useNavigationContext, useSidebar, useTheme, useToast };
+export { Accordion, AccordionItem, AlertBanner, AlertDialog, AspectRatio, Avatar, Badge, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Carousel, CarouselItem, Checkbox, CheckboxGroup, Code, Collapsible, CollapsiblePanel, CollapsibleTrigger, Column, ComboBox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, ConfirmationDialog, Container, ContextMenu, CopyButton, DataCard, DataColumn, DataTable, DatePicker, Dialog, DialogTrigger, Dots, EmptyState, FileTrigger, Flexbox, FloatingTooltip, Focusable, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, Kbd, Label, List, ListItem, ListPrimitiveProvider, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, MenuTrigger, Menubar, MenubarMenu, Meter, Modal, Navbar, NavbarItem, NavbarLink, NumberField, OTPField, PALETTES, PageHeader, PageHeaderActions, PageHeaderTitle, Pagination, PaletteSwitcher, PasswordField, Popover, Pressable, ProgressBar, ProgressCircle, Radio, RadioGroup, ResizableHandle, ResizablePanel, ResizablePanelGroup, RouterProvider, Row, ScrollArea, SearchField, Select, Separator2 as Separator, Sheet, SheetHeader, Skeleton, SkeletonAvatar, SkeletonText, Slider, Spinner, StatusLight, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator, Tooltip, TooltipBubble, TooltipTrigger, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useTheme, useToast };
 //# sourceMappingURL=index.mjs.map
 //# sourceMappingURL=index.mjs.map

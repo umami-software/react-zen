@@ -10,7 +10,6 @@ export default {
   navbar: 'Navbar',
   pagination: 'Pagination',
   'palette-switcher': 'Palette Switcher',
-  sidebar: 'Sidebar',
   tabs: 'Tabs',
   toolbar: 'Toolbar',
   'theme-button': 'Theme Button',

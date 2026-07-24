@@ -65,7 +65,6 @@ const nextConfig: NextConfig = {
       'menu',
       'nav-menu',
       'navbar',
-      'sidebar',
       'tabs',
       'theme-button',
     ];

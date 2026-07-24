@@ -4,7 +4,7 @@ title: Navbar
 
 # Navbar
 
-A horizontal navigation bar for website headers. Supports dropdown menus, links, and nested navigation items with hover and focus interactions for accessible site navigation.
+A horizontal navigation bar for website headers. Built on an accessible navigation menu primitive, it supports dropdown menus, links, and nested navigation items with a shared animated dropdown, full keyboard navigation, and hover/focus interactions.
 
 <Example>
   <Navbar>
@@ -84,7 +84,24 @@ A horizontal navigation bar for website headers. Supports dropdown menus, links,
 <Example>
   <DataTable
     data={[
-      { name: 'label', value: 'string', description: 'Item label (enables hover dropdown)' },
+      { name: 'label', value: 'string', description: 'Item label. When set, the item becomes a trigger and its children render in the dropdown.' },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+### NavbarLink
+
+A semantic navigation link that renders an `<a>` element and participates in keyboard navigation. Use it for direct links instead of a plain anchor.
+
+<Example>
+  <DataTable
+    data={[
+      { name: 'href', value: 'string', description: 'The destination URL.' },
+      { name: 'active', value: 'boolean', description: 'Marks the link as the current page (default: false).' },
     ]}
   >
     <DataColumn id="name" label="Name" />

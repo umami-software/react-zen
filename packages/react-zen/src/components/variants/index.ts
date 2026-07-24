@@ -431,36 +431,6 @@ export const avatar = tv({
 
 export type AvatarVariants = VariantProps<typeof avatar>;
 
-// Sidebar variants
-export const sidebar = tv({
-  slots: {
-    root: [
-      'flex flex-col h-full min-h-0 overflow-hidden',
-      'border-r border-edge bg-surface-raised',
-      'transition-[width] duration-200 ease-out',
-      'w-64 data-[collapsed]:w-14',
-    ],
-    header: 'flex items-center gap-3 px-3 py-3 min-h-14',
-    content: 'flex flex-col flex-1 gap-4 overflow-y-auto overflow-x-hidden px-2 py-2',
-    footer: 'flex items-center gap-3 px-3 py-3 mt-auto border-t border-edge-muted',
-    group: 'flex flex-col gap-0.5',
-    groupTitle: [
-      'px-2 py-1.5 text-xs font-bold uppercase tracking-wide text-foreground-muted',
-      'whitespace-nowrap overflow-hidden',
-    ],
-    item: [
-      'flex items-center gap-3 px-2 py-2 rounded cursor-pointer outline-none w-full',
-      'text-base text-foreground-primary no-underline whitespace-nowrap',
-      'hover:bg-interactive',
-      'focus-visible:ring-2 focus-visible:ring-focus-ring',
-      'data-[selected]:bg-interactive data-[selected]:font-semibold',
-      'data-[disabled]:text-foreground-disabled data-[disabled]:cursor-default data-[disabled]:hover:bg-transparent',
-    ],
-  },
-});
-
-export type SidebarVariants = VariantProps<typeof sidebar>;
-
 // Tag variants
 export const tag = tv({
   slots: {
