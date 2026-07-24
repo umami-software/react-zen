@@ -159,7 +159,7 @@ export function Select({
                     }}
                   />
                 )}
-                {isLoading && <Loading icon="dots" placement="center" size="sm" height="60px" />}
+                {isLoading && <Loading className="py-8" icon="dots" placement="center" size="sm" />}
                 <ListPrimitiveProvider kind="select">
                   <List
                     {...listProps}
