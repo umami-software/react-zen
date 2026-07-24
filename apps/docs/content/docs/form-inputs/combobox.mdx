@@ -31,6 +31,22 @@ A combo box combines a text input with a listbox, allowing users to filter a lis
   ```
 </Example>
 
+## Empty state
+
+When filtering returns no matches, the combo box displays a helpful empty state. Use
+`renderEmptyState` to replace it with custom content.
+
+<Example>
+  <ComboBoxEmptyExample />
+
+  ```jsx
+  <ComboBox
+    items={['One', 'Two', 'Three']}
+    renderEmptyState={() => <Text color="muted">Nothing matched your search.</Text>}
+  />
+  ```
+</Example>
+
 ## Component props
 
 <Example>
@@ -43,7 +59,7 @@ A combo box combines a text input with a listbox, allowing users to filter a lis
       { name: 'isDisabled', value: 'boolean', description: 'Disables the combobox' },
       { name: 'onInputChange', value: '(value: string) => void', description: 'Called when input changes' },
       { name: 'onSelectionChange', value: '(key: string) => void', description: 'Called when selection changes' },
-      { name: 'renderEmptyState', value: 'Function', description: 'Render function for empty state' },
+      { name: 'renderEmptyState', value: 'Function', description: 'Replaces the default empty-state message' },
     ]}
   >
     <DataColumn id="name" label="Name" />

@@ -136,7 +136,15 @@ export function ComboBox({
                   </BaseCombobox.Collection>
                 </List>
               </ListPrimitiveProvider>
-              {renderEmptyState && <BaseCombobox.Empty>{renderEmptyState({})}</BaseCombobox.Empty>}
+              <BaseCombobox.Empty>
+                <div className="flex min-h-16 items-center justify-center px-4 py-3 text-center">
+                  {renderEmptyState ? (
+                    renderEmptyState({})
+                  ) : (
+                    <span className="text-base text-foreground-muted">No items found.</span>
+                  )}
+                </div>
+              </BaseCombobox.Empty>
             </BaseCombobox.Popup>
           </BaseCombobox.Positioner>
         </BaseCombobox.Portal>

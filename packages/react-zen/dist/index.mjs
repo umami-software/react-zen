@@ -3793,7 +3793,7 @@ function ComboBox({
             }
             return item.element ?? /* @__PURE__ */ jsx(ListItem, { value: item.value, children: item.label }, item.value);
           } }) }) }),
-          renderEmptyState && /* @__PURE__ */ jsx(Combobox.Empty, { children: renderEmptyState({}) })
+          /* @__PURE__ */ jsx(Combobox.Empty, { children: /* @__PURE__ */ jsx("div", { className: "flex min-h-32 flex-col items-center justify-center gap-2 px-4 py-6 text-center", children: renderEmptyState ? renderEmptyState({}) : /* @__PURE__ */ jsx("span", { className: "text-foreground-muted", "aria-hidden": "true", children: /* @__PURE__ */ jsx(Icon, { size: "md", children: /* @__PURE__ */ jsx(icons_exports.SearchX, {}) }) }) }) })
         ] }) }) })
       ] })
     }

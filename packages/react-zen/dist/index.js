@@ -3818,7 +3818,7 @@ function ComboBox({
             }
             return item.element ?? /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value);
           } }) }) }),
-          renderEmptyState && /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Empty, { children: renderEmptyState({}) })
+          /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Empty, { children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex min-h-32 flex-col items-center justify-center gap-2 px-4 py-6 text-center", children: renderEmptyState ? renderEmptyState({}) : /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-foreground-muted", "aria-hidden": "true", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "md", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.SearchX, {}) }) }) }) })
         ] }) }) })
       ] })
     }

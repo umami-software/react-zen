@@ -6,6 +6,7 @@ export { BreakpointExample } from './BreakpointExample';
 export { CalendarExample } from './CalendarExample';
 export { CheckboxGroupExample } from './CheckboxGroupExample';
 export { ColorSwatchesExample } from './ColorSwatchesExample';
+export { ComboBoxEmptyExample } from './ComboBoxEmptyExample';
 export { CommandDialogExample, CommandExample } from './CommandExample';
 export { ConfirmationDialogExample } from './ConfirmationDialogExample';
 export { DatePickerExample } from './DatePickerExample';
