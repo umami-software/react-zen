@@ -36,6 +36,42 @@ A badge displays a small label used to highlight a status or category.
   ```
 </Example>
 
+## Colors
+
+In addition to the semantic variants above, `Badge` supports every Tailwind base color as a variant.
+
+<Example>
+  <Badge variant="slate">slate</Badge>
+  <Badge variant="gray">gray</Badge>
+  <Badge variant="zinc">zinc</Badge>
+  <Badge variant="neutral">neutral</Badge>
+  <Badge variant="stone">stone</Badge>
+  <Badge variant="red">red</Badge>
+  <Badge variant="orange">orange</Badge>
+  <Badge variant="amber">amber</Badge>
+  <Badge variant="yellow">yellow</Badge>
+  <Badge variant="lime">lime</Badge>
+  <Badge variant="green">green</Badge>
+  <Badge variant="emerald">emerald</Badge>
+  <Badge variant="teal">teal</Badge>
+  <Badge variant="cyan">cyan</Badge>
+  <Badge variant="sky">sky</Badge>
+  <Badge variant="blue">blue</Badge>
+  <Badge variant="indigo">indigo</Badge>
+  <Badge variant="violet">violet</Badge>
+  <Badge variant="purple">purple</Badge>
+  <Badge variant="fuchsia">fuchsia</Badge>
+  <Badge variant="pink">pink</Badge>
+  <Badge variant="rose">rose</Badge>
+
+  ```jsx
+  <Badge variant="blue">blue</Badge>
+  <Badge variant="green">green</Badge>
+  <Badge variant="rose">rose</Badge>
+  // ...all Tailwind base colors are supported
+  ```
+</Example>
+
 ## Sizes
 
 <Example>
@@ -53,7 +89,7 @@ A badge displays a small label used to highlight a status or category.
 <Example>
   <DataTable
     data={[
-      { name: 'variant', value: 'string', description: '"default" | "primary" | "outline" | "success" | "warning" | "error" | "info" (default: "default")' },
+      { name: 'variant', value: 'string', description: '"default" | "primary" | "outline" | "success" | "warning" | "error" | "info" | any Tailwind base color ("slate", "gray", "zinc", "neutral", "stone", "red", "orange", "amber", "yellow", "lime", "green", "emerald", "teal", "cyan", "sky", "blue", "indigo", "violet", "purple", "fuchsia", "pink", "rose") (default: "default")' },
       { name: 'size', value: 'string', description: '"sm" | "md" (default: "md")' },
     ]}
   >

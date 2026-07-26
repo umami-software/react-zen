@@ -438,6 +438,33 @@ import { Icon, Check, ChevronRight, X } from '@umami/react-zen';
 // Icon colors: primary, muted, disabled, or any theme color
 ```
 
+### Badges
+
+```tsx
+// Semantic variants
+<Badge variant="default">Default</Badge>
+<Badge variant="primary">Primary</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="error">Error</Badge>
+<Badge variant="info">Info</Badge>
+
+// Color variants — every Tailwind base color is supported:
+// slate, gray, zinc, neutral, stone, red, orange, amber, yellow, lime,
+// green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia,
+// pink, rose
+<Badge variant="blue">Blue</Badge>
+<Badge variant="emerald">Emerald</Badge>
+<Badge variant="rose">Rose</Badge>
+
+// Sizes
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+```
+
+Color variants use a soft tint that stays readable in both light and dark themes.
+
 ### Tags
 
 ```tsx
@@ -579,11 +606,12 @@ type Responsive<T> = T | Partial<Record<'base'|'sm'|'md'|'lg'|'xl'|'2xl', T>>;
 ## Best Practices
 
 1. **Use semantic colors** instead of raw Tailwind colors for theme consistency
-2. **Use responsive props** for mobile-first responsive design
-3. **Use FormField** wrapper for all form inputs to get labels, descriptions, and error handling
-4. **Use Row/Column** for simple layouts, Flexbox for complex ones
-5. **Use composition** - components are designed to work together
-6. **Leverage render props** when you need custom element rendering
+2. **Prefer component props over raw `className`** — reach for a component's built-in props (e.g. `<Box color="muted">` rather than `<Box className="text-foreground-muted">`) so styling stays theme-aware and consistent
+3. **Use responsive props** for mobile-first responsive design
+4. **Use FormField** wrapper for all form inputs to get labels, descriptions, and error handling
+5. **Use Row/Column** for simple layouts, Flexbox for complex ones
+6. **Use composition** - components are designed to work together
+7. **Leverage render props** when you need custom element rendering
 
 ## Component Reference
 
@@ -595,7 +623,7 @@ type Responsive<T> = T | Partial<Record<'base'|'sm'|'md'|'lg'|'xl'|'2xl', T>>;
 | Forms | Form, FormField, FormFieldArray, FormSubmitButton, FormResetButton |
 | Inputs | TextField, PasswordField, SearchField, Checkbox, RadioGroup, Switch, Toggle |
 | Selection | Select, ComboBox, List, ListItem, ListSection, TagGroup |
-| Feedback | AlertBanner, Toast, Loading, Spinner, ProgressBar, StatusLight |
+| Feedback | AlertBanner, Toast, Loading, Spinner, ProgressBar, StatusLight, Badge |
 | Overlays | Dialog, Modal, AlertDialog, ConfirmationDialog, Popover, Tooltip, Menu |
 | Data | Table, DataTable, DataCard, Breadcrumbs |
 | Media | Image, Icon |
