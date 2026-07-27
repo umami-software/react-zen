@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { Search, X } from '@/components/icons';
 import { useDebounce } from './hooks/useDebounce';
 import { Icon } from './Icon';
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './InputGroup';
 import { Label } from './Label';
-import { cn } from './lib/tailwind';
 
 export interface SearchFieldProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'onSearch'> {
@@ -51,24 +51,14 @@ export function SearchField({
   return (
     <>
       {label && <Label htmlFor={props.id}>{label}</Label>}
-      <div
-        role="search"
-        className={cn(
-          'relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 overflow-hidden',
-          'focus-within:border-edge-strong',
-          className,
-        )}
-      >
-        <Icon className="absolute left-3 z-10" color="muted">
-          <Search />
-        </Icon>
-        <input
+      <InputGroup role="search" className={className}>
+        <InputGroupInput
           aria-label="Search"
           {...props}
           type="search"
           placeholder={placeholder}
           value={search}
-          className="w-full py-2 px-10 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden"
+          className="[&::-webkit-search-cancel-button]:hidden"
           onChange={event => handleChange(event.target.value)}
           onKeyDown={event => {
             props.onKeyDown?.(event);
@@ -77,19 +67,27 @@ export function SearchField({
             }
           }}
         />
+        <InputGroupAddon align="inline-start">
+          <Icon color="muted">
+            <Search />
+          </Icon>
+        </InputGroupAddon>
         {search && (
-          <button
-            type="button"
-            className="absolute right-3 z-10 text-foreground-muted"
-            aria-label="Clear search"
-            onClick={() => handleChange('')}
-          >
-            <Icon size="sm">
-              <X />
-            </Icon>
-          </button>
+          <InputGroupAddon align="inline-end">
+            <InputGroupButton
+              size="icon-xs"
+              isDisabled={props.disabled}
+              aria-label="Clear search"
+              className="text-foreground-muted"
+              onClick={() => handleChange('')}
+            >
+              <Icon size="sm">
+                <X />
+              </Icon>
+            </InputGroupButton>
+          </InputGroupAddon>
         )}
-      </div>
+      </InputGroup>
     </>
   );
 }

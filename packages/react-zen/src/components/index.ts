@@ -46,6 +46,7 @@ export * from './hooks/useTheme';
 export * from './hooks/useToast';
 export * from './Icon';
 export * from './Image';
+export * from './InputGroup';
 export * from './Kbd';
 export * from './Label';
 export * from './List';

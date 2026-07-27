@@ -1,0 +1,143 @@
+---
+title: Input Group
+---
+
+# Input Group
+
+Input groups compose controls with icons, text, and actions without overlaying content or adding
+manual input padding. Keep addons after the control in the DOM and use `align` to place them
+visually.
+
+## Leading icon
+
+<Example>
+  <Box width="300px" maxWidth="100%">
+    <InputGroup>
+      <InputGroupInput placeholder="Search..." />
+      <InputGroupAddon align="inline-start">
+        <Lucide.Search />
+      </InputGroupAddon>
+    </InputGroup>
+  </Box>
+
+  ```jsx
+  <InputGroup>
+    <InputGroupInput placeholder="Search..." />
+    <InputGroupAddon align="inline-start">
+      <Search />
+    </InputGroupAddon>
+  </InputGroup>
+  ```
+</Example>
+
+## Leading and trailing text
+
+<Example>
+  <Box width="300px" maxWidth="100%">
+    <InputGroup>
+      <InputGroupInput placeholder="0.00" inputMode="decimal" />
+      <InputGroupAddon align="inline-start">
+        <InputGroupText>$</InputGroupText>
+      </InputGroupAddon>
+      <InputGroupAddon align="inline-end">
+        <InputGroupText>USD</InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
+  </Box>
+
+  ```jsx
+  <InputGroup>
+    <InputGroupInput placeholder="0.00" />
+    <InputGroupAddon align="inline-start">
+      <InputGroupText>$</InputGroupText>
+    </InputGroupAddon>
+    <InputGroupAddon align="inline-end">
+      <InputGroupText>USD</InputGroupText>
+    </InputGroupAddon>
+  </InputGroup>
+  ```
+</Example>
+
+## Trailing action
+
+<Example>
+  <Box width="300px" maxWidth="100%">
+    <InputGroup>
+      <InputGroupInput defaultValue="https://zen.umami.is" readOnly />
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton size="icon-xs" aria-label="Copy URL">
+          <Lucide.Copy />
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  </Box>
+
+  ```jsx
+  <InputGroup>
+    <InputGroupInput defaultValue="https://zen.umami.is" readOnly />
+    <InputGroupAddon align="inline-end">
+      <InputGroupButton size="icon-xs" aria-label="Copy URL">
+        <Copy />
+      </InputGroupButton>
+    </InputGroupAddon>
+  </InputGroup>
+  ```
+</Example>
+
+## Textarea
+
+<Example>
+  <Box width="300px" maxWidth="100%">
+    <InputGroup>
+      <InputGroupTextarea defaultValue="Grouped textarea content" rows={4} />
+      <InputGroupAddon align="block-start" className="justify-between pb-0">
+        <InputGroupText>Notes</InputGroupText>
+        <InputGroupButton size="icon-xs" aria-label="Copy notes">
+          <Lucide.Copy />
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  </Box>
+
+  ```jsx
+  <InputGroup>
+    <InputGroupTextarea rows={4} />
+    <InputGroupAddon align="block-start">
+      <InputGroupText>Notes</InputGroupText>
+      <InputGroupButton size="icon-xs" aria-label="Copy notes">
+        <Copy />
+      </InputGroupButton>
+    </InputGroupAddon>
+  </InputGroup>
+  ```
+</Example>
+
+## States and RTL
+
+<Example>
+  <Column gap width="300px" maxWidth="100%">
+    <InputGroup>
+      <InputGroupInput value="Read only" readOnly />
+      <InputGroupAddon align="inline-end">
+        <Lucide.Lock />
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupInput value="Disabled" disabled />
+      <InputGroupAddon align="inline-end">
+        <Lucide.Lock />
+      </InputGroupAddon>
+    </InputGroup>
+    <div dir="rtl">
+      <InputGroup>
+        <InputGroupInput placeholder="بحث..." />
+        <InputGroupAddon align="inline-start">
+          <Lucide.Search />
+        </InputGroupAddon>
+      </InputGroup>
+    </div>
+  </Column>
+</Example>
+
+For custom controls, add `data-slot="input-group-control"` so addons can focus the control and the
+group can apply consistent state styling.

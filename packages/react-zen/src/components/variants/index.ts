@@ -55,27 +55,23 @@ export type ButtonVariants = VariantProps<typeof button>;
 // Input field variants (TextField, SearchField, PasswordField, etc.)
 export const inputField = tv({
   base: [
-    'flex items-center px-3 gap-3',
+    'relative flex items-center',
     'text-base rounded border border-edge bg-surface-base shadow-sm',
-    'leading-6 relative text-foreground-primary',
+    'leading-6 text-foreground-primary transition-colors',
     'focus-within:border-edge-strong',
-    'focus-within:ring-2 focus-within:ring-focus-ring focus-within:ring-offset-1 focus-within:ring-offset-surface-base',
+    'has-[input:read-only]:bg-surface-raised has-[textarea:read-only]:bg-surface-raised',
+    'has-[:disabled]:bg-surface-disabled has-[:disabled]:opacity-50',
   ],
   variants: {
     variant: {
       default: '',
       quiet:
-        'border-transparent shadow-none bg-transparent focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent',
+        'rounded-none border-transparent bg-transparent shadow-none focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent',
     },
   },
-  compoundVariants: [
-    {
-      class: 'readonly:bg-surface-raised',
-    },
-    {
-      class: 'disabled:bg-surface-disabled disabled:opacity-50 disabled:cursor-not-allowed',
-    },
-  ],
+  defaultVariants: {
+    variant: 'default',
+  },
 });
 
 export type InputFieldVariants = VariantProps<typeof inputField>;

@@ -3,6 +3,7 @@ export default {
   'checkbox-group': 'Checkbox Group',
   combobox: 'Combobox',
   'date-picker': 'Date Picker',
+  'input-group': 'Input Group',
   'number-field': 'Number Field',
   'otp-field': 'OTP Field',
   'password-field': 'Password Field',

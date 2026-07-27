@@ -1,24 +1,21 @@
-import { type ReactNode, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Check, Copy } from '@/components/icons';
+import { Button, type ButtonProps } from './Button';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
 
 const TIMEOUT = 2000;
 
-export interface CopyButtonProps {
+export interface CopyButtonProps
+  extends Omit<
+    ButtonProps,
+    'children' | 'onClick' | 'onPress' | 'size' | 'type' | 'value' | 'variant'
+  > {
   value?: string | (() => string);
   timeout?: number;
-  className?: string;
-  children?: ReactNode;
 }
 
-export function CopyButton({
-  value,
-  timeout = TIMEOUT,
-  className,
-  children,
-  ...props
-}: CopyButtonProps) {
+export function CopyButton({ value, timeout = TIMEOUT, className, ...props }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
   const ref = useRef(timeout);
 
@@ -36,8 +33,16 @@ export function CopyButton({
   };
 
   return (
-    <Icon {...props} className={cn('animate-icon-pop', className)} onClick={handleCopy}>
-      {copied ? <Check /> : <Copy />}
-    </Icon>
+    <Button
+      {...props}
+      type="button"
+      variant="quiet"
+      size="xs"
+      aria-label={props['aria-label'] ?? 'Copy'}
+      className={cn('size-6 shrink-0 p-0', className)}
+      onClick={handleCopy}
+    >
+      <Icon className="animate-icon-pop">{copied ? <Check /> : <Copy />}</Icon>
+    </Button>
   );
 }

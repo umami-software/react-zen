@@ -2520,26 +2520,22 @@ var button = tailwindVariants.tv({
 });
 var inputField = tailwindVariants.tv({
   base: [
-    "flex items-center px-3 gap-3",
+    "relative flex items-center",
     "text-base rounded border border-edge bg-surface-base shadow-sm",
-    "leading-6 relative text-foreground-primary",
+    "leading-6 text-foreground-primary transition-colors",
     "focus-within:border-edge-strong",
-    "focus-within:ring-2 focus-within:ring-focus-ring focus-within:ring-offset-1 focus-within:ring-offset-surface-base"
+    "has-[input:read-only]:bg-surface-raised has-[textarea:read-only]:bg-surface-raised",
+    "has-[:disabled]:bg-surface-disabled has-[:disabled]:opacity-50"
   ],
   variants: {
     variant: {
       default: "",
-      quiet: "border-transparent shadow-none bg-transparent focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent"
+      quiet: "rounded-none border-transparent bg-transparent shadow-none focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent"
     }
   },
-  compoundVariants: [
-    {
-      class: "readonly:bg-surface-raised"
-    },
-    {
-      class: "disabled:bg-surface-disabled disabled:opacity-50 disabled:cursor-not-allowed"
-    }
-  ]
+  defaultVariants: {
+    variant: "default"
+  }
 });
 tailwindVariants.tv({
   base: [
@@ -3840,6 +3836,132 @@ function ListSection({ title, className, children, ...props }) {
     children
   ] });
 }
+var InputGroup = react.forwardRef(
+  ({ className, variant, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
+    "div",
+    {
+      ...props,
+      ref,
+      "data-slot": "input-group",
+      role: props.role ?? "group",
+      className: inputField({
+        variant,
+        className: cn(
+          "group/input-group w-full min-w-0 gap-0 p-0",
+          "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col",
+          "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col",
+          "has-[>textarea]:h-auto",
+          className
+        )
+      })
+    }
+  )
+);
+InputGroup.displayName = "InputGroup";
+var addonClasses = {
+  "inline-start": "order-first ps-3",
+  "inline-end": "order-last pe-3",
+  "block-start": "order-first w-full justify-start px-3 pt-3",
+  "block-end": "order-last w-full justify-start px-3 pb-3"
+};
+var InputGroupAddon = react.forwardRef(
+  ({ align = "inline-start", className, onClick, ...props }, ref) => {
+    const handleClick = (event) => {
+      onClick?.(event);
+      if (event.defaultPrevented || event.target.closest("button")) {
+        return;
+      }
+      event.currentTarget.parentElement?.querySelector('[data-slot="input-group-control"]')?.focus();
+    };
+    return /* @__PURE__ */ jsxRuntime.jsx(
+      "div",
+      {
+        ...props,
+        ref,
+        role: props.role ?? "group",
+        "data-slot": "input-group-addon",
+        "data-align": align,
+        className: cn(
+          "flex h-auto shrink-0 cursor-text items-center justify-center gap-2 py-2 text-sm text-foreground-muted",
+          "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          addonClasses[align],
+          className
+        ),
+        onClick: handleClick
+      }
+    );
+  }
+);
+InputGroupAddon.displayName = "InputGroupAddon";
+var buttonSizeClasses = {
+  xs: "h-6 gap-1 rounded px-1.5 py-0 text-sm",
+  sm: "h-8 gap-2 rounded px-2 py-0 text-sm",
+  "icon-xs": "size-6 rounded p-0",
+  "icon-sm": "size-8 rounded p-0"
+};
+var InputGroupButton = react.forwardRef(
+  ({ className, size = "xs", type = "button", variant = "quiet", ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
+    Button,
+    {
+      ...props,
+      ref,
+      type,
+      variant,
+      size: "xs",
+      "data-size": size,
+      className: cn(
+        "shrink-0 shadow-none",
+        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        buttonSizeClasses[size],
+        className
+      )
+    }
+  )
+);
+InputGroupButton.displayName = "InputGroupButton";
+var InputGroupText = react.forwardRef(
+  ({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
+    "span",
+    {
+      ...props,
+      ref,
+      "data-slot": "input-group-text",
+      className: cn(
+        "flex items-center gap-2 text-sm text-foreground-muted [&_svg]:pointer-events-none [&_svg]:size-4",
+        className
+      )
+    }
+  )
+);
+InputGroupText.displayName = "InputGroupText";
+var InputGroupInput = react.forwardRef(
+  ({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
+    "input",
+    {
+      ...props,
+      ref,
+      "data-slot": "input-group-control",
+      className: cn(
+        "min-w-0 flex-1 bg-transparent px-3 py-2 text-base outline-none placeholder:text-foreground-muted disabled:cursor-not-allowed",
+        className
+      )
+    }
+  )
+);
+InputGroupInput.displayName = "InputGroupInput";
+var InputGroupTextarea = react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntime.jsx(
+  "textarea",
+  {
+    ...props,
+    ref,
+    "data-slot": "input-group-control",
+    className: cn(
+      "min-w-0 w-full flex-1 bg-transparent p-3 text-base outline-none placeholder:text-foreground-muted disabled:cursor-not-allowed",
+      className
+    )
+  }
+));
+InputGroupTextarea.displayName = "InputGroupTextarea";
 function getItemLabel(label) {
   if (typeof label === "string" || typeof label === "number") {
     return String(label);
@@ -3889,25 +4011,10 @@ function ComboBox({
       onValueChange: onChange,
       children: /* @__PURE__ */ jsxRuntime.jsxs("div", { className: cn("relative", className), children: [
         label && /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Label, { className: "text-base font-semibold", children: label }),
-        /* @__PURE__ */ jsxRuntime.jsxs(
-          combobox.Combobox.InputGroup,
-          {
-            className: cn(
-              "relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 overflow-hidden",
-              "focus-within:border-edge-strong"
-            ),
-            children: [
-              /* @__PURE__ */ jsxRuntime.jsx(
-                combobox.Combobox.Input,
-                {
-                  placeholder,
-                  className: "w-full py-2 pl-3 pr-10 bg-transparent border-none outline-none placeholder:text-foreground-muted"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Trigger, { className: "absolute right-3 z-10 flex items-center text-foreground-muted hover:text-foreground-primary", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) }) })
-            ]
-          }
-        ),
+        /* @__PURE__ */ jsxRuntime.jsxs(combobox.Combobox.InputGroup, { render: /* @__PURE__ */ jsxRuntime.jsx(InputGroup, {}), children: [
+          /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Input, { placeholder, render: /* @__PURE__ */ jsxRuntime.jsx(InputGroupInput, {}) }),
+          /* @__PURE__ */ jsxRuntime.jsx(InputGroupAddon, { align: "inline-end", children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Trigger, { className: "flex size-6 shrink-0 items-center justify-center rounded text-foreground-muted hover:bg-interactive hover:text-foreground-primary", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) }) }) })
+        ] }),
         /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Positioner, { align: "start", sideOffset: 4, ...popoverProps, children: /* @__PURE__ */ jsxRuntime.jsxs(combobox.Combobox.Popup, { className: "w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
           /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsxRuntime.jsx(List, { ...listProps, children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Collection, { children: (value) => {
             const item = normalizedItems.find((option) => option.value === value);
@@ -4075,13 +4182,7 @@ function CommandDialog({
   ] }) });
 }
 var TIMEOUT = 2e3;
-function CopyButton({
-  value,
-  timeout = TIMEOUT,
-  className,
-  children,
-  ...props
-}) {
+function CopyButton({ value, timeout = TIMEOUT, className, ...props }) {
   const [copied, setCopied] = react.useState(false);
   const ref = react.useRef(timeout);
   const handleCopy = async () => {
@@ -4093,7 +4194,19 @@ function CopyButton({
       ref.current = +setTimeout(() => setCopied(false), timeout);
     }
   };
-  return /* @__PURE__ */ jsxRuntime.jsx(Icon, { ...props, className: cn("animate-icon-pop", className), onClick: handleCopy, children: copied ? /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) : /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Copy, {}) });
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    Button,
+    {
+      ...props,
+      type: "button",
+      variant: "quiet",
+      size: "xs",
+      "aria-label": props["aria-label"] ?? "Copy",
+      className: cn("size-6 shrink-0 p-0", className),
+      onClick: handleCopy,
+      children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { className: "animate-icon-pop", children: copied ? /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) : /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Copy, {}) })
+    }
+  );
 }
 var resizeClasses = {
   vertical: "resize-y",
@@ -4118,7 +4231,6 @@ function TextField({
   ...props
 }) {
   const [inputValue, setInputValue] = react.useState(defaultValue ?? value ?? "");
-  const Component = asTextArea ? "textarea" : "input";
   const handleChange = (event) => {
     const nextValue = event.target.value;
     setInputValue(nextValue);
@@ -4129,31 +4241,33 @@ function TextField({
       setInputValue(value);
     }
   }, [value]);
-  const inputClasses = cn(
-    "flex-1 min-w-0 w-full py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted",
-    allowCopy && !asTextArea && "pr-10",
-    asTextArea && "p-3 w-full",
-    resize && resizeClasses[resize]
-  );
+  const inputClasses = cn(resize && resizeClasses[resize]);
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
     label && /* @__PURE__ */ jsxRuntime.jsx(Label, { children: label }),
     /* @__PURE__ */ jsxRuntime.jsxs(
-      "div",
+      InputGroup,
       {
+        variant: variant === "quiet" ? "quiet" : "default",
         className: cn(
-          "relative flex items-center w-full text-base border border-edge rounded bg-surface-base shadow-sm leading-6",
-          "focus-within:border-edge-strong",
-          isReadOnly && "bg-surface-raised focus-within:border-edge",
-          isDisabled && "text-foreground-disabled bg-surface-disabled",
-          asTextArea && "p-0",
-          allowCopy && !asTextArea && "overflow-hidden",
-          variant === "quiet" && "py-0 px-0 shadow-none rounded-none border-transparent bg-transparent text-[length:inherit] focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent",
-          variant === "quiet" && allowCopy && "pr-3",
+          isReadOnly && "focus-within:border-edge",
+          isDisabled && "text-foreground-disabled",
+          variant === "quiet" && "text-[length:inherit]",
           className
         ),
         children: [
-          /* @__PURE__ */ jsxRuntime.jsx(
-            Component,
+          asTextArea ? /* @__PURE__ */ jsxRuntime.jsx(
+            InputGroupTextarea,
+            {
+              ...props,
+              placeholder,
+              value: inputValue,
+              readOnly: isReadOnly,
+              disabled: isDisabled,
+              className: inputClasses,
+              onChange: handleChange
+            }
+          ) : /* @__PURE__ */ jsxRuntime.jsx(
+            InputGroupInput,
             {
               ...props,
               placeholder,
@@ -4165,14 +4279,20 @@ function TextField({
             }
           ),
           allowCopy && /* @__PURE__ */ jsxRuntime.jsx(
-            CopyButton,
+            InputGroupAddon,
             {
-              value: String(inputValue),
-              className: cn(
-                "text-foreground-muted cursor-pointer hover:text-foreground-primary",
-                !inputValue && "text-foreground-disabled",
-                !asTextArea && "absolute right-3 z-10",
-                asTextArea && "absolute top-3 right-3 z-10 mr-0"
+              align: asTextArea ? "block-start" : "inline-end",
+              className: cn(asTextArea && "justify-end pb-0"),
+              children: /* @__PURE__ */ jsxRuntime.jsx(
+                CopyButton,
+                {
+                  value: String(inputValue),
+                  "aria-disabled": !inputValue,
+                  className: cn(
+                    "text-foreground-muted hover:text-foreground-primary",
+                    !inputValue && "text-foreground-disabled"
+                  )
+                }
               )
             }
           )
@@ -6140,39 +6260,28 @@ function PasswordField({
   const [show, setShow] = react.useState(false);
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
     label && /* @__PURE__ */ jsxRuntime.jsx(Label, { htmlFor: props.id, children: label }),
-    /* @__PURE__ */ jsxRuntime.jsxs(
-      "div",
-      {
-        className: cn(
-          "flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative overflow-hidden",
-          "focus-within:border-edge-strong",
-          className
-        ),
-        children: [
-          /* @__PURE__ */ jsxRuntime.jsx(
-            "input",
-            {
-              "aria-label": "Password",
-              ...props,
-              type: show ? "text" : "password",
-              disabled: isDisabled,
-              readOnly: isReadOnly,
-              className: "border-0 outline-none py-2 pl-3 pr-10 bg-transparent w-full placeholder:text-foreground-muted"
-            }
-          ),
-          /* @__PURE__ */ jsxRuntime.jsx(
-            "button",
-            {
-              type: "button",
-              className: "absolute right-3 z-10",
-              "aria-label": show ? "Hide password" : "Show password",
-              onClick: () => setShow((state) => !state),
-              children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { children: show ? /* @__PURE__ */ jsxRuntime.jsx(EyeSlash_default, {}) : /* @__PURE__ */ jsxRuntime.jsx(Eye_default, {}) })
-            }
-          )
-        ]
-      }
-    )
+    /* @__PURE__ */ jsxRuntime.jsxs(InputGroup, { className, children: [
+      /* @__PURE__ */ jsxRuntime.jsx(
+        InputGroupInput,
+        {
+          "aria-label": "Password",
+          ...props,
+          type: show ? "text" : "password",
+          disabled: isDisabled,
+          readOnly: isReadOnly
+        }
+      ),
+      /* @__PURE__ */ jsxRuntime.jsx(InputGroupAddon, { align: "inline-end", children: /* @__PURE__ */ jsxRuntime.jsx(
+        InputGroupButton,
+        {
+          size: "icon-xs",
+          isDisabled,
+          "aria-label": show ? "Hide password" : "Show password",
+          onClick: () => setShow((state) => !state),
+          children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { children: show ? /* @__PURE__ */ jsxRuntime.jsx(EyeSlash_default, {}) : /* @__PURE__ */ jsxRuntime.jsx(Eye_default, {}) })
+        }
+      ) })
+    ] })
   ] });
 }
 function ProgressBar({ className, showPercentage, ...props }) {
@@ -6405,48 +6514,38 @@ function SearchField({
   }, [searchValue, delay, onSearch]);
   return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
     label && /* @__PURE__ */ jsxRuntime.jsx(Label, { htmlFor: props.id, children: label }),
-    /* @__PURE__ */ jsxRuntime.jsxs(
-      "div",
-      {
-        role: "search",
-        className: cn(
-          "relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 overflow-hidden",
-          "focus-within:border-edge-strong",
-          className
-        ),
-        children: [
-          /* @__PURE__ */ jsxRuntime.jsx(Icon, { className: "absolute left-3 z-10", color: "muted", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Search, {}) }),
-          /* @__PURE__ */ jsxRuntime.jsx(
-            "input",
-            {
-              "aria-label": "Search",
-              ...props,
-              type: "search",
-              placeholder,
-              value: search,
-              className: "w-full py-2 px-10 bg-transparent border-none outline-none placeholder:text-foreground-muted [&::-webkit-search-cancel-button]:hidden",
-              onChange: (event) => handleChange(event.target.value),
-              onKeyDown: (event) => {
-                props.onKeyDown?.(event);
-                if (event.key === "Enter") {
-                  onSearch?.(search);
-                }
-              }
+    /* @__PURE__ */ jsxRuntime.jsxs(InputGroup, { role: "search", className, children: [
+      /* @__PURE__ */ jsxRuntime.jsx(
+        InputGroupInput,
+        {
+          "aria-label": "Search",
+          ...props,
+          type: "search",
+          placeholder,
+          value: search,
+          className: "[&::-webkit-search-cancel-button]:hidden",
+          onChange: (event) => handleChange(event.target.value),
+          onKeyDown: (event) => {
+            props.onKeyDown?.(event);
+            if (event.key === "Enter") {
+              onSearch?.(search);
             }
-          ),
-          search && /* @__PURE__ */ jsxRuntime.jsx(
-            "button",
-            {
-              type: "button",
-              className: "absolute right-3 z-10 text-foreground-muted",
-              "aria-label": "Clear search",
-              onClick: () => handleChange(""),
-              children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.X, {}) })
-            }
-          )
-        ]
-      }
-    )
+          }
+        }
+      ),
+      /* @__PURE__ */ jsxRuntime.jsx(InputGroupAddon, { align: "inline-start", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { color: "muted", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Search, {}) }) }),
+      search && /* @__PURE__ */ jsxRuntime.jsx(InputGroupAddon, { align: "inline-end", children: /* @__PURE__ */ jsxRuntime.jsx(
+        InputGroupButton,
+        {
+          size: "icon-xs",
+          isDisabled: props.disabled,
+          "aria-label": "Clear search",
+          className: "text-foreground-muted",
+          onClick: () => handleChange(""),
+          children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.X, {}) })
+        }
+      ) })
+    ] })
   ] });
 }
 function Select({
@@ -7249,6 +7348,12 @@ exports.Heading = Heading;
 exports.HoverTrigger = HoverTrigger;
 exports.Icon = Icon;
 exports.Image = Image;
+exports.InputGroup = InputGroup;
+exports.InputGroupAddon = InputGroupAddon;
+exports.InputGroupButton = InputGroupButton;
+exports.InputGroupInput = InputGroupInput;
+exports.InputGroupText = InputGroupText;
+exports.InputGroupTextarea = InputGroupTextarea;
 exports.Kbd = Kbd;
 exports.Label = Label;
 exports.List = List;

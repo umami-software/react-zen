@@ -1,6 +1,7 @@
 import type { InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import { CopyButton } from './CopyButton';
+import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupTextarea } from './InputGroup';
 import { Label } from './Label';
 import { cn } from './lib/tailwind';
 
@@ -45,8 +46,6 @@ export function TextField({
   ...props
 }: TextFieldProps) {
   const [inputValue, setInputValue] = useState(defaultValue ?? value ?? '');
-  const Component = asTextArea ? 'textarea' : 'input';
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const nextValue = event.target.value;
     setInputValue(nextValue);
@@ -59,51 +58,57 @@ export function TextField({
     }
   }, [value]);
 
-  const inputClasses = cn(
-    'flex-1 min-w-0 w-full py-2 px-3 bg-transparent border-none outline-none placeholder:text-foreground-muted',
-    allowCopy && !asTextArea && 'pr-10',
-    asTextArea && 'p-3 w-full',
-    resize && resizeClasses[resize],
-  );
+  const inputClasses = cn(resize && resizeClasses[resize]);
 
   return (
     <>
       {label && <Label>{label}</Label>}
-      <div
+      <InputGroup
+        variant={variant === 'quiet' ? 'quiet' : 'default'}
         className={cn(
-          'relative flex items-center w-full text-base border border-edge rounded bg-surface-base shadow-sm leading-6',
-          'focus-within:border-edge-strong',
-          isReadOnly && 'bg-surface-raised focus-within:border-edge',
-          isDisabled && 'text-foreground-disabled bg-surface-disabled',
-          asTextArea && 'p-0',
-          allowCopy && !asTextArea && 'overflow-hidden',
-          variant === 'quiet' &&
-            'py-0 px-0 shadow-none rounded-none border-transparent bg-transparent text-[length:inherit] focus-within:border-b-edge focus-within:border-x-transparent focus-within:border-t-transparent',
-          variant === 'quiet' && allowCopy && 'pr-3',
+          isReadOnly && 'focus-within:border-edge',
+          isDisabled && 'text-foreground-disabled',
+          variant === 'quiet' && 'text-[length:inherit]',
           className,
         )}
       >
-        <Component
-          {...props}
-          placeholder={placeholder}
-          value={inputValue}
-          readOnly={isReadOnly}
-          disabled={isDisabled}
-          className={inputClasses}
-          onChange={handleChange}
-        />
-        {allowCopy && (
-          <CopyButton
-            value={String(inputValue)}
-            className={cn(
-              'text-foreground-muted cursor-pointer hover:text-foreground-primary',
-              !inputValue && 'text-foreground-disabled',
-              !asTextArea && 'absolute right-3 z-10',
-              asTextArea && 'absolute top-3 right-3 z-10 mr-0',
-            )}
+        {asTextArea ? (
+          <InputGroupTextarea
+            {...props}
+            placeholder={placeholder}
+            value={inputValue}
+            readOnly={isReadOnly}
+            disabled={isDisabled}
+            className={inputClasses}
+            onChange={handleChange}
+          />
+        ) : (
+          <InputGroupInput
+            {...props}
+            placeholder={placeholder}
+            value={inputValue}
+            readOnly={isReadOnly}
+            disabled={isDisabled}
+            className={inputClasses}
+            onChange={handleChange}
           />
         )}
-      </div>
+        {allowCopy && (
+          <InputGroupAddon
+            align={asTextArea ? 'block-start' : 'inline-end'}
+            className={cn(asTextArea && 'justify-end pb-0')}
+          >
+            <CopyButton
+              value={String(inputValue)}
+              aria-disabled={!inputValue}
+              className={cn(
+                'text-foreground-muted hover:text-foreground-primary',
+                !inputValue && 'text-foreground-disabled',
+              )}
+            />
+          </InputGroupAddon>
+        )}
+      </InputGroup>
     </>
   );
 }

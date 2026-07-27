@@ -9,6 +9,7 @@ import {
   ListPrimitiveProvider,
   type ListProps,
 } from '@/components/List';
+import { InputGroup, InputGroupAddon, InputGroupInput } from './InputGroup';
 import { cn } from './lib/tailwind';
 
 interface ComboBoxItem {
@@ -96,21 +97,15 @@ export function ComboBox({
         {label && (
           <BaseCombobox.Label className="text-base font-semibold">{label}</BaseCombobox.Label>
         )}
-        <BaseCombobox.InputGroup
-          className={cn(
-            'relative flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 overflow-hidden',
-            'focus-within:border-edge-strong',
-          )}
-        >
-          <BaseCombobox.Input
-            placeholder={placeholder}
-            className="w-full py-2 pl-3 pr-10 bg-transparent border-none outline-none placeholder:text-foreground-muted"
-          />
-          <BaseCombobox.Trigger className="absolute right-3 z-10 flex items-center text-foreground-muted hover:text-foreground-primary">
-            <Icon rotate={90} aria-hidden="true" size="sm">
-              <ChevronRight />
-            </Icon>
-          </BaseCombobox.Trigger>
+        <BaseCombobox.InputGroup render={<InputGroup />}>
+          <BaseCombobox.Input placeholder={placeholder} render={<InputGroupInput />} />
+          <InputGroupAddon align="inline-end">
+            <BaseCombobox.Trigger className="flex size-6 shrink-0 items-center justify-center rounded text-foreground-muted hover:bg-interactive hover:text-foreground-primary">
+              <Icon rotate={90} aria-hidden="true" size="sm">
+                <ChevronRight />
+              </Icon>
+            </BaseCombobox.Trigger>
+          </InputGroupAddon>
         </BaseCombobox.InputGroup>
         <BaseCombobox.Portal>
           <BaseCombobox.Positioner align="start" sideOffset={4} {...popoverProps}>

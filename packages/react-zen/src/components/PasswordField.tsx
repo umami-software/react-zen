@@ -2,8 +2,8 @@ import type { InputHTMLAttributes } from 'react';
 import { useState } from 'react';
 import { Eye, EyeSlash } from '@/components/svg';
 import { Icon } from './Icon';
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './InputGroup';
 import { Label } from './Label';
-import { cn } from './lib/tailwind';
 
 export interface PasswordFieldProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'disabled' | 'readOnly'> {
@@ -24,30 +24,25 @@ export function PasswordField({
   return (
     <>
       {label && <Label htmlFor={props.id}>{label}</Label>}
-      <div
-        className={cn(
-          'flex items-center text-base border border-edge rounded bg-surface-base shadow-sm leading-6 relative overflow-hidden',
-          'focus-within:border-edge-strong',
-          className,
-        )}
-      >
-        <input
+      <InputGroup className={className}>
+        <InputGroupInput
           aria-label="Password"
           {...props}
           type={show ? 'text' : 'password'}
           disabled={isDisabled}
           readOnly={isReadOnly}
-          className="border-0 outline-none py-2 pl-3 pr-10 bg-transparent w-full placeholder:text-foreground-muted"
         />
-        <button
-          type="button"
-          className="absolute right-3 z-10"
-          aria-label={show ? 'Hide password' : 'Show password'}
-          onClick={() => setShow(state => !state)}
-        >
-          <Icon>{show ? <EyeSlash /> : <Eye />}</Icon>
-        </button>
-      </div>
+        <InputGroupAddon align="inline-end">
+          <InputGroupButton
+            size="icon-xs"
+            isDisabled={isDisabled}
+            aria-label={show ? 'Hide password' : 'Show password'}
+            onClick={() => setShow(state => !state)}
+          >
+            <Icon>{show ? <EyeSlash /> : <Eye />}</Icon>
+          </InputGroupButton>
+        </InputGroupAddon>
+      </InputGroup>
     </>
   );
 }
