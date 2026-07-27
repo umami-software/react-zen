@@ -7253,15 +7253,9 @@ function ToolbarSeparator({ className, ...props }) {
 var defaultToastConfig = {
   duration: 3e3
 };
-function ZenProvider({
-  children,
-  theme,
-  colorScheme,
-  palette,
-  toast: toast2 = defaultToastConfig
-}) {
+function ZenProvider({ children, theme, colorScheme, palette, toast: toast2 }) {
   useInitTheme(theme, colorScheme, palette);
-  return /* @__PURE__ */ jsx(ToastProvider, { ...toast2, children });
+  return /* @__PURE__ */ jsx(ToastProvider, { ...defaultToastConfig, ...toast2, children });
 }
 
 export { Accordion, AccordionItem, AlertBanner, AlertDialog, AspectRatio, Avatar, Badge, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Carousel, CarouselItem, Checkbox, CheckboxGroup, Code, Collapsible, CollapsiblePanel, CollapsibleTrigger, Column, ComboBox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, ConfirmationDialog, Container, ContextMenu, CopyButton, DataCard, DataColumn, DataTable, DatePicker, Dialog, DialogTrigger, Dots, EmptyState, FileTrigger, Flexbox, FloatingTooltip, Focusable, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea, Kbd, Label, List, ListItem, ListPrimitiveProvider, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, MenuTrigger, Menubar, MenubarMenu, Meter, Modal, Navbar, NavbarItem, NavbarLink, NumberField, OTPField, PALETTES, PageHeader, PageHeaderActions, PageHeaderTitle, Pagination, PaletteSwitcher, PasswordField, Popover, Pressable, ProgressBar, ProgressCircle, Radio, RadioGroup, ResizableHandle, ResizablePanel, ResizablePanelGroup, RouterProvider, Row, ScrollArea, SearchField, Select, Separator2 as Separator, Sheet, SheetHeader, Skeleton, SkeletonAvatar, SkeletonText, Slider, Spinner, StatusLight, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator, Tooltip, TooltipBubble, TooltipTrigger, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useTheme, useToast };

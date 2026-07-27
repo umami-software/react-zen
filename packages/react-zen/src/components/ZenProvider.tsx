@@ -5,7 +5,7 @@ import { ToastProvider } from '@/components/toast/ToastProvider';
 
 const defaultToastConfig = {
   duration: 3000,
-};
+} satisfies ToasterProps;
 
 export interface ZenProviderProps {
   theme?: Theme;
@@ -15,14 +15,12 @@ export interface ZenProviderProps {
   children: ReactNode;
 }
 
-export function ZenProvider({
-  children,
-  theme,
-  colorScheme,
-  palette,
-  toast = defaultToastConfig,
-}: ZenProviderProps) {
+export function ZenProvider({ children, theme, colorScheme, palette, toast }: ZenProviderProps) {
   useInitTheme(theme, colorScheme, palette);
 
-  return <ToastProvider {...toast}>{children}</ToastProvider>;
+  return (
+    <ToastProvider {...defaultToastConfig} {...toast}>
+      {children}
+    </ToastProvider>
+  );
 }

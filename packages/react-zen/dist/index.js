@@ -7278,15 +7278,9 @@ function ToolbarSeparator({ className, ...props }) {
 var defaultToastConfig = {
   duration: 3e3
 };
-function ZenProvider({
-  children,
-  theme,
-  colorScheme,
-  palette,
-  toast: toast2 = defaultToastConfig
-}) {
+function ZenProvider({ children, theme, colorScheme, palette, toast: toast2 }) {
   useInitTheme(theme, colorScheme, palette);
-  return /* @__PURE__ */ jsxRuntime.jsx(ToastProvider, { ...toast2, children });
+  return /* @__PURE__ */ jsxRuntime.jsx(ToastProvider, { ...defaultToastConfig, ...toast2, children });
 }
 
 exports.Accordion = Accordion;
