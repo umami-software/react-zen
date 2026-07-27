@@ -6700,7 +6700,7 @@ function SkeletonText({
   ...props
 }) {
   const lineKeys = Array.from({ length: lines }, (_, index) => `line-${index}`);
-  return /* @__PURE__ */ jsx(Column, { gap: "2", ...props, children: lineKeys.map((key, index) => /* @__PURE__ */ jsx(
+  return /* @__PURE__ */ jsx(Column, { gap: "2", width: "100%", ...props, children: lineKeys.map((key, index) => /* @__PURE__ */ jsx(
     Skeleton,
     {
       height: lineHeight,

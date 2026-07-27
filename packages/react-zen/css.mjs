@@ -1,15 +1,12 @@
 import fs from 'node:fs/promises';
 import { execSync } from 'node:child_process';
+import { glob } from 'glob';
 
-// CSS files to concatenate for minimal build (theme + component animations)
-const cssFiles = [
-  './src/styles/theme.css',
-  './src/components/Dots.css',
-  './src/components/Modal.css',
-  './src/components/Popover.css',
-  './src/components/Skeleton.css',
-  './src/components/Spinner.css',
-];
+// CSS files to concatenate for minimal build (theme + component animations).
+// Component stylesheets are discovered automatically so new components can't be
+// forgotten. Theme tokens must come first so components can reference them.
+const componentCssFiles = (await glob('./src/components/*.css')).sort();
+const cssFiles = ['./src/styles/theme.css', ...componentCssFiles];
 
 async function buildMinimalCSS() {
   const contents = await Promise.all(

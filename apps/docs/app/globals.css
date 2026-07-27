@@ -1,10 +1,10 @@
 @import "tailwindcss";
 @config "../../../packages/react-zen/tailwind.config.ts";
-@import "../../../packages/react-zen/src/styles/theme.css";
-@import "../../../packages/react-zen/src/components/Dots.css";
-@import "../../../packages/react-zen/src/components/Modal.css";
-@import "../../../packages/react-zen/src/components/Popover.css";
-@import "../../../packages/react-zen/src/components/Spinner.css";
+
+/* Consume the package's assembled stylesheet (theme tokens + component CSS) the
+   same way a real consumer does, so the docs can't drift from what ships.
+   Regenerate with `pnpm --filter @umami/react-zen build`. */
+@import "../../../packages/react-zen/styles.css";
 
 @source "../../node_modules/nextra/dist";
 @source "../../node_modules/nextra-theme-docs/dist";

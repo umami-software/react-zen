@@ -39,7 +39,7 @@ export function SkeletonText({
   const lineKeys = Array.from({ length: lines }, (_, index) => `line-${index}`);
 
   return (
-    <Column gap="2" {...props}>
+    <Column gap="2" width="100%" {...props}>
       {lineKeys.map((key, index) => (
         <Skeleton
           key={key}
