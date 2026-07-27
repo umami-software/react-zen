@@ -323,11 +323,25 @@ Modal positions: `center`, `left`, `right`, `top`, `bottom`, `fullscreen`
 ### Feedback Components
 
 ```tsx
-// Alert banner
-<AlertBanner variant="info">Informational message</AlertBanner>
-<AlertBanner variant="success">Success message</AlertBanner>
-<AlertBanner variant="warning">Warning message</AlertBanner>
-<AlertBanner variant="error">Error message</AlertBanner>
+// Alert
+<Alert>
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>Informational message</AlertDescription>
+</Alert>
+<Alert variant="destructive">
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>Something went wrong.</AlertDescription>
+</Alert>
+
+// Empty state
+<Empty>
+  <EmptyHeader>
+    <EmptyMedia variant="icon"><Inbox /></EmptyMedia>
+    <EmptyTitle>No messages</EmptyTitle>
+    <EmptyDescription>New messages will appear here.</EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent><Button>Compose</Button></EmptyContent>
+</Empty>
 
 // Loading indicators
 <Loading />
@@ -623,7 +637,7 @@ type Responsive<T> = T | Partial<Record<'base'|'sm'|'md'|'lg'|'xl'|'2xl', T>>;
 | Forms | Form, FormField, FormFieldArray, FormSubmitButton, FormResetButton |
 | Inputs | TextField, PasswordField, SearchField, Checkbox, RadioGroup, Switch, Toggle |
 | Selection | Select, ComboBox, List, ListItem, ListSection, TagGroup |
-| Feedback | AlertBanner, Toast, Loading, Spinner, ProgressBar, StatusLight, Badge |
+| Feedback | Alert, Empty, Toast, Loading, Spinner, ProgressBar, StatusLight, Badge |
 | Overlays | Dialog, Modal, AlertDialog, ConfirmationDialog, Popover, Tooltip, Menu |
 | Data | Table, DataTable, DataCard, Breadcrumbs |
 | Media | Image, Icon |

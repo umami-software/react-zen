@@ -269,23 +269,44 @@ export const heading = tv({
 
 export type HeadingVariants = VariantProps<typeof heading>;
 
-// Alert banner variants
-export const alertBanner = tv({
-  base: ['w-full flex items-start gap-3 px-4 py-3 rounded-lg', 'text-base'],
+// Alert variants
+export const alert = tv({
+  base: [
+    'relative w-full rounded-lg border border-edge px-4 py-3 text-sm',
+    'grid grid-cols-[0_1fr] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
+    '[&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current',
+  ],
   variants: {
     variant: {
-      info: 'bg-status-info-bg text-status-info-text',
-      success: 'bg-status-success-bg text-status-success-text',
-      warning: 'bg-status-warning-bg text-status-warning-text',
-      error: 'bg-status-error-bg text-status-error-text',
+      default: 'bg-surface-base text-foreground-primary',
+      destructive: [
+        'bg-surface-base text-status-error-text',
+        '*:data-[slot=alert-description]:text-status-error-text/90',
+      ],
     },
   },
   defaultVariants: {
-    variant: 'info',
+    variant: 'default',
   },
 });
 
-export type AlertBannerVariants = VariantProps<typeof alertBanner>;
+export type AlertVariants = VariantProps<typeof alert>;
+
+// Empty media variants
+export const emptyMedia = tv({
+  base: "flex shrink-0 items-center justify-center mb-2 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-6",
+  variants: {
+    variant: {
+      default: 'bg-transparent',
+      icon: "bg-surface-raised text-foreground-primary flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-6",
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+export type EmptyMediaVariants = VariantProps<typeof emptyMedia>;
 
 // Status light variants
 export const statusLight = tv({

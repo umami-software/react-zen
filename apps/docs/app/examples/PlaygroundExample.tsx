@@ -5,7 +5,9 @@ import { useRef, useState } from 'react';
 import {
   Accordion,
   AccordionItem,
-  AlertBanner,
+  Alert,
+  AlertDescription,
+  AlertTitle,
   Blockquote,
   Box,
   Breadcrumb,
@@ -20,7 +22,12 @@ import {
   DataColumn,
   DataTable,
   Dots,
-  EmptyState,
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
   Grid,
   Heading,
   Label,
@@ -1176,12 +1183,18 @@ export function PlaygroundExample() {
                   </Row>
                 </Box>
                 <Box border borderRadius="lg">
-                  <EmptyState
-                    icon={<Inbox />}
-                    title="No messages"
-                    description="New messages will appear here."
-                    actions={<Button variant="primary">Compose</Button>}
-                  />
+                  <Empty>
+                    <EmptyHeader>
+                      <EmptyMedia variant="icon">
+                        <Inbox />
+                      </EmptyMedia>
+                      <EmptyTitle>No messages</EmptyTitle>
+                      <EmptyDescription>New messages will appear here.</EmptyDescription>
+                    </EmptyHeader>
+                    <EmptyContent>
+                      <Button variant="primary">Compose</Button>
+                    </EmptyContent>
+                  </Empty>
                 </Box>
               </Grid>
             </Column>
@@ -1198,10 +1211,14 @@ export function PlaygroundExample() {
                 <StatusLight variant="error">Error</StatusLight>
               </Row>
               <Column gap="2">
-                <AlertBanner variant="info">Info alert message</AlertBanner>
-                <AlertBanner variant="success">Success alert message</AlertBanner>
-                <AlertBanner variant="warning">Warning alert message</AlertBanner>
-                <AlertBanner variant="error">Error alert message</AlertBanner>
+                <Alert>
+                  <AlertTitle>Heads up!</AlertTitle>
+                  <AlertDescription>This is a default alert message.</AlertDescription>
+                </Alert>
+                <Alert variant="destructive">
+                  <AlertTitle>Error</AlertTitle>
+                  <AlertDescription>Something went wrong.</AlertDescription>
+                </Alert>
               </Column>
             </Column>
           </Column>

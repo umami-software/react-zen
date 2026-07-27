@@ -1,0 +1,175 @@
+---
+title: Empty
+---
+
+# Empty
+
+Displays a placeholder when a view has no content. Compose an `Empty` from an
+`EmptyHeader` — containing an optional `EmptyMedia`, an `EmptyTitle`, and an
+`EmptyDescription` — plus an optional `EmptyContent` for actions.
+
+<Example>
+  <Box width="400px" border borderRadius="lg">
+    <Empty>
+      <EmptyHeader>
+        <EmptyMedia variant="icon">
+          <Lucide.Inbox />
+        </EmptyMedia>
+        <EmptyTitle>No messages</EmptyTitle>
+        <EmptyDescription>You don't have any messages yet.</EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <Button variant="primary">Compose message</Button>
+      </EmptyContent>
+    </Empty>
+  </Box>
+
+  ```jsx
+  <Empty>
+    <EmptyHeader>
+      <EmptyMedia variant="icon">
+        <Lucide.Inbox />
+      </EmptyMedia>
+      <EmptyTitle>No messages</EmptyTitle>
+      <EmptyDescription>You don't have any messages yet.</EmptyDescription>
+    </EmptyHeader>
+    <EmptyContent>
+      <Button variant="primary">Compose message</Button>
+    </EmptyContent>
+  </Empty>
+  ```
+</Example>
+
+## Media variants
+
+Use the `icon` variant of `EmptyMedia` for a muted icon container. The
+`default` variant is a transparent wrapper for custom media such as avatars or
+illustrations.
+
+<Example>
+  <Box width="400px" border borderRadius="lg">
+    <Empty>
+      <EmptyHeader>
+        <EmptyMedia>
+          <Lucide.Users size={40} />
+        </EmptyMedia>
+        <EmptyTitle>No team members</EmptyTitle>
+        <EmptyDescription>Invite people to start collaborating.</EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <Button variant="primary">Invite member</Button>
+      </EmptyContent>
+    </Empty>
+  </Box>
+
+  ```jsx
+  <Empty>
+    <EmptyHeader>
+      <EmptyMedia>
+        <Lucide.Users size={40} />
+      </EmptyMedia>
+      <EmptyTitle>No team members</EmptyTitle>
+      <EmptyDescription>Invite people to start collaborating.</EmptyDescription>
+    </EmptyHeader>
+    <EmptyContent>
+      <Button variant="primary">Invite member</Button>
+    </EmptyContent>
+  </Empty>
+  ```
+</Example>
+
+## Multiple actions
+
+Place buttons or links inside `EmptyContent`.
+
+<Example>
+  <Box width="400px" border borderRadius="lg">
+    <Empty>
+      <EmptyHeader>
+        <EmptyMedia variant="icon">
+          <Lucide.FileX />
+        </EmptyMedia>
+        <EmptyTitle>Something went wrong</EmptyTitle>
+        <EmptyDescription>The content could not be loaded.</EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <Row gap="2">
+          <Button variant="primary">Try again</Button>
+          <Button variant="quiet">Contact support</Button>
+        </Row>
+      </EmptyContent>
+    </Empty>
+  </Box>
+
+  ```jsx
+  <Empty>
+    <EmptyHeader>
+      <EmptyMedia variant="icon">
+        <Lucide.FileX />
+      </EmptyMedia>
+      <EmptyTitle>Something went wrong</EmptyTitle>
+      <EmptyDescription>The content could not be loaded.</EmptyDescription>
+    </EmptyHeader>
+    <EmptyContent>
+      <Row gap="2">
+        <Button variant="primary">Try again</Button>
+        <Button variant="quiet">Contact support</Button>
+      </Row>
+    </EmptyContent>
+  </Empty>
+  ```
+</Example>
+
+## Without media
+
+<Example>
+  <Box width="400px" border borderRadius="lg">
+    <Empty>
+      <EmptyHeader>
+        <EmptyTitle>No results found</EmptyTitle>
+        <EmptyDescription>Try adjusting your search or filters.</EmptyDescription>
+      </EmptyHeader>
+    </Empty>
+  </Box>
+
+  ```jsx
+  <Empty>
+    <EmptyHeader>
+      <EmptyTitle>No results found</EmptyTitle>
+      <EmptyDescription>Try adjusting your search or filters.</EmptyDescription>
+    </EmptyHeader>
+  </Empty>
+  ```
+</Example>
+
+## Component props
+
+### EmptyMedia
+
+<Example>
+  <DataTable
+    data={[
+      {
+        name: 'variant',
+        value: "'default' | 'icon'",
+        description: 'Media style (default: "default"). Use "icon" for a muted icon container.',
+      },
+      {
+        name: 'children',
+        value: 'ReactNode',
+        description: 'An svg icon, avatar, or other media',
+      },
+    ]}
+  >
+    <DataColumn id="name" label="Name" />
+    <DataColumn id="value" label="Type" />
+    <DataColumn id="description" label="Description" />
+  </DataTable>
+</Example>
+
+`Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, and `EmptyContent` accept
+standard `div` props including `className`; `EmptyDescription` renders a `p`
+element. They expose `data-slot="empty"`, `data-slot="empty-header"`,
+`data-slot="empty-icon"`, `data-slot="empty-title"`,
+`data-slot="empty-description"`, and `data-slot="empty-content"` attributes for
+styling.

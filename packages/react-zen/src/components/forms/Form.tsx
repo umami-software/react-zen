@@ -6,7 +6,7 @@ import {
   type UseFormReturn,
   useForm,
 } from 'react-hook-form';
-import { AlertBanner } from '@/components/AlertBanner';
+import { Alert, AlertTitle } from '@/components/Alert';
 import { cn } from '../lib/tailwind';
 
 export interface FormProps extends UseFormProps, Omit<HTMLAttributes<HTMLFormElement>, 'children'> {
@@ -80,11 +80,11 @@ export function Form({
   return (
     <FormProvider {...formValues}>
       {error && (
-        <AlertBanner
-          variant="error"
-          align="center"
-          title={error instanceof Error ? error?.message : error}
-        />
+        <Alert variant="destructive">
+          <AlertTitle className="justify-self-center">
+            {error instanceof Error ? error?.message : error}
+          </AlertTitle>
+        </Alert>
       )}
       <form
         {...props}

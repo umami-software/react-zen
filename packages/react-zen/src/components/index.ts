@@ -1,6 +1,6 @@
 'use client';
 export * from './Accordion';
-export * from './AlertBanner';
+export * from './Alert';
 export * from './AlertDialog';
 export * from './AspectRatio';
 export * from './Avatar';
@@ -27,7 +27,7 @@ export * from './DataTable';
 export * from './DatePicker';
 export * from './Dialog';
 export * from './Dots';
-export * from './EmptyState';
+export * from './Empty';
 export * from './Flexbox';
 export * from './FloatingTooltip';
 export * from './forms/Form';

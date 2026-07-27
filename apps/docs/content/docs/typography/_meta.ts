@@ -3,5 +3,4 @@ export default {
   heading: 'Heading',
   code: 'Code',
   blockquote: 'Blockquote',
-  kbd: 'Kbd',
 };

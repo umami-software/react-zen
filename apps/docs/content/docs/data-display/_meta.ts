@@ -9,6 +9,7 @@ export default {
   'data-table': 'Data Table',
   icon: 'Icon',
   image: 'Image',
+  kbd: 'Kbd',
   list: 'List',
   table: 'Table',
   'tag-group': 'Tag Group',

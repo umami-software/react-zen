@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/patterns/data-display/empty-state',
-        destination: '/docs/feedback-status/empty-state',
+        destination: '/docs/feedback-status/empty',
         permanent: true,
       },
       {
@@ -37,6 +37,21 @@ const nextConfig: NextConfig = {
       {
         source: '/patterns/layout/page-header',
         destination: '/docs/layout/page-header',
+        permanent: true,
+      },
+      {
+        source: '/docs/typography/kbd',
+        destination: '/docs/data-display/kbd',
+        permanent: true,
+      },
+      {
+        source: '/docs/feedback-status/alert-banner',
+        destination: '/docs/feedback-status/alert',
+        permanent: true,
+      },
+      {
+        source: '/docs/feedback-status/empty-state',
+        destination: '/docs/feedback-status/empty',
         permanent: true,
       },
     ];
@@ -70,11 +85,11 @@ const nextConfig: NextConfig = {
     ];
     // Feedback & Status
     const feedbackStatus = [
-      'alert-banner',
+      'alert',
       'alert-dialog',
       'confirmation-dialog',
       'dialog',
-      'empty-state',
+      'empty',
       'loading',
       'modal',
       'popover',
@@ -94,6 +109,7 @@ const nextConfig: NextConfig = {
       'icon',
       'icon-label',
       'image',
+      'kbd',
       'list',
       'table',
     ];

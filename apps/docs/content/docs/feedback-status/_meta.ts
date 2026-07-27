@@ -1,9 +1,9 @@
 export default {
-  'alert-banner': 'Alert Banner',
+  alert: 'Alert',
   'alert-dialog': 'Alert Dialog',
   'confirmation-dialog': 'Confirmation Dialog',
   dialog: 'Dialog',
-  'empty-state': 'Empty State',
+  empty: 'Empty',
   loading: 'Loading',
   meter: 'Meter',
   modal: 'Modal',

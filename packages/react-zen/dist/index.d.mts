@@ -2,9 +2,9 @@ import * as react_jsx_runtime from 'react/jsx-runtime';
 import { Accordion as Accordion$1 } from '@base-ui/react/accordion';
 import * as react from 'react';
 import { ReactNode, HTMLAttributes, ReactElement, CSSProperties, LiHTMLAttributes, MouseEvent, ComponentProps, Key, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes, InputHTMLAttributes, TextareaHTMLAttributes, RefObject } from 'react';
-import { Avatar as Avatar$1 } from '@base-ui/react/avatar';
 import * as tailwind_variants from 'tailwind-variants';
 import { VariantProps } from 'tailwind-variants';
+import { Avatar as Avatar$1 } from '@base-ui/react/avatar';
 import { ButtonProps as ButtonProps$1 } from '@base-ui/react/button';
 import { DayPicker } from 'react-day-picker';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -55,45 +55,6 @@ interface AccordionItemProps extends Omit<Accordion$1.Item.Props, 'value' | 'dis
 }
 declare function Accordion({ className, children, type, allowsMultipleExpanded, expandedKeys, defaultExpandedKeys, onExpandedChange, ...props }: AccordionProps): react_jsx_runtime.JSX.Element;
 declare function AccordionItem({ id, value, isDisabled, className, children, ...props }: AccordionItemProps): react_jsx_runtime.JSX.Element;
-
-interface AlertBannerProps {
-    title?: ReactNode;
-    description?: ReactNode;
-    icon?: ReactNode;
-    variant?: 'info' | 'success' | 'warning' | 'error';
-    align?: 'start' | 'center' | 'end';
-    allowClose?: boolean;
-    onClose?: () => void;
-    className?: string;
-    children?: ReactNode;
-}
-declare function AlertBanner({ title, description, icon, variant, align, allowClose, onClose, children, className, ...props }: AlertBannerProps): react_jsx_runtime.JSX.Element;
-
-interface DialogRenderProps {
-    close: () => void;
-}
-interface DialogProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'children'> {
-    children?: ReactNode | ((props: DialogRenderProps) => ReactNode);
-    title?: ReactNode;
-}
-declare function Dialog({ title, children, className, ...props }: DialogProps): react_jsx_runtime.JSX.Element;
-
-interface AlertDialogProps extends DialogProps {
-    title?: ReactNode;
-    description?: ReactNode;
-    isDanger?: boolean;
-    isConfirmDisabled?: boolean;
-    confirmLabel?: ReactNode;
-    cancelLabel?: ReactNode;
-    onConfirm?: () => void;
-    onCancel?: () => void;
-}
-declare function AlertDialog({ title, description, isDanger, isConfirmDisabled, confirmLabel, cancelLabel, onConfirm, onCancel, className, children, ...props }: AlertDialogProps): react_jsx_runtime.JSX.Element;
-
-interface AspectRatioProps extends HTMLAttributes<HTMLDivElement> {
-    ratio?: number;
-}
-declare function AspectRatio({ ratio, className, style, children, ...props }: AspectRatioProps): react_jsx_runtime.JSX.Element;
 
 declare const button: tailwind_variants.TVReturnType<{
     variant: {
@@ -162,6 +123,40 @@ declare const inputField: tailwind_variants.TVReturnType<{
     };
 }, undefined, string[], unknown, unknown, undefined>>;
 type InputFieldVariants = VariantProps<typeof inputField>;
+declare const alert: tailwind_variants.TVReturnType<{
+    variant: {
+        default: string;
+        destructive: string[];
+    };
+}, undefined, string[], {
+    variant: {
+        default: string;
+        destructive: string[];
+    };
+}, undefined, tailwind_variants.TVReturnType<{
+    variant: {
+        default: string;
+        destructive: string[];
+    };
+}, undefined, string[], unknown, unknown, undefined>>;
+type AlertVariants = VariantProps<typeof alert>;
+declare const emptyMedia: tailwind_variants.TVReturnType<{
+    variant: {
+        default: string;
+        icon: string;
+    };
+}, undefined, "flex shrink-0 items-center justify-center mb-2 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-6", {
+    variant: {
+        default: string;
+        icon: string;
+    };
+}, undefined, tailwind_variants.TVReturnType<{
+    variant: {
+        default: string;
+        icon: string;
+    };
+}, undefined, "flex shrink-0 items-center justify-center mb-2 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-6", unknown, unknown, undefined>>;
+type EmptyMediaVariants = VariantProps<typeof emptyMedia>;
 declare const badge: tailwind_variants.TVReturnType<{
     variant: {
         default: string;
@@ -402,6 +397,38 @@ declare const tag: tailwind_variants.TVReturnType<{
     removeButton: string[];
 }, undefined, unknown, unknown, undefined>>;
 type TagVariants = VariantProps<typeof tag>;
+
+interface AlertProps extends HTMLAttributes<HTMLDivElement>, AlertVariants {
+}
+declare const Alert: react.ForwardRefExoticComponent<AlertProps & react.RefAttributes<HTMLDivElement>>;
+declare const AlertTitle: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+declare const AlertDescription: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+
+interface DialogRenderProps {
+    close: () => void;
+}
+interface DialogProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'children'> {
+    children?: ReactNode | ((props: DialogRenderProps) => ReactNode);
+    title?: ReactNode;
+}
+declare function Dialog({ title, children, className, ...props }: DialogProps): react_jsx_runtime.JSX.Element;
+
+interface AlertDialogProps extends DialogProps {
+    title?: ReactNode;
+    description?: ReactNode;
+    isDanger?: boolean;
+    isConfirmDisabled?: boolean;
+    confirmLabel?: ReactNode;
+    cancelLabel?: ReactNode;
+    onConfirm?: () => void;
+    onCancel?: () => void;
+}
+declare function AlertDialog({ title, description, isDanger, isConfirmDisabled, confirmLabel, cancelLabel, onConfirm, onCancel, className, children, ...props }: AlertDialogProps): react_jsx_runtime.JSX.Element;
+
+interface AspectRatioProps extends HTMLAttributes<HTMLDivElement> {
+    ratio?: number;
+}
+declare function AspectRatio({ ratio, className, style, children, ...props }: AspectRatioProps): react_jsx_runtime.JSX.Element;
 
 interface AvatarProps extends Avatar$1.Root.Props {
     src?: string;
@@ -936,13 +963,14 @@ interface DotsProps extends HTMLAttributes<HTMLDivElement> {
 }
 declare function Dots({ size, className, color: _color, ...props }: DotsProps): react_jsx_runtime.JSX.Element;
 
-interface EmptyStateProps extends Omit<ColumnProps, 'title'> {
-    icon?: ReactNode;
-    title: ReactNode;
-    description?: ReactNode;
-    actions?: ReactNode;
+declare const Empty: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+declare const EmptyHeader: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+interface EmptyMediaProps extends HTMLAttributes<HTMLDivElement>, EmptyMediaVariants {
 }
-declare function EmptyState({ icon, title, description, actions, children, ...props }: EmptyStateProps): react_jsx_runtime.JSX.Element;
+declare const EmptyMedia: react.ForwardRefExoticComponent<EmptyMediaProps & react.RefAttributes<HTMLDivElement>>;
+declare const EmptyTitle: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+declare const EmptyDescription: react.ForwardRefExoticComponent<HTMLAttributes<HTMLParagraphElement> & react.RefAttributes<HTMLParagraphElement>>;
+declare const EmptyContent: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
 
 interface TooltipProps extends Omit<Tooltip$1.Positioner.Props, 'children' | 'className'> {
     children?: ReactNode;
@@ -1701,4 +1729,4 @@ interface ZenProviderProps {
 }
 declare function ZenProvider({ children, theme, colorScheme, palette, toast }: ZenProviderProps): react_jsx_runtime.JSX.Element;
 
-export { Accordion, AccordionItem, type AccordionItemProps, type AccordionProps, AlertBanner, type AlertBannerProps, AlertDialog, type AlertDialogProps, AspectRatio, type AspectRatioProps, Avatar, type AvatarProps, Badge, type BadgeProps, Blockquote, type BlockquoteProps, Box, type BoxProps, type BoxRenderProps, Breadcrumb, type BreadcrumbProps, Breadcrumbs, type BreadcrumbsProps, type BreakpointKey, Button, type ButtonProps, type ButtonRenderProps, Calendar, type CalendarProps, Carousel, CarouselItem, type CarouselProps, Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps, Code, type CodeProps, Collapsible, CollapsiblePanel, type CollapsiblePanelProps, type CollapsibleProps, CollapsibleTrigger, type CollapsibleTriggerProps, Column, type ColumnProps, ComboBox, type ComboBoxProps, Command, CommandDialog, type CommandDialogProps, CommandEmpty, type CommandEmptyProps, CommandGroup, type CommandGroupProps, CommandInput, type CommandInputProps, CommandItem, type CommandItemProps, CommandList, type CommandListProps, type CommandProps, CommandSeparator, type CommandSeparatorProps, ConfirmationDialog, type ConfirmationDialogProps, Container, type ContainerProps, ContextMenu, type ContextMenuProps, CopyButton, type CopyButtonProps, DataCard, type DataCardProps, DataColumn, type DataColumnProps, DataTable, type DataTableProps, DatePicker, type DatePickerProps, Dialog, type DialogProps, type DialogRenderProps, DialogTrigger, Dots, type DotsProps, EmptyState, type EmptyStateProps, FileTrigger, Flexbox, type FlexboxProps, FloatingTooltip, type FloatingTooltipProps, Focusable, Form, FormButtons, type FormButtonsProps, FormController, type FormControllerProps, FormField, FormFieldArray, type FormFieldArrayProps, type FormFieldProps, type FormProps, FormResetButton, type FormResetButtonProps, FormSubmitButton, Grid, type GridProps, Heading, type HeadingProps, type HoverButtonProps, HoverTrigger, Icon, type IconProps, Image, type ImageProps, InputGroup, InputGroupAddon, type InputGroupAddonAlign, type InputGroupAddonProps, InputGroupButton, type InputGroupButtonProps, type InputGroupButtonSize, InputGroupInput, type InputGroupProps, InputGroupText, InputGroupTextarea, Kbd, type KbdProps, Label, type LabelProps, List, ListItem, type ListItemProps, ListPrimitiveProvider, type ListProps, ListSection, type ListSectionProps, ListSeparator, type ListSeparatorProps, Loading, LoadingButton, type LoadingButtonProps, type LoadingProps, Menu, MenuItem, type MenuItemProps, type MenuProps, MenuSection, type MenuSectionProps, MenuSeparator, type MenuSeparatorProps, MenuTrigger, Menubar, MenubarMenu, type MenubarMenuProps, type MenubarProps, Meter, type MeterProps, Modal, type ModalProps, Navbar, NavbarItem, type NavbarItemProps, NavbarLink, type NavbarLinkProps, type NavbarProps, NumberField, type NumberFieldProps, OTPField, type OTPFieldProps, PALETTES, PageHeader, PageHeaderActions, type PageHeaderActionsProps, type PageHeaderProps, PageHeaderTitle, type PageHeaderTitleProps, Pagination, type PaginationProps, type Palette, PaletteSwitcher, type PaletteSwitcherProps, PasswordField, type PasswordFieldProps, Popover, type PopoverProps, type PressEvent, Pressable, ProgressBar, type ProgressBarProps, ProgressCircle, type ProgressCircleProps, Radio, RadioGroup, type RadioGroupProps, type RadioProps, type RenderProp, ResizableHandle, type ResizableHandleProps, ResizablePanel, ResizablePanelGroup, type ResizablePanelGroupProps, type ResizablePanelProps, RouterProvider, Row, type RowProps, ScrollArea, type ScrollAreaProps, SearchField, type SearchFieldProps, Select, type SelectProps, type SelectValueRenderProps, type Selection, Separator, type SeparatorProps, Sheet, SheetHeader, type SheetHeaderProps, type SheetProps, Skeleton, SkeletonAvatar, type SkeletonAvatarProps, type SkeletonProps, SkeletonText, type SkeletonTextProps, Slider, type SliderProps, Spinner, type SpinnerProps, StatusLight, type StatusLightProps, type StrokeWidth, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, type SubmenuTriggerProps, Switch, type SwitchProps, Tab, TabList, type TabListProps, TabPanel, type TabPanelProps, type TabProps, Table, TableBody, TableCell, type TableCellProps, TableColumn, type TableColumnProps, TableHeader, type TableProps, TableRow, type TableRowProps, Tabs, type TabsProps, Tag, TagGroup, type TagGroupProps, type TagProps, Text, TextField, type TextFieldProps, type TextProps, type TextRenderProps, type Theme, ThemeButton, type ThemeButtonProps, type ThemeMode, ThemeSwitcher, type ThemeSwitcherProps, Toast, ToastContext, type ToastOptions, type ToastPosition, type ToastProps, ToastProvider, type ToastProviderProps, type ToastState, type ToastVariant, Toaster, type ToasterProps, Toggle, ToggleGroup, ToggleGroupItem, type ToggleGroupItemProps, type ToggleGroupProps, type ToggleProps, Toolbar, ToolbarButton, type ToolbarButtonProps, ToolbarGroup, type ToolbarGroupProps, type ToolbarProps, ToolbarSeparator, Tooltip, TooltipBubble, type TooltipBubbleProps, type TooltipProps, TooltipTrigger, ZenProvider, type ZenProviderProps, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useTheme, useToast };
+export { Accordion, AccordionItem, type AccordionItemProps, type AccordionProps, Alert, AlertDescription, AlertDialog, type AlertDialogProps, type AlertProps, AlertTitle, AspectRatio, type AspectRatioProps, Avatar, type AvatarProps, Badge, type BadgeProps, Blockquote, type BlockquoteProps, Box, type BoxProps, type BoxRenderProps, Breadcrumb, type BreadcrumbProps, Breadcrumbs, type BreadcrumbsProps, type BreakpointKey, Button, type ButtonProps, type ButtonRenderProps, Calendar, type CalendarProps, Carousel, CarouselItem, type CarouselProps, Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps, Code, type CodeProps, Collapsible, CollapsiblePanel, type CollapsiblePanelProps, type CollapsibleProps, CollapsibleTrigger, type CollapsibleTriggerProps, Column, type ColumnProps, ComboBox, type ComboBoxProps, Command, CommandDialog, type CommandDialogProps, CommandEmpty, type CommandEmptyProps, CommandGroup, type CommandGroupProps, CommandInput, type CommandInputProps, CommandItem, type CommandItemProps, CommandList, type CommandListProps, type CommandProps, CommandSeparator, type CommandSeparatorProps, ConfirmationDialog, type ConfirmationDialogProps, Container, type ContainerProps, ContextMenu, type ContextMenuProps, CopyButton, type CopyButtonProps, DataCard, type DataCardProps, DataColumn, type DataColumnProps, DataTable, type DataTableProps, DatePicker, type DatePickerProps, Dialog, type DialogProps, type DialogRenderProps, DialogTrigger, Dots, type DotsProps, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, type EmptyMediaProps, EmptyTitle, FileTrigger, Flexbox, type FlexboxProps, FloatingTooltip, type FloatingTooltipProps, Focusable, Form, FormButtons, type FormButtonsProps, FormController, type FormControllerProps, FormField, FormFieldArray, type FormFieldArrayProps, type FormFieldProps, type FormProps, FormResetButton, type FormResetButtonProps, FormSubmitButton, Grid, type GridProps, Heading, type HeadingProps, type HoverButtonProps, HoverTrigger, Icon, type IconProps, Image, type ImageProps, InputGroup, InputGroupAddon, type InputGroupAddonAlign, type InputGroupAddonProps, InputGroupButton, type InputGroupButtonProps, type InputGroupButtonSize, InputGroupInput, type InputGroupProps, InputGroupText, InputGroupTextarea, Kbd, type KbdProps, Label, type LabelProps, List, ListItem, type ListItemProps, ListPrimitiveProvider, type ListProps, ListSection, type ListSectionProps, ListSeparator, type ListSeparatorProps, Loading, LoadingButton, type LoadingButtonProps, type LoadingProps, Menu, MenuItem, type MenuItemProps, type MenuProps, MenuSection, type MenuSectionProps, MenuSeparator, type MenuSeparatorProps, MenuTrigger, Menubar, MenubarMenu, type MenubarMenuProps, type MenubarProps, Meter, type MeterProps, Modal, type ModalProps, Navbar, NavbarItem, type NavbarItemProps, NavbarLink, type NavbarLinkProps, type NavbarProps, NumberField, type NumberFieldProps, OTPField, type OTPFieldProps, PALETTES, PageHeader, PageHeaderActions, type PageHeaderActionsProps, type PageHeaderProps, PageHeaderTitle, type PageHeaderTitleProps, Pagination, type PaginationProps, type Palette, PaletteSwitcher, type PaletteSwitcherProps, PasswordField, type PasswordFieldProps, Popover, type PopoverProps, type PressEvent, Pressable, ProgressBar, type ProgressBarProps, ProgressCircle, type ProgressCircleProps, Radio, RadioGroup, type RadioGroupProps, type RadioProps, type RenderProp, ResizableHandle, type ResizableHandleProps, ResizablePanel, ResizablePanelGroup, type ResizablePanelGroupProps, type ResizablePanelProps, RouterProvider, Row, type RowProps, ScrollArea, type ScrollAreaProps, SearchField, type SearchFieldProps, Select, type SelectProps, type SelectValueRenderProps, type Selection, Separator, type SeparatorProps, Sheet, SheetHeader, type SheetHeaderProps, type SheetProps, Skeleton, SkeletonAvatar, type SkeletonAvatarProps, type SkeletonProps, SkeletonText, type SkeletonTextProps, Slider, type SliderProps, Spinner, type SpinnerProps, StatusLight, type StatusLightProps, type StrokeWidth, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, type SubmenuTriggerProps, Switch, type SwitchProps, Tab, TabList, type TabListProps, TabPanel, type TabPanelProps, type TabProps, Table, TableBody, TableCell, type TableCellProps, TableColumn, type TableColumnProps, TableHeader, type TableProps, TableRow, type TableRowProps, Tabs, type TabsProps, Tag, TagGroup, type TagGroupProps, type TagProps, Text, TextField, type TextFieldProps, type TextProps, type TextRenderProps, type Theme, ThemeButton, type ThemeButtonProps, type ThemeMode, ThemeSwitcher, type ThemeSwitcherProps, Toast, ToastContext, type ToastOptions, type ToastPosition, type ToastProps, ToastProvider, type ToastProviderProps, type ToastState, type ToastVariant, Toaster, type ToasterProps, Toggle, ToggleGroup, ToggleGroupItem, type ToggleGroupItemProps, type ToggleGroupProps, type ToggleProps, Toolbar, ToolbarButton, type ToolbarButtonProps, ToolbarGroup, type ToolbarGroupProps, type ToolbarProps, ToolbarSeparator, Tooltip, TooltipBubble, type TooltipBubbleProps, type TooltipProps, TooltipTrigger, ZenProvider, type ZenProviderProps, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useTheme, useToast };
