@@ -66,7 +66,7 @@ import { SkeletonAvatar } from '@umami/react-zen';
 List placeholders remain a composition of the base skeleton components.
 
 <Example>
-  <Box border borderRadius="lg" overflow="hidden">
+  <Box width="400px" border borderRadius="lg" overflow="hidden">
     <Row padding="3" alignItems="center" gap="3" borderColor="muted" border="bottom">
       <SkeletonAvatar />
       <Column gap="2" flexGrow="1">
@@ -91,13 +91,16 @@ List placeholders remain a composition of the base skeleton components.
   </Box>
 
 ```jsx
-<Row padding="3" alignItems="center" gap="3">
-  <SkeletonAvatar />
-  <Column gap="2" flexGrow="1">
-    <Skeleton height="1rem" width="40%" />
-    <Skeleton height="0.75rem" width="60%" />
-  </Column>
-</Row>
+<Box border borderRadius="lg" overflow="hidden">
+  <Row padding="3" alignItems="center" gap="3" borderColor="muted" border="bottom">
+    <SkeletonAvatar />
+    <Column gap="2" flexGrow="1">
+      <Skeleton height="1rem" width="40%" />
+      <Skeleton height="0.75rem" width="60%" />
+    </Column>
+  </Row>
+  {/* ...more rows */}
+</Box>
 ```
 </Example>
 
@@ -126,19 +129,22 @@ List placeholders remain a composition of the base skeleton components.
   </Box>
 
 ```jsx
-<Row padding="3" gap="4">
-  <Skeleton height="1rem" width="8rem" />
-  <Skeleton height="1rem" width="6rem" />
-  <Skeleton height="1rem" width="6rem" />
-  <Skeleton height="1rem" width="6rem" />
-</Row>
+<Box border borderRadius="lg" overflow="hidden">
+  <Row padding="3" gap="4" borderColor="muted" border="bottom">
+    <Skeleton height="1rem" width="8rem" />
+    <Skeleton height="1rem" width="6rem" />
+    <Skeleton height="1rem" width="6rem" />
+    <Skeleton height="1rem" width="6rem" />
+  </Row>
+  {/* ...more rows */}
+</Box>
 ```
 </Example>
 
 ### Custom layout
 
 <Example>
-  <Row gap="4" alignItems="center">
+  <Row width="400px" gap="4" alignItems="center">
     <Skeleton width="4rem" height="4rem" borderRadius="lg" />
     <Column gap="2" flexGrow="1">
       <Skeleton height="1.5rem" width="50%" />
