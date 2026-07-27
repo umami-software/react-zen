@@ -3439,6 +3439,8 @@ function CarouselItem({ className, children, ...props }) {
     }
   );
 }
+var TableSelectionContext = react.createContext(null);
+var TableSelectionScopeContext = react.createContext(null);
 function Checkbox({
   label,
   className,
@@ -3449,9 +3451,17 @@ function Checkbox({
   isIndeterminate,
   onChange,
   value,
+  slot,
   ...props
 }) {
-  const checked = isSelected ?? (typeof value === "boolean" ? value : void 0);
+  const tableSelection = react.useContext(TableSelectionContext);
+  const tableScope = react.useContext(TableSelectionScopeContext);
+  const isTableSelection = slot === "selection" && tableSelection !== null && tableScope !== null;
+  const isHeaderSelection = isTableSelection && tableScope.type === "header";
+  const selectedRowCount = tableSelection ? Array.from(tableSelection.rowKeys).filter((key) => tableSelection.selectedKeys.has(key)).length : 0;
+  const tableChecked = isHeaderSelection ? tableSelection.rowKeys.size > 0 && selectedRowCount === tableSelection.rowKeys.size : tableScope?.rowKey ? tableSelection?.selectedKeys.has(tableScope.rowKey) : void 0;
+  const tableIndeterminate = isHeaderSelection && selectedRowCount > 0 && selectedRowCount < tableSelection.rowKeys.size;
+  const checked = (isTableSelection ? tableChecked : void 0) ?? isSelected ?? (typeof value === "boolean" ? value : void 0);
   const styles = checkbox();
   return /* @__PURE__ */ jsxRuntime.jsxs(
     checkbox$1.Checkbox.Root,
@@ -3461,12 +3471,23 @@ function Checkbox({
       value: typeof value === "string" ? value : void 0,
       checked,
       defaultChecked: defaultSelected,
-      disabled: isDisabled,
-      indeterminate: isIndeterminate,
+      disabled: isDisabled || isTableSelection && (tableSelection.selectionMode === "none" || isHeaderSelection && tableSelection.selectionMode !== "multiple"),
+      indeterminate: isTableSelection ? tableIndeterminate : isIndeterminate,
       className: cn(styles.root(), className),
-      onCheckedChange: onChange,
+      slot: isTableSelection ? void 0 : slot,
+      onCheckedChange: (selected) => {
+        onChange?.(selected);
+        if (!isTableSelection) {
+          return;
+        }
+        if (isHeaderSelection) {
+          tableSelection.setAllSelected(selected);
+        } else if (tableScope.rowKey) {
+          tableSelection.setRowSelected(tableScope.rowKey, selected);
+        }
+      },
       children: [
-        /* @__PURE__ */ jsxRuntime.jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsxRuntime.jsx(checkbox$1.Checkbox.Indicator, { className: styles.icon(), children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: isIndeterminate ? /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Minus, {}) : /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) }) }) }),
+        /* @__PURE__ */ jsxRuntime.jsx(Box, { className: styles.box(), children: /* @__PURE__ */ jsxRuntime.jsx(checkbox$1.Checkbox.Indicator, { className: styles.icon(), children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { size: "sm", children: (isTableSelection ? tableIndeterminate : isIndeterminate) ? /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Minus, {}) : /* @__PURE__ */ jsxRuntime.jsx(icons_exports.Check, {}) }) }) }),
         children
       ]
     }
@@ -4379,13 +4400,82 @@ var alignClasses2 = {
 function Table({
   children,
   className,
-  selectionMode: _selectionMode,
-  selectedKeys: _selectedKeys,
-  defaultSelectedKeys: _defaultSelectedKeys,
-  onSelectionChange: _onSelectionChange,
+  selectionMode = "none",
+  selectedKeys: controlledSelectedKeys,
+  defaultSelectedKeys,
+  onSelectionChange,
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsx("table", { ...props, className: cn("grid text-base w-full relative", className), children });
+  const [uncontrolledSelectedKeys, setUncontrolledSelectedKeys] = react.useState(
+    () => new Set(defaultSelectedKeys)
+  );
+  const [rowKeys, setRowKeys] = react.useState(() => /* @__PURE__ */ new Set());
+  const selectedKeys = controlledSelectedKeys === void 0 ? uncontrolledSelectedKeys : new Set(controlledSelectedKeys);
+  const updateSelection = react.useCallback(
+    (next) => {
+      if (controlledSelectedKeys === void 0) {
+        setUncontrolledSelectedKeys(next);
+      }
+      onSelectionChange?.(next);
+    },
+    [controlledSelectedKeys, onSelectionChange]
+  );
+  const registerRow = react.useCallback((key) => {
+    setRowKeys((current) => {
+      if (current.has(key)) {
+        return current;
+      }
+      const next = new Set(current);
+      next.add(key);
+      return next;
+    });
+    return () => {
+      setRowKeys((current) => {
+        if (!current.has(key)) {
+          return current;
+        }
+        const next = new Set(current);
+        next.delete(key);
+        return next;
+      });
+    };
+  }, []);
+  const setRowSelected = react.useCallback(
+    (key, selected) => {
+      if (selectionMode === "none") {
+        return;
+      }
+      const next = new Set(selectionMode === "multiple" ? selectedKeys : []);
+      if (selected) {
+        next.add(key);
+      } else {
+        next.delete(key);
+      }
+      updateSelection(next);
+    },
+    [selectedKeys, selectionMode, updateSelection]
+  );
+  const setAllSelected = react.useCallback(
+    (selected) => {
+      if (selectionMode !== "multiple") {
+        return;
+      }
+      updateSelection(selected ? new Set(rowKeys) : /* @__PURE__ */ new Set());
+    },
+    [rowKeys, selectionMode, updateSelection]
+  );
+  const selection = react.useMemo(
+    () => ({
+      selectionMode,
+      selectedKeys,
+      rowKeys,
+      registerRow,
+      setRowSelected,
+      setAllSelected
+    }),
+    [registerRow, rowKeys, selectedKeys, selectionMode, setAllSelected, setRowSelected]
+  );
+  return /* @__PURE__ */ jsxRuntime.jsx(TableSelectionContext.Provider, { value: selection, children: /* @__PURE__ */ jsxRuntime.jsx("table", { ...props, className: cn("grid text-base w-full relative", className), children }) });
 }
 function TableHeader({ children, className, style, ...props }) {
   const cols = style?.gridTemplateColumns || gridTemplateColumns;
@@ -4398,7 +4488,7 @@ function TableHeader({ children, className, style, ...props }) {
         className
       ),
       style: { "--grid-cols": cols },
-      children: /* @__PURE__ */ jsxRuntime.jsx("tr", { children })
+      children: /* @__PURE__ */ jsxRuntime.jsx("tr", { children: /* @__PURE__ */ jsxRuntime.jsx(TableSelectionScopeContext.Provider, { value: { type: "header" }, children }) })
     }
   );
 }
@@ -4410,14 +4500,50 @@ function TableBody({
   return /* @__PURE__ */ jsxRuntime.jsx("tbody", { ...props, className: cn("contents", className), children });
 }
 function TableRow({ children, className, style, id, ...props }) {
+  const generatedId = react.useId();
+  const rowKey = id ?? generatedId;
+  const selection = react.useContext(TableSelectionContext);
+  const isSelectable = selection !== null && selection.selectionMode !== "none";
+  const isSelected = selection?.selectedKeys.has(rowKey) ?? false;
+  const registerRow = selection?.registerRow;
+  react.useEffect(() => registerRow?.(rowKey), [registerRow, rowKey]);
+  const selectFromEvent = (event) => {
+    if (!selection || !isSelectable || event.defaultPrevented) {
+      return;
+    }
+    if (event.target instanceof Element && event.target.closest('a, button, input, select, textarea, [role="button"], [role="checkbox"]')) {
+      return;
+    }
+    selection.setRowSelected(rowKey, !isSelected);
+  };
   return /* @__PURE__ */ jsxRuntime.jsx(
     "tr",
     {
       ...props,
       "data-row-id": id,
-      className: cn("grid border-b border-edge-muted min-h-10", className),
+      "data-selected": isSelected || void 0,
+      "aria-selected": isSelectable ? isSelected : props["aria-selected"],
+      tabIndex: isSelectable ? props.tabIndex ?? 0 : props.tabIndex,
+      className: cn(
+        "grid border-b border-edge-muted min-h-10",
+        isSelectable && "cursor-pointer data-[selected]:bg-interactive",
+        className
+      ),
       style: { gridTemplateColumns, ...style },
-      children
+      onClick: (event) => {
+        props.onClick?.(event);
+        selectFromEvent(event);
+      },
+      onKeyDown: (event) => {
+        props.onKeyDown?.(event);
+        if (!event.defaultPrevented && (event.key === "Enter" || event.key === " ") && !(event.target instanceof Element && event.target.closest(
+          'a, button, input, select, textarea, [role="button"], [role="checkbox"]'
+        ))) {
+          event.preventDefault();
+          selection?.setRowSelected(rowKey, !isSelected);
+        }
+      },
+      children: /* @__PURE__ */ jsxRuntime.jsx(TableSelectionScopeContext.Provider, { value: { type: "row", rowKey }, children })
     }
   );
 }
@@ -4494,7 +4620,7 @@ function DataTable({
     /* @__PURE__ */ jsxRuntime.jsx(TableBody, { children: rows.map((row, index) => {
       return (
         // biome-ignore lint/suspicious/noArrayIndexKey: row data may not have unique ids
-        /* @__PURE__ */ jsxRuntime.jsx(TableRow, { style: { gridTemplateColumns: gridTemplateColumns2 }, children: columns?.map(({ id, as, hidden, className: className2, children: children2, ...cellProps }) => {
+        /* @__PURE__ */ jsxRuntime.jsx(TableRow, { id: String(row.id), style: { gridTemplateColumns: gridTemplateColumns2 }, children: columns?.map(({ id, as, hidden, className: className2, children: children2, ...cellProps }) => {
           if (hidden) {
             return null;
           }

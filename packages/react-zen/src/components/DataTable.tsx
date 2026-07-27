@@ -84,7 +84,7 @@ export function DataTable({
         {rows.map((row, index) => {
           return (
             // biome-ignore lint/suspicious/noArrayIndexKey: row data may not have unique ids
-            <TableRow key={index} style={{ gridTemplateColumns }}>
+            <TableRow key={index} id={String(row.id)} style={{ gridTemplateColumns }}>
               {columns?.map(({ id, as, hidden, className, children, ...cellProps }) => {
                 if (hidden) {
                   return null;

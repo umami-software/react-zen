@@ -658,7 +658,7 @@ interface CheckboxProps extends Omit<CheckboxRoot.Props, 'checked' | 'defaultChe
     isIndeterminate?: boolean;
     onChange?: (selected: boolean) => void;
 }
-declare function Checkbox({ label, className, children, isSelected, defaultSelected, isDisabled, isIndeterminate, onChange, value, ...props }: CheckboxProps): react_jsx_runtime.JSX.Element;
+declare function Checkbox({ label, className, children, isSelected, defaultSelected, isDisabled, isIndeterminate, onChange, value, slot, ...props }: CheckboxProps): react_jsx_runtime.JSX.Element;
 
 interface CheckboxGroupProps extends Omit<CheckboxGroup$1.Props, 'disabled' | 'onValueChange' | 'onChange'> {
     label?: string;
@@ -854,8 +854,10 @@ interface DataCardProps extends GridProps {
 }
 declare function DataCard({ data, labelWidth, ...props }: DataCardProps): react_jsx_runtime.JSX.Element;
 
+type TableSelectionMode = 'none' | 'single' | 'multiple';
+
 interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
-    selectionMode?: 'none' | 'single' | 'multiple';
+    selectionMode?: TableSelectionMode;
     selectedKeys?: Iterable<string>;
     defaultSelectedKeys?: Iterable<string>;
     onSelectionChange?: (keys: Set<string>) => void;
@@ -870,7 +872,7 @@ interface TableCellProps extends Omit<TdHTMLAttributes<HTMLTableCellElement>, 'a
 interface TableRowProps extends HTMLAttributes<HTMLTableRowElement> {
     id?: string;
 }
-declare function Table({ children, className, selectionMode: _selectionMode, selectedKeys: _selectedKeys, defaultSelectedKeys: _defaultSelectedKeys, onSelectionChange: _onSelectionChange, ...props }: TableProps): react_jsx_runtime.JSX.Element;
+declare function Table({ children, className, selectionMode, selectedKeys: controlledSelectedKeys, defaultSelectedKeys, onSelectionChange, ...props }: TableProps): react_jsx_runtime.JSX.Element;
 interface TableHeaderComponentProps extends HTMLAttributes<HTMLTableSectionElement> {
     style?: CSSProperties;
 }

@@ -37,7 +37,7 @@ the corresponding shadcn component.
 | --- | --- | --- |
 | Breadcrumbs | Semantic `nav`, `ol`, and `li` | Native semantics replace React Aria collection management. |
 | Calendar | `react-day-picker` | Dates are native `Date` values; internationalized calendar-system objects are no longer exposed. |
-| DataTable / Table | Semantic native table parts | Rendering and layout are preserved. React Aria row selection behavior is not provided by the native wrapper. |
+| DataTable / Table | Semantic native table parts | Rendering, layout, and key-based row selection are preserved. Advanced React Aria grid navigation and sorting behavior are not reproduced. |
 | List | Native listbox compatibility layer | Supports single/multiple key selection. Advanced React Aria collection features such as virtual focus and dynamic collection render functions are not reproduced. Select and ComboBox items switch to their Base UI item primitives automatically. |
 | Menu when used without a trigger | Native menu roles | The existing triggerless/static composition remains supported. `MenuTrigger`, context menus, menubars, and their submenus use complete Base UI primitive chains; advanced React Aria collection selection is reduced to Zen's key-based compatibility behavior. |
 | SearchField | Native search input | Keeps debounce and `onSearch`; browser-native input events replace React Aria field state. |
