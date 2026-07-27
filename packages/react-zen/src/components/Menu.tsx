@@ -79,7 +79,7 @@ export function Menu({
     return (
       <BaseContextMenu.Portal>
         <BaseContextMenu.Positioner>
-          <BaseContextMenu.Popup {...props} className={popupClassName}>
+          <BaseContextMenu.Popup {...props} className={cn('zen-popover', popupClassName)}>
             {popupContent}
           </BaseContextMenu.Popup>
         </BaseContextMenu.Positioner>
@@ -91,7 +91,7 @@ export function Menu({
     return (
       <BaseMenu.Portal>
         <BaseMenu.Positioner>
-          <BaseMenu.Popup {...props} className={popupClassName}>
+          <BaseMenu.Popup {...props} className={cn('zen-popover', popupClassName)}>
             {popupContent}
           </BaseMenu.Popup>
         </BaseMenu.Positioner>

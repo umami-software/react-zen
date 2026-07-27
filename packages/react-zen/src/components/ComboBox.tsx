@@ -109,7 +109,7 @@ export function ComboBox({
         </BaseCombobox.InputGroup>
         <BaseCombobox.Portal>
           <BaseCombobox.Positioner align="start" sideOffset={4} {...popoverProps}>
-            <BaseCombobox.Popup className="w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none">
+            <BaseCombobox.Popup className="zen-popover w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none">
               <ListPrimitiveProvider kind="combobox">
                 <List {...listProps}>
                   <BaseCombobox.Collection>

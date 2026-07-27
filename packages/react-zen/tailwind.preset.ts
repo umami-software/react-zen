@@ -84,7 +84,7 @@ const preset: Config = {
   },
   plugins: [
     plugin(({ addVariant }) => {
-      // React Aria state variants
+      // Component state variants
       addVariant('pressed', '&[data-pressed]');
       addVariant('selected', '&[data-selected]');
       addVariant('disabled', '&[data-disabled]');
@@ -94,16 +94,14 @@ const preset: Config = {
       addVariant('indeterminate', '&[data-indeterminate]');
       addVariant('expanded', '&[data-expanded]');
       addVariant('readonly', '&[data-readonly]');
-      addVariant('entering', '&[data-entering]');
-      addVariant('exiting', '&[data-exiting]');
       addVariant('dragging', '&[data-dragging]');
       addVariant('outside-month', '&[data-outside-month]');
 
       // Placement variants for Popover/Tooltip
-      addVariant('placement-top', "&[data-placement='top']");
-      addVariant('placement-bottom', "&[data-placement='bottom']");
-      addVariant('placement-left', "&[data-placement='left']");
-      addVariant('placement-right', "&[data-placement='right']");
+      addVariant('placement-top', "&[data-side='top']");
+      addVariant('placement-bottom', "&[data-side='bottom']");
+      addVariant('placement-left', "&[data-side='left']");
+      addVariant('placement-right', "&[data-side='right']");
 
       // Orientation variants
       addVariant('orientation-horizontal', "&[data-orientation='horizontal']");

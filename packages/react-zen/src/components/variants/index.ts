@@ -95,13 +95,7 @@ export type ListItemVariants = VariantProps<typeof listItem>;
 
 // Overlay/backdrop variants
 export const overlay = tv({
-  base: [
-    'fixed inset-0',
-    'bg-black/80 flex items-center justify-center',
-    'z-[9999]',
-    'entering:animate-modal-fade-in',
-    'exiting:animate-modal-fade-out',
-  ],
+  base: ['fixed inset-0', 'bg-black/80 flex items-center justify-center', 'z-[9999]'],
 });
 
 // Modal variants
@@ -109,32 +103,12 @@ export const modal = tv({
   base: 'relative z-[9999]',
   variants: {
     position: {
-      center: 'entering:animate-modal-zoom-in',
-      left: [
-        'absolute top-0 left-0 bottom-0 m-auto',
-        'w-[calc(100dvw-var(--modal-offset,0))]',
-        'entering:animate-modal-slide-left-in',
-        'exiting:animate-modal-slide-left-out',
-      ],
-      right: [
-        'absolute top-0 right-0 bottom-0 m-auto',
-        'w-[calc(100dvw-var(--modal-offset,0))]',
-        'entering:animate-modal-slide-right-in',
-        'exiting:animate-modal-slide-right-out',
-      ],
-      top: [
-        'absolute top-0 left-0 right-0 m-auto',
-        'h-[calc(100dvh-var(--modal-offset,0))]',
-        'entering:animate-modal-slide-up-in',
-        'exiting:animate-modal-slide-up-out',
-      ],
-      bottom: [
-        'absolute bottom-0 left-0 right-0 m-auto',
-        'h-[calc(100dvh-var(--modal-offset,0))]',
-        'entering:animate-modal-slide-down-in',
-        'exiting:animate-modal-slide-down-out',
-      ],
-      fullscreen: ['w-dvw h-dvh rounded-none', 'entering:animate-modal-fade-in'],
+      center: '',
+      left: ['absolute top-0 left-0 bottom-0 m-auto', 'w-[calc(100dvw-var(--modal-offset,0))]'],
+      right: ['absolute top-0 right-0 bottom-0 m-auto', 'w-[calc(100dvw-var(--modal-offset,0))]'],
+      top: ['absolute top-0 left-0 right-0 m-auto', 'h-[calc(100dvh-var(--modal-offset,0))]'],
+      bottom: ['absolute bottom-0 left-0 right-0 m-auto', 'h-[calc(100dvh-var(--modal-offset,0))]'],
+      fullscreen: 'w-dvw h-dvh rounded-none',
     },
   },
   defaultVariants: {
@@ -146,11 +120,7 @@ export type ModalVariants = VariantProps<typeof modal>;
 
 // Popover variants
 export const popover = tv({
-  base: [
-    'bg-surface-overlay border border-edge-muted rounded-lg shadow-lg p-4',
-    'entering:animate-popover-in',
-    'exiting:animate-popover-out',
-  ],
+  base: ['bg-surface-overlay border border-edge-muted rounded-lg shadow-lg p-4'],
   variants: {
     placement: {
       top: '[--tw-translate:translateY(8px)]',
@@ -165,11 +135,7 @@ export type PopoverVariants = VariantProps<typeof popover>;
 
 // Tooltip variants
 export const tooltip = tv({
-  base: [
-    'bg-surface-inverted text-surface-base text-base px-2 py-1 rounded',
-    'entering:animate-popover-in',
-    'exiting:animate-popover-out',
-  ],
+  base: ['bg-surface-inverted text-surface-base text-base px-2 py-1 rounded'],
 });
 
 // Checkbox variants
@@ -355,8 +321,6 @@ export const toast = tv({
     'bg-surface-overlay',
     'border border-edge-muted',
     'text-base',
-    'entering:animate-toast-in',
-    'exiting:animate-toast-out',
   ],
   variants: {
     variant: {

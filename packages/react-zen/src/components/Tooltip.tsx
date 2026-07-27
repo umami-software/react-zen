@@ -23,7 +23,7 @@ export function Tooltip({
   return (
     <BaseTooltip.Portal>
       <BaseTooltip.Positioner {...props} side={placement ?? side} sideOffset={sideOffset}>
-        <BaseTooltip.Popup className={cn('group', tooltip(), className)}>
+        <BaseTooltip.Popup className={cn('zen-popover group', tooltip(), className)}>
           {showArrow && (
             <BaseTooltip.Arrow
               style={({ side }) => ({

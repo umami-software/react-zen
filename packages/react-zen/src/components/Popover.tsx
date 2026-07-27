@@ -31,7 +31,7 @@ export function Popover({
           className={cn(
             'zen-popover outline-none',
             isFullscreen &&
-              'block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base',
+              'zen-popover-fullscreen block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base',
             className,
           )}
         >

@@ -2526,44 +2526,18 @@ tv({
   ]
 });
 tv({
-  base: [
-    "fixed inset-0",
-    "bg-black/80 flex items-center justify-center",
-    "z-[9999]",
-    "entering:animate-modal-fade-in",
-    "exiting:animate-modal-fade-out"
-  ]
+  base: ["fixed inset-0", "bg-black/80 flex items-center justify-center", "z-[9999]"]
 });
 tv({
   base: "relative z-[9999]",
   variants: {
     position: {
-      center: "entering:animate-modal-zoom-in",
-      left: [
-        "absolute top-0 left-0 bottom-0 m-auto",
-        "w-[calc(100dvw-var(--modal-offset,0))]",
-        "entering:animate-modal-slide-left-in",
-        "exiting:animate-modal-slide-left-out"
-      ],
-      right: [
-        "absolute top-0 right-0 bottom-0 m-auto",
-        "w-[calc(100dvw-var(--modal-offset,0))]",
-        "entering:animate-modal-slide-right-in",
-        "exiting:animate-modal-slide-right-out"
-      ],
-      top: [
-        "absolute top-0 left-0 right-0 m-auto",
-        "h-[calc(100dvh-var(--modal-offset,0))]",
-        "entering:animate-modal-slide-up-in",
-        "exiting:animate-modal-slide-up-out"
-      ],
-      bottom: [
-        "absolute bottom-0 left-0 right-0 m-auto",
-        "h-[calc(100dvh-var(--modal-offset,0))]",
-        "entering:animate-modal-slide-down-in",
-        "exiting:animate-modal-slide-down-out"
-      ],
-      fullscreen: ["w-dvw h-dvh rounded-none", "entering:animate-modal-fade-in"]
+      center: "",
+      left: ["absolute top-0 left-0 bottom-0 m-auto", "w-[calc(100dvw-var(--modal-offset,0))]"],
+      right: ["absolute top-0 right-0 bottom-0 m-auto", "w-[calc(100dvw-var(--modal-offset,0))]"],
+      top: ["absolute top-0 left-0 right-0 m-auto", "h-[calc(100dvh-var(--modal-offset,0))]"],
+      bottom: ["absolute bottom-0 left-0 right-0 m-auto", "h-[calc(100dvh-var(--modal-offset,0))]"],
+      fullscreen: "w-dvw h-dvh rounded-none"
     }
   },
   defaultVariants: {
@@ -2571,11 +2545,7 @@ tv({
   }
 });
 tv({
-  base: [
-    "bg-surface-overlay border border-edge-muted rounded-lg shadow-lg p-4",
-    "entering:animate-popover-in",
-    "exiting:animate-popover-out"
-  ],
+  base: ["bg-surface-overlay border border-edge-muted rounded-lg shadow-lg p-4"],
   variants: {
     placement: {
       top: "[--tw-translate:translateY(8px)]",
@@ -2586,11 +2556,7 @@ tv({
   }
 });
 var tooltip = tv({
-  base: [
-    "bg-surface-inverted text-surface-base text-base px-2 py-1 rounded",
-    "entering:animate-popover-in",
-    "exiting:animate-popover-out"
-  ]
+  base: ["bg-surface-inverted text-surface-base text-base px-2 py-1 rounded"]
 });
 var checkbox = tv({
   slots: {
@@ -2745,9 +2711,7 @@ var toast = tv({
     "flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg",
     "bg-surface-overlay",
     "border border-edge-muted",
-    "text-base",
-    "entering:animate-toast-in",
-    "exiting:animate-toast-out"
+    "text-base"
   ],
   variants: {
     variant: {
@@ -3990,7 +3954,7 @@ function ComboBox({
           /* @__PURE__ */ jsx(Combobox.Input, { placeholder, render: /* @__PURE__ */ jsx(InputGroupInput, {}) }),
           /* @__PURE__ */ jsx(InputGroupAddon, { align: "inline-end", children: /* @__PURE__ */ jsx(Combobox.Trigger, { className: "flex size-6 shrink-0 items-center justify-center rounded text-foreground-muted hover:bg-interactive hover:text-foreground-primary", children: /* @__PURE__ */ jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsx(icons_exports.ChevronRight, {}) }) }) })
         ] }),
-        /* @__PURE__ */ jsx(Combobox.Portal, { children: /* @__PURE__ */ jsx(Combobox.Positioner, { align: "start", sideOffset: 4, ...popoverProps, children: /* @__PURE__ */ jsxs(Combobox.Popup, { className: "w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
+        /* @__PURE__ */ jsx(Combobox.Portal, { children: /* @__PURE__ */ jsx(Combobox.Positioner, { align: "start", sideOffset: 4, ...popoverProps, children: /* @__PURE__ */ jsxs(Combobox.Popup, { className: "zen-popover w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
           /* @__PURE__ */ jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsx(List, { ...listProps, children: /* @__PURE__ */ jsx(Combobox.Collection, { children: (value) => {
             const item = normalizedItems.find((option) => option.value === value);
             if (!item) {
@@ -4752,7 +4716,7 @@ function Popover({
     {
       className: cn(
         "zen-popover outline-none",
-        isFullscreen && "block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
+        isFullscreen && "zen-popover-fullscreen block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
         className
       ),
       children
@@ -4878,7 +4842,7 @@ function Tooltip({
   showArrow,
   ...props
 }) {
-  return /* @__PURE__ */ jsx(Tooltip$1.Portal, { children: /* @__PURE__ */ jsx(Tooltip$1.Positioner, { ...props, side: placement ?? side, sideOffset, children: /* @__PURE__ */ jsxs(Tooltip$1.Popup, { className: cn("group", tooltip(), className), children: [
+  return /* @__PURE__ */ jsx(Tooltip$1.Portal, { children: /* @__PURE__ */ jsx(Tooltip$1.Positioner, { ...props, side: placement ?? side, sideOffset, children: /* @__PURE__ */ jsxs(Tooltip$1.Popup, { className: cn("zen-popover group", tooltip(), className), children: [
     showArrow && /* @__PURE__ */ jsx(
       Tooltip$1.Arrow,
       {
@@ -5600,10 +5564,10 @@ function Menu({
   );
   const popupContent = /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children });
   if (primitiveKind === "context-menu") {
-    return /* @__PURE__ */ jsx(ContextMenu$1.Portal, { children: /* @__PURE__ */ jsx(ContextMenu$1.Positioner, { children: /* @__PURE__ */ jsx(ContextMenu$1.Popup, { ...props, className: popupClassName2, children: popupContent }) }) });
+    return /* @__PURE__ */ jsx(ContextMenu$1.Portal, { children: /* @__PURE__ */ jsx(ContextMenu$1.Positioner, { children: /* @__PURE__ */ jsx(ContextMenu$1.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
   }
   if (primitiveKind === "menu") {
-    return /* @__PURE__ */ jsx(Menu$1.Portal, { children: /* @__PURE__ */ jsx(Menu$1.Positioner, { children: /* @__PURE__ */ jsx(Menu$1.Popup, { ...props, className: popupClassName2, children: popupContent }) }) });
+    return /* @__PURE__ */ jsx(Menu$1.Portal, { children: /* @__PURE__ */ jsx(Menu$1.Positioner, { children: /* @__PURE__ */ jsx(Menu$1.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
   }
   return /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsx("div", { ...props, role: "menu", className: popupClassName2, children }) });
 }
@@ -6609,8 +6573,8 @@ function Select({
               Select$1.Popup,
               {
                 className: cn(
-                  "bg-surface-overlay border border-edge rounded-md shadow-lg outline-none",
-                  isFullscreen && "fixed inset-0 rounded-none z-[9999]"
+                  "zen-popover bg-surface-overlay border border-edge rounded-md shadow-lg outline-none",
+                  isFullscreen && "zen-popover-fullscreen fixed inset-0 rounded-none z-[9999]"
                 ),
                 children: /* @__PURE__ */ jsxs(Column, { gap: "2", padding: "2", children: [
                   allowSearch && /* @__PURE__ */ jsx(

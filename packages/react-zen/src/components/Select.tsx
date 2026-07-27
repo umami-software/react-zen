@@ -139,8 +139,8 @@ export function Select({
           >
             <BaseSelect.Popup
               className={cn(
-                'bg-surface-overlay border border-edge rounded-md shadow-lg outline-none',
-                isFullscreen && 'fixed inset-0 rounded-none z-[9999]',
+                'zen-popover bg-surface-overlay border border-edge rounded-md shadow-lg outline-none',
+                isFullscreen && 'zen-popover-fullscreen fixed inset-0 rounded-none z-[9999]',
               )}
             >
               <Column gap="2" padding="2">
