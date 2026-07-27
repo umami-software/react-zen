@@ -68,6 +68,17 @@ pre:has(> code) {
   border-radius: 0 !important;
 }
 
+/* Remove the outlined style from code block copy buttons */
+.nextra-code button[title="Copy code"] {
+  border: none !important;
+}
+
+/* Align controls with the text in single-line code blocks */
+.nextra-code pre:has(> code > span:only-child) > div {
+  top: 50% !important;
+  transform: translateY(-50%);
+}
+
 /* Always show copy button on code blocks */
 .nextra-code pre > div {
   opacity: 1 !important;
