@@ -104,10 +104,6 @@ export const modal = tv({
   variants: {
     position: {
       center: '',
-      left: ['absolute top-0 left-0 bottom-0 m-auto', 'w-[calc(100dvw-var(--modal-offset,0))]'],
-      right: ['absolute top-0 right-0 bottom-0 m-auto', 'w-[calc(100dvw-var(--modal-offset,0))]'],
-      top: ['absolute top-0 left-0 right-0 m-auto', 'h-[calc(100dvh-var(--modal-offset,0))]'],
-      bottom: ['absolute bottom-0 left-0 right-0 m-auto', 'h-[calc(100dvh-var(--modal-offset,0))]'],
       fullscreen: 'w-dvw h-dvh rounded-none',
     },
   },

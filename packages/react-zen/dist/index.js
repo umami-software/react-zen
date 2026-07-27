@@ -2558,10 +2558,6 @@ tailwindVariants.tv({
   variants: {
     position: {
       center: "",
-      left: ["absolute top-0 left-0 bottom-0 m-auto", "w-[calc(100dvw-var(--modal-offset,0))]"],
-      right: ["absolute top-0 right-0 bottom-0 m-auto", "w-[calc(100dvw-var(--modal-offset,0))]"],
-      top: ["absolute top-0 left-0 right-0 m-auto", "h-[calc(100dvh-var(--modal-offset,0))]"],
-      bottom: ["absolute bottom-0 left-0 right-0 m-auto", "h-[calc(100dvh-var(--modal-offset,0))]"],
       fullscreen: "w-dvw h-dvh rounded-none"
     }
   },
@@ -3099,7 +3095,7 @@ function Pressable({
 function RouterProvider({ children }) {
   return children;
 }
-function Dialog({ title, variant, children, className, ...props }) {
+function Dialog({ title, children, className, ...props }) {
   const { close, kind } = useOverlayTrigger();
   const titleContent = title ?? "Dialog";
   const titleClassName = title ? void 0 : "sr-only";
@@ -3111,7 +3107,6 @@ function Dialog({ title, variant, children, className, ...props }) {
       ...props,
       className: cn(
         "p-6 shadow-xl bg-surface-base border border-edge rounded relative outline-none overflow-auto",
-        variant === "sheet" && "w-full h-full p-0 border-0 rounded-none shadow-none z-[9999]",
         className
       ),
       children: /* @__PURE__ */ jsxRuntime.jsxs(Column, { height: "100%", gap: true, children: [
@@ -3995,15 +3990,10 @@ function ComboBox({
 }
 var placementClasses = {
   center: "zen-modal-center",
-  left: "zen-modal-left absolute inset-y-0 left-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
-  right: "zen-modal-right absolute inset-y-0 right-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]",
-  top: "zen-modal-top absolute inset-x-0 top-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
-  bottom: "zen-modal-bottom absolute inset-x-0 bottom-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]",
   fullscreen: "zen-modal-fullscreen w-dvw h-dvh rounded-none"
 };
 function Modal({
   placement = "center",
-  offset,
   children,
   className,
   style,
@@ -4012,20 +4002,16 @@ function Modal({
   ...props
 }) {
   const { kind } = useOverlayTrigger();
-  const modalStyle = {
-    ...style,
-    ...offset ? { "--modal-offset": offset } : {}
-  };
   const popupClassName2 = cn("relative z-[9999]", placementClasses[placement], className);
   if (kind === "alert-dialog") {
     return /* @__PURE__ */ jsxRuntime.jsxs(alertDialog.AlertDialog.Portal, { ...props, children: [
       /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-      /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Popup, { className: popupClassName2, style: modalStyle, children }) })
+      /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Popup, { className: popupClassName2, style, children }) })
     ] });
   }
   return /* @__PURE__ */ jsxRuntime.jsxs(dialog.Dialog.Portal, { ...props, children: [
     /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Popup, { className: popupClassName2, style: modalStyle, children }) })
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Popup, { className: popupClassName2, style, children }) })
   ] });
 }
 Modal.zenOverlayType = "dialog";

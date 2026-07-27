@@ -9,25 +9,18 @@ export interface ModalProps extends BaseDialog.Portal.Props {
   children?: ReactNode;
   isOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
-  placement?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'fullscreen';
-  offset?: string;
+  placement?: 'center' | 'fullscreen';
   className?: string;
   style?: CSSProperties;
 }
 
 const placementClasses = {
   center: 'zen-modal-center',
-  left: 'zen-modal-left absolute inset-y-0 left-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]',
-  right: 'zen-modal-right absolute inset-y-0 right-0 m-auto w-[calc(100dvw-var(--modal-offset,0))]',
-  top: 'zen-modal-top absolute inset-x-0 top-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]',
-  bottom:
-    'zen-modal-bottom absolute inset-x-0 bottom-0 m-auto h-[calc(100dvh-var(--modal-offset,0))]',
   fullscreen: 'zen-modal-fullscreen w-dvw h-dvh rounded-none',
 };
 
 export function Modal({
   placement = 'center',
-  offset,
   children,
   className,
   style,
@@ -36,11 +29,6 @@ export function Modal({
   ...props
 }: ModalProps) {
   const { kind } = useOverlayTrigger();
-  const modalStyle = {
-    ...style,
-    ...(offset ? { '--modal-offset': offset } : {}),
-  } as CSSProperties;
-
   const popupClassName = cn('relative z-[9999]', placementClasses[placement], className);
 
   if (kind === 'alert-dialog') {
@@ -48,7 +36,7 @@ export function Modal({
       <BaseAlertDialog.Portal {...props}>
         <BaseAlertDialog.Backdrop className="zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" />
         <BaseAlertDialog.Viewport className="fixed inset-0 flex items-center justify-center z-[9999]">
-          <BaseAlertDialog.Popup className={popupClassName} style={modalStyle}>
+          <BaseAlertDialog.Popup className={popupClassName} style={style}>
             {children}
           </BaseAlertDialog.Popup>
         </BaseAlertDialog.Viewport>
@@ -60,7 +48,7 @@ export function Modal({
     <BaseDialog.Portal {...props}>
       <BaseDialog.Backdrop className="zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" />
       <BaseDialog.Viewport className="fixed inset-0 flex items-center justify-center z-[9999]">
-        <BaseDialog.Popup className={popupClassName} style={modalStyle}>
+        <BaseDialog.Popup className={popupClassName} style={style}>
           {children}
         </BaseDialog.Popup>
       </BaseDialog.Viewport>

@@ -14,10 +14,9 @@ export interface DialogRenderProps {
 export interface DialogProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'children'> {
   children?: ReactNode | ((props: DialogRenderProps) => ReactNode);
   title?: ReactNode;
-  variant?: 'sheet';
 }
 
-export function Dialog({ title, variant, children, className, ...props }: DialogProps) {
+export function Dialog({ title, children, className, ...props }: DialogProps) {
   const { close, kind } = useOverlayTrigger();
   const titleContent = title ?? 'Dialog';
   const titleClassName = title ? undefined : 'sr-only';
@@ -38,7 +37,6 @@ export function Dialog({ title, variant, children, className, ...props }: Dialog
       {...props}
       className={cn(
         'p-6 shadow-xl bg-surface-base border border-edge rounded relative outline-none overflow-auto',
-        variant === 'sheet' && 'w-full h-full p-0 border-0 rounded-none shadow-none z-[9999]',
         className,
       )}
     >

@@ -5,6 +5,7 @@ title: Modal
 # Modal
 
 A modal is an overlay element which blocks interaction with elements outside it.
+Use `Sheet` for panels that slide in from an edge of the viewport.
 
 <Example>
   <DialogTrigger>
@@ -18,49 +19,9 @@ A modal is an overlay element which blocks interaction with elements outside it.
     </Modal>
   </DialogTrigger>
   <DialogTrigger>
-    <Button>Top</Button>
-    <Modal placement="top">
-      <Dialog variant="sheet">
-        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
-          <Heading>Hello.</Heading>
-        </Flexbox>
-      </Dialog>
-    </Modal>
-  </DialogTrigger>
-  <DialogTrigger>
-    <Button>Left</Button>
-    <Modal placement="left">
-      <Dialog variant="sheet">
-        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
-          <Heading>Hello.</Heading>
-        </Flexbox>
-      </Dialog>
-    </Modal>
-  </DialogTrigger>
-  <DialogTrigger>
-    <Button>Right</Button>
-    <Modal placement="right">
-      <Dialog variant="sheet">
-        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
-          <Heading>Hello.</Heading>
-        </Flexbox>
-      </Dialog>
-    </Modal>
-  </DialogTrigger>
-  <DialogTrigger>
-    <Button>Bottom</Button>
-    <Modal placement="bottom">
-      <Dialog variant="sheet">
-        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
-          <Heading>Hello.</Heading>
-        </Flexbox>
-      </Dialog>
-    </Modal>
-  </DialogTrigger>
-  <DialogTrigger>
     <Button>Fullscreen</Button>
     <Modal placement="fullscreen">
-      <Dialog variant="sheet">
+      <Dialog className="size-full rounded-none border-0 shadow-none">
         <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
           <Heading>Hello.</Heading>
         </Flexbox>
@@ -80,49 +41,9 @@ A modal is an overlay element which blocks interaction with elements outside it.
     </Modal>
   </DialogTrigger>
   <DialogTrigger>
-    <Button>Top</Button>
-    <Modal placement="top">
-      <Dialog variant="sheet">
-        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
-          <Heading>Hello.</Heading>
-        </Flexbox>
-      </Dialog>
-    </Modal>
-  </DialogTrigger>
-  <DialogTrigger>
-    <Button>Left</Button>
-    <Modal placement="left">
-      <Dialog variant="sheet">
-        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
-          <Heading>Hello.</Heading>
-        </Flexbox>
-      </Dialog>
-    </Modal>
-  </DialogTrigger>
-  <DialogTrigger>
-    <Button>Right</Button>
-    <Modal placement="right">
-      <Dialog variant="sheet">
-        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
-          <Heading>Hello.</Heading>
-        </Flexbox>
-      </Dialog>
-    </Modal>
-  </DialogTrigger>
-  <DialogTrigger>
-    <Button>Bottom</Button>
-    <Modal placement="bottom">
-      <Dialog variant="sheet">
-        <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
-          <Heading>Hello.</Heading>
-        </Flexbox>
-      </Dialog>
-    </Modal>
-  </DialogTrigger>
-  <DialogTrigger>
     <Button>Fullscreen</Button>
     <Modal placement="fullscreen">
-      <Dialog variant="sheet">
+      <Dialog className="size-full rounded-none border-0 shadow-none">
         <Flexbox justifyContent="center" alignItems="center" paddingX="9" paddingY="8">
           <Heading>Hello.</Heading>
         </Flexbox>
@@ -137,8 +58,7 @@ A modal is an overlay element which blocks interaction with elements outside it.
 <Example>
   <DataTable
     data={[
-      { name: 'placement', value: 'ModalPlacement', description: '"center" | "top" | "bottom" | "left" | "right" | "fullscreen"' },
-      { name: 'offset', value: 'string', description: 'CSS offset value for edge placements' },
+      { name: 'placement', value: 'string', description: '"center" | "fullscreen" (default: "center")' },
       { name: 'isDismissable', value: 'boolean', description: 'Can be dismissed by clicking outside (default: true)' },
       { name: 'isKeyboardDismissDisabled', value: 'boolean', description: 'Disables Escape key dismissal' },
     ]}

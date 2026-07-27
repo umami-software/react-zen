@@ -75,9 +75,8 @@ interface DialogRenderProps {
 interface DialogProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'children'> {
     children?: ReactNode | ((props: DialogRenderProps) => ReactNode);
     title?: ReactNode;
-    variant?: 'sheet';
 }
-declare function Dialog({ title, variant, children, className, ...props }: DialogProps): react_jsx_runtime.JSX.Element;
+declare function Dialog({ title, children, className, ...props }: DialogProps): react_jsx_runtime.JSX.Element;
 
 interface AlertDialogProps extends DialogProps {
     title?: ReactNode;
@@ -1269,12 +1268,11 @@ interface ModalProps extends Dialog$1.Portal.Props {
     children?: ReactNode;
     isOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
-    placement?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'fullscreen';
-    offset?: string;
+    placement?: 'center' | 'fullscreen';
     className?: string;
     style?: CSSProperties;
 }
-declare function Modal({ placement, offset, children, className, style, isOpen: _isOpen, onOpenChange: _onOpenChange, ...props }: ModalProps): react_jsx_runtime.JSX.Element;
+declare function Modal({ placement, children, className, style, isOpen: _isOpen, onOpenChange: _onOpenChange, ...props }: ModalProps): react_jsx_runtime.JSX.Element;
 
 interface NavbarProps extends HTMLAttributes<HTMLElement> {
     /** Shows the dropdown arrow on items that have a label. Defaults to `true`. */
