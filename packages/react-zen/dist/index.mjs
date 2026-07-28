@@ -2457,16 +2457,16 @@ tv({
 });
 var alert = tv({
   base: [
-    "relative w-full rounded-lg border border-edge px-4 py-3 text-sm",
-    "grid grid-cols-[0_1fr] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start",
+    "relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border border-edge-muted px-4 py-3 text-base",
+    "has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3",
     "[&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current"
   ],
   variants: {
     variant: {
       default: "bg-surface-base text-foreground-primary",
-      destructive: [
-        "bg-surface-base text-status-error-text",
-        "*:data-[slot=alert-description]:text-status-error-text/90"
+      danger: [
+        "bg-surface-base text-status-error",
+        "*:data-[slot=alert-description]:text-status-error/90"
       ]
     }
   },
@@ -2657,7 +2657,7 @@ var AlertDescription = forwardRef(
       ref,
       "data-slot": "alert-description",
       className: cn(
-        "col-start-2 grid justify-items-start gap-1 text-sm text-foreground-muted [&_p]:leading-relaxed",
+        "col-start-2 grid justify-items-start gap-1 text-base text-foreground-muted [&_p]:leading-relaxed",
         className
       )
     }
@@ -2688,6 +2688,7 @@ function Button({
     Button$1,
     {
       ...props,
+      "data-slot": "button",
       render,
       disabled: isDisabled ?? disabled,
       className: buttonClassName,
@@ -3237,17 +3238,17 @@ function ButtonGroup({ className, orientation = "horizontal", ...props }) {
       className: cn(
         "flex w-fit items-stretch",
         "has-[>[data-slot=button-group]]:gap-2",
-        "[&>*]:focus-visible:relative [&>*]:focus-visible:z-10",
+        "[&>[data-slot]]:focus-visible:relative [&>[data-slot]]:focus-visible:z-10",
         "[&>input]:min-w-0 [&>input]:flex-1",
         orientation === "horizontal" ? [
-          "[&>*:not(:first-child)]:rounded-s-none",
-          "[&>*:not(:first-child)]:border-s-0",
-          "[&>*:not(:last-child)]:rounded-e-none"
+          "[&>[data-slot]]:rounded-e-none",
+          "[&>[data-slot]~[data-slot]]:rounded-s-none",
+          "[&>[data-slot]~[data-slot]]:border-s-0"
         ] : [
           "flex-col",
-          "[&>*:not(:first-child)]:rounded-t-none",
-          "[&>*:not(:first-child)]:border-t-0",
-          "[&>*:not(:last-child)]:rounded-b-none"
+          "[&>[data-slot]]:rounded-b-none",
+          "[&>[data-slot]~[data-slot]]:rounded-t-none",
+          "[&>[data-slot]~[data-slot]]:border-t-0"
         ],
         className
       )
@@ -3284,8 +3285,9 @@ function ButtonGroupSeparator({
       "data-slot": "button-group-separator",
       orientation,
       className: cn(
-        "relative m-0 self-stretch bg-edge-strong",
-        "data-[orientation=vertical]:h-auto",
+        "relative self-stretch",
+        "data-[orientation=horizontal]:mx-px data-[orientation=horizontal]:w-auto",
+        "data-[orientation=vertical]:my-px data-[orientation=vertical]:h-auto",
         className
       )
     }
@@ -5077,7 +5079,7 @@ function Form({
     }
   }, [error, formValues]);
   return /* @__PURE__ */ jsxs(FormProvider, { ...formValues, children: [
-    error && /* @__PURE__ */ jsx(Alert, { variant: "destructive", children: /* @__PURE__ */ jsx(AlertTitle, { className: "justify-self-center", children: error instanceof Error ? error?.message : error }) }),
+    error && /* @__PURE__ */ jsx(Alert, { variant: "danger", children: /* @__PURE__ */ jsx(AlertTitle, { className: "justify-self-center", children: error instanceof Error ? error?.message : error }) }),
     /* @__PURE__ */ jsx(
       "form",
       {

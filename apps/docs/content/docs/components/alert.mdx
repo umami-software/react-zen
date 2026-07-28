@@ -8,7 +8,7 @@ Displays a callout for user attention. Compose an `Alert` from an optional icon,
 an `AlertTitle`, and an `AlertDescription`.
 
 <Example>
-  <Box width="400px">
+  <Box width="448px" maxWidth="100%">
     <Alert>
       <Lucide.Terminal />
       <AlertTitle>Heads up!</AlertTitle>
@@ -27,26 +27,28 @@ an `AlertTitle`, and an `AlertDescription`.
   ```
 </Example>
 
-## Destructive
+## Danger
 
-Use the `destructive` variant for errors and failed operations.
+Use `variant="danger"` for errors and dangerous or failed operations.
 
 <Example>
-  <Box width="400px">
-    <Alert variant="destructive">
+  <Box width="448px" maxWidth="100%">
+    <Alert variant="danger">
       <Lucide.CircleAlert />
-      <AlertTitle>Unable to process your payment.</AlertTitle>
+      <AlertTitle>Payment failed</AlertTitle>
       <AlertDescription>
-        Please verify your billing information and try again.
+        Your payment could not be processed. Please check your payment method and try again.
       </AlertDescription>
     </Alert>
   </Box>
 
   ```jsx
-  <Alert variant="destructive">
+  <Alert variant="danger">
     <Lucide.CircleAlert />
-    <AlertTitle>Unable to process your payment.</AlertTitle>
-    <AlertDescription>Please verify your billing information and try again.</AlertDescription>
+    <AlertTitle>Payment failed</AlertTitle>
+    <AlertDescription>
+      Your payment could not be processed. Please check your payment method and try again.
+    </AlertDescription>
   </Alert>
   ```
 </Example>
@@ -56,7 +58,7 @@ Use the `destructive` variant for errors and failed operations.
 Icons are optional children — omit the icon and the content spans the full width.
 
 <Example>
-  <Box width="400px">
+  <Box width="448px" maxWidth="100%">
     <Alert>
       <AlertTitle>Scheduled maintenance</AlertTitle>
       <AlertDescription>
@@ -76,7 +78,7 @@ Icons are optional children — omit the icon and the content spans the full wid
 ## Title only
 
 <Example>
-  <Box width="400px">
+  <Box width="448px" maxWidth="100%">
     <Alert>
       <Lucide.CircleCheck />
       <AlertTitle>Your changes have been saved.</AlertTitle>
@@ -98,7 +100,7 @@ Icons are optional children — omit the icon and the content spans the full wid
 <Example>
   <DataTable
     data={[
-      { name: 'variant', value: "'default' | 'destructive'", description: 'Visual style (default: "default")' },
+      { name: 'variant', value: "'default' | 'danger'", description: 'Visual style (default: "default")' },
       { name: 'children', value: 'ReactNode', description: 'An optional svg icon, AlertTitle, and AlertDescription' },
     ]}
   >

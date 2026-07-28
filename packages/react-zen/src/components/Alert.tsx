@@ -38,7 +38,7 @@ export const AlertDescription = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDi
       ref={ref}
       data-slot="alert-description"
       className={cn(
-        'col-start-2 grid justify-items-start gap-1 text-sm text-foreground-muted [&_p]:leading-relaxed',
+        'col-start-2 grid justify-items-start gap-1 text-base text-foreground-muted [&_p]:leading-relaxed',
         className,
       )}
     />

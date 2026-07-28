@@ -272,16 +272,16 @@ export type HeadingVariants = VariantProps<typeof heading>;
 // Alert variants
 export const alert = tv({
   base: [
-    'relative w-full rounded-lg border border-edge px-4 py-3 text-sm',
-    'grid grid-cols-[0_1fr] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
+    'relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border border-edge-muted px-4 py-3 text-base',
+    'has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3',
     '[&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current',
   ],
   variants: {
     variant: {
       default: 'bg-surface-base text-foreground-primary',
-      destructive: [
-        'bg-surface-base text-status-error-text',
-        '*:data-[slot=alert-description]:text-status-error-text/90',
+      danger: [
+        'bg-surface-base text-status-error',
+        '*:data-[slot=alert-description]:text-status-error/90',
       ],
     },
   },

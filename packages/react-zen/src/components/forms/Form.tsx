@@ -80,7 +80,7 @@ export function Form({
   return (
     <FormProvider {...formValues}>
       {error && (
-        <Alert variant="destructive">
+        <Alert variant="danger">
           <AlertTitle className="justify-self-center">
             {error instanceof Error ? error?.message : error}
           </AlertTitle>

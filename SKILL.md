@@ -328,7 +328,7 @@ Modal positions: `center`, `left`, `right`, `top`, `bottom`, `fullscreen`
   <AlertTitle>Heads up!</AlertTitle>
   <AlertDescription>Informational message</AlertDescription>
 </Alert>
-<Alert variant="destructive">
+<Alert variant="danger">
   <AlertTitle>Error</AlertTitle>
   <AlertDescription>Something went wrong.</AlertDescription>
 </Alert>

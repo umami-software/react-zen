@@ -126,17 +126,17 @@ type InputFieldVariants = VariantProps<typeof inputField>;
 declare const alert: tailwind_variants.TVReturnType<{
     variant: {
         default: string;
-        destructive: string[];
+        danger: string[];
     };
 }, undefined, string[], {
     variant: {
         default: string;
-        destructive: string[];
+        danger: string[];
     };
 }, undefined, tailwind_variants.TVReturnType<{
     variant: {
         default: string;
-        destructive: string[];
+        danger: string[];
     };
 }, undefined, string[], unknown, unknown, undefined>>;
 type AlertVariants = VariantProps<typeof alert>;

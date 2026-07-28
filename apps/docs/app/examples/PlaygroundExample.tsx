@@ -1215,7 +1215,7 @@ export function PlaygroundExample() {
                   <AlertTitle>Heads up!</AlertTitle>
                   <AlertDescription>This is a default alert message.</AlertDescription>
                 </Alert>
-                <Alert variant="destructive">
+                <Alert variant="danger">
                   <AlertTitle>Error</AlertTitle>
                   <AlertDescription>Something went wrong.</AlertDescription>
                 </Alert>
