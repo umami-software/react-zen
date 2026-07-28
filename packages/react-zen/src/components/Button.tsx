@@ -43,6 +43,7 @@ export function Button({
   return (
     <BaseButton
       {...props}
+      data-slot="button"
       render={render as BaseButtonProps['render']}
       disabled={isDisabled ?? disabled}
       className={buttonClassName}

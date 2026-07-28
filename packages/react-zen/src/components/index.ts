@@ -9,6 +9,7 @@ export * from './Blockquote';
 export * from './Box';
 export * from './Breadcrumbs';
 export * from './Button';
+export * from './ButtonGroup';
 export * from './Calendar';
 export * from './Carousel';
 export * from './Checkbox';

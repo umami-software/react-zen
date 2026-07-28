@@ -19,6 +19,7 @@ export default {
   '---actions-navigation': { type: 'separator', title: 'Actions & Navigation' },
   breadcrumbs: 'Breadcrumbs',
   button: 'Button',
+  'button-group': 'Button Group',
   command: 'Command',
   'context-menu': 'Context Menu',
   'hover-trigger': 'Hover Trigger',

@@ -14,6 +14,7 @@ var popover = require('@base-ui/react/popover');
 var menu = require('@base-ui/react/menu');
 var tooltip$1 = require('@base-ui/react/tooltip');
 var avatar$1 = require('@base-ui/react/avatar');
+var separator = require('@base-ui/react/separator');
 var reactDayPicker = require('react-day-picker');
 var useEmblaCarousel = require('embla-carousel-react');
 var checkbox$1 = require('@base-ui/react/checkbox');
@@ -36,7 +37,6 @@ var radio = require('@base-ui/react/radio');
 var radioGroup = require('@base-ui/react/radio-group');
 var reactResizablePanels = require('react-resizable-panels');
 var scrollArea = require('@base-ui/react/scroll-area');
-var separator = require('@base-ui/react/separator');
 var slider = require('@base-ui/react/slider');
 var _switch = require('@base-ui/react/switch');
 var tabs = require('@base-ui/react/tabs');
@@ -3234,6 +3234,85 @@ function Breadcrumb({ children, className, isDisabled, ...props }) {
         children,
         /* @__PURE__ */ jsxRuntime.jsx(Icon, { className: "text-foreground-muted", size: "xs", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) })
       ]
+    }
+  );
+}
+function Separator({ orientation = "horizontal", className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    separator.Separator,
+    {
+      ...props,
+      orientation,
+      className: cn(
+        "shrink-0 bg-edge-muted",
+        orientation === "horizontal" ? "h-px w-full" : "w-px self-stretch",
+        className
+      )
+    }
+  );
+}
+function ButtonGroup({ className, orientation = "horizontal", ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    "div",
+    {
+      ...props,
+      role: props.role ?? "group",
+      "data-slot": "button-group",
+      "data-orientation": orientation,
+      className: cn(
+        "flex w-fit items-stretch",
+        "has-[>[data-slot=button-group]]:gap-2",
+        "[&>*]:focus-visible:relative [&>*]:focus-visible:z-10",
+        "[&>input]:min-w-0 [&>input]:flex-1",
+        orientation === "horizontal" ? [
+          "[&>*:not(:first-child)]:rounded-s-none",
+          "[&>*:not(:first-child)]:border-s-0",
+          "[&>*:not(:last-child)]:rounded-e-none"
+        ] : [
+          "flex-col",
+          "[&>*:not(:first-child)]:rounded-t-none",
+          "[&>*:not(:first-child)]:border-t-0",
+          "[&>*:not(:last-child)]:rounded-b-none"
+        ],
+        className
+      )
+    }
+  );
+}
+function ButtonGroupText({ className, render, children, ...props }) {
+  const classes = cn(
+    "flex items-center gap-2 rounded border border-edge bg-surface-raised px-4 text-sm font-medium shadow-sm",
+    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
+    className
+  );
+  const renderProps = {
+    ...props,
+    className: classes,
+    children,
+    "data-slot": "button-group-text"
+  };
+  return resolveRender(
+    render,
+    renderProps,
+    /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, "data-slot": "button-group-text", className: classes, children })
+  );
+}
+function ButtonGroupSeparator({
+  className,
+  orientation = "vertical",
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntime.jsx(
+    Separator,
+    {
+      ...props,
+      "data-slot": "button-group-separator",
+      orientation,
+      className: cn(
+        "relative m-0 self-stretch bg-edge-strong",
+        "data-[orientation=vertical]:h-auto",
+        className
+      )
     }
   );
 }
@@ -6650,20 +6729,6 @@ function Select({
     }
   ) });
 }
-function Separator2({ orientation = "horizontal", className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    separator.Separator,
-    {
-      ...props,
-      orientation,
-      className: cn(
-        "shrink-0 bg-edge-muted",
-        orientation === "horizontal" ? "h-px w-full" : "w-px self-stretch",
-        className
-      )
-    }
-  );
-}
 var sideClasses = {
   left: "zen-modal-left absolute inset-y-0 left-0 h-full border-r",
   right: "zen-modal-right absolute inset-y-0 right-0 h-full border-l",
@@ -7240,7 +7305,7 @@ function ToolbarSeparator({ className, ...props }) {
     toolbar.Toolbar.Separator,
     {
       ...props,
-      render: /* @__PURE__ */ jsxRuntime.jsx(Separator2, { orientation: "vertical", className: cn("mx-1 h-5 self-center", className) })
+      render: /* @__PURE__ */ jsxRuntime.jsx(Separator, { orientation: "vertical", className: cn("mx-1 h-5 self-center", className) })
     }
   );
 }
@@ -7266,6 +7331,9 @@ exports.Box = Box;
 exports.Breadcrumb = Breadcrumb;
 exports.Breadcrumbs = Breadcrumbs;
 exports.Button = Button;
+exports.ButtonGroup = ButtonGroup;
+exports.ButtonGroupSeparator = ButtonGroupSeparator;
+exports.ButtonGroupText = ButtonGroupText;
 exports.Calendar = Calendar;
 exports.Carousel = Carousel;
 exports.CarouselItem = CarouselItem;
@@ -7367,7 +7435,7 @@ exports.Row = Row;
 exports.ScrollArea = ScrollArea;
 exports.SearchField = SearchField;
 exports.Select = Select;
-exports.Separator = Separator2;
+exports.Separator = Separator;
 exports.Sheet = Sheet;
 exports.SheetHeader = SheetHeader;
 exports.Skeleton = Skeleton;

@@ -12,6 +12,7 @@ import { Popover as Popover$1 } from '@base-ui/react/popover';
 import { Menu as Menu$1 } from '@base-ui/react/menu';
 import { Tooltip as Tooltip$1 } from '@base-ui/react/tooltip';
 import { Avatar as Avatar$1 } from '@base-ui/react/avatar';
+import { Separator as Separator$1 } from '@base-ui/react/separator';
 import { DayPicker } from 'react-day-picker';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Checkbox as Checkbox$1 } from '@base-ui/react/checkbox';
@@ -32,9 +33,8 @@ import { OTPField as OTPField$1 } from '@base-ui/react/otp-field';
 import { Progress } from '@base-ui/react/progress';
 import { Radio as Radio$1 } from '@base-ui/react/radio';
 import { RadioGroup as RadioGroup$1 } from '@base-ui/react/radio-group';
-import { Group, Panel, Separator } from 'react-resizable-panels';
+import { Group, Panel, Separator as Separator$2 } from 'react-resizable-panels';
 import { ScrollArea as ScrollArea$1 } from '@base-ui/react/scroll-area';
-import { Separator as Separator$1 } from '@base-ui/react/separator';
 import { Slider as Slider$1 } from '@base-ui/react/slider';
 import { Switch as Switch$1 } from '@base-ui/react/switch';
 import { Tabs as Tabs$1 } from '@base-ui/react/tabs';
@@ -3212,6 +3212,85 @@ function Breadcrumb({ children, className, isDisabled, ...props }) {
     }
   );
 }
+function Separator({ orientation = "horizontal", className, ...props }) {
+  return /* @__PURE__ */ jsx(
+    Separator$1,
+    {
+      ...props,
+      orientation,
+      className: cn(
+        "shrink-0 bg-edge-muted",
+        orientation === "horizontal" ? "h-px w-full" : "w-px self-stretch",
+        className
+      )
+    }
+  );
+}
+function ButtonGroup({ className, orientation = "horizontal", ...props }) {
+  return /* @__PURE__ */ jsx(
+    "div",
+    {
+      ...props,
+      role: props.role ?? "group",
+      "data-slot": "button-group",
+      "data-orientation": orientation,
+      className: cn(
+        "flex w-fit items-stretch",
+        "has-[>[data-slot=button-group]]:gap-2",
+        "[&>*]:focus-visible:relative [&>*]:focus-visible:z-10",
+        "[&>input]:min-w-0 [&>input]:flex-1",
+        orientation === "horizontal" ? [
+          "[&>*:not(:first-child)]:rounded-s-none",
+          "[&>*:not(:first-child)]:border-s-0",
+          "[&>*:not(:last-child)]:rounded-e-none"
+        ] : [
+          "flex-col",
+          "[&>*:not(:first-child)]:rounded-t-none",
+          "[&>*:not(:first-child)]:border-t-0",
+          "[&>*:not(:last-child)]:rounded-b-none"
+        ],
+        className
+      )
+    }
+  );
+}
+function ButtonGroupText({ className, render, children, ...props }) {
+  const classes = cn(
+    "flex items-center gap-2 rounded border border-edge bg-surface-raised px-4 text-sm font-medium shadow-sm",
+    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
+    className
+  );
+  const renderProps = {
+    ...props,
+    className: classes,
+    children,
+    "data-slot": "button-group-text"
+  };
+  return resolveRender(
+    render,
+    renderProps,
+    /* @__PURE__ */ jsx("div", { ...props, "data-slot": "button-group-text", className: classes, children })
+  );
+}
+function ButtonGroupSeparator({
+  className,
+  orientation = "vertical",
+  ...props
+}) {
+  return /* @__PURE__ */ jsx(
+    Separator,
+    {
+      ...props,
+      "data-slot": "button-group-separator",
+      orientation,
+      className: cn(
+        "relative m-0 self-stretch bg-edge-strong",
+        "data-[orientation=vertical]:h-auto",
+        className
+      )
+    }
+  );
+}
 function Calendar({
   className,
   value,
@@ -6350,7 +6429,7 @@ function ResizableHandle({ withHandle, className, ...props }) {
   const direction = useContext(ResizableOrientationContext);
   const isVertical = direction === "vertical";
   return /* @__PURE__ */ jsx(
-    Separator,
+    Separator$2,
     {
       ...props,
       className: cn(
@@ -6624,20 +6703,6 @@ function Select({
       ]
     }
   ) });
-}
-function Separator2({ orientation = "horizontal", className, ...props }) {
-  return /* @__PURE__ */ jsx(
-    Separator$1,
-    {
-      ...props,
-      orientation,
-      className: cn(
-        "shrink-0 bg-edge-muted",
-        orientation === "horizontal" ? "h-px w-full" : "w-px self-stretch",
-        className
-      )
-    }
-  );
 }
 var sideClasses = {
   left: "zen-modal-left absolute inset-y-0 left-0 h-full border-r",
@@ -7215,7 +7280,7 @@ function ToolbarSeparator({ className, ...props }) {
     Toolbar$1.Separator,
     {
       ...props,
-      render: /* @__PURE__ */ jsx(Separator2, { orientation: "vertical", className: cn("mx-1 h-5 self-center", className) })
+      render: /* @__PURE__ */ jsx(Separator, { orientation: "vertical", className: cn("mx-1 h-5 self-center", className) })
     }
   );
 }
@@ -7227,6 +7292,6 @@ function ZenProvider({ children, theme, colorScheme, palette, toast: toast2 }) {
   return /* @__PURE__ */ jsx(ToastProvider, { ...defaultToastConfig, ...toast2, children });
 }
 
-export { Accordion, AccordionItem, Alert, AlertDescription, AlertDialog, AlertTitle, AspectRatio, Avatar, Badge, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Carousel, CarouselItem, Checkbox, CheckboxGroup, Code, Collapsible, CollapsiblePanel, CollapsibleTrigger, Column, ComboBox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, ConfirmationDialog, Container, ContextMenu, CopyButton, DataCard, DataColumn, DataTable, DatePicker, Dialog, DialogTrigger, Dots, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, FileTrigger, Flexbox, FloatingTooltip, Focusable, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea, Kbd, Label, List, ListItem, ListPrimitiveProvider, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, MenuTrigger, Menubar, MenubarMenu, Meter, Modal, Navbar, NavbarItem, NavbarLink, NumberField, OTPField, PALETTES, PageHeader, PageHeaderActions, PageHeaderTitle, Pagination, PasswordField, Popover, Pressable, ProgressBar, ProgressCircle, Radio, RadioGroup, ResizableHandle, ResizablePanel, ResizablePanelGroup, RouterProvider, Row, ScrollArea, SearchField, Select, Separator2 as Separator, Sheet, SheetHeader, Skeleton, SkeletonAvatar, SkeletonText, Slider, Spinner, StatusLight, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator, Tooltip, TooltipBubble, TooltipTrigger, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useTheme, useToast };
+export { Accordion, AccordionItem, Alert, AlertDescription, AlertDialog, AlertTitle, AspectRatio, Avatar, Badge, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, ButtonGroup, ButtonGroupSeparator, ButtonGroupText, Calendar, Carousel, CarouselItem, Checkbox, CheckboxGroup, Code, Collapsible, CollapsiblePanel, CollapsibleTrigger, Column, ComboBox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, ConfirmationDialog, Container, ContextMenu, CopyButton, DataCard, DataColumn, DataTable, DatePicker, Dialog, DialogTrigger, Dots, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, FileTrigger, Flexbox, FloatingTooltip, Focusable, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea, Kbd, Label, List, ListItem, ListPrimitiveProvider, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, MenuTrigger, Menubar, MenubarMenu, Meter, Modal, Navbar, NavbarItem, NavbarLink, NumberField, OTPField, PALETTES, PageHeader, PageHeaderActions, PageHeaderTitle, Pagination, PasswordField, Popover, Pressable, ProgressBar, ProgressCircle, Radio, RadioGroup, ResizableHandle, ResizablePanel, ResizablePanelGroup, RouterProvider, Row, ScrollArea, SearchField, Select, Separator, Sheet, SheetHeader, Skeleton, SkeletonAvatar, SkeletonText, Slider, Spinner, StatusLight, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator, Tooltip, TooltipBubble, TooltipTrigger, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useTheme, useToast };
 //# sourceMappingURL=index.mjs.map
 //# sourceMappingURL=index.mjs.map
