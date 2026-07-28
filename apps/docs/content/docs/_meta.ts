@@ -17,8 +17,5 @@ export default {
   '----': {
     type: 'separator',
   },
-  'form-inputs': 'Form Inputs',
-  'actions-navigation': 'Actions & Navigation',
-  'feedback-status': 'Feedback & Status',
-  'data-display': 'Data Display',
+  components: 'Components',
 };

@@ -24,14 +24,15 @@ const nextConfig: NextConfig = {
         destination: '/docs',
         permanent: false,
       },
+      // Legacy /patterns URLs (direct, no chains)
       {
         source: '/patterns/data-display/empty-state',
-        destination: '/docs/feedback-status/empty',
+        destination: '/docs/components/empty',
         permanent: true,
       },
       {
         source: '/patterns/feedback/skeleton-loader',
-        destination: '/docs/feedback-status/skeleton',
+        destination: '/docs/components/skeleton',
         permanent: true,
       },
       {
@@ -39,108 +40,53 @@ const nextConfig: NextConfig = {
         destination: '/docs/layout/page-header',
         permanent: true,
       },
+      // Renamed pages — must precede the category wildcards to avoid redirect chains
       {
         source: '/docs/typography/kbd',
-        destination: '/docs/data-display/kbd',
+        destination: '/docs/components/kbd',
         permanent: true,
       },
       {
         source: '/docs/feedback-status/alert-banner',
-        destination: '/docs/feedback-status/alert',
+        destination: '/docs/components/alert',
         permanent: true,
       },
       {
         source: '/docs/feedback-status/empty-state',
-        destination: '/docs/feedback-status/empty',
+        destination: '/docs/components/empty',
+        permanent: true,
+      },
+      // Old category URLs -> canonical /docs/components/*
+      {
+        source: '/docs/form-inputs/:slug',
+        destination: '/docs/components/:slug',
+        permanent: true,
+      },
+      {
+        source: '/docs/actions-navigation/:slug',
+        destination: '/docs/components/:slug',
+        permanent: true,
+      },
+      {
+        source: '/docs/feedback-status/:slug',
+        destination: '/docs/components/:slug',
+        permanent: true,
+      },
+      {
+        source: '/docs/data-display/:slug',
+        destination: '/docs/components/:slug',
+        permanent: true,
+      },
+      // page-header stays under /docs/layout (was previously a rewrite)
+      {
+        source: '/docs/components/page-header',
+        destination: '/docs/layout/page-header',
         permanent: true,
       },
     ];
   },
   async rewrites() {
-    // Form Inputs
-    const formInputs = [
-      'checkbox',
-      'combobox',
-      'password-field',
-      'radio-group',
-      'search-field',
-      'select',
-      'slider',
-      'switch',
-      'text-field',
-      'toggle',
-      'toggle-group',
-    ];
-    // Actions & Navigation
-    const actionsNavigation = [
-      'breadcrumbs',
-      'button',
-      'hover-trigger',
-      'loading-button',
-      'menu',
-      'nav-menu',
-      'navbar',
-      'tabs',
-      'theme-button',
-    ];
-    // Feedback & Status
-    const feedbackStatus = [
-      'alert',
-      'alert-dialog',
-      'confirmation-dialog',
-      'dialog',
-      'empty',
-      'loading',
-      'modal',
-      'popover',
-      'progress-bar',
-      'progress-circle',
-      'skeleton',
-      'status-light',
-      'toast',
-      'tooltip',
-    ];
-    // Data Display
-    const dataDisplay = [
-      'accordion',
-      'calendar',
-      'data-card',
-      'data-table',
-      'icon',
-      'icon-label',
-      'image',
-      'kbd',
-      'list',
-      'table',
-    ];
-
-    const componentRewrites = [
-      ...formInputs.map(c => ({
-        source: `/docs/components/${c}`,
-        destination: `/docs/form-inputs/${c}`,
-      })),
-      ...actionsNavigation.map(c => ({
-        source: `/docs/components/${c}`,
-        destination: `/docs/actions-navigation/${c}`,
-      })),
-      ...feedbackStatus.map(c => ({
-        source: `/docs/components/${c}`,
-        destination: `/docs/feedback-status/${c}`,
-      })),
-      ...dataDisplay.map(c => ({
-        source: `/docs/components/${c}`,
-        destination: `/docs/data-display/${c}`,
-      })),
-      {
-        source: '/docs/components/page-header',
-        destination: '/docs/layout/page-header',
-      },
-    ];
-
-    return [
-      { source: '/z.js', destination: 'https://cloud.umami.is/script.js' },
-      ...componentRewrites,
-    ];
+    return [{ source: '/z.js', destination: 'https://cloud.umami.is/script.js' }];
   },
 };
 

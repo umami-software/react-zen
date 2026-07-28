@@ -5628,7 +5628,7 @@ function Menu({
     onSelectionChange?.(next);
   };
   const popupClassName2 = cn(
-    "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
+    "min-w-[200px] flex flex-col gap-1 p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
     className
   );
   const popupContent = /* @__PURE__ */ jsxRuntime.jsx(MenuContext.Provider, { value: { selected, select }, children });
