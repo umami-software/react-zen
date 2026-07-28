@@ -1,9 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { PALETTES, type Palette, useTheme } from './hooks/useTheme';
-import { cn } from './lib/tailwind';
 
-export interface PaletteSwitcherProps {
+import { useEffect, useState } from 'react';
+import { PALETTES, type Palette, useTheme } from '@/components/hooks/useTheme';
+import { cn } from '@/components/lib/tailwind';
+
+interface PaletteSwitcherProps {
   className?: string;
 }
 
@@ -23,7 +24,6 @@ export function PaletteSwitcher({ className }: PaletteSwitcherProps) {
     setMounted(true);
   }, []);
 
-  // Use neutral as default during SSR to avoid hydration mismatch
   const currentPalette = mounted ? palette : 'neutral';
 
   return (
@@ -33,24 +33,24 @@ export function PaletteSwitcher({ className }: PaletteSwitcherProps) {
         className,
       )}
     >
-      {PALETTES.map(p => (
+      {PALETTES.map(paletteOption => (
         <button
-          key={p}
+          key={paletteOption}
           type="button"
-          onClick={() => setPalette(p)}
-          aria-label={PALETTE_LABELS[p]}
-          aria-pressed={currentPalette === p}
+          onClick={() => setPalette(paletteOption)}
+          aria-label={PALETTE_LABELS[paletteOption]}
+          aria-pressed={currentPalette === paletteOption}
           className={cn(
             'px-3 h-9 flex items-center justify-center cursor-pointer outline-none transition-colors text-sm',
             '[&:not(:first-child)]:border-l [&:not(:first-child)]:border-edge',
             'hover:bg-interactive',
             'focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset',
-            currentPalette === p
+            currentPalette === paletteOption
               ? 'bg-interactive text-foreground-primary'
               : 'text-foreground-muted',
           )}
         >
-          {PALETTE_LABELS[p]}
+          {PALETTE_LABELS[paletteOption]}
         </button>
       ))}
     </div>

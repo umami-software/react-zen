@@ -2957,6 +2957,7 @@ var OverlayContext = react.createContext({
   kind: "dialog"
 });
 var MenuPrimitiveContext = react.createContext(null);
+var MenubarContext = react.createContext(false);
 function useOverlayTrigger() {
   return react.useContext(OverlayContext);
 }
@@ -5611,6 +5612,7 @@ function Menu({
 }) {
   const [uncontrolled, setUncontrolled] = react.useState(new Set(defaultSelectedKeys));
   const primitiveKind = react.useContext(MenuPrimitiveContext);
+  const inMenubar = react.useContext(MenubarContext);
   const selected = new Set(selectedKeys || uncontrolled);
   const select = (key) => {
     if (selectionMode === "none") {
@@ -5628,7 +5630,7 @@ function Menu({
     onSelectionChange?.(next);
   };
   const popupClassName2 = cn(
-    "min-w-[200px] flex flex-col gap-1 p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
+    "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
     className
   );
   const popupContent = /* @__PURE__ */ jsxRuntime.jsx(MenuContext.Provider, { value: { selected, select }, children });
@@ -5636,7 +5638,7 @@ function Menu({
     return /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
   }
   if (primitiveKind === "menu") {
-    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
+    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Positioner, { ...inMenubar ? { align: "start", sideOffset: 8 } : {}, children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
   }
   return /* @__PURE__ */ jsxRuntime.jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, role: "menu", className: popupClassName2, children }) });
 }
@@ -5811,7 +5813,7 @@ function MenubarMenu({ label, isDisabled, children, ...props }) {
         render: /* @__PURE__ */ jsxRuntime.jsx(Button, { variant: "quiet", size: "sm", className: "data-[popup-open]:bg-interactive", children: label })
       }
     ),
-    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: "menu", children })
+    /* @__PURE__ */ jsxRuntime.jsx(MenuPrimitiveContext.Provider, { value: "menu", children: /* @__PURE__ */ jsxRuntime.jsx(MenubarContext.Provider, { value: true, children }) })
   ] });
 }
 function Meter({
@@ -6161,48 +6163,6 @@ function Pagination({
       }
     )
   ] });
-}
-var PALETTE_LABELS = {
-  neutral: "Neutral",
-  slate: "Slate",
-  gray: "Gray",
-  zinc: "Zinc",
-  stone: "Stone"
-};
-function PaletteSwitcher({ className }) {
-  const { palette, setPalette } = useTheme();
-  const [mounted, setMounted] = react.useState(false);
-  react.useEffect(() => {
-    setMounted(true);
-  }, []);
-  const currentPalette = mounted ? palette : "neutral";
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    "div",
-    {
-      className: cn(
-        "inline-flex items-center bg-surface-base border border-edge rounded-md overflow-hidden",
-        className
-      ),
-      children: PALETTES.map((p) => /* @__PURE__ */ jsxRuntime.jsx(
-        "button",
-        {
-          type: "button",
-          onClick: () => setPalette(p),
-          "aria-label": PALETTE_LABELS[p],
-          "aria-pressed": currentPalette === p,
-          className: cn(
-            "px-3 h-9 flex items-center justify-center cursor-pointer outline-none transition-colors text-sm",
-            "[&:not(:first-child)]:border-l [&:not(:first-child)]:border-edge",
-            "hover:bg-interactive",
-            "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset",
-            currentPalette === p ? "bg-interactive text-foreground-primary" : "text-foreground-muted"
-          ),
-          children: PALETTE_LABELS[p]
-        },
-        p
-      ))
-    }
-  );
 }
 var SvgEye = (props) => /* @__PURE__ */ jsxRuntime.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256", ...props, children: [
   /* @__PURE__ */ jsxRuntime.jsx("path", { fill: "none", d: "M0 0h256v256H0z" }),
@@ -6952,6 +6912,7 @@ function Tab({ id, value, isDisabled, href, children, className, ...props }) {
       value: value ?? id,
       disabled: isDisabled,
       render: href ? /* @__PURE__ */ jsxRuntime.jsx("a", { href }) : void 0,
+      nativeButton: !href,
       className: cn(
         "tab flex items-center justify-center text-base text-foreground-muted py-2 border-b-2 border-transparent select-none -mb-[2px] cursor-pointer outline-none",
         "hover:text-foreground-primary",
@@ -7391,7 +7352,6 @@ exports.PageHeader = PageHeader;
 exports.PageHeaderActions = PageHeaderActions;
 exports.PageHeaderTitle = PageHeaderTitle;
 exports.Pagination = Pagination;
-exports.PaletteSwitcher = PaletteSwitcher;
 exports.PasswordField = PasswordField;
 exports.Popover = Popover;
 exports.Pressable = Pressable;

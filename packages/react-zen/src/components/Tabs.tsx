@@ -69,6 +69,7 @@ export function Tab({ id, value, isDisabled, href, children, className, ...props
       value={value ?? id}
       disabled={isDisabled}
       render={href ? <a href={href} /> : undefined}
+      nativeButton={!href}
       className={cn(
         'tab flex items-center justify-center text-base text-foreground-muted py-2 border-b-2 border-transparent select-none -mb-[2px] cursor-pointer outline-none',
         'hover:text-foreground-primary',

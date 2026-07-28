@@ -3,7 +3,7 @@ import { Menubar as BaseMenubar } from '@base-ui/react/menubar';
 import type { ReactNode } from 'react';
 import { Button } from './Button';
 import { cn } from './lib/tailwind';
-import { MenuPrimitiveContext } from './OverlayTrigger';
+import { MenubarContext, MenuPrimitiveContext } from './OverlayTrigger';
 
 export interface MenubarProps extends Omit<BaseMenubar.Props, 'disabled'> {
   isDisabled?: boolean;
@@ -41,7 +41,9 @@ export function MenubarMenu({ label, isDisabled, children, ...props }: MenubarMe
           </Button>
         }
       />
-      <MenuPrimitiveContext.Provider value="menu">{children}</MenuPrimitiveContext.Provider>
+      <MenuPrimitiveContext.Provider value="menu">
+        <MenubarContext.Provider value={true}>{children}</MenubarContext.Provider>
+      </MenuPrimitiveContext.Provider>
     </BaseMenu.Root>
   );
 }

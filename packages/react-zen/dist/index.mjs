@@ -2932,6 +2932,7 @@ var OverlayContext = createContext({
   kind: "dialog"
 });
 var MenuPrimitiveContext = createContext(null);
+var MenubarContext = createContext(false);
 function useOverlayTrigger() {
   return useContext(OverlayContext);
 }
@@ -5586,6 +5587,7 @@ function Menu({
 }) {
   const [uncontrolled, setUncontrolled] = useState(new Set(defaultSelectedKeys));
   const primitiveKind = useContext(MenuPrimitiveContext);
+  const inMenubar = useContext(MenubarContext);
   const selected = new Set(selectedKeys || uncontrolled);
   const select = (key) => {
     if (selectionMode === "none") {
@@ -5603,7 +5605,7 @@ function Menu({
     onSelectionChange?.(next);
   };
   const popupClassName2 = cn(
-    "min-w-[200px] flex flex-col gap-1 p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
+    "min-w-[200px] p-2 border border-edge rounded-md shadow-lg bg-surface-base overflow-hidden outline-none",
     className
   );
   const popupContent = /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children });
@@ -5611,7 +5613,7 @@ function Menu({
     return /* @__PURE__ */ jsx(ContextMenu$1.Portal, { children: /* @__PURE__ */ jsx(ContextMenu$1.Positioner, { children: /* @__PURE__ */ jsx(ContextMenu$1.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
   }
   if (primitiveKind === "menu") {
-    return /* @__PURE__ */ jsx(Menu$1.Portal, { children: /* @__PURE__ */ jsx(Menu$1.Positioner, { children: /* @__PURE__ */ jsx(Menu$1.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
+    return /* @__PURE__ */ jsx(Menu$1.Portal, { children: /* @__PURE__ */ jsx(Menu$1.Positioner, { ...inMenubar ? { align: "start", sideOffset: 8 } : {}, children: /* @__PURE__ */ jsx(Menu$1.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
   }
   return /* @__PURE__ */ jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsx("div", { ...props, role: "menu", className: popupClassName2, children }) });
 }
@@ -5786,7 +5788,7 @@ function MenubarMenu({ label, isDisabled, children, ...props }) {
         render: /* @__PURE__ */ jsx(Button, { variant: "quiet", size: "sm", className: "data-[popup-open]:bg-interactive", children: label })
       }
     ),
-    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: "menu", children })
+    /* @__PURE__ */ jsx(MenuPrimitiveContext.Provider, { value: "menu", children: /* @__PURE__ */ jsx(MenubarContext.Provider, { value: true, children }) })
   ] });
 }
 function Meter({
@@ -6136,48 +6138,6 @@ function Pagination({
       }
     )
   ] });
-}
-var PALETTE_LABELS = {
-  neutral: "Neutral",
-  slate: "Slate",
-  gray: "Gray",
-  zinc: "Zinc",
-  stone: "Stone"
-};
-function PaletteSwitcher({ className }) {
-  const { palette, setPalette } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  const currentPalette = mounted ? palette : "neutral";
-  return /* @__PURE__ */ jsx(
-    "div",
-    {
-      className: cn(
-        "inline-flex items-center bg-surface-base border border-edge rounded-md overflow-hidden",
-        className
-      ),
-      children: PALETTES.map((p) => /* @__PURE__ */ jsx(
-        "button",
-        {
-          type: "button",
-          onClick: () => setPalette(p),
-          "aria-label": PALETTE_LABELS[p],
-          "aria-pressed": currentPalette === p,
-          className: cn(
-            "px-3 h-9 flex items-center justify-center cursor-pointer outline-none transition-colors text-sm",
-            "[&:not(:first-child)]:border-l [&:not(:first-child)]:border-edge",
-            "hover:bg-interactive",
-            "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset",
-            currentPalette === p ? "bg-interactive text-foreground-primary" : "text-foreground-muted"
-          ),
-          children: PALETTE_LABELS[p]
-        },
-        p
-      ))
-    }
-  );
 }
 var SvgEye = (props) => /* @__PURE__ */ jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256", ...props, children: [
   /* @__PURE__ */ jsx("path", { fill: "none", d: "M0 0h256v256H0z" }),
@@ -6927,6 +6887,7 @@ function Tab({ id, value, isDisabled, href, children, className, ...props }) {
       value: value ?? id,
       disabled: isDisabled,
       render: href ? /* @__PURE__ */ jsx("a", { href }) : void 0,
+      nativeButton: !href,
       className: cn(
         "tab flex items-center justify-center text-base text-foreground-muted py-2 border-b-2 border-transparent select-none -mb-[2px] cursor-pointer outline-none",
         "hover:text-foreground-primary",
@@ -7266,6 +7227,6 @@ function ZenProvider({ children, theme, colorScheme, palette, toast: toast2 }) {
   return /* @__PURE__ */ jsx(ToastProvider, { ...defaultToastConfig, ...toast2, children });
 }
 
-export { Accordion, AccordionItem, Alert, AlertDescription, AlertDialog, AlertTitle, AspectRatio, Avatar, Badge, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Carousel, CarouselItem, Checkbox, CheckboxGroup, Code, Collapsible, CollapsiblePanel, CollapsibleTrigger, Column, ComboBox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, ConfirmationDialog, Container, ContextMenu, CopyButton, DataCard, DataColumn, DataTable, DatePicker, Dialog, DialogTrigger, Dots, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, FileTrigger, Flexbox, FloatingTooltip, Focusable, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea, Kbd, Label, List, ListItem, ListPrimitiveProvider, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, MenuTrigger, Menubar, MenubarMenu, Meter, Modal, Navbar, NavbarItem, NavbarLink, NumberField, OTPField, PALETTES, PageHeader, PageHeaderActions, PageHeaderTitle, Pagination, PaletteSwitcher, PasswordField, Popover, Pressable, ProgressBar, ProgressCircle, Radio, RadioGroup, ResizableHandle, ResizablePanel, ResizablePanelGroup, RouterProvider, Row, ScrollArea, SearchField, Select, Separator2 as Separator, Sheet, SheetHeader, Skeleton, SkeletonAvatar, SkeletonText, Slider, Spinner, StatusLight, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator, Tooltip, TooltipBubble, TooltipTrigger, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useTheme, useToast };
+export { Accordion, AccordionItem, Alert, AlertDescription, AlertDialog, AlertTitle, AspectRatio, Avatar, Badge, Blockquote, Box, Breadcrumb, Breadcrumbs, Button, Calendar, Carousel, CarouselItem, Checkbox, CheckboxGroup, Code, Collapsible, CollapsiblePanel, CollapsibleTrigger, Column, ComboBox, Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, ConfirmationDialog, Container, ContextMenu, CopyButton, DataCard, DataColumn, DataTable, DatePicker, Dialog, DialogTrigger, Dots, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, FileTrigger, Flexbox, FloatingTooltip, Focusable, Form, FormButtons, FormController, FormField, FormFieldArray, FormResetButton, FormSubmitButton, Grid, Heading, HoverTrigger, Icon, Image, InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea, Kbd, Label, List, ListItem, ListPrimitiveProvider, ListSection, ListSeparator, Loading, LoadingButton, Menu, MenuItem, MenuSection, MenuSeparator, MenuTrigger, Menubar, MenubarMenu, Meter, Modal, Navbar, NavbarItem, NavbarLink, NumberField, OTPField, PALETTES, PageHeader, PageHeaderActions, PageHeaderTitle, Pagination, PasswordField, Popover, Pressable, ProgressBar, ProgressCircle, Radio, RadioGroup, ResizableHandle, ResizablePanel, ResizablePanelGroup, RouterProvider, Row, ScrollArea, SearchField, Select, Separator2 as Separator, Sheet, SheetHeader, Skeleton, SkeletonAvatar, SkeletonText, Slider, Spinner, StatusLight, SubMenuTrigger, SubMenuTrigger as SubmenuTrigger, Switch, Tab, TabList, TabPanel, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tabs, Tag, TagGroup, Text, TextField, ThemeButton, ThemeSwitcher, Toast, ToastContext, ToastProvider, Toaster, Toggle, ToggleGroup, ToggleGroupItem, Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator, Tooltip, TooltipBubble, TooltipTrigger, ZenProvider, cn, getCssColorValue, isHeightPreset, isMaxHeightPreset, isMaxWidthPreset, isMinHeightPreset, isMinWidthPreset, isWidthPreset, mapAlignContent, mapAlignItems, mapAlignSelf, mapBackgroundColor, mapBorder, mapBorderColor, mapBorderRadius, mapBorderWidth, mapCursor, mapDisplay, mapFlexDirection, mapFlexWrap, mapFontSize, mapFontWeight, mapGap, mapGridAutoFlow, mapGridColumns, mapGridRows, mapHeadingSize, mapHeight, mapJustifyContent, mapJustifyItems, mapLetterSpacing, mapLineHeight, mapMargin, mapMaxHeight, mapMaxWidth, mapMinHeight, mapMinWidth, mapOpacity, mapOverflow, mapPadding, mapPointerEvents, mapPosition, mapShadow, mapSpace, mapStateStyles, mapTextAlign, mapTextColor, mapTextDecorationStyle, mapTextIndent, mapTextTransform, mapTextWrap, mapVerticalAlign, mapWhitespace, mapWidth, mapWordBreak, removeToast, resolveRender, selectionToStrings, toSelection, useBreakpoint, useDebounce, useInitTheme, useTheme, useToast };
 //# sourceMappingURL=index.mjs.map
 //# sourceMappingURL=index.mjs.map

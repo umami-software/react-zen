@@ -16,7 +16,12 @@ import { Check, ChevronRight } from '@/components/icons';
 import { Icon } from './Icon';
 import type { Selection } from './lib/interaction';
 import { cn } from './lib/tailwind';
-import { MenuPrimitiveContext, type MenuPrimitiveKind, type OverlayTarget } from './OverlayTrigger';
+import {
+  MenubarContext,
+  MenuPrimitiveContext,
+  type MenuPrimitiveKind,
+  type OverlayTarget,
+} from './OverlayTrigger';
 import { Row } from './Row';
 import { Text } from './Text';
 
@@ -49,6 +54,7 @@ export function Menu({
 }: MenuProps) {
   const [uncontrolled, setUncontrolled] = useState(new Set<Key>(defaultSelectedKeys));
   const primitiveKind = useContext(MenuPrimitiveContext);
+  const inMenubar = useContext(MenubarContext);
   const selected = new Set<Key>(selectedKeys || uncontrolled);
   const select = (key: Key) => {
     if (selectionMode === 'none') {
@@ -90,7 +96,7 @@ export function Menu({
   if (primitiveKind === 'menu') {
     return (
       <BaseMenu.Portal>
-        <BaseMenu.Positioner>
+        <BaseMenu.Positioner {...(inMenubar ? { align: 'start' as const, sideOffset: 8 } : {})}>
           <BaseMenu.Popup {...props} className={cn('zen-popover', popupClassName)}>
             {popupContent}
           </BaseMenu.Popup>

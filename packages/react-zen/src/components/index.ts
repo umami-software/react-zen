@@ -75,7 +75,6 @@ export {
 } from './OverlayTrigger';
 export * from './PageHeader';
 export * from './Pagination';
-export * from './PaletteSwitcher';
 export * from './PasswordField';
 export * from './Popover';
 export * from './ProgressBar';

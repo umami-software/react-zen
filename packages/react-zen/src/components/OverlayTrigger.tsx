@@ -36,6 +36,8 @@ const OverlayContext = createContext<OverlayContextValue>({
 });
 export type MenuPrimitiveKind = 'context-menu' | 'menu';
 export const MenuPrimitiveContext = createContext<MenuPrimitiveKind | null>(null);
+/** True when a Menu/MenuItem is rendered inside a Menubar dropdown. */
+export const MenubarContext = createContext<boolean>(false);
 
 export function useOverlayTrigger() {
   return useContext(OverlayContext);

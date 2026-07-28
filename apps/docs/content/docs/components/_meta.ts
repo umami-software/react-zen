@@ -27,7 +27,6 @@ export default {
   menubar: 'Menubar',
   navbar: 'Navbar',
   pagination: 'Pagination',
-  'palette-switcher': 'Palette Switcher',
   tabs: 'Tabs',
   toolbar: 'Toolbar',
   'theme-button': 'Theme Button',
