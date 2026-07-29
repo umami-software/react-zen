@@ -280,7 +280,7 @@ export const alert = tv({
     variant: {
       default: 'bg-surface-base text-foreground-primary',
       danger: [
-        'bg-surface-base text-status-error',
+        'border-status-error bg-surface-base text-status-error',
         '*:data-[slot=alert-description]:text-status-error/90',
       ],
     },
