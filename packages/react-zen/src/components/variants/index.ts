@@ -95,12 +95,12 @@ export type ListItemVariants = VariantProps<typeof listItem>;
 
 // Overlay/backdrop variants
 export const overlay = tv({
-  base: ['fixed inset-0', 'bg-black/80 flex items-center justify-center', 'z-[9999]'],
+  base: ['zen-layer-modal fixed inset-0', 'bg-black/80 flex items-center justify-center'],
 });
 
 // Modal variants
 export const modal = tv({
-  base: 'relative z-[9999]',
+  base: 'relative',
   variants: {
     position: {
       center: '',

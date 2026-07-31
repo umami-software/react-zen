@@ -1,5 +1,5 @@
 import { Select as BaseSelect } from '@base-ui/react/select';
-import { type ReactNode, useState } from 'react';
+import { Children, isValidElement, type ReactNode, useState } from 'react';
 import { ChevronRight } from '@/components/icons';
 import { Button, type ButtonProps } from './Button';
 import { Column } from './Column';
@@ -11,10 +11,43 @@ import { Loading } from './Loading';
 import { cn } from './lib/tailwind';
 import { ScrollArea } from './ScrollArea';
 import { SearchField } from './SearchField';
+import './Overlay.css';
 
 export interface SelectValueRenderProps {
   defaultChildren: ReactNode;
   isPlaceholder: boolean;
+}
+
+function getSelectItemLabel(
+  children: ReactNode,
+  selectedValue: string | number,
+): ReactNode | undefined {
+  let label: ReactNode | undefined;
+
+  Children.forEach(children, child => {
+    if (label !== undefined || !isValidElement(child)) {
+      return;
+    }
+
+    if (child.type === ListItem) {
+      const props = child.props as {
+        children?: ReactNode;
+        id?: string | number;
+        value?: string | number;
+      };
+      const itemValue =
+        props.value ?? props.id ?? (typeof props.children === 'string' ? props.children : '');
+
+      if (itemValue === selectedValue) {
+        label = props.children;
+      }
+      return;
+    }
+
+    label = getSelectItemLabel((child.props as { children?: ReactNode }).children, selectedValue);
+  });
+
+  return label;
 }
 
 export interface SelectProps
@@ -117,7 +150,10 @@ export function Select({
         >
           <BaseSelect.Value placeholder={placeholder}>
             {selected => {
-              const defaultChildren = selected ?? placeholder;
+              const defaultChildren =
+                selected == null
+                  ? placeholder
+                  : (getSelectItemLabel(collection, selected) ?? selected);
               return typeof renderValue === 'function'
                 ? renderValue({
                     defaultChildren,
@@ -138,11 +174,12 @@ export function Select({
             sideOffset={4}
             alignItemWithTrigger={alignItemWithTrigger}
             {...popoverProps}
+            className={cn('zen-layer-floating', popoverProps?.className)}
           >
             <BaseSelect.Popup
               className={cn(
                 'zen-popover bg-surface-overlay border border-edge rounded-md shadow-lg outline-none',
-                isFullscreen && 'zen-popover-fullscreen fixed inset-0 rounded-none z-[9999]',
+                isFullscreen && 'zen-popover-fullscreen fixed inset-0 rounded-none',
               )}
             >
               <Column gap="2" padding="2">

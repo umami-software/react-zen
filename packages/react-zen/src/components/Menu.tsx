@@ -25,6 +25,7 @@ import {
 import { Row } from './Row';
 import { ScrollArea } from './ScrollArea';
 import { Text } from './Text';
+import './Overlay.css';
 
 interface MenuContextValue {
   selected: Set<Key>;
@@ -85,7 +86,7 @@ export function Menu({
   if (primitiveKind === 'context-menu') {
     return (
       <BaseContextMenu.Portal>
-        <BaseContextMenu.Positioner>
+        <BaseContextMenu.Positioner className="zen-layer-floating">
           <BaseContextMenu.Popup {...props} className={cn('zen-popover', popupClassName)}>
             {popupContent}
           </BaseContextMenu.Popup>
@@ -97,7 +98,10 @@ export function Menu({
   if (primitiveKind === 'menu') {
     return (
       <BaseMenu.Portal>
-        <BaseMenu.Positioner {...(inMenubar ? { align: 'start' as const, sideOffset: 8 } : {})}>
+        <BaseMenu.Positioner
+          {...(inMenubar ? { align: 'start' as const, sideOffset: 8 } : {})}
+          className="zen-layer-floating"
+        >
           <BaseMenu.Popup {...props} className={cn('zen-popover', popupClassName)}>
             {popupContent}
           </BaseMenu.Popup>

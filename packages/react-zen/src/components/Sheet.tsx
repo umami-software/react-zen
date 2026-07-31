@@ -7,6 +7,7 @@ import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
 import type { OverlayTarget } from './OverlayTrigger';
 import './Modal.css';
+import './Overlay.css';
 
 export interface SheetProps extends BaseDialog.Portal.Props {
   children?: ReactNode;
@@ -45,11 +46,11 @@ export function Sheet({
 
   return (
     <BaseDialog.Portal {...props}>
-      <BaseDialog.Backdrop className="zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" />
-      <BaseDialog.Viewport className="fixed inset-0 z-[9999]">
+      <BaseDialog.Backdrop className="zen-modal-overlay zen-layer-backdrop fixed inset-0 bg-black/80" />
+      <BaseDialog.Viewport className="zen-layer-modal fixed inset-0">
         <BaseDialog.Popup
           className={cn(
-            'relative z-[9999] p-6 overflow-auto outline-none',
+            'relative p-6 overflow-auto outline-none',
             'bg-surface-base border-edge shadow-xl',
             sideClasses[side],
             className,

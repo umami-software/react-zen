@@ -2,6 +2,7 @@ import { Popover as BasePopover } from '@base-ui/react/popover';
 import type { ReactNode } from 'react';
 import { cn } from './lib/tailwind';
 import type { OverlayTarget } from './OverlayTrigger';
+import './Overlay.css';
 import './Popover.css';
 
 export interface PopoverProps extends Omit<BasePopover.Positioner.Props, 'children' | 'className'> {
@@ -26,12 +27,12 @@ export function Popover({
 }: PopoverProps) {
   return (
     <BasePopover.Portal>
-      <BasePopover.Positioner {...props}>
+      <BasePopover.Positioner {...props} className="zen-layer-floating">
         <BasePopover.Popup
           className={cn(
             'zen-popover outline-none',
             isFullscreen &&
-              'zen-popover-fullscreen block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base',
+              'zen-popover-fullscreen block border-0 rounded-none fixed inset-0 overflow-auto bg-surface-base',
             className,
           )}
         >

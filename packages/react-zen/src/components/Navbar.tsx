@@ -3,6 +3,7 @@ import { createContext, type HTMLAttributes, type ReactNode, useContext } from '
 import { ChevronDown } from '@/components/icons';
 import { cn } from './lib/tailwind';
 import { Text } from './Text';
+import './Overlay.css';
 
 interface NavbarContextValue {
   showArrow: boolean;
@@ -76,7 +77,7 @@ export function Navbar({
         </BaseNavigationMenu.List>
         <BaseNavigationMenu.Portal>
           <BaseNavigationMenu.Positioner
-            className={positionerClassName}
+            className={cn('zen-layer-floating', positionerClassName)}
             sideOffset={10}
             collisionPadding={16}
             style={{

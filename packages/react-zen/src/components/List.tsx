@@ -16,6 +16,7 @@ import { Label } from '@/components/Label';
 import { getHighlightColor } from '@/lib/styles';
 import type { Selection } from './lib/interaction';
 import { cn } from './lib/tailwind';
+import './Overlay.css';
 
 type ListKind = 'native' | 'select' | 'combobox';
 
@@ -101,7 +102,8 @@ export function List({
   };
   const classes = cn(
     'grid outline-none overflow-auto gap-1',
-    isFullscreen && 'block p-3 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base',
+    isFullscreen &&
+      'zen-layer-floating block p-3 rounded-none fixed inset-0 overflow-auto bg-surface-base',
     className,
   );
 

@@ -12,6 +12,7 @@ import {
 import { InputGroup, InputGroupAddon, InputGroupInput } from './InputGroup';
 import { cn } from './lib/tailwind';
 import { ScrollArea } from './ScrollArea';
+import './Overlay.css';
 
 interface ComboBoxItem {
   label: ReactNode;
@@ -111,14 +112,16 @@ export function ComboBox({
           </InputGroupAddon>
         </BaseCombobox.InputGroup>
         <BaseCombobox.Portal>
-          <BaseCombobox.Positioner align="start" sideOffset={4} {...popoverProps}>
+          <BaseCombobox.Positioner
+            align="start"
+            sideOffset={4}
+            {...popoverProps}
+            className={cn('zen-layer-floating', popoverProps?.className)}
+          >
             <BaseCombobox.Popup className="zen-popover w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none">
               <ListPrimitiveProvider kind="combobox">
                 <ScrollArea maxHeight={maxHeight ?? 'min(23rem, var(--available-height))'}>
-                  <List
-                    {...listProps}
-                    className={cn('overflow-visible', listProps?.className)}
-                  >
+                  <List {...listProps} className={cn('overflow-visible', listProps?.className)}>
                     <BaseCombobox.Collection>
                       {value => {
                         const item = normalizedItems.find(option => option.value === value);

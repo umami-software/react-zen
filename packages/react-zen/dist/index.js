@@ -2337,10 +2337,10 @@ tailwindVariants.tv({
   ]
 });
 tailwindVariants.tv({
-  base: ["fixed inset-0", "bg-black/80 flex items-center justify-center", "z-[9999]"]
+  base: ["zen-layer-modal fixed inset-0", "bg-black/80 flex items-center justify-center"]
 });
 tailwindVariants.tv({
-  base: "relative z-[9999]",
+  base: "relative",
   variants: {
     position: {
       center: "",
@@ -3771,7 +3771,7 @@ function List({
   };
   const classes = cn(
     "grid outline-none overflow-auto gap-1",
-    isFullscreen && "block p-3 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
+    isFullscreen && "zen-layer-floating block p-3 rounded-none fixed inset-0 overflow-auto bg-surface-base",
     className
   );
   if (parent.kind === "select") {
@@ -4125,23 +4125,25 @@ function ComboBox({
           /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Input, { placeholder, render: /* @__PURE__ */ jsxRuntime.jsx(InputGroupInput, {}) }),
           /* @__PURE__ */ jsxRuntime.jsx(InputGroupAddon, { align: "inline-end", children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Trigger, { className: "flex size-6 shrink-0 items-center justify-center rounded text-foreground-muted hover:bg-interactive hover:text-foreground-primary", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) }) }) })
         ] }),
-        /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Positioner, { align: "start", sideOffset: 4, ...popoverProps, children: /* @__PURE__ */ jsxRuntime.jsxs(combobox.Combobox.Popup, { className: "zen-popover w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
-          /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsxRuntime.jsx(ScrollArea, { maxHeight: maxHeight ?? "min(23rem, var(--available-height))", children: /* @__PURE__ */ jsxRuntime.jsx(
-            List,
-            {
-              ...listProps,
-              className: cn("overflow-visible", listProps?.className),
-              children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Collection, { children: (value) => {
+        /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(
+          combobox.Combobox.Positioner,
+          {
+            align: "start",
+            sideOffset: 4,
+            ...popoverProps,
+            className: cn("zen-layer-floating", popoverProps?.className),
+            children: /* @__PURE__ */ jsxRuntime.jsxs(combobox.Combobox.Popup, { className: "zen-popover w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
+              /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsxRuntime.jsx(ScrollArea, { maxHeight: maxHeight ?? "min(23rem, var(--available-height))", children: /* @__PURE__ */ jsxRuntime.jsx(List, { ...listProps, className: cn("overflow-visible", listProps?.className), children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Collection, { children: (value) => {
                 const item = normalizedItems.find((option) => option.value === value);
                 if (!item) {
                   return null;
                 }
                 return item.element ?? /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value);
-              } })
-            }
-          ) }) }),
-          /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Empty, { children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex min-h-16 items-center justify-center px-4 py-3 text-center", children: renderEmptyState ? renderEmptyState({}) : /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base text-foreground-muted", children: "No items found." }) }) })
-        ] }) }) })
+              } }) }) }) }),
+              /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Empty, { children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex min-h-16 items-center justify-center px-4 py-3 text-center", children: renderEmptyState ? renderEmptyState({}) : /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base text-foreground-muted", children: "No items found." }) }) })
+            ] })
+          }
+        ) })
       ] })
     }
   );
@@ -4160,16 +4162,16 @@ function Modal({
   ...props
 }) {
   const { kind } = useOverlayTrigger();
-  const popupClassName2 = cn("relative z-[9999]", placementClasses[placement], className);
+  const popupClassName2 = cn("relative", placementClasses[placement], className);
   if (kind === "alert-dialog") {
     return /* @__PURE__ */ jsxRuntime.jsxs(alertDialog.AlertDialog.Portal, { ...props, children: [
-      /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-      /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Popup, { className: popupClassName2, style, children }) })
+      /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Backdrop, { className: "zen-modal-overlay zen-layer-backdrop fixed inset-0 bg-black/80" }),
+      /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Viewport, { className: "zen-layer-modal fixed inset-0 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(alertDialog.AlertDialog.Popup, { className: popupClassName2, style, children }) })
     ] });
   }
   return /* @__PURE__ */ jsxRuntime.jsxs(dialog.Dialog.Portal, { ...props, children: [
-    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 flex items-center justify-center z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Popup, { className: popupClassName2, style, children }) })
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay zen-layer-backdrop fixed inset-0 bg-black/80" }),
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "zen-layer-modal fixed inset-0 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Popup, { className: popupClassName2, style, children }) })
   ] });
 }
 Modal.zenOverlayType = "dialog";
@@ -4874,12 +4876,12 @@ function Popover({
   onOpenChange: _onOpenChange,
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { ...props, children: /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { ...props, className: "zen-layer-floating", children: /* @__PURE__ */ jsxRuntime.jsx(
     popover.Popover.Popup,
     {
       className: cn(
         "zen-popover outline-none",
-        isFullscreen && "zen-popover-fullscreen block border-0 rounded-none fixed inset-0 overflow-auto z-[9999] bg-surface-base",
+        isFullscreen && "zen-popover-fullscreen block border-0 rounded-none fixed inset-0 overflow-auto bg-surface-base",
         className
       ),
       children
@@ -5054,23 +5056,32 @@ function Tooltip({
   showArrow,
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(tooltip$1.Tooltip.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(tooltip$1.Tooltip.Positioner, { ...props, side: placement ?? side, sideOffset, children: /* @__PURE__ */ jsxRuntime.jsxs(tooltip$1.Tooltip.Popup, { className: cn("zen-popover group", tooltip(), className), children: [
-    showArrow && /* @__PURE__ */ jsxRuntime.jsx(
-      tooltip$1.Tooltip.Arrow,
-      {
-        style: ({ side: side2 }) => ({
-          width: 12,
-          height: 6,
-          ...side2 === "top" && { bottom: -6, transform: "rotate(180deg)" },
-          ...side2 === "bottom" && { top: -6 },
-          ...side2 === "left" && { right: -9, transform: "rotate(90deg)" },
-          ...side2 === "right" && { left: -9, transform: "rotate(-90deg)" }
-        }),
-        children: /* @__PURE__ */ jsxRuntime.jsx("svg", { "aria-hidden": "true", viewBox: "0 0 12 6", className: "block w-full h-full", children: /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 6 6 0l6 6Z", className: "fill-surface-inverted" }) })
-      }
-    ),
-    children
-  ] }) }) });
+  return /* @__PURE__ */ jsxRuntime.jsx(tooltip$1.Tooltip.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(
+    tooltip$1.Tooltip.Positioner,
+    {
+      ...props,
+      className: "zen-layer-floating",
+      side: placement ?? side,
+      sideOffset,
+      children: /* @__PURE__ */ jsxRuntime.jsxs(tooltip$1.Tooltip.Popup, { className: cn("zen-popover group", tooltip(), className), children: [
+        showArrow && /* @__PURE__ */ jsxRuntime.jsx(
+          tooltip$1.Tooltip.Arrow,
+          {
+            style: ({ side: side2 }) => ({
+              width: 12,
+              height: 6,
+              ...side2 === "top" && { bottom: -6, transform: "rotate(180deg)" },
+              ...side2 === "bottom" && { top: -6 },
+              ...side2 === "left" && { right: -9, transform: "rotate(90deg)" },
+              ...side2 === "right" && { left: -9, transform: "rotate(-90deg)" }
+            }),
+            children: /* @__PURE__ */ jsxRuntime.jsx("svg", { "aria-hidden": "true", viewBox: "0 0 12 6", className: "block w-full h-full", children: /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 6 6 0l6 6Z", className: "fill-surface-inverted" }) })
+          }
+        ),
+        children
+      ] })
+    }
+  ) });
 }
 function TooltipBubble({
   children,
@@ -5096,7 +5107,7 @@ function FloatingTooltip({ className, style, children, ...props }) {
     {
       ...props,
       className: cn(
-        "fixed pointer-events-none z-[9999] -translate-x-1/2 -translate-y-[calc(100%+10px)]",
+        "zen-layer-floating fixed pointer-events-none -translate-x-1/2 -translate-y-[calc(100%+10px)]",
         className
       ),
       style: { ...style, left: position.x, top: position.y },
@@ -5373,7 +5384,7 @@ function HoverTrigger({
         render: /* @__PURE__ */ jsxRuntime.jsx("span", { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, children: triggerElement })
       }
     ),
-    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Popup, { className: "zen-popover outline-none", children: /* @__PURE__ */ jsxRuntime.jsx("div", { onMouseEnter: handleMenuEnter, onMouseLeave: handleMenuLeave, children: /* @__PURE__ */ jsxRuntime.jsx(OverlayContentProvider, { close: _close, kind: "popover", children: popupElement }) }) }) }) })
+    /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Positioner, { className: "zen-layer-floating", children: /* @__PURE__ */ jsxRuntime.jsx(popover.Popover.Popup, { className: "zen-popover outline-none", children: /* @__PURE__ */ jsxRuntime.jsx("div", { onMouseEnter: handleMenuEnter, onMouseLeave: handleMenuLeave, children: /* @__PURE__ */ jsxRuntime.jsx(OverlayContentProvider, { close: _close, kind: "popover", children: popupElement }) }) }) }) })
   ] });
 }
 var breakpoints = {
@@ -5605,7 +5616,7 @@ function Toaster({ duration = 0, position = "bottom-right" }) {
     Column,
     {
       gap: "2",
-      className: cn("fixed z-[9999]", positionClasses[position]),
+      className: cn("zen-layer-toast fixed", positionClasses[position]),
       onMouseEnter: () => setHovered(true),
       onMouseLeave: () => setHovered(false),
       children: transitions((style, item) => {
@@ -5770,10 +5781,17 @@ function Menu({
   );
   const popupContent = /* @__PURE__ */ jsxRuntime.jsx(MenuContext.Provider, { value: { selected, select }, children });
   if (primitiveKind === "context-menu") {
-    return /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Positioner, { children: /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
+    return /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Positioner, { className: "zen-layer-floating", children: /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
   }
   if (primitiveKind === "menu") {
-    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Positioner, { ...inMenubar ? { align: "start", sideOffset: 8 } : {}, children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent }) }) });
+    return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(
+      menu.Menu.Positioner,
+      {
+        ...inMenubar ? { align: "start", sideOffset: 8 } : {},
+        className: "zen-layer-floating",
+        children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent })
+      }
+    ) });
   }
   return /* @__PURE__ */ jsxRuntime.jsx(MenuContext.Provider, { value: { selected, select }, children: /* @__PURE__ */ jsxRuntime.jsx("div", { ...props, role: "menu", className: popupClassName2, children }) });
 }
@@ -6035,7 +6053,7 @@ function Navbar({
     /* @__PURE__ */ jsxRuntime.jsx(navigationMenu.NavigationMenu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(
       navigationMenu.NavigationMenu.Positioner,
       {
-        className: positionerClassName,
+        className: cn("zen-layer-floating", positionerClassName),
         sideOffset: 10,
         collisionPadding: 16,
         style: {
@@ -6600,6 +6618,24 @@ function SearchField({
     ] })
   ] });
 }
+function getSelectItemLabel(children, selectedValue) {
+  let label;
+  react.Children.forEach(children, (child) => {
+    if (label !== void 0 || !react.isValidElement(child)) {
+      return;
+    }
+    if (child.type === ListItem) {
+      const props = child.props;
+      const itemValue = props.value ?? props.id ?? (typeof props.children === "string" ? props.children : "");
+      if (itemValue === selectedValue) {
+        label = props.children;
+      }
+      return;
+    }
+    label = getSelectItemLabel(child.props.children, selectedValue);
+  });
+  return label;
+}
 function Select({
   value,
   defaultValue,
@@ -6666,7 +6702,7 @@ function Select({
             ),
             children: [
               /* @__PURE__ */ jsxRuntime.jsx(select.Select.Value, { placeholder, children: (selected) => {
-                const defaultChildren = selected ?? placeholder;
+                const defaultChildren = selected == null ? placeholder : getSelectItemLabel(collection, selected) ?? selected;
                 return typeof renderValue === "function" ? renderValue({
                   defaultChildren,
                   isPlaceholder: selected == null
@@ -6683,12 +6719,13 @@ function Select({
             sideOffset: 4,
             alignItemWithTrigger,
             ...popoverProps,
+            className: cn("zen-layer-floating", popoverProps?.className),
             children: /* @__PURE__ */ jsxRuntime.jsx(
               select.Select.Popup,
               {
                 className: cn(
                   "zen-popover bg-surface-overlay border border-edge rounded-md shadow-lg outline-none",
-                  isFullscreen && "zen-popover-fullscreen fixed inset-0 rounded-none z-[9999]"
+                  isFullscreen && "zen-popover-fullscreen fixed inset-0 rounded-none"
                 ),
                 children: /* @__PURE__ */ jsxRuntime.jsxs(Column, { gap: "2", padding: "2", children: [
                   allowSearch && /* @__PURE__ */ jsxRuntime.jsx(
@@ -6761,12 +6798,12 @@ function Sheet({
     ...style
   };
   return /* @__PURE__ */ jsxRuntime.jsxs(dialog.Dialog.Portal, { ...props, children: [
-    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay fixed inset-0 bg-black/80 z-[9998]" }),
-    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "fixed inset-0 z-[9999]", children: /* @__PURE__ */ jsxRuntime.jsx(
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Backdrop, { className: "zen-modal-overlay zen-layer-backdrop fixed inset-0 bg-black/80" }),
+    /* @__PURE__ */ jsxRuntime.jsx(dialog.Dialog.Viewport, { className: "zen-layer-modal fixed inset-0", children: /* @__PURE__ */ jsxRuntime.jsx(
       dialog.Dialog.Popup,
       {
         className: cn(
-          "relative z-[9999] p-6 overflow-auto outline-none",
+          "relative p-6 overflow-auto outline-none",
           "bg-surface-base border-edge shadow-xl",
           sideClasses[side],
           className

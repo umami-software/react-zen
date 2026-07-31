@@ -3,6 +3,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { Box } from './Box';
 import { cn } from './lib/tailwind';
 import { tooltip } from './variants';
+import './Overlay.css';
 
 export interface TooltipProps extends Omit<BaseTooltip.Positioner.Props, 'children' | 'className'> {
   children?: ReactNode;
@@ -22,7 +23,12 @@ export function Tooltip({
 }: TooltipProps) {
   return (
     <BaseTooltip.Portal>
-      <BaseTooltip.Positioner {...props} side={placement ?? side} sideOffset={sideOffset}>
+      <BaseTooltip.Positioner
+        {...props}
+        className="zen-layer-floating"
+        side={placement ?? side}
+        sideOffset={sideOffset}
+      >
         <BaseTooltip.Popup className={cn('zen-popover group', tooltip(), className)}>
           {showArrow && (
             <BaseTooltip.Arrow

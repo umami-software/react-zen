@@ -3,6 +3,7 @@
 @import "./theme.css";
 @import "../components/Dots.css";
 @import "../components/Modal.css";
+@import "../components/Overlay.css";
 @import "../components/Popover.css";
 @import "../components/Skeleton.css";
 @import "../components/Spinner.css";

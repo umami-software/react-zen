@@ -5,6 +5,7 @@ import { Column } from '@/components/Column';
 import { removeToast, useToast } from '@/components/hooks/useToast';
 import { cn } from '@/components/lib/tailwind';
 import { Toast } from '@/components/toast/Toast';
+import '../Overlay.css';
 
 export type ToastPosition =
   | 'top-left'
@@ -74,7 +75,7 @@ export function Toaster({ duration = 0, position = 'bottom-right' }: ToasterProp
   return (
     <Column
       gap="2"
-      className={cn('fixed z-[9999]', positionClasses[position])}
+      className={cn('zen-layer-toast fixed', positionClasses[position])}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

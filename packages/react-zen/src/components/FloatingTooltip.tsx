@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { TooltipBubble, type TooltipBubbleProps } from '@/components/Tooltip';
 import { cn } from './lib/tailwind';
+import './Overlay.css';
 
 export interface FloatingTooltipProps extends TooltipBubbleProps {}
 
@@ -23,7 +24,7 @@ export function FloatingTooltip({ className, style, children, ...props }: Floati
     <TooltipBubble
       {...props}
       className={cn(
-        'fixed pointer-events-none z-[9999] -translate-x-1/2 -translate-y-[calc(100%+10px)]',
+        'zen-layer-floating fixed pointer-events-none -translate-x-1/2 -translate-y-[calc(100%+10px)]',
         className,
       )}
       style={{ ...style, left: position.x, top: position.y }}
