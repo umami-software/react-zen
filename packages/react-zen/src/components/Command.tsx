@@ -5,6 +5,7 @@ import { Search } from '@/components/icons';
 import { Icon } from './Icon';
 import { cn } from './lib/tailwind';
 import { Modal } from './Modal';
+import { ScrollArea } from './ScrollArea';
 
 export interface CommandProps extends ComponentProps<typeof CommandPrimitive> {}
 
@@ -43,14 +44,15 @@ export function CommandInput({ className, ...props }: CommandInputProps) {
   );
 }
 
-export interface CommandListProps extends ComponentProps<typeof CommandPrimitive.List> {}
+export interface CommandListProps extends ComponentProps<typeof CommandPrimitive.List> {
+  maxHeight?: string | number;
+}
 
-export function CommandList({ className, ...props }: CommandListProps) {
+export function CommandList({ maxHeight = 300, className, ...props }: CommandListProps) {
   return (
-    <CommandPrimitive.List
-      {...props}
-      className={cn('max-h-[300px] overflow-y-auto overflow-x-hidden p-2', className)}
-    />
+    <ScrollArea maxHeight={maxHeight}>
+      <CommandPrimitive.List {...props} className={cn('p-2', className)} />
+    </ScrollArea>
   );
 }
 

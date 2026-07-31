@@ -23,6 +23,7 @@ import {
   type OverlayTarget,
 } from './OverlayTrigger';
 import { Row } from './Row';
+import { ScrollArea } from './ScrollArea';
 import { Text } from './Text';
 
 interface MenuContextValue {
@@ -264,7 +265,8 @@ export function MenuSection({
 }: MenuSectionProps) {
   const primitiveKind = useContext(MenuPrimitiveContext);
   const groupClassName = cn('[&:not(:last-child)]:mb-4', className);
-  const groupStyle = { maxHeight, overflow: maxHeight ? 'auto' : undefined, ...style };
+  const groupStyle = style;
+  const body = maxHeight ? <ScrollArea maxHeight={maxHeight}>{children}</ScrollArea> : children;
   const content = (
     <>
       {title &&
@@ -279,7 +281,7 @@ export function MenuSection({
         ) : (
           <div className="text-base font-bold px-2 py-1.5">{title}</div>
         ))}
-      {children}
+      {body}
     </>
   );
 

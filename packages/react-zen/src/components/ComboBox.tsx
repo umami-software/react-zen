@@ -11,6 +11,7 @@ import {
 } from '@/components/List';
 import { InputGroup, InputGroupAddon, InputGroupInput } from './InputGroup';
 import { cn } from './lib/tailwind';
+import { ScrollArea } from './ScrollArea';
 
 interface ComboBoxItem {
   label: ReactNode;
@@ -44,6 +45,7 @@ export interface ComboBoxProps
   label?: string;
   placeholder?: string;
   isDisabled?: boolean;
+  maxHeight?: string | number;
   onChange?: (value: string | null) => void;
   renderEmptyState?: (props: object) => ReactNode;
   listProps?: ListProps;
@@ -56,6 +58,7 @@ export function ComboBox({
   label,
   placeholder,
   isDisabled,
+  maxHeight,
   onChange,
   renderEmptyState,
   listProps,
@@ -111,25 +114,30 @@ export function ComboBox({
           <BaseCombobox.Positioner align="start" sideOffset={4} {...popoverProps}>
             <BaseCombobox.Popup className="zen-popover w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none">
               <ListPrimitiveProvider kind="combobox">
-                <List {...listProps}>
-                  <BaseCombobox.Collection>
-                    {value => {
-                      const item = normalizedItems.find(option => option.value === value);
+                <ScrollArea maxHeight={maxHeight ?? 'min(23rem, var(--available-height))'}>
+                  <List
+                    {...listProps}
+                    className={cn('overflow-visible', listProps?.className)}
+                  >
+                    <BaseCombobox.Collection>
+                      {value => {
+                        const item = normalizedItems.find(option => option.value === value);
 
-                      if (!item) {
-                        return null;
-                      }
+                        if (!item) {
+                          return null;
+                        }
 
-                      return (
-                        item.element ?? (
-                          <ListItem key={item.value} value={item.value}>
-                            {item.label}
-                          </ListItem>
-                        )
-                      );
-                    }}
-                  </BaseCombobox.Collection>
-                </List>
+                        return (
+                          item.element ?? (
+                            <ListItem key={item.value} value={item.value}>
+                              {item.label}
+                            </ListItem>
+                          )
+                        );
+                      }}
+                    </BaseCombobox.Collection>
+                  </List>
+                </ScrollArea>
               </ListPrimitiveProvider>
               <BaseCombobox.Empty>
                 <div className="flex min-h-16 items-center justify-center px-4 py-3 text-center">
