@@ -9,6 +9,7 @@ import { Label } from './Label';
 import { List, ListItem, ListPrimitiveProvider, type ListProps } from './List';
 import { Loading } from './Loading';
 import { cn } from './lib/tailwind';
+import { ScrollArea } from './ScrollArea';
 import { SearchField } from './SearchField';
 
 export interface SelectValueRenderProps {
@@ -84,6 +85,7 @@ export function Select({
         {item.label}
       </ListItem>
     ));
+  const isEmpty = !collection || (Array.isArray(collection) && collection.length === 0);
 
   return (
     <div className={cn('flex flex-col gap-1', className)}>
@@ -146,7 +148,7 @@ export function Select({
               <Column gap="2" padding="2">
                 {allowSearch && (
                   <SearchField
-                    className="mb-2"
+                    className="-mx-2 -mt-2 w-auto rounded-t-md rounded-b-none border-0 border-b border-edge shadow-none focus-within:border-edge"
                     value={search}
                     onChange={setSearch}
                     onSearch={value => {
@@ -164,19 +166,25 @@ export function Select({
                   />
                 )}
                 {isLoading && <Loading className="py-8" icon="dots" placement="center" size="sm" />}
+                {!isLoading && isEmpty && (
+                  <div className="px-2 py-8 text-center text-base text-foreground-muted">
+                    No results found
+                  </div>
+                )}
                 <ListPrimitiveProvider kind="select">
-                  <List
-                    {...listProps}
-                    isFullscreen={isFullscreen}
-                    className={cn('overflow-auto', listProps?.className)}
-                    style={{
-                      ...listProps?.style,
-                      maxHeight,
-                      display: isLoading ? 'none' : undefined,
-                    }}
+                  <ScrollArea
+                    maxHeight={maxHeight}
+                    style={{ display: isLoading || isEmpty ? 'none' : undefined }}
                   >
-                    {collection}
-                  </List>
+                    <List
+                      {...listProps}
+                      isFullscreen={isFullscreen}
+                      className={cn('overflow-visible', listProps?.className)}
+                      style={listProps?.style}
+                    >
+                      {collection}
+                    </List>
+                  </ScrollArea>
                 </ListPrimitiveProvider>
               </Column>
             </BaseSelect.Popup>
