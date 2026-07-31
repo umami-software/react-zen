@@ -22,6 +22,7 @@ var checkboxGroup = require('@base-ui/react/checkbox-group');
 var collapsible = require('@base-ui/react/collapsible');
 var combobox = require('@base-ui/react/combobox');
 var select = require('@base-ui/react/select');
+var scrollArea = require('@base-ui/react/scroll-area');
 var cmdk = require('cmdk');
 var contextMenu = require('@base-ui/react/context-menu');
 var reactHookForm = require('react-hook-form');
@@ -36,7 +37,6 @@ var progress = require('@base-ui/react/progress');
 var radio = require('@base-ui/react/radio');
 var radioGroup = require('@base-ui/react/radio-group');
 var reactResizablePanels = require('react-resizable-panels');
-var scrollArea = require('@base-ui/react/scroll-area');
 var slider = require('@base-ui/react/slider');
 var _switch = require('@base-ui/react/switch');
 var tabs = require('@base-ui/react/tabs');
@@ -2490,7 +2490,7 @@ var alert = tailwindVariants.tv({
     variant: {
       default: "bg-surface-base text-foreground-primary",
       danger: [
-        "bg-surface-base text-status-error",
+        "border-status-error bg-surface-base text-status-error",
         "*:data-[slot=alert-description]:text-status-error/90"
       ]
     }
@@ -4019,6 +4019,58 @@ var InputGroupTextarea = react.forwardRef(({ className, ...props }, ref) => /* @
   }
 ));
 InputGroupTextarea.displayName = "InputGroupTextarea";
+var scrollbarClasses = [
+  "flex touch-none select-none justify-center rounded bg-transparent",
+  "opacity-0 transition-opacity duration-200 delay-300",
+  "data-[hovering]:opacity-100 data-[hovering]:delay-0",
+  "data-[scrolling]:opacity-100 data-[scrolling]:delay-0"
+];
+function ScrollArea({
+  maxHeight,
+  orientation = "vertical",
+  className,
+  style,
+  children,
+  ...props
+}) {
+  const showVertical = orientation !== "horizontal";
+  const showHorizontal = orientation !== "vertical";
+  return /* @__PURE__ */ jsxRuntime.jsxs(
+    scrollArea.ScrollArea.Root,
+    {
+      ...props,
+      className: cn("relative overflow-hidden", className),
+      style,
+      children: [
+        /* @__PURE__ */ jsxRuntime.jsx(
+          scrollArea.ScrollArea.Viewport,
+          {
+            className: "size-full overscroll-contain rounded-[inherit] outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
+            style: { maxHeight },
+            children: /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Content, { children })
+          }
+        ),
+        showVertical && /* @__PURE__ */ jsxRuntime.jsx(
+          scrollArea.ScrollArea.Scrollbar,
+          {
+            orientation: "vertical",
+            className: cn(scrollbarClasses, "w-1.5 mr-0.5"),
+            children: /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Thumb, { className: "w-full rounded bg-edge-strong" })
+          }
+        ),
+        showHorizontal && /* @__PURE__ */ jsxRuntime.jsx(
+          scrollArea.ScrollArea.Scrollbar,
+          {
+            orientation: "horizontal",
+            className: cn(scrollbarClasses, "h-1.5 mb-0.5 flex-col"),
+            children: /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Thumb, { className: "h-full rounded bg-edge-strong" })
+          }
+        ),
+        orientation === "both" && /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Corner, {})
+      ]
+    }
+  );
+}
 function getItemLabel(label) {
   if (typeof label === "string" || typeof label === "number") {
     return String(label);
@@ -4036,6 +4088,7 @@ function ComboBox({
   label,
   placeholder,
   isDisabled,
+  maxHeight,
   onChange,
   renderEmptyState,
   listProps,
@@ -4073,13 +4126,20 @@ function ComboBox({
           /* @__PURE__ */ jsxRuntime.jsx(InputGroupAddon, { align: "inline-end", children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Trigger, { className: "flex size-6 shrink-0 items-center justify-center rounded text-foreground-muted hover:bg-interactive hover:text-foreground-primary", children: /* @__PURE__ */ jsxRuntime.jsx(Icon, { rotate: 90, "aria-hidden": "true", size: "sm", children: /* @__PURE__ */ jsxRuntime.jsx(icons_exports.ChevronRight, {}) }) }) })
         ] }),
         /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Positioner, { align: "start", sideOffset: 4, ...popoverProps, children: /* @__PURE__ */ jsxRuntime.jsxs(combobox.Combobox.Popup, { className: "zen-popover w-[var(--anchor-width)] max-w-[var(--available-width)] p-2 border border-edge rounded-md shadow-lg bg-surface-overlay outline-none", children: [
-          /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsxRuntime.jsx(List, { ...listProps, children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Collection, { children: (value) => {
-            const item = normalizedItems.find((option) => option.value === value);
-            if (!item) {
-              return null;
+          /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "combobox", children: /* @__PURE__ */ jsxRuntime.jsx(ScrollArea, { maxHeight: maxHeight ?? "min(23rem, var(--available-height))", children: /* @__PURE__ */ jsxRuntime.jsx(
+            List,
+            {
+              ...listProps,
+              className: cn("overflow-visible", listProps?.className),
+              children: /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Collection, { children: (value) => {
+                const item = normalizedItems.find((option) => option.value === value);
+                if (!item) {
+                  return null;
+                }
+                return item.element ?? /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value);
+              } })
             }
-            return item.element ?? /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value);
-          } }) }) }),
+          ) }) }),
           /* @__PURE__ */ jsxRuntime.jsx(combobox.Combobox.Empty, { children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex min-h-16 items-center justify-center px-4 py-3 text-center", children: renderEmptyState ? renderEmptyState({}) : /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base text-foreground-muted", children: "No items found." }) }) })
         ] }) }) })
       ] })
@@ -4143,14 +4203,8 @@ function CommandInput({ className, ...props }) {
     )
   ] });
 }
-function CommandList({ className, ...props }) {
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    cmdk.Command.List,
-    {
-      ...props,
-      className: cn("max-h-[300px] overflow-y-auto overflow-x-hidden p-2", className)
-    }
-  );
+function CommandList({ maxHeight = 300, className, ...props }) {
+  return /* @__PURE__ */ jsxRuntime.jsx(ScrollArea, { maxHeight, children: /* @__PURE__ */ jsxRuntime.jsx(cmdk.Command.List, { ...props, className: cn("p-2", className) }) });
 }
 function CommandEmpty({ className, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
@@ -5837,10 +5891,11 @@ function MenuSection({
 }) {
   const primitiveKind = react.useContext(MenuPrimitiveContext);
   const groupClassName = cn("[&:not(:last-child)]:mb-4", className);
-  const groupStyle = { maxHeight, overflow: maxHeight ? "auto" : void 0, ...style };
+  const groupStyle = style;
+  const body = maxHeight ? /* @__PURE__ */ jsxRuntime.jsx(ScrollArea, { maxHeight, children }) : children;
   const content = /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
     title && (primitiveKind === "context-menu" ? /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.GroupLabel, { className: "text-base font-bold px-2 py-1.5", children: title }) : primitiveKind === "menu" ? /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.GroupLabel, { className: "text-base font-bold px-2 py-1.5", children: title }) : /* @__PURE__ */ jsxRuntime.jsx("div", { className: "text-base font-bold px-2 py-1.5", children: title })),
-    children
+    body
   ] });
   if (primitiveKind === "context-menu") {
     return /* @__PURE__ */ jsxRuntime.jsx(contextMenu.ContextMenu.Group, { ...props, className: groupClassName, style: groupStyle, children: content });
@@ -6479,58 +6534,6 @@ function ResizableHandle({ withHandle, className, ...props }) {
     }
   );
 }
-var scrollbarClasses = [
-  "flex touch-none select-none justify-center rounded bg-transparent",
-  "opacity-0 transition-opacity duration-200 delay-300",
-  "data-[hovering]:opacity-100 data-[hovering]:delay-0",
-  "data-[scrolling]:opacity-100 data-[scrolling]:delay-0"
-];
-function ScrollArea({
-  maxHeight,
-  orientation = "vertical",
-  className,
-  style,
-  children,
-  ...props
-}) {
-  const showVertical = orientation !== "horizontal";
-  const showHorizontal = orientation !== "vertical";
-  return /* @__PURE__ */ jsxRuntime.jsxs(
-    scrollArea.ScrollArea.Root,
-    {
-      ...props,
-      className: cn("relative overflow-hidden", className),
-      style,
-      children: [
-        /* @__PURE__ */ jsxRuntime.jsx(
-          scrollArea.ScrollArea.Viewport,
-          {
-            className: "size-full overscroll-contain rounded-[inherit] outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
-            style: { maxHeight },
-            children: /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Content, { children })
-          }
-        ),
-        showVertical && /* @__PURE__ */ jsxRuntime.jsx(
-          scrollArea.ScrollArea.Scrollbar,
-          {
-            orientation: "vertical",
-            className: cn(scrollbarClasses, "w-1.5 mr-0.5"),
-            children: /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Thumb, { className: "w-full rounded bg-edge-strong" })
-          }
-        ),
-        showHorizontal && /* @__PURE__ */ jsxRuntime.jsx(
-          scrollArea.ScrollArea.Scrollbar,
-          {
-            orientation: "horizontal",
-            className: cn(scrollbarClasses, "h-1.5 mb-0.5 flex-col"),
-            children: /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Thumb, { className: "h-full rounded bg-edge-strong" })
-          }
-        ),
-        orientation === "both" && /* @__PURE__ */ jsxRuntime.jsx(scrollArea.ScrollArea.Corner, {})
-      ]
-    }
-  );
-}
 function SearchField({
   label,
   placeholder,
@@ -6630,6 +6633,7 @@ function Select({
     (item) => typeof item === "object" ? item : { label: String(item), value: item }
   );
   const collection = children || normalizedItems?.map((item) => /* @__PURE__ */ jsxRuntime.jsx(ListItem, { value: item.value, children: item.label }, item.value));
+  const isEmpty = !collection || Array.isArray(collection) && collection.length === 0;
   return /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("flex flex-col gap-1", className), children: /* @__PURE__ */ jsxRuntime.jsxs(
     select.Select.Root,
     {
@@ -6690,7 +6694,7 @@ function Select({
                   allowSearch && /* @__PURE__ */ jsxRuntime.jsx(
                     SearchField,
                     {
-                      className: "mb-2",
+                      className: "-mx-2 -mt-2 w-auto rounded-t-md rounded-b-none border-0 border-b border-edge shadow-none focus-within:border-edge",
                       value: search,
                       onChange: setSearch,
                       onSearch: (value2) => {
@@ -6708,18 +6712,22 @@ function Select({
                     }
                   ),
                   isLoading && /* @__PURE__ */ jsxRuntime.jsx(Loading, { className: "py-8", icon: "dots", placement: "center", size: "sm" }),
+                  !isLoading && isEmpty && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "px-2 py-8 text-center text-base text-foreground-muted", children: "No results found" }),
                   /* @__PURE__ */ jsxRuntime.jsx(ListPrimitiveProvider, { kind: "select", children: /* @__PURE__ */ jsxRuntime.jsx(
-                    List,
+                    ScrollArea,
                     {
-                      ...listProps,
-                      isFullscreen,
-                      className: cn("overflow-auto", listProps?.className),
-                      style: {
-                        ...listProps?.style,
-                        maxHeight,
-                        display: isLoading ? "none" : void 0
-                      },
-                      children: collection
+                      maxHeight,
+                      style: { display: isLoading || isEmpty ? "none" : void 0 },
+                      children: /* @__PURE__ */ jsxRuntime.jsx(
+                        List,
+                        {
+                          ...listProps,
+                          isFullscreen,
+                          className: cn("overflow-visible", listProps?.className),
+                          style: listProps?.style,
+                          children: collection
+                        }
+                      )
                     }
                   ) })
                 ] })

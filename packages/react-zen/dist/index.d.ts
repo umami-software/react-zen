@@ -830,13 +830,14 @@ interface ComboBoxProps extends Omit<Combobox.Root.Props<string>, 'children' | '
     label?: string;
     placeholder?: string;
     isDisabled?: boolean;
+    maxHeight?: string | number;
     onChange?: (value: string | null) => void;
     renderEmptyState?: (props: object) => ReactNode;
     listProps?: ListProps;
     popoverProps?: Combobox.Positioner.Props;
     className?: string;
 }
-declare function ComboBox({ className, label, placeholder, isDisabled, onChange, renderEmptyState, listProps, popoverProps, children, items, itemToStringLabel, ...props }: ComboBoxProps): react_jsx_runtime.JSX.Element;
+declare function ComboBox({ className, label, placeholder, isDisabled, maxHeight, onChange, renderEmptyState, listProps, popoverProps, children, items, itemToStringLabel, ...props }: ComboBoxProps): react_jsx_runtime.JSX.Element;
 
 interface CommandProps extends ComponentProps<typeof Command$1> {
 }
@@ -845,8 +846,9 @@ interface CommandInputProps extends ComponentProps<typeof Command$1.Input> {
 }
 declare function CommandInput({ className, ...props }: CommandInputProps): react_jsx_runtime.JSX.Element;
 interface CommandListProps extends ComponentProps<typeof Command$1.List> {
+    maxHeight?: string | number;
 }
-declare function CommandList({ className, ...props }: CommandListProps): react_jsx_runtime.JSX.Element;
+declare function CommandList({ maxHeight, className, ...props }: CommandListProps): react_jsx_runtime.JSX.Element;
 interface CommandEmptyProps extends ComponentProps<typeof Command$1.Empty> {
 }
 declare function CommandEmpty({ className, ...props }: CommandEmptyProps): react_jsx_runtime.JSX.Element;
