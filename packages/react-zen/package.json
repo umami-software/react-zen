@@ -33,6 +33,9 @@
   },
   "scripts": {
     "build": "npm-run-all tsup css",
+    "dev": "npm-run-all --parallel dev:tsup dev:css",
+    "dev:tsup": "tsup --watch",
+    "dev:css": "node css.mjs --watch",
     "lint": "biome check ./src",
     "icons": "svgr ./src/assets --out-dir src/components/svg --typescript",
     "css": "node css.mjs",

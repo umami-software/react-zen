@@ -33,7 +33,37 @@ async function buildCSS() {
   await Promise.all([buildMinimalCSS(), buildFullCSS()]);
 }
 
-buildCSS().catch(err => {
-  console.error('CSS build failed:', err);
-  process.exit(1);
-});
+async function watchCSS() {
+  const { watch } = await import('node:fs');
+
+  let timer = null;
+  const rebuild = () => {
+    // Debounce rapid successive change events
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      buildCSS().catch(err => console.error('CSS rebuild failed:', err));
+    }, 100);
+  };
+
+  for (const dir of ['./src/components', './src/styles']) {
+    watch(dir, { recursive: true }, (event, filename) => {
+      if (filename?.endsWith('.css')) {
+        console.log(`CSS change detected: ${filename}`);
+        rebuild();
+      }
+    });
+  }
+
+  console.log('Watching for CSS changes...');
+}
+
+buildCSS()
+  .then(() => {
+    if (process.argv.includes('--watch')) {
+      return watchCSS();
+    }
+  })
+  .catch(err => {
+    console.error('CSS build failed:', err);
+    process.exit(1);
+  });

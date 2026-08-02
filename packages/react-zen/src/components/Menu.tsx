@@ -99,7 +99,8 @@ export function Menu({
     return (
       <BaseMenu.Portal>
         <BaseMenu.Positioner
-          {...(inMenubar ? { align: 'start' as const, sideOffset: 8 } : {})}
+          sideOffset={4}
+          {...(inMenubar ? { align: 'start' as const } : {})}
           className="zen-layer-floating"
         >
           <BaseMenu.Popup {...props} className={cn('zen-popover', popupClassName)}>

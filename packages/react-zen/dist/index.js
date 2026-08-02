@@ -5951,10 +5951,7 @@ function Menubar({ isDisabled, className, children, ...props }) {
     {
       ...props,
       disabled: isDisabled,
-      className: cn(
-        "flex items-center gap-1 p-1 rounded-md border border-edge bg-surface-base shadow-sm w-fit",
-        className
-      ),
+      className: cn("flex items-center gap-1 w-fit", className),
       children
     }
   );
