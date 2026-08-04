@@ -1,6 +1,6 @@
 'use client';
 
-import { Inbox, Layers, Sparkles } from 'lucide-react';
+import { FileArchive, Inbox, Layers, Sparkles, Users } from 'lucide-react';
 import { useRef, useState } from 'react';
 import {
   Accordion,
@@ -1157,21 +1157,62 @@ export function PlaygroundExample() {
             </Column>
 
             {/* Progress and loading */}
-            <Column gap="3">
+            <Column gap="5">
               <Text size="xs" weight="semibold" color="muted">
                 PROGRESS & LOADING
               </Text>
-              <Row gap="6" alignItems="center" wrap="wrap">
-                <Column gap="3" maxWidth="xs" flexGrow="1">
-                  <ProgressBar value={sliderValue} />
+              <Grid columns={{ base: '1', xl: '2' }} gap="5">
+                <Box border borderRadius="lg" padding="5">
+                  <Column gap="4">
+                    <Row gap="3" alignItems="center">
+                      <Box backgroundColor="interactive" borderRadius="md" padding="2">
+                        <FileArchive size={20} />
+                      </Box>
+                      <Column gap="1" flexGrow="1">
+                        <Text weight="semibold">Uploading brand-assets.zip</Text>
+                        <Text size="sm" color="muted">
+                          42.6 MB of 65.5 MB
+                        </Text>
+                      </Column>
+                      <Text size="sm" weight="semibold">
+                        {sliderValue}%
+                      </Text>
+                    </Row>
+                    <ProgressBar value={sliderValue} />
+                    <Row justifyContent="space-between" alignItems="center">
+                      <Row gap="2" alignItems="center">
+                        <Spinner size="sm" />
+                        <Text size="sm" color="muted">
+                          Encrypting and uploading
+                        </Text>
+                      </Row>
+                      <Button variant="quiet" size="xs">
+                        Cancel
+                      </Button>
+                    </Row>
+                  </Column>
+                </Box>
+                <Box border borderRadius="lg" padding="5">
                   <Row gap="5" alignItems="center">
-                    <Spinner size="sm" />
-                    <Spinner />
-                    <Dots size="lg" />
+                    <ProgressCircle value={sliderValue} showPercentage />
+                    <Column gap="2">
+                      <Row gap="2" alignItems="center">
+                        <Users size={18} />
+                        <Text weight="semibold">Importing contacts</Text>
+                      </Row>
+                      <Text size="sm" color="muted">
+                        650 of 1,000 records imported
+                      </Text>
+                      <Row gap="2" alignItems="center">
+                        <Dots size="sm" />
+                        <Text size="sm" color="muted">
+                          Checking for duplicates
+                        </Text>
+                      </Row>
+                    </Column>
                   </Row>
-                </Column>
-                <ProgressCircle value={sliderValue} />
-              </Row>
+                </Box>
+              </Grid>
               <Grid columns={{ base: '1', xl: '2' }} gap="5">
                 <Box border borderRadius="lg" padding="4">
                   <Row gap="3" alignItems="center">

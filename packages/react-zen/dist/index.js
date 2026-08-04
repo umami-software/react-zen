@@ -3226,7 +3226,7 @@ function Breadcrumb({ children, className, isDisabled, ...props }) {
       "aria-disabled": isDisabled || void 0,
       className: cn(
         "flex items-center text-base gap-3 list-none",
-        "[&_a]:text-foreground-muted [&_a]:no-underline [&_a]:font-normal [&_a]:p-2",
+        "[&_a]:text-foreground-muted [&_a]:no-underline [&_a]:font-normal",
         "[&_a:hover]:text-foreground-primary",
         "last:[&>span]:hidden",
         className
@@ -5787,7 +5787,8 @@ function Menu({
     return /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Portal, { children: /* @__PURE__ */ jsxRuntime.jsx(
       menu.Menu.Positioner,
       {
-        ...inMenubar ? { align: "start", sideOffset: 8 } : {},
+        sideOffset: 4,
+        ...inMenubar ? { align: "start" } : {},
         className: "zen-layer-floating",
         children: /* @__PURE__ */ jsxRuntime.jsx(menu.Menu.Popup, { ...props, className: cn("zen-popover", popupClassName2), children: popupContent })
       }

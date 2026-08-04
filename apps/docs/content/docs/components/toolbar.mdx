@@ -69,20 +69,20 @@ A toolbar groups a set of buttons and controls with keyboard navigation between 
 
 ## With toggles
 
-Toolbars work with `Toggle` and `ToggleGroup` for pressed states.
+Toolbars work with `ToggleGroup` and `ToggleGroupItem` for pressed states.
 
 <Example>
   <Toolbar>
     <ToggleGroup selectionMode="multiple">
-      <Toggle value="bold">
+      <ToggleGroupItem id="bold">
         <Icon size="sm"><Lucide.Bold /></Icon>
-      </Toggle>
-      <Toggle value="italic">
+      </ToggleGroupItem>
+      <ToggleGroupItem id="italic">
         <Icon size="sm"><Lucide.Italic /></Icon>
-      </Toggle>
-      <Toggle value="underline">
+      </ToggleGroupItem>
+      <ToggleGroupItem id="underline">
         <Icon size="sm"><Lucide.Underline /></Icon>
-      </Toggle>
+      </ToggleGroupItem>
     </ToggleGroup>
     <ToolbarSeparator />
     <ToolbarButton>
@@ -96,15 +96,15 @@ Toolbars work with `Toggle` and `ToggleGroup` for pressed states.
   ```jsx
   <Toolbar>
     <ToggleGroup selectionMode="multiple">
-      <Toggle value="bold">
+      <ToggleGroupItem id="bold">
         <Icon size="sm"><Bold /></Icon>
-      </Toggle>
-      <Toggle value="italic">
+      </ToggleGroupItem>
+      <ToggleGroupItem id="italic">
         <Icon size="sm"><Italic /></Icon>
-      </Toggle>
-      <Toggle value="underline">
+      </ToggleGroupItem>
+      <ToggleGroupItem id="underline">
         <Icon size="sm"><Underline /></Icon>
-      </Toggle>
+      </ToggleGroupItem>
     </ToggleGroup>
     <ToolbarSeparator />
     <ToolbarButton>
