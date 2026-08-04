@@ -2268,7 +2268,8 @@ var button = tailwindVariants.tv({
       default: [
         "bg-interactive text-foreground-primary",
         "hover:bg-interactive-hover",
-        "pressed:bg-interactive-pressed"
+        "pressed:bg-interactive-pressed",
+        "disabled:text-foreground-disabled"
       ],
       primary: [
         "bg-primary text-primary-foreground",
@@ -2280,16 +2281,26 @@ var button = tailwindVariants.tv({
         "bg-surface-base border-edge shadow-sm text-foreground-primary",
         "hover:border-edge-strong",
         "pressed:bg-surface-raised",
-        "disabled:bg-surface-disabled"
+        "disabled:bg-surface-disabled disabled:text-foreground-disabled"
       ],
-      quiet: ["bg-transparent", "hover:bg-interactive", "pressed:bg-interactive-hover"],
+      quiet: [
+        "bg-transparent",
+        "hover:bg-interactive",
+        "pressed:bg-interactive-hover",
+        "disabled:text-foreground-disabled"
+      ],
       danger: [
         "bg-status-error text-white",
         "hover:opacity-90",
         "pressed:opacity-80",
         "disabled:opacity-50"
       ],
-      zero: ["bg-transparent border-0", "hover:bg-transparent", "pressed:bg-transparent"]
+      zero: [
+        "bg-transparent border-0",
+        "hover:bg-transparent",
+        "pressed:bg-transparent",
+        "disabled:text-foreground-disabled"
+      ]
     },
     size: {
       xs: "text-sm py-1 px-2",
