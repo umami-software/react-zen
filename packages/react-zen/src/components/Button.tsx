@@ -1,5 +1,5 @@
 import { Button as BaseButton, type ButtonProps as BaseButtonProps } from '@base-ui/react/button';
-import type { MouseEvent, ReactNode } from 'react';
+import { isValidElement, type MouseEvent, type ReactNode } from 'react';
 import type { RenderProp } from './lib/render';
 import { type ButtonVariants, button } from './variants';
 
@@ -23,6 +23,7 @@ export function Button({
   size = 'md',
   render,
   preventFocusOnPress: _preventFocusOnPress = true,
+  nativeButton,
   isDisabled,
   disabled,
   onPress,
@@ -32,6 +33,8 @@ export function Button({
   ...props
 }: ButtonProps) {
   const buttonClassName = button({ variant, size, className });
+  const isNativeButton =
+    nativeButton ?? (render === undefined || (isValidElement(render) && render.type === 'button'));
 
   const handleClick = (event: any) => {
     onClick?.(event);
@@ -45,6 +48,7 @@ export function Button({
       {...props}
       data-slot="button"
       render={render as BaseButtonProps['render']}
+      nativeButton={isNativeButton}
       disabled={isDisabled ?? disabled}
       className={buttonClassName}
       onClick={handleClick}

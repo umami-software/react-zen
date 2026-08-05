@@ -2680,6 +2680,7 @@ function Button({
   size = "md",
   render,
   preventFocusOnPress: _preventFocusOnPress = true,
+  nativeButton,
   isDisabled,
   disabled,
   onPress,
@@ -2689,6 +2690,7 @@ function Button({
   ...props
 }) {
   const buttonClassName = button({ variant, size, className });
+  const isNativeButton = nativeButton ?? (render === void 0 || isValidElement(render) && render.type === "button");
   const handleClick = (event) => {
     onClick?.(event);
     if (!event.defaultPrevented) {
@@ -2701,6 +2703,7 @@ function Button({
       ...props,
       "data-slot": "button",
       render,
+      nativeButton: isNativeButton,
       disabled: isDisabled ?? disabled,
       className: buttonClassName,
       onClick: handleClick,

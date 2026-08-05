@@ -666,7 +666,7 @@ interface ButtonRenderProps {
     children: ReactNode;
     [key: string]: unknown;
 }
-declare function Button({ variant, size, render, preventFocusOnPress: _preventFocusOnPress, isDisabled, disabled, onPress, onClick, className, children, ...props }: ButtonProps): react_jsx_runtime.JSX.Element;
+declare function Button({ variant, size, render, preventFocusOnPress: _preventFocusOnPress, nativeButton, isDisabled, disabled, onPress, onClick, className, children, ...props }: ButtonProps): react_jsx_runtime.JSX.Element;
 
 interface SeparatorProps extends Separator$1.Props {
     orientation?: 'horizontal' | 'vertical';
